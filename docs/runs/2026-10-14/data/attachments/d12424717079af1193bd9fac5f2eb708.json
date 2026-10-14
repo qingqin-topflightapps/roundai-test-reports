@@ -1,0 +1,279 @@
+{
+  "TC-11/S03": {
+    "status": "passed-partial",
+    "detail": "11/11 judged cells pass, 3 recorded, 2 NOT RUN. Not run: entries generated from the finished note (Generate Note & Finish on day 1 and day 2) (Generate is forbidden on the local stack (capabilities.json); the dev lane runs it. Here every entry is the pre-round line (Q12)) | entries generated from the finished visit note (Generate Note & Finish at each visit) (Generate is forbidden on the local stack (capabilities.json); the dev lane runs it. Here every entry is the pre-round line (Q12)). Recorded: day 3: day-1 line still in the stored ledger (cleared vs hidden is Q2 / T5, TFA-94699) = {\"day1InLedger\":true,\"ledger\":[\"Oct 12: CHF exacerbation admitted overnight. Started IV furosemide and supplemental oxygen. Weight 82 kg. As | T4: the Hospital cards as a trend view (Q8: no written oracle; a person rates it) = {\"day2Cards\":[\"Oct 12: CHF exacerbation admitted overnight. Started IV furosemide and supplemental oxygen. Weight 82 kg. Assess diuretic res | T4: the Nursing Home Visit Timeline as a trend view (Q8: no written oracle; a person rates it) = {\"cards\":[\"Visit 1 – Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at.",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-11-S03/cells-hospital.json",
+      "runs/2026-10-14-local/manual/evidence/TC-11-S03/cells-nursing-home.json",
+      "runs/2026-10-14-local/manual/evidence/TC-11-S03/hospital-day2-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-11-S03/hospital-day3-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-11-S03/hospital.json",
+      "runs/2026-10-14-local/manual/evidence/TC-11-S03/nursing-home-after-visit3-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-11-S03/nursing-home.json"
+    ],
+    "partial": "2 cell(s) of the 'then' not run",
+    "counts": {
+      "judged": 11,
+      "pass": 11,
+      "fail": 0,
+      "recorded": 3,
+      "notRun": 2,
+      "notDiscriminating": 0
+    },
+    "cells": [
+      {
+        "part": "hospital",
+        "cell": "positive control: both Save Notes processed (notesProcessedAt moved, preRoundError empty)",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "processed (else the run is Invalid)",
+        "actual": {
+          "day1": {
+            "notesProcessedAtBefore": null,
+            "notesProcessedAtAfter": "2026-10-12T07:58:37.620Z",
+            "preRoundError": null,
+            "processed": true
+          },
+          "day2": {
+            "notesProcessedAtBefore": "2026-10-12T07:58:37.620Z",
+            "notesProcessedAtAfter": "2026-10-13T07:58:37.620Z",
+            "preRoundError": null,
+            "processed": true
+          }
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "day 1 Save Note wrote one entry dated Oct 12",
+        "req": "U1",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "one 'Oct 12:' line",
+        "actual": [
+          "Oct 12: CHF exacerbation admitted overnight. Started IV furosemide and supplemental oxygen. Weight 82 kg. Assess diuretic response and oxygenation.. ⏳ Encounter pending."
+        ]
+      },
+      {
+        "part": "hospital",
+        "cell": "day 2: the cards show the day-1 (Oct 12) and day-2 (Oct 13) entries, once each, in that order",
+        "req": "U1",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "[Oct 12: …, Oct 13: …]",
+        "actual": [
+          "Oct 12: CHF exacerbation admitted overnight. Started IV furosemide and supplemental oxygen. Weight 82 kg. Assess diuretic response and oxygenation",
+          "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable"
+        ]
+      },
+      {
+        "part": "hospital",
+        "cell": "day 2: the stored ledger has no duplicate day",
+        "req": "U1",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "one line per day",
+        "actual": [
+          "Oct 12: CHF exacerbation admitted overnight. Started IV furosemide and supplemental oxygen. Weight 82 kg. Assess diuretic response and oxygenation.. ⏳ Encounter pending.",
+          "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable.. ⏳ Encounter pending."
+        ]
+      },
+      {
+        "part": "hospital",
+        "cell": "day 3: day 1 (Oct 12) is off the cards",
+        "req": "U3",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "no 'Oct 12:' card",
+        "actual": [
+          "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable"
+        ],
+        "note": "Q3-independent: 48 h old and two calendar days back"
+      },
+      {
+        "part": "hospital",
+        "cell": "day 3: day 2 (Oct 13) is still on the cards, once",
+        "req": "U3",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "one 'Oct 13:' card",
+        "actual": [
+          "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable"
+        ]
+      },
+      {
+        "part": "hospital",
+        "cell": "day 3 (viewed, no new note): no other card, no filler for the day not yet worked",
+        "req": "U2",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "only the day-2 card",
+        "actual": [
+          "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable"
+        ]
+      },
+      {
+        "part": "hospital",
+        "cell": "day 3: day-1 line still in the stored ledger (cleared vs hidden is Q2 / T5, TFA-94699)",
+        "req": "U3",
+        "gate": null,
+        "verdict": "record",
+        "expected": "recorded",
+        "actual": {
+          "day1InLedger": true,
+          "ledger": [
+            "Oct 12: CHF exacerbation admitted overnight. Started IV furosemide and supplemental oxygen. Weight 82 kg. Assess diuretic response and oxygenation.. ⏳ Encounter pending.",
+            "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable.. ⏳ Encounter pending."
+          ]
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "T4: the Hospital cards as a trend view (Q8: no written oracle; a person rates it)",
+        "req": "T4",
+        "gate": null,
+        "verdict": "record",
+        "expected": "a person answers: is the trend of the stay clear? (yes/no + one reason)",
+        "actual": {
+          "day2Cards": [
+            "Oct 12: CHF exacerbation admitted overnight. Started IV furosemide and supplemental oxygen. Weight 82 kg. Assess diuretic response and oxygenation",
+            "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable"
+          ],
+          "day3Cards": [
+            "Oct 13: CHF exacerbation responding to diuresis with 1.5 L net negative overnight; oxygen requirement decreased to 1 L; creatinine stable"
+          ],
+          "screenshots": [
+            "hospital-day2-pre-round.png",
+            "hospital-day3-pre-round.png"
+          ]
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "entries generated from the finished note (Generate Note & Finish on day 1 and day 2)",
+        "req": "T2",
+        "gate": null,
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "Generate is forbidden on the local stack (capabilities.json); the dev lane runs it. Here every entry is the pre-round line (Q12)"
+      },
+      {
+        "part": "nursing-home",
+        "cell": "positive control: the three Save Notes processed (notesProcessedAt moved, preRoundError empty)",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "processed (else the run is Invalid)",
+        "actual": [
+          {
+            "notesProcessedAtBefore": null,
+            "notesProcessedAtAfter": "2026-10-11T08:07:05.317Z",
+            "preRoundError": null,
+            "processed": true
+          },
+          {
+            "notesProcessedAtBefore": "2026-10-11T08:07:05.317Z",
+            "notesProcessedAtAfter": "2026-10-13T08:07:05.317Z",
+            "preRoundError": null,
+            "processed": true
+          },
+          {
+            "notesProcessedAtBefore": "2026-10-13T08:07:05.317Z",
+            "notesProcessedAtAfter": "2026-10-14T08:07:05.317Z",
+            "preRoundError": null,
+            "processed": true
+          }
+        ]
+      },
+      {
+        "part": "nursing-home",
+        "cell": "Visit Timeline shows Visit 1 – Oct 11, Visit 2 – Oct 13, Visit 3 – Oct 14 (each with its own date, in order)",
+        "req": "U4",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "Visit 1 – Oct 11 | Visit 2 – Oct 13 | Visit 3 – Oct 14",
+        "actual": [
+          "Visit 1 – Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+          "Visit 2 – Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+          "Visit 3 – Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+        ]
+      },
+      {
+        "part": "nursing-home",
+        "cell": "one entry per visit, never duplicated (cards and stored ledger)",
+        "req": "U1",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "3 cards, 3 ledger lines, no repeat",
+        "actual": {
+          "cards": 3,
+          "ledger": [
+            "Visit 1 · Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+            "Visit 2 · Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+            "Visit 3 · Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+          ]
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "the skipped days (Oct 12) are absent: no entry, no filler line",
+        "req": "U2",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": {
+          "skipped": [
+            "Oct 12"
+          ],
+          "cards": [
+            "Visit 1 – Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+            "Visit 2 – Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+            "Visit 3 – Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+          ]
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "T4: the Nursing Home Visit Timeline as a trend view (Q8: no written oracle; a person rates it)",
+        "req": "T4",
+        "gate": null,
+        "verdict": "record",
+        "expected": "a person answers: is the trend of the stay clear? (yes/no + one reason)",
+        "actual": {
+          "cards": [
+            "Visit 1 – Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+            "Visit 2 – Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+            "Visit 3 – Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+          ],
+          "screenshot": "nursing-home-after-visit3-pre-round.png"
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "entries generated from the finished visit note (Generate Note & Finish at each visit)",
+        "req": "T2",
+        "gate": null,
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "Generate is forbidden on the local stack (capabilities.json); the dev lane runs it. Here every entry is the pre-round line (Q12)"
+      }
+    ],
+    "manualChecklist": [
+      "【TC-11/S03 只剩一步：给时间线的“趋势是否清楚”打分（T4，Q8 没有书面标准，只记录不判 Pass/Fail；约 5 分钟，不用登录）】",
+      "日期/条数/跳过的那天/不重复这些格子已经自动判了（cells-hospital.json、cells-nursing-home.json）。",
+      "1. 打开 evidence/TC-11-S03/hospital-day2-pre-round.png 和 hospital-day3-pre-round.png，只看 Hospital Course → Course Timeline 的卡片，不看笔记。",
+      "2. 打开 evidence/TC-11-S03/nursing-home-after-visit3-pre-round.png，只看 Visit Timeline 的三张卡。",
+      "3. 各回答一句：这次住院/入住的走势清不清楚？（是/否 + 一句理由），写进 results.json 这条的 personRating。",
+      "注意：本地这些卡片是 pre-round Save Note 写的那一行（Generate 本地禁用，Q12：没有完成笔记的 pre-round 行算不算条目还没定）；用 Generate 完成笔记后的卡片要在 dev 上跑。"
+    ],
+    "runNote": "Intermittent, not counted: in 4 Save Notes today (TC-20/S17 NH during the 14:4x overload; TC-21/S17 Hospital at 16:55; TC-11/S03 NH at 16:59 and 17:02 JST) the text was saved but the structured summary never arrived and no error was set within 90 s (preRoundProcessing stuck true, or no notesProcessedAt and no preRoundError); the retries were clean. No aiCallLog row was captured for those attempts, so the cause (model latency vs app) is open; worth watching on dev. Observation, not judged: every entry the Save Note writes ends in a doubled full stop ('…oxygenation.. ⏳ Encounter pending.', '…Continue PT/OT..'): the writers append '.' to a model entry that already ends in one (usePreRoundProcess / useSnfPreRoundProcess).",
+    "manualChecklistEn": [
+      "[TC-11/S03 one step left: rate whether the timeline's trend is clear (T4; Q8 has no written standard, so record only, no Pass/Fail; about 5 minutes, no sign-in needed)]",
+      "The date / count / skipped-day / no-duplicate cells are already judged automatically (cells-hospital.json, cells-nursing-home.json).",
+      "1. Open evidence/TC-11-S03/hospital-day2-pre-round.png and hospital-day3-pre-round.png; look only at the Hospital Course → Course Timeline cards, not the notes.",
+      "2. Open evidence/TC-11-S03/nursing-home-after-visit3-pre-round.png; look only at the three Visit Timeline cards.",
+      "3. Answer in one sentence for each: is the trend of this stay clear? (yes / no + one reason); write it into this entry's personRating in results.json.",
+      "Note: locally these cards are the row a pre-round Save Note writes (Generate is off locally; Q12, whether a pre-round row without a finished note counts as an entry, is not decided yet); the cards after a note finished with Generate have to be run on dev."
+    ]
+  }
+}
