@@ -1,0 +1,9 @@
+{
+  "TC-22/S19": {
+    "status": "passed",
+    "detail": "S04+S05 fixtures, 25 calls: every call answered, every aiCallLog row has model + durationMs + providerMs, all Haiku, 0 fallbacks, 0 over 30 s. Medians: parsePreRoundNotes 5.1 s (max 5.9), pre-round extractTasks harvest 2.7 s, Save & Extract extractTasks 3.2 s (max 6.7), extractMedicationEvents 3.4 s (parallel with it). The tap-to-message time a physician feels needs browser timestamps (not covered). Info for the S04/S05 owners, not this verdict: on local, H-01 (the UAT wording verbatim) pre-round made only 2 tasks ('Follow up BMP', 'PT evaluation' - 'Recheck weight in two weeks' was not harvested), Save & Extract then closed PT but not BMP and added no diet task; H-04 also lost the weight task; N-01 closed BMP and PT but added no diet task.",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-other/extract-S19/results.json"
+    ]
+  }
+}

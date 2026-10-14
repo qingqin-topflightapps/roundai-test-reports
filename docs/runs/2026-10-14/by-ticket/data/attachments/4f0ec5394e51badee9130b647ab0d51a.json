@@ -1,0 +1,119 @@
+{
+  "ref": "TC-02/S13a",
+  "part": "hospital",
+  "at": "2026-10-14T07:00:35.434Z",
+  "scan": "vision answered at the Convex socket with the h-day2-overlap rows (trackActionRequests)",
+  "cells": [
+    {
+      "cell": "the overlap prompt appears and names QA Alder as already on the list",
+      "expected": "a prompt that names QA Alder and says already on your list",
+      "actual": {
+        "named": [
+          "Possible duplicate\n\nA patient with this name is already on your list. You decide — the app won't drop anyone on its own.\n\nQA Alder · 71y\nSame name and MRN\nAlready on your list: QA Alder · Room 401\nSame patient (don't add)\nDifferent — add anyway\n\nWednesday, October 14, 2026\n\nMorning Rounds\n0/6\nHandof"
+        ],
+        "prompts": [
+          "Possible duplicate\n\nA patient with this name is already on your list. You decide — the app won't drop anyone on its own.\n\nQA Alder · 71y\nSame name and MRN\nAlready on your list: QA Alder · Room 401\nSame patient (don't add)\nDifferent — add anyway\n\nWednesday, October 14, 2026\n\nMorning Rounds\n0/6\nHandof"
+        ],
+        "afterConfirm": [
+          "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nScan Patient List\nPhoto your census sheet — AI read",
+          "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nPossible duplicate\n\nA patient with this name is alr",
+          "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nPossible duplicate\n\nA patient with this name is alr"
+        ]
+      },
+      "verdict": "pass",
+      "req": "U4",
+      "note": "Not judged here: the UAT wording 'N patients are already on your list' with an 'add only the new ones' option (U4 is gated, TFA-92580 rejected by QA); the build asks per patient ('Possible duplicate … Same patient (don't add) / Different — add anyway')."
+    },
+    {
+      "cell": "QA Alder's chart equals its control's retention-adjusted state (task, medication, vitals, status)",
+      "expected": "{\"encType\":\"follow-up\",\"tasks\":[\"QA-TASK-AGED\"],\"meds\":[\"Metoprolol tartrate 25 mg PO BID\"],\"vitals\":{\"bp\":\"130/80\"},\"preRoundNotes\":null,\"status\":\"pending\"}",
+      "actual": {
+        "encType": "follow-up",
+        "tasks": [
+          "QA-TASK-AGED"
+        ],
+        "meds": [
+          "Metoprolol tartrate 25 mg PO BID"
+        ],
+        "vitals": {
+          "bp": "130/80"
+        },
+        "preRoundNotes": null,
+        "status": "pending"
+      },
+      "verdict": "pass",
+      "req": "U5"
+    },
+    {
+      "cell": "open task, medication row and vitals from yesterday still there (36 h windows)",
+      "expected": "present",
+      "actual": {
+        "encType": "follow-up",
+        "tasks": [
+          "QA-TASK-AGED"
+        ],
+        "meds": [
+          "Metoprolol tartrate 25 mg PO BID"
+        ],
+        "vitals": {
+          "bp": "130/80"
+        },
+        "preRoundNotes": null,
+        "status": "pending"
+      },
+      "verdict": "pass",
+      "req": "U5"
+    },
+    {
+      "cell": "New Admission set yesterday has turned to Follow-up (day rule)",
+      "expected": "follow-up on both",
+      "actual": {
+        "alder": "follow-up",
+        "fig": "follow-up"
+      },
+      "verdict": "pass",
+      "req": "U6"
+    },
+    {
+      "cell": "new patients are Follow-up",
+      "expected": "4 new rows, Follow-up",
+      "actual": [
+        {
+          "name": "QA Birch",
+          "encType": "follow-up"
+        },
+        {
+          "name": "QA Cedar",
+          "encType": "follow-up"
+        },
+        {
+          "name": "QA Dogwood",
+          "encType": "follow-up"
+        },
+        {
+          "name": "QA Elm",
+          "encType": "follow-up"
+        }
+      ],
+      "verdict": "pass",
+      "req": "U11"
+    },
+    {
+      "cell": "QA Alder added only once",
+      "expected": "1",
+      "actual": 1,
+      "verdict": "pass",
+      "req": "U4"
+    },
+    {
+      "cell": "QA Alder's room / diagnosis after the day-2 photo (Q7)",
+      "expected": "recorded until Q7",
+      "actual": {
+        "room": "401",
+        "diagnosis": "Heart failure"
+      },
+      "verdict": "record",
+      "req": "U4"
+    }
+  ]
+}

@@ -1,0 +1,507 @@
+{
+  "ref": "OAT-02/S06",
+  "method": "CODEREVIEW",
+  "status": "partial",
+  "verdict": "pass",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "List every outbound endpoint the backend (apps/web/convex) can call, with file:line and scheme: Bedrock (AWS SDK bedrock-runtime), Vertex (Google GenAI SDK), OpenAI chat completions / vision (selectable as provider 'openai' and visionProvider 'openai'), OpenAI transcription, the live-session key minting call, SES, the Specode email relay, SITE_URL use, and any other fetch() or SDK client. For each: is the URL hard-coded https, built from an env var (name it), or an SDK default? Record the env overrides Tim must read (their names) in notDecidableByCode.",
+  "rule": {
+    "pass": "every hard-coded endpoint is https:// and every other one is an SDK default (https) or an env override",
+    "fail": "any http:// endpoint in code",
+    "basis": [
+      "Every endpoint is https://",
+      "One http:// endpoint or env override in use = Fail, quoted with the file or variable"
+    ]
+  },
+  "halves": {
+    "code": "pass",
+    "env overrides on the deployment": "CONFIG (Tim reads each scheme): not run in this lane",
+    "unused paths on the deployment": "CONFIG (Tim): not run in this lane"
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [],
+  "pendingOn": [],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "The code passes. Every outbound call in apps/web/convex uses https, set in one of three ways:\n- **Hard-coded https:** OpenAI transcription posts by fetch() to \"https://api.openai.com/v1/audio/transcriptions\" (transcribe.ts:12/156). SES requests are signed by the code itself and built as `https://${host}` with host = email.<region>.amazonaws.com; AWS_SES_REGION or AWS_REGION only picks the region, never the scheme (ses.ts:39/89/101/120).\n- **SDK default (https):** Bedrock uses a BedrockRuntimeClient with no endpoint set (bedrock.ts:85). Vertex uses a GoogleGenAI client with vertexai=true and no base URL (vertex.ts:150). OpenAI chat and vision use `new OpenAI({ apiKey })` with no baseURL (openai.ts:92). Live-session key minting calls client.realtime.clientSecrets.create on an OpenAI client with no baseURL (transcribe.ts:71-74). Each of these can still be redirected by an env var the SDK reads itself: OPENAI_BASE_URL, AWS_ENDPOINT_URL / AWS_ENDPOINT_URL_BEDROCK_RUNTIME, and the GenAI SDK's base-URL vars.\n- **Built from an env var:** the Specode relay does fetch(SPECODE_EMAIL_RELAY_URL) (email.ts:18/25). It only runs when AUTH_EMAIL_PROVIDER is not \"ses\" and SPECODE_EMAIL_MODE is \"platform\"; when AUTH_EMAIL_PROVIDER=ses it is never reached.\n\nThe scheme-relevant http:// literal in the code is the dev fallback `process.env.SITE_URL ?? \"http://localhost:5173\"` (auth.ts:105). The backend never fetches that value. It is used as the crossDomain siteUrl and a trusted origin, so it is not an outbound endpoint under the question's rule. It would only apply if SITE_URL were unset, which is part of Tim's env check. The only other http strings are origin-matching patterns, not endpoints. Provider choice is 'openai' | 'bedrock' and visionProvider 'openai' | 'vertex' (providers/index.ts:23/26); which one the aiProvider row picks is a data question. No recorded gaps or open questions are involved."
+    },
+    {
+      "run": 2,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "The code passes. Every outbound call in apps/web/convex either uses a hard-coded https:// URL or relies on an SDK default, which is https. The only other kind is a URL taken from an env var, and its scheme can only be checked on the deployment.\n\nThe calls:\n- **OpenAI transcription:** hard-coded https://api.openai.com/v1/audio/transcriptions (transcribe.ts:12, called with fetch at :156).\n- **OpenAI chat completions and vision:** the OpenAI SDK with no baseURL in code (openai.ts:92). The SDK default is https://api.openai.com/v1, though the SDK also reads OPENAI_BASE_URL. It is selectable as provider 'openai' and visionProvider 'openai' (providers/index.ts:23,26).\n- **Live-session key minting:** the OpenAI SDK, realtime.clientSecrets.create (transcribe.ts:71-74). The default is https.\n- **Bedrock:** BedrockRuntimeClient with region only and no endpoint (bedrock.ts:85). The SDK default is https://bedrock-runtime.<region>.amazonaws.com, unless AWS_ENDPOINT_URL or AWS_ENDPOINT_URL_BEDROCK_RUNTIME is set.\n- **Vertex:** GoogleGenAI with vertexai:true and no baseUrl (vertex.ts:150). The SDK default is https.\n- **SES:** a hand-signed fetch to `https://email.${region}.amazonaws.com` (ses.ts:39, :89), with the region from AWS_SES_REGION or AWS_REGION. The scheme is fixed to https.\n- **Specode relay:** fetch to process.env.SPECODE_EMAIL_RELAY_URL (email.ts:18,25). It is used only when AUTH_EMAIL_PROVIDER is not \"ses\" and SPECODE_EMAIL_MODE is \"platform\" (email.ts:52-57).\n\nNo other fetch() call or SDK client exists. SITE_URL is never called: it serves only as the auth redirect and trusted-origin value. Its code fallback is \"http://localhost:5173\" (auth.ts:105), a local-development default rather than an outbound endpoint. It matters only if SITE_URL is unset on the deployment, which Tim checks. No open questions or recorded gaps apply."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "OpenAI transcription URL is hard-coded https and called via fetch().",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 12,
+          "quote": "const TRANSCRIBE_URL = \"https://api.openai.com/v1/audio/transcriptions\";",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The transcription fetch uses that constant.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 156,
+          "quote": "const res = await fetch(TRANSCRIBE_URL, {",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Live-session key minting uses the OpenAI SDK with no baseURL, so it uses the SDK default https://api.openai.com unless OPENAI_BASE_URL is set.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 71,
+          "quote": "const client = new OpenAI({ apiKey, timeout: 15_000, maxRetries: 1 });",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "OpenAI chat and vision client has no baseURL, so it uses the SDK default https.",
+          "file": "apps/web/convex/ai/openai.ts",
+          "line": 92,
+          "quote": "return new OpenAI({ apiKey: getApiKey() });",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Bedrock runtime client sets region and credentials only, with no endpoint, so it uses the SDK default https (AWS_ENDPOINT_URL* could override).",
+          "file": "apps/web/convex/ai/providers/bedrock.ts",
+          "line": 85,
+          "quote": "const client = new BedrockRuntimeClient({",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Vertex client uses the Google GenAI SDK with vertexai, project and location and no baseUrl, so it uses the SDK default https.",
+          "file": "apps/web/convex/ai/providers/vertex.ts",
+          "line": 150,
+          "quote": "const ai = new GoogleGenAI({",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The SES host is built from the region only.",
+          "file": "apps/web/convex/lib/ses.ts",
+          "line": 39,
+          "quote": "const host = `email.${options.region}.amazonaws.com`;",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The SES request is built with a hard-coded https scheme.",
+          "file": "apps/web/convex/lib/ses.ts",
+          "line": 89,
+          "quote": "return new Request(`https://${host}${path}`, {",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Specode relay URL comes entirely from an env var (its scheme is not fixed in code).",
+          "file": "apps/web/convex/email.ts",
+          "line": 25,
+          "quote": "const response = await fetch(relayUrl, {",
+          "supports": "context",
+          "label": "half:env overrides on the deployment",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SES takes priority: when AUTH_EMAIL_PROVIDER=ses the relay branch is never reached, so the relay is unused on the deployment.",
+          "file": "apps/web/convex/email.ts",
+          "line": 52,
+          "quote": "if (process.env.AUTH_EMAIL_PROVIDER === \"ses\") {",
+          "supports": "pass",
+          "label": "half:unused paths on the deployment",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SITE_URL falls back to http://localhost:5173. This is a redirect/trusted-origin value the backend never fetches, so it is not an outbound endpoint. It would only apply if SITE_URL were unset, which Tim checks.",
+          "file": "apps/web/convex/auth.ts",
+          "line": 105,
+          "quote": "const fallbackSiteUrl = process.env.SITE_URL ?? \"http://localhost:5173\";",
+          "supports": "context",
+          "label": "half:env overrides on the deployment",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Provider choices in code: provider 'openai' or 'bedrock'; visionProvider 'openai' or 'vertex'.",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 23,
+          "quote": "provider: \"openai\" | \"bedrock\";",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "OpenAI transcription endpoint is hard-coded https.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 12,
+          "quote": "const TRANSCRIBE_URL = \"https://api.openai.com/v1/audio/transcriptions\";",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Batch transcription fetch uses the https constant.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 156,
+          "quote": "const res = await fetch(TRANSCRIBE_URL, {",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Live-session key minting uses the OpenAI SDK with no baseURL (SDK default https; OPENAI_BASE_URL is the override).",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 71,
+          "quote": "const client = new OpenAI({ apiKey, timeout: 15_000, maxRetries: 1 });",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "OpenAI chat and vision calls use an SDK client with no baseURL (SDK default https://api.openai.com/v1).",
+          "file": "apps/web/convex/ai/openai.ts",
+          "line": 92,
+          "quote": "return new OpenAI({ apiKey: getApiKey() });",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "OpenAI is selectable as the chat provider and the vision provider.",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 23,
+          "quote": "provider: \"openai\" | \"bedrock\";",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Bedrock client sets only region and credentials, with no endpoint (SDK default https bedrock-runtime; AWS_ENDPOINT_URL* env vars could override it).",
+          "file": "apps/web/convex/ai/providers/bedrock.ts",
+          "line": 85,
+          "quote": "const client = new BedrockRuntimeClient({",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Vertex client sets no baseUrl (Google GenAI SDK default https aiplatform endpoint).",
+          "file": "apps/web/convex/ai/providers/vertex.ts",
+          "line": 150,
+          "quote": "const ai = new GoogleGenAI({",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The SES request URL is built with a fixed https scheme from the region env var.",
+          "file": "apps/web/convex/lib/ses.ts",
+          "line": 89,
+          "quote": "return new Request(`https://${host}${path}`, {",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The SES host is email.<region>.amazonaws.com.",
+          "file": "apps/web/convex/lib/ses.ts",
+          "line": 39,
+          "quote": "const host = `email.${options.region}.amazonaws.com`;",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Specode relay URL comes wholly from an env var, so its scheme can only be checked on the deployment.",
+          "file": "apps/web/convex/email.ts",
+          "line": 25,
+          "quote": "const response = await fetch(relayUrl, {",
+          "supports": "context",
+          "label": "half:env overrides on the deployment",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The relay is used only when AUTH_EMAIL_PROVIDER is not 'ses'. With AUTH_EMAIL_PROVIDER=ses, SES is used and the relay is unused.",
+          "file": "apps/web/convex/email.ts",
+          "line": 52,
+          "quote": "if (process.env.AUTH_EMAIL_PROVIDER === \"ses\") {",
+          "supports": "pass",
+          "label": "half:unused paths on the deployment",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SITE_URL is never called by the backend; it is only a redirect/trusted-origin value. Its code fallback is plain http localhost, which would apply if SITE_URL were unset on the deployment.",
+          "file": "apps/web/convex/auth.ts",
+          "line": 105,
+          "quote": "const fallbackSiteUrl = process.env.SITE_URL ?? \"http://localhost:5173\";",
+          "supports": "context",
+          "label": "half:env overrides on the deployment",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "",
+  "openQuestions": [
+    "The SITE_URL fallback 'http://localhost:5173' (auth.ts:105) is not an outbound call, but it would become the crossDomain siteUrl and a trusted origin if SITE_URL were unset on UAT. Tim's env check should confirm that SITE_URL is set to https.",
+    "The question's pass/fail rule fails on 'any http:// endpoint in code'. The only http:// literal is the SITE_URL dev fallback (auth.ts:105). It is a redirect/trusted-origin value, not an outbound call, so it was not counted as a failure. Tim should confirm SITE_URL is set to an https value on the UAT deployment."
+  ],
+  "notDecidableByCode": [
+    "env overrides on the deployment (CONFIG (Tim reads each scheme))",
+    "unused paths on the deployment (CONFIG (Tim))",
+    "Scheme of SITE_URL on the UAT deployment (unset would mean the http://localhost fallback)",
+    "SPECODE_EMAIL_RELAY_URL scheme, and whether the relay is unused (AUTH_EMAIL_PROVIDER=ses, SPECODE_EMAIL_MODE)",
+    "AUTH_EMAIL_PROVIDER value",
+    "AWS_SES_REGION / AWS_REGION (only picks the region; the https scheme is fixed in code)",
+    "OPENAI_BASE_URL (read by the OpenAI SDK for chat, vision and live-session minting; the transcription fetch ignores it)",
+    "AWS_ENDPOINT_URL and AWS_ENDPOINT_URL_BEDROCK_RUNTIME (read by the AWS SDK)",
+    "GOOGLE_VERTEX_BASE_URL / GOOGLE_GEMINI_BASE_URL or any other base-URL override the Google GenAI SDK reads",
+    "BETTER_AUTH_TRUSTED_ORIGINS schemes",
+    "CONVEX_SITE_URL (Better Auth baseURL)",
+    "Which provider and visionProvider the deployment's aiProvider row selects",
+    "Convex log-stream and webhook destinations (Integrations page)",
+    "Scheme of these env values on the deployment: SITE_URL, SPECODE_EMAIL_RELAY_URL, OPENAI_BASE_URL (read by the openai SDK), AWS_ENDPOINT_URL, AWS_ENDPOINT_URL_BEDROCK_RUNTIME, BETTER_AUTH_TRUSTED_ORIGINS, and any Google GenAI base-URL override (e.g. GOOGLE_VERTEX_BASE_URL / GOOGLE_GEMINI_BASE_URL).",
+    "AUTH_EMAIL_PROVIDER and SPECODE_EMAIL_MODE values (whether the relay is unused), and AWS_SES_REGION/AWS_REGION.",
+    "Which provider and visionProvider the deployment's aiProvider row selects.",
+    "Convex log-stream and webhook destinations (Integrations page)."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "a3ade214185f"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 49081,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.22502300000000003,
+      "turns": 16,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 46573,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.25406480000000004,
+      "turns": 15,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:06:30.174Z"
+}

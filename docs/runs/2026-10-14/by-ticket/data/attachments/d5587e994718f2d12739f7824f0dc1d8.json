@@ -1,0 +1,20 @@
+{
+  "offered": [
+    "H&P",
+    "SOAP progress",
+    "Consult note",
+    "Discharge summary"
+  ],
+  "picked": "Discharge summary",
+  "noteTemplate": "discharge",
+  "course": [
+    "Oct 14: Dyspnea and pulmonary exam improved"
+  ],
+  "expected": "Oct 14: Dyspnea and pulmonary exam improved",
+  "actions": [
+    "ai/notes:generateNote:mock",
+    "ai/notes:refreshCourseAndBackground:mock",
+    "ai/parsing:extractMedicationEvents:mock",
+    "ai/notes:suggestBilling:mock"
+  ]
+}

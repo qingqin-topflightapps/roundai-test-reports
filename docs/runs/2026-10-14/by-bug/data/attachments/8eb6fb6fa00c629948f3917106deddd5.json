@@ -1,0 +1,10 @@
+{
+  "OAT-03/S11": {
+    "status": "blocked",
+    "detail": "Built (generateNote answer failed at the client socket after 20 s; checks: 'generating' at once, explicit failure, dictation kept, nothing stored, status not finished, no blank Post-Round note). Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13; dev only). The spec is built and skips itself; run it with QA_ALLOW_LOCAL_GENERATE=1 once Quinn OKs local Generate. It makes no model call (the action never reaches the server). Review 2026-10-14: the spec now also soft-fails, annotated knownGap, when 'Note not generated' is missing after the failure (oracle: Fail (known) for Q3, not a silent pass). Question for Quinn: S11 makes no model call (the generateNote answer is failed at the client socket), so may it run without QA_ALLOW_LOCAL_GENERATE?",
+    "evidence": [
+      "web/qa-agent-tests/probes/oat03-generate-faults.spec.ts"
+    ],
+    "openQuestion": "Quinn: may OAT-03/S11 run without QA_ALLOW_LOCAL_GENERATE (no model call)?"
+  }
+}

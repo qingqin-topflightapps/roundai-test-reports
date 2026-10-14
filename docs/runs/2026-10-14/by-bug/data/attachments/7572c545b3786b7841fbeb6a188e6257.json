@@ -1,0 +1,68 @@
+{
+  "case": "TC-09-S02",
+  "title": "Search All Residents, add one of two similarly named residents to today; a Hospital name finds nothing",
+  "needs": [
+    "seed",
+    "oracle-count",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s02-search-hit.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s02-search-hospital.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s02-today-after.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition) pass: backend list-before [name={ash}].inTodaysSession = false",
+        "(seed precondition) pass: backend list-before [name={ashby}].inTodaysSession = false"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 21,
+    "costUsd": 0.11337679999999999,
+    "durationMs": 65658,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

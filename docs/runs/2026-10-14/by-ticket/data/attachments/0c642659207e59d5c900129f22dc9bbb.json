@@ -1,0 +1,485 @@
+{
+  "ref": "TC-04/S10",
+  "method": "CODEREVIEW",
+  "status": "partial",
+  "verdict": "pass",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Find every code path that deletes or hides a quickDictationDrafts box (unassigned or assigned): a cron (convex/crons.ts), a lifecycle sweep (convex/lib/lifecycle.ts and its callers), a client purge, a TTL, or an explicit user action. For each, which clock does it use (server time or the device clock) and which window? Is there any retention window for boxes at all, and if so what is its value?",
+  "rule": {
+    "pass": "no box is removed silently: a box goes only by an explicit user action, or by a rule on the server clock (never the device clock)",
+    "fail": "a box is dropped silently (no user action removes it, yet it goes), or the rule that clears boxes uses the device clock, not the server clock",
+    "basis": [
+      "never silently before it, and the same on every device clock",
+      "U4 (never silently dropped)",
+      "3.8: server clock, not device clock"
+    ]
+  },
+  "halves": {
+    "code": "pass",
+    "Q6 window": "pending Q6 (Daniela): not run in this lane",
+    "ageing run": "TIME (T+11..37 h on a moved server clock): not run in this lane"
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [],
+  "pendingOn": [],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "At e02167f, Quick Dictation boxes have no retention window at all: no 12, 18 or 36 h, no TTL and no timed clean-up. The only cron (apps/web/convex/crons.ts) is the hourly expired-session sweep, and convex/lib/lifecycle.ts never mentions quickDictationDrafts. A box can be deleted in only three ways, and each one is a person's action carried out on the server:\n(1) quickDictation.remove, called only from deleteCompartment when the physician taps delete in the Quick Dictation modal or on the sheet;\n(2) quickDictation.clear, which the client wires up in data/rounding.ts but never calls;\n(3) account deletion (account.ts), which removes boxes with via \"account_deleted\".\nEvery delete writes an audit row. Assigning a box marks it and never deletes it. The pad lists every box the user owns, sorted by order, with no time filter, so the device clock never removes or hides a box from the pad.\nOne device-clock rule exists, but it is outside the pad: the Rounding Sheet (hidden, Q14) shows an assigned box under its patient only if assignedAt falls on today's date by the device clock (compartmentsPlacedToday / isToday). The box itself stays on the pad.\nSo the code-decidable rule passes: nothing drops a box silently. Whether boxes should clear at a set window is left to Q6, which the oracle says does not decide this verdict. Today the code would keep both boxes past T+37 h on any clock."
+    },
+    {
+      "run": 2,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "At commit e02167f, Quick Dictation boxes have no time limit, so nothing removes them silently. Code can delete a box in three ways:\n1. `quickDictation.remove`, run when the physician taps delete on a box (`deleteCompartment`).\n2. `quickDictation.clear`. It is exposed in `data/rounding.ts`, but no screen calls it.\n3. Account deletion (`account.ts`, via \"account_deleted\").\n\nAll three are server mutations started by the user, and each writes an audit row. The only cron (`crons.ts`) sweeps expired sessions. `lib/lifecycle.ts` never touches drafts. The pad hook and modal show every row from `quickDictation.list`, with no filter on age or clock. Assigning a box marks it (`assignedAt` = `Date.now()` on the server) and never deletes it.\n\nSo both the unassigned and the assigned box stay at T+11, 13, 17, 19, 35 and 37 h, whatever the device clock says. That meets the pass rule: a box goes only by an explicit user action.\n\nThe window the Then refers to depends on Q6 (Daniela). The code has no window at all, so a 12, 18 or 36 h clearing rule would not happen. This is recorded under half:Q6 window and does not decide the verdict.\n\nOne item sits outside the verdict. The hidden Rounding Sheet (Q14, behind `VITE_SHOW_ROUNDING_SHEET`) shows assigned boxes only when they were placed \"today\". It works out \"today\" from the device clock (`new Date()`), so on that screen a wrong device date would hide boxes. The pad does not use this rule."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The only scheduled job is the session sweep; no cron touches quickDictationDrafts.",
+          "file": "apps/web/convex/crons.ts",
+          "line": 10,
+          "quote": "\"sweep expired sessions\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The pad query returns every box the user owns, sorted by order, with no time-based filter.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 43,
+          "quote": "return rows.sort((a, b) => a.order - b.order);",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Assigning a box marks it (assignedAt from server Date.now()) and does not delete it.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 178,
+          "quote": "await ctx.db.patch(args.id, mark);",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Deleting a single box is an explicit mutation, and each delete is audit-logged.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 201,
+          "quote": "await ctx.db.delete(args.id);",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The client calls remove only from deleteCompartment, which runs when the user taps delete.",
+          "file": "apps/web/src/features/rounding/list/useQuickDictation.ts",
+          "line": 355,
+          "quote": "await actions.remove({ id: id as Id<\"quickDictationDrafts\"> });",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The delete button in the Quick Dictation modal is the trigger for removing a box.",
+          "file": "apps/web/src/features/rounding/list/QuickDictationModal.tsx",
+          "line": 268,
+          "quote": "onClick={() => qd.deleteCompartment(c._id)}",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The clear-pad mutation is wired up on the client but nothing calls it; it is the 'start a fresh capture' path.",
+          "file": "apps/web/src/data/rounding.ts",
+          "line": 102,
+          "quote": "clear: useMutation(api.quickDictation.clear),",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Account deletion removes the user's boxes, which is an explicit user action.",
+          "file": "apps/web/convex/account.ts",
+          "line": 143,
+          "quote": "await deleteQuickDictationDraft(ctx, row, \"account_deleted\");",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "No retention window exists for boxes, so they never clear at 12, 18 or 36 h; whether they should is Q6's call.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 15,
+          "quote": "appends its text to the patient and MARKS the compartment — it is not",
+          "supports": "context",
+          "label": "half:Q6 window",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The (hidden) Rounding Sheet shows an assigned box under its patient only if assignedAt is today by the device clock. That hides the box from the sheet, not from the pad, so moving the device clock changes what the sheet shows.",
+          "file": "apps/web/src/domain/roundingSheet.ts",
+          "line": 57,
+          "quote": "isToday(c.assignedAt, now) &&",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "No timed removal exists, so the ageing run should show both boxes still present at T+11 through T+37 h whatever the device clock says.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 41,
+          "quote": ".withIndex(\"by_user\", (q) => q.eq(\"userId\", userId))",
+          "supports": "pass",
+          "label": "half:ageing run",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The only cron sweeps expired sessions; no cron touches quickDictationDrafts.",
+          "file": "apps/web/convex/crons.ts",
+          "line": 10,
+          "quote": "\"sweep expired sessions\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Explicit user delete: remove mutation checks ownership, deletes and audits; called only from deleteCompartment.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 201,
+          "quote": "await ctx.db.delete(args.id);",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Client delete path is the physician's delete action on a compartment.",
+          "file": "apps/web/src/features/rounding/list/useQuickDictation.ts",
+          "line": 355,
+          "quote": "await actions.remove({ id: id as Id<\"quickDictationDrafts\"> });",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "clear mutation deletes the whole pad (or only assigned boxes) but is user-invoked and has no age or clock condition.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 224,
+          "quote": "if (args.onlyAssigned && !row.assignedPatientId) {",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Account deletion removes boxes as part of the user's account deletion, with audit.",
+          "file": "apps/web/convex/account.ts",
+          "line": 143,
+          "quote": "await deleteQuickDictationDraft(ctx, row, \"account_deleted\");",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The list query returns every box of the user with no age filter, so the pad shows all boxes regardless of either clock.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 41,
+          "quote": ".withIndex(\"by_user\", (q) => q.eq(\"userId\", userId))",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The pad renders all comps (comps = drafts) unfiltered.",
+          "file": "apps/web/src/features/rounding/list/useQuickDictation.ts",
+          "line": 222,
+          "quote": "const comps = drafts;",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Assignment marks the box with a server-clock assignedAt and never deletes it.",
+          "file": "apps/web/convex/quickDictation.ts",
+          "line": 149,
+          "quote": "const now = Date.now();",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "No retention window for boxes exists in code: boxes persist indefinitely until a user deletes them. Whether that matches the 12/18/36 h window is for Q6.",
+          "file": "apps/web/src/features/rounding/list/useQuickDictation.ts",
+          "line": 30,
+          "quote": "compartment — it is never deleted, so what has already been placed stays",
+          "supports": "context",
+          "label": "half:Q6 window",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Hidden Rounding Sheet (behind a build flag, Q14) shows assigned boxes only if assignedAt is 'today' per the device clock (new Date()), so a wrong device date would hide them there; the pad is not affected.",
+          "file": "apps/web/src/domain/roundingSheet.ts",
+          "line": 30,
+          "quote": "export function isToday(at: Timestamp, now: Date = new Date()): boolean {",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Rounding Sheet is off unless the build variable is exactly \"true\".",
+          "file": "apps/web/src/lib/features.ts",
+          "line": 3,
+          "quote": "export const showRoundingSheet =",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Code predicts the ageing run: with no time-based rule, both boxes remain at every age from T+11 h to T+37 h, whatever the device clock says.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 131,
+          "quote": "if (patient.importantPoints?.length || patient.importantPointsDraft?.trim()) {",
+          "supports": "pass",
+          "label": "half:ageing run",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "",
+  "openQuestions": [
+    "Q6 window: the code has no retention window for Quick Dictation boxes. Unassigned and assigned boxes stay until the physician deletes them (or deletes the account), so they never clear at 12, 18 or 36 h. If Daniela sets a window, there is no code for it yet.",
+    "Q14: if 'stays on the sheet' turns out to mean the Rounding Sheet, assigned boxes there are filtered to 'placed today' by the device clock (roundingSheet.ts isToday). That would conflict with 3.8 (server clock, not device clock).",
+    "Q6 (Daniela): the code has no retention window for Quick Dictation boxes, assigned or unassigned. They stay until the physician deletes them (or clears the pad, or deletes the account). If Q6 sets a 12, 18 or 36 h window, nothing in the code would apply it, and the 'clear exactly at the window' half would then fail.",
+    "Q14: the Then is read against the pad. The hidden Rounding Sheet filters assigned boxes by a 'today' check on the device clock. If the sheet is turned on, a wrong device date would hide those boxes from it, which goes against 'the same on every device clock'."
+  ],
+  "notDecidableByCode": [
+    "Q6 window (pending Q6 (Daniela))",
+    "ageing run (TIME (T+11..37 h on a moved server clock))",
+    "What retention window boxes should have (Q6, Daniela).",
+    "Behaviour actually seen when the server clock is moved (TIME lane ageing run).",
+    "The window boxes should clear at (Q6, Daniela).",
+    "The live ageing run on a moved server clock and a wrong device clock (TIME lane) confirms the behaviour but is run by another lane."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "ae4b94c4d918"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 52659,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2344562,
+      "turns": 15,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 54260,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.329765,
+      "turns": 14,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:02:08.825Z"
+}

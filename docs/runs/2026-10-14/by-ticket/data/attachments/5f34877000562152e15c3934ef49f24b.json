@@ -1,0 +1,90 @@
+{
+  "case": "TC-06-S26",
+  "title": "Add form submitted: an untouched Hospital form saves Follow-up; Consult chosen on the Nursing Home form saves Consult",
+  "needs": [
+    "seed",
+    "permission-add-patient",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s26-h-list.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s26-h-chart.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7emgj62xt76a0ng5ettvdmdx8g80ba",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s26-n-chart.md",
+      "verdict": "Pass",
+      "url": "/snf/jx75x6pndesv1nrqnptbbytra98g8zk5",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(positive control: the Add Patient form saved one row (two mean it was submitted twice)) pass: backend h-list-after [name={addHosp}] has 1 item",
+        "(positive control: the Add Resident form saved one row) pass: backend n-list-after [name={addResident}] has 1 item"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "added": [
+    {
+      "kind": "hospitalPatient",
+      "id": "js7emgj62xt76a0ng5ettvdmdx8g80ba",
+      "name": "QA TC-06-S26 Add Hosp"
+    },
+    {
+      "kind": "snfResident",
+      "id": "jx75x6pndesv1nrqnptbbytra98g8zk5",
+      "name": "QA TC-06-S26 Add Resident"
+    }
+  ],
+  "agent": {
+    "turns": 38,
+    "costUsd": 0.2536308,
+    "durationMs": 98745,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U74",
+  "covers": [
+    "TC-06/S26"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u74",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U74.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

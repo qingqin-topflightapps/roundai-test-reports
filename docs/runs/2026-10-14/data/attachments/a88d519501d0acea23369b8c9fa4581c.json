@@ -1,0 +1,71 @@
+{
+  "case": "TC-03-S09",
+  "title": "Card per context: Hospital card has the diagnosis, Nursing Home card and search hint have none",
+  "needs": [
+    "seed",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s09-hosp-card.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s09-nh-today-card.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "should not show \"Post-acute rehab after hip fracture\"",
+        "should not show \"diagnosis\""
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s09-nh-all-card.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "should not show \"Post-acute rehab after hip fracture\"",
+        "should not show \"diagnosis\""
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Facility (U6 / AC 3) is not checked here: no facility field exists on e02167f (S10, Q1)."
+  ],
+  "agent": {
+    "turns": 16,
+    "costUsd": 0.10585040000000003,
+    "durationMs": 58052,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

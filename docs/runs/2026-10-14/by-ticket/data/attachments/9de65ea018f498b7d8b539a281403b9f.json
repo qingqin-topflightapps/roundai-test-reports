@@ -1,0 +1,55 @@
+{
+  "name": "tc19-s27-c-control",
+  "at": "2026-10-14T07:54:33.153Z",
+  "checks": [
+    {
+      "id": "(c-control) with no reload metformin is Held · today with 'poor intake', or a message says the change was not saved",
+      "ok": true,
+      "detail": "Held · Oct 14 (Metformin held, poor intake)"
+    }
+  ],
+  "data": {
+    "noReload": 0,
+    "rows": [
+      {
+        "name": "Metformin 500 mg BID",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 14",
+        "changedNote": "Metformin held, poor intake"
+      }
+    ],
+    "calls": [
+      "time:now:?",
+      "time:now:?",
+      "settings:update:?",
+      "snf:applyLifecycle:?",
+      "access:logChartAccess:?",
+      "snf:applyLifecycle:?",
+      "usage:record:?",
+      "snf:update:?",
+      "snf:update:?",
+      "ai/notes:generateNote:ok",
+      "snf:update:?",
+      "usage:record:?",
+      "snf:update:?",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "snf:update:?",
+      "snf:update:?",
+      "ai/notes:suggestBilling:fail",
+      "snf:update:?"
+    ],
+    "messagesAfterReload": [],
+    "pageLog": [
+      "47 document-request http://localhost:6473/snf/m578rrrtfmwa22s83k3gqqedxd8g8pdj redirectedFrom=-",
+      "66 nav http://localhost:6473/snf/m578rrrtfmwa22s83k3gqqedxd8g8pdj",
+      "88 debug [vite] connecting...",
+      "206 debug [vite] connected.",
+      "233 nav http://localhost:6473/snf/m578rrrtfmwa22s83k3gqqedxd8g8pdj",
+      "227 load(navigate) http://localhost:6473/snf/m578rrrtfmwa22s83k3gqqedxd8g8pdj",
+      "718 error [CONVEX A(ai/notes:suggestBilling)] QA: billing not under test",
+      "718 error [billing] suggestion failed Error: [CONVEX A(ai/notes:suggestBilling)] QA: billing not under test Called by client at BaseConvexClient"
+    ]
+  }
+}

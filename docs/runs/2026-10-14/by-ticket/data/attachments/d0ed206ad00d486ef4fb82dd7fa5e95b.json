@@ -1,0 +1,132 @@
+{
+  "ref": "TC-23/S14",
+  "mode": "scripted",
+  "kind": "harness self-test (scripted far end: the checks ran on the item's own written text)",
+  "hospital": {
+    "pass": 1,
+    "of": 1
+  },
+  "nursingHome": {
+    "pass": 1,
+    "of": 1
+  },
+  "recovered": [],
+  "blocked": [],
+  "failures": [],
+  "takes": [
+    {
+      "item": "C-01",
+      "mode": "hospital",
+      "surface": "hospital pre-round notes",
+      "verdict": {
+        "id": "C-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Potassium 4.2, sorry, 4.8.",
+        "numbersFound": [
+          4.2,
+          4.8
+        ],
+        "numbersWanted": [
+          4.2,
+          4.8
+        ]
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j9775kfnpvf3e2qr3xe60gzq6x8g90jc",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 393,
+          "providerMs": 336
+        }
+      ],
+      "take": {
+        "ids": [
+          "C-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Potassium 4.2, sorry, 4.8.",
+        "added": "Potassium 4.2, sorry, 4.8.",
+        "tapToReadyMs": 1057,
+        "stopToTextMs": 1159,
+        "stopToCompletedMs": 969,
+        "playedSec": 3.38275,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "C-01",
+      "mode": "nursing-home",
+      "surface": "nursing-home Pre-Round notes",
+      "verdict": {
+        "id": "C-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Potassium 4.2, sorry, 4.8.",
+        "numbersFound": [
+          4.2,
+          4.8
+        ],
+        "numbersWanted": [
+          4.2,
+          4.8
+        ]
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j974tsba0skfm51tyfpsjmsp658g8e7r",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 295,
+          "providerMs": 291
+        }
+      ],
+      "take": {
+        "ids": [
+          "C-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Potassium 4.2, sorry, 4.8.",
+        "added": "Potassium 4.2, sorry, 4.8.",
+        "tapToReadyMs": 556,
+        "stopToTextMs": 1140,
+        "stopToCompletedMs": 992,
+        "playedSec": 3.3827500000000006,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    }
+  ],
+  "aiProvider": {
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "provider": "bedrock",
+    "transcription": "gpt-live",
+    "visionModel": "gemini-2.5-flash",
+    "visionProvider": "vertex"
+  },
+  "disclosures": [
+    {
+      "at": 1791961555936.004,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 291
+    },
+    {
+      "at": 1791961542916.934,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 336
+    }
+  ],
+  "at": "2026-10-14T07:06:04.401Z"
+}

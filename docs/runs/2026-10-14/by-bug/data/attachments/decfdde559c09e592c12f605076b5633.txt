@@ -1,0 +1,206 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: encounter-workflow.spec.ts >> encounter capture and generation >> bedside recording persists physician and patient transcript lines after reload
+- Location: e2e/encounter-workflow.spec.ts:12:3
+
+# Error details
+
+```
+Error: expect(locator).toContainText(expected) failed
+
+Locator: getByText('Your breathing sounds clearer today.', { exact: true }).locator('..')
+Expected substring: "Physician"
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toContainText" with timeout 5000ms
+  - waiting for getByText('Your breathing sounds clearer today.', { exact: true }).locator('..')
+
+```
+
+```yaml
+- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+- button "Back to patient list"
+- heading "E2E Patient BESPGW" [level=2]
+- paragraph: Room 4B-BE · 72y · —
+- combobox "Admission status":
+  - option "New Admission"
+  - option "Follow-up" [selected]
+  - option "Consult"
+- paragraph: CHF exacerbation
+- button "Pre-Round"
+- button "Encounter"
+- button "Post-Round"
+- button "Stop bedside recording"
+- paragraph: Recording · Tap to stop
+- group "Recorder mode":
+  - button "Tap to toggle" [disabled] [pressed]
+  - button "Hold to talk" [disabled]
+- button "Physician speaking — tap when patient speaks"
+- button "Ask About Pre-Round Info or Labs"
+- text: Encounter Notes
+- button "Full screen"
+- textbox "Encounter observations":
+  - /placeholder: Dictate or type reassessment updates, exam findings, plan changes…
+- button "Dictate" [disabled]
+- button "Save & Extract" [disabled]
+- text: Tasks 0 pending
+- button "Dictate" [disabled]
+- button "Add"
+- paragraph: No pending tasks — tap Add or Dictate to create one.
+- text: Prior Encounter Transcripts
+- button "Most Recent 1 lines"
+- text: Note Format
+- combobox "Note Format":
+  - option "H&P"
+  - option "SOAP progress" [selected]
+  - option "Consult note"
+  - option "Discharge summary"
+- paragraph: Standard Subjective · Objective · Assessment · Plan
+- button "Generate Note & Finish" [disabled]
+```
+
+# Test source
+
+```ts
+  1   | import { expect, test } from "./support/test";
+  2   | import { api } from "../convex/_generated/api";
+  3   | import { requestArgs, trackActionRequests } from "./support/action-observer";
+  4   | import {
+  5   |   clientFor,
+  6   |   createRoundingPatient,
+  7   |   deleteRoundingPatient,
+  8   | } from "./support/backend";
+  9   | import { installSpeechRecognitionMock } from "./support/dictation";
+  10  | 
+  11  | test.describe("encounter capture and generation", () => {
+  12  |   test("bedside recording persists physician and patient transcript lines after reload", async ({
+  13  |     auth,
+  14  |     page,
+  15  |   }) => {
+  16  |     const physicianText = "Your breathing sounds clearer today.";
+  17  |     const patientText = "I am breathing more comfortably today.";
+  18  |     await installSpeechRecognitionMock(page, [physicianText, patientText]);
+  19  |     const { jwt } = auth;
+  20  |     const patient = await createRoundingPatient(jwt);
+  21  | 
+  22  |     try {
+  23  |       await page.goto(`/rounding/${patient.id}`);
+  24  |       await page.getByRole("button", { name: "Encounter" }).click();
+  25  |       await page
+  26  |         .getByRole("button", { name: "Start bedside recording" })
+  27  |         .click();
+  28  | 
+  29  |       const physicianLine = page
+  30  |         .getByText(physicianText, { exact: true })
+  31  |         .locator("..");
+> 32  |       await expect(physicianLine).toContainText("Physician");
+      |                                   ^ Error: expect(locator).toContainText(expected) failed
+  33  |       await page
+  34  |         .getByRole("button", {
+  35  |           name: "Physician speaking — tap when patient speaks",
+  36  |         })
+  37  |         .click();
+  38  |       await page
+  39  |         .getByRole("button", { name: "Stop bedside recording" })
+  40  |         .click();
+  41  | 
+  42  |       await page
+  43  |         .getByRole("button", { name: "Start bedside recording" })
+  44  |         .click();
+  45  |       const patientLine = page
+  46  |         .getByText(patientText, { exact: true })
+  47  |         .locator("..");
+  48  |       await expect(patientLine).toContainText("Patient");
+  49  |       await page
+  50  |         .getByRole("button", { name: "Stop bedside recording" })
+  51  |         .click();
+  52  |       await expect(
+  53  |         page.getByRole("button", { name: "Generate Note & Finish" }),
+  54  |       ).toBeEnabled();
+  55  | 
+  56  |       await page.reload();
+  57  |       await page.getByRole("button", { name: "Encounter" }).click();
+  58  |       await expect(
+  59  |         page.getByText(physicianText, { exact: true }).locator(".."),
+  60  |       ).toContainText("Physician");
+  61  |       await expect(
+  62  |         page.getByText(patientText, { exact: true }).locator(".."),
+  63  |       ).toContainText("Patient");
+  64  |     } finally {
+  65  |       await deleteRoundingPatient(jwt, patient.id);
+  66  |     }
+  67  |   });
+  68  | 
+  69  |   test("dictated notes remain reviewable and are saved", async ({
+  70  |     auth,
+  71  |     page,
+  72  |   }) => {
+  73  |     const dictatedText =
+  74  |       "Breathing improved. Lungs clear. Check BMP tomorrow morning.";
+  75  |     await installSpeechRecognitionMock(page, dictatedText);
+  76  |     const { jwt } = auth;
+  77  |     const patient = await createRoundingPatient(jwt);
+  78  |     const client = clientFor(jwt);
+  79  | 
+  80  |     try {
+  81  |       await page.goto(`/rounding/${patient.id}`);
+  82  |       await page.getByRole("button", { name: "Encounter" }).click();
+  83  | 
+  84  |       const notesSection = page.getByTestId("encounter-notes");
+  85  |       const notes = notesSection.getByPlaceholder(/reassessment updates/i);
+  86  |       await expect(notes).toHaveAttribute("rows", "12");
+  87  |       expect(
+  88  |         await notes.evaluate((element) => element.clientHeight),
+  89  |       ).toBeGreaterThanOrEqual(260);
+  90  |       await notesSection
+  91  |         .getByRole("button", { name: "Dictate", exact: true })
+  92  |         .click();
+  93  |       await expect(
+  94  |         page.getByRole("button", { name: "Generate Note & Finish" }),
+  95  |       ).toBeDisabled();
+  96  |       await expect(notes).toHaveValue(dictatedText);
+  97  |       await notesSection
+  98  |         .getByRole("button", { name: "Stop", exact: true })
+  99  |         .click();
+  100 |       await expect(
+  101 |         page.getByRole("button", { name: "Generate Note & Finish" }),
+  102 |       ).toBeEnabled();
+  103 | 
+  104 |       await expect
+  105 |         .poll(async () => {
+  106 |           const patients = await client.query(api.rounding.list, {});
+  107 |           return patients.find((row) => row._id === patient.id)?.encounterNotes;
+  108 |         })
+  109 |         .toBe(dictatedText);
+  110 |     } finally {
+  111 |       await deleteRoundingPatient(jwt, patient.id);
+  112 |     }
+  113 |   });
+  114 | 
+  115 |   test("a generation failure keeps the saved dictation in the encounter", async ({
+  116 |     auth,
+  117 |     page,
+  118 |   }) => {
+  119 |     const { jwt } = auth;
+  120 |     const patient = await createRoundingPatient(jwt);
+  121 |     const client = clientFor(jwt);
+  122 |     await trackActionRequests(page, "ai/notes:generateNote", {
+  123 |       failFirst: true,
+  124 |     });
+  125 | 
+  126 |     try {
+  127 |       await page.goto(`/rounding/${patient.id}`);
+  128 |       await page.getByRole("button", { name: "Encounter" }).click();
+  129 |       const notes = page.getByPlaceholder(/reassessment updates/i);
+  130 |       const dictatedText = "Patient feels better. Continue current treatment.";
+  131 |       await notes.fill(dictatedText);
+  132 |       await page
+```

@@ -1,0 +1,63 @@
+{
+  "name": "tc19-s27-d-reload",
+  "at": "2026-10-14T07:54:56.521Z",
+  "checks": [
+    {
+      "id": "(d-reload) after the reload apixaban is Held · today, or a message says the change was not saved",
+      "ok": false,
+      "detail": "apixaban {\"name\":\"Apixaban 5 mg BID\",\"status\":\"active\"}; chart status seen; no message about medications on screen"
+    }
+  ],
+  "data": {
+    "atReload": {
+      "noteStored": true,
+      "generatingShown": true,
+      "extractionAnswered": "in flight"
+    },
+    "rows": [
+      {
+        "name": "Apixaban 5 mg BID",
+        "status": "active"
+      }
+    ],
+    "chart": {
+      "status": "seen",
+      "note": true
+    },
+    "calls": [
+      "time:now:?",
+      "time:now:?",
+      "rounding:applyLifecycle:?",
+      "access:logChartAccess:?",
+      "rounding:applyLifecycle:?",
+      "usage:record:?",
+      "rounding:update:?",
+      "ai/notes:generateNote:ok",
+      "usage:record:?",
+      "rounding:update:?",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "rounding:update:?",
+      "time:now:?",
+      "time:now:?",
+      "rounding:applyLifecycle:?",
+      "access:logChartAccess:?",
+      "rounding:applyLifecycle:?",
+      "usage:record:?"
+    ],
+    "messagesAfterReload": [],
+    "pageLog": [
+      "44 document-request http://localhost:6473/rounding/kx77a5wj51av1v553v7pqn4vm98g91yh redirectedFrom=-",
+      "47 nav http://localhost:6473/rounding/kx77a5wj51av1v553v7pqn4vm98g91yh",
+      "62 debug [vite] connecting...",
+      "152 debug [vite] connected.",
+      "208 nav http://localhost:6473/rounding/kx77a5wj51av1v553v7pqn4vm98g91yh",
+      "208 load(navigate) http://localhost:6473/rounding/kx77a5wj51av1v553v7pqn4vm98g91yh",
+      "922 document-request http://localhost:6473/rounding/kx77a5wj51av1v553v7pqn4vm98g91yh redirectedFrom=-",
+      "925 nav http://localhost:6473/rounding/kx77a5wj51av1v553v7pqn4vm98g91yh",
+      "955 debug [vite] connecting...",
+      "1027 debug [vite] connected.",
+      "1024 load(reload) http://localhost:6473/rounding/kx77a5wj51av1v553v7pqn4vm98g91yh"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "case": "TC-19-S16",
+  "title": "Who gave the order × said 'task' → task or not (both contexts)",
+  "needs": [],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s16-cp1-hospital-tasks.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74tzfs3d69frdhaes6agmj6h8g7zch",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-cp2-snf-tasks.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72vvrwwpnvfjw55rpe1b61bs8g63a5",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Nursing Home: record whether 'Dietitian to see her this week' became a task (Q20); not judged"
+  ],
+  "agent": {
+    "turns": 41,
+    "costUsd": 0.2544448,
+    "durationMs": 246105,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

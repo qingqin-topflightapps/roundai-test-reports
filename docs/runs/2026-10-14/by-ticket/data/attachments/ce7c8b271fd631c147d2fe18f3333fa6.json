@@ -1,0 +1,265 @@
+{
+  "prototype": "roundai/handoff-docs/RoundCompanion_PLAYGROUND_p72_HAIKU.html",
+  "method": "whitespace-normalised, sentence by sentence; placeholders and ${...} are gaps (scripts/code-review/parity.mjs)",
+  "prompts": [
+    {
+      "file": "apps/web/convex/ai/prompts/library/v1/medications/events.md",
+      "lock": {
+        "key": "medicationsEvents",
+        "version": "1.3",
+        "hash": "0e1209677080"
+      },
+      "segments": 2,
+      "segmentsVerbatim": 1,
+      "segmentsNotVerbatim": [
+        "\" Extract medication events (started, given once, stopped/discontinued, dose changed, held, resumed). A MENTION IS NOT AN EVENT (SANDBOX CR-4 — confirmed live f…"
+      ],
+      "sentences": 39,
+      "exactCount": 14,
+      "changed": [
+        {
+          "lib": "Extract medication events (started, given once, stopped/discontinued, dose changed, held, resumed).",
+          "p72": "Extract medication events (started, stopped/discontinued, dose changed, held, resumed).",
+          "p72Line": 7677,
+          "diff": "Extract medication events (started, {+given once,+} stopped/discontinued, dose changed, held, resumed).",
+          "similarity": 0.9
+        },
+        {
+          "lib": "A MENTION IS NOT AN EVENT (SANDBOX CR-4 — confirmed live failure, the morphine case): create an event ONLY for an explicit ORDER dictated by the physician that changes the drug's state today — stop/discontinue, hold, resume, increase/decrease/switch, a start that has already been initiated, or a one-time dose given today.",
+          "p72": "A MENTION IS NOT AN EVENT (SANDBOX CR-4 — confirmed live failure, the morphine case): create an event ONLY for an explicit forward-looking ORDER dictated by the physician — start/initiate, stop/discontinue, hold, resume, increase/decrease/switch.",
+          "p72Line": 7677,
+          "diff": "A MENTION IS NOT AN EVENT (SANDBOX CR-4 — confirmed live failure, the morphine case): create an event ONLY for an explicit [-forward-looking-] ORDER dictated by the physician {+that changes the drug's state today+} — [-start/initiate,-] stop/discontinue, hold, resume, [-increase/decrease/switch.-] {+increase/decrease/switch, a start that has already been initiated, or a one-time dose given today.+}",
+          "similarity": 0.73
+        },
+        {
+          "lib": "CERTAINTY IS COPIED, NEVER CHANGED: an event carries exactly the certainty the physician dictated — \"we will probably back off tomorrow\" is not a change today; a dictated maybe stays a maybe.",
+          "p72": "CERTAINTY IS COPIED, NEVER CHANGED: every therapy, hold, and plan is stated at exactly the certainty the physician dictated — a dictated maybe stays a maybe, a dictated definite stays definite.",
+          "p72Line": 7584,
+          "diff": "CERTAINTY IS COPIED, NEVER CHANGED: [-every therapy, hold, and plan is stated at-] {+an event carries+} exactly the certainty the physician dictated — {+\"we will probably back off tomorrow\" is not+} a {+change today; a+} dictated maybe stays a [-maybe, a dictated definite stays definite.-] {+maybe.+}",
+          "similarity": 0.54
+        },
+        {
+          "lib": "Return ONLY valid JSON: {\"events\":[{\"name\":\"drug name, keeping a dictated route/form or PRN, e.g.",
+          "p72": "Return ONLY valid JSON: {\"events\":[{\"name\":\"drug name only e.g.",
+          "p72Line": 7677,
+          "diff": "Return ONLY valid JSON: {\"events\":[{\"name\":\"drug [-name only-] {+name, keeping a dictated route/form or PRN,+} e.g.",
+          "similarity": 0.57
+        },
+        {
+          "lib": "Furosemide increased from 40mg to 80mg IV\",\"type\":\"start|given|stop|discontinued|increase|decrease|hold|change|resume\"}]}",
+          "p72": "Furosemide increased from 40mg to 80mg IV\",\"type\":\"start|stop|discontinued|increase|decrease|hold|change|resume\"}]}",
+          "p72Line": 7677,
+          "diff": "Furosemide increased from 40mg to 80mg [-IV\",\"type\":\"start|stop|discontinued|increase|decrease|hold|change|resume\"}]}-] {+IV\",\"type\":\"start|given|stop|discontinued|increase|decrease|hold|change|resume\"}]}+}",
+          "similarity": 0.86
+        }
+      ],
+      "noCounterpart": [
+        "AN IMPERATIVE OR PLANNED START IS A PLAN, NOT AN EVENT (V3, Sep 2026 — the metolazone and ursodiol cases): \"let's start X\", \"start X\", \"we'll add X\", \"add X\" — an order to begin a drug that has not been given yet — emits NOTHING; the task extractor records it as a medication order action and the note's Plan carries it in the future tense.",
+        "A start is an event only when it has already happened (\"started doxycycline this morning\", \"first dose given\").",
+        "A restart works the same way: \"restarted X this morning\" already happened and is today's event (type \"resume\"); \"let's restart X\" or \"restart X\" is a plan and emits nothing.",
+        "Imperative stop, hold and discontinue orders (\"stop the Bumex\", \"hold lisinopril\") ARE today's events — the drug's state changes now.",
+        "A SWITCH TO ANOTHER DRUG IS TWO EVENTS TODAY (G49): only when a DIFFERENT drug name replaces the old one — \"narrow to Y\", \"switch X to Y\", \"change X to Y\" (ceftriaxone replacing cefepime) — X stops today (type \"stop\") and Y starts today (type \"start\"), even though it is phrased as an order.",
+        "When only the route, form or dose of the SAME drug changes (IV to oral, drip to tablets, a new dose), it is ONE event of type \"change\", \"increase\" or \"decrease\" on that drug, even with the word \"switch\" or \"change\" — never a stop plus a start.",
+        "A ONE-TIME DOSE GIVEN TODAY IS TYPE \"given\" (V2, Sep 2026 — the potassium and magnesium cases): \"gave 40 of potassium chloride this morning\", \"X given this morning\", \"one dose of X\", \"X ×1\", \"gave one-time X\" — a dose administered today on this service is type \"given\", never \"start\" and never a standing row.",
+        "This does not loosen the history rule: a dose received in the ER/ED, at an outside facility, before admission, or reported without a today marker (\"received morphine in the ER\", \"was given X\" with no \"this morning/today/overnight\") stays a mention and emits nothing.",
+        "A BARE CONTINUATION IS NOT AN EVENT (p3 — the Toprol case; Run 6, Sep 2026: \"Heparin at 14 continues\" became HELD on Haiku and \"Keep aspirin\" became STARTED-today on Mistral, 49 rows): \"continue X\", \"keep X\", \"X continues\", \"X stays at [same dose]\", \"no change to X\", \"X as before\" with no change emits NOTHING for that drug — it is NEVER emitted as type \"start\", NEVER as \"hold\", and NEVER as \"change\".",
+        "A running drip that \"continues\" is not an event.",
+        "When one dictation contains a real change AND several continuations, only the change is an event; the continuations are still nothing.",
+        "A CONDITIONAL, FUTURE, OR NEGATED ORDER IS NOT TODAY'S EVENT (p5/p7; Run 6: \"Restart lisinopril tomorrow if systolic stays above 100\" flipped a held drug to active on 22 of 39 exposures): \"restart X tomorrow if…\", \"start X once the drip is off\", \"give X only if K is under 4\", \"X at discharge, not before\", \"will start X after the procedure\", \"oral X bridge in 48 hours if cultures allow\", \"do not start X\", \"no X\", \"X not started yet\" emit NOTHING that sets today's status.",
+        "If the drug already has a row, that row is left exactly as it is — a held drug stays held — and the conditional plan is carried only as text in the note.",
+        "A present-state cue in the same sentence (\"stays\", \"continues\", \"remains\", \"is on\", \"still on\", \"running\", \"on board\") means the therapy is running today and the clause describes its future, not its start.",
+        "A future STOP (\"continues until 12 hours after sheath removal, then stop\", \"through today then stop per GI\") is likewise NOT a stop today.",
+        "A RETRACTION LEAVES NO TRACE: \"hold X — actually no, keep it\", \"start X — scratch that\", \"stop X — wait, keep X\" emits NOTHING for X.",
+        "The last instruction wins and the retracted instruction never becomes an event, a hold, or a note on the row.",
+        "KEEP THE DICTATED FORM ON THE NAME (V5, Sep 2026 — the amiodarone case): when the physician names a route, form or PRN (\"amiodarone drip\", \"200 twice daily by mouth\", \"ondansetron PRN\"), keep it in \"name\" (\"Amiodarone drip\", \"Amiodarone 200 oral\", \"Ondansetron PRN\") so a drip and its oral replacement are two rows; when no form is dictated, the bare drug name.",
+        "THE EVENT TEXT COPIES THE PHYSICIAN'S REASON VERBATIM: the \"event\" field carries the dictated reason and timing in the physician's own words (\"held — cardiology wants to decide on triple therapy first\"), never a paraphrase and never a reason that was not dictated.",
+        "Furosemide / Amiodarone drip / Amiodarone 200 oral\",\"event\":\"concise description e.g."
+      ],
+      "missingFromLib": [
+        {
+          "p72": "A BARE CONTINUATION IS NOT AN EVENT (p3 — the Toprol case): \"continue X\" or \"continue X at [same dose]\" with no change emits NOTHING for that drug, and is NEVER emitted as type \"start\".",
+          "line": 7677
+        },
+        {
+          "p72": "Furosemide\",\"event\":\"concise description e.g.",
+          "line": 7677
+        },
+        {
+          "p72": "Historical or one-time administration phrases — \"received X\", \"was given X\", \"got a dose of X\", \"X in the ER/ED\", \"X was administered\" — are NOT events: they NEVER create or change a medication entry.",
+          "line": 7848
+        },
+        {
+          "p72": "Return ONLY valid JSON: {\"events\":[{\"name\":\"drug name only\",\"event\":\"concise description\",\"type\":\"start|stop|discontinued|increase|decrease|hold|change|resume\"}]}",
+          "line": 7848
+        },
+        {
+          "p72": "If none, return {\"events\":[]}.",
+          "line": 7848
+        }
+      ],
+      "homeLines": [
+        7677,
+        7848
+      ],
+      "verdict": "differs"
+    },
+    {
+      "file": "apps/web/convex/ai/prompts/library/v1/system-roles/medication-events.md",
+      "lock": {
+        "key": "systemRolesMedicationEvents",
+        "version": "1.1",
+        "hash": "2742f03aa75a"
+      },
+      "segments": 1,
+      "segmentsVerbatim": 1,
+      "segmentsNotVerbatim": [],
+      "sentences": 3,
+      "exactCount": 3,
+      "changed": [],
+      "noCounterpart": [],
+      "missingFromLib": [
+        {
+          "p72": "Extract structured inpatient data from progress notes.",
+          "line": 4612
+        },
+        {
+          "p72": "Extract only medication events.",
+          "line": 7847
+        },
+        {
+          "p72": "You are a precise clinical documentation assistant.",
+          "line": 7487
+        }
+      ],
+      "homeLines": [
+        4612,
+        7487,
+        7676,
+        7847,
+        10830
+      ],
+      "verdict": "differs"
+    },
+    {
+      "file": "apps/web/convex/ai/prompts/library/v1/pre-round/extraction.md",
+      "lock": {
+        "key": "preRoundExtraction",
+        "version": "1.1",
+        "hash": "b547791cf91a"
+      },
+      "segments": 7,
+      "segmentsVerbatim": 7,
+      "segmentsNotVerbatim": [],
+      "sentences": 188,
+      "exactCount": 188,
+      "changed": [],
+      "noCounterpart": [],
+      "missingFromLib": [
+        {
+          "p72": "Write a single one-line hospital course entry.",
+          "line": 4886
+        },
+        {
+          "p72": "Plain text only, no markdown.",
+          "line": 4886
+        },
+        {
+          "p72": "CURRENT VITALS ON FILE: BP",
+          "line": 5154
+        },
+        {
+          "p72": "CURRENT MEDICATIONS ON FILE (naming anchor — when a dictated medication is the SAME drug as one listed here, return its name AS IT APPEARS HERE, updating only dose/status; never re-introduce the same drug under its other brand/generic name): AN OPTION IS NOT A MEDICATION: a drug mentioned only inside a potential/conditional/to-be-discussed plan is NOT a current medication — do not return it in medications at all; it is plan content, not therapy in progress (e.g.",
+          "line": 5154
+        },
+        {
+          "p72": "\"discuss with ICU about potentially initiating pressors including dobutamine\" → dobutamine is NOT returned).",
+          "line": 5154
+        },
+        {
+          "p72": "TODAY'S DICTATION IS THE ONLY SOURCE: the medications array may contain ONLY drugs the physician dictated in TODAY'S notes, or drugs already on the CURRENT MEDICATIONS ON FILE list updated per today's dictation.",
+          "line": 5154
+        },
+        {
+          "p72": "NEVER add a drug because it appears in a prior note, H&P, or background summary — prior notes are context for understanding, never a source of medication rows.",
+          "line": 5154
+        },
+        {
+          "p72": "\"Plan to start X\" / \"will start X at discharge\" is NOT an ordered medication — leave it out of medications entirely.",
+          "line": 5154
+        },
+        {
+          "p72": "CURRENT BACKGROUND SUMMARY (anchor — preserve its stable core, edit minimally):",
+          "line": 5154
+        },
+        {
+          "p72": "HOSPITAL COURSE TIMELINE ON FILE (dated ledger of this admission — AUTHORITATIVE for WHEN events happened; the background's timing claims must agree with it):",
+          "line": 5154
+        },
+        {
+          "p72": "Write concise, professional admission background summaries.",
+          "line": 13383
+        },
+        {
+          "p72": "Clean up the notes with proper medical terminology (fix typos, expand abbreviations, improve clarity) — BUT NEVER ADD CLINICAL CONTENT THE PHYSICIAN DID NOT SAY (PR4-N1, confirmed poisoning bug): rephrase and expand abbreviations ONLY.",
+          "line": 2068
+        },
+        {
+          "p72": "NEVER append a unit to a bare number (dictated 'BNP 900' NEVER becomes '900 pg/mL'; a bare troponin stays bare; '101.2' does not gain a degree unit), NEVER add a dose, route, or frequency to a medication ('atorvastatin 40' NEVER becomes '40 mg daily'), and NEVER convert or rescale a number ('white count 13' stays 13, never 13,000/mm3).",
+          "line": 2068
+        },
+        {
+          "p72": "This cleaned text REPLACES the dictation as the stored record — a unit or frequency added here becomes a false quote of the physician and poisons every downstream layer.",
+          "line": 2068
+        }
+      ],
+      "homeLines": [
+        2068,
+        4886,
+        5154,
+        11104,
+        11331,
+        13383
+      ],
+      "verdict": "differs"
+    },
+    {
+      "file": "apps/web/convex/ai/prompts/library/v1/note/clinical-quality.md (medication lines only)",
+      "lock": {
+        "key": "noteClinicalQuality",
+        "version": "1.7",
+        "hash": "02dacc10ad53"
+      },
+      "segments": 1,
+      "segmentsVerbatim": 0,
+      "segmentsNotVerbatim": [
+        "MEDICAL TERM COMPLETION — critical rule: - Speech recognition often truncates or mis-hears medical words. You must ALWAYS infer and write the full, correct medi…"
+      ],
+      "sentences": 80,
+      "exactCount": 72,
+      "changed": [],
+      "noCounterpart": [
+        "INFUSION AND DRIP RATES: the never-append-units rule applies equally to infusion and drip rates.",
+        "A bare dictated rate stays bare: \"heparin at 2.5\" stays \"heparin at 2.5\".",
+        "NEVER append units, a concentration, or a time base (WRONG — observed: \"heparin drip at 2.5 units per hour\", \"nitroglycerin at 20 units per hour\", \"nicardipine at 2.5 mcg/kg/min\" — none of these units were dictated).",
+        "ABBREVIATIONS ARE NAMES, NOT TRUNCATIONS: never expand a laboratory test, score, or index abbreviation (INR, BNP, EF, GFR, PT, PTT, CRP, MELD, and the like) into another word or a drug name.",
+        "Term completion applies ONLY to truncated or garbled words (WRONG — observed: dictated \"INR 2.1\" written as \"Intravenous Nitroglycerin (INR) 2.1\", turning a lab value into a cardiac drip).",
+        "PMH COMES FROM THE SOURCES: when prior notes or the record document conditions or home medications, that IS the past medical history.",
+        "NEVER write \"no past medical history documented\" when any source documents one (WRONG — observed three times, against prior notes plainly documenting hypertension on HCTZ, smoking history, and more).",
+        "COMPLETED ACTIONS STAY COMPLETED: an action dictated as already done is documented past-tense as completed, never rewritten as a plan item or to-do (WRONG — observed: \"referral placed\" became \"Place referral\"; \"heparin is off\" became \"Discontinue heparin\"; \"form signed and given\" became \"Provide form\")."
+      ],
+      "missingFromLib": [],
+      "homeLines": [
+        299
+      ],
+      "verdict": "differs"
+    }
+  ],
+  "summary": [
+    "medications/events.md: differs (segments 1/2, sentences 14/39 verbatim, 5 changed, 20 new, 5 p72 sentences not in the library)",
+    "system-roles/medication-events.md: differs (segments 1/1, sentences 3/3 verbatim, 0 changed, 0 new, 3 p72 sentences not in the library)",
+    "pre-round/extraction.md: differs (segments 7/7, sentences 188/188 verbatim, 0 changed, 0 new, 14 p72 sentences not in the library)",
+    "note/clinical-quality.md (medication lines only): differs (segments 0/1, sentences 72/80 verbatim, 0 changed, 8 new, 0 p72 sentences not in the library)"
+  ],
+  "verdict": "differs",
+  "approvalClause": true
+}

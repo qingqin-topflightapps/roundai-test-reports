@@ -1,0 +1,469 @@
+{
+  "ref": "OAT-04/S19",
+  "method": "CODEREVIEW",
+  "status": "failed",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Find where each retention window of the TFA-94699 table (pre-round 12 h, Important Points 12 h, completed tasks 16 h, encounter / note 18 h, vitals-labs-imaging / meds / open tasks / handoffs 36 h, Nursing Home 2 visits) is defined and used across apps/web (convex and src). For every number you find outside HOSPITAL_RETENTION / SNF_RETENTION (convex/lib/lifecycle.ts), say which of two kinds it is: (a) a COPY: the config objects also define that window, and this code path holds its own number for it; (b) a window DEFINED ONLY OUTSIDE the config objects (they have no entry for it), e.g. a client-only label threshold.",
+  "rule": {
+    "pass": "every window is defined once, in HOSPITAL_RETENTION / SNF_RETENTION, and read from there (no copy, nothing defined outside)",
+    "fail": "(a) a second copy of a window number held elsewhere: a Fail under either answer to Q11 (label new); (b) a window defined only outside the config objects: Fail if Q11 = changeable without a release; under 'a named constant is enough' it depends on whether that window counts (label pending:Q11). The module constants themselves are known gap K9 (label known:K9)",
+    "basis": [
+      "Every window is read from one configuration value and no other code path has its own copy of the number",
+      "A second copy of a window number elsewhere in the code = Fail under either answer"
+    ]
+  },
+  "newFindings": [
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "COPY: the Nursing Home Previous Notes panel holds its own number for the same window (3) instead of reading SNF_RETENTION.previousNotes. It caps adding notes and drives the n/3 badge.",
+      "at": "apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx:23"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "The copied number gates adding a Nursing Home previous note.",
+      "at": "apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx:60"
+    }
+  ],
+  "knownGapsConfirmed": [
+    {
+      "run": 1,
+      "label": "known:K9",
+      "claim": "The hospital windows are defined once as a module constant (pre-round 12h, important points 18h, encounter and note 18h, done task 16h, medication, previous note and objective data 36h), with no environment or settings source.",
+      "at": "apps/web/convex/lib/lifecycle.ts:8",
+      "gap": "K9"
+    },
+    {
+      "run": 1,
+      "label": "known:K9",
+      "claim": "The Nursing Home windows are a second module constant with no environment or settings row. The visit counts are 3.",
+      "at": "apps/web/convex/lib/lifecycle.ts:30",
+      "gap": "K9"
+    },
+    {
+      "run": 2,
+      "label": "known:K9",
+      "claim": "Hospital windows are named module constants, not an env value or a settings row (K9).",
+      "at": "apps/web/convex/lib/lifecycle.ts:8",
+      "gap": "K9"
+    },
+    {
+      "run": 2,
+      "label": "known:K9",
+      "claim": "Nursing Home windows, including the visit counts, are named module constants (K9).",
+      "at": "apps/web/convex/lib/lifecycle.ts:30",
+      "gap": "K9"
+    }
+  ],
+  "pendingOn": [
+    "Q11"
+  ],
+  "againstThen": [],
+  "labelsDiffer": true,
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "pending",
+      "reason": null,
+      "answer": "The verdict is pending: nothing fails under either answer to Q11, but two points wait on it. The server windows are defined once, in two module constants in apps/web/convex/lib/lifecycle.ts. HOSPITAL_RETENTION (lines 8-28) holds pre-round 12h, important points 18h, encounter and note 18h, done task 16h, medication, previous note and objective data (vitals, labs, imaging) 36h, and encounter archive 48h. SNF_RETENTION (lines 30-38) holds pre-round 12h, encounter 12h, note 18h, done task 16h, and transcript, previous-note and medication visit counts of 3. hospitalLifecyclePatch and snfLifecyclePatch read every window through these objects. I searched apps/web (convex and src) for hour arithmetic (N * HOUR, 60*60*1000, 12/16/18/36 hours). No other code path keeps its own copy of any window the objects define, so there is no kind-(a) copy. That copy is the only point the oracle fails under either answer to Q11. The windows themselves are compile-time constants with no environment or settings row. That is known gap K9: it passes if Q11 = 'a named constant is enough' and fails if Q11 = 'changeable without a release'. One window is defined only outside the objects (kind b): the client constant NOT_MENTIONED_AFTER_MS = 18h in MedicationsPanel.tsx. It sets when a hospital medication is labelled \"not mentioned today\" and has no entry in HOSPITAL_RETENTION, so it is pending:Q11 (and on whether a label threshold counts as a retention window). Context only: open tasks and handoffs (36h in the table) have no window entry or clearing code anywhere. Important points is 18h in the config, not the table's 12h. The Nursing Home visit counts are 3, not 2. These are value or coverage differences for other scenarios, not copies."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "The server windows live in two module constants in apps/web/convex/lib/lifecycle.ts: HOSPITAL_RETENTION (pre-round 12h, Important Points 18h, encounter 18h, note 18h, done task 16h, medication 36h, previous note 36h, encounter archive 48h, objective data 36h) and SNF_RETENTION (pre-round 12h, encounter 12h, note 18h, done task 16h, and visit counts of 3 for transcripts, previous notes and medications). hospitalLifecyclePatch and snfLifecyclePatch read every window from these objects. Nothing comes from an env variable or a settings row, which is known gap K9; whether that is acceptable waits on Q11.\n\nThe verdict is fail without waiting on Q11 because the code holds second copies of window numbers. The Nursing Home Previous Notes panel has its own `const KEEP = 3` (apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx:23). This repeats SNF_RETENTION.previousNotes = 3 and is used to cap adding notes and to show the \"n/3\" badge. If someone lengthened the config value, the panel would stay at 3. The hospital Previous Notes panel also has `KEEP = 3`, but the hospital config has a 36h time window for previous notes and no count. So that cap is a window defined only outside the config (pending:Q11), as is the client-only 18h \"not mentioned today\" medication label (NOT_MENTIONED_AFTER_MS in MedicationsPanel.tsx).\n\nContext for other scenarios: the configured values do not match the TFA-94699 figures in the question. Important Points is 18h, not 12h, and the Nursing Home visit counts are 3, not 2. The config has no entry for open tasks or handoffs; I found no 36h number for those elsewhere either."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The hospital windows are defined once as a module constant (pre-round 12h, important points 18h, encounter and note 18h, done task 16h, medication, previous note and objective data 36h), with no environment or settings source.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 8,
+          "quote": "const HOSPITAL_RETENTION = {",
+          "supports": "fail",
+          "label": "known:K9",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Nursing Home windows are a second module constant with no environment or settings row. The visit counts are 3.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 30,
+          "quote": "const SNF_RETENTION = {",
+          "supports": "fail",
+          "label": "known:K9",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The lifecycle code reads windows from the config object, not from literals. Example: the hospital pre-round window.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 122,
+          "quote": "expired(processedAt, HOSPITAL_RETENTION.preRound, now)",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Vitals, labs and imaging use the single objectiveData entry.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 233,
+          "quote": "expired(patient.vitalsUpdatedAt, HOSPITAL_RETENTION.objectiveData, now)",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Nursing Home medication window reads its visit count from SNF_RETENTION.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 394,
+          "quote": "visitTimes.length >= SNF_RETENTION.medicationVisits + 1",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Kind (b): the client holds its own 18h threshold for labelling a hospital medication \"not mentioned today\". HOSPITAL_RETENTION has no entry for it, so lengthening it needs a client code change.",
+          "file": "apps/web/src/features/clinical/panels/MedicationsPanel.tsx",
+          "line": 41,
+          "quote": "const NOT_MENTIONED_AFTER_MS = 18 * 60 * 60 * 1000;",
+          "supports": "fail",
+          "label": "pending:Q11",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The important points window in the config is 18h, while the TFA-94699 table gives 12h. This is a value difference, not a copy, and is outside this scenario's rule.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 10,
+          "quote": "importantPoints: 18 * HOUR,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Open tasks and handoffs (36h in the table) have no retention entry or clearing code. The only open-task reference is a comment about 16h sweep candidates.",
+          "file": "apps/web/convex/lib/validators.ts",
+          "line": 41,
+          "quote": "open tasks older than 16h are the morning-sweep candidates",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The 12h session idle limit is an auth setting, not a retention window, so it is not a copy.",
+          "file": "apps/web/convex/lib/sessionPolicy.ts",
+          "line": 10,
+          "quote": "export const SESSION_IDLE_SECONDS = 12 * 60 * 60;",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "Hospital windows are named module constants, not an env value or a settings row (K9).",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 8,
+          "quote": "const HOSPITAL_RETENTION = {",
+          "supports": "fail",
+          "label": "known:K9",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Nursing Home windows, including the visit counts, are named module constants (K9).",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 30,
+          "quote": "const SNF_RETENTION = {",
+          "supports": "fail",
+          "label": "known:K9",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The config object defines the Nursing Home previous-notes count as 3, and the server lifecycle reads it from there.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 360,
+          "quote": "].slice(-SNF_RETENTION.previousNotes);",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "COPY: the Nursing Home Previous Notes panel holds its own number for the same window (3) instead of reading SNF_RETENTION.previousNotes. It caps adding notes and drives the n/3 badge.",
+          "file": "apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx",
+          "line": 23,
+          "quote": "const KEEP = 3;",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The copied number gates adding a Nursing Home previous note.",
+          "file": "apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx",
+          "line": 60,
+          "quote": "if (!content.trim() || prevNotes.length >= KEEP) {",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "DEFINED ONLY OUTSIDE: the hospital Previous Notes panel caps the list at 3. HOSPITAL_RETENTION has only a 36h time window (previousNote) and no count.",
+          "file": "apps/web/src/features/rounding/patient/panels/PreviousNotesPanel.tsx",
+          "line": 25,
+          "quote": "const KEEP = 3;",
+          "supports": "fail",
+          "label": "pending:Q11",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "DEFINED ONLY OUTSIDE: the 18h 'not mentioned today' medication label threshold is a client-only constant. HOSPITAL_RETENTION has no entry for it.",
+          "file": "apps/web/src/features/clinical/panels/MedicationsPanel.tsx",
+          "line": 41,
+          "quote": "const NOT_MENTIONED_AFTER_MS = 18 * 60 * 60 * 1000;",
+          "supports": "fail",
+          "label": "pending:Q11",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The server reads each hospital window from the config object, for example the done-task 16h window.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 223,
+          "quote": "!(task.done && expired(task.doneAt, HOSPITAL_RETENTION.doneTask, now)),",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The configured Important Points window is 18h, while the TFA-94699 figure in the question is 12h. This is a value mismatch for another scenario.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 10,
+          "quote": "importantPoints: 18 * HOUR,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Nursing Home visit-count windows are 3, while the table says 2 visits. This is a value mismatch for another scenario.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 35,
+          "quote": "transcriptVisits: 3,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "To lengthen any retention window (for example under a hospital affiliation), a developer has to edit lifecycle.ts and release new code; an admin cannot change it in settings or the environment. The 18h \"not mentioned today\" medication label lives separately in the web client, so it needs its own client change and release. / If the Nursing Home previous-notes window were lengthened in the server config, the Previous Notes panel would still stop the physician adding a note at 3 and show \"3/3\", so the app would not behave the same everywhere. A hospital affiliation's longer windows would also need code changes in several client files, not just one value.",
+  "openQuestions": [
+    "Q11: Is a named constant in code enough, or must every window be changeable without a code change and release? This decides K9 (HOSPITAL_RETENTION / SNF_RETENTION) and the client-only NOT_MENTIONED_AFTER_MS.",
+    "Does the 18h \"not mentioned today\" medication label count as a TFA-94699 retention window, or is it only a display threshold?",
+    "The table lists open tasks and handoffs at 36h, but the code has no window or clearing for them; the same goes for important points at 12h (code: 18h) and Nursing Home at 2 visits (code: 3). These belong to the value and coverage scenarios, not this one.",
+    "Q11: must the windows be changeable without a code change and release, or is a named constant enough? This decides K9 and the hospital previous-notes cap of 3 and the 18h medication label, which are defined only outside the config.",
+    "Do the hospital Previous Notes cap (3) and the 18h 'not mentioned today' label count as retention windows under U12?",
+    "The configured values differ from the TFA-94699 figures in the question (Important Points 18h vs 12h; Nursing Home visit counts 3 vs 2). This should be checked in the scenario that verifies the window values.",
+    "The TFA-94699 table lists open tasks and handoffs at 36h, but the config has no entry for them. Is that a missing window or deliberate?"
+  ],
+  "notDecidableByCode": [
+    "Whether the deployed (production or dev) environment overrides any window: production check goes to Tim with S02",
+    "Whether U12 requires changing a window at runtime without a release (Q11)",
+    "Production environment check (Tim, with S02)",
+    "Whether a named constant meets 'configuration value' in U12 (Q11)"
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "7a350917b003"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 50753,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.278239,
+      "turns": 12,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 56859,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.3165264,
+      "turns": 11,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:07:13.655Z"
+}

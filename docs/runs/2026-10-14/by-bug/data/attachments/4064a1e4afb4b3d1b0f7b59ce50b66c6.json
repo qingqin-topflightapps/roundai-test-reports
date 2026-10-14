@@ -1,0 +1,139 @@
+{
+  "ref": "TC-03/S01",
+  "title": "TC-03/S01 Hospital search by each field: name, room, MRN, diagnosis",
+  "dataset": "lists",
+  "target": "dev",
+  "at": "2026-10-14T08:35:12.768Z",
+  "cells": [
+    {
+      "name": "Hospital by name: 'NAMEWX' lists exactly hFindName",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  NAMEWX  ",
+        "shown": [
+          "QA DS1-lists Hosp Fqnamewx"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "Hospital by name: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "Hospital by name: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "Hospital by room: 'ROOMWX' lists exactly hFindRoom",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  ROOMWX  ",
+        "shown": [
+          "QA DS1-lists Hosp Roomtoken"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "Hospital by room: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "Hospital by room: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "Hospital by mrn: 'MRNWX' lists exactly hFindMrn",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  MRNWX  ",
+        "shown": [
+          "QA DS1-lists Hosp Mrntoken"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "Hospital by mrn: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "Hospital by mrn: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "Hospital by diagnosis: 'DIAGWX' lists exactly hFindDiag",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  DIAGWX  ",
+        "shown": [
+          "QA DS1-lists Hosp Diagtoken"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "Hospital by diagnosis: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "Hospital by diagnosis: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-03-S01-after-clear.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-03-S01-after-clear.png": 1
+  }
+}

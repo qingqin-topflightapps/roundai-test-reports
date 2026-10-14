@@ -1,0 +1,121 @@
+{
+  "TC-16/S23": {
+    "ref": "TC-16/S23",
+    "method": "CODEREVIEW",
+    "secondary": "CONFIG",
+    "status": "fail-pending-Q3+Q10+Q14",
+    "verdict": "fail",
+    "agreed": true,
+    "why": "both runs agree",
+    "newFindings": [],
+    "knownGapsConfirmed": [
+      {
+        "run": 1,
+        "label": "known:transcript-consts",
+        "claim": "Hospital transcript windows are a source constant object, not runtime configuration",
+        "at": "apps/web/convex/lib/lifecycle.ts:8",
+        "gap": "transcript-consts"
+      },
+      {
+        "run": 1,
+        "label": "known:archive-48h",
+        "claim": "Hospital archive (yesterday) window is 48 h, but 3.6 says 36 h",
+        "at": "apps/web/convex/lib/lifecycle.ts:23",
+        "gap": "archive-48h"
+      },
+      {
+        "run": 1,
+        "label": "known:transcript-consts",
+        "claim": "Nursing Home windows are a source constant object, not runtime configuration",
+        "at": "apps/web/convex/lib/lifecycle.ts:30",
+        "gap": "transcript-consts"
+      },
+      {
+        "run": 1,
+        "label": "known:visits-3",
+        "claim": "Nursing Home keeps 3 transcript visits, but 3.6 says the last two",
+        "at": "apps/web/convex/lib/lifecycle.ts:35",
+        "gap": "visits-3"
+      },
+      {
+        "run": 1,
+        "label": "known:transcript-consts",
+        "claim": "The archive window is read straight from the constant; nothing is looked up at runtime",
+        "at": "apps/web/convex/lib/lifecycle.ts:171",
+        "gap": "transcript-consts"
+      },
+      {
+        "run": 1,
+        "label": "known:transcript-consts",
+        "claim": "The Nursing Home visit count is read straight from the constant",
+        "at": "apps/web/convex/lib/lifecycle.ts:337",
+        "gap": "transcript-consts"
+      },
+      {
+        "run": 2,
+        "label": "known:transcript-consts",
+        "claim": "The Hospital retention windows are a hard-coded `as const` source object, not runtime configuration.",
+        "at": "apps/web/convex/lib/lifecycle.ts:8",
+        "gap": "transcript-consts"
+      },
+      {
+        "run": 2,
+        "label": "known:archive-48h",
+        "claim": "The Hospital archive (yesterday) transcript window is 48 h, but 3.6 says 36 h.",
+        "at": "apps/web/convex/lib/lifecycle.ts:23",
+        "gap": "archive-48h"
+      },
+      {
+        "run": 2,
+        "label": "known:transcript-consts",
+        "claim": "The Nursing Home retention windows are a hard-coded source object, so changing them needs a code change and a deploy.",
+        "at": "apps/web/convex/lib/lifecycle.ts:30",
+        "gap": "transcript-consts"
+      },
+      {
+        "run": 2,
+        "label": "known:visits-3",
+        "claim": "The Nursing Home transcript visit count is 3, but 3.6 says the last two.",
+        "at": "apps/web/convex/lib/lifecycle.ts:35",
+        "gap": "visits-3"
+      }
+    ],
+    "pendingOn": [
+      "Q3",
+      "Q10",
+      "Q14"
+    ],
+    "detail": "All four transcript windows are hard-coded source constants in apps/web/convex/lib/lifecycle.ts, held in two `as const` objects. HOSPITAL_RETENTION (lines 8-28) sets the encounter window to 18 h and the archive window (encounterArchive) to 48 h. SNF_RETENTION (lines 30-38) sets the encounter window to 12 h and transcriptVisits to 3. The lifecycle functions read these constants directly (lines 152, 171, 318, 336-337). I found no environment variable or settings row for retention anywhere in convex/, so lengthening any window means changing the code and deploying it. Against UAT 3.6: the Hospital encounter window (18 h) and the Nursing Home window (12 h) match. The archive window is 48 h, not 36 h, and the visit count is 3, not 2. Every failing point is a recorded gap whose verdict waits on an open question: known:transcript-consts (Q14), known:archive-48h (Q10) and known:visits-3 (Q3). So the verdict is pending, not fail. If Q14 accepts a named source constant, the configuration half passes and only the two values remain to judge.",
+    "detailRun2": "All four transcript windows are hard-coded `as const` source constants in apps/web/convex/lib/lifecycle.ts. They are not read from runtime configuration. HOSPITAL_RETENTION (lines 8-28) sets encounter: 18 * HOUR and encounterArchive: 48 * HOUR. SNF_RETENTION (lines 30-38) sets encounter: 12 * HOUR and transcriptVisits: 3. The lifecycle code reads these constants directly (lines 152, 171, 318, 336-337). No env var or settings row feeds them; a search for process.env.*RETENTION found nothing. Lengthening any window under a hospital affiliation therefore needs a code change and a deploy.\n\nAgainst UAT 3.6:\n- Hospital encounter 18 h: matches.\n- Nursing Home encounter 12 h: matches.\n- Hospital archive window: 48 h instead of 36 h.\n- Nursing Home visit count: 3 instead of the last two.\n\nEach failing point is a gap the matrix already records, and each waits on an open question:\n- known:transcript-consts waits on Q14 (is a named source constant enough?).\n- known:archive-48h waits on Q10.\n- known:visits-3 waits on Q3.\n\nNothing new fails, so the verdict is pending rather than fail.",
+    "physicianImpact": "Hospital transcripts from the previous day stay available for 48 h, not 36 h, and Nursing Home residents keep three visits of transcripts instead of two. Changing any of these windows, for example for a hospital affiliation, needs a code change and a deploy; an admin cannot adjust them. / A Hospital physician can still see yesterday's transcript for 48 h, not 36 h, and a Nursing Home physician keeps the last three visit transcripts, not two. An admin cannot lengthen any window for a hospital affiliation without a developer changing code and redeploying.",
+    "openQuestions": [
+      "Q14: is a named source constant (HOSPITAL_RETENTION / SNF_RETENTION) enough to count as 'configuration'? If yes, the configuration half passes.",
+      "Q10: should the Hospital archive window be 36 h, as 3.6 says, or 48 h, as the code has it?",
+      "Q3: should Nursing Home keep transcripts for 2 visits, as 3.6 says, or 3, as the code has it?",
+      "Q12: which of the prototype's own values apply? I did not compare against the prototype.",
+      "Q10: is the archive window 48 h (code) or 36 h (3.6)?",
+      "Q3: does the Nursing Home keep 3 visit transcripts (code) or the last two (3.6)?",
+      "Q12: should the prototype's own values be the reference?",
+      "The oracle and the question agree: the question's fail rule would give 'fail', but every failing point here is handed to an open question, so the oracle's verdict is pending."
+    ],
+    "notDecidableByCode": [
+      "Whether a named source constant meets U10's 'configuration value' (Q14)",
+      "Which archive window and visit count are correct (Q10, Q3, Q12)",
+      "Whether Daniela accepts a named source constant as configuration (Q14).",
+      "Which archive window and visit count are intended (Q10, Q3, Q12)."
+    ],
+    "checkedFindings": [
+      9,
+      8
+    ],
+    "discardedFindings": [
+      0,
+      0
+    ],
+    "costUsd": 0.20020319999999997,
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-16-S23.json",
+      "runs/2026-10-14-local/code-review/raw/TC-16-S23.raw.json"
+    ]
+  }
+}

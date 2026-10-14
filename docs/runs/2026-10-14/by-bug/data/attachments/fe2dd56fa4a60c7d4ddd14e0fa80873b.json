@@ -1,0 +1,64 @@
+{
+  "case": "TC-03-S14",
+  "title": "Search finds a patient beyond the first page of 50, both contexts",
+  "needs": [
+    "seed"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s14-hosp-page2.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s14-nh-today-page2.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s14-nh-all-page2.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 20,
+    "costUsd": 0.3345948,
+    "durationMs": 73266,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U72",
+  "covers": [
+    "TC-03/S14"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u72",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U72.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

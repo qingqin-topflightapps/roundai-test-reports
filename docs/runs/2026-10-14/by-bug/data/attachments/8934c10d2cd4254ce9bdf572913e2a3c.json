@@ -1,0 +1,16 @@
+{
+  "OAT-01/S15": {
+    "status": "record-only",
+    "detail": "(a) save: one PHI_WRITE row per pre-round save in Hospital and Nursing Home with patient_id, actor_id, _creationTime, op 'update', fields 'preRoundNotes' (pass on S14's predicates; whether op+fields is an acceptable 'save' is Q6). Handoff send: one row per send (resource handoffs, op 'send', count 1) with NO patient_id in either mode - known: TFA-94513 AC 7/12 (one row per patient vs a count is Q6). Generate: BLOCKED, not run (needs generate; forbidden on the local stack). (b) rounding.get / snf.get by the owner with a valid session leave no PHI_READ row (Q14). (c) the recipient B opened the inbox and both handoffs IN THE APP (own browser); the rows the app wrote are a PHI_READ 'handoffs.inbox' and a PHI_READ 'handoffs.detail' panel row per open and a PHI_WRITE 'read_receipt' per handoff, none naming a patient (Q14). (d) with the chart's logChartAccess call failed by the socket proxy (1 call seen and failed), the chart stays on screen with its name and pre-round text plus the alert 'Chart access couldn't be recorded. Check your connection and reload.'; the call is not retried and no PHI_READ row exists (Q14). Control through the same proxy with nothing failed: exactly one PHI_READ row (asserted).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s15-api.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s15-d.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s15-d-chart.png",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s15-d-control.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s15-d-control-chart.png",
+      "runs/2026-10-14-local/newspec-a/final2.json"
+    ],
+    "recordOnly": "(b), (c), (d) wait for Q14; (a) handoff row is known TFA-94513 AC 7/12; (a) generate blocked (needs generate).",
+    "blocked": "(a) generate: needs generate (forbidden on the local stack)"
+  }
+}

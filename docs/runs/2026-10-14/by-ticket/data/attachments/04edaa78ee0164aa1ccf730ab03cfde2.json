@@ -1,0 +1,241 @@
+{
+  "A": "e2e-fresh-0a33e111-53a@roundai.test",
+  "B": "e2e-fresh-431b6e8f-db2@roundai.test",
+  "patients": {
+    "hosp": "kx7cx3cne433mdbyz0nzb1n3mx8g8zgr",
+    "snf": "m576f5b86he8cbmyrgjp08qwxs8g9qyr"
+  },
+  "verdicts": [
+    {
+      "cell": "(a) save hospital",
+      "status": "passed",
+      "detail": "one PHI_WRITE row: patient_id kx7cx3cne433mdbyz0nzb1n3mx8g8zgr, actor_id A, op \"update\", fields \"preRoundNotes\" (save told apart by op+fields; Q6 decides if a mapping is enough)"
+    },
+    {
+      "cell": "(a) handoff send hospital",
+      "status": "known",
+      "detail": "1 row(s) for the send (op \"send\", count 1), none with patient_id: the trail cannot say WHICH patient left (known: TFA-94513 AC 7/12; one row per patient vs a count is Q6)"
+    },
+    {
+      "cell": "(a) generate hospital",
+      "status": "blocked",
+      "detail": "not run: Generate is forbidden on the local stack (capabilities.json forbidden: generate; Quinn 2026-10-13); needs the generate capability locally or the dev lane"
+    },
+    {
+      "cell": "(a) save nursing_home",
+      "status": "passed",
+      "detail": "one PHI_WRITE row: patient_id m576f5b86he8cbmyrgjp08qwxs8g9qyr, actor_id A, op \"update\", fields \"preRoundNotes\" (save told apart by op+fields; Q6 decides if a mapping is enough)"
+    },
+    {
+      "cell": "(a) handoff send nursing_home",
+      "status": "known",
+      "detail": "1 row(s) for the send (op \"send\", count 1), none with patient_id: the trail cannot say WHICH patient left (known: TFA-94513 AC 7/12; one row per patient vs a count is Q6)"
+    },
+    {
+      "cell": "(a) generate nursing_home",
+      "status": "blocked",
+      "detail": "not run: Generate is forbidden on the local stack (capabilities.json forbidden: generate; Quinn 2026-10-13); needs the generate capability locally or the dev lane"
+    },
+    {
+      "cell": "(b) direct rounding.get hospital",
+      "status": "record-only",
+      "detail": "the chart was read with a valid session and NO audit row was written (convex/access.ts says so); Fail or finding depends on Q14 (\"every patient access\")"
+    },
+    {
+      "cell": "(b) direct snf.get nursing_home",
+      "status": "record-only",
+      "detail": "the chart was read with a valid session and NO audit row was written (convex/access.ts says so); Fail or finding depends on Q14 (\"every patient access\")"
+    },
+    {
+      "cell": "(c) handoff recipient reads (in the app)",
+      "status": "record-only",
+      "detail": "rows the app wrote for B opening the inbox and both handoffs: PHI_WRITE handoffs read_receipt; PHI_READ handoffs handoffs.detail; PHI_READ handoffs handoffs.inbox; PHI_WRITE handoffs read_receipt; PHI_READ handoffs handoffs.detail; PHI_READ handoffs handoffs.inbox; PHI_READ auth_session session_created; none names a patient (Q14 decides whether the recipient's read must be per patient)"
+    }
+  ],
+  "cells": {
+    "a-hospital": {
+      "patient": "kx7cx3cne433mdbyz0nzb1n3mx8g8zgr",
+      "handoffId": "jn7bqwe6de92d779m0pft81vbx8g9nfe",
+      "rows": [
+        {
+          "_creationTime": 1791962423156.3142,
+          "_id": "jd7d86a5dsjh0wnk7par3tpt0d8g92kc",
+          "action": "PHI_WRITE",
+          "actor_id": "jd70355qsvbx882d38vvm0y8y98g8c1n",
+          "metadata": {
+            "count": 1,
+            "destination": "in-app",
+            "op": "send",
+            "recipient": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+            "scope": "export",
+            "variant": "rounding"
+          },
+          "resource_id": "jn7bqwe6de92d779m0pft81vbx8g9nfe",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962422726.02,
+          "_id": "jd7b97mb72txkkd2zjpt9ks3f58g800p",
+          "action": "PHI_WRITE",
+          "actor_id": "jd70355qsvbx882d38vvm0y8y98g8c1n",
+          "metadata": {
+            "fields": "preRoundNotes",
+            "op": "update"
+          },
+          "patient_id": "kx7cx3cne433mdbyz0nzb1n3mx8g8zgr",
+          "resource_id": "kx7cx3cne433mdbyz0nzb1n3mx8g8zgr",
+          "resource_type": "roundingPatients"
+        }
+      ]
+    },
+    "a-nursing_home": {
+      "patient": "m576f5b86he8cbmyrgjp08qwxs8g9qyr",
+      "handoffId": "jn70tqh1e1w5pxy125z00hc9fs8g86g7",
+      "rows": [
+        {
+          "_creationTime": 1791962425402.5842,
+          "_id": "jd76q6tsz5v1svca71pd8fk7358g9k8k",
+          "action": "PHI_WRITE",
+          "actor_id": "jd70355qsvbx882d38vvm0y8y98g8c1n",
+          "metadata": {
+            "count": 1,
+            "destination": "in-app",
+            "op": "send",
+            "recipient": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+            "scope": "export",
+            "variant": "snf"
+          },
+          "resource_id": "jn70tqh1e1w5pxy125z00hc9fs8g86g7",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962424600.672,
+          "_id": "jd7ck4hrd9zttvxcw8fbnggkth8g9qaf",
+          "action": "PHI_WRITE",
+          "actor_id": "jd70355qsvbx882d38vvm0y8y98g8c1n",
+          "metadata": {
+            "fields": "preRoundNotes",
+            "op": "update"
+          },
+          "patient_id": "m576f5b86he8cbmyrgjp08qwxs8g9qyr",
+          "resource_id": "m576f5b86he8cbmyrgjp08qwxs8g9qyr",
+          "resource_type": "snfResidents"
+        }
+      ]
+    },
+    "b-hospital": {
+      "patient": "kx7cx3cne433mdbyz0nzb1n3mx8g8zgr",
+      "readRows": []
+    },
+    "b-nursing_home": {
+      "patient": "m576f5b86he8cbmyrgjp08qwxs8g9qyr",
+      "readRows": []
+    },
+    "c": {
+      "opened": [
+        {
+          "title": "QA handoff 627112 hospital",
+          "shown": "detail"
+        },
+        {
+          "title": "QA handoff 627112 nursing_home",
+          "shown": "detail"
+        }
+      ],
+      "console": [],
+      "rows": [
+        {
+          "_creationTime": 1791962454483.647,
+          "_id": "jd79ff4b3q5waqsjm7ehyd5nrh8g970n",
+          "action": "PHI_WRITE",
+          "actor_id": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+          "metadata": {
+            "fields": "readAt",
+            "op": "read_receipt"
+          },
+          "resource_id": "jn70tqh1e1w5pxy125z00hc9fs8g86g7",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962454251.979,
+          "_id": "jd73ecmk8pxvpq5rk1cxvx8fen8g8j5h",
+          "action": "PHI_READ",
+          "actor_id": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+          "metadata": {
+            "context": "handoffs.detail",
+            "count": 2,
+            "count_basis": "accessible_roster",
+            "scope": "panel"
+          },
+          "resource_id": "panel:handoffs",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962452239.394,
+          "_id": "jd79gh9qjewp3me7ypmdk5sy6s8g840h",
+          "action": "PHI_READ",
+          "actor_id": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+          "metadata": {
+            "context": "handoffs.inbox",
+            "count": 2,
+            "count_basis": "accessible_roster",
+            "scope": "panel"
+          },
+          "resource_id": "panel:handoffs",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962442226.515,
+          "_id": "jd7fpj5xdzdteavybdenrec4v58g8ypv",
+          "action": "PHI_WRITE",
+          "actor_id": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+          "metadata": {
+            "fields": "readAt",
+            "op": "read_receipt"
+          },
+          "resource_id": "jn7bqwe6de92d779m0pft81vbx8g9nfe",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962441585.586,
+          "_id": "jd7ft25099w9fyfdb41543d7v98g8nad",
+          "action": "PHI_READ",
+          "actor_id": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+          "metadata": {
+            "context": "handoffs.detail",
+            "count": 2,
+            "count_basis": "accessible_roster",
+            "scope": "panel"
+          },
+          "resource_id": "panel:handoffs",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962439910.83,
+          "_id": "jd7bcadq8fg4vw7f7zxrr5ct5h8g9f32",
+          "action": "PHI_READ",
+          "actor_id": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+          "metadata": {
+            "context": "handoffs.inbox",
+            "count": 2,
+            "count_basis": "accessible_roster",
+            "scope": "panel"
+          },
+          "resource_id": "panel:handoffs",
+          "resource_type": "handoffs"
+        },
+        {
+          "_creationTime": 1791962433404.008,
+          "_id": "jd7513cd7q502zccqjrcj7arx18g8gww",
+          "action": "PHI_READ",
+          "actor_id": "jd7cyy15pfmbp17tp7yvn7vxex8g9wax",
+          "metadata": {
+            "op": "session_created"
+          },
+          "resource_id": "j97cqg74r38ed1jht92wyf3ych8g9xcm",
+          "resource_type": "auth_session"
+        }
+      ]
+    }
+  }
+}

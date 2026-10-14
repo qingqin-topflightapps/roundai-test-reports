@@ -1,0 +1,768 @@
+{
+  "ref": "OAT-04/S08",
+  "title": "36 h windows ±1 h (Hospital) plus W±1 min, patient M per value, patient T to 67 h",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T07:17:36.119Z",
+  "summary": {
+    "pass": 28,
+    "fail": 14,
+    "failKnown": 11,
+    "failConflict": 4,
+    "record": 3,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "E.vitals",
+      "item": "BP (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "E.lab",
+      "item": "Cr (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "E.imaging",
+      "item": "imaging (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "E.active",
+      "item": "active row (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "E.held",
+      "item": "held row, chart last processed at the same age (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "E.openTask",
+      "item": "open task (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "E.handoff",
+      "item": "handoff text and patient content (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B) handoffs 36 h after sending; what may remain is Q20"
+    },
+    {
+      "id": "L.vitals",
+      "item": "BP (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "L.lab",
+      "item": "Cr (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "L.imaging",
+      "item": "imaging (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "L.active",
+      "item": "active row (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "L.held",
+      "item": "held row, chart last processed at the same age (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "L.openTask",
+      "item": "open task (L)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent",
+      "known": "K2: open Hospital tasks are never purged — TFA-94699 AC 1"
+    },
+    {
+      "id": "L.handoff",
+      "item": "handoff text and patient content (L)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "OAT-04 (B) handoffs 36 h after sending; what may remain is Q20",
+      "known": "K3: handoffs are never purged — TFA-94699 AC 1 / AC 7"
+    },
+    {
+      "id": "W-1m.vitals",
+      "item": "BP (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W-1m.lab",
+      "item": "Cr (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W-1m.imaging",
+      "item": "imaging (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W-1m.active",
+      "item": "active row (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W-1m.held",
+      "item": "held row, chart last processed at the same age (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W-1m.openTask",
+      "item": "open task (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W-1m.handoff",
+      "item": "handoff text and patient content (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B) handoffs 36 h after sending; what may remain is Q20"
+    },
+    {
+      "id": "W+1m.vitals",
+      "item": "BP (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W+1m.lab",
+      "item": "Cr (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W+1m.imaging",
+      "item": "imaging (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W+1m.active",
+      "item": "active row (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W+1m.held",
+      "item": "held row, chart last processed at the same age (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent"
+    },
+    {
+      "id": "W+1m.openTask",
+      "item": "open task (W+1m)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "OAT-04 (B), UAT 3.6, TFA-94699 table: 35 h / W-1 min present, 37 h / W+1 min absent",
+      "known": "K2: open Hospital tasks are never purged — TFA-94699 AC 1"
+    },
+    {
+      "id": "W+1m.handoff",
+      "item": "handoff text and patient content (W+1m)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "OAT-04 (B) handoffs 36 h after sending; what may remain is Q20",
+      "known": "K3: handoffs are never purged — TFA-94699 AC 1 / AC 7"
+    },
+    {
+      "id": "M.Cr37",
+      "item": "Cr 1.4 recorded 37 h ago (K recorded 2 h ago)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.7 'each showing the date it was recorded, and are cleared 36 h after last refreshed' read per value (Q7 open: per panel would re-judge the 37 h cells)",
+      "known": "per-value recorded dates are not on main: one vitalsUpdatedAt / labsUpdatedAt / radiologyUpdatedAt per panel (open PR #100, qa-project-context known gaps) — TFA-94699 AC 3 / TC-13; Q7 may re-judge per panel"
+    },
+    {
+      "id": "M.BP37",
+      "item": "BP 150/90 recorded 37 h ago (HR 2 h ago)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.7 'each showing the date it was recorded, and are cleared 36 h after last refreshed' read per value (Q7 open: per panel would re-judge the 37 h cells)",
+      "known": "per-value recorded dates are not on main: one vitalsUpdatedAt / labsUpdatedAt / radiologyUpdatedAt per panel (open PR #100, qa-project-context known gaps) — TFA-94699 AC 3 / TC-13; Q7 may re-judge per panel"
+    },
+    {
+      "id": "M.CXR37",
+      "item": "'CXR: small left effusion' 37 h ago (CT 2 h ago)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.7 'each showing the date it was recorded, and are cleared 36 h after last refreshed' read per value (Q7 open: per panel would re-judge the 37 h cells)",
+      "known": "per-value recorded dates are not on main: one vitalsUpdatedAt / labsUpdatedAt / radiologyUpdatedAt per panel (open PR #100, qa-project-context known gaps) — TFA-94699 AC 3 / TC-13; Q7 may re-judge per panel"
+    },
+    {
+      "id": "M.K2",
+      "item": "K 4.1 recorded 2 h ago kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.7 'each showing the date it was recorded, and are cleared 36 h after last refreshed' read per value (Q7 open: per panel would re-judge the 37 h cells)"
+    },
+    {
+      "id": "M.HR2",
+      "item": "HR 76 recorded 2 h ago kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.7 'each showing the date it was recorded, and are cleared 36 h after last refreshed' read per value (Q7 open: per panel would re-judge the 37 h cells)"
+    },
+    {
+      "id": "M.CT2",
+      "item": "'CT head: no bleed' 2 h ago kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.7 'each showing the date it was recorded, and are cleared 36 h after last refreshed' read per value (Q7 open: per panel would re-judge the 37 h cells)"
+    },
+    {
+      "id": "M.dates",
+      "item": "a kept value carries its own recorded date (T7)",
+      "expected": "K row (and HR, CT) with their own recorded date",
+      "observed": "K row {\"name\":\"K\",\"value\":\"4.1\"}; vitals/imaging have no per-value field",
+      "verdict": "fail",
+      "oracle": "T7: a kept value without its own recorded date = Fail",
+      "known": "per-value recorded dates are not on main: one vitalsUpdatedAt / labsUpdatedAt / radiologyUpdatedAt per panel (open PR #100, qa-project-context known gaps) — TFA-94699 AC 3 / TC-13; Q7 may re-judge per panel"
+    },
+    {
+      "id": "M.perPanel",
+      "item": "how main clocks M",
+      "expected": "needs a decision: Q7 per value or per panel",
+      "observed": "labsUpdatedAt=2026-10-14T05:17:22.651Z vitalsUpdatedAt=2026-10-14T05:17:22.651Z radiologyUpdatedAt=2026-10-14T05:17:22.651Z: one clock per panel",
+      "verdict": "record"
+    },
+    {
+      "id": "T.tx35",
+      "item": "yesterday's transcript at T0+35 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699: yesterday's transcript and previous note present at 35 h; absent at 55 h and 67 h under either Q4 reading and the 36 h claim (U11)"
+    },
+    {
+      "id": "T.note35",
+      "item": "previous note at T0+35 h",
+      "expected": "present",
+      "observed": "absent",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699: yesterday's transcript and previous note present at 35 h; absent at 55 h and 67 h under either Q4 reading and the 36 h claim (U11)",
+      "known": "K4: the Hospital note is never kept as a previous note — TFA-94699 AC 1"
+    },
+    {
+      "id": "T.37",
+      "item": "transcript / previous note at T0+37 h",
+      "expected": "needs a decision: Q4 (3.6 keeps until ~54 h, the ticket table deletes at 36 h)",
+      "observed": "transcript present, previous note absent",
+      "verdict": "record"
+    },
+    {
+      "id": "T.tx55",
+      "item": "yesterday's transcript (archive) at T0+55 h",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699: yesterday's transcript and previous note present at 35 h; absent at 55 h and 67 h under either Q4 reading and the 36 h claim (U11)",
+      "known": "K5: the archived transcript is kept 48 h after archiving (~66 h after the encounter) — TFA-94699 AC 1"
+    },
+    {
+      "id": "T.any55",
+      "item": "any trace of the T0 encounter / note at T0+55 h",
+      "expected": "absent",
+      "observed": "present (transcript+transcriptHistory; transcriptDate Mon Oct 12 2026)",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699: yesterday's transcript and previous note present at 35 h; absent at 55 h and 67 h under either Q4 reading and the 36 h claim (U11)",
+      "known": "K5: the archived encounter is kept 48 h after archiving — TFA-94699 AC 1",
+      "conflict": "per-stay transcript policy by design: convex/lib/lifecycle.ts hospitalLifecyclePatch (108-176) has no branch for the live 'transcript' column and prunes transcriptHistory only by archivedAt (encounterArchive 48 h, :23, :167-175); convex/lib/transcriptArchive.ts:92-95 leaves archivedAt off recorded conversations on purpose ('per-stay policy (prototype :2269-2270)'). UAT 3.6 / 3.7 vs that design: needs a decision (Daniela / Tim), not a regression"
+    },
+    {
+      "id": "T.any67",
+      "item": "any trace of the T0 encounter / note at T0+67 h",
+      "expected": "absent",
+      "observed": "present (transcript; transcriptDate Sun Oct 11 2026)",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699: yesterday's transcript and previous note present at 35 h; absent at 55 h and 67 h under either Q4 reading and the 36 h claim (U11)",
+      "conflict": "per-stay transcript policy by design: convex/lib/lifecycle.ts hospitalLifecyclePatch (108-176) has no branch for the live 'transcript' column and prunes transcriptHistory only by archivedAt (encounterArchive 48 h, :23, :167-175); convex/lib/transcriptArchive.ts:92-95 leaves archivedAt off recorded conversations on purpose ('per-stay policy (prototype :2269-2270)'). UAT 3.6 / 3.7 vs that design: needs a decision (Daniela / Tim), not a regression"
+    },
+    {
+      "id": "T2.day1at67",
+      "item": "day-1 bedside recording 67 h after it was made (archived by the day-2 write)",
+      "expected": "absent",
+      "observed": "present (transcriptHistory)",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699: yesterday's transcript and previous note present at 35 h; absent at 55 h and 67 h under either Q4 reading and the 36 h claim (U11)",
+      "conflict": "per-stay transcript policy by design: convex/lib/lifecycle.ts hospitalLifecyclePatch (108-176) has no branch for the live 'transcript' column and prunes transcriptHistory only by archivedAt (encounterArchive 48 h, :23, :167-175); convex/lib/transcriptArchive.ts:92-95 leaves archivedAt off recorded conversations on purpose ('per-stay policy (prototype :2269-2270)'). UAT 3.6 / 3.7 vs that design: needs a decision (Daniela / Tim), not a regression"
+    },
+    {
+      "id": "T2.day1at100",
+      "item": "day-1 bedside recording 100 h after it was made",
+      "expected": "absent",
+      "observed": "present (transcriptHistory)",
+      "verdict": "fail",
+      "oracle": "3.7 claim: no live Hospital patient data survives more than 36 h",
+      "conflict": "per-stay transcript policy by design: convex/lib/lifecycle.ts hospitalLifecyclePatch (108-176) has no branch for the live 'transcript' column and prunes transcriptHistory only by archivedAt (encounterArchive 48 h, :23, :167-175); convex/lib/transcriptArchive.ts:92-95 leaves archivedAt off recorded conversations on purpose ('per-stay policy (prototype :2269-2270)'). UAT 3.6 / 3.7 vs that design: needs a decision (Daniela / Tim), not a regression"
+    },
+    {
+      "id": "T2.day2at70",
+      "item": "day-2 bedside recording (live transcript column, transcriptDate moved with the chart) 70 h after it was made",
+      "expected": "needs a decision: Q4 / the per-stay transcript policy (transcriptArchive.ts:92-95) vs UAT 3.6 / 3.7",
+      "observed": "present in transcript; transcriptDate Sun Oct 11 2026",
+      "verdict": "record"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "T probes (transcript kept / previous note kept / any trace): 19h {\"tx\":true,\"note\":false,\"any\":true,\"where\":[\"transcript\",\"transcriptHistory\"],\"transcriptDate\":\"Tue Oct 13 2026\"}, 35h {\"tx\":true,\"note\":false,\"any\":true,\"where\":[\"transcript\",\"transcriptHistory\"],\"transcriptDate\":\"Tue Oct 13 2026\"}, 37h {\"tx\":true,\"note\":false,\"any\":true,\"where\":[\"transcript\",\"transcriptHistory\"],\"transcriptDate\":\"Tue Oct 13 2026\"}, 55h {\"tx\":true,\"note\":false,\"any\":true,\"where\":[\"transcript\",\"transcriptHistory\"],\"transcriptDate\":\"Mon Oct 12 2026\"}, 67h {\"tx\":false,\"note\":false,\"any\":true,\"where\":[\"transcript\"],\"transcriptDate\":\"Sun Oct 11 2026\"}",
+    "T2 archive entry for the day-1 recording: {\"label\":\"Oct 13 (prior)\",\"archivedAt\":null}",
+    "Patient T: the chart was purged at 19 h first (the first page load after the 18 h window), as a physician who opens the app daily would; the archive stamp then counts from that purge. transcriptDate (the live transcript column's day) moved with the chart at every step: the exact day of T0 - age (T) and of the day-2 recording - age (T2), set by the spec because a day stamp has no time of day."
+  ],
+  "retriesOnLocalTimeout": [
+    "signIn (attempt 1: action seed:issueTestOtp failed: [Request ID: c64057a1561d645b] Server Error\nUnc)"
+  ],
+  "uiRetries": [],
+  "snapshots": {
+    "purge": {
+      "physician": 2,
+      "colleague": 0,
+      "cron": {
+        "agedOut": 0,
+        "expired": 0
+      }
+    },
+    "raw.E": {
+      "_id": "kx78nhn3vp3jyexaym6fh5z5yn8g85sj",
+      "name": "QA Hosp 36h-E",
+      "notesProcessedAt": "2026-10-12T20:17:08.917Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T20:17:08.917Z",
+          "done": false,
+          "id": "t-open",
+          "text": "Follow up blood cultures"
+        }
+      ],
+      "vitals": {
+        "bp": "118/72"
+      },
+      "vitalsUpdatedAt": "2026-10-12T20:17:08.917Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "value": "1.1"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-12T20:17:08.917Z",
+      "radiology": [
+        "CXR: no infiltrate"
+      ],
+      "radiologyUpdatedAt": "2026-10-12T20:17:08.917Z",
+      "medications": [
+        {
+          "id": "m-act",
+          "name": "atorvastatin 40 mg",
+          "status": "active",
+          "updatedAt": "2026-10-12T20:17:08.917Z"
+        },
+        {
+          "id": "m-held",
+          "name": "apixaban 5 mg, held for procedure",
+          "status": "held",
+          "updatedAt": "2026-10-12T20:17:08.917Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-12T20:17:08.917Z"
+    },
+    "raw.L": {
+      "_id": "kx79d4f0n3fk4yaa2jbxda8qg98g924b",
+      "name": "QA Hosp 36h-L",
+      "notesProcessedAt": "2026-10-12T18:17:10.800Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T18:17:10.800Z",
+          "done": false,
+          "id": "t-open",
+          "text": "Follow up blood cultures"
+        }
+      ],
+      "vitals": {},
+      "vitalsUpdatedAt": "2026-10-12T18:17:10.800Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T18:17:10.800Z",
+      "radiology": [],
+      "radiologyUpdatedAt": "2026-10-12T18:17:10.800Z",
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T18:17:10.800Z"
+    },
+    "raw.W-1m": {
+      "_id": "kx73phaat9ehdj0k63vy23h1c18g9gxd",
+      "name": "QA Hosp 36h-W-1m",
+      "notesProcessedAt": "2026-10-12T19:18:14.200Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T19:18:14.200Z",
+          "done": false,
+          "id": "t-open",
+          "text": "Follow up blood cultures"
+        }
+      ],
+      "vitals": {
+        "bp": "118/72"
+      },
+      "vitalsUpdatedAt": "2026-10-12T19:18:14.200Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "value": "1.1"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-12T19:18:14.200Z",
+      "radiology": [
+        "CXR: no infiltrate"
+      ],
+      "radiologyUpdatedAt": "2026-10-12T19:18:14.200Z",
+      "medications": [
+        {
+          "id": "m-act",
+          "name": "atorvastatin 40 mg",
+          "status": "active",
+          "updatedAt": "2026-10-12T19:18:14.200Z"
+        },
+        {
+          "id": "m-held",
+          "name": "apixaban 5 mg, held for procedure",
+          "status": "held",
+          "updatedAt": "2026-10-12T19:18:14.200Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-12T19:18:14.200Z"
+    },
+    "raw.W+1m": {
+      "_id": "kx7ertvqdyy9gxhxwyssswyqy98g8y7v",
+      "name": "QA Hosp 36h-W+1m",
+      "notesProcessedAt": "2026-10-12T19:16:18.019Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T19:16:18.019Z",
+          "done": false,
+          "id": "t-open",
+          "text": "Follow up blood cultures"
+        }
+      ],
+      "vitals": {},
+      "vitalsUpdatedAt": "2026-10-12T19:16:18.019Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T19:16:18.019Z",
+      "radiology": [],
+      "radiologyUpdatedAt": "2026-10-12T19:16:18.019Z",
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T19:16:18.019Z"
+    },
+    "raw.M": {
+      "_id": "kx742rrqxbd8ga5xcc83b08ggs8g9vb5",
+      "name": "QA Hosp Mixed M",
+      "vitals": {
+        "bp": "150/90",
+        "hr": "76"
+      },
+      "vitalsUpdatedAt": "2026-10-14T05:17:22.651Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "value": "1.4"
+        },
+        {
+          "name": "K",
+          "value": "4.1"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-14T05:17:22.651Z",
+      "radiology": [
+        "CXR: small left effusion",
+        "CT head: no bleed"
+      ],
+      "radiologyUpdatedAt": "2026-10-14T05:17:22.651Z"
+    },
+    "raw.T.19h": {
+      "_id": "kx77c24fv39bf5rd9xd50d66w98g8aa4",
+      "name": "QA Hosp Timeline T",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791893843923,
+      "note": "",
+      "noteGeneratedAt": "2026-10-13T12:17:23.923Z",
+      "status": "pending",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T07:17:28.748Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA encounter T-8840",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Encounter notes"
+        }
+      ],
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "QA encounter T-8840 bedside line"
+        }
+      ],
+      "transcriptDate": "Tue Oct 13 2026"
+    },
+    "raw.T.35h": {
+      "_id": "kx77c24fv39bf5rd9xd50d66w98g8aa4",
+      "name": "QA Hosp Timeline T",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791836243923,
+      "note": "",
+      "noteGeneratedAt": "2026-10-12T20:17:23.923Z",
+      "status": "pending",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-13T15:17:28.748Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA encounter T-8840",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Encounter notes"
+        }
+      ],
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "QA encounter T-8840 bedside line"
+        }
+      ],
+      "transcriptDate": "Tue Oct 13 2026"
+    },
+    "raw.T.37h": {
+      "_id": "kx77c24fv39bf5rd9xd50d66w98g8aa4",
+      "name": "QA Hosp Timeline T",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791829043923,
+      "note": "",
+      "noteGeneratedAt": "2026-10-12T18:17:23.923Z",
+      "status": "pending",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-13T13:17:28.748Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA encounter T-8840",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Encounter notes"
+        }
+      ],
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "QA encounter T-8840 bedside line"
+        }
+      ],
+      "transcriptDate": "Tue Oct 13 2026"
+    },
+    "raw.T.55h": {
+      "_id": "kx77c24fv39bf5rd9xd50d66w98g8aa4",
+      "name": "QA Hosp Timeline T",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791764243923,
+      "note": "",
+      "noteGeneratedAt": "2026-10-12T00:17:23.923Z",
+      "status": "pending",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-12T19:17:28.748Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA encounter T-8840",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Encounter notes"
+        }
+      ],
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "QA encounter T-8840 bedside line"
+        }
+      ],
+      "transcriptDate": "Mon Oct 12 2026"
+    },
+    "raw.T.67h": {
+      "_id": "kx77c24fv39bf5rd9xd50d66w98g8aa4",
+      "name": "QA Hosp Timeline T",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791721043923,
+      "note": "",
+      "noteGeneratedAt": "2026-10-11T12:17:23.923Z",
+      "status": "pending",
+      "transcriptHistory": [],
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "QA encounter T-8840 bedside line"
+        }
+      ],
+      "transcriptDate": "Sun Oct 11 2026"
+    },
+    "raw.T2.67h": {
+      "_id": "kx71kp3kchrwhm6r7dh7t0k47h8g99zp",
+      "name": "QA Hosp Timeline T2",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791829045173,
+      "transcriptHistory": [
+        {
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA bedside T2-7710 day-1 recording"
+            }
+          ],
+          "label": "Oct 13 (prior)"
+        },
+        {
+          "archivedAt": "2026-10-14T07:17:34.281Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA encounter T2-7720 day 2",
+              "time": ""
+            }
+          ],
+          "label": "Oct 12 · Encounter notes"
+        }
+      ],
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "QA bedside T2-7720 day-2 recording"
+        }
+      ],
+      "transcriptDate": "Tue Oct 13 2026"
+    },
+    "raw.T2.100h": {
+      "_id": "kx71kp3kchrwhm6r7dh7t0k47h8g99zp",
+      "name": "QA Hosp Timeline T2",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791710245173,
+      "transcriptHistory": [
+        {
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA bedside T2-7710 day-1 recording"
+            }
+          ],
+          "label": "Oct 13 (prior)"
+        },
+        {
+          "archivedAt": "2026-10-12T22:17:34.281Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA encounter T2-7720 day 2",
+              "time": ""
+            }
+          ],
+          "label": "Oct 12 · Encounter notes"
+        }
+      ],
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "QA bedside T2-7720 day-2 recording"
+        }
+      ],
+      "transcriptDate": "Sun Oct 11 2026"
+    }
+  }
+}

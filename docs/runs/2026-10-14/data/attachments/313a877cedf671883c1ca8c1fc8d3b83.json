@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "sid": "S07",
+    "target": "local QA stack 127.0.0.1:4510",
+    "account": "e2e-fresh-0f4cf5da-752@roundai.test",
+    "harness": true,
+    "at": "2026-10-14T06:19:33.281Z",
+    "expectModel": "mistral.mistral-large-3-675b-instruct",
+    "expectFellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+  },
+  "H-01": {
+    "fixture": "H-01",
+    "mode": "hospital",
+    "question": "What were today's labs?",
+    "temporalContext": "Temporal context: today is Oct 14, 2026.",
+    "status": "broken (fallback not exercised)",
+    "problems": [],
+    "answer": "I don't have today's lab results documented. The data shows WBC 14.2 (elevated from 11.0) and Creatinine 1.4 (elevated from 1.1), but there is no date associated with these values, so I cannot confirm they are from today (Oct 14, 2026). Additionally, there are no encounter notes, SOAP note, or hospital course timeline recorded yet for this admission. I recommend checking the lab system directly or waiting for today's encounter documentation to be completed.",
+    "error": null,
+    "ms": 3582,
+    "reviewOver30s": false,
+    "log": {
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "fellBackFrom": null,
+      "ok": true,
+      "durationMs": 3124,
+      "providerMs": 3075,
+      "error": null
+    },
+    "rowReadError": null,
+    "timing": {
+      "providerMs": 3075,
+      "durationMs": 3124,
+      "appMs": 49
+    },
+    "haikuAttemptsSeenByProxy": null
+  },
+  "_summary": {
+    "fixtures": 1,
+    "fixturesPassed": 0,
+    "broken": 1,
+    "passAt": "9/10 across the 10 fixtures (H-01 + spec.fixtures)"
+  }
+}

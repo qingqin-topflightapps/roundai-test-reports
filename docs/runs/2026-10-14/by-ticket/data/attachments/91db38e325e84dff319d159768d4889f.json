@@ -1,0 +1,362 @@
+{
+  "ref": "OAT-04/S07",
+  "title": "Short windows ±1 h (Hospital) plus W±1 min",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:10:46.003Z",
+  "summary": {
+    "pass": 20,
+    "fail": 4,
+    "failKnown": 4,
+    "record": 0,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "E.preRound",
+      "item": "pre-round text (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "E.point",
+      "item": "Important Point (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "E.doneTask",
+      "item": "completed task (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "E.encounterOnTab",
+      "item": "encounter text on the working tab (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "E.noteOnTab",
+      "item": "note on the working tab (E)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "L.preRound",
+      "item": "pre-round text (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "L.point",
+      "item": "Important Point (L)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side",
+      "known": "K1: Hospital points clear at 18 h, not 12 h — TFA-94699 AC 1"
+    },
+    {
+      "id": "L.doneTask",
+      "item": "completed task (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "L.encounterOnTab",
+      "item": "encounter text on the working tab (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "L.noteOnTab",
+      "item": "note on the working tab (L)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "L.transcriptKept",
+      "item": "encounter kept as yesterday's transcript (L)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699: after 18 h the encounter and note are kept as yesterday's transcript and previous note (moved, not deleted)"
+    },
+    {
+      "id": "L.previousNoteKept",
+      "item": "note kept as previous note (L)",
+      "expected": "present",
+      "observed": "absent",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699: after 18 h the encounter and note are kept as yesterday's transcript and previous note (moved, not deleted)",
+      "known": "K4: the Hospital note is blanked at 18 h and never kept as a previous note (lifecycle.ts:179-190) — TFA-94699 AC 1"
+    },
+    {
+      "id": "W-1m.preRound",
+      "item": "pre-round text (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "W-1m.point",
+      "item": "Important Point (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "W-1m.doneTask",
+      "item": "completed task (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "W-1m.encounterOnTab",
+      "item": "encounter text on the working tab (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "W-1m.noteOnTab",
+      "item": "note on the working tab (W-1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): present on the early side"
+    },
+    {
+      "id": "W+1m.preRound",
+      "item": "pre-round text (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "W+1m.point",
+      "item": "Important Point (W+1m)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side",
+      "known": "K1: Hospital points clear at 18 h, not 12 h — TFA-94699 AC 1"
+    },
+    {
+      "id": "W+1m.doneTask",
+      "item": "completed task (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "W+1m.encounterOnTab",
+      "item": "encounter text on the working tab (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "W+1m.noteOnTab",
+      "item": "note on the working tab (W+1m)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699 table (12 h, 16 h, 18 h): absent on the late side"
+    },
+    {
+      "id": "W+1m.transcriptKept",
+      "item": "encounter kept as yesterday's transcript (W+1m)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / TFA-94699: after 18 h the encounter and note are kept as yesterday's transcript and previous note (moved, not deleted)"
+    },
+    {
+      "id": "W+1m.previousNoteKept",
+      "item": "note kept as previous note (W+1m)",
+      "expected": "present",
+      "observed": "absent",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 / TFA-94699: after 18 h the encounter and note are kept as yesterday's transcript and previous note (moved, not deleted)",
+      "known": "K4: the Hospital note is blanked at 18 h and never kept as a previous note (lifecycle.ts:179-190) — TFA-94699 AC 1"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "Clock anchors: pre-round = notesProcessedAt and preRoundEditedAt set to the same instant (Q2); point = ptsEditedAt = notesProcessedAt (Q3). W±1 min probes run seconds after the clocks were moved."
+  ],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "purge": {
+      "physician": 2,
+      "cron": {
+        "agedOut": 0,
+        "expired": 0
+      }
+    },
+    "raw.E": {
+      "_id": "kx76na1wqz4yev2mfzwb6p1bx58g8n8b",
+      "name": "QA Hosp Edge-E",
+      "preRoundNotes": "QA edge pre-round E",
+      "rawPreRoundNotes": "QA edge pre-round E",
+      "notesProcessedAt": "2026-10-13T19:10:42.697Z",
+      "preRoundEditedAt": 1791918642697,
+      "importantPoints": [
+        {
+          "id": "p-15",
+          "source": "manual",
+          "text": "QA edge point E"
+        }
+      ],
+      "ptsEditedAt": 1791918642697,
+      "encounterNotes": "QA edge encounter 5521 E",
+      "encounterEditedAt": 1791897042697,
+      "note": "QA edge note 5521 E",
+      "noteGeneratedAt": "2026-10-13T13:10:42.697Z",
+      "status": "note-ready",
+      "tasks": [
+        {
+          "createdAt": "2026-10-13T15:10:42.697Z",
+          "done": true,
+          "doneAt": "2026-10-13T15:10:42.697Z",
+          "id": "t-done",
+          "text": "Order CXR E"
+        }
+      ]
+    },
+    "raw.L": {
+      "_id": "kx7e7szt2crhq9zsrhhd9dtdqh8g9fyv",
+      "name": "QA Hosp Edge-L",
+      "preRoundNotes": "",
+      "rawPreRoundNotes": "",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-13T17:10:43.006Z",
+      "preRoundEditedAt": 1791911443006,
+      "importantPoints": [
+        {
+          "id": "p-15",
+          "source": "manual",
+          "text": "QA edge point L"
+        }
+      ],
+      "ptsEditedAt": 1791911443006,
+      "encounterNotes": "",
+      "encounterEditedAt": 1791889843006,
+      "note": "",
+      "noteGeneratedAt": "2026-10-13T11:10:43.006Z",
+      "status": "pending",
+      "tasks": [],
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T06:10:45.191Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA edge encounter 5521 L",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Encounter notes"
+        }
+      ]
+    },
+    "raw.W-1m": {
+      "_id": "kx724xjce1tmvzt0hx0adjxnb18g9s6m",
+      "name": "QA Hosp Edge-W-1m",
+      "preRoundNotes": "QA edge pre-round W-1m",
+      "rawPreRoundNotes": "QA edge pre-round W-1m",
+      "notesProcessedAt": "2026-10-13T18:11:43.313Z",
+      "preRoundEditedAt": 1791915103313,
+      "importantPoints": [
+        {
+          "id": "p-18",
+          "source": "manual",
+          "text": "QA edge point W-1m"
+        }
+      ],
+      "ptsEditedAt": 1791915103313,
+      "encounterNotes": "QA edge encounter 5521 W-1m",
+      "encounterEditedAt": 1791893503313,
+      "note": "QA edge note 5521 W-1m",
+      "noteGeneratedAt": "2026-10-13T12:11:43.313Z",
+      "status": "note-ready",
+      "tasks": [
+        {
+          "createdAt": "2026-10-13T14:11:43.313Z",
+          "done": true,
+          "doneAt": "2026-10-13T14:11:43.313Z",
+          "id": "t-done",
+          "text": "Order CXR W-1m"
+        }
+      ]
+    },
+    "raw.W+1m": {
+      "_id": "kx74nah3wma9yhewq07kakdy318g8cby",
+      "name": "QA Hosp Edge-W+1m",
+      "preRoundNotes": "",
+      "rawPreRoundNotes": "",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-13T18:09:43.449Z",
+      "preRoundEditedAt": 1791914983449,
+      "importantPoints": [
+        {
+          "id": "p-18",
+          "source": "manual",
+          "text": "QA edge point W+1m"
+        }
+      ],
+      "ptsEditedAt": 1791914983449,
+      "encounterNotes": "",
+      "encounterEditedAt": 1791893383449,
+      "note": "",
+      "noteGeneratedAt": "2026-10-13T12:09:43.449Z",
+      "status": "pending",
+      "tasks": [],
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T06:10:45.191Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA edge encounter 5521 W+1m",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Encounter notes"
+        }
+      ]
+    }
+  }
+}

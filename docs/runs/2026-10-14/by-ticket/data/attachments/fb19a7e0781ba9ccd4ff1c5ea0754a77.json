@@ -1,0 +1,130 @@
+{
+  "ref": "TC-23/S06",
+  "mode": "scripted",
+  "kind": "harness self-test (scripted far end: the checks ran on the item's own written text)",
+  "hospital": {
+    "pass": 1,
+    "of": 1
+  },
+  "nursingHome": {
+    "pass": 1,
+    "of": 1
+  },
+  "recovered": [],
+  "blocked": [],
+  "failures": [],
+  "takes": [
+    {
+      "item": "D-01",
+      "mode": "hospital",
+      "surface": "hospital pre-round notes",
+      "verdict": {
+        "id": "D-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Temperature 39.2 degrees Celsius.",
+        "numbersFound": [
+          39.2
+        ],
+        "numbersWanted": [
+          39.2
+        ],
+        "anchorCount": 1
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j97cwpejyqsxvqxqabz5dmnm998g9zvj",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 310,
+          "providerMs": 307
+        }
+      ],
+      "take": {
+        "ids": [
+          "D-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Temperature 39.2 degrees Celsius.",
+        "added": "Temperature 39.2 degrees Celsius.",
+        "tapToReadyMs": 648,
+        "stopToTextMs": 1022,
+        "stopToCompletedMs": 967,
+        "playedSec": 2.7119375,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "D-01",
+      "mode": "nursing-home",
+      "surface": "nursing-home Pre-Round notes",
+      "verdict": {
+        "id": "D-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Temperature 39.2 degrees Celsius.",
+        "numbersFound": [
+          39.2
+        ],
+        "numbersWanted": [
+          39.2
+        ],
+        "anchorCount": 1
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j971bgjdvsfgvj19chh6rwwmy58g9fhy",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 336,
+          "providerMs": 321
+        }
+      ],
+      "take": {
+        "ids": [
+          "D-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Temperature 39.2 degrees Celsius.",
+        "added": "Temperature 39.2 degrees Celsius.",
+        "tapToReadyMs": 727,
+        "stopToTextMs": 1007,
+        "stopToCompletedMs": 954,
+        "playedSec": 2.7119375,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    }
+  ],
+  "aiProvider": {
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "provider": "bedrock",
+    "transcription": "gpt-live",
+    "visionModel": "gemini-2.5-flash",
+    "visionProvider": "vertex"
+  },
+  "disclosures": [
+    {
+      "at": 1791961459685.978,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 321
+    },
+    {
+      "at": 1791961448034.624,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 307
+    }
+  ],
+  "at": "2026-10-14T07:04:27.803Z"
+}

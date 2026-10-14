@@ -1,0 +1,165 @@
+{
+  "ref": "TC-25/S21",
+  "profile": "desktop",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .px-4 | .mt-8)",
+      "state": "sign-in"
+    },
+    {
+      "name": "the sign-in email field has a label",
+      "pass": true,
+      "detail": "Email",
+      "state": "sign-in"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .px-4 | .mt-8)",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "the sign-in code field has a label",
+      "pass": true,
+      "detail": "Sign-in code",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,9×: .mb-0\\.5 | .hover\\:bg-teal-700); nested-interactive(serious,3×: div[aria-label=\"Open chart for QA Hosp 2KX9E\"] | .shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.p-4.cursor-pointer)",
+      "state": "hospital-list"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "button-name(critical,2×: .h-8.w-8.bg-black:nth-child(2) | .h-8.w-8.bg-black:nth-child(4)); color-contrast(serious,4×: .bg-teal-600 | .mt-0\\.5.text-slate-400)",
+      "state": "nh-list"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,12×: .flex-shrink-0.font-semibold | section:nth-child(3) > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)",
+      "state": "hospital-chart"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "button-name(critical,1×: .-ml-1); color-contrast(serious,16×: .flex-shrink-0.font-semibold | section:nth-child(3) > .justify-between.mb-1.gap-2 > .mb-0.gap-2.flex > h3)",
+      "state": "nh-chart"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-chart-deleted-elsewhere"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "what the chart shows after the remote delete",
+      "value": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI. Patient not found. Back to rounds",
+      "state": "hospital-chart-deleted-elsewhere"
+    },
+    {
+      "name": "focus before / after the remote delete (WCAG 2.4.3, for a person)",
+      "value": {
+        "before": "DIV Open chart for QA Hosp 2KX9E Focus",
+        "after": "BODY This preview is not HIPAA compliant. Do not enter or store r",
+        "lostToBody": true
+      },
+      "state": "list-remote-delete"
+    },
+    {
+      "name": "alerts shown on the list after the remote deletes",
+      "value": [],
+      "state": "list-remote-delete"
+    },
+    {
+      "name": "axe after the remote delete",
+      "value": "color-contrast(serious,5×: .mb-0\\.5 | .hover\\:bg-teal-700); nested-interactive(serious,1×: .text-left)",
+      "state": "list-after-remote-delete"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "sign-in",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--sign-in.png",
+      "url": "/",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "sign-in-code",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--sign-in-code.png",
+      "url": "/",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "hospital-list",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--hospital-list.png",
+      "url": "/rounding",
+      "findings": 2,
+      "axe": [
+        "color-contrast/serious×9",
+        "nested-interactive/serious×3"
+      ]
+    },
+    {
+      "state": "nh-list",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--nh-list.png",
+      "url": "/snf",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×4"
+      ]
+    },
+    {
+      "state": "hospital-chart",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--hospital-chart.png",
+      "url": "/rounding/kx73eb8g5byhnecsph54ygscxs8g9wzn",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×12"
+      ]
+    },
+    {
+      "state": "nh-chart",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--nh-chart.png",
+      "url": "/snf/m5730t0h0kjte4k0wqjrdfg8kd8g984k",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×1",
+        "color-contrast/serious×16"
+      ]
+    },
+    {
+      "state": "hospital-chart-deleted-elsewhere",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--hospital-chart-deleted-elsewhere.png",
+      "url": "/rounding/kx72e2kyrxf7tphzb17tstxqg98g98vk",
+      "findings": 0,
+      "axe": []
+    },
+    {
+      "state": "list-after-remote-delete",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--list-after-remote-delete.png",
+      "url": "/rounding",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×5",
+        "nested-interactive/serious×1"
+      ]
+    }
+  ]
+}

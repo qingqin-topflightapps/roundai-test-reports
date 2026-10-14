@@ -1,0 +1,12 @@
+{
+  "OAT-03/S07": {
+    "status": "blocked",
+    "detail": "Needs Haiku forced to fail for the batch (BEDROCK_TEST_FAIL_MODEL). That is a deployment env var: CLAUDE.md forbids `convex env set` (no exception for a private backend) and the shared stack must never carry it. Built: ask-ai-fault.ts (10 fixtures, passAt 9/10, the assist.askChart row read after each call, a Haiku answer = 'broken (fallback not exercised)'). After the review it builds the context exactly as AskModal.tsx (classifyQuery, buildAskContext, then resolveTemporalQuery folded in: H-01 / N-01 'What were today's labs?' now carry 'Temporal context: today is Oct 14, 2026.'), and the log-row read retries up to 4 x 500 ms. Harness re-check on the shared stack, one fixture, no fault, 2 askChart calls: on the first the single row read came back empty right after the action (model unknown; that file was overwritten by the second), so the read now retries; on the second the row was read: Haiku answered -> broken, as designed; the answer quotes the date, so the temporal line reached the model. It does not close lane-b-ask-ai-ext (no variants or contextChecks). fault-stack.sh starts a private backend on 5330/5331 from a scratch copy and refuses without QA_ALLOW_PRIVATE_ENV=1. Needs Quinn's OK for env set on that private backend.",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-other/ask-ai-fault-S07-harness/results.json",
+      "runs/2026-10-14-local/aicheck-other/ask-ai-fault-S07-harness-temporal/results.json",
+      "scripts/aicheck-other/ask-ai-fault.ts",
+      "scripts/aicheck-other/fault-stack.sh"
+    ]
+  }
+}

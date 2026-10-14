@@ -1,0 +1,20 @@
+{
+  "TC-10/S22": {
+    "status": "failed",
+    "detail": "Re-run 17:26 after a test fix: the spec now waits for the app's own server-time ask (time:now, src/data/time.ts) to be answered before pressing Save Note — it answered 0.55–0.72 s after the page load, success, in both contexts. Why: in the 17:07 re-run the spec typed with fill() and pressed Save before that answer, so the Nursing Home course line also carried the device's day ('Visit 1 · Oct 15'); the app reads the device clock until the server answers, and no physician types a pre-round note in 0.6 s, so that was a test artifact (recorded, not judged). With the answer in: course line 'Oct 13: …' / 'Visit 1 · Oct 13: …' = the server's day read in Honolulu (time-zone part recorded, TC-11 Q4); correct device 'Oct 14'. Fails: today's vitals and labs columns 'Thu Oct 15 2026' and Nursing Home vitalsDate 'Thu Oct 15 2026' (the device's day; correct device: Wed Oct 14 2026). Parse answered at the socket with fixed values.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s22/hospital.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s22/snf.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s22/hospital-shifted.png",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s22/snf-shifted.png",
+      "runs/2026-10-14-local/newspec-b/rerun-fix2-tc10-s22.log"
+    ],
+    "productIssue": "known: open PR #100 (TFA-92592), not on main — commit 0b738c0 'a value's day is read on the corrected clock' switches usePreRoundProcess / useSnfPreRoundProcess 'today' from new Date() to clockNow(); .agents/qa-project-context.md lists '#100 dated vitals/labs' under open PRs. On main: a device two days ahead files today's vitals and labs under the device's date (a column for a day that has not happened), while the same Save Note dates the course line by the server. Breaks TC-10 U12 (UAT 3.8). Re-check when #100 merges.",
+    "envReloads": {
+      "tests": 2,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    },
+    "known": "PR #100 (TFA-92592), not on main"
+  }
+}

@@ -1,0 +1,505 @@
+{
+  "ref": "TC-06/S18",
+  "method": "CODEREVIEW",
+  "status": "fail-pending-Q4",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Does any code remain in apps/web (src, convex, convex/ai/prompts/library, e2e support code that ships) that infers the encounter status/type from dictation or photo text: classifyEncounterType, legacyInferEncounterType, the prompt encounter/encounter-type.md, writes of encTypeSource from text, regexes over 'admission'/'consult' that set the badge? For each remaining piece say whether anything calls it, and whether it is reachable from the shipped app (client or a Convex function the app calls) or only from evaluation scripts / tests.",
+  "rule": {
+    "pass": "no code reads the status out of dictation or photo text anywhere, whether or not anything calls it",
+    "fail": "any piece remains",
+    "basis": [
+      "No code reads the status out of dictation or photo text, whether or not anything calls it",
+      "TFA-92584 AC 5 'exists anywhere, remove it'"
+    ]
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [],
+  "pendingOn": [
+    "Q4"
+  ],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "pending",
+      "reason": null,
+      "answer": "The status-from-text code is disconnected, but it has not been removed. Four pieces remain at e02167f:\n\n1. **`legacyInferEncounterType`** (convex/lib/encounterType.ts) still holds its regexes over \"new admission\", \"admission note\" and similar phrases. Only e2e/unit/encounter-type-set.unit.ts calls it.\n2. **`ai/parsing.classifyEncounterType`** is still exported as a public aiAction (an authenticated Convex `action`). It asks the model to read the visit type out of dictation, with helpers `buildEncounterTypeContent`, `readEncounterTypeReply` and `classifyEncounterContent` beside it. Its only caller is e2e/api/encounter-type.live.spec.ts. Nothing in src/ calls it, and it writes nothing.\n3. **The prompt `encounter/encounter-type.md`** (\"Classify today's hospital visit … from the physician's own dictation\") is still in the library and compiled into generated.ts.\n4. **`encTypeSource`** remains only as a schema field. The comment says nothing reads or writes it.\n\nNothing the shipped app runs writes `encType` from text:\n- The census scan hardcodes \"follow-up\".\n- Add Patient, Add Resident and the patient screens set it only from the physician's own choice.\n- The regexes in src/ that mention \"admission\" (recall.ts, grounding.ts) do not set the status.\n\nThe Then says no such code should exist even if nothing calls it, so the code does not meet it. Every remaining piece is reached only by evaluation scripts or tests, so under the oracle's default each one is pending:Q4 rather than a plain fail. No recorded gap applies."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "pending",
+      "reason": null,
+      "answer": "Code that reads the encounter status out of dictation is still in apps/web at e02167f, so the Then (\"no code reads the status out of dictation or photo text, whether or not anything calls it\") is not met. Three pieces remain:\n(1) `legacyInferEncounterType` in convex/lib/encounterType.ts. This is the old keyword/regex matcher over phrases like 'new admission', 'admitted today' and 'follow-up visit'. The code marks it \"TESTS ONLY\", and only e2e/unit/encounter-type-set.unit.ts calls it.\n(2) The model classifier `classifyEncounterType` in convex/ai/parsing.ts, with its helpers in convex/lib/encounterType.ts. It is a public Convex action (`aiAction` wraps `action`) and is deployed with the backend. Nothing in apps/web/src calls it. Only e2e/api/encounter-type.live.spec.ts and the e2e/support/actions.ts argument table call it. It returns a label and never writes `encType` or `encTypeSource`.\n(3) The prompt library/v1/encounter/encounter-type.md, which is still compiled into generated.ts and listed in prompts.lock.json.\nNothing writes `encTypeSource` from text. The census photo scan hard-codes encType \"follow-up\" and does not infer it. Every remaining piece is reached only by evaluation scripts or tests, so under the oracle's default each one is pending:Q4 rather than a plain fail. If Q4 decides that evaluation-only code counts, the verdict becomes fail."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The old keyword/regex matcher that read the encounter type from text is still in the backend. Its comment says only tests use it.",
+          "file": "apps/web/convex/lib/encounterType.ts",
+          "line": 47,
+          "quote": "// TESTS ONLY. The keyword matcher this app used to tag encounters, retired",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "legacyInferEncounterType runs regex patterns over 'admission' phrases and returns new/follow-up.",
+          "file": "apps/web/convex/lib/encounterType.ts",
+          "line": 53,
+          "quote": "export function legacyInferEncounterType(text: string): EncounterType | null {",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The regexes over 'admission' are still defined.",
+          "file": "apps/web/convex/lib/encounterType.ts",
+          "line": 24,
+          "quote": "pattern: /\\badmission\\s+(?:note|encounter)\\b/gi,",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Only the unit evaluation test calls legacyInferEncounterType.",
+          "file": "apps/web/e2e/unit/encounter-type-set.unit.ts",
+          "line": 4,
+          "quote": "import { legacyInferEncounterType } from \"../../convex/lib/encounterType\";",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The model-based classifier classifyEncounterType is still exported as a deployed public aiAction. Its comment calls it evaluation-only and says it never writes the tag.",
+          "file": "apps/web/convex/ai/parsing.ts",
+          "line": 459,
+          "quote": "// Evaluation-only encounter classifier. Admission status remains physician-",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "classifyEncounterType sends dictation to the model with the encounter-type prompt.",
+          "file": "apps/web/convex/ai/parsing.ts",
+          "line": 485,
+          "quote": "{ role: \"user\", content: encounterTypePrompt(content) },",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "aiAction wraps the public action builder, so classifyEncounterType can be called by any authenticated client, though no client code calls it.",
+          "file": "apps/web/convex/lib/phi.ts",
+          "line": 57,
+          "quote": "return action({",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The only caller of classifyEncounterType is the live evaluation spec.",
+          "file": "apps/web/e2e/api/encounter-type.live.spec.ts",
+          "line": 88,
+          "quote": "\"ai/parsing:classifyEncounterType\",",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The prompt encounter/encounter-type.md is still in the library and tells the model to classify the visit from dictation.",
+          "file": "apps/web/convex/ai/prompts/library/v1/encounter/encounter-type.md",
+          "line": 4,
+          "quote": "Classify today's hospital visit as new admission, follow-up, or consult from the",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The prompt is compiled into the shipped generated prompt registry.",
+          "file": "apps/web/convex/ai/prompts/generated.ts",
+          "line": 874,
+          "quote": "{ id: \"encounterEncounterType\", file: \"encounter/encounter-type.md\"",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "encTypeSource remains only as a schema field. Nothing writes it.",
+          "file": "apps/web/convex/lib/validators.ts",
+          "line": 215,
+          "quote": "// Written by the dictation inference that TFA-92584 removed. Nothing reads or",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The census photo scan hardcodes follow-up and does not read the status from the image text.",
+          "file": "apps/web/src/features/rounding/list/scannedPatient.ts",
+          "line": 116,
+          "quote": "encType: \"follow-up\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "On the rounding patient screen, encType is written only from the physician's own selection.",
+          "file": "apps/web/src/routes/rounding/Patient.tsx",
+          "line": 140,
+          "quote": "onChange={(encType) => save({ encType, encTypeDay: localDay() })}",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The legacy regex matcher that infers the encounter type from text is still present. It matches 'admission'-style phrases.",
+          "file": "apps/web/convex/lib/encounterType.ts",
+          "line": 9,
+          "quote": "pattern: /\\bnew\\s+(?:hospital\\s+)?admission\\b/gi,",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "legacyInferEncounterType still exists as an exported function. The code comment says only tests use it.",
+          "file": "apps/web/convex/lib/encounterType.ts",
+          "line": 53,
+          "quote": "export function legacyInferEncounterType(text: string): EncounterType | null {",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The code comment says nothing in the app calls the legacy matcher and that it is kept as an evaluation baseline.",
+          "file": "apps/web/convex/lib/encounterType.ts",
+          "line": 50,
+          "quote": "against (e2e/unit/encounter-type-set.unit.ts). Nothing in the app calls it.",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The only caller of legacyInferEncounterType is a unit test.",
+          "file": "apps/web/e2e/unit/encounter-type-set.unit.ts",
+          "line": 47,
+          "quote": "const got: EncounterLabel = legacyInferEncounterType(text) ?? \"unknown\";",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The model-based classifier classifyEncounterType is still defined as a deployed Convex action that classifies the encounter type from dictation content.",
+          "file": "apps/web/convex/ai/parsing.ts",
+          "line": 462,
+          "quote": "export const classifyEncounterType = aiAction({",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The code comment marks classifyEncounterType as evaluation-only and says it never writes the tag.",
+          "file": "apps/web/convex/ai/parsing.ts",
+          "line": 459,
+          "quote": "// Evaluation-only encounter classifier. Admission status remains physician-",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "aiAction wraps a public Convex action, so the classifier is an endpoint on the deployed backend even though the client never calls it. No call to it was found in apps/web/src.",
+          "file": "apps/web/convex/lib/phi.ts",
+          "line": 57,
+          "quote": "return action({",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "classifyEncounterType is called only from the live e2e evaluation spec.",
+          "file": "apps/web/e2e/api/encounter-type.live.spec.ts",
+          "line": 88,
+          "quote": "\"ai/parsing:classifyEncounterType\",",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The e2e support argument table still lists classifyEncounterType.",
+          "file": "apps/web/e2e/support/actions.ts",
+          "line": 151,
+          "quote": "\"parsing.classifyEncounterType\": {",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The encounter-type prompt is still in the prompt library. It tells the model to classify the visit from the physician's dictation.",
+          "file": "apps/web/convex/ai/prompts/library/v1/encounter/encounter-type.md",
+          "line": 4,
+          "quote": "Classify today's hospital visit as new admission, follow-up, or consult from the",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The prompt is still compiled into the generated prompt registry.",
+          "file": "apps/web/convex/ai/prompts/generated.ts",
+          "line": 874,
+          "quote": "{ id: \"encounterEncounterType\", file: \"encounter/encounter-type.md\", title: \"Encounter type\"",
+          "supports": "fail",
+          "label": "pending:Q4",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The census photo scan does not infer status from the photo. It hard-codes follow-up.",
+          "file": "apps/web/src/features/rounding/list/scannedPatient.ts",
+          "line": 116,
+          "quote": "encType: \"follow-up\",",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "A physician's status badge never changes because of what they dictate or photograph; it changes only when they set it. The leftover classifier, regexes and prompt are dead code that the app never runs. They could only come back into use if someone wires them in again. / None today: physicians still choose the admission status themselves, and no app path changes the badge from dictation or photo text. Text-based classifier code and its prompt remain deployed. A signed-in user could call the classifier action directly, but it only returns a label and writes nothing.",
+  "openQuestions": [
+    "Q4: does code reached only by evaluation scripts or tests count as 'exists anywhere'? Pieces affected: legacyInferEncounterType, classifyEncounterType with its helpers in convex/lib/encounterType.ts, the encounter/encounter-type.md prompt, and its generated.ts entry.",
+    "classifyEncounterType is deployed as a public authenticated Convex action. No app client code calls it, but any signed-in client could invoke it directly. This review treats it as evaluation-only (pending:Q4). If Q4 or the product owner counts a deployed public endpoint as reachable from the shipped app, it becomes a plain fail.",
+    "Q4: does evaluation-only code count as 'exists anywhere'? If it does, legacyInferEncounterType, classifyEncounterType and encounter-type.md make this a fail.",
+    "classifyEncounterType is a public Convex action on the deployed backend, so an authenticated caller could call it directly even though the shipped client never does. Q4 should say whether a public endpoint the client never calls counts as 'reachable from the shipped app'."
+  ],
+  "notDecidableByCode": [
+    "Whether TFA-92584 AC 5 'remove it' means the evaluation harness (the classifier, legacy baseline and prompt kept for scoring) must also be deleted. That is Q4, a product decision.",
+    "Whether AC 5's 'exists anywhere, remove it' covers evaluation-only code kept for scoring (Q4)."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "baf40feab5be"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 56031,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.27798959999999995,
+      "turns": 17,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 47372,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2594776,
+      "turns": 15,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:02:10.517Z"
+}

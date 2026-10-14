@@ -1,0 +1,272 @@
+{
+  "TC-13/S16": {
+    "status": "failed",
+    "detail": "17/23 judged cells pass (1 of them not discriminating on main), 2 recorded. Fail: never processed: open task cleared [U10; gate: blocked: TFA-94699 in progress] | lab panel: K not refreshed since T0 (4.2) cleared [U10; gate: blocked: TFA-94699 in progress] | vitals: temperature not refreshed since T0 cleared [U10; gate: blocked: TFA-94699 in progress] | import only at 30 h: T0's lab still cleared at 37 h [T2; gate: blocked: TFA-94699 in progress] | import only at 30 h: T0's imaging still cleared at 37 h [T2; gate: blocked: TFA-94699 in progress] | import only at 30 h: labsUpdatedAt / radiologyUpdatedAt not moved by the import [T2; gate: blocked: TFA-94699 in progress]. Recorded: import only at 30 h: held med (Q8) = \"cleared\" | import only at 30 h: open task (Q8) = \"kept\".",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-13-S16/cells-main.json",
+      "runs/2026-10-14-local/manual/evidence/TC-13-S16/import-extraction.json",
+      "runs/2026-10-14-local/manual/evidence/TC-13-S16/rows-after-lifecycle.json"
+    ],
+    "counts": {
+      "judged": 23,
+      "pass": 17,
+      "fail": 6,
+      "recorded": 2,
+      "notRun": 0,
+      "notDiscriminating": 1
+    },
+    "cells": [
+      {
+        "part": "main",
+        "cell": "never processed: vital not refreshed since T0 cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": null
+      },
+      {
+        "part": "main",
+        "cell": "never processed: lab not refreshed since T0 cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": null
+      },
+      {
+        "part": "main",
+        "cell": "never processed: imaging not refreshed since T0 cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": false
+      },
+      {
+        "part": "main",
+        "cell": "never processed: active med not mentioned since T0 cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": false
+      },
+      {
+        "part": "main",
+        "cell": "never processed: held med cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": false
+      },
+      {
+        "part": "main",
+        "cell": "never processed: open task cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "cleared",
+        "actual": true
+      },
+      {
+        "part": "main",
+        "cell": "processed at 30 h, no new value: vital still cleared (processing is not a refresh)",
+        "req": "T2",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": null
+      },
+      {
+        "part": "main",
+        "cell": "processed at 30 h, no new value: lab still cleared",
+        "req": "T2",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": null
+      },
+      {
+        "part": "main",
+        "cell": "processed at 30 h, no new value: imaging still cleared",
+        "req": "T2",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": false
+      },
+      {
+        "part": "main",
+        "cell": "processed at 30 h: active med not mentioned since T0 cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": false
+      },
+      {
+        "part": "main",
+        "cell": "processed at 30 h: held med kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": true
+      },
+      {
+        "part": "main",
+        "cell": "processed at 30 h: open task kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": true,
+        "discriminating": false,
+        "note": "not discriminating on main: main has no open-task purge (Hospital or Nursing Home), so this cell cannot fail today; it means something once TFA-94699 lands"
+      },
+      {
+        "part": "main",
+        "cell": "vital refreshed with a new value at 30 h: kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept (134/80)",
+        "actual": "134/80"
+      },
+      {
+        "part": "main",
+        "cell": "lab refreshed at 30 h: kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept (Cr 1.4)",
+        "actual": "1.4"
+      },
+      {
+        "part": "main",
+        "cell": "imaging refreshed at 30 h: kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": true
+      },
+      {
+        "part": "main",
+        "cell": "active med mentioned at 30 h: kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": true
+      },
+      {
+        "part": "main",
+        "cell": "lab panel: Cr refreshed at 30 h (1.4) kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": "1.4"
+      },
+      {
+        "part": "main",
+        "cell": "lab panel: K not refreshed since T0 (4.2) cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "cleared",
+        "actual": "4.2"
+      },
+      {
+        "part": "main",
+        "cell": "vitals: BP refreshed at 30 h kept",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": "132/78"
+      },
+      {
+        "part": "main",
+        "cell": "vitals: temperature not refreshed since T0 cleared",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "cleared",
+        "actual": "99.1"
+      },
+      {
+        "part": "main",
+        "cell": "import only at 30 h: T0's lab still cleared at 37 h",
+        "req": "T2",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "cleared (the import's old values are not a refresh)",
+        "actual": {
+          "labs": [
+            {
+              "name": "Cr",
+              "value": "1.1"
+            },
+            {
+              "name": "K",
+              "value": "4.2"
+            },
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "1.1"
+            }
+          ],
+          "labsUpdatedAt": "2026-10-13T22:23:50.211Z"
+        }
+      },
+      {
+        "part": "main",
+        "cell": "import only at 30 h: T0's imaging still cleared at 37 h",
+        "req": "T2",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "cleared",
+        "actual": [
+          "QA-CXR-T0 chest X-ray: right lower lobe opacity",
+          "Chest X-ray October 9: bilateral pleural effusions"
+        ]
+      },
+      {
+        "part": "main",
+        "cell": "import only at 30 h: labsUpdatedAt / radiologyUpdatedAt not moved by the import",
+        "req": "T2",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "labsUpdatedAt stays 2026-10-12T16:23:50.211Z",
+        "actual": {
+          "labsUpdatedAt": "2026-10-13T22:23:50.211Z",
+          "radiologyUpdatedAt": "2026-10-13T22:23:50.211Z"
+        }
+      },
+      {
+        "part": "main",
+        "cell": "import only at 30 h: held med (Q8)",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "record",
+        "expected": "recorded",
+        "actual": "cleared"
+      },
+      {
+        "part": "main",
+        "cell": "import only at 30 h: open task (Q8)",
+        "req": "U10",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "record",
+        "expected": "recorded",
+        "actual": "kept"
+      }
+    ],
+    "productIssue": "Known (TFA-94699 in progress; T2/U10). Main stamps one clock per panel. When Cr is refreshed at 30 h, the unrefreshed K 4.2 stays at 37 h, and temperature 99.1 stays when only BP was refreshed. A prior-note import of an old note (Oct 11: Cr 1.1, CXR) moves labsUpdatedAt and radiologyUpdatedAt to the import time, so T0's labs and imaging survive 37 h. An open task on a never-processed chart is never cleared. Side observation outside this oracle (TC-13 U4): the same import added 'Creatinine 1.1' as a second lab row next to the existing 'Cr 1.1'."
+  }
+}

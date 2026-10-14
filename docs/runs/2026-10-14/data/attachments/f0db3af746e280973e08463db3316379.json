@@ -1,0 +1,156 @@
+{
+  "TC-24/S08": {
+    "status": "passed-partial",
+    "detail": "7/7 judged cells pass, 3 NOT RUN. Not run: day 1: Generate after the deletes (Generate is forbidden on the local stack (capabilities.json); dev only) | day 2: Generate with text that does not name the deleted items (note checked) (Generate is forbidden on the local stack; dev only) | next visit: Generate (note checked) (Generate is forbidden on the local stack; dev only).",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-24-S08/cells-hospital.json",
+      "runs/2026-10-14-local/manual/evidence/TC-24-S08/cells-nursing-home.json",
+      "runs/2026-10-14-local/manual/evidence/TC-24-S08/hospital-day2.json",
+      "runs/2026-10-14-local/manual/evidence/TC-24-S08/hospital-redictated.json",
+      "runs/2026-10-14-local/manual/evidence/TC-24-S08/nursing-home-redictated.json",
+      "runs/2026-10-14-local/manual/evidence/TC-24-S08/nursing-home-visit2.json"
+    ],
+    "partial": "3 cell(s) of the 'then' not run",
+    "counts": {
+      "judged": 7,
+      "pass": 7,
+      "fail": 0,
+      "recorded": 0,
+      "notRun": 3,
+      "notDiscriminating": 0
+    },
+    "cells": [
+      {
+        "part": "hospital",
+        "cell": "day 1: Generate after the deletes",
+        "gate": null,
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "Generate is forbidden on the local stack (capabilities.json); dev only"
+      },
+      {
+        "part": "hospital",
+        "cell": "day 2: none of the five deleted items came back (meds, tasks, points, course)",
+        "req": "U3",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": {
+          "meds": [
+            "Apixaban 2.5 mg PO BID"
+          ],
+          "tasks": [],
+          "points": []
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "positive control: day 2's own text reached the chart (course 'ambulating' / Cr 1.1 / HR 74)",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present (else the run is Invalid)",
+        "actual": {
+          "course": "Oct 14: Post-op day 2 hip fracture, afebrile, ambulating. Continue DVT prophylaxis and pain management.. ⏳ Encounter pending.",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "1.1"
+            }
+          ],
+          "hr": "74"
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "day 2: Generate with text that does not name the deleted items (note checked)",
+        "req": "U3",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "Generate is forbidden on the local stack; dev only"
+      },
+      {
+        "part": "hospital",
+        "cell": "re-dictated 'Restart metoprolol tartrate 25 mg PO BID': the row is back",
+        "req": "U10",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "metoprolol row present",
+        "actual": [
+          "Apixaban 2.5 mg PO BID [active]",
+          "Metoprolol tartrate 25 mg PO BID [active]"
+        ]
+      },
+      {
+        "part": "hospital",
+        "cell": "re-dictation did not bring back the other deleted items",
+        "req": "U3",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": {
+          "meds": [
+            "Apixaban 2.5 mg PO BID",
+            "Metoprolol tartrate 25 mg PO BID"
+          ],
+          "tasks": [
+            "Restart metoprolol tartrate 25 mg PO BID"
+          ],
+          "points": []
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "next visit: none of the deleted items came back (furosemide, podiatry task, sacral point)",
+        "req": "U3",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": {
+          "meds": [
+            "Donepezil 10 mg PO nightly"
+          ],
+          "tasks": [],
+          "points": []
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "positive control: '68 kg' from the visit-2 text reached the chart",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present (else the run is Invalid)",
+        "actual": {
+          "wt": "68 kg",
+          "course": "Visit 1 · Oct 14: Patient with heart failure with reduced EF, no acute events overnight. Weight stable at 68 kg.."
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "next visit: Generate (note checked)",
+        "req": "U3",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "Generate is forbidden on the local stack; dev only"
+      },
+      {
+        "part": "nursing-home",
+        "cell": "re-dictated furosemide: the row is back",
+        "req": "U10",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": [
+          "Donepezil 10 mg PO nightly [active]",
+          "Furosemide 40 mg PO daily [active]"
+        ]
+      }
+    ],
+    "runNote": "Observation, not judged: the Hospital re-dictation 'Restart metoprolol tartrate 25 mg PO BID.' through the pre-round Save Note also created an open task with that same text (evidence/TC-24-S08/hospital-redictated.json; seen in both runs). Evidence files are now prefixed with the part, so the Hospital and Nursing Home re-dictation evidence no longer overwrite each other."
+  }
+}

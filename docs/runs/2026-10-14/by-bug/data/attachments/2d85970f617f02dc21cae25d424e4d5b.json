@@ -1,0 +1,107 @@
+{
+  "ref": "TC-19/S13",
+  "part": "main",
+  "at": "2026-10-14T07:52:19.672Z",
+  "liveCalls": "2 SNF pre-round Save Notes",
+  "visit1": "Mon Oct 12 2026",
+  "visit2": "Tue Oct 13 2026",
+  "cells": [
+    {
+      "cell": "positive control: visits 2 and 3 Save Notes processed (notesProcessedAt moved, preRoundError empty)",
+      "expected": "both processed (else the run is Invalid)",
+      "actual": {
+        "visit2": {
+          "notesProcessedAtBefore": "2026-10-12T01:00:00.000Z",
+          "notesProcessedAtAfter": "2026-10-13T01:00:00.000Z",
+          "preRoundError": null,
+          "processed": true
+        },
+        "visit3": {
+          "notesProcessedAtBefore": "2026-10-13T01:00:00.000Z",
+          "notesProcessedAtAfter": "2026-10-14T07:51:54.640Z",
+          "preRoundError": null,
+          "processed": true
+        }
+      },
+      "verdict": "pass"
+    },
+    {
+      "cell": "snfVisitDates after visit 3 (three device days expected)",
+      "expected": "3 distinct days",
+      "actual": [
+        "Mon Oct 12 2026",
+        "Tue Oct 13 2026",
+        "Wed Oct 14 2026"
+      ],
+      "verdict": "record"
+    },
+    {
+      "cell": "after visit 2: everything from visit 1 still shown",
+      "expected": "ceftriaxone Given, amlodipine, metformin held, donepezil",
+      "actual": [
+        "Donepezil 10 mg PO nightly [active]",
+        "Amlodipine 10 mg PO daily [changed · Oct 12]",
+        "Ceftriaxone 1 g IM once [single-dose · Oct 12]",
+        "Metformin 500 mg PO BID [held · Oct 12]"
+      ],
+      "verdict": "pass",
+      "req": "U15"
+    },
+    {
+      "cell": "after visit 3: the Given row from visit 1 is gone (events kept for the last two visits)",
+      "expected": "gone",
+      "actual": {
+        "changeDate": "Oct 12",
+        "changeType": "given",
+        "changed": true,
+        "id": "m-cef",
+        "name": "Ceftriaxone 1 g IM once",
+        "status": "single-dose",
+        "updatedAt": "2026-10-12T01:00:00.000Z"
+      },
+      "verdict": "fail",
+      "req": "U15"
+    },
+    {
+      "cell": "after visit 3: donepezil and amlodipine persist (chronic list)",
+      "expected": "both present",
+      "actual": [
+        "Donepezil 10 mg PO nightly",
+        "Amlodipine 10 mg PO daily",
+        "Ceftriaxone 1 g IM once",
+        "Metformin 500 mg PO BID"
+      ],
+      "verdict": "pass",
+      "req": "U15"
+    },
+    {
+      "cell": "after visit 3: amlodipine Changed tag (Q7)",
+      "expected": "recorded until Q7",
+      "actual": {
+        "status": "changed",
+        "changeDate": "Oct 12",
+        "changedNote": "was: 5"
+      },
+      "verdict": "record",
+      "req": "U15"
+    },
+    {
+      "cell": "after visit 3: metformin Held tag with its visit-1 date and reason (Q7)",
+      "expected": "recorded until Q7",
+      "actual": {
+        "status": "held",
+        "changeDate": "Oct 12",
+        "changedNote": "poor intake"
+      },
+      "verdict": "record",
+      "req": "T5"
+    },
+    {
+      "cell": "silent visits 2 and 3: rows re-dated by the save",
+      "expected": "none",
+      "actual": [],
+      "verdict": "record",
+      "note": "positive control above"
+    }
+  ]
+}

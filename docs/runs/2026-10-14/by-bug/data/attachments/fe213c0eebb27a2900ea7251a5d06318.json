@@ -1,0 +1,28 @@
+{
+  "TC-20/S04a": {
+    "status": "known",
+    "dataset": "status",
+    "target": "dev",
+    "title": "Nursing Home: In Today yes/no decides who is counted (TFA-92587 AC 6)",
+    "detail": "dashboard Total = residents In Today (19) (TFA-92587 AC 6) → {\"got\":{\"total\":22,\"pending\":7,\"inProgress\":9,\"complete\":6},\"inToday\":19,\"allResidents\":22}",
+    "judged": {
+      "total": 4,
+      "failed": 0
+    },
+    "known": [
+      {
+        "cell": "dashboard Total = residents In Today (19)",
+        "ref": "TFA-92587 AC 6"
+      }
+    ],
+    "recorded": [
+      "dashboard Total vs all residents → {\"total\":22,\"allResidents\":22,\"countsEveryResident\":true}"
+    ],
+    "durationMs": 9081,
+    "evidence": [
+      "runs/2026-10-14-dev/datasets/status/evidence/TC-20-S04a.json",
+      "runs/2026-10-14-dev/datasets/status/evidence/TC-20-S04a-today.png",
+      "runs/2026-10-14-dev/datasets/status/evidence/TC-20-S04a-dashboard.png"
+    ]
+  }
+}

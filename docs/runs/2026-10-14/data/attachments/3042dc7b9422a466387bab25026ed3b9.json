@@ -1,0 +1,25 @@
+{
+  "TC-23/S24": {
+    "status": "failed",
+    "detail": "Scripted far end, real prepareSession: the device-clock check (liveSession.ts: expiresAt × 1000 ≤ Date.now()) runs in the browser before any request to OpenAI's realtime endpoint, so these cells decide U9 on their own; the text itself is the scripted transcript. 13/18 decided cells pass; failing: K-2 H-01 dictation (+70 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-2 N-01 dictation (+70 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-3 H-01 dictation (+86400 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-3 N-01 dictation (+86400 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-3 opens signed in like any other device (UAT 3.8) (+86400 s, Asia/Tokyo) (H-01: sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload | N-01: sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload) prepareSession: 16 call(s), 0 stubbed at the socket, 16 real OpenAI mint(s) with …PUMA. Build e02167f; aiProvider:_current {\"model\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider\":\"bedrock\",\"transcription\":\"gpt-live\",\"visionModel\":\"gemini-2.5-flash\",\"visionProvider\":\"vertex\"}.",
+    "evidence": [
+      "raw/TC-23-S24.json",
+      "shots/S24-K-0-H-01.png",
+      "shots/S24-K-0-N-01.png",
+      "shots/S24-K-1-H-01.png",
+      "shots/S24-K-1-N-01.png",
+      "shots/S24-K-2-H-01.png",
+      "shots/S24-K-2-N-01.png",
+      "shots/S24-K-3-H-01-signin-on-load.png",
+      "shots/S24-K-3-H-01.png",
+      "shots/S24-K-3-N-01-signin-on-load.png",
+      "shots/S24-K-3-N-01.png",
+      "shots/S24-K-4-H-01.png",
+      "shots/S24-K-4-N-01.png",
+      "shots/S24-K-5-H-01.png",
+      "shots/S24-K-5-N-01.png",
+      "artifacts/20261014-fix-client-2/pw/tc23-client-TC-23-S24-a-wr-982cc-e-does-not-change-dictation-dictation/trace.zip"
+    ],
+    "productIssue": "Phone clock 70 s or more fast (or a day ahead): the physician taps Dictate in the Hospital or Nursing Home pre-round editor, sees 'Listening…', and after one silent retry gets the red banner 'Live dictation couldn’t start. Check microphone access and your connection, then try again.' with an empty box — every take, nothing transcribed. Separately, a phone a day fast opens the app on the sign-in screen instead of the patient list (see the 'opens signed in' cells). Both break UAT 3.8 (a phone with a wrong clock shows the same state as any other device)."
+  }
+}

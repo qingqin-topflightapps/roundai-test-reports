@@ -1,0 +1,74 @@
+{
+  "TC-12/S29": {
+    "ref": "TC-12/S29",
+    "method": "CODEREVIEW",
+    "secondary": "CONFIG",
+    "status": "known-gap",
+    "verdict": "fail",
+    "agreed": true,
+    "why": "both runs agree",
+    "newFindings": [],
+    "knownGapsConfirmed": [
+      {
+        "run": 1,
+        "label": "known:ip-hospital-18h",
+        "claim": "The Hospital Important Points window is 18 h, not 12 h.",
+        "at": "apps/web/convex/lib/lifecycle.ts:10",
+        "gap": "ip-hospital-18h"
+      },
+      {
+        "run": 1,
+        "label": "known:ip-no-nh-window",
+        "claim": "SNF_RETENTION has no Important Points entry, and nothing in lifecycle.ts clears Nursing Home Important Points.",
+        "at": "apps/web/convex/lib/lifecycle.ts:30",
+        "gap": "ip-no-nh-window"
+      },
+      {
+        "run": 2,
+        "label": "known:ip-hospital-18h",
+        "claim": "The Hospital Important Points window is a TypeScript code constant of 18 h, not 12 h.",
+        "at": "apps/web/convex/lib/lifecycle.ts:10",
+        "gap": "ip-hospital-18h"
+      },
+      {
+        "run": 2,
+        "label": "known:ip-no-nh-window",
+        "claim": "SNF_RETENTION has no importantPoints entry, and nothing in the SNF lifecycle clears Nursing Home Important Points.",
+        "at": "apps/web/convex/lib/lifecycle.ts:30",
+        "gap": "ip-no-nh-window"
+      }
+    ],
+    "pendingOn": [
+      "Q1",
+      "Q12"
+    ],
+    "detail": "The Hospital Important Points window is set in code, as `importantPoints: 18 * HOUR` inside the TypeScript const `HOSPITAL_RETENTION` in apps/web/convex/lib/lifecycle.ts at line 10. The Hospital lifecycle purge reads it at line 138 and empties `importantPoints` and `importantPointsDraft` when it runs out. No Convex environment variable or settings row feeds it: no `process.env` retention or window lookup exists under convex/. Changing it takes a code edit and a deploy.\n\nNursing Home has no window at all. `SNF_RETENTION` (lines 30–38) has no `importantPoints` entry, and nothing in the Nursing Home lifecycle in lifecycle.ts clears Important Points.\n\nThe verdict is fail because the Hospital value of 18 h instead of 12 h is a recorded gap that waits on no question (known:ip-hospital-18h, TFA-92590 AC 6 / TFA-94699). Two other failing points are held back for open questions. The missing Nursing Home window (known:ip-no-nh-window) waits on Q1. Whether a named code constant counts as a configuration value waits on Q12.",
+    "detailRun2": "The Hospital window is set in apps/web/convex/lib/lifecycle.ts as `HOSPITAL_RETENTION.importantPoints: 18 * HOUR`, a TypeScript `as const` object. hospitalLifecyclePatch reads it to clear importantPoints and importantPointsDraft once 18 h have passed since the later of ptsEditedAt and notesProcessedAt. No code in convex/ reads a Convex environment variable or a settings row for this window, so changing it takes a code edit and a redeploy. Nursing Home has no window at all: SNF_RETENTION has no importantPoints entry, and the SNF lifecycle code never touches importantPoints, so Nursing Home points are never cleared by time. The verdict is fail because the Hospital value is 18 h, not 12 h (known:ip-hospital-18h, TFA-92590 AC 6 / TFA-94699), and that gap waits on no open question. The missing Nursing Home window is the recorded gap known:ip-no-nh-window, and its verdict waits on Q1. Whether a named code constant counts as a configuration value waits on Q12; the oracle records it as Fail pending Q12.",
+    "physicianImpact": "In Hospital mode, Important Points stay up to 18 h instead of 12 h, so last shift's points can still show on the next round. In Nursing Home mode, points never expire. Changing either window needs a code release. / In Hospital mode, Important Points stay on the patient card for 18 h instead of 12 h, so yesterday's points can still show on the next morning's round. In Nursing Home mode they never expire by time. An admin cannot shorten the window without a code release.",
+    "openQuestions": [
+      "Q12: does a named code constant (HOSPITAL_RETENTION.importantPoints) count as a 'configuration value' under UAT 3.6? Following the oracle, this is recorded as pending, not decided here.",
+      "Q1: should Nursing Home have its own 12 h Important Points window? SNF_RETENTION has none today.",
+      "Q12: does a named code constant (HOSPITAL_RETENTION) count as a 'configuration value' under UAT 3.6? The oracle records it as Fail pending Q12.",
+      "Q1: should Nursing Home have a 12 h Important Points window? There is none today (SNF_RETENTION has no entry)."
+    ],
+    "notDecidableByCode": [
+      "Whether the product owner accepts a named code constant as meeting 'configuration value, not hard-coded' (Q12).",
+      "The intended Nursing Home Important Points behaviour (Q1).",
+      "Whether the business accepts a named code constant as configuration (Q12).",
+      "The intended Nursing Home Important Points policy (Q1)."
+    ],
+    "checkedFindings": [
+      4,
+      4
+    ],
+    "discardedFindings": [
+      0,
+      0
+    ],
+    "costUsd": 0.2109142,
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-12-S29.json",
+      "runs/2026-10-14-local/code-review/raw/TC-12-S29.raw.json"
+    ]
+  }
+}

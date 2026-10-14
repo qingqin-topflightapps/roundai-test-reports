@@ -1,0 +1,329 @@
+{
+  "ref": "OAT-04/S01",
+  "title": "OAT-04 steps 1-2 as written (Hospital)",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:10:38.584Z",
+  "summary": {
+    "pass": 14,
+    "fail": 3,
+    "failKnown": 3,
+    "record": 1,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "A.preRound",
+      "item": "pre-round text processed 13 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 step 2 / Expected 1, TFA-94699 AC 1: absent from the raw document = pass; present in any form = Fail"
+    },
+    {
+      "id": "A.point",
+      "item": "Important Point written 13 h ago",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT OAT-04 step 2 / Expected 1, TFA-94699 AC 1: absent from the raw document = pass; present in any form = Fail",
+      "known": "K1: Hospital points clear at 18 h, not 12 h (lifecycle.ts:10, 131-143) — TFA-94699 AC 1"
+    },
+    {
+      "id": "A.vital",
+      "item": "BP 142/88 last refreshed 37 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 step 2 / Expected 1, TFA-94699 AC 1: absent from the raw document = pass; present in any form = Fail"
+    },
+    {
+      "id": "A.lab",
+      "item": "Cr 1.6 last refreshed 37 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 step 2 / Expected 1, TFA-94699 AC 1: absent from the raw document = pass; present in any form = Fail"
+    },
+    {
+      "id": "A.active",
+      "item": "active lisinopril last mentioned 37 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 step 2 / Expected 1, TFA-94699 AC 1: absent from the raw document = pass; present in any form = Fail"
+    },
+    {
+      "id": "A.held",
+      "item": "held metoprolol last refreshed 37 h ago (chart processed 37 h ago)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 step 2 / Expected 1, TFA-94699 AC 1: absent from the raw document = pass; present in any form = Fail"
+    },
+    {
+      "id": "A.openTask",
+      "item": "open task 'Recheck BMP' on a chart last processed 37 h ago",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT OAT-04 step 2 / Expected 1, TFA-94699 AC 1: absent from the raw document = pass; present in any form = Fail",
+      "known": "K2: open Hospital tasks are never purged (lifecycle.ts:220-227) — TFA-94699 AC 1"
+    },
+    {
+      "id": "handoff37.content",
+      "item": "handoff sent 37 h ago: its text and patient content (sender and recipient)",
+      "expected": "absent",
+      "observed": "present (row still there with fields _creationTime, _id, fromUserId, patientCount, readAt, sentAt, text, title, toUserId, variant)",
+      "verdict": "fail",
+      "oracle": "OAT-04 (B): handoffs deleted 36 h after sending; a surviving row may hold only what Q20 allows",
+      "known": "K3: handoffs are never purged (no delete in convex/handoffs.ts, crons.ts runs only the session sweep) — TFA-94699 AC 1 / AC 7"
+    },
+    {
+      "id": "handoff37.stub",
+      "item": "what of the 37 h handoff row remains",
+      "expected": "needs a decision: Q20 (TC-08 'persistent record' vs OAT-04 (B) delete)",
+      "observed": "full row: _creationTime, _id, fromUserId, patientCount, readAt, sentAt, text, title, toUserId, variant",
+      "verdict": "record"
+    },
+    {
+      "id": "B.preRound",
+      "item": "control pre-round 1 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "B.point",
+      "item": "control point 1 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "B.vital",
+      "item": "control BP 1 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "B.lab",
+      "item": "control Cr 1 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "B.active",
+      "item": "control active row 1 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "B.held",
+      "item": "control held row 1 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "B.task",
+      "item": "control open task 1 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "handoff1",
+      "item": "control handoff 1 h (sender and recipient)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    },
+    {
+      "id": "roster",
+      "item": "all three roster entries (charts + list rows)",
+      "expected": "present",
+      "observed": "present (3 charts, 3 list rows)",
+      "verdict": "pass",
+      "oracle": "Control: a 1 h item missing = Fail (deleted too early)"
+    }
+  ],
+  "blocked": [],
+  "notes": [],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "aged": [
+      [
+        {
+          "changed": [
+            "addedAt",
+            "notesProcessedAt",
+            "preRoundEditedAt",
+            "ptsEditedAt"
+          ],
+          "id": "kx73f35gykctcyw2pfncgx9g1h8g8esk"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "addedAt",
+            "labsUpdatedAt",
+            "medications[0].updatedAt",
+            "medications[1].updatedAt",
+            "medicationsUpdatedAt",
+            "notesProcessedAt",
+            "tasks[0].createdAt",
+            "vitalsUpdatedAt"
+          ],
+          "id": "kx73pyxbhcwac339hpbf0943xh8g89z1"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "addedAt",
+            "labsUpdatedAt",
+            "medications[0].updatedAt",
+            "medications[1].updatedAt",
+            "medicationsUpdatedAt",
+            "notesProcessedAt",
+            "preRoundEditedAt",
+            "ptsEditedAt",
+            "tasks[0].createdAt",
+            "vitalsUpdatedAt"
+          ],
+          "id": "kx7adynqhh94czh6esmcqs2ke98g9cx2"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "sentAt"
+          ],
+          "id": "jn72akrs9tykgbqaj0010ntr4d8g94hs"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "sentAt"
+          ],
+          "id": "jn7d2a9pgwg66r30cah28rmz1n8g8t2r"
+        }
+      ]
+    ],
+    "purge": {
+      "physician": 2,
+      "colleague": 0,
+      "cron": {
+        "agedOut": 0,
+        "expired": 0
+      }
+    },
+    "rawAfter": {
+      "aShort": {
+        "_id": "kx73f35gykctcyw2pfncgx9g1h8g8esk",
+        "name": "QA Hosp Retention A",
+        "preRoundNotes": "",
+        "rawPreRoundNotes": "",
+        "preRoundError": null,
+        "notesProcessedAt": "2026-10-13T17:10:34.941Z",
+        "preRoundEditedAt": 1791911434941,
+        "importantPoints": [
+          {
+            "id": "p-28",
+            "source": "manual",
+            "text": "Call daughter re code status"
+          }
+        ],
+        "ptsEditedAt": 1791911434941,
+        "status": "pending"
+      },
+      "aLong": {
+        "_id": "kx73pyxbhcwac339hpbf0943xh8g89z1",
+        "name": "QA Hosp Retention A (day-1 items)",
+        "notesProcessedAt": "2026-10-12T17:10:34.941Z",
+        "tasks": [
+          {
+            "createdAt": "2026-10-12T17:10:34.941Z",
+            "done": false,
+            "id": "t-open",
+            "text": "Recheck BMP"
+          }
+        ],
+        "vitals": {},
+        "vitalsUpdatedAt": "2026-10-12T17:10:34.941Z",
+        "labs": [],
+        "labsUpdatedAt": "2026-10-12T17:10:34.941Z",
+        "medications": [],
+        "medicationsUpdatedAt": "2026-10-12T17:10:34.941Z"
+      },
+      "b": {
+        "_id": "kx7adynqhh94czh6esmcqs2ke98g9cx2",
+        "name": "QA Hosp Retention B",
+        "preRoundNotes": "Overnight: afebrile, tolerating diet (B)",
+        "rawPreRoundNotes": "Overnight: afebrile, tolerating diet (B)",
+        "notesProcessedAt": "2026-10-14T05:10:34.941Z",
+        "preRoundEditedAt": 1791954634941,
+        "importantPoints": [
+          {
+            "id": "p-32",
+            "source": "manual",
+            "text": "Call daughter re code status (B)"
+          }
+        ],
+        "ptsEditedAt": 1791954634941,
+        "tasks": [
+          {
+            "createdAt": "2026-10-14T05:10:34.941Z",
+            "done": false,
+            "id": "t-open",
+            "text": "Recheck BMP"
+          }
+        ],
+        "vitals": {
+          "bp": "142/88"
+        },
+        "vitalsUpdatedAt": "2026-10-14T05:10:34.941Z",
+        "labs": [
+          {
+            "name": "Cr",
+            "value": "1.6"
+          }
+        ],
+        "labsUpdatedAt": "2026-10-14T05:10:34.941Z",
+        "medications": [
+          {
+            "id": "m-act",
+            "name": "lisinopril 10 mg daily",
+            "status": "active",
+            "updatedAt": "2026-10-14T05:10:34.941Z"
+          },
+          {
+            "id": "m-held",
+            "name": "metoprolol 25 mg, held for bradycardia",
+            "status": "held",
+            "updatedAt": "2026-10-14T05:10:34.941Z"
+          }
+        ],
+        "medicationsUpdatedAt": "2026-10-14T05:10:34.941Z"
+      }
+    }
+  }
+}

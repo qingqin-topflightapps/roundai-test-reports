@@ -1,0 +1,106 @@
+{
+  "ref": "TC-02/S13a",
+  "part": "nursing-home",
+  "at": "2026-10-14T07:01:01.627Z",
+  "scan": "vision answered at the Convex socket with the n-day2-overlap rows (trackActionRequests)",
+  "cells": [
+    {
+      "cell": "the scan sheet marks QA Juniper's own row as already in the panel",
+      "expected": "QA Juniper row '✓ In panel' and '1 already in All Residents'",
+      "actual": {
+        "juniperRow": "✓ In panel",
+        "summary": "1 already in All Residents · 4 new · 0 to review"
+      },
+      "verdict": "pass",
+      "req": "U4",
+      "note": "Not judged here: the UAT wording 'N patients are already on your list' with an 'add only the new ones' option (U4 is gated, TFA-92580 rejected by QA)."
+    },
+    {
+      "cell": "QA Juniper's chart equals its control's retention-adjusted state (chronic medication, open task, status)",
+      "expected": "{\"encType\":\"follow-up\",\"tasks\":[\"QA-TASK-AGED\"],\"meds\":[\"Metoprolol tartrate 25 mg PO BID\"],\"vitals\":null,\"preRoundNotes\":null,\"status\":\"pre-rounded\"}",
+      "actual": {
+        "encType": "follow-up",
+        "tasks": [
+          "QA-TASK-AGED"
+        ],
+        "meds": [
+          "Metoprolol tartrate 25 mg PO BID"
+        ],
+        "vitals": null,
+        "preRoundNotes": null,
+        "status": "pre-rounded"
+      },
+      "verdict": "pass",
+      "req": "U5"
+    },
+    {
+      "cell": "chronic medication and open task persist on the overlapped resident",
+      "expected": "present",
+      "actual": {
+        "encType": "follow-up",
+        "tasks": [
+          "QA-TASK-AGED"
+        ],
+        "meds": [
+          "Metoprolol tartrate 25 mg PO BID"
+        ],
+        "vitals": null,
+        "preRoundNotes": null,
+        "status": "pre-rounded"
+      },
+      "verdict": "pass",
+      "req": "U5"
+    },
+    {
+      "cell": "New Admission set yesterday has turned to Follow-up",
+      "expected": "follow-up on both",
+      "actual": {
+        "juniper": "follow-up",
+        "yarrow": "follow-up"
+      },
+      "verdict": "pass",
+      "req": "U6"
+    },
+    {
+      "cell": "new residents are Follow-up",
+      "expected": "4 new rows, Follow-up",
+      "actual": [
+        {
+          "name": "QA Kale",
+          "encType": "follow-up"
+        },
+        {
+          "name": "QA Larch",
+          "encType": "follow-up"
+        },
+        {
+          "name": "QA Maple",
+          "encType": "follow-up"
+        },
+        {
+          "name": "QA Nettle",
+          "encType": "follow-up"
+        }
+      ],
+      "verdict": "pass",
+      "req": "U11"
+    },
+    {
+      "cell": "QA Juniper added only once",
+      "expected": "1",
+      "actual": 1,
+      "verdict": "pass",
+      "req": "U4"
+    },
+    {
+      "cell": "QA Juniper's unit after the photo (Cedar 19) and the control leaving Today's Visits (Q6/Q7)",
+      "expected": "recorded",
+      "actual": {
+        "juniperUnit": "Cedar 10",
+        "yarrowInToday": false
+      },
+      "verdict": "record",
+      "req": "U4"
+    }
+  ]
+}

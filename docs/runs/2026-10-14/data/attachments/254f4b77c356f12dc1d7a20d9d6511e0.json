@@ -1,0 +1,22 @@
+{
+  "TC-14/S24": {
+    "ref": "TC-14/S24",
+    "method": "STATIC",
+    "status": "needs-doc",
+    "detail": "Prompt parity vs p72 (whitespace-normalised, sentence by sentence; placeholders and ${...} are gaps (scripts/code-review/parity.mjs)): note/clinical-quality.md: differs (segments 0/1, sentences 201/231 verbatim, 1 changed, 29 new, 3 p72 sentences not in the library); note/patient-context.md: differs (segments 11/13, sentences 212/217 verbatim, 2 changed, 3 new, 24 p72 sentences not in the library); note/snf-patient-context.md: differs (segments 1/7, sentences 3/10 verbatim, 0 changed, 7 new, 0 p72 sentences not in the library); templates/soap.md: identical (segments 1/1, sentences 7/7 verbatim, 0 changed, 0 new, 0 p72 sentences not in the library); templates/hp.md: identical (segments 1/1, sentences 7/7 verbatim, 0 changed, 0 new, 0 p72 sentences not in the library); templates/consult.md: identical (segments 1/1, sentences 8/8 verbatim, 0 changed, 0 new, 0 p72 sentences not in the library); templates/discharge.md: identical (segments 1/1, sentences 4/4 verbatim, 0 changed, 0 new, 0 p72 sentences not in the library); templates/snf-progress.md: differs (segments 0/1, sentences 1/7 verbatim, 1 changed, 5 new, 1 p72 sentences not in the library); templates/snf-admission.md: differs (segments 0/1, sentences 0/5 verbatim, 1 changed, 4 new, 1 p72 sentences not in the library). T7 (Mistral carries the same guardrail as Haiku) is the CODEREVIEW of OAT-03/S23.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/static/parity-TC-14-S24.json",
+      "runs/2026-10-14-local/code-review/TC-14-S24.json"
+    ],
+    "differingPrompts": [
+      "apps/web/convex/ai/prompts/library/v1/note/clinical-quality.md",
+      "apps/web/convex/ai/prompts/library/v1/note/patient-context.md",
+      "apps/web/convex/ai/prompts/library/v1/note/snf-patient-context.md",
+      "apps/web/convex/ai/prompts/library/v1/templates/snf-progress.md",
+      "apps/web/convex/ai/prompts/library/v1/templates/snf-admission.md"
+    ],
+    "needsDoc": "Vikram's approval on record for each listed difference (none of these approvals is in the repo; docs/2026-10-03-vikram-prompt-batch.md lists changes still waiting for him)",
+    "secondary": "CODEREVIEW",
+    "seeAlso": "T7 (Mistral uses the same Bedrock guardrail as Haiku) = OAT-03/S23's code review."
+  }
+}

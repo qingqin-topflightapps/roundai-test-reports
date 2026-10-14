@@ -1,0 +1,71 @@
+{
+  "ref": "TC-20/S04a",
+  "title": "TC-20/S04a Nursing Home: In Today yes/no decides who is counted (TFA-92587 AC 6)",
+  "dataset": "status",
+  "target": "dev",
+  "at": "2026-10-14T08:43:15.964Z",
+  "cells": [
+    {
+      "name": "Today's Visits (no search) lists every dataset resident who is In Today",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "Today's Visits (no search) lists no resident who is not In Today (n6, n7, n8)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "shown": []
+      }
+    },
+    {
+      "name": "no Hospital patient on the Nursing Home list",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "dashboard Total = residents In Today (19)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "got": {
+          "total": 22,
+          "pending": 7,
+          "inProgress": 9,
+          "complete": 6
+        },
+        "inToday": 19,
+        "allResidents": 22
+      },
+      "ref": "TFA-92587 AC 6"
+    },
+    {
+      "name": "dashboard Total vs all residents",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "total": 22,
+        "allResidents": 22,
+        "countsEveryResident": true
+      }
+    },
+    {
+      "name": "no Hospital patient on the Nursing Home dashboard",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    "evidence/TC-20-S04a-today.png",
+    "evidence/TC-20-S04a-dashboard.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-20-S04a-today.png": 0,
+    "evidence/TC-20-S04a-dashboard.png": 0
+  }
+}

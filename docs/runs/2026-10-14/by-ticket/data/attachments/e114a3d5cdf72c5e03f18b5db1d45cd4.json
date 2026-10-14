@@ -1,0 +1,136 @@
+{
+  "TC-19/S13": {
+    "status": "failed",
+    "detail": "3/4 judged cells pass, 4 recorded. Fail: after visit 3: the Given row from visit 1 is gone (events kept for the last two visits) [U15; gate: blocked: TFA-94699 in progress]. Recorded: snfVisitDates after visit 3 (three device days expected) = [\"Mon Oct 12 2026\",\"Tue Oct 13 2026\",\"Wed Oct 14 2026\"] | after visit 3: amlodipine Changed tag (Q7) = {\"status\":\"changed\",\"changeDate\":\"Oct 12\",\"changedNote\":\"was: 5\"} | after visit 3: metformin Held tag with its visit-1 date and reason (Q7) = {\"status\":\"held\",\"changeDate\":\"Oct 12\",\"changedNote\":\"poor intake\"} | silent visits 2 and 3: rows re-dated by the save = [].",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-19-S13/cells-main.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S13/after-visit2-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S13/after-visit3-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S13/visits.json"
+    ],
+    "counts": {
+      "judged": 4,
+      "pass": 3,
+      "fail": 1,
+      "recorded": 4,
+      "notRun": 0,
+      "notDiscriminating": 0
+    },
+    "cells": [
+      {
+        "part": "main",
+        "cell": "positive control: visits 2 and 3 Save Notes processed (notesProcessedAt moved, preRoundError empty)",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "both processed (else the run is Invalid)",
+        "actual": {
+          "visit2": {
+            "notesProcessedAtBefore": "2026-10-12T01:00:00.000Z",
+            "notesProcessedAtAfter": "2026-10-13T01:00:00.000Z",
+            "preRoundError": null,
+            "processed": true
+          },
+          "visit3": {
+            "notesProcessedAtBefore": "2026-10-13T01:00:00.000Z",
+            "notesProcessedAtAfter": "2026-10-14T07:51:54.640Z",
+            "preRoundError": null,
+            "processed": true
+          }
+        }
+      },
+      {
+        "part": "main",
+        "cell": "snfVisitDates after visit 3 (three device days expected)",
+        "gate": null,
+        "verdict": "record",
+        "expected": "3 distinct days",
+        "actual": [
+          "Mon Oct 12 2026",
+          "Tue Oct 13 2026",
+          "Wed Oct 14 2026"
+        ]
+      },
+      {
+        "part": "main",
+        "cell": "after visit 2: everything from visit 1 still shown",
+        "req": "U15",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "ceftriaxone Given, amlodipine, metformin held, donepezil",
+        "actual": [
+          "Donepezil 10 mg PO nightly [active]",
+          "Amlodipine 10 mg PO daily [changed · Oct 12]",
+          "Ceftriaxone 1 g IM once [single-dose · Oct 12]",
+          "Metformin 500 mg PO BID [held · Oct 12]"
+        ]
+      },
+      {
+        "part": "main",
+        "cell": "after visit 3: the Given row from visit 1 is gone (events kept for the last two visits)",
+        "req": "U15",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "gone",
+        "actual": {
+          "changeDate": "Oct 12",
+          "changeType": "given",
+          "changed": true,
+          "id": "m-cef",
+          "name": "Ceftriaxone 1 g IM once",
+          "status": "single-dose",
+          "updatedAt": "2026-10-12T01:00:00.000Z"
+        }
+      },
+      {
+        "part": "main",
+        "cell": "after visit 3: donepezil and amlodipine persist (chronic list)",
+        "req": "U15",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "both present",
+        "actual": [
+          "Donepezil 10 mg PO nightly",
+          "Amlodipine 10 mg PO daily",
+          "Ceftriaxone 1 g IM once",
+          "Metformin 500 mg PO BID"
+        ]
+      },
+      {
+        "part": "main",
+        "cell": "after visit 3: amlodipine Changed tag (Q7)",
+        "req": "U15",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "record",
+        "expected": "recorded until Q7",
+        "actual": {
+          "status": "changed",
+          "changeDate": "Oct 12",
+          "changedNote": "was: 5"
+        }
+      },
+      {
+        "part": "main",
+        "cell": "after visit 3: metformin Held tag with its visit-1 date and reason (Q7)",
+        "req": "T5",
+        "gate": null,
+        "verdict": "record",
+        "expected": "recorded until Q7",
+        "actual": {
+          "status": "held",
+          "changeDate": "Oct 12",
+          "changedNote": "poor intake"
+        }
+      },
+      {
+        "part": "main",
+        "cell": "silent visits 2 and 3: rows re-dated by the save",
+        "gate": null,
+        "verdict": "record",
+        "expected": "none",
+        "actual": [],
+        "note": "positive control above"
+      }
+    ],
+    "productIssue": "Known (TFA-94699 in progress, U15): after visit 3 the visit-1 'Ceftriaxone 1 g IM once' Given row is still on the resident's Medications panel. Main keeps 3 visits; UAT 3.6 says the last two."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "OAT-01/S25": {
+    "status": "passed",
+    "detail": "QA-Case-<tag>@RoundAI.test signs in (200) with a code issued for the lower-case form; the stored email is lower-case; after sign-out the lower-case address signs in to the SAME user id; the acceptance made on the first sign-in is found (acceptedVersion = version 2026-10-05, screen not due); exactly one Better Auth user row for the address (read with the convex CLI from the betterAuth component). Re-run in final2 after making the user-row read robust (filtered by the test's own address; rows split by another job's raw newline are joined back): still exactly one row, same user id.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s25.json",
+      "runs/2026-10-14-local/newspec-a/final2.json"
+    ]
+  }
+}

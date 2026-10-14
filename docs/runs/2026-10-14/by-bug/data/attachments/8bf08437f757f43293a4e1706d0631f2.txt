@@ -1,0 +1,81 @@
+- generic [ref=e6]:
+  - generic [ref=e7]: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+  - generic [ref=e793]:
+    - generic [ref=e794]:
+      - generic [ref=e795]:
+        - button "Back to patient list" [ref=e796]
+        - generic [ref=e799]:
+          - heading "QA TC-17-S26 QA Hosp Ana 766P" [level=2] [ref=e800]
+          - paragraph [ref=e801]: Room 412 · 74y · —
+        - generic "Admission status" [ref=e802]:
+          - generic [ref=e804] [cursor=pointer]:
+            - text: Follow-up
+            - generic [ref=e805]: ▾
+          - combobox "Admission status" [ref=e806] [cursor=pointer]:
+            - option "New Admission"
+            - option "Follow-up" [selected]
+            - option "Consult"
+      - paragraph [ref=e807]: Community-acquired pneumonia
+      - generic [ref=e808]:
+        - button "Pre-Round" [ref=e809]
+        - button "Encounter" [ref=e813]
+        - button "Post-Round" [ref=e817]
+    - generic [ref=e891]:
+      - generic [ref=e956]:
+        - generic [ref=e959]:
+          - heading "Ask About This Patient" [level=3] [ref=e969]
+          - button [ref=e970]
+        - generic [ref=e974]:
+          - generic [ref=e975]:
+            - textbox "Type your question or tap Dictate below…" [ref=e976]: What's in the plan section?
+            - generic [ref=e977]:
+              - button "Dictate" [ref=e978]
+              - button "Ask AI →" [ref=e999]
+          - generic [ref=e986]:
+            - paragraph [ref=e987]: Quick questions
+            - generic [ref=e988]:
+              - button "What were today's labs?" [ref=e989]
+              - button "What medications is the patient on?" [ref=e990]
+              - button "What was in the pre-round note?" [ref=e991]
+              - button "Any urgent pending tasks?" [ref=e992]
+              - button "What's the current diagnosis?" [ref=e993]
+              - button "What did the patient say about symptoms?" [ref=e994]
+          - generic [ref=e1003]:
+            - generic [ref=e1004]: Patient Record
+            - paragraph [ref=e1014]: "Based on the SOAP note, the plan includes: 1. **Community-acquired pneumonia**: Continue ceftriaxone for day 3 of a 5-day course (patient's cough is improving with mild pleuritic pain on deep breath). 2. **Acute kidney injury** (Cr 1.4, up from 1.1): Hold lisinopril and repeat basic metabolic panel in the morning. 3. **Pending medication order**: Start metoprolol 12.5 mg PO BID (flagged as \"QA-ASK-EDIT,\" indicating this requires review/confirmation). Note: The PENDING TASKS section shows \"None,\" so there are no formally documented pending action items beyond these plan elements."
+      - generic [ref=e893]:
+        - button "Start bedside recording" [ref=e894]
+        - generic [ref=e898]:
+          - paragraph [ref=e899]: Tap the mic to capture the encounter
+          - group "Recorder mode" [ref=e900]:
+            - button "Tap to toggle" [pressed] [ref=e901]
+            - button "Hold to talk" [ref=e902]
+      - button "Ask About Pre-Round Info or Labs" [ref=e903]
+      - generic [ref=e913]:
+        - generic [ref=e914]:
+          - generic [ref=e915]: Encounter Notes
+          - button "Full screen" [ref=e917]
+        - generic [ref=e923]:
+          - textbox "Encounter observations" [ref=e924]:
+            - /placeholder: Dictate or type reassessment updates, exam findings, plan changes…
+          - generic [ref=e925]:
+            - button "Dictate" [ref=e926]
+            - button "Save & Extract" [disabled]
+      - generic [ref=e930]:
+        - generic [ref=e931]:
+          - generic [ref=e932]:
+            - generic [ref=e933]: Tasks
+            - generic [ref=e934]: 0 pending
+          - generic [ref=e935]:
+            - button "Dictate" [ref=e936]
+            - button "Add" [ref=e940]
+        - paragraph [ref=e944]: No pending tasks — tap Add or Dictate to create one.
+      - generic [ref=e945]:
+        - generic [ref=e946]: Note Format
+        - combobox "Note Format" [ref=e948]:
+          - option "H&P"
+          - option "SOAP progress" [selected]
+          - option "Consult note"
+          - option "Discharge summary"
+        - paragraph [ref=e949]: Standard Subjective · Objective · Assessment · Plan
+      - button "Regenerate Note" [ref=e950]

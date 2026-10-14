@@ -1,0 +1,1178 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-14T06:20:21.698Z",
+  "capture": "runs/2026-10-14-local/aicheck-other/course-entry-HT1-judge/TC-11-S15-H-T1.capture.json",
+  "captureSha256": "584110d6e6b55ebaabd4ea8aec1faa00283abbc45d6d1448ca864df1dc5e821e",
+  "captureContentSha256": "f7d31c2289bc248838dff92cec837aa4c9f1f8172f2b2874b8c1ca8b1c854eb1",
+  "scenario": {
+    "raw": "TC-11 S15 H-T1",
+    "tc": "TC-11",
+    "id": "S15",
+    "fixture": "H-T1"
+  },
+  "outputType": "timeline",
+  "mode": "Hospital",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "e02167f",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "T1",
+                  "T3",
+                  "T4"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "interim GK8: the visit's completed note (+ earlier entries for U6)",
+    "sent": [
+      "visitNote",
+      "earlierEntries",
+      "today"
+    ],
+    "notSent": [],
+    "notes": []
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "T1",
+      "T3",
+      "T4"
+    ],
+    "sha256": "94cb082ac12721f9426e268271448b7bfba49c3422b7e003fe36b141d193694e",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nTHE VISIT'S COMPLETED NOTE:\nSUBJECTIVE: Abdomen feels less tight today. Eating better.\nOBJECTIVE: BP 108/64, HR 84. Abdomen mildly distended, non-tender. Weight 79.2 kg.\nASSESSMENT AND PLAN: Cirrhosis with ascites, improving. Continue spironolactone 100 mg and furosemide 40 mg daily, 2 g sodium diet. Lactulose to two to three stools daily.\n\nEARLIER TIMELINE ENTRIES (for the dates of earlier facts only):\n[1] Oct 11: Admitted with tense ascites\n[2] Oct 12: Paracentesis 4 L, tolerated well\n\nTODAY'S DATE:\n2026-10-14\n</sources>\n\nOUTPUT TO GRADE (course timeline entry, Hospital):\n<output>\nOct 14: Alcohol-related cirrhosis with ascites improving post-paracentesis; continuing diuretics and lactulose with dietary sodium restriction\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nT1: The entry states no procedure, start, change, consult, or disposition that the visit's note does not state.\nT3: No signature blocks or placeholders in any entry.\nT4: Hospital: only today and yesterday appear.\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-14T06:20:02.234Z",
+      "durationMs": 16224,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":10159,\"stop_reason\":\"tool_use\",\"session_id\":\"115e9ca9-e6de-48cb-9400-421220a7b66a\",\"total_cost_usd\":0.039022,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":1920,\"cache_read_input_tokens\":770,\"output_tokens\":1175,\"output_tokens_details\":{\"thinking_tokens\":207},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":1920,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":1175,\"cache_read_input_tokens\":770,\"cache_creation_input_tokens\":1920,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":1920},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":1175,\"cacheReadInputTokens\":770,\"cacheCreationInputTokens\":1920,\"webSearchRequests\":0,\"costUSD\":0.039022,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":207,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Alcohol-related cirrhosis\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"Nothing in the sources says the cirrhosis is alcohol-related. The cause was invented.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Alcohol-related cirrhosis with ascites\\\",\\\"source_quote\\\":\\\"Cirrhosis with ascites, improving.\\\",\\\"why\\\":\\\"The output adds a cause (alcohol-related) to the diagnosis. The source does not state one.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The entry contains no numbers.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No values or units appear, so no unit was guessed.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"continuing diuretics and lactulose\\\",\\\"source_quote\\\":\\\"Continue spironolactone 100 mg and furosemide 40 mg daily... Lactulose to two to three stools daily.\\\",\\\"why\\\":\\\"Both drug statuses read as continued, which matches the source.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"improving post-paracentesis\\\",\\\"source_quote\\\":\\\"[2] Oct 12: Paracentesis 4 L, tolerated well\\\",\\\"why\\\":\\\"The paracentesis was done on Oct 12, but the Oct 14 entry mentions it with no date.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Nothing planned is written as done. The paracentesis really was done on Oct 12.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No narration about documentation.\\\"},{\\\"id\\\":\\\"T1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"post-paracentesis\\\",\\\"source_quote\\\":\\\"ASSESSMENT AND PLAN: Cirrhosis with ascites, improving. Continue spironolactone...\\\",\\\"why\\\":\\\"The entry names a procedure (paracentesis) that today's note does not mention.\\\"},{\\\"id\\\":\\\"T3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No signature blocks or placeholders.\\\"},{\\\"id\\\":\\\"T4\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"post-paracentesis\\\",\\\"source_quote\\\":\\\"[2] Oct 12: Paracentesis 4 L, tolerated well\\\",\\\"why\\\":\\\"The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"Alcohol-related cirrhosis\",\"source_quote\":\"no source\",\"why\":\"Nothing in the sources says the cirrhosis is alcohol-related. The cause was invented.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Alcohol-related cirrhosis with ascites\",\"source_quote\":\"Cirrhosis with ascites, improving.\",\"why\":\"The output adds a cause (alcohol-related) to the diagnosis. The source does not state one.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The entry contains no numbers.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No values or units appear, so no unit was guessed.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"continuing diuretics and lactulose\",\"source_quote\":\"Continue spironolactone 100 mg and furosemide 40 mg daily... Lactulose to two to three stools daily.\",\"why\":\"Both drug statuses read as continued, which matches the source.\"},{\"id\":\"U6\",\"verdict\":\"FAIL\",\"output_quote\":\"improving post-paracentesis\",\"source_quote\":\"[2] Oct 12: Paracentesis 4 L, tolerated well\",\"why\":\"The paracentesis was done on Oct 12, but the Oct 14 entry mentions it with no date.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Nothing planned is written as done. The paracentesis really was done on Oct 12.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No narration about documentation.\"},{\"id\":\"T1\",\"verdict\":\"FAIL\",\"output_quote\":\"post-paracentesis\",\"source_quote\":\"ASSESSMENT AND PLAN: Cirrhosis with ascites, improving. Continue spironolactone...\",\"why\":\"The entry names a procedure (paracentesis) that today's note does not mention.\"},{\"id\":\"T3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No signature blocks or placeholders.\"},{\"id\":\"T4\",\"verdict\":\"FAIL\",\"output_quote\":\"post-paracentesis\",\"source_quote\":\"[2] Oct 12: Paracentesis 4 L, tolerated well\",\"why\":\"The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":3811,\"type\":\"result\",\"duration_ms\":10494,\"uuid\":\"ed92b9f0-363d-4694-9f36-4a578310b6cb\",\"ttft_stream_ms\":2014,\"time_to_request_ms\":501,\"first_content_frame_ms\":2015,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-14T06:20:02.243Z",
+      "durationMs": 19444,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":12807,\"stop_reason\":\"tool_use\",\"session_id\":\"ab4683e9-a5eb-4834-9d99-f37fe2ac1d04\",\"total_cost_usd\":0.042746000000000006,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":1928,\"cache_read_input_tokens\":770,\"output_tokens\":1358,\"output_tokens_details\":{\"thinking_tokens\":349},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":1928,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":1358,\"cache_read_input_tokens\":770,\"cache_creation_input_tokens\":1928,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":1928},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":1358,\"cacheReadInputTokens\":770,\"cacheCreationInputTokens\":1928,\"webSearchRequests\":0,\"costUSD\":0.042746000000000006,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":349,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Alcohol-related cirrhosis\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"Nothing in the sources gives alcohol as the cause of the cirrhosis. The note says only 'Cirrhosis with ascites, improving.'\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Alcohol-related cirrhosis with ascites\\\",\\\"source_quote\\\":\\\"Cirrhosis with ascites, improving.\\\",\\\"why\\\":\\\"The entry adds a cause (alcohol-related) to a diagnosis that was dictated without one.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Oct 14\\\",\\\"source_quote\\\":\\\"2026-10-14\\\",\\\"why\\\":\\\"The only number is the date, and it matches today's date.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The entry has no values with units.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"continuing diuretics and lactulose with dietary sodium restriction\\\",\\\"source_quote\\\":\\\"Continue spironolactone 100 mg and furosemide 40 mg daily, 2 g sodium diet. Lactulose to two to three stools daily.\\\",\\\"why\\\":\\\"The medication status (continuing) matches the note. Nothing is started, stopped, or held.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"improving post-paracentesis\\\",\\\"source_quote\\\":\\\"[2] Oct 12: Paracentesis 4 L, tolerated well\\\",\\\"why\\\":\\\"The Oct 12 paracentesis appears in today's entry without its date.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Nothing planned is written as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The entry has no placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The entry has no narration about documentation.\\\"},{\\\"id\\\":\\\"T1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"post-paracentesis\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"Today's note does not mention a paracentesis, and it does not link the improvement to one. The procedure and the cause-and-effect claim both come from outside the visit note.\\\"},{\\\"id\\\":\\\"T3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The entry has no signature block or placeholder.\\\"},{\\\"id\\\":\\\"T4\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"post-paracentesis\\\",\\\"source_quote\\\":\\\"[2] Oct 12: Paracentesis 4 L, tolerated well\\\",\\\"why\\\":\\\"The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday (Oct 13).\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"Alcohol-related cirrhosis\",\"source_quote\":\"no source\",\"why\":\"Nothing in the sources gives alcohol as the cause of the cirrhosis. The note says only 'Cirrhosis with ascites, improving.'\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Alcohol-related cirrhosis with ascites\",\"source_quote\":\"Cirrhosis with ascites, improving.\",\"why\":\"The entry adds a cause (alcohol-related) to a diagnosis that was dictated without one.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Oct 14\",\"source_quote\":\"2026-10-14\",\"why\":\"The only number is the date, and it matches today's date.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The entry has no values with units.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"continuing diuretics and lactulose with dietary sodium restriction\",\"source_quote\":\"Continue spironolactone 100 mg and furosemide 40 mg daily, 2 g sodium diet. Lactulose to two to three stools daily.\",\"why\":\"The medication status (continuing) matches the note. Nothing is started, stopped, or held.\"},{\"id\":\"U6\",\"verdict\":\"FAIL\",\"output_quote\":\"improving post-paracentesis\",\"source_quote\":\"[2] Oct 12: Paracentesis 4 L, tolerated well\",\"why\":\"The Oct 12 paracentesis appears in today's entry without its date.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Nothing planned is written as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The entry has no placeholders.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The entry has no narration about documentation.\"},{\"id\":\"T1\",\"verdict\":\"FAIL\",\"output_quote\":\"post-paracentesis\",\"source_quote\":\"no source\",\"why\":\"Today's note does not mention a paracentesis, and it does not link the improvement to one. The procedure and the cause-and-effect claim both come from outside the visit note.\"},{\"id\":\"T3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The entry has no signature block or placeholder.\"},{\"id\":\"T4\",\"verdict\":\"FAIL\",\"output_quote\":\"post-paracentesis\",\"source_quote\":\"[2] Oct 12: Paracentesis 4 L, tolerated well\",\"why\":\"The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday (Oct 13).\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":5658,\"type\":\"result\",\"duration_ms\":12947,\"uuid\":\"685142ae-271e-4f43-9c9e-b941d1ab63dc\",\"ttft_stream_ms\":1802,\"time_to_request_ms\":501,\"first_content_frame_ms\":1803,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 10494,
+        "total_cost_usd": 0.039022,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 1920,
+        "cacheReadInputTokens": 770,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 12947,
+        "total_cost_usd": 0.042746000000000006,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 1928,
+        "cacheReadInputTokens": 770,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "T1",
+      "T2",
+      "T3",
+      "T4"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Alcohol-related cirrhosis",
+          "source_quote": "no source",
+          "why": "Nothing in the sources says the cirrhosis is alcohol-related. The cause was invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Alcohol-related cirrhosis",
+          "source_quote": "no source",
+          "why": "Nothing in the sources gives alcohol as the cause of the cirrhosis. The note says only 'Cirrhosis with ascites, improving.'",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Alcohol-related cirrhosis with ascites",
+          "source_quote": "Cirrhosis with ascites, improving.",
+          "why": "The output adds a cause (alcohol-related) to the diagnosis. The source does not state one.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Alcohol-related cirrhosis with ascites",
+          "source_quote": "Cirrhosis with ascites, improving.",
+          "why": "The entry adds a cause (alcohol-related) to a diagnosis that was dictated without one.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": []
+    },
+    {
+      "id": "U6",
+      "severity": "harm",
+      "deciding": true,
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "improving post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The paracentesis was done on Oct 12, but the Oct 14 entry mentions it with no date.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "improving post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The Oct 12 paracentesis appears in today's entry without its date.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK12"
+      ]
+    },
+    {
+      "id": "T1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "The entry states no procedure, start, change, consult, or disposition that the visit's note does not state.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "post-paracentesis",
+          "source_quote": "ASSESSMENT AND PLAN: Cirrhosis with ascites, improving. Continue spironolactone...",
+          "why": "The entry names a procedure (paracentesis) that today's note does not mention.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "post-paracentesis",
+          "source_quote": "no source",
+          "why": "Today's note does not mention a paracentesis, and it does not link the improvement to one. The procedure and the cause-and-effect claim both come from outside the visit note.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8"
+      ]
+    }
+  ],
+  "kitOnlyFails": [
+    {
+      "id": "T4",
+      "severity": "defect",
+      "verdict": "PASS",
+      "interim": {
+        "gk": [
+          "GK7"
+        ],
+        "rule": "by code only, over the displayed lines and the server's today; the judge's T4 is the kit's reading, beside"
+      },
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday (Oct 13).",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK7",
+        "GK13"
+      ]
+    }
+  ],
+  "kitOnlyUnsure": [],
+  "needsPerson": [],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Alcohol-related cirrhosis",
+          "source_quote": "no source",
+          "why": "Nothing in the sources says the cirrhosis is alcohol-related. The cause was invented."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Alcohol-related cirrhosis",
+          "source_quote": "no source",
+          "why": "Nothing in the sources gives alcohol as the cause of the cirrhosis. The note says only 'Cirrhosis with ascites, improving.'"
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Alcohol-related cirrhosis",
+          "source_quote": "no source",
+          "why": "Nothing in the sources says the cirrhosis is alcohol-related. The cause was invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Alcohol-related cirrhosis",
+          "source_quote": "no source",
+          "why": "Nothing in the sources gives alcohol as the cause of the cirrhosis. The note says only 'Cirrhosis with ascites, improving.'",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "Nothing in the sources says the cirrhosis is alcohol-related. The cause was invented."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Alcohol-related cirrhosis with ascites",
+          "source_quote": "Cirrhosis with ascites, improving.",
+          "why": "The output adds a cause (alcohol-related) to the diagnosis. The source does not state one."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Alcohol-related cirrhosis with ascites",
+          "source_quote": "Cirrhosis with ascites, improving.",
+          "why": "The entry adds a cause (alcohol-related) to a diagnosis that was dictated without one."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Alcohol-related cirrhosis with ascites",
+          "source_quote": "Cirrhosis with ascites, improving.",
+          "why": "The output adds a cause (alcohol-related) to the diagnosis. The source does not state one.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Alcohol-related cirrhosis with ascites",
+          "source_quote": "Cirrhosis with ascites, improving.",
+          "why": "The entry adds a cause (alcohol-related) to a diagnosis that was dictated without one.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The output adds a cause (alcohol-related) to the diagnosis. The source does not state one."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The entry contains no numbers."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Oct 14",
+          "source_quote": "2026-10-14",
+          "why": "The only number is the date, and it matches today's date."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The entry contains no numbers."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No values or units appear, so no unit was guessed."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The entry has no values with units."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "No values or units appear, so no unit was guessed."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "continuing diuretics and lactulose",
+          "source_quote": "Continue spironolactone 100 mg and furosemide 40 mg daily... Lactulose to two to three stools daily.",
+          "why": "Both drug statuses read as continued, which matches the source."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "continuing diuretics and lactulose with dietary sodium restriction",
+          "source_quote": "Continue spironolactone 100 mg and furosemide 40 mg daily, 2 g sodium diet. Lactulose to two to three stools daily.",
+          "why": "The medication status (continuing) matches the note. Nothing is started, stopped, or held."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "Both drug statuses read as continued, which matches the source."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "improving post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The paracentesis was done on Oct 12, but the Oct 14 entry mentions it with no date."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "improving post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The Oct 12 paracentesis appears in today's entry without its date."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "improving post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The paracentesis was done on Oct 12, but the Oct 14 entry mentions it with no date.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "improving post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The Oct 12 paracentesis appears in today's entry without its date.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "The paracentesis was done on Oct 12, but the Oct 14 entry mentions it with no date."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Nothing planned is written as done. The paracentesis really was done on Oct 12."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Nothing planned is written as done."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Nothing planned is written as done. The paracentesis really was done on Oct 12."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The entry has no placeholders."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No narration about documentation."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The entry has no narration about documentation."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "No narration about documentation."
+    },
+    {
+      "id": "T1",
+      "check": "The entry states no procedure, start, change, consult, or disposition that the visit's note does not state.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "post-paracentesis",
+          "source_quote": "ASSESSMENT AND PLAN: Cirrhosis with ascites, improving. Continue spironolactone...",
+          "why": "The entry names a procedure (paracentesis) that today's note does not mention."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "post-paracentesis",
+          "source_quote": "no source",
+          "why": "Today's note does not mention a paracentesis, and it does not link the improvement to one. The procedure and the cause-and-effect claim both come from outside the visit note."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "post-paracentesis",
+          "source_quote": "ASSESSMENT AND PLAN: Cirrhosis with ascites, improving. Continue spironolactone...",
+          "why": "The entry names a procedure (paracentesis) that today's note does not mention.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "post-paracentesis",
+          "source_quote": "no source",
+          "why": "Today's note does not mention a paracentesis, and it does not link the improvement to one. The procedure and the cause-and-effect claim both come from outside the visit note.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8"
+      ],
+      "why": "The entry names a procedure (paracentesis) that today's note does not mention."
+    },
+    {
+      "id": "T2",
+      "check": "One entry per completed visit, in date order, none duplicated. Nursing Home entries read \"Visit N, date,\" and a same-day revisit adds to that entry. Check by code.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": false,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [],
+      "code": {
+        "id": "T2",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "3 entries, in order, none twice",
+        "details": {
+          "lines": 3,
+          "entries": 3,
+          "notes": [],
+          "first": null
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK6",
+          "GK7"
+        ],
+        "rule": "by code over the stored ledger: the app's 'Visit N · date' / 'Visit N – date' labels and a same-day revisit on its own line pass"
+      },
+      "openQuestions": [
+        "GK6",
+        "GK7",
+        "GK13"
+      ],
+      "why": "code: 3 entries, in order, none twice"
+    },
+    {
+      "id": "T3",
+      "check": "No signature blocks or placeholders in any entry.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No signature blocks or placeholders."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The entry has no signature block or placeholder."
+        }
+      ],
+      "code": {
+        "id": "T3",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "3 entries, no signature or placeholder",
+        "details": {
+          "entries": 3,
+          "fromLedger": true
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: 3 entries, no signature or placeholder"
+    },
+    {
+      "id": "T4",
+      "check": "Hospital: only today and yesterday appear.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "FAIL",
+      "differs": true,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday (Oct 13)."
+        }
+      ],
+      "code": {
+        "id": "T4",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "only Oct 13 / Oct 14 on screen",
+        "details": {
+          "today": "Oct 14",
+          "yesterday": "Oct 13",
+          "shown": 1,
+          "undated": []
+        }
+      },
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "post-paracentesis",
+          "source_quote": "[2] Oct 12: Paracentesis 4 L, tolerated well",
+          "why": "The entry brings in an Oct 12 event, which is neither today (Oct 14) nor yesterday (Oct 13).",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK7"
+        ],
+        "rule": "by code only, over the displayed lines and the server's today; the judge's T4 is the kit's reading, beside"
+      },
+      "openQuestions": [
+        "GK7",
+        "GK13"
+      ],
+      "why": "code: only Oct 13 / Oct 14 on screen"
+    }
+  ],
+  "n6Wording": null,
+  "openQuestions": [
+    "GK12",
+    "GK13",
+    "GK7",
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

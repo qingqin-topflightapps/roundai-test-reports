@@ -1,0 +1,16 @@
+{
+  "ref": "OAT-01/S23",
+  "method": "DOC",
+  "status": "needs-doc",
+  "detail": "Static half (T13): biometric plugin none, secure-storage plugin none, NSFaceIDUsageDescription absent in apps/web/package.json / ios/App/App/Info.plist at e02167f → T13 Fail (known: TFA-94513 owns the work; TFA-92570 AC 3 is ready for qa — send back or move). Document half (U7/T11): the hosted Privacy Policy, Terms of Use and BAA pages (URLs in the legalAgreements row and PRIVACY_POLICY_URL) must be opened signed out and confirmed by a person; not fetched in this run.",
+  "build": "e02167f",
+  "at": "2026-10-14T06:53:05.000Z",
+  "evidence": [
+    "runs/2026-10-14-local/code-review/static/native-config.json"
+  ],
+  "halves": {
+    "T13": "fail (known)",
+    "documents": "needs-doc"
+  },
+  "needsDoc": "Privacy Policy, Terms of Use and BAA pages as hosted (Vikram's documents pending, Daniela 2026-10-05)"
+}

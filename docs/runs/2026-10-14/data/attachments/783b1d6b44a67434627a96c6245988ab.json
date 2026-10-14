@@ -1,0 +1,143 @@
+{
+  "ref": "TC-07/S01",
+  "title": "TC-07/S01 Hospital: three patients' tasks, one completed, on one screen and in Copy Text, no email",
+  "dataset": "status",
+  "target": "dev",
+  "at": "2026-10-14T08:44:24.580Z",
+  "cells": [
+    {
+      "name": "before the tick: every open task appears once, under its own patient (U1/U2)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "problems": [],
+        "groups": [
+          "Hosp Ana Rivera (Room 401): 2",
+          "Hosp Ben Okafor (Room 402): 2",
+          "Hosp Cara Lopez (Room 403): 1"
+        ]
+      }
+    },
+    {
+      "name": "each group shows its room / unit",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "Hosp Ana Rivera: Room 401",
+        "Hosp Ben Okafor: Room 402",
+        "Hosp Cara Lopez: Room 403"
+      ]
+    },
+    {
+      "name": "the Nursing Home resident's task (bleed probe) is not on this Task Export",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "found": []
+      }
+    },
+    {
+      "name": "no Email control and no mailto link (U9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "email": 0,
+        "mailto": 0
+      }
+    },
+    {
+      "name": "after ticking 'Follow up blood cultures': every open task appears once, under its own patient (U1/U2)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "problems": [],
+        "groups": [
+          "Hosp Ana Rivera (Room 401): 2",
+          "Hosp Ben Okafor (Room 402): 1",
+          "Hosp Cara Lopez (Room 403): 1"
+        ]
+      }
+    },
+    {
+      "name": "completed tasks are listed under Finished, each with its patient and room / unit (U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "missing": [],
+        "finished": [
+          "Review morning labs / Hosp Ana Rivera · Room 401",
+          "Follow up blood cultures / Hosp Ben Okafor · Room 402",
+          "Chest X-ray read / Hosp Cara Lopez · Room 403"
+        ]
+      }
+    },
+    {
+      "name": "on screen, each patient's open tasks sit above that patient's completed ones (same-patient pairs)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "pairs": 4,
+        "notAbove": []
+      }
+    },
+    {
+      "name": "on screen: every open task above every completed task (cross-patient order)",
+      "kind": "record",
+      "ok": null,
+      "detail": true,
+      "ref": "Q5"
+    },
+    {
+      "name": "Copy Text: every open task once, under its own patient's header (U1/U2, U10)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "problems": [],
+        "headers": [
+          "Hosp Ana Rivera — Room 401",
+          "Hosp Ben Okafor — Room 402",
+          "Hosp Cara Lopez — Room 403"
+        ]
+      }
+    },
+    {
+      "name": "Copy Text: the Nursing Home resident's task (bleed probe) is not in the copy",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Copy Text: no 'undefined' / 'null'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Copy Text: each completed task is in the copy, after that patient's open tasks, with its patient (same-patient pairs)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "problems": [
+          "'Review morning labs' not in the copy under Hosp Ana Rivera",
+          "'Chest X-ray read' not in the copy under Hosp Cara Lopez",
+          "'Follow up blood cultures' not in the copy under Hosp Ben Okafor"
+        ],
+        "completed": 3
+      },
+      "ref": "TFA-92585 (completed block is PR #106)"
+    },
+    {
+      "name": "Copy Text: every completed task below every open task (cross-patient order)",
+      "kind": "record",
+      "ok": null,
+      "detail": "no completed task in the copy",
+      "ref": "Q5"
+    }
+  ],
+  "shots": [
+    "evidence/TC-07-S01-screen.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-07-S01-screen.png": 0
+  }
+}

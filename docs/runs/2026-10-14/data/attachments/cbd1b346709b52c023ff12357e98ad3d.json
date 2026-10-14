@@ -1,0 +1,18 @@
+{
+  "TC-12/S23": {
+    "status": "failed",
+    "detail": "Re-run 17:10. Hospital −48 h: the point is stored on add, Save Note and open/close with ptsEditedAt −2880 min vs server; it is deleted by the next lifecycle pass (in this run the wrong-clock page's own reload ran it) and the normal-clock context shows nothing. Nursing Home −48 h: the point is kept and shown in both contexts, but stamped 48 h old (−2880 min), and the NH pre-round text saved under that clock was '' after the reload. Kiritimati +13 h (saved session refused, signed in again; see _observations): points survive in both modes and both contexts, but ptsEditedAt is +780 min vs server. Every run stores ptsEditedAt on the device clock (oracle: within ±2 min of server time).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s23/hospital-minus48h.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s23/snf-minus48h.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s23/hospital-kiritimati-plus13h.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s23/snf-kiritimati-plus13h.json"
+    ],
+    "productIssue": "Hospital: a physician whose phone clock is two days behind adds 'QA-CLOCK check telemetry'; it is stamped 48 h old and deleted at the next lifecycle pass, so it disappears from the chart for everyone. Nursing Home: the point is kept but stamped 48 h old, and the NH pre-round text saved under that clock was gone after reload. A clock 13 h ahead stamps points 13 h in the future (they outlive their expiry). Breaks TC-12 U8 (UAT 3.8, TFA-94699 AC 7: clocks use server time). Cause: ptsEditedAt is written from the browser's Date.now().",
+    "envReloads": {
+      "tests": 4,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    }
+  }
+}

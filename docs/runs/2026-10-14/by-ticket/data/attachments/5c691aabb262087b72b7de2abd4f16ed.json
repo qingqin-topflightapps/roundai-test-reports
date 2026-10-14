@@ -1,0 +1,45 @@
+{
+  "TC-07/S27": {
+    "status": "failed",
+    "detail": "Re-run 16:58–17:00 with --repeat-each=3 and evidence per repeat (…-rep<N>.json), plus a slow-link variant at 17:29. (a) Two ticks with no wait between the clicks (measured gap 0 ms; both clicks done within ~70 ms): the first tick is lost 6/6 (Hospital 'Repeat BMP in the morning', NH 'Recheck INR Friday' open in the store and on screen after reload). Same two ticks 400 ms apart on localhost (measured 403–405 ms): both stick 6/6. Same 400 ms gap over a 500 ms round trip (every sync-socket message delayed 250 ms each way, as on weak hospital cellular): the first tick is lost 6/6. (b) Another writer (API, the physician's JWT) adds a task, then a different task is ticked: ticked 13–30 ms after the write, the added task ('Follow up blood cultures' / 'Repeat CBC next week') is lost 5/6 (Hospital rep1, rep2; NH rep0–2; Hospital rep0 kept it); ticked after the added task shows (57–117 ms), both survive 6/6. The earlier run's unsuffixed files are kept under evidence/tc07-s27/_earlier-run-unsuffixed (one of them came from a passing repeat).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-hospital-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-hospital-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-hospital-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-rtt500-hospital-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-rtt500-hospital-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-rtt500-hospital-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-rtt500-snf-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-rtt500-snf-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-rtt500-snf-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-snf-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-snf-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-400ms-snf-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-hospital-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-hospital-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-hospital-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-snf-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-snf-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/a-snf-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-hospital-tick-after-the-added-task-shows-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-hospital-tick-after-the-added-task-shows-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-hospital-tick-after-the-added-task-shows-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-hospital-tick-right-after-the-write-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-hospital-tick-right-after-the-write-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-hospital-tick-right-after-the-write-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-snf-tick-after-the-added-task-shows-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-snf-tick-after-the-added-task-shows-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-snf-tick-after-the-added-task-shows-rep2.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-snf-tick-right-after-the-write-rep0.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-snf-tick-right-after-the-write-rep1.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc07-s27/b-snf-tick-right-after-the-write-rep2.json"
+    ],
+    "productIssue": "On Task Export (both modes), a second tick made before the first tick's write has come back from the server undoes the first: the task the physician ticked is open again after reload. On a good connection this needs two taps within the round trip (localhost: lost with no gap, kept 6/6 at 400 ms), but over a 500 ms round trip two ticks 400 ms apart lose the first one 6/6. Likewise a task added from another tab or device is dropped if the physician ticks a different task before the new task has appeared on this screen (lost 5/6 at 13–30 ms after the write; kept 6/6 once it shows). Breaks TC-07 U1/U2 (no open task lost, no completed task reverted). Cause: TasksOverlay.onToggleTask writes the whole tasks array built from the rendered list (patch {tasks: newTasks}) with no optimistic update.",
+    "envReloads": {
+      "tests": 30,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    },
+    "impact": "medium on slow links (two quick ticks lose one), low on good Wi-Fi"
+  }
+}

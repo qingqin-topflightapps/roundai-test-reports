@@ -1,0 +1,123 @@
+{
+  "case": "EFS-S06",
+  "title": "Generate is blocked exactly when today's pre-round has not been saved cleanly, in both contexts",
+  "needs": [
+    "seed",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s06-hosp-A-failed.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7ef8n1tshdhjafmpkab7ygfh8g8spt",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s06-hosp-B-processing.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7ardd82jfq7t7bp0ae975gj18g8fr7",
+      "problems": [
+        "missing \"Save Note\""
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s06-hosp-C-edited.md",
+      "verdict": "Pass",
+      "url": "/rounding/js75175haxennqqgqnbdf7p8h58g92rg",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s06-hosp-D-clean.md",
+      "verdict": "Pass",
+      "url": "/rounding/js76gx99020gpbvq1kpzgnb8tx8g9xqw",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s06-hosp-E-none.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7cmkm8255ptvqjg7r60g0mp18g9ntr",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q10: no expected result for a chart with no pre-round today) fail: missing \"button \"Generate Note & Finish\" [disabled]\"",
+        "(Q10) fail: missing \"Save Note\""
+      ]
+    },
+    {
+      "file": "s06-nh-A-failed.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7f4bh9gxwp1ncd82195nww2s8g88jf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s06-nh-D-clean.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72j269psw8zjhzg21b0szd6s8g8dmx",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app)) pass: backend hosp-before $ has 5 items",
+        "(seed precondition (harness, not app)) pass: backend snf-before $ has 2 items",
+        "(seed precondition (harness, not app): row A) pass: backend hosp-before [name={hospitalPatientA}].preRoundError contains \"structured summary failed\"",
+        "(seed precondition (harness, not app): row B) pass: backend hosp-before [name={hospitalPatientB}].preRoundProcessing = [true]",
+        "(seed precondition (harness, not app): row C was processed without the edit) pass: backend hosp-before [name={hospitalPatientC}].rawPreRoundNotes does not contain \"K 4.1\"",
+        "(seed precondition (harness, not app): row C shows the edit) pass: backend hosp-before [name={hospitalPatientC}].preRoundNotes contains \"K 4.1\"",
+        "(seed precondition (harness, not app): Nursing Home row A) pass: backend snf-before [name={snfResidentA}].preRoundError contains \"structured summary failed\"",
+        "(the read-only run changed nothing: row B is still processing) pass: backend hosp-after [name={hospitalPatientB}].preRoundProcessing = [true]",
+        "(no Hospital note was made during the read-only run (the Generate audit is the deciding rule)) pass: backend hosp-after [*].noteGeneratedAt has 0 items",
+        "(no Nursing Home note was made during the read-only run) pass: backend snf-after [*].noteGeneratedAt has 0 items"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "U11: on rows A, B, C and Nursing Home A, a person reads the screenshot and judges whether the message is plain language and says what to do next (Q3 for 'existing style')."
+  ],
+  "agent": {
+    "turns": 51,
+    "costUsd": 0.3853702,
+    "durationMs": 323556,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U59",
+  "covers": [
+    "EFS/S06"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u59",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U59.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

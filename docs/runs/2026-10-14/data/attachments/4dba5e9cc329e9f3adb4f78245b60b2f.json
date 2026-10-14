@@ -1,0 +1,13 @@
+{
+  "OAT-04/S04": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:15:30.904Z",
+    "detail": "17 judged items passed, 2 failed (2 known, 0 policy conflict, 0 not in the matrix knownGaps), 3 recorded against open questions — failed: V1.gone (any trace of visit 1 ('V1-7731': note, transcript, medication events): expected absent, got present (medications+previousNotes+transcriptHistory); known K7) | point13 (Important Point written 13 h ago: expected absent, got present; known K14) — record-only: doneTask17 = deleted [Q18 (NH completed tasks: no window in 3.6 NH or the ticket)] | handoff37 = kept with its text on both sides (sender recipient) [Q8 / Q20 (does 36 h apply to NH handoffs; what may remain)] | R2.where = encounter in transcriptHistory; note in previousNotes [Q17 (moved into the visit history or deleted; does the move count as a visit, Q9)] — notes: Visits are three back-dated visits (10, 5, 2 days ago) in snfVisitDates, transcriptHistory (archivedAt), previousNotes (addedAt) and one single-dose row per visit plus a visit-1 dose change; what counts as a visit is Q9.",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S04.json"
+    ],
+    "productIssue": "In the Nursing Home the oldest of three visits (its note, transcript and medication events) is still on the resident's chart, and a 13 h-old Important Point is still shown. Breaks UAT 3.6 Nursing Home 'last two visits' / OAT-04 (B) and TC-12 step 6. Known in the matrix: K7, K14."
+  }
+}

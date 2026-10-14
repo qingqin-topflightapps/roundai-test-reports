@@ -1,0 +1,52 @@
+{
+  "TC-03/S22": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 6 judged check(s) passed, 21 failed.",
+    "failed": [
+      {
+        "check": "axe serious/critical = 0",
+        "where": [
+          "desktop:hospital-no-match",
+          "desktop:hospital-search-typed",
+          "desktop:nh-all-residents",
+          "desktop:nh-no-match",
+          "desktop:nh-search-typed",
+          "iphone15:hospital-no-match",
+          "iphone15:hospital-search-typed",
+          "iphone15:nh-all-residents",
+          "iphone15:nh-no-match",
+          "iphone15:nh-search-typed",
+          "pixel7:hospital-no-match",
+          "pixel7:hospital-search-typed",
+          "pixel7:nh-all-residents",
+          "pixel7:nh-no-match",
+          "pixel7:nh-search-typed"
+        ],
+        "example": "color-contrast(serious,5×: .mb-0\\.5 | .hover\\:bg-teal-700); nested-interactive(serious,1×: .text-left)"
+      },
+      {
+        "check": "no-match message is a status message (role=status / aria-live)",
+        "where": [
+          "desktop:hospital-no-match",
+          "desktop:nh-no-match",
+          "iphone15:hospital-no-match",
+          "iphone15:nh-no-match",
+          "pixel7:hospital-no-match",
+          "pixel7:nh-no-match"
+        ],
+        "example": "not in a live region"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22/iphone15--hospital-no-match.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22/iphone15--hospital-search-typed.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22/iphone15--nh-all-residents.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S22/iphone15--nh-no-match.png"
+    ],
+    "productIssue": "'No patients match \"…\"' / 'No residents match \"…\"' is plain text, not a status message, so a screen-reader user who types a search hears nothing when nothing matches (WCAG 4.1.3; oracle predicted this Fail). Clear search is named. Same contrast / NH button-name violations in every search state."
+  }
+}

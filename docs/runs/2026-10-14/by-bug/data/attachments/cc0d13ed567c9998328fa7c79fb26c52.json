@@ -1,0 +1,100 @@
+{
+  "ref": "TC-23/S08",
+  "mode": "scripted",
+  "status": "failed",
+  "detail": "Scripted far end and scripted recovery: decides the app's retry, message, single-session and recovery behaviour. 7/9 decided cells pass; failing: E-4 nursing-home Pre-Round: channel closed after 'Creatinine 1.8, up from 1.2.' → recovered once, no second session, no error once recovered (field \"Creatinine 1.8, up from 1.2.\"; first sentence ×1; transcribeAudio calls 1; prepareSession calls 1 (stub); still 'Listening…' false; messages when the text landed [\"Live dictation disconnected.\"], 8 s later [\"Live dictation disconnected.\"]); E-4 nursing-home Encounter: channel closed after 'Creatinine 1.8, up from 1.2.' → recovered once, no second session, no error once recovered (field \"Creatinine 1.8, up from 1.2.\"; first sentence ×1; transcribeAudio calls 1; prepareSession calls 1 (stub); still 'Listening…' false; messages when the text landed [\"Live dictation disconnected.\"], 8 s later [\"Live dictation disconnected.\"]); not decided here: E-1/E-2 'text exact' and the E-4 whisper-1 transcript need the live engine (laneB-preconditions: key OK); E-4 on Hospital encounter notes and 'Start bedside recording' not built in this pass; E-5 forbidden",
+  "productIssue": "nursing-home Pre-Round, nursing-home Encounter: when a live dictation drops mid-take and the kept recording is recovered automatically, the words land in the box but the red error 'Live dictation disconnected. Review the last phrase before continuing.' stays on screen (still there 8 s after the text landed). Breaks TFA-94745 AC 4 / Quinn's 2026-10-05 rule (show an error only if recovery fails) — S08 E-4. Code read (reviewer): the NH Pre-Round tab passes no onError, so the global ClientErrorBanner shows it and never clears it; useEncounterDictation's captureError is not cleared by recover().",
+  "cells": [
+    {
+      "id": "E-1 hospital pre-round: connects, one prepareSession call, no transcribeAudio",
+      "pass": true,
+      "detail": "landed true; prepareSession calls 1 (stub); server rows []; transcribeAudio calls 0; notices []"
+    },
+    {
+      "id": "E-2 hospital pre-round: first connect rejected → one quiet retry, then ready, text in",
+      "pass": true,
+      "detail": "landed true; tap→ready 1311 ms; realtime/calls [\"rejected (fault)\",\"scripted far end\"]; prepareSession calls 2 (stub); server rows []; notices []"
+    },
+    {
+      "id": "E-3 hospital pre-round: both connects rejected → clear message ≤ ~31 s, field unchanged, no other engine, nothing queued",
+      "pass": true,
+      "detail": "message \"Live dictation couldn’t start.\" after 1631 ms; field unchanged true; prepareSession calls 2 (stub); transcribeAudio calls 0; server rows []; kept recordings 0"
+    },
+    {
+      "id": "E-3 nursing-home Pre-Round: both connects rejected → clear message ≤ ~31 s, field unchanged, no other engine, nothing queued",
+      "pass": true,
+      "detail": "message \"Live dictation couldn’t start.\" after 1591 ms; field unchanged true; prepareSession calls 2 (stub); transcribeAudio calls 0; server rows []; kept recordings 0"
+    },
+    {
+      "id": "E-3 nursing-home Encounter: both connects rejected → clear message ≤ ~31 s, field unchanged, no other engine, nothing queued",
+      "pass": true,
+      "detail": "message \"Live dictation couldn’t start.\" after 1542 ms; field unchanged true; prepareSession calls 2 (stub); transcribeAudio calls 0; server rows []; kept recordings 0"
+    },
+    {
+      "id": "E-4 hospital pre-round: channel closed after 'Creatinine 1.8, up from 1.2.' → recovered once, no second session, no error once recovered",
+      "pass": true,
+      "detail": "field \"Creatinine 1.8, up from 1.2.\"; first sentence ×1; transcribeAudio calls 1; prepareSession calls 1 (stub); still 'Listening…' false; messages when the text landed [], 8 s later []"
+    },
+    {
+      "id": "E-4 hospital Important Points: channel closed after 'Creatinine 1.8, up from 1.2.' → recovered once, no second session, no error once recovered",
+      "pass": true,
+      "detail": "field \"Creatinine 1.8, up from 1.2.\"; first sentence ×1; transcribeAudio calls 1; prepareSession calls 1 (stub); still 'Listening…' false; messages when the text landed [], 8 s later []"
+    },
+    {
+      "id": "E-4 nursing-home Pre-Round: channel closed after 'Creatinine 1.8, up from 1.2.' → recovered once, no second session, no error once recovered",
+      "pass": false,
+      "detail": "field \"Creatinine 1.8, up from 1.2.\"; first sentence ×1; transcribeAudio calls 1; prepareSession calls 1 (stub); still 'Listening…' false; messages when the text landed [\"Live dictation disconnected.\"], 8 s later [\"Live dictation disconnected.\"]"
+    },
+    {
+      "id": "E-4 nursing-home Encounter: channel closed after 'Creatinine 1.8, up from 1.2.' → recovered once, no second session, no error once recovered",
+      "pass": false,
+      "detail": "field \"Creatinine 1.8, up from 1.2.\"; first sentence ×1; transcribeAudio calls 1; prepareSession calls 1 (stub); still 'Listening…' false; messages when the text landed [\"Live dictation disconnected.\"], 8 s later [\"Live dictation disconnected.\"]"
+    },
+    {
+      "id": "E-6 every transcribe.* disclosure row names gpt-live-transcribe or whisper-1 (no Deepgram)",
+      "pass": null,
+      "detail": "not decided here: prepareSession was stubbed at the socket and transcribeAudio answered there, so S08 wrote no transcribe.* rows; configured route aiProvider:_current transcription=\"gpt-live\"; the real rows are in S21 and S24"
+    },
+    {
+      "id": "E-5 whisper route",
+      "pass": null,
+      "detail": "not run: needs aiProvider.transcription = whisper, which only aiProvider:_set can do (forbidden by CLAUDE.md); unit test 'Cloud follows the server's batch selection and never opens WebRTC' is the only evidence"
+    }
+  ],
+  "evidence": [
+    "raw/TC-23-S08.json",
+    "shots/S08-E-1-hospital-pre-round.png",
+    "shots/S08-E-2-hospital-pre-round.png",
+    "shots/S08-E-3-hospital-pre-round.png",
+    "shots/S08-E-3-nursing-home-Pre-Round.png",
+    "shots/S08-E-3-nursing-home-Encounter.png",
+    "shots/S08-E-4-hospital-pre-round.png",
+    "shots/S08-E-4-hospital-Important-Points.png",
+    "shots/S08-E-4-nursing-home-Pre-Round.png",
+    "shots/S08-E-4-nursing-home-Encounter.png"
+  ],
+  "pending": [
+    "E-1/E-2 'text exact' and the E-4 whisper-1 transcript need the live engine (laneB-preconditions: key OK)",
+    "E-4 on Hospital encounter notes and 'Start bedside recording' not built in this pass",
+    "E-5 forbidden"
+  ],
+  "at": "2026-10-14T08:14:37.337Z",
+  "meta": {
+    "commit": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "aiProvider": {
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "provider": "bedrock",
+      "transcription": "gpt-live",
+      "visionModel": "gemini-2.5-flash",
+      "visionProvider": "vertex"
+    },
+    "mode": "scripted"
+  },
+  "prepareSession": {
+    "requests": 13,
+    "stubbedAtSocket": 13,
+    "realOpenAIMints": 0,
+    "realFailed": 0,
+    "note": "stubbed at the Convex socket: nothing reached OpenAI"
+  }
+}

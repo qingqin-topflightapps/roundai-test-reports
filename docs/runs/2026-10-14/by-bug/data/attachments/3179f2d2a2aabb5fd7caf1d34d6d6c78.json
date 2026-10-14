@@ -1,0 +1,9 @@
+{
+  "TC-23/S03": {
+    "status": "blocked",
+    "detail": "laneB-preconditions not met: the local OPENAI_API_KEY ends …PUMA and there is no OK on record from Quinn that it is not the key dev uses (her 2026-10-09 notes say it may be), so no audio was sent to OpenAI. Run after that OK: QA_DICT_MODE=live QA_DICTATION_LIVE_OK=PUMA qa_tsx $QA_ROOT/scripts/aicheck-dictation/batch-transcribe.ts S03 S13. Built: 10 webm/opus clips (no lead-in silence) posted as {audio: $bytes, mimeType: 'audio/webm'} to ai/transcribe:transcribeAudio, S01/S02 checks, transcribe.transcribeAudio/whisper-1 rows; --dry run validated the 10 + 4 clips (no call made).",
+    "evidence": [
+      "raw/batch-dry.json"
+    ]
+  }
+}

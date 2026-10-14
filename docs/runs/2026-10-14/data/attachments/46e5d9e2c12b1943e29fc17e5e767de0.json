@@ -1,0 +1,348 @@
+{
+  "ref": "TC-03/S03",
+  "title": "TC-03/S03 Nursing Home search by name, unit/room and MRN in Today's Visits and All Residents",
+  "dataset": "lists",
+  "target": "dev",
+  "at": "2026-10-14T08:36:06.368Z",
+  "cells": [
+    {
+      "name": "NH today by name: 'NAMEWT' lists exactly nFindName",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  NAMEWT  ",
+        "shown": [
+          "QA DS1-lists Res Fqnamewt"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH today by name: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH today by name: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH all by name: 'NAMEWT' lists exactly nFindName",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  NAMEWT  ",
+        "shown": [
+          "QA DS1-lists Res Fqnamewt"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by name: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by name: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH today by unit: 'UNITWT' lists exactly nFindUnit",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  UNITWT  ",
+        "shown": [
+          "QA DS1-lists Res Unittoken"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH today by unit: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH today by unit: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH all by unit: 'UNITWT' lists exactly nFindUnit",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  UNITWT  ",
+        "shown": [
+          "QA DS1-lists Res Unittoken"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by unit: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by unit: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH today by mrn: 'MRNWT' lists exactly nFindMrn",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  MRNWT  ",
+        "shown": [
+          "QA DS1-lists Res Mrntoken"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH today by mrn: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH today by mrn: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH all by mrn: 'MRNWT' lists exactly nFindMrn",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  MRNWT  ",
+        "shown": [
+          "QA DS1-lists Res Mrntoken"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by mrn: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by mrn: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH Today's Visits (no search): nAllName (not In Today) is not listed",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "listed": false,
+        "witnessListed": true
+      }
+    },
+    {
+      "name": "NH Today's Visits search 'NAMEWA': nAllName (All Residents only) listed",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "listed": false
+      },
+      "ref": "Q10"
+    },
+    {
+      "name": "NH all by name: 'NAMEWA' lists exactly nAllName",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  NAMEWA  ",
+        "shown": [
+          "QA DS1-lists Res Fqnamewa"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by name: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by name: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH Today's Visits (no search): nAllUnit (not In Today) is not listed",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "listed": false,
+        "witnessListed": true
+      }
+    },
+    {
+      "name": "NH Today's Visits search 'UNITWA': nAllUnit (All Residents only) listed",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "listed": false
+      },
+      "ref": "Q10"
+    },
+    {
+      "name": "NH all by unit: 'UNITWA' lists exactly nAllUnit",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  UNITWA  ",
+        "shown": [
+          "QA DS1-lists Res Allunit"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by unit: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by unit: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "NH Today's Visits (no search): nAllMrn (not In Today) is not listed",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "listed": false,
+        "witnessListed": true
+      }
+    },
+    {
+      "name": "NH Today's Visits search 'MRNWA': nAllMrn (All Residents only) listed",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "listed": false
+      },
+      "ref": "Q10"
+    },
+    {
+      "name": "NH all by mrn: 'MRNWA' lists exactly nAllMrn",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  MRNWA  ",
+        "shown": [
+          "QA DS1-lists Res Allmrn"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by mrn: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by mrn: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-03-S03-all-after-clear.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-03-S03-all-after-clear.png": 1
+  }
+}

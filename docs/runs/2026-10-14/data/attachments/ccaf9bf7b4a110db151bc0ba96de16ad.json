@@ -1,0 +1,62 @@
+{
+  "case": "TC-04-S18",
+  "title": "A placed box with orders, a med change and a 'Task:' code word creates no task, no medication row and no note",
+  "needs": [
+    "seed",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s18-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7e2879yyzejdwxscmn3bdbe18g78f8",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-preround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7e2879yyzejdwxscmn3bdbe18g78f8",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-postround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7e2879yyzejdwxscmn3bdbe18g78f8",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 25,
+    "costUsd": 0.1493748,
+    "durationMs": 48679,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

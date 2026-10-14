@@ -1,0 +1,21 @@
+{
+  "OAT-01/S05": {
+    "status": "passed",
+    "detail": "(b) Decline, then reuse after the /sign-out response: a session signed in through the form AND an injected session are both refused: sign-out 200 carrying this session's cookie, settings:get with the old JWT -> 'Not authenticated: session missing', Better Auth get-session -> null (final2 + 3 repeats each in s05b-repeat). (c) accepted on a browser at server+2 d, Pacific/Honolulu: acceptedAt inside the server-time bracket, not the device's date. (d) isolated backend: after agreements:_set {version 2026-11-01, attestation 'QA attestation v2'} the reload shows the consent screen with 'QA attestation v2', Continue disabled until both ticks, Continue stores documentVersion 2026-11-01; row restored. (e) Nursing Home (appMode snf before sign-in): identical screen text to Hospital, 2 boxes unticked, Continue disabled with none or one ticked, Decline -> sign-in screen, no acceptance and no aiConsentVersion stored. RECORD-ONLY (a), Q15: for an account that never accepted, ai/assist:askChart was ANSWERED (aiCallLog: assist.askChart, Haiku 4.5, ok) and rounding:add STORED a patient - the gate is on the screen only. Deviation from the matrix 'given': (a) made a live model call (1 per run, 3 in total) instead of an intercepted one; see the patch. Observation, not a verdict: in 1 of 7 injected-session runs, made while the shared backend was timing functions out (rerun-under-load.log, test '(b, injected session)'), sign-out answered 200 {success:true} yet the session stayed valid. Better Auth 1.5.6's sign-out catches a failed deleteSession and still answers success (node_modules/.../better-auth/dist/api/routes/sign-out.mjs), which would explain it; not reproduced in 6 later runs, backend log not captured.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-a.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-b2.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-b-injected.json",
+      "runs/2026-10-14-local/newspec-a/s05b-repeat.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-c.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-d.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-d-after-continue.png",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-e.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s05-e-nh-consent.png",
+      "runs/2026-10-14-local/newspec-a/final2.json",
+      "runs/2026-10-14-local/newspec-a/oat01-iso.json",
+      "runs/2026-10-14-local/newspec-a/rerun-under-load.log"
+    ],
+    "recordOnly": "(a) Q15: whether the server must refuse AI calls and PHI writes before acceptance"
+  }
+}

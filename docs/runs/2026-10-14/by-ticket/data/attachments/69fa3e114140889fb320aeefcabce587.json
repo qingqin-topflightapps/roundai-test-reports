@@ -1,0 +1,17 @@
+{
+  "TC-01/S20": {
+    "status": "failed",
+    "detail": "Nursing Home (API): pass — get null, no row names the id in any patient-linked table, audit for the patient = before + 1 delete row with the earlier PHI_READ kept, control unchanged. Hospital (API and card trash icon -> OK): chart, list projection and every other table clean, audit trail correct, control unchanged, BUT the Quick Dictation compartment placed on the deleted patient survives: quickDictationDrafts row with assignedPatientId = the deleted id, assignedLabel '412 · QA Hosp Del Target …', and the dictated text; the Quick Dictation screen after the delete still lists '412 · QA Hosp Del Target …' with Dictate / Re-assign. The confirm dialog read: 'Remove <name> from the rounding list? This will delete all notes, vitals, and encounter data for this patient.'",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s20-hospital-api.json",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s20-hospital-ui.json",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s20-snf-api.json",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s20-hospital-ui-dialog.txt",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s20-hospital-ui-after-ok.png",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s20-hospital-ui-quick-dictation-after.png",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s20-hospital-ui-quick-dictation-after.txt",
+      "runs/2026-10-14-local/newspec-a/final2.json"
+    ],
+    "productIssue": "After a physician deletes a Hospital patient (trash icon -> OK), opening Quick Dictation still shows a compartment labelled with the deleted patient's room and full name ('412 · <name>') holding what was dictated for them; the stored quickDictationDrafts row still points at the deleted chart. Fails TC-01/S20's oracle, which lists quickDictationDrafts among the patient-linked tables that must hold no row naming the id (TFA-92579 AC 2: 'immediately (hard delete, not hidden)'). deleteRoundingPatient (convex/rounding.ts) never touches quickDictationDrafts. Overlaps TC-24 Q6(a) (whether the compartment and its 'room · name' label must go) and is already listed in the TC-24 risks."
+  }
+}

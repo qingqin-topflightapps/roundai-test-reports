@@ -1,0 +1,24 @@
+{
+  "file": "convex/lib/lifecycle.ts",
+  "config": [
+    {
+      "n": 9,
+      "l": "  preRound: 12 * HOUR,"
+    },
+    {
+      "n": 31,
+      "l": "  preRound: 12 * HOUR,"
+    }
+  ],
+  "uses": [
+    {
+      "n": 122,
+      "l": "      expired(processedAt, HOSPITAL_RETENTION.preRound, now)"
+    },
+    {
+      "n": 304,
+      "l": "      expired(processedAt, SNF_RETENTION.preRound, now)"
+    }
+  ],
+  "hourLiteralInsideSweep": false
+}

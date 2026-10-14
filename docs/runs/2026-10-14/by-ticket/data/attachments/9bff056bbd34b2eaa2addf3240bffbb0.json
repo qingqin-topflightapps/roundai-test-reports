@@ -1,0 +1,73 @@
+{
+  "case": "TC-11-S07",
+  "title": "Nursing Home visit counts 0 / 1 / 3 / 4, with skipped days",
+  "needs": [
+    "seed",
+    "oracle-scope",
+    "oracle-order",
+    "oracle-regex",
+    "oracle-count",
+    "oracle-record-only"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s07-r0.md",
+      "verdict": "Pass",
+      "url": "/snf/jx78jj5ehzqvbhmmfqfmtrkg218g7m4m",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-r1.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7fvf70zbghwnzgk1703m193s8g646s",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-r3.md",
+      "verdict": "Pass",
+      "url": "/snf/jx70b36szr78hcz3xa79876bb98g66n2",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q5) pass: \"Visit 1 – Oct 10: Admitted for rehab after left hip fracture\" present (in from \"Visit Timeline\" to \"Vitals\")",
+        "(Q5) pass: in order: \"Visit 1 – Oct 10\" < \"Visit 2 – Oct 12\" (in from \"Visit Timeline\" to \"Vitals\")"
+      ]
+    },
+    {
+      "file": "s07-r4.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7c1djcm687c8q3mzye1e9gz58g631n",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q5) fail: missing \"Visit 1 – Oct 8\" (in from \"Visit Timeline\" to \"Vitals\")",
+        "(Q5) pass: \"Visit 2 – Oct 10\" present (in from \"Visit Timeline\" to \"Vitals\")"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 28,
+    "costUsd": 0.191281,
+    "durationMs": 75988,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

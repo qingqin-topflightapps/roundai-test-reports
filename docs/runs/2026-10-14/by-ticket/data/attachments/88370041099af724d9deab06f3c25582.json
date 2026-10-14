@@ -1,0 +1,367 @@
+{
+  "ref": "TC-23/S24",
+  "mode": "scripted",
+  "status": "failed",
+  "detail": "Scripted far end, real prepareSession: the device-clock check (liveSession.ts: expiresAt × 1000 ≤ Date.now()) runs in the browser before any request to OpenAI's realtime endpoint, so these cells decide U9 on their own; the text itself is the scripted transcript. 13/18 decided cells pass; failing: K-2 H-01 dictation (+70 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-2 N-01 dictation (+70 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-3 H-01 dictation (+86400 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-3 N-01 dictation (+86400 s, Asia/Tokyo) (landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]); K-3 opens signed in like any other device (UAT 3.8) (+86400 s, Asia/Tokyo) (H-01: sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload | N-01: sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload)",
+  "productIssue": "Phone clock 70 s or more fast (or a day ahead): the physician taps Dictate in the Hospital or Nursing Home pre-round editor, sees 'Listening…', and after one silent retry gets the red banner 'Live dictation couldn’t start. Check microphone access and your connection, then try again.' with an empty box — every take, nothing transcribed. Separately, a phone a day fast opens the app on the sign-in screen instead of the patient list (see the 'opens signed in' cells). Both break UAT 3.8 (a phone with a wrong clock shows the same state as any other device).",
+  "cells": [
+    {
+      "id": "K-0 H-01 dictation (+0 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 38.4 degrees Celsius overnight, heart rate 112, blood pressure 98 over 62.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j978pnzkx6x7wqr280q0nnxyzx8g964g",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 417,
+            "providerMs": 413
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 773
+      }
+    },
+    {
+      "id": "K-0 N-01 dictation (+0 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 37.9 degrees Celsius this morning, oxygen saturation 93 percent on 2 liters.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j973bm3f0w0nbm2nhf13bh3j7x8g88gj",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 351,
+            "providerMs": 349
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 598
+      }
+    },
+    {
+      "id": "K-0 opens signed in like any other device (UAT 3.8) (+0 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "H-01: kept | N-01: kept"
+    },
+    {
+      "id": "K-1 H-01 dictation (+50 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 38.4 degrees Celsius overnight, heart rate 112, blood pressure 98 over 62.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j97fpkk3k8b0xhd69118asj5rh8g922a",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 340,
+            "providerMs": 337
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 550
+      }
+    },
+    {
+      "id": "K-1 N-01 dictation (+50 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 37.9 degrees Celsius this morning, oxygen saturation 93 percent on 2 liters.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j97crkmjfqpzsnvjggq6y464kx8g892g",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 292,
+            "providerMs": 291
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 494
+      }
+    },
+    {
+      "id": "K-1 opens signed in like any other device (UAT 3.8) (+50 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "H-01: kept | N-01: kept"
+    },
+    {
+      "id": "K-2 H-01 dictation (+70 s, Asia/Tokyo)",
+      "pass": false,
+      "detail": "landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]",
+      "evidence": {
+        "landed": "",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j97ewhtmx37psmkyv2jhnbz4mh8g9zt1",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 517,
+            "providerMs": 517
+          },
+          {
+            "_id": "j974va4v0dtgzqr8tskemr240h8g80bj",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 331,
+            "providerMs": 330
+          }
+        ],
+        "notices": [
+          "Live dictation couldn’t start."
+        ],
+        "tapToReadyMs": null
+      }
+    },
+    {
+      "id": "K-2 N-01 dictation (+70 s, Asia/Tokyo)",
+      "pass": false,
+      "detail": "landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]",
+      "evidence": {
+        "landed": "",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j97dqsnmsy357mm3s2xexf28fx8g96kr",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 275,
+            "providerMs": 272
+          },
+          {
+            "_id": "j97fhkerweqh13f2jbtp8m8jqd8g9v7k",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 349,
+            "providerMs": 345
+          }
+        ],
+        "notices": [
+          "Live dictation couldn’t start."
+        ],
+        "tapToReadyMs": null
+      }
+    },
+    {
+      "id": "K-2 opens signed in like any other device (UAT 3.8) (+70 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "H-01: kept | N-01: kept"
+    },
+    {
+      "id": "K-3 H-01 dictation (+86400 s, Asia/Tokyo)",
+      "pass": false,
+      "detail": "landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]",
+      "evidence": {
+        "landed": "",
+        "signIn": "sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload",
+        "prepareRows": [
+          {
+            "_id": "j978087s6fg9385k7kdhdkj3zn8g806x",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 392,
+            "providerMs": 387
+          },
+          {
+            "_id": "j970rwbwkdvc8fnznngpb5yxr58g9a2c",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 320,
+            "providerMs": 318
+          }
+        ],
+        "notices": [
+          "Live dictation couldn’t start."
+        ],
+        "tapToReadyMs": null
+      }
+    },
+    {
+      "id": "K-3 N-01 dictation (+86400 s, Asia/Tokyo)",
+      "pass": false,
+      "detail": "landed \"\"; prepareSession rows 2 [\"gpt-live-transcribe\",\"gpt-live-transcribe\"]; messages [\"Live dictation couldn’t start.\"]",
+      "evidence": {
+        "landed": "",
+        "signIn": "sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload",
+        "prepareRows": [
+          {
+            "_id": "j971cqr5z5wj78x5hfbf9x9t0s8g85qs",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 417,
+            "providerMs": 414
+          },
+          {
+            "_id": "j973qn3xwcc5aj0k3cj6t07qc98g8w9q",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 354,
+            "providerMs": 351
+          }
+        ],
+        "notices": [
+          "Live dictation couldn’t start."
+        ],
+        "tapToReadyMs": null
+      }
+    },
+    {
+      "id": "K-3 opens signed in like any other device (UAT 3.8) (+86400 s, Asia/Tokyo)",
+      "pass": false,
+      "detail": "H-01: sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload | N-01: sign-in screen on load; UI sign-in reached the list; stayed signed in after a reload"
+    },
+    {
+      "id": "K-4 H-01 dictation (-86400 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 38.4 degrees Celsius overnight, heart rate 112, blood pressure 98 over 62.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j971cj8s04rjg0tqr0vpbahe898g9nra",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 336,
+            "providerMs": 335
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 527
+      }
+    },
+    {
+      "id": "K-4 N-01 dictation (-86400 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 37.9 degrees Celsius this morning, oxygen saturation 93 percent on 2 liters.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j9782gxf54m0am4nhr1whmn1xs8g97ed",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 357,
+            "providerMs": 355
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 584
+      }
+    },
+    {
+      "id": "K-4 opens signed in like any other device (UAT 3.8) (-86400 s, Asia/Tokyo)",
+      "pass": true,
+      "detail": "H-01: kept | N-01: kept"
+    },
+    {
+      "id": "K-5 H-01 dictation (+0 s, Pacific/Honolulu)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 38.4 degrees Celsius overnight, heart rate 112, blood pressure 98 over 62.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j978zab74knjz7kn7bb954cp6h8g88mp",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 338,
+            "providerMs": 336
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 513
+      }
+    },
+    {
+      "id": "K-5 N-01 dictation (+0 s, Pacific/Honolulu)",
+      "pass": true,
+      "detail": "landed same text as control; prepareSession rows 1 [\"gpt-live-transcribe\"]; messages []",
+      "evidence": {
+        "landed": "Temperature 37.9 degrees Celsius this morning, oxygen saturation 93 percent on 2 liters.",
+        "signIn": "kept",
+        "prepareRows": [
+          {
+            "_id": "j976hb0dfj2h18wwcdr3t8zjd18g8cxs",
+            "fn": "transcribe.prepareSession",
+            "model": "gpt-live-transcribe",
+            "ok": true,
+            "durationMs": 343,
+            "providerMs": 342
+          }
+        ],
+        "notices": [],
+        "tapToReadyMs": 521
+      }
+    },
+    {
+      "id": "K-5 opens signed in like any other device (UAT 3.8) (+0 s, Pacific/Honolulu)",
+      "pass": true,
+      "detail": "H-01: kept | N-01: kept"
+    }
+  ],
+  "evidence": [
+    "raw/TC-23-S24.json",
+    "shots/S24-K-0-H-01.png",
+    "shots/S24-K-0-N-01.png",
+    "shots/S24-K-1-H-01.png",
+    "shots/S24-K-1-N-01.png",
+    "shots/S24-K-2-H-01.png",
+    "shots/S24-K-2-N-01.png",
+    "shots/S24-K-3-H-01-signin-on-load.png",
+    "shots/S24-K-3-H-01.png",
+    "shots/S24-K-3-N-01-signin-on-load.png",
+    "shots/S24-K-3-N-01.png",
+    "shots/S24-K-4-H-01.png",
+    "shots/S24-K-4-N-01.png",
+    "shots/S24-K-5-H-01.png",
+    "shots/S24-K-5-N-01.png"
+  ],
+  "at": "2026-10-14T08:24:31.526Z",
+  "meta": {
+    "commit": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "aiProvider": {
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "provider": "bedrock",
+      "transcription": "gpt-live",
+      "visionModel": "gemini-2.5-flash",
+      "visionProvider": "vertex"
+    },
+    "mode": "scripted"
+  },
+  "prepareSession": {
+    "requests": 16,
+    "stubbedAtSocket": 0,
+    "realOpenAIMints": 16,
+    "realFailed": 0,
+    "note": "real prepareSession: each call ran client.realtime.clientSecrets.create on api.openai.com with the local OPENAI_API_KEY (…PUMA); no audio followed"
+  }
+}

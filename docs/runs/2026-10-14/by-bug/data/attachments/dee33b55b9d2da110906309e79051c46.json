@@ -1,0 +1,286 @@
+{
+  "_meta": {
+    "which": "TC24-S20",
+    "target": "local QA stack 127.0.0.1:4510",
+    "account": "(rescore: no account)",
+    "today": "Oct 14",
+    "at": "2026-10-14T06:16:37.985Z",
+    "rescoredAt": "2026-10-14T06:16:37.989Z"
+  },
+  "H2": {
+    "mode": "hospital",
+    "deleted": "Furosemide 40 mg IV BID",
+    "deletedStatus": "active",
+    "staleIn": "priorTranscript",
+    "staleText": "Give furosemide 40 IV twice daily",
+    "staleReaches": [
+      "transcript saved yesterday → note PRIOR TRANSCRIPT (the pre-round and refresh calls do not carry it)"
+    ],
+    "exercises": {
+      "note": true,
+      "summary": "only via the generated note (refresh)"
+    },
+    "noteTemplate": "soap",
+    "note": {
+      "status": "invalid",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": [
+        "lisinopril"
+      ],
+      "text": "SUBJECTIVE\n\nNot provided.\n\nOBJECTIVE\n\nVital Signs: No acute events overnight; vitals stable.\n\nPhysical Examination: Not documented in today's dictation.\n\nTESTING RESULTS\n\nNot provided.\n\nASSESSMENT\n\nPatient is a 70-year-old with acute on chronic heart failure. The patient remains stable overnight with no acute events. Management continues as previously planned.\n\nPLAN\n\n1. Continue current plan for acute on chronic heart failure exacerbation."
+    },
+    "summary": {
+      "status": "passed",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": [],
+      "text": "Oct 14: Acute on chronic heart failure stable overnight without acute events. Continue current management plan.\nBACKGROUND: 70-year-old female admitted with acute on chronic heart failure, now stable overnight with no acute events\n• Acute on chronic heart failure — stable overnight, vitals stable, continue current plan\nCOURSE REFRESH:\nOct 14: 70-year-old female with acute on chronic heart failure remains stable overnight; continue current management plan\n70-year-old female with history of acute on chronic heart failure admitted with acute on chronic heart failure exacerbation, currently stable.\n• Acute on chronic heart failure exacerbation — stable overnight, continuing current management plan"
+    },
+    "summaryPreRoundOnly": {
+      "status": "passed",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": []
+    },
+    "calls": [
+      {
+        "what": "generateNote",
+        "ms": 5381,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 5101,
+          "providerMs": 5084,
+          "error": null
+        }
+      },
+      {
+        "what": "parsePreRoundNotes",
+        "ms": 4157,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 4044,
+          "providerMs": 4042,
+          "error": null
+        }
+      },
+      {
+        "what": "refreshCourseAndBackground",
+        "ms": 3337,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 2956,
+          "providerMs": 2952,
+          "error": null
+        }
+      }
+    ]
+  },
+  "H3": {
+    "mode": "hospital",
+    "deleted": "task Call daughter re: goals of care",
+    "deletedStatus": "task",
+    "staleIn": "priorTranscript",
+    "staleText": "Task: call daughter about goals of care",
+    "staleReaches": [
+      "transcript saved yesterday → note PRIOR TRANSCRIPT (the pre-round and refresh calls do not carry it)"
+    ],
+    "exercises": {
+      "note": true,
+      "summary": "only via the generated note (refresh)"
+    },
+    "noteTemplate": "soap",
+    "note": {
+      "status": "passed",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": [],
+      "text": "SUBJECTIVE\n\nNot provided.\n\nOBJECTIVE\n\nVital Signs: No acute events overnight, vitals stable.\n\nPhysical Examination\n\nPhysical examination not documented in today's dictation.\n\nTESTING RESULTS\n\nNot provided.\n\nASSESSMENT\n\nPatient is a 70-year-old with community-acquired pneumonia. The patient has been stable overnight with no acute events. Current management continues as planned.\n\nPLAN\n\n1. Continue current plan for community-acquired pneumonia.\n\n2. Continue apixaban 5 mg twice daily."
+    },
+    "summary": {
+      "status": "passed",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": [],
+      "text": "Oct 14: Community-acquired pneumonia stable overnight. No acute events. Continue current management plan.\nBACKGROUND: 70-year-old female admitted with community-acquired pneumonia, now stable overnight with no acute events\n• Community-acquired pneumonia — stable, vitals stable, continue current plan\nCOURSE REFRESH:\nOct 14: 70-year-old female with community-acquired pneumonia remains stable overnight; continue current management and apixaban\n70-year-old female admitted with community-acquired pneumonia, currently stable.\n• Community-acquired pneumonia — stable overnight, current management continued\n• Anticoagulation — apixaban 5 mg twice daily continued"
+    },
+    "summaryPreRoundOnly": {
+      "status": "passed",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": []
+    },
+    "calls": [
+      {
+        "what": "generateNote",
+        "ms": 4595,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 4317,
+          "providerMs": 4306,
+          "error": null
+        }
+      },
+      {
+        "what": "parsePreRoundNotes",
+        "ms": 5075,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 4836,
+          "providerMs": 4832,
+          "error": null
+        }
+      },
+      {
+        "what": "refreshCourseAndBackground",
+        "ms": 3528,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 3365,
+          "providerMs": 3362,
+          "error": null
+        }
+      }
+    ]
+  },
+  "H4": {
+    "mode": "hospital",
+    "deleted": "point Check heel ulcer dressing",
+    "deletedStatus": "point",
+    "staleIn": "priorTranscript",
+    "staleText": "Remind me to check the heel ulcer dressing",
+    "staleReaches": [
+      "transcript saved yesterday → note PRIOR TRANSCRIPT (the pre-round and refresh calls do not carry it)"
+    ],
+    "exercises": {
+      "note": true,
+      "summary": "only via the generated note (refresh)"
+    },
+    "noteTemplate": "soap",
+    "note": {
+      "status": "invalid",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": [
+        "atorvastatin"
+      ],
+      "text": "PROGRESS NOTE\n\nSubjective\n\nNot provided.\n\nObjective\n\nVital Signs\n\nNot provided.\n\nPhysical Examination\n\nPhysical examination not documented in today's dictation.\n\nTesting Results\n\nNot provided.\n\nAssessment\n\nPatient is a 70-year-old with community-acquired pneumonia. No acute events occurred overnight and vitals remain stable. The clinical course continues to be managed with the current treatment plan.\n\nPlan\n\n1. Continue current management for community-acquired pneumonia."
+    },
+    "summary": {
+      "status": "passed",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": [],
+      "text": "Oct 14: Community-acquired pneumonia stable overnight with no acute events. Continue current management plan.\nBACKGROUND: 70-year-old female admitted with community-acquired pneumonia, now stable overnight with no acute events\n• Community-acquired pneumonia — stable, vitals stable, continue current plan\nCOURSE REFRESH:\nOct 14: 70-year-old female with community-acquired pneumonia; stable overnight, continuing current management\n70-year-old female admitted with community-acquired pneumonia, stable on current treatment.\n• Community-acquired pneumonia — stable, continuing current management"
+    },
+    "summaryPreRoundOnly": {
+      "status": "passed",
+      "fails": [],
+      "heldQ8": [],
+      "missingControls": []
+    },
+    "calls": [
+      {
+        "what": "generateNote",
+        "ms": 4879,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 4319,
+          "providerMs": 4306,
+          "error": null
+        }
+      },
+      {
+        "what": "parsePreRoundNotes",
+        "ms": 5225,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 5088,
+          "providerMs": 5084,
+          "error": null
+        }
+      },
+      {
+        "what": "refreshCourseAndBackground",
+        "ms": 3326,
+        "error": null,
+        "log": {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "fellBackFrom": null,
+          "ok": true,
+          "durationMs": 3201,
+          "providerMs": 3199,
+          "error": null
+        }
+      }
+    ]
+  },
+  "_summary": {
+    "note": {
+      "passed": 1,
+      "failed": 0,
+      "invalid": 2,
+      "broken": 0,
+      "heldQ8": 0,
+      "exercising": [
+        "H2:invalid",
+        "H3:passed",
+        "H4:invalid"
+      ],
+      "cannotFailOnMain": []
+    },
+    "summary": {
+      "passed": 3,
+      "failed": 0,
+      "invalid": 0,
+      "broken": 0,
+      "heldQ8": 0,
+      "exercising": [],
+      "cannotFailOnMain": [
+        "H2",
+        "H3",
+        "H4"
+      ]
+    },
+    "summaryPreRoundOnly": {
+      "passed": 3,
+      "failed": 0,
+      "invalid": 0,
+      "broken": 0,
+      "heldQ8": 0,
+      "exercising": [],
+      "cannotFailOnMain": [
+        "H2",
+        "H3",
+        "H4"
+      ]
+    },
+    "models": [
+      "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+    ]
+  }
+}

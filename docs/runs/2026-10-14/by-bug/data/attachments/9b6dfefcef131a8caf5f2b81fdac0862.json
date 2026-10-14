@@ -1,0 +1,91 @@
+{
+  "TC-23/S18": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 6 judged check(s) passed, 48 failed. All five states reached on all three profiles with cloud dictation fully scripted at the socket and a synthetic microphone: idle, 'Preparing dictation…', 'Listening…', 'Transcribing…', and the Recover notice (both contexts). State text in a live region is recorded (oracle: recorded, not judged).",
+    "failed": [
+      {
+        "check": "axe serious/critical = 0",
+        "where": [
+          "desktop:hospital-idle",
+          "desktop:hospital-listening",
+          "desktop:hospital-preparing",
+          "desktop:hospital-recover",
+          "desktop:hospital-transcribing",
+          "desktop:nh-idle",
+          "desktop:nh-listening",
+          "desktop:nh-preparing",
+          "desktop:nh-recover",
+          "desktop:nh-transcribing",
+          "iphone15:hospital-idle",
+          "iphone15:hospital-listening",
+          "iphone15:hospital-preparing",
+          "iphone15:hospital-recover",
+          "iphone15:hospital-transcribing",
+          "iphone15:nh-idle",
+          "iphone15:nh-listening",
+          "iphone15:nh-preparing",
+          "iphone15:nh-recover",
+          "iphone15:nh-transcribing",
+          "pixel7:hospital-idle",
+          "pixel7:hospital-listening",
+          "pixel7:hospital-preparing",
+          "pixel7:hospital-recover",
+          "pixel7:hospital-transcribing",
+          "pixel7:nh-idle",
+          "pixel7:nh-listening",
+          "pixel7:nh-preparing",
+          "pixel7:nh-recover",
+          "pixel7:nh-transcribing"
+        ],
+        "example": "color-contrast(serious,13×: .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3 | .pr-1 > .border-dashed.py-4.rounded-2xl > p)"
+      },
+      {
+        "check": "Dictate has an accessible name and a pressed state (idle)",
+        "where": [
+          "desktop:hospital-idle",
+          "desktop:nh-idle",
+          "iphone15:hospital-idle",
+          "iphone15:nh-idle",
+          "pixel7:hospital-idle",
+          "pixel7:nh-idle"
+        ],
+        "example": "name \"Dictate\", aria-pressed=null"
+      },
+      {
+        "check": "Dictate/Stop has an accessible name and a pressed state (starting)",
+        "where": [
+          "desktop:hospital-preparing",
+          "desktop:nh-preparing",
+          "iphone15:hospital-preparing",
+          "iphone15:nh-preparing",
+          "pixel7:hospital-preparing",
+          "pixel7:nh-preparing"
+        ],
+        "example": "name \"Stop\", aria-pressed=null"
+      },
+      {
+        "check": "Stop has an accessible name and aria-pressed=true while listening",
+        "where": [
+          "desktop:hospital-listening",
+          "desktop:nh-listening",
+          "iphone15:hospital-listening",
+          "iphone15:nh-listening",
+          "pixel7:hospital-listening",
+          "pixel7:nh-listening"
+        ],
+        "example": "name \"Stop\", aria-pressed=null"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18/iphone15--hospital-idle.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18/iphone15--hospital-listening.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18/iphone15--hospital-preparing.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-23_S18/iphone15--hospital-recover.png"
+    ],
+    "productIssue": "Dictate/Stop has no pressed state (aria-pressed) in either pre-round editor; its state is conveyed only by its label switching Dictate → Stop (and the editor title 'Listening…'), while the oracle asks for a name and a pressed state. The Preparing / Listening / Recover texts are not in live regions (recorded, per the oracle). The red Stop button and 'Hearing:' label fail contrast (3.8:1)."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "TC-25/S27": {
+    "status": "failed",
+    "detail": "Re-checked after review 2026-10-14 (18:00 JST runs: fix-*.json). (R) pre-round (processed, 12 h + 1 min) and encounter (36 h + 1 min), Hospital: the sweep cleared the server field and left *EditedAt where it was (read back: same as seeded); phone A, which kept a device copy (harness-written 1 s after the last save), reopened the chart and idled 60 s: the server field holds the text again, stamped now, the computer shows it, and the phone's draft row is gone (restored and re-sent). Encounter: the sweep's archive entry 'Oct 12 · Encounter notes' holds the same text, so it now exists twice. (L-leftover, record-only premise, both contexts): typing then leaving the chart 0.3 s later (in-app Back) saved the text to the server and left a device copy with the same text; it was still there after reopening the chart and field — the normal-use way the R legs' starting state arises. (I) +1 min: phone on the sign-in gate, computer still on its list; −1 min: both signed in. Side observation (not this oracle): the archive label uses the server's UTC date (lifecycle.ts:88 toLocaleDateString without a time zone): an encounter written 06:06 JST Oct 13 is labelled 'Oct 12'.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc25-s27/R-preround.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s27/R-encounter.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s27/L-leftover-hospital.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s27/L-leftover-snf.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s27/I-over.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s27/I-under.json",
+      "runs/2026-10-14-local/probes/fix-tc25r.json",
+      "runs/2026-10-14-local/probes/fix-tc25.json"
+    ],
+    "productIssue": "[kept-draft-restore-after-sweep] Text the retention sweep cleared comes back from a device copy. What a physician sees: yesterday's pre-round text (past its 12 h window) or encounter text (past 36 h) reappears, undated, in today's field on the phone, is saved again (stamped now) and shows on the computer; in Hospital the encounter the sweep had already archived ('Oct 12 · Encounter notes') is re-saved as today's encounter as well. How such a copy is left behind in normal use: a device copy left behind after a normal save — e.g. leaving the field within the 0.8 s autosave (the unmount flush writes the copy and saves; nothing deletes the copy once the server has the same text: TC-25/S27 L-leftover, both contexts), or a Save Note that changes the stored text (TC-25/S17 b-hospital end-of-run row). Cause: the sweep clears preRoundNotes / encounterNotes (convex/lib/lifecycle.ts:124, :163 Hospital; :306, :329 Nursing Home) without moving *EditedAt, and useAutosave restores any device copy whose savedAt is newer than that stamp, however old (src/lib/useAutosave.ts:115-137; the copy's own age is never checked). Breaks UAT 3.6 (retention windows) and OAT-04 ('never survives past its window'); EFS U13 / S28 (c) (old text not silently put into today's field).",
+    "productIssueKeys": [
+      "kept-draft-restore-after-sweep"
+    ]
+  }
+}

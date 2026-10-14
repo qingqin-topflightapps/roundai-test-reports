@@ -1,0 +1,14 @@
+{
+  "OAT-04/S14": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:40:08.571Z",
+    "detail": "0 judged items passed, 5 failed (5 known, 0 policy conflict, 0 not in the matrix knownGaps), 3 recorded against open questions — failed: A.aged (A (no session open): vitals / labs / active row aged 37 h: expected absent, got present; known K12) | B.aged (B (signed out): vitals / labs / active row aged 37 h: expected absent, got present; known K12) | C.aged (C (only /snf open): vitals / labs / active row aged 37 h: expected absent, got present; known K12) | D.olderVisits (D (only /rounding open): visits older than the last two (D1, D2): expected absent, got present; known K12) | D2.olderVisits (D2 (signed out): visits older than the last two (D1, D2): expected absent, got present; known K12) — record-only: A.task = kept (also K2: open tasks are never purged) [covered by S11 / K2; listed here for completeness] | B.task = kept (also K2: open tasks are never purged) [covered by S11 / K2; listed here for completeness] | C.task = kept (also K2: open tasks are never purged) [covered by S11 / K2; listed here for completeness] — notes: sign-out e2e-fresh-b45f23da-54c: HTTP 200 | sign-out e2e-fresh-04ece432-9e0: HTTP 200 | C's page is on /snf; D's page is on /rounding | Waited 3 min with C on /snf and D on /rounding, A idle, B and D2 signed out; ran the app's only cron (sessions:_sweep). No client purge call was made by the runner. The agreed lag is Q1; main has no server-side purge job (convex/crons.ts), so a longer wait cannot change the outcome. | control: after A's own rounding:applyLifecycle the aged vitals/labs/row are gone | control: after D's own snf:applyLifecycle visit D1 is still present (main keeps 3 visits, K7) — setup/read calls retried on the local 1 s limit: 1",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S14.json",
+      "tools/qa-agent/runs/2026-10-14-local/retention/artifacts-run1/oat04-ui-OAT-04-S14-purge--74ad3-or-only-the-other-mode-open"
+    ],
+    "productIssue": "If the physician is signed out, has not opened the app, or works only in the other care setting, nothing is purged: 37 h-old vitals, labs and medication rows (Hospital) and visits older than the last two (Nursing Home) stay on the chart indefinitely. Breaks TFA-94699 AC 7 ('the purge runs on the server') and the UAT 3.7 retention claim. Known in the matrix: K12."
+  }
+}

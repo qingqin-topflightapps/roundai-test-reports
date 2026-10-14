@@ -1,0 +1,92 @@
+{
+  "ref": "OAT-04/S26",
+  "title": "Course timeline purge of older lines",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T07:18:20.640Z",
+  "summary": {
+    "pass": 2,
+    "fail": 2,
+    "failKnown": 2,
+    "failConflict": 0,
+    "record": 1,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "D-3",
+      "item": "line Oct 11 (D-3), course last refreshed 37 h ago",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 'Course timeline … show today and yesterday only', the TFA-92589 → TFA-94699 purge handoff, 3.7 claim; days are the app's days (server clock, device zone; 3.8)",
+      "known": "K6: hospitalLifecyclePatch does not touch admissionSummary — TFA-94699 (TFA-92589 / PR #91 handoff)"
+    },
+    {
+      "id": "D-2",
+      "item": "line Oct 12 (D-2) in the raw document, course last refreshed 37 h ago",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 'Course timeline … show today and yesterday only', the TFA-92589 → TFA-94699 purge handoff, 3.7 claim; days are the app's days (server clock, device zone; 3.8)",
+      "known": "K6: hospitalLifecyclePatch does not touch admissionSummary — TFA-94699 (TFA-92589 / PR #91 handoff)"
+    },
+    {
+      "id": "D-1",
+      "item": "line Oct 13 (D-1)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'Course timeline … show today and yesterday only', the TFA-92589 → TFA-94699 purge handoff, 3.7 claim; days are the app's days (server clock, device zone; 3.8)"
+    },
+    {
+      "id": "D0",
+      "item": "line Oct 14 (D0)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'Course timeline … show today and yesterday only', the TFA-92589 → TFA-94699 purge handoff, 3.7 claim; days are the app's days (server clock, device zone; 3.8)"
+    },
+    {
+      "id": "fresh.D-3/D-2",
+      "item": "D-3 / D-2 lines on a course refreshed just now",
+      "expected": "needs a decision: S26 ('today and yesterday only', any refresh) vs TC-11/S25 (nothing cleared before 36 h after the last refresh): which clock clears an old course line",
+      "observed": "D-3 kept, D-2 kept, D-1 kept, D0 kept",
+      "verdict": "record"
+    }
+  ],
+  "blocked": [],
+  "notes": [],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "aged": [
+      {
+        "changed": [
+          "admissionSummary.lastUpdatedAt"
+        ],
+        "id": "kx781fkydj7may8h82c7fmx0918g9mqb"
+      }
+    ],
+    "purge": {
+      "physician": 0,
+      "cron": {
+        "agedOut": 0,
+        "expired": 0
+      }
+    },
+    "raw.course": {
+      "course": "Oct 11: RET-COURSE-912 QA course line\nOct 12: RET-COURSE-913 QA course line\nOct 13: RET-COURSE-914 QA course line\nOct 14: RET-COURSE-915 QA course line",
+      "lastUpdatedAt": "2026-10-12T18:18:17.375Z",
+      "reason": "QA background"
+    },
+    "raw.courseFresh": {
+      "course": "Oct 11: RET-COURSE-922 QA course line\nOct 12: RET-COURSE-923 QA course line\nOct 13: RET-COURSE-924 QA course line\nOct 14: RET-COURSE-925 QA course line",
+      "lastUpdatedAt": "2026-10-14T07:18:18.146Z",
+      "reason": "QA background"
+    }
+  }
+}

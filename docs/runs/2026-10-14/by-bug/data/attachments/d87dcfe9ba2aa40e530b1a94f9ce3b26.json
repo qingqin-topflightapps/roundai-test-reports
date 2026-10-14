@@ -1,0 +1,92 @@
+{
+  "case": "TC-19-S26",
+  "title": "No bleed between patients or contexts: a Save & Extract still in flight while the physician switches to the Nursing Home resident",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s26-cp1-resident-mid-save.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7a3jy91pxjh7d3xrwzpy33mx8g8gs1",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s26-cp2-hospital-tracker.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dwnn8h5kdnybqbn61ar9b7h8g9n1x",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U8/U23: the tag should carry today's date ('Mon D'); that form is not a contract time token, so the date is recorded and read against the run day (spec.manual)) pass: /apixaban[^\\n]*\\n\\s*- generic[^\\n]*: \"?Held · [A-Z][a-z]{2} \\d{1,2}\\b/i matches \"Apixaban 5 mg twice daily\\n                - generic [ref=e… (in from \"Medication Tracker\")"
+      ]
+    },
+    {
+      "file": "s26-cp3-hospital-panel.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dwnn8h5kdnybqbn61ar9b7h8g9n1x",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s26-cp4-resident-after-reload.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7a3jy91pxjh7d3xrwzpy33mx8g8gs1",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(B's rows as seeded (compare with res-after by hand; oracle-same-as is not built)) pass: backend res-cp1 medications has 2 items",
+        "(B's rows as seeded (compare with res-cp1 by hand; oracle-same-as is not built)) pass: backend res-after medications has 2 items"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "B's metformin and donepezil rows show the same status, tag and reason at cp1 and cp4: compare backend/res-cp1.json and backend/res-after.json (deep-equal needs oracle-same-as)",
+    "if A's tracker at cp2 lacks the apixaban hold, note whether any message said the change was not saved (U22)"
+  ],
+  "agent": {
+    "turns": 85,
+    "costUsd": 0.6124706,
+    "durationMs": 345237,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U63",
+  "covers": [
+    "TC-19/S26"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u63",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U63.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

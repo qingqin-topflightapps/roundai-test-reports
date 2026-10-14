@@ -1,0 +1,9 @@
+{
+  "OAT-01/S02": {
+    "status": "passed",
+    "detail": "Tim's six titles run with --project=anonymous: 6/6 pass (only email codes on / and /reset-password?token=old; all 9 password routes 404; wrong code refused with an alert; a code works once; /rounding /clinic /snf /rounding/sheet /settings gated; sign-in survives a reload). These use DEMO_USER (existing tests, not new). Collision risk: these titles sign in and issue codes for the shared DEMO_USER (the matrix requires it); a parallel job using DEMO_USER can invalidate their codes, so run S02 when no other job uses that account.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/oat01-s02.json"
+    ]
+  }
+}

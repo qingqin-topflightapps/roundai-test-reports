@@ -1,0 +1,469 @@
+{
+  "ref": "TC-03/S10",
+  "method": "CODEREVIEW",
+  "status": "known-gap",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Can a Nursing Home resident be given a facility, is it shown on the resident card, and does Nursing Home search match it? Check the snf resident schema/validators (convex/schema.ts, convex/lib/validators.ts snfFields), snf:add (convex/snf.ts), the Add Resident form (src/routes/snf/AddResident.tsx or wherever it lives), SnfPatientCard, and matchesPatientSearch (convex/lib/patientList.ts).",
+  "rule": {
+    "pass": "a facility can be entered (record, add mutation, Add Resident form), the resident card shows it, and Nursing Home search matches it",
+    "fail": "any of the three is missing (no facility field in the record, the add mutation, the Add Resident form, the card or the search matcher)",
+    "basis": [
+      "A resident can be given a facility, the card shows it, and Nursing Home search matches it",
+      "No facility field in the record, the add mutation, the Add Resident form, the card or the search matcher means a physician cannot enter, see or search by facility"
+    ]
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [
+    {
+      "run": 1,
+      "label": "known:no-facility",
+      "claim": "The snf resident record (snfFields) has name, mrn and unit but no facility field.",
+      "at": "apps/web/convex/lib/validators.ts:331",
+      "gap": "no-facility"
+    },
+    {
+      "run": 1,
+      "label": "known:no-facility",
+      "claim": "The identity fields in the record are mrn and unit only; no facility follows them.",
+      "at": "apps/web/convex/lib/validators.ts:336",
+      "gap": "no-facility"
+    },
+    {
+      "run": 1,
+      "label": "known:no-facility",
+      "claim": "snf:add takes residentFields (= snfFields) as its args, so the mutation cannot accept a facility.",
+      "at": "apps/web/convex/snf.ts:179",
+      "gap": "no-facility"
+    },
+    {
+      "run": 1,
+      "label": "known:no-facility",
+      "claim": "SnfPatientCard's identity line is built from unit, dob, age and mrn only, so no facility is shown on the card.",
+      "at": "apps/web/src/components/clinical/PatientCard.tsx:292",
+      "gap": "no-facility"
+    },
+    {
+      "run": 1,
+      "label": "known:no-facility",
+      "claim": "matchesPatientSearch accepts only name, room, unit, mrn and diagnosis, so Nursing Home search cannot match a facility.",
+      "at": "apps/web/convex/lib/patientList.ts:127",
+      "gap": "no-facility"
+    },
+    {
+      "run": 1,
+      "label": "known:no-facility",
+      "claim": "The values the search matcher compares are name, room, unit, mrn and diagnosis; facility is not among them.",
+      "at": "apps/web/convex/lib/patientList.ts:141",
+      "gap": "no-facility"
+    },
+    {
+      "run": 2,
+      "label": "known:no-facility",
+      "claim": "The snf resident record/validator (snfFields, spread into the schema and used as snf:add args) has no facility field; the identity fields are name, dob, sex, mrn and unit only.",
+      "at": "apps/web/convex/lib/validators.ts:331",
+      "gap": "no-facility"
+    },
+    {
+      "run": 2,
+      "label": "known:no-facility",
+      "claim": "The identity fields in snfFields stop at mrn and unit; there is no facility key.",
+      "at": "apps/web/convex/lib/validators.ts:336",
+      "gap": "no-facility"
+    },
+    {
+      "run": 2,
+      "label": "known:no-facility",
+      "claim": "snf:add takes residentFields (snfFields) as its args, so it cannot accept a facility value.",
+      "at": "apps/web/convex/snf.ts:179",
+      "gap": "no-facility"
+    },
+    {
+      "run": 2,
+      "label": "known:no-facility",
+      "claim": "The Add Resident form's default values hold no facility field.",
+      "at": "apps/web/src/routes/snf/AddResident.tsx:41",
+      "gap": "no-facility"
+    },
+    {
+      "run": 2,
+      "label": "known:no-facility",
+      "claim": "The add() payload sends unit and mrn but no facility.",
+      "at": "apps/web/src/routes/snf/AddResident.tsx:84",
+      "gap": "no-facility"
+    },
+    {
+      "run": 2,
+      "label": "known:no-facility",
+      "claim": "SnfPatientCard's identity line is built from unit, DOB, age and MRN only; no facility is shown.",
+      "at": "apps/web/src/components/clinical/PatientCard.tsx:292",
+      "gap": "no-facility"
+    },
+    {
+      "run": 2,
+      "label": "known:no-facility",
+      "claim": "matchesPatientSearch matches name, room, unit, mrn and diagnosis only, so search cannot match a facility.",
+      "at": "apps/web/convex/lib/patientList.ts:127",
+      "gap": "no-facility"
+    }
+  ],
+  "pendingOn": [],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "No. At e02167f a Nursing Home resident has no facility field anywhere in the chain. The snf resident record (snfFields in convex/lib/validators.ts, which convex/schema.ts spreads into snfResidents) holds name, age, dob, sex, mrn, unit and so on, but no facility. snf:add takes exactly those fields as its args, so the mutation can't accept a facility either. The Add Resident form asks only for Full Name, Date of Birth, Unit / Room and MRN, plus Encounter Type. SnfPatientCard builds its identity line from unit, dob, age and mrn. matchesPatientSearch matches on name, room, unit, mrn and diagnosis. A case-insensitive search for 'facility' under apps/web finds only prompt text, billing labels and comments, never a data field. This is exactly the recorded gap known:no-facility. As the oracle says, U4's facility part and U6's facility field are a Fail on TFA-92581, not Blocked or not-built, and that holds whatever Q1 decides about where facility comes from. No open question is waiting on this, and the question's pass/fail rule agrees with the Then/Oracle."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "At e02167f, Nursing Home residents have no facility field anywhere in the chain. The snfFields validator, which both the snfResidents schema and the snf:add args use, has name, age, dob, sex, mrn, unit, diagnosis and so on, but no facility. The Add Resident form has four fields: Full Name, Date of Birth, Unit / Room and MRN. Its add() call sends no facility. SnfPatientCard builds its identity line from unit, DOB, age and MRN only. matchesPatientSearch checks name, room, unit, MRN and diagnosis only. A case-insensitive grep for \"facility\" under apps/web found only comments, prompt text, E/M code labels and OCR boilerplate, never a data field. This is exactly the recorded gap known:no-facility. So U4's facility part and U6's facility field fail on TFA-92581, as the oracle says. The oracle states this holds whatever Q1 decides, so the verdict does not wait on Q1."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The snf resident record (snfFields) has name, mrn and unit but no facility field.",
+          "file": "apps/web/convex/lib/validators.ts",
+          "line": 331,
+          "quote": "export const snfFields = {",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The identity fields in the record are mrn and unit only; no facility follows them.",
+          "file": "apps/web/convex/lib/validators.ts",
+          "line": 336,
+          "quote": "mrn: v.optional(v.string()),",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The snfResidents table schema spreads snfFields, so the stored record has no facility either.",
+          "file": "apps/web/convex/schema.ts",
+          "line": 249,
+          "quote": "...snfFields,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "snf:add takes residentFields (= snfFields) as its args, so the mutation cannot accept a facility.",
+          "file": "apps/web/convex/snf.ts",
+          "line": 179,
+          "quote": "args: residentFields,",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Add Resident form's fields are Full Name, Date of Birth, Unit / Room and MRN. There is no Facility input.",
+          "file": "apps/web/src/routes/snf/AddResident.tsx",
+          "line": 117,
+          "quote": "label: \"Unit / Room\",",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": false,
+            "reason": "quote too short to count as support (<20 non-space chars, no distinctive identifier)"
+          }
+        },
+        {
+          "claim": "SnfPatientCard's identity line is built from unit, dob, age and mrn only, so no facility is shown on the card.",
+          "file": "apps/web/src/components/clinical/PatientCard.tsx",
+          "line": 292,
+          "quote": "const identity = [",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "matchesPatientSearch accepts only name, room, unit, mrn and diagnosis, so Nursing Home search cannot match a facility.",
+          "file": "apps/web/convex/lib/patientList.ts",
+          "line": 127,
+          "quote": "export function matchesPatientSearch(",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The values the search matcher compares are name, room, unit, mrn and diagnosis; facility is not among them.",
+          "file": "apps/web/convex/lib/patientList.ts",
+          "line": 141,
+          "quote": "patient.name,",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The snf resident record/validator (snfFields, spread into the schema and used as snf:add args) has no facility field; the identity fields are name, dob, sex, mrn and unit only.",
+          "file": "apps/web/convex/lib/validators.ts",
+          "line": 331,
+          "quote": "export const snfFields = {",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The identity fields in snfFields stop at mrn and unit; there is no facility key.",
+          "file": "apps/web/convex/lib/validators.ts",
+          "line": 336,
+          "quote": "mrn: v.optional(v.string()),",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "snf:add takes residentFields (snfFields) as its args, so it cannot accept a facility value.",
+          "file": "apps/web/convex/snf.ts",
+          "line": 179,
+          "quote": "args: residentFields,",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Add Resident form's default values hold no facility field.",
+          "file": "apps/web/src/routes/snf/AddResident.tsx",
+          "line": 41,
+          "quote": "defaultValues: {",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The form's last field is MRN after Name, DOB and Unit / Room; no Facility input exists.",
+          "file": "apps/web/src/routes/snf/AddResident.tsx",
+          "line": 121,
+          "quote": "key: \"mrn\",",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": false,
+            "reason": "quote too short to count as support (<20 non-space chars, no distinctive identifier)"
+          }
+        },
+        {
+          "claim": "The add() payload sends unit and mrn but no facility.",
+          "file": "apps/web/src/routes/snf/AddResident.tsx",
+          "line": 84,
+          "quote": "unit: values.unit || undefined,",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SnfPatientCard's identity line is built from unit, DOB, age and MRN only; no facility is shown.",
+          "file": "apps/web/src/components/clinical/PatientCard.tsx",
+          "line": 292,
+          "quote": "const identity = [",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "matchesPatientSearch matches name, room, unit, mrn and diagnosis only, so search cannot match a facility.",
+          "file": "apps/web/convex/lib/patientList.ts",
+          "line": 127,
+          "quote": "export function matchesPatientSearch(",
+          "supports": "fail",
+          "label": "known:no-facility",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "A physician adding a Nursing Home resident has no place to enter the facility, never sees a facility on the resident card, and cannot find residents by searching for a facility name. / A physician cannot record which nursing home a resident is in. They cannot see it on the resident card and cannot find residents by searching for a facility name, so residents from different facilities appear together in one list.",
+  "openQuestions": [
+    "Q1 (where facility comes from) is still open, but the oracle says this Fail holds whatever Q1 decides.",
+    "Q1 (where facility should come from) is still open. The oracle says the Fail holds whatever Q1 decides, so it does not change this verdict."
+  ],
+  "notDecidableByCode": [
+    "A person still has to sign off this doc review, as the oracle requires.",
+    "Confirming on the running app with S11's form snapshot and S09's card snapshots belongs to other scenarios.",
+    "A person still has to sign off on this doc review, as the oracle requires.",
+    "Confirming this on the running app (S11 form snapshot, S09 card snapshots) belongs to other lanes."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": true,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "9f6e1fe7e67c"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 34554,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.1387342,
+      "turns": 12,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 1,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 41516,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.17443039999999999,
+      "turns": 12,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 1,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:01:55.821Z"
+}

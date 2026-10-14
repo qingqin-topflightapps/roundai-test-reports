@@ -1,0 +1,10 @@
+{
+  "OAT-05/S26": {
+    "status": "passed",
+    "detail": "Our own spec (no dependency on the broken ARGS registry): 26 actions declared in convex/ai, all 26 refused for a caller with no session, every refusal 'ConvexError: Not authenticated at requireUserId (convex/lib/auth.ts) at handler (convex/lib/phi.ts)', i.e. before any provider; transcribe.transcribeAudio and transcribe.prepareSession included; voicefix.extractPatientDetails called with our own args.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/oat05-s26.json",
+      "runs/2026-10-14-local/newspec-a/final2.json"
+    ]
+  }
+}

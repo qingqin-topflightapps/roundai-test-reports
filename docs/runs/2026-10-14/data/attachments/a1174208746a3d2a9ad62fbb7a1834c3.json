@@ -1,0 +1,13 @@
+{
+  "OAT-04/S01": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:10:38.584Z",
+    "detail": "14 judged items passed, 3 failed (3 known, 0 policy conflict, 0 not in the matrix knownGaps), 1 recorded against open questions — failed: A.point (Important Point written 13 h ago: expected absent, got present; known K1) | A.openTask (open task 'Recheck BMP' on a chart last processed 37 h ago: expected absent, got present; known K2) | handoff37.content (handoff sent 37 h ago: its text and patient content (sender and recipient): expected absent, got present (row still there with fields _creationTime, _id, fromUserId, patientCount, readAt, sentAt, text, title, toUserId, variant); known K3) — record-only: handoff37.stub = full row: _creationTime, _id, fromUserId, patientCount, readAt, sentAt, text, title, toUserId, variant [Q20 (TC-08 'persistent record' vs OAT-04 (B) delete)]",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S01.json"
+    ],
+    "productIssue": "13 h after it was written an Important Point is still on the chart, a 37 h-old open task ('Recheck BMP') is still in the task list, and a handoff sent 37 h ago is still readable in full by sender and recipient. Breaks OAT-04 step 2 / Expected 1 and UAT 3.6 (points 12 h, open tasks and handoffs 36 h). Known in the matrix: K1, K2, K3."
+  }
+}

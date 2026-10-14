@@ -1,0 +1,258 @@
+[
+  {
+    "screenshot": "TC-11_S20__iphone15--hospital-course-read.png",
+    "category": "consistency",
+    "where": "top, section header 'HOSPITAL COURSE' and 'Edit' button on Background Summary",
+    "what": "The Hospital screen has one brown 'Edit' button, on the summary only, and none on the section header. The NH screen of the same kind has two black 'Edit' buttons, one on the section header and one on the summary. The buttons differ in number, position and color across the two contexts.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-11_S20__iphone15--hospital-course-read.png",
+    "category": "consistency",
+    "where": "top, sub-headings 'BACKGROUND SUMMARY' / 'COURSE TIMELINE'",
+    "what": "This screen says 'Background Summary' and 'Course Timeline' where NH says 'Admission Summary' and 'Visit Timeline'. The NH timeline entries are prefixed 'Visit N –' and the Hospital ones show only a date. This may be intentional, but the labels differ for the same component.",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-11_S20__iphone15--nh-course-read.png",
+    "category": "confusing",
+    "where": "top right, two 'Edit' buttons stacked about 100px apart (section header and Admission Summary)",
+    "what": "There are two identical 'Edit' buttons next to each other with no label saying what each one edits. A physician can't tell whether the top one edits the whole course or something else.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-16_S20__iphone15--hospital-transcripts-open.png",
+    "category": "unfinished",
+    "where": "bottom, collapsed card 'Oct 13 · Encounter notes' badge",
+    "what": "The badge reads '1 lines', a pluralization error. It should be '1 line'.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-16_S20__iphone15--hospital-transcripts-open.png",
+    "category": "truncation",
+    "where": "middle-bottom, expanded 'Oct 13 (prior)' card, last row 'Patient 09:03 AM'",
+    "what": "The expanded card ends on a speaker label and timestamp with no utterance text under it. The 12-line transcript looks cut off at the card edge, with no scroll cue or 'show more'.",
+    "severity": "medium",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-16_S20__iphone15--hospital-transcripts-open.png",
+    "category": "consistency",
+    "where": "middle/bottom, transcript card titles",
+    "what": "Card titles use two formats on the same screen: 'Oct 13 (prior)' and 'Oct 13 · Encounter notes'. Both are dated Oct 13, and the reader can't tell how they differ.",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-16_S20__iphone15--hospital-transcripts-open.png",
+    "category": "confusing",
+    "where": "top, 'Dictate' button in the notes card and a second 'Dictate' button in the Tasks header",
+    "what": "Two 'Dictate' buttons with the same label and icon are about 200px apart, in different styles (light and black). Nothing on either button says which one dictates notes and which one dictates tasks.",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-18_S24__iphone15--hospital-billing-long.png",
+    "category": "unfinished",
+    "where": "middle, billing suggestion card, 'DATA:' line",
+    "what": "The 'DATA:' field is empty, a label with no value. It looks like missing output, not a deliberate 'none'.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-18_S24__iphone15--hospital-billing-long.png",
+    "category": "unfinished",
+    "where": "middle, billing card 'PROBLEMS:' and 'RISK:' values",
+    "what": "The values are shown inside literal double quotes, with uppercase raw keys (CODE:, LEVEL:). It reads like unformatted model output, not a finished UI.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-18_S24__iphone15--hospital-billing-long.png",
+    "category": "confusing",
+    "where": "middle, billing card 'RISK:' value",
+    "what": "The RISK field holds a long treatment plan (continue antibiotics, reassess, discuss with pharmacy) instead of a risk level. A physician checking the billing level would find this confusing.",
+    "severity": "medium",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-meds-editor.png",
+    "category": "truncation",
+    "where": "middle-bottom, medication name inputs",
+    "what": "Long medication strings are cut off in single-line inputs: 'Piperacillin-tazobactam 4.5 g IV every 8' loses 'hours extended infusion', and 'Furosemide 40 mg IV twice daily, increa…' is clipped mid-character. The full dose and frequency can't be checked while editing.",
+    "severity": "high",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-meds-editor.png",
+    "category": "truncation",
+    "where": "middle-bottom, change-note inputs next to the status selects",
+    "what": "Change notes are clipped mid-word: 'dose increased for volume over', 'stopped for platelet drop, hepa', and 'awaiting cultures, renal dosing' with 'review' missing.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-meds-editor.png",
+    "category": "confusing",
+    "where": "top right, 'Cancel' next to 'MEDICATIONS 6'",
+    "what": "Only 'Cancel' is visible in the editor header. There is no Save or Done in view, so it's unclear how to commit the edits.",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-meds-panel.png",
+    "category": "confusing",
+    "where": "middle, Enoxaparin row: 'discontinued' badge and 'Stopped · Oct 13' chip",
+    "what": "One row uses two different words for the same state, 'discontinued' and 'Stopped'. Other rows also show the status twice ('held' + 'Held · Oct 12', 'changed' + 'Changed · Oct 14'), which is redundant.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-meds-panel.png",
+    "category": "readability",
+    "where": "middle left, 'discontinued' badge",
+    "what": "The badge text is struck through and gray on a light gray pill, which makes it hard to read.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-meds-panel.png",
+    "category": "alignment",
+    "where": "whole list, medication names",
+    "what": "The med name column starts at a different x position in each row, depending on the width of the status badge ('held', 'active', 'changed', 'discontinued', 'single dose'). The names form a ragged left edge.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-postround-meds.png",
+    "category": "consistency",
+    "where": "middle, Medication Tracker rows",
+    "what": "This tracker puts the status pill on the right; the Pre-Round meds panel puts it on the left. 'changed' is red here and amber in the panel. Notes here are orange with a ⚡ icon, and gray without one in the panel. The same data is styled differently on two screens.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--hospital-postround-meds.png",
+    "category": "unfinished",
+    "where": "top, patient subheader 'Room 4B-12 · 72y · —'",
+    "what": "A trailing '·' followed by a bare em dash looks like an empty placeholder field.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--nh-meds-panel.png",
+    "category": "consistency",
+    "where": "bottom, Atorvastatin row",
+    "what": "Hospital shows 'not mentioned today' under Atorvastatin; the NH panel shows nothing there. The NH panel otherwise has the same redundant status pairs as Hospital ('discontinued' vs 'Stopped').",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-19_S21__iphone15--nh-meds-panel.png",
+    "category": "confusing",
+    "where": "middle, Enoxaparin row",
+    "what": "The status badge says 'discontinued' and the chip says 'Stopped · Oct 13', two different terms for one state.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-20_S19__iphone15--hospital-dashboard.png",
+    "category": "alignment",
+    "where": "top, stat tiles row, 'In Progress' tile",
+    "what": "'In Progress' wraps onto two lines, so its '0' sits lower than the numbers in the Total, Pending and Complete tiles.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-20_S19__iphone15--nh-dashboard.png",
+    "category": "alignment",
+    "where": "top, stat tiles row, 'In Progress' tile",
+    "what": "'In Progress' wraps onto two lines, so its '0' sits lower than the numbers in the other three tiles.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--hospital-postround-tasks.png",
+    "category": "readability",
+    "where": "middle, faint gray warning-triangle icons next to each task's trash icon",
+    "what": "The triangle icons are very low contrast and have no label, so their meaning isn't explained. They sit close to the trash icon (about 75px apart), which makes a mis-tap likely. The NH tasks screen doesn't show them.",
+    "severity": "medium",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--hospital-postround-tasks.png",
+    "category": "confusing",
+    "where": "bottom, pale green button with spinner 'Finalizing Encounter Data...'",
+    "what": "The main action is stuck in a faded loading state, and the screen gives no hint of progress or what to do next.",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--nh-postround-tasks.png",
+    "category": "confusing",
+    "where": "middle, first task 'follow up BMP'",
+    "what": "The task text is struck through as if done, but its checkbox is empty (teal outline). Hospital shows the same task as checked. The completion state is ambiguous.",
+    "severity": "high",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--nh-postround-tasks.png",
+    "category": "confusing",
+    "where": "bottom, disabled 'Mark Visit Complete' button",
+    "what": "The button is grayed out with no text explaining why it can't be pressed.",
+    "severity": "medium",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--nh-postround-tasks.png",
+    "category": "consistency",
+    "where": "top, header and tab bar",
+    "what": "NH shows a 'Nursing Home' pill and an MRN and has no 'Meds' sub-tab. The active Post-Round tab is teal here and black on Hospital. Hospital says 'Mark Encounter Complete' and NH says 'Mark Visit Complete'. Some of this may be intentional, but the shared controls look different.",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--hospital-task-export.png",
+    "category": "unfinished",
+    "where": "top, 'Copy Text' button icon",
+    "what": "The copy icon is tiny, much smaller than the text, and looks like a broken or mis-scaled glyph.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--hospital-task-export.png",
+    "category": "confusing",
+    "where": "middle, pending task 'recheck weight in two weeks'",
+    "what": "The pending task uses a gray circle with a checkmark, which looks already done next to the green checked 'finished' item.",
+    "severity": "medium",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--hospital-task-export.png",
+    "category": "alignment",
+    "where": "top, 'Copy Text' button",
+    "what": "The button is inset more than the content below it (its left and right edges don't line up with the patient row and cards).",
+    "severity": "low",
+    "confidence": "medium"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--nh-task-export.png",
+    "category": "unfinished",
+    "where": "top, 'Copy Text' button icon",
+    "what": "The copy icon is tiny and mis-scaled next to the label, the same as on Hospital.",
+    "severity": "low",
+    "confidence": "high"
+  },
+  {
+    "screenshot": "TC-22_S20__iphone15--nh-task-export.png",
+    "category": "confusing",
+    "where": "middle, pending task 'recheck weight in two weeks'",
+    "what": "The open task's gray circle with a checkmark reads as already completed.",
+    "severity": "medium",
+    "confidence": "medium"
+  }
+]

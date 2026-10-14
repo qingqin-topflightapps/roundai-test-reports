@@ -1,0 +1,140 @@
+{
+  "prototype": "roundai/handoff-docs/RoundCompanion_PLAYGROUND_p72_HAIKU.html",
+  "method": "whitespace-normalised, sentence by sentence; placeholders and ${...} are gaps (scripts/code-review/parity.mjs)",
+  "prompts": [
+    {
+      "file": "apps/web/convex/ai/prompts/library/v1/note/billing.md",
+      "lock": {
+        "key": "noteBilling",
+        "version": "1.4",
+        "hash": "1712434bf8b7"
+      },
+      "segments": 3,
+      "segmentsVerbatim": 2,
+      "segmentsNotVerbatim": [
+        "DATA ELEMENT CHECKLIST (MR3 — replaces prose rules; answer each question from the note text ONLY, in this order, and claim exactly what passes): Q1 — DISCUSSION…"
+      ],
+      "sentences": 30,
+      "exactCount": 21,
+      "changed": [
+        {
+          "lib": "If honest answers leave only a LOWER code justified, choose the lower code from the supplied family.",
+          "p72": "If honest answers leave only a LOWER code justified, suggest the lower code — an honest 99221 is always correct; an inflated 99223 is an audit finding.",
+          "p72Line": 8496,
+          "diff": "If honest answers leave only a LOWER code justified, [-suggest-] {+choose+} the lower code [-— an honest 99221 is always correct; an inflated 99223 is an audit finding.-] {+from the supplied family.+}",
+          "similarity": 0.55
+        },
+        {
+          "lib": "Return a JSON object with exactly these fields:",
+          "p72": "Return ONLY valid JSON with these four fields:",
+          "p72Line": 3565,
+          "diff": "Return [-ONLY valid-] {+a+} JSON {+object+} with {+exactly+} these [-four-] fields:",
+          "similarity": 0.63
+        }
+      ],
+      "noCounterpart": [
+        "Never return a code outside the supplied family; a conservative supported code is better than an inflated code.",
+        "\"code\": one code from the supplied family",
+        "\"level\": exactly one of \"Straightforward\", \"Low\", \"Moderate\", or \"High\"",
+        "\"problems\": the MDM problem element supported by this note",
+        "\"data\": the MDM data element supported by this note",
+        "\"risk\": the MDM risk element supported by this note; be specific, for example \"Decision regarding hospitalization = High\"",
+        "\"reason\": 1-2 brief sentences explaining why the code is most appropriate based on the actual note content"
+      ],
+      "missingFromLib": [
+        {
+          "p72": "You MAY end with one line \"TIP: [what to document to support a higher element]\" (e.g.",
+          "line": 8496
+        },
+        {
+          "p72": "\"TIP: if you discussed management with GI, document it to claim the discussion element\").",
+          "line": 8496
+        },
+        {
+          "p72": "Plain text only — no markdown, no asterisks, no bold.",
+          "line": 8496
+        },
+        {
+          "p72": "Return in this exact format:",
+          "line": 8496
+        },
+        {
+          "p72": "LEVEL: [Straightforward/Low/Moderate/High] Complexity",
+          "line": 8496
+        },
+        {
+          "p72": "PROBLEMS: [which MDM problem element applies]",
+          "line": 8496
+        },
+        {
+          "p72": "DATA: [which MDM data element applies]",
+          "line": 8496
+        },
+        {
+          "p72": "RISK: [which MDM risk element applies — be specific, e.g.",
+          "line": 8496
+        },
+        {
+          "p72": "\"Decision regarding hospitalization = High\"]",
+          "line": 8496
+        },
+        {
+          "p72": "REASON: [1-2 sentences why this code is most appropriate]",
+          "line": 8496
+        }
+      ],
+      "homeLines": [
+        8496
+      ],
+      "verdict": "differs"
+    },
+    {
+      "file": "apps/web/convex/ai/prompts/library/v1/note/billing-system.md",
+      "lock": {
+        "key": "noteBillingSystem",
+        "version": "1.4",
+        "hash": "7224c5bbdf05"
+      },
+      "segments": 1,
+      "segmentsVerbatim": 0,
+      "segmentsNotVerbatim": [
+        "You are a medical billing specialist with expertise in 2021+ MDM-based E&M coding. Analyze the clinical note and suggest the appropriate billing code. Be specif…"
+      ],
+      "sentences": 10,
+      "exactCount": 3,
+      "changed": [
+        {
+          "lib": "Base your problems, data, risk, and reason fields ONLY on information explicitly present in the provided note; never cite a test, study, or data point (for example an ECG) that does not appear in the note.",
+          "p72": "Base your PROBLEMS, DATA, and RISK justification ONLY on information explicitly present in the provided note; never cite a test, study, or data point (for example an ECG) that does not appear in the note.",
+          "p72Line": 8495,
+          "diff": "Base your [-PROBLEMS, DATA,-] {+problems, data, risk,+} and [-RISK justification-] {+reason fields+} ONLY on information explicitly present in the provided note; never cite a test, study, or data point (for example an ECG) that does not appear in the note.",
+          "similarity": 0.87
+        }
+      ],
+      "noCounterpart": [
+        "NEVER add a diagnosis the note does not name (WRONG — observed: billing blocks citing \"anemia\", \"acute kidney injury\", and \"hemodynamic compromise\" for notes containing none of them); never upgrade severity; and never contradict the note (\"hemodynamic instability\" was cited to justify risk for a note that itself documents \"hemodynamically stable\").",
+        "If the note only supports a lower-level code, suggest the lower-level code.",
+        "NEVER claim independent interpretation of an image or tracing, review of external records, or discussion with an external physician unless the note states the physician did it.",
+        "NEVER cite a normal or near-normal value as a problem to reach a level (a sodium of 136 is not \"hyponatremia requiring intervention\").",
+        "Use the encounter type and note type given (initial vs subsequent; hospital vs SNF code family; a discharge note is coded as a discharge).",
+        "Output ONLY the requested JSON object with the code, level, and grounded justification fields — no markdown, disclaimers, preamble, hedges, bracketed notes-to-self, or arithmetic (\"(none) + (none) = 1 data point\")."
+      ],
+      "missingFromLib": [
+        {
+          "p72": "Return only the suggestion, no disclaimers, no preamble.",
+          "line": 8495
+        }
+      ],
+      "homeLines": [
+        8495
+      ],
+      "verdict": "differs"
+    }
+  ],
+  "summary": [
+    "note/billing.md: differs (segments 2/3, sentences 21/30 verbatim, 2 changed, 7 new, 10 p72 sentences not in the library)",
+    "note/billing-system.md: differs (segments 0/1, sentences 3/10 verbatim, 1 changed, 6 new, 1 p72 sentences not in the library)"
+  ],
+  "verdict": "differs",
+  "approvalClause": true
+}

@@ -1,0 +1,129 @@
+{
+  "ref": "OAT-04/S24",
+  "title": "Important Points one by one",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:30:17.762Z",
+  "summary": {
+    "pass": 2,
+    "fail": 2,
+    "failKnown": 2,
+    "record": 0,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "H1.A",
+      "item": "H1 point A written at T0, at T0+13 h (Save Note at T0+11 h, point B added at T0+12 h)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TC-12 'Points expire 12 h after they were written' and 3.6 (12 h); re-judged if Q3 says the clock is the list's last edit or the last Save Note",
+      "known": "K1: one ptsEditedAt for the whole list maxed with notesProcessedAt, 18 h window (lifecycle.ts:10, 131-143) — TFA-94699 AC 1"
+    },
+    {
+      "id": "H1.B",
+      "item": "H1 point B (1 h old) at T0+13 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "a kept point missing = Fail (too early)"
+    },
+    {
+      "id": "H2.C",
+      "item": "H2 point C written at T0, at T0+37 h (Save Notes every 10 h, D added at T0+32 h)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "3.7 claim (U11): C present at 37 h = Fail under any Q3 answer",
+      "known": "K1: one ptsEditedAt for the whole list maxed with notesProcessedAt, 18 h window (lifecycle.ts:10, 131-143) — TFA-94699 AC 1"
+    },
+    {
+      "id": "H2.D",
+      "item": "H2 point D (5 h old) at T0+37 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "a kept point missing = Fail (too early)"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "Points were added through the pre-round editor (Add Point, Save Point, Close editor); each Save Note is a real pre-round Save Note (live AI). Every page open also ran the app's own Hospital purge, as AppLayout does."
+  ],
+  "retriesOnLocalTimeout": [
+    "freshAccount (attempt 1: fresh account was not created: {\"email\":\"e2e-fresh-84e82fad-8d7@roundai.test\",\"e)",
+    "ensureConsent (attempt 1: query settings:get failed: [Request ID: 6f7c09c53c163ebc] Server Error\nUncaught )",
+    "rounding:add (attempt 1: mutation rounding:add failed: [Request ID: d6890e8819b213d3] Server Error\nUncaug)",
+    "rounding:add (attempt 2: mutation rounding:add failed: [Request ID: 528a2f6cc741e389] Server Error\nUncaug)"
+  ],
+  "uiRetries": [
+    "addPoint QA point D: timed out waiting for point 'QA point D' to be stored"
+  ],
+  "snapshots": {
+    "purge": {
+      "physician": 1
+    },
+    "raw.H1.T0+13h": {
+      "_id": "kx7exeypwpjnkkbsdhghqqvmks8g9gxc",
+      "name": "QA Hosp Points H1",
+      "preRoundNotes": "Stable overnight, no new complaints",
+      "rawPreRoundNotes": "Stable overnight, no new complaints",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-14T04:28:18.819Z",
+      "preRoundEditedAt": 1791952098819,
+      "importantPoints": [
+        {
+          "id": "1791959288886",
+          "source": "manual",
+          "text": "QA point A"
+        },
+        {
+          "id": "1791959314775",
+          "source": "manual",
+          "text": "QA point B"
+        }
+      ],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791955715062,
+      "status": "pre-rounded",
+      "admissionSummary": {
+        "course": "Oct 14: Patient stable overnight with no new complaints. Continue current management and reassess.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-14T04:28:18.819Z",
+        "reason": "Patient admitted with clinical status to be determined. Overnight course unremarkable."
+      }
+    },
+    "raw.H2.T0+37h": {
+      "_id": "kx7cj1n3jbwpnd5qc4jgmftfgn8g9dsy",
+      "name": "QA Hosp Points H2",
+      "preRoundNotes": "Stable overnight, no new complaints",
+      "rawPreRoundNotes": "Stable overnight, no new complaints",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-13T23:29:27.539Z",
+      "preRoundEditedAt": 1791934167539,
+      "importantPoints": [
+        {
+          "id": "1791959320039",
+          "source": "manual",
+          "text": "QA point C"
+        },
+        {
+          "id": "1791959407166",
+          "source": "manual",
+          "text": "QA point D"
+        }
+      ],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791941407166,
+      "status": "pending",
+      "admissionSummary": {
+        "course": "Oct 14: Patient remains stable overnight without new complaints. Continue current management and reassess.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-13T23:29:27.539Z",
+        "reason": "Patient admitted with undocumented primary diagnosis. Overnight course unremarkable. No active acute issues identified on pre-round assessment."
+      }
+    }
+  }
+}

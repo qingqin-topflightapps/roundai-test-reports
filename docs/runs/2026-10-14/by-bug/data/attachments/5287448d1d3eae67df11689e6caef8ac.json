@@ -1,0 +1,128 @@
+{
+  "ref": "TC-23/S12",
+  "mode": "scripted",
+  "kind": "harness self-test (scripted far end: the checks ran on the item's own written text)",
+  "hospital": {
+    "pass": 1,
+    "of": 1
+  },
+  "nursingHome": {
+    "pass": 1,
+    "of": 1
+  },
+  "recovered": [],
+  "blocked": [],
+  "failures": [],
+  "takes": [
+    {
+      "item": "R-01",
+      "mode": "hospital",
+      "surface": "hospital pre-round notes",
+      "verdict": {
+        "id": "R-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Tirzepatide 2.5 milligrams weekly.",
+        "numbersFound": [
+          2.5
+        ],
+        "numbersWanted": [
+          2.5
+        ]
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j97cymn37wr2z7w35cnj4z0nb98g8718",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 312,
+          "providerMs": 309
+        }
+      ],
+      "take": {
+        "ids": [
+          "R-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Tirzepatide 2.5 milligrams weekly.",
+        "added": "Tirzepatide 2.5 milligrams weekly.",
+        "tapToReadyMs": 698,
+        "stopToTextMs": 1061,
+        "stopToCompletedMs": 967,
+        "playedSec": 2.6655625,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "R-01",
+      "mode": "nursing-home",
+      "surface": "nursing-home Pre-Round notes",
+      "verdict": {
+        "id": "R-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Tirzepatide 2.5 milligrams weekly.",
+        "numbersFound": [
+          2.5
+        ],
+        "numbersWanted": [
+          2.5
+        ]
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j972e1gh383yh1y83w53qa146n8g8c6k",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 318,
+          "providerMs": 309
+        }
+      ],
+      "take": {
+        "ids": [
+          "R-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Tirzepatide 2.5 milligrams weekly.",
+        "added": "Tirzepatide 2.5 milligrams weekly.",
+        "tapToReadyMs": 866,
+        "stopToTextMs": 1093,
+        "stopToCompletedMs": 1001,
+        "playedSec": 2.6655625,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    }
+  ],
+  "aiProvider": {
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "provider": "bedrock",
+    "transcription": "gpt-live",
+    "visionModel": "gemini-2.5-flash",
+    "visionProvider": "vertex"
+  },
+  "disclosures": [
+    {
+      "at": 1791961523442.339,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 309
+    },
+    {
+      "at": 1791961511733.275,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 309
+    }
+  ],
+  "at": "2026-10-14T07:05:32.046Z"
+}

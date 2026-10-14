@@ -1,0 +1,109 @@
+{
+  "case": "TC-03-S16",
+  "title": "List after opening a chart and Back, and across Today's Visits ↔ All Residents, both contexts",
+  "needs": [
+    "seed",
+    "oracle-order",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s16-hosp-open.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-hosp-searched.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-hosp-after-back.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q9: search text kept after Back) fail: missing \"pneumonia\" (in subtree \"textbox \"Search patients\"\")",
+        "(Q9: name sort kept after Back) fail: missing \"option \"Sort: Name A–Z\" [selected]\""
+      ]
+    },
+    {
+      "file": "s16-nh-open.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-nh-today-nomatch.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-nh-all-after-switch.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q10: 'zz-none' carried into All Residents) pass: \"zz-none\" present (in subtree \"textbox \"Search patients\"\")",
+        "(Q10: the empty list carried into All Residents) pass: \"No residents match\" present"
+      ]
+    },
+    {
+      "file": "s16-nh-all-searched.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-nh-after-back.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q9: search text kept after Back) fail: missing \"QA Resident\" (in subtree \"textbox \"Search patients\"\")",
+        "(Q9: name sort kept after Back) fail: missing \"option \"Sort: Name A–Z\" [selected]\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Q9/Q10: which Nursing Home view (Today's Visits or All Residents) the list returns to after Back. The snapshot does not mark the selected view, so read s16-nh-after-back.png."
+  ],
+  "agent": {
+    "turns": 38,
+    "costUsd": 0.2183638,
+    "durationMs": 62552,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

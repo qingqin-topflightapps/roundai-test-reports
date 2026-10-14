@@ -1,0 +1,68 @@
+{
+  "case": "TC-17-S28",
+  "title": "Ask on Post-Round, Hospital: 'What did the exam show?' with no exam stored says none and invents no normals",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s28-postround-ask.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7d98xndkq0c0j72xxf4jt59h8g8vdn",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "notes": [
+        "the guard refused a Dictate press before this save (2026-10-14T01:31:12.364Z); the agent was told to type instead"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app)) pass: backend pt-before note contains \"Not dictated.\"",
+        "(3.9: the model that answered, read from backend/diag-after.json) pass: backend diag-after [fn=assist.askChart].model exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read the answer in s28-postround-ask.png; a failing answer is quoted in the report (3.2). aiCheck group TC-17-ask pools the ten Ask fixtures at 9/10 (RG-POOL not built: each reports on its own)."
+  ],
+  "agent": {
+    "turns": 18,
+    "costUsd": 0.09785920000000002,
+    "durationMs": 85011,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U49",
+  "covers": [
+    "TC-17/S28"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u49",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U49.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

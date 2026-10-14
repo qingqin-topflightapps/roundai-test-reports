@@ -1,0 +1,599 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25",
+      "tc25-sync.spec.ts",
+      "-g",
+      "TC-25/S13|TC-25/S28|TC-25/S27 L-leftover",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tc25-sync.spec.ts",
+      "file": "tc25-sync.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-25/S13 hospital: a fresh computer gets the sign-in gate while the phone keeps typing; the phone stays signed in",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 41950,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:03:43.883Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-d410056772f6c6061a5e",
+          "file": "tc25-sync.spec.ts",
+          "line": 131,
+          "column": 3
+        },
+        {
+          "title": "TC-25/S13 snf: a fresh computer gets the sign-in gate while the phone keeps typing; the phone stays signed in",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 41342,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:04:25.942Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-2d83bef5e61566f48a21",
+          "file": "tc25-sync.spec.ts",
+          "line": 131,
+          "column": 3
+        },
+        {
+          "title": "TC-25/S27 L-leftover hospital: leaving the field within 0.8 s leaves a device copy of saved text behind (premise, record-only)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10575,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:05:07.287Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-9a8f4cb65ebe8687c0db",
+          "file": "tc25-sync.spec.ts",
+          "line": 587,
+          "column": 3
+        },
+        {
+          "title": "TC-25/S27 L-leftover snf: leaving the field within 0.8 s leaves a device copy of saved text behind (premise, record-only)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10498,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:05:17.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-848c3167281318813c39",
+          "file": "tc25-sync.spec.ts",
+          "line": 587,
+          "column": 3
+        },
+        {
+          "title": "TC-25/S28 hospital leg a: a draft kept on the phone vs a later edit on the computer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 28255,
+                  "error": {
+                    "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 108,
+                      "line": 739
+                    },
+                    "snippet": "  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 108,
+                        "line": 739
+                      },
+                      "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:05:28.368Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 108,
+                    "line": 739
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 28423,
+                  "error": {
+                    "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 108,
+                      "line": 739
+                    },
+                    "snippet": "  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 108,
+                        "line": 739
+                      },
+                      "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T09:05:56.903Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes-retry1/test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-3e913--later-edit-on-the-computer-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 108,
+                    "line": 739
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-effd4f314057cfedd4bf",
+          "file": "tc25-sync.spec.ts",
+          "line": 673,
+          "column": 5
+        },
+        {
+          "title": "TC-25/S28 hospital leg b: a draft kept on the phone vs no edit elsewhere",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 25324,
+                  "error": {
+                    "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 108,
+                      "line": 739
+                    },
+                    "snippet": "  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 108,
+                        "line": 739
+                      },
+                      "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 69,
+                        "line": 741
+                      },
+                      "message": "Error: (b) F restored on the phone\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n  740 |       if (leg === \"b\") {\n> 741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n      |                                                                     ^\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n  743 |         expect.soft(rec.draftRowsAfter, \"(b) the draft row is gone once the server echoes it\").toBe(0);\n  744 |       }\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:741:69"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 83,
+                        "line": 742
+                      },
+                      "message": "Error: (b) F reaches the computer within 10 s\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n> 742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n      |                                                                                   ^\n  743 |         expect.soft(rec.draftRowsAfter, \"(b) the draft row is gone once the server echoes it\").toBe(0);\n  744 |       }\n  745 |       // (a) is needs-human evidence until Daniela answers Q11: recorded in the JSON, never a Pass/Fail here.\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:742:83"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:06:25.713Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 108,
+                    "line": 739
+                  }
+                },
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 25205,
+                  "error": {
+                    "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m",
+                    "stack": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 108,
+                      "line": 739
+                    },
+                    "snippet": "  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 108,
+                        "line": 739
+                      },
+                      "message": "Error: the phone kept a device copy of F (scenario premise)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m\n\n  737 |       // The scenario assumes going offline inside the autosave window leaves a device copy of F; whether it\n  738 |       // did is recorded (on e02167f no row is written while offline: scripts/probes/diag/zz-diag-s28.spec.ts).\n> 739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n      |                                                                                                            ^\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:739:108"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 69,
+                        "line": 741
+                      },
+                      "message": "Error: (b) F restored on the phone\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  739 |       expect.soft(rec.draftKeptBeforeClose.length, \"the phone kept a device copy of F (scenario premise)\").toBeGreaterThan(0);\n  740 |       if (leg === \"b\") {\n> 741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n      |                                                                     ^\n  742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n  743 |         expect.soft(rec.draftRowsAfter, \"(b) the draft row is gone once the server echoes it\").toBe(0);\n  744 |       }\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:741:69"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 83,
+                        "line": 742
+                      },
+                      "message": "Error: (b) F reaches the computer within 10 s\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  740 |       if (leg === \"b\") {\n  741 |         expect.soft(rec.phoneShowsF, \"(b) F restored on the phone\").toBe(true);\n> 742 |         expect.soft(rec.computerShowsF, \"(b) F reaches the computer within 10 s\").toBe(true);\n      |                                                                                   ^\n  743 |         expect.soft(rec.draftRowsAfter, \"(b) the draft row is gone once the server echoes it\").toBe(0);\n  744 |       }\n  745 |       // (a) is needs-human evidence until Daniela answers Q11: recorded in the JSON, never a Pass/Fail here.\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:742:83"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T09:06:51.417Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes-retry1/test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25/tc25-sync-TC-25-S28-hospit-fe7e5--phone-vs-no-edit-elsewhere-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 108,
+                    "line": 739
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-fdbc207af295ca2ed27b",
+          "file": "tc25-sync.spec.ts",
+          "line": 673,
+          "column": 5
+        },
+        {
+          "title": "TC-25/S28 snf leg a: a draft kept on the phone vs a later edit on the computer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28835,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:07:17.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-c4950ff1a7e176719fba",
+          "file": "tc25-sync.spec.ts",
+          "line": 673,
+          "column": 5
+        },
+        {
+          "title": "TC-25/S28 snf leg b: a draft kept on the phone vs no edit elsewhere",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25113,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:07:45.977Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-0ba5b830c36a19462fc6",
+          "file": "tc25-sync.spec.ts",
+          "line": 673,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T09:03:43.585Z",
+    "duration": 267536.87,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

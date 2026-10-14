@@ -1,0 +1,95 @@
+{
+  "ref": "TC-09/S20",
+  "title": "TC-09/S20 All Residents search finds a resident who is not on today's list",
+  "dataset": "lists",
+  "target": "dev",
+  "at": "2026-10-14T08:38:19.227Z",
+  "cells": [
+    {
+      "name": "nAllName is absent from Today's Visits (no search)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "listed": false,
+        "witnessListed": true
+      }
+    },
+    {
+      "name": "NH all by name: 'NAMEWA' lists exactly nAllName",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  NAMEWA  ",
+        "shown": [
+          "QA DS1-lists Res Fqnamewa"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by name: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by name: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    },
+    {
+      "name": "nAllUnit is absent from Today's Visits (no search)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "listed": false,
+        "witnessListed": true
+      }
+    },
+    {
+      "name": "NH all by unit: 'UNITWA' lists exactly nAllUnit",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "box": "  UNITWA  ",
+        "shown": [
+          "QA DS1-lists Res Allunit"
+        ],
+        "cards": 1,
+        "otherCards": 0
+      }
+    },
+    {
+      "name": "NH all by unit: no-match string shows the message and no card",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "message": true,
+        "cards": 0
+      }
+    },
+    {
+      "name": "NH all by unit: Clear empties the box and the card is back",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "value": "",
+        "cardVisible": true
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-09-S20-all.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-09-S20-all.png": 1
+  }
+}

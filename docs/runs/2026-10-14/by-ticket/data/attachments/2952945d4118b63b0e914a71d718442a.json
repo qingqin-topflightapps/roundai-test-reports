@@ -1,0 +1,408 @@
+{
+  "ref": "OAT-02/S14",
+  "method": "CODEREVIEW",
+  "status": "passed",
+  "verdict": "pass",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "List every sendEmail (or other email-sending) call site in apps/web/convex and read the sign-in code email template and its inputs. Check convex/lib/emailOtpAuth.ts (deliverSignInOtp), convex/auth_provider_extension.ts (sendResetPassword) and convex/auth.ts (whether email+password is off, reset paths are in disabledPaths, and emailOtpAuthOptions is spread after the extension).",
+  "rule": {
+    "pass": "exactly the sign-in code path (inputs {email, otp, type}) plus the reset-password hook that is disabled, and the template carries only the code, the 5-minute expiry line and the ignore line (no name, room, MRN, diagnosis or link)",
+    "fail": "a third call site, a template input beyond {email, otp, type}, a patient field or link in the email, or the reset path enabled",
+    "basis": [
+      "A third call site, a template input beyond {email, otp, type}, or the reset path enabled = Fail",
+      "Code, expiry and ignore line only; no name, room, MRN, diagnosis or link",
+      "Exactly two call sites: convex/lib/emailOtpAuth.ts:40 (deliverSignInOtp, input {email, otp, type}) and convex/auth_provider_extension.ts:21 (sendResetPassword), which is disabled because emailOtpAuthOptions spreads after it in convex/auth.ts (email and password off, reset paths in disabledPaths)",
+      "The template is subject 'Your Round Companion sign-in code' and a body with the code, the 5-minute expiry line and the 'If you did not request this code, you can ignore this email.' line"
+    ]
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [],
+  "pendingOn": [],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "The code passes. apps/web/convex has only two places that call sendEmail (the shared helper in convex/email.ts, which sends through SES or the Specode relay). The first is deliverSignInOtp in convex/lib/emailOtpAuth.ts:40. It receives only {email, otp, type} and refuses any type other than \"sign-in\". Its subject is \"Your Round Companion sign-in code\". The body holds only the code, the line \"It expires in 5 minutes.\" and the line \"If you did not request this code, you can ignore this email.\" It has no name, room, MRN, diagnosis or link. The second is sendResetPassword in convex/auth_provider_extension.ts:21, the generated migration hook. It is switched off: convex/auth.ts spreads ...emailOtpAuthOptions after ...migrationAuth.options, so emailAndPassword becomes { enabled: false }, and disabledPaths blocks the password reset routes (/request-password-reset, /reset-password, /forget-password/email-otp, /email-otp/reset-password and others). The plugin list is the empty migration plugins, emailOTP, convex and crossDomain, and none of these sends any other email. A grep found no third place that sends email. The scenario defers to no open question and touches no recorded gap. Whether a code-only email is acceptable (Q9) and whether delivery uses TLS (S22) are outside this verdict."
+    },
+    {
+      "run": 2,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "The backend at e02167f calls sendEmail from only two places. The first is deliverSignInOtp in convex/lib/emailOtpAuth.ts:40. It takes only {email, otp, type}, refuses any type other than \"sign-in\", and sends the subject \"Your Round Companion sign-in code\". The body holds only the code, \"It expires in 5 minutes.\" and \"If you did not request this code, you can ignore this email.\" It carries no name, room, MRN, diagnosis or link. The second is sendResetPassword in convex/auth_provider_extension.ts:21. That hook is never active. In convex/auth.ts, createAuthOptions spreads migrationAuth.options first and emailOtpAuthOptions after it, so `emailAndPassword: { enabled: false }` replaces the extension's whole emailAndPassword object, including sendResetPassword. All reset and password paths are also in disabledPaths. sendEmail (convex/email.ts) is the only entry point to SES or the relay, and sendSesEmail is called only from email.ts (and a unit test). No other code in convex/ sends email. Everything the oracle requires holds, so the verdict is pass. Delivery over TLS (S22) and whether a code-only email is acceptable (Q9) are outside this verdict."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The sign-in code sender receives only email, otp and type, and refuses any type other than sign-in.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 8,
+          "quote": "export const deliverSignInOtp: EmailOTPOptions[\"sendVerificationOTP\"] = async ({",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Non-sign-in OTP types are rejected, so this path cannot send an OTP email of any other type.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 14,
+          "quote": "throw new Error(\"Only sign-in codes are supported.\");",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The template has the fixed subject, the code, the 5-minute expiry line and the ignore line. It has no patient field and no link.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 42,
+          "quote": "subject: \"Your Round Companion sign-in code\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The body is only the code and the expiry and ignore text.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 43,
+          "quote": "It expires in 5 minutes. If you did not request this code, you can ignore this email.",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The emailOtp options turn email and password off and list the reset paths in disabledPaths.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 50,
+          "quote": "emailAndPassword: { enabled: false },",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The password reset routes are disabled.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 54,
+          "quote": "\"/request-password-reset\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The second sendEmail call, the reset-password hook with a link, sits in the generated migration extension, which turns email and password on.",
+          "file": "apps/web/convex/auth_provider_extension.ts",
+          "line": 21,
+          "quote": "await sendEmail({",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "emailOtpAuthOptions is spread after migrationAuth.options, so its emailAndPassword { enabled: false } replaces the extension's enabled: true and its sendResetPassword.",
+          "file": "apps/web/convex/auth.ts",
+          "line": 343,
+          "quote": "...migrationAuth.options,\n    ...emailOtpAuthOptions,",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "sendEmail is the only email sender. It goes to SES or the relay, or throws if neither is configured, and nothing else in convex calls it or sendSesEmail directly.",
+          "file": "apps/web/convex/email.ts",
+          "line": 51,
+          "quote": "export async function sendEmail({ to, subject, html }: SendEmailOptions) {",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The sign-in code sender takes only email, otp and type, and refuses any type other than sign-in.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 8,
+          "quote": "export const deliverSignInOtp: EmailOTPOptions[\"sendVerificationOTP\"] = async ({",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Only sign-in codes are sent; any other OTP type is refused.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 14,
+          "quote": "throw new Error(\"Only sign-in codes are supported.\");",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The template has the fixed subject and a body with only the code, the 5-minute expiry line and the ignore line. It has no patient fields and no link.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 42,
+          "quote": "subject: \"Your Round Companion sign-in code\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The body holds only the OTP, the expiry line and the ignore line.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 43,
+          "quote": "It expires in 5 minutes. If you did not request this code, you can ignore this email.",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Email and password sign-in is off, and the reset and password paths are disabled.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 50,
+          "quote": "emailAndPassword: { enabled: false },",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The reset-password paths are listed in disabledPaths.",
+          "file": "apps/web/convex/lib/emailOtpAuth.ts",
+          "line": 54,
+          "quote": "\"/request-password-reset\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The second sendEmail call site is the generated reset-password hook. Its email would contain a link, but the hook is overridden (see auth.ts).",
+          "file": "apps/web/convex/auth_provider_extension.ts",
+          "line": 21,
+          "quote": "await sendEmail({\n            to: user.email,\n            subject: \"Reset your password\",",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "emailOtpAuthOptions is spread after migrationAuth.options, so its emailAndPassword {enabled:false} replaces the extension's object, including sendResetPassword.",
+          "file": "apps/web/convex/auth.ts",
+          "line": 343,
+          "quote": "...migrationAuth.options,\n    ...emailOtpAuthOptions,",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "sendEmail is the only path to SES or the relay, and it sends only the to, subject and html it is given.",
+          "file": "apps/web/convex/email.ts",
+          "line": 51,
+          "quote": "export async function sendEmail({ to, subject, html }: SendEmailOptions) {",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "",
+  "openQuestions": [
+    "Q9 (whether a code-only sign-in email is acceptable) does not decide this verdict.",
+    "The scenario's Then and the question agree; I found no difference between them.",
+    "Q9: whether a code-only sign-in email is acceptable is left to Q9 and does not affect this verdict."
+  ],
+  "notDecidableByCode": [
+    "Whether the email is delivered over TLS (S22, CONFIG): which provider runs in production (AUTH_EMAIL_PROVIDER=ses or SPECODE_EMAIL_MODE=platform) is set by the environment.",
+    "Whether better-auth's runtime really drops the replaced sendResetPassword and honours disabledPaths depends on the library's behaviour, not on this repository.",
+    "Whether email is delivered over TLS (S22, a configuration check).",
+    "Whether the deployed environment variables (AUTH_EMAIL_PROVIDER / SPECODE_EMAIL_MODE) choose SES or the relay in production."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "e8c9d361a128"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 28679,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.18226860000000003,
+      "turns": 9,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 25800,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2096426,
+      "turns": 8,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:06:16.619Z"
+}

@@ -1,0 +1,91 @@
+{
+  "scenario": {
+    "raw": "TC-19 S25 NH-5",
+    "tc": "TC-19",
+    "id": "S25",
+    "fixture": "NH-5"
+  },
+  "outputType": "note",
+  "mode": "Hospital",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U9",
+      "severity": "defect",
+      "deciding": true,
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "with no past medical history documented in the available records",
+          "source_quote": "no source",
+          "why": "This is narration about the documentation. It says no past medical history is documented when past medical history simply was not dictated.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "with no past medical history documented in the available records",
+          "source_quote": "no source",
+          "why": "The note narrates about the records and says no PMH is documented, when PMH simply was not dictated. The checklist forbids this.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3"
+      ]
+    }
+  ],
+  "needsPerson": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "why": "judges disagree (run 1 FAIL, run 2 UNSURE): a person decides"
+    },
+    {
+      "id": "U5",
+      "severity": "blocker",
+      "deciding": true,
+      "why": "judges disagree (run 1 FAIL, run 2 PASS): a person decides"
+    }
+  ],
+  "kitOnlyFails": []
+}

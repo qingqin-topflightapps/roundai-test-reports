@@ -1,0 +1,88 @@
+{
+  "case": "TC-09-S01",
+  "title": "Toggle In Today on and off for several residents; only the tapped resident changes, and an un-marked resident keeps their chart",
+  "needs": [
+    "seed",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s01-all-before.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-today-1.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-all-1.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-ashby-chart.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72p1pvcfyt8kv46s0851e0xs8g69yx",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-today-2.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition) pass: backend list-before $ has 4 items",
+        "(seed precondition) pass: backend list-before [name={cove}].inTodaysSession = false",
+        "(seed precondition) pass: backend list-before [name={ashby}].inTodaysSession = true"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "'+ Today' shows on QA Ashby's card only, and 'In Today ✓' on the other three: read the s01-all-1 screenshot"
+  ],
+  "agent": {
+    "turns": 35,
+    "costUsd": 0.23436620000000002,
+    "durationMs": 91873,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

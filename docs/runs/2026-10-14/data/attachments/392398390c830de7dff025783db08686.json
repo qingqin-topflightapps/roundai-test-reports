@@ -1,0 +1,78 @@
+{
+  "scenario": {
+    "raw": "TC-19 S25 NH-6",
+    "tc": "TC-19",
+    "id": "S25",
+    "fixture": "NH-6"
+  },
+  "outputType": "note",
+  "mode": "Hospital",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U9",
+      "severity": "defect",
+      "deciding": true,
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "The clinical course and current status are limited by the available documentation. Heparin anticoagulation is ongoing, though the indication and clinical context for this therapy are not detailed in the dictation.",
+          "source_quote": "no source",
+          "why": "The Assessment comments on what the documentation does and does not contain, such as 'not detailed in the dictation' and 'limited by the available documentation'. U9 forbids this kind of narration.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "The clinical course and current status are limited by the available documentation. Heparin anticoagulation is ongoing, though the indication and clinical context for this therapy are not detailed in the dictation.",
+          "source_quote": "no source",
+          "why": "The Assessment comments on what the documentation does and does not contain, which this rule forbids.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3"
+      ]
+    }
+  ],
+  "needsPerson": [],
+  "kitOnlyFails": []
+}

@@ -1,0 +1,135 @@
+{
+  "at": "2026-10-14T06:36:04.105Z",
+  "note": "dictated words given to the model as a perfect transcript; client merge replicated from VitalsPanel/MedicationsPanel",
+  "cells": [
+    {
+      "id": "VF-1 Hospital Vitals › Fix by voice (H-01)",
+      "pass": true,
+      "detail": "temp 38.4 °C, HR 112, BP 98/62; RR 18 and SpO2 95 unchanged",
+      "got": {
+        "bp": "98/62",
+        "hr": "112",
+        "temp": "o/n 38.4°C"
+      }
+    },
+    {
+      "id": "VF-2 Nursing Home Vitals › Fix by voice (N-01)",
+      "pass": true,
+      "detail": "temp 37.9 °C, SpO2 93; HR 76 and BP 128/74 unchanged",
+      "got": {
+        "o2": "93% on 2 liters",
+        "temp": "37.9°C"
+      }
+    },
+    {
+      "id": "VF-3 Hospital Medications › Fix by voice (H-04)",
+      "pass": true,
+      "detail": "metoprolol tartrate 25 mg held, apixaban 5 mg twice daily, atorvastatin unchanged",
+      "got": [
+        {
+          "name": "Metoprolol tartrate 25 milligrams",
+          "note": "",
+          "status": "held"
+        },
+        {
+          "name": "Apixaban 5 milligrams twice daily",
+          "note": "",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "VF-4 Nursing Home Medications › Fix by voice (N-03)",
+      "pass": true,
+      "detail": "glipizide 5 mg before breakfast, metformin 1000 mg held, atorvastatin unchanged",
+      "got": [
+        {
+          "name": "Glipizide 5 milligrams before breakfast",
+          "note": "",
+          "status": "active"
+        },
+        {
+          "name": "Metformin 1000 milligrams",
+          "note": "",
+          "status": "held"
+        }
+      ]
+    },
+    {
+      "id": "VF-5 Hospital Labs › Fix by voice (H-03)",
+      "pass": true,
+      "detail": "creatinine 1.8 (prior 1.2), potassium 5.6, sodium 131, magnesium 1.9",
+      "got": [
+        {
+          "name": "Creatinine",
+          "trend": "up from 1.2",
+          "value": "1.8"
+        },
+        {
+          "name": "Potassium",
+          "trend": "",
+          "value": "5.6"
+        },
+        {
+          "name": "Sodium",
+          "trend": "",
+          "value": "131"
+        },
+        {
+          "name": "Magnesium",
+          "trend": "",
+          "value": "1.9"
+        }
+      ]
+    },
+    {
+      "id": "AP-1 Add patient › Dictate all",
+      "pass": true,
+      "detail": "age 72, room 14B",
+      "got": {
+        "age": "72",
+        "room": "14B",
+        "dayNum": "",
+        "diagnosisSet": false
+      }
+    }
+  ],
+  "rows": [
+    {
+      "fn": "voicefix.extractPatientDetails",
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "ok": true,
+      "durationMs": 2309
+    },
+    {
+      "fn": "voicefix.arrangeLabs",
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "ok": true,
+      "durationMs": 4742
+    },
+    {
+      "fn": "voicefix.arrangeMedications",
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "ok": true,
+      "durationMs": 2569
+    },
+    {
+      "fn": "voicefix.arrangeMedications",
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "ok": true,
+      "durationMs": 4613
+    },
+    {
+      "fn": "voicefix.arrangeVitals",
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "ok": true,
+      "durationMs": 2622
+    },
+    {
+      "fn": "voicefix.arrangeVitals",
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "ok": true,
+      "durationMs": 2629
+    }
+  ]
+}

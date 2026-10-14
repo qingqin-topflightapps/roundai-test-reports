@@ -1,0 +1,76 @@
+{
+  "case": "TC-17-S26",
+  "title": "Ask through the real Post-Round sheet: after Save Edits it answers from the edited note; after opening another patient it answers from that patient only",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s26-a-post-ask.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72knaqyfv795qq53vw1sad798g7gke",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(precondition: Save Edits stored the edit (harness, not this scenario's oracle)) pass: backend a-at-ask note contains \"QA-ASK-EDIT\"",
+        "(precondition: the edit kept the original note) pass: backend a-at-ask note contains \"Continue ceftriaxone\""
+      ]
+    },
+    {
+      "file": "s26-b-post-ask.md",
+      "verdict": "Pass",
+      "url": "/rounding/js75798p4ws46yh085zq0mqnys8g7tfq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s26-a-encounter-ask.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72knaqyfv795qq53vw1sad798g7gke",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4 (judged against U2 once Q4 is answered)) pass: \"metoprolol\" present (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")",
+        "(Q4 (judged against U2 once Q4 is answered)) pass: \"ceftriaxone\" present (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read the three answers in s26-*.png: checkpoint 3 (Encounter-tab Ask) is recorded and judged against U2 once Q4 is answered"
+  ],
+  "agent": {
+    "turns": 62,
+    "costUsd": 0.416128,
+    "durationMs": 239816,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U32",
+  "covers": [
+    "TC-17/S26"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u32",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U32.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

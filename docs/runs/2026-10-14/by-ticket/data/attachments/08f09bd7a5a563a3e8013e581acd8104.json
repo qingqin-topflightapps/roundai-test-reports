@@ -1,0 +1,218 @@
+{
+  "TC-10/S21": {
+    "status": "failed",
+    "detail": "11/19 judged cells pass, 1 recorded. Fail: Hospital failed-first-save: text gone at 13 h [U13] | Hospital failed-after-processing: text gone at 13 h [U13] | Hospital failed-first-save: text gone at 100 h [U13] | Hospital failed-after-processing: text gone at 100 h [U13] | Nursing Home failed-first-save: text gone at 13 h [U13] | Nursing Home failed-after-processing: text gone at 13 h [U13] | Nursing Home failed-first-save: text gone at 100 h [U13] | Nursing Home failed-after-processing: text gone at 100 h [U13]. Recorded: Part 1 note: the config objects are module constants = \"HOSPITAL_RETENTION / SNF_RETENTION are constants in convex/lib/lifecycle.ts: lengthening a window is a code change + deploy, not an environ.",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-10-S21/cells-part1.json",
+      "runs/2026-10-14-local/manual/evidence/TC-10-S21/cells-part2.json",
+      "runs/2026-10-14-local/manual/evidence/TC-10-S21/part1-code-read.json",
+      "runs/2026-10-14-local/manual/evidence/TC-10-S21/part2-reads.json"
+    ],
+    "counts": {
+      "judged": 19,
+      "pass": 11,
+      "fail": 8,
+      "recorded": 1,
+      "notRun": 0,
+      "notDiscriminating": 0
+    },
+    "cells": [
+      {
+        "part": "part1",
+        "cell": "Part 1: Hospital and Nursing Home pre-round windows come from HOSPITAL_RETENTION.preRound / SNF_RETENTION.preRound, no literal inside the sweep",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "two config entries, both used by the sweep, no hour literal in the sweep",
+        "actual": {
+          "config": [
+            "9: preRound: 12 * HOUR,",
+            "31: preRound: 12 * HOUR,"
+          ],
+          "uses": [
+            "122: expired(processedAt, HOSPITAL_RETENTION.preRound, now)",
+            "304: expired(processedAt, SNF_RETENTION.preRound, now)"
+          ],
+          "literal": false
+        }
+      },
+      {
+        "part": "part1",
+        "cell": "Part 1 note: the config objects are module constants",
+        "gate": null,
+        "verdict": "record",
+        "expected": "-",
+        "actual": "HOSPITAL_RETENTION / SNF_RETENTION are constants in convex/lib/lifecycle.ts: lengthening a window is a code change + deploy, not an environment or table setting (TC-13 T7 / 3.6 'without a code change' is judged there)"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital processed: text kept at 11 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital failed-first-save: text kept at 11 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital failed-after-processing: text kept at 11 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital processed: text gone at 13 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "absent"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital failed-first-save: text gone at 13 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital failed-after-processing: text gone at 13 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital processed: text gone at 100 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "absent",
+        "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital failed-first-save: text gone at 100 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present",
+        "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+      },
+      {
+        "part": "part2",
+        "cell": "Hospital failed-after-processing: text gone at 100 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present",
+        "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home processed: text kept at 11 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home failed-first-save: text kept at 11 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home failed-after-processing: text kept at 11 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home processed: text gone at 13 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "absent"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home failed-first-save: text gone at 13 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home failed-after-processing: text gone at 13 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home processed: text gone at 100 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "absent",
+        "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home failed-first-save: text gone at 100 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present",
+        "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+      },
+      {
+        "part": "part2",
+        "cell": "Nursing Home failed-after-processing: text gone at 100 h",
+        "req": "U13",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "absent (3.6: pre-round 12 h)",
+        "actual": "present",
+        "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+      }
+    ],
+    "productIssue": "NEW (U13 has no gate). A pre-round note whose structured summary failed never ages out. The physician saw 'Note saved, but the structured summary couldn't be updated' and walked away. At 13 h, and at 100 h (cell added in the re-run), the typed pre-round text is still on the chart, in Hospital and in Nursing Home. This happens whether the first save failed or a re-save failed after an earlier successful one. A text that was processed normally is cleared at 13 h. Cause: the 12 h rule in convex/lib/lifecycle.ts only fires when preRoundEditedAt ≤ notesProcessedAt, and a failed save leaves preRoundEditedAt newer than notesProcessedAt (or notesProcessedAt missing). Breaks UAT 3.6 ('pre-round text … 12 h', both modes) and TC-10's 'including text left by a failed summary'. Part 1 passes: the window comes from HOSPITAL_RETENTION / SNF_RETENTION, which are code constants."
+  }
+}

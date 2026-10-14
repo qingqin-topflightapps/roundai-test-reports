@@ -1,0 +1,28 @@
+{
+  "OAT-01/S07": {
+    "status": "failed",
+    "detail": "(a) pass: a session 30 d - 1 h old resolves settings:get; 30 d + 1 min is refused 'session too_old'. (b) pass: a code sent 298.0 s after issue (answered at 300.2 s, upper bound of its age) accepted 200; another whose age was >= 302 s refused 400 INVALID_OTP (OTP_EXPIRED is also accepted by the test: Better Auth removes the expired row). (c) pass: three wrong codes 400 INVALID_OTP each, the right code after them 403 TOO_MANY_ATTEMPTS, a newly issued code 200. (e) FAIL: signed in through the form at the right clock (Pacific/Honolulu), then the browser clock moved and the page reloaded: +13 h -> sign-in screen, +31 d -> sign-in screen, while Better Auth still knows the session (get-session with the token held before the move) and the session token is gone from the app's store. The client had stored the session cookie with expiry = sign-in + 12 h by the device clock (and the Convex JWT + 15 min). -2 d -> list (pass). A session aged on the server (expiresAt = now - 1 s) with the clock set back 2 d -> sign-in screen (pass). Same +13 h / +31 d result in 3 separate runs (final2, rerun-under-load.log and one earlier re-run) and in the reviewer's probe. Extra variant (not the matrix cell): signing in on a browser whose clock is already +13 h / +31 d / -2 d works and survives a reload; it cannot show a clock-caused sign-out, because the client dates the cookie expiries with that same clock. (d) FAIL, known: TFA-94659 note; requirement wording pending Q17 (isolated backend, no e-mail provider): send-verification-otp answered 200 {success:true}; the backend log shows Better Auth swallowed 'Email delivery is not configured' as a failed background task; the screen says 'Check your email for a 6-digit code. It expires in 5 minutes.' with the code field open and no error.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-a.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-b.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-c.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-moved-13h.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-moved-13h.png",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-moved-31d.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-moved-31d.png",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-moved-2d.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-aged.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-signin-at-13h.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-signin-at-31d.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-e-signin-at-2d.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-d.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-d-send-fails.png",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s07-d-backend-log.txt",
+      "runs/2026-10-14-local/newspec-a/final2.json",
+      "runs/2026-10-14-local/newspec-a/oat01-iso.json",
+      "runs/2026-10-14-local/newspec-a/rerun-under-load.log"
+    ],
+    "productIssue": "(e) NEW: a physician who signed in normally is signed out when the device clock jumps forward by about 12 h or more (a manual clock change, a wrong time zone corrected, a phone that was off and resyncs): on the next reload the app shows 'Send sign-in code' although the server session is still valid. The web client keeps the session cookie in localStorage with an expiry computed from Max-Age (12 h idle) and the device clock, and drops it once the device clock passes that date. Breaks UAT 3.8 ('A phone with a wrong clock, no clock set, or a different time zone shows the same state as any other device') and the S07 oracle for U3/U4 ('a sign-out caused only by the browser clock = Fail'). (d) known: TFA-94659 note (matrix risk 'Better Auth swallows send errors'); requirement wording pending Q17: when the code e-mail cannot be sent, the screen still says 'Check your email for a 6-digit code. It expires in 5 minutes.' and the physician waits for a code that never comes.",
+    "known": "(d): known: TFA-94659 note; requirement wording pending Q17"
+  }
+}

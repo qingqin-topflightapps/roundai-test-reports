@@ -1,0 +1,39 @@
+{
+  "ref": "TC-09/S13",
+  "part": "main",
+  "at": "2026-10-14T05:50:20.588Z",
+  "hour": 3600000,
+  "cells": [
+    {
+      "cell": "marks set at 23:30 on the previous server day, read after the server's midnight (Q3: cleared or carried over)",
+      "expected": "switched by server time at the server's midnight; which way is Q3",
+      "actual": {
+        "A": true,
+        "B": true,
+        "C": false,
+        "todaysVisits": [
+          "QA Resident S13 marked A",
+          "QA Resident S13 marked B"
+        ],
+        "counts": {
+          "done": 0,
+          "ready": true,
+          "today": 2,
+          "todayDone": 0,
+          "total": 3
+        }
+      },
+      "verdict": "record",
+      "req": "T1",
+      "note": "main stores In Today as a plain boolean with no day field, so nothing can switch at any midnight (server or device); the marks carry over"
+    },
+    {
+      "cell": "23:59 on D vs 00:01 on D+1 at the exact instants",
+      "expected": "-",
+      "actual": null,
+      "verdict": "not-run",
+      "note": "needs the server clock moved across midnight (server-clock, not built); the back-dated marks reproduce 'marked yesterday, read today'",
+      "req": "T1"
+    }
+  ]
+}

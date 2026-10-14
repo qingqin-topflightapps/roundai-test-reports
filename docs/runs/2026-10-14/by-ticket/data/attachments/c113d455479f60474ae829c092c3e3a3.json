@@ -1,0 +1,185 @@
+{
+  "EFS/S22": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 438 judged check(s) passed, 98 failed. States reached on all three profiles: empty lists (Hospital, NH Today's Visits, NH All Residents), no-note Post-Round, summary failure, Generate-blocked reason, note failure, billing error, Ask AI error, scan error (both contexts), microphone blocked (both), offline banner, sign-in after a session revoke. Announced correctly: NH summary failure (role=alert), both Generate-blocked reasons and note failures (role=alert), Ask AI error (role=alert), billing card (aria-live=polite), offline banner (role=status), NH microphone message. Not announced: Hospital summary failure, Hospital microphone message, both scan errors. Empty-state messages are recorded only (the oracle asks announcement of failure messages). Since the review, every state judges covered / overflow / truncated / tap and its key controls (Close editor, Save Note, Dictate, retry) reachable and not covered.",
+    "failed": [
+      {
+        "check": "axe violations = 0",
+        "where": [
+          "desktop:hospital-ask-error",
+          "desktop:hospital-billing-error",
+          "desktop:hospital-empty-list",
+          "desktop:hospital-generate-blocked",
+          "desktop:hospital-microphone-blocked",
+          "desktop:hospital-note-failure",
+          "desktop:hospital-scan-error",
+          "desktop:hospital-summary-failure-editor",
+          "desktop:nh-ask-error",
+          "desktop:nh-billing-error",
+          "desktop:nh-empty-all-residents",
+          "desktop:nh-empty-todays-visits",
+          "desktop:nh-generate-blocked",
+          "desktop:nh-microphone-blocked",
+          "desktop:nh-no-note-postround",
+          "desktop:nh-note-failure",
+          "desktop:nh-scan-error",
+          "desktop:nh-summary-failure-editor",
+          "desktop:offline",
+          "desktop:session-ended",
+          "iphone15:hospital-ask-error",
+          "iphone15:hospital-billing-error",
+          "iphone15:hospital-empty-list",
+          "iphone15:hospital-generate-blocked",
+          "iphone15:hospital-microphone-blocked",
+          "iphone15:hospital-note-failure",
+          "iphone15:hospital-scan-error",
+          "iphone15:hospital-summary-failure-editor",
+          "iphone15:nh-ask-error",
+          "iphone15:nh-billing-error",
+          "iphone15:nh-empty-all-residents",
+          "iphone15:nh-empty-todays-visits",
+          "iphone15:nh-generate-blocked",
+          "iphone15:nh-microphone-blocked",
+          "iphone15:nh-no-note-postround",
+          "iphone15:nh-note-failure",
+          "iphone15:nh-scan-error",
+          "iphone15:nh-summary-failure-editor",
+          "iphone15:offline",
+          "iphone15:session-ended",
+          "pixel7:hospital-ask-error",
+          "pixel7:hospital-billing-error",
+          "pixel7:hospital-empty-list",
+          "pixel7:hospital-generate-blocked",
+          "pixel7:hospital-microphone-blocked",
+          "pixel7:hospital-note-failure",
+          "pixel7:hospital-scan-error",
+          "pixel7:hospital-summary-failure-editor",
+          "pixel7:nh-ask-error",
+          "pixel7:nh-billing-error",
+          "pixel7:nh-empty-all-residents",
+          "pixel7:nh-empty-todays-visits",
+          "pixel7:nh-generate-blocked",
+          "pixel7:nh-microphone-blocked",
+          "pixel7:nh-no-note-postround",
+          "pixel7:nh-note-failure",
+          "pixel7:nh-scan-error",
+          "pixel7:nh-summary-failure-editor",
+          "pixel7:offline",
+          "pixel7:session-ended"
+        ],
+        "example": "color-contrast(serious,13×: .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3 | .pr-1 > .border-dashed.py-4.rounded-2xl > p)"
+      },
+      {
+        "check": "the failure message sits in a role=alert / role=status (or aria-live) region",
+        "where": [
+          "desktop:hospital-microphone-blocked",
+          "desktop:hospital-scan-error",
+          "desktop:hospital-summary-failure-editor",
+          "desktop:nh-scan-error",
+          "iphone15:hospital-microphone-blocked",
+          "iphone15:hospital-scan-error",
+          "iphone15:hospital-summary-failure-editor",
+          "iphone15:nh-scan-error",
+          "pixel7:hospital-microphone-blocked",
+          "pixel7:hospital-scan-error",
+          "pixel7:hospital-summary-failure-editor",
+          "pixel7:nh-scan-error"
+        ],
+        "example": "not announced: \"Microphone access is blocked. Allow the microphone for this site (tap the lock icon in the address bar), or on iPhone/Android open Settings \""
+      },
+      {
+        "check": "the add (+), scan and Settings controls have accessible names",
+        "where": [
+          "desktop:nh-empty-all-residents",
+          "desktop:nh-empty-todays-visits",
+          "iphone15:nh-empty-all-residents",
+          "iphone15:nh-empty-todays-visits",
+          "pixel7:nh-empty-all-residents",
+          "pixel7:nh-empty-todays-visits"
+        ],
+        "example": "[\"Scan resident list\",\"\",\"\"]"
+      },
+      {
+        "check": "the Dictate control are at least 44 px",
+        "where": [
+          "iphone15:hospital-microphone-blocked",
+          "iphone15:nh-microphone-blocked"
+        ],
+        "example": "Dictate 103×40"
+      },
+      {
+        "check": "covered = 0",
+        "where": [
+          "iphone15:nh-microphone-blocked",
+          "pixel7:nh-microphone-blocked"
+        ],
+        "example": "\"Pre-round notes\" is under span \"Microphone access is blocked. Allow the microphone for this \" (a fixed layer over a fixed layer — scrolling cannot clear it)"
+      },
+      {
+        "check": "tap targets >= 24 px",
+        "where": [
+          "iphone15:nh-microphone-blocked",
+          "iphone15:nh-scan-error",
+          "pixel7:hospital-ask-error",
+          "pixel7:nh-ask-error",
+          "pixel7:nh-microphone-blocked",
+          "pixel7:nh-scan-error"
+        ],
+        "example": "button \"Dismiss error\" is 20×20 (< 24 px, WCAG 2.5.8)"
+      },
+      {
+        "check": "Close editor is reachable and not covered",
+        "where": [
+          "iphone15:nh-microphone-blocked",
+          "pixel7:nh-microphone-blocked"
+        ],
+        "example": "covered by svg \"\""
+      },
+      {
+        "check": "the add and scan controls are at least 44 px",
+        "where": [
+          "iphone15:hospital-empty-list",
+          "iphone15:nh-empty-all-residents",
+          "iphone15:nh-empty-todays-visits"
+        ],
+        "example": "Scan patient list from photo 36×36; Add patient 36×36"
+      },
+      {
+        "check": "the retry control are at least 44 px",
+        "where": [
+          "iphone15:hospital-ask-error",
+          "iphone15:hospital-scan-error",
+          "iphone15:hospital-summary-failure-editor",
+          "iphone15:nh-ask-error",
+          "iphone15:nh-summary-failure-editor"
+        ],
+        "example": "Save Note 250×40"
+      }
+    ],
+    "recorded": "With the microphone blocked, both pre-round editors also show 'Dictation done — review before saving' next to 'Microphone access is blocked…' although nothing was dictated (vision-review flagged, confirmed by eye; contradictory, EFS 'clear message telling the physician what to do next'; source: the dictation onEnd calls onFinished even after an error). Sign-in after a central session revoke shows the plain sign-in form with no 'your session ended' message (EFS 'Session expired … sign-in prompt'; for a person). vision/failure-states: suspicions for a person.",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/desktop.microphone.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/desktop.offline.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/desktop.session-ended.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15.microphone.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15.offline.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15.session-ended.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/pixel7.microphone.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/pixel7.offline.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/pixel7.session-ended.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15--hospital-ask-error.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15--hospital-billing-error.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15--hospital-empty-list.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15--hospital-generate-blocked.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/vision/failure-states/vision-findings.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/pixel7--nh-microphone-blocked.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15--nh-microphone-blocked.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/iphone15--hospital-microphone-blocked.png"
+    ],
+    "productIssue": "A VoiceOver/TalkBack user is not told about three failures: the Hospital 'The reviewed note is saved, but its structured summary needs another attempt. Tap Save Note to retry.', the Hospital 'Microphone access is blocked…' and the scan 'The photo couldn’t be read…' (both contexts) appear as plain text, not role=alert/status (EFS rows 'Pre-round summary failed', 'Microphone permission denied', 'unreadable photo'; oracle: message in role=alert/status). On phones (Pixel 7, iPhone 15), with the microphone blocked in Nursing Home, the red 'Microphone access is blocked…' toast sits over the full-screen editor's header: the title 'Pre-round notes' and the Close editor (X) button are under it until the physician dismisses the toast with its 20×20 px X (judged: covered = 0, Close editor reachable and not covered, tap ≥ 24 px; EFS 'clear message telling the physician what to do next'). The Nursing Home empty list's '+' (add resident) and Settings buttons have no accessible name — a screen reader says only 'button' (EFS 'Empty patient list … a way to add patients'). On iPhone the add/scan buttons are 32–36 px, Retake photo 98×24, Save Note 36–40 px tall, under the 44 pt the oracle sets; on Pixel 7 the unnamed 20×20 px close (X) of the Ask sheet and the scan sheet fails WCAG 2.5.8 (it passes the spacing exception in the iPhone WebKit layout). Plus the cross-cutting contrast failures (axe = 0 required)."
+  }
+}

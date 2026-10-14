@@ -1,0 +1,123 @@
+{
+  "ref": "TC-01/S22",
+  "profile": "desktop",
+  "part": null,
+  "judged": [],
+  "recordOnly": "oracle: Lane V decides nothing; axe findings go to a human, serious/critical routed to TFA-92579",
+  "unjudged": [
+    {
+      "name": "card named 'Open chart for QA Hosp JUO8C Alpha'",
+      "pass": true,
+      "detail": "1 match(es)",
+      "state": "hospital-list"
+    },
+    {
+      "name": "card named 'Open chart for QA Hosp JUO8C Bravo'",
+      "pass": true,
+      "detail": "1 match(es)",
+      "state": "hospital-list"
+    },
+    {
+      "name": "each trash control has a name",
+      "pass": true,
+      "detail": "2 control(s) inside cards: [\"Remove QA Hosp JUO8C Alpha from the rounding list\",\"Remove QA Hosp JUO8C Bravo from the rounding list\"]",
+      "state": "hospital-list"
+    },
+    {
+      "name": "no control nested inside the card button (axe nested-interactive)",
+      "pass": false,
+      "detail": "nested-interactive(serious,2×: .shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.p-4.cursor-pointer | .shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.p-4.cursor-pointer)",
+      "state": "hospital-list"
+    },
+    {
+      "name": "card named 'Open chart for QA Resident JUO8C Alpha'",
+      "pass": true,
+      "detail": "1 match(es)",
+      "state": "nh-list"
+    },
+    {
+      "name": "card named 'Open chart for QA Resident JUO8C Bravo'",
+      "pass": true,
+      "detail": "1 match(es)",
+      "state": "nh-list"
+    },
+    {
+      "name": "each trash control has a name",
+      "pass": true,
+      "detail": "0 control(s) inside cards: []",
+      "state": "nh-list"
+    },
+    {
+      "name": "no control nested inside the card button (axe nested-interactive)",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-list"
+    },
+    {
+      "name": "each control inside an All Residents card has a name",
+      "pass": true,
+      "detail": "[\"In Today ✓\",\"In Today ✓\"]",
+      "state": "nh-all-residents"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "axe (all, for a person)",
+      "value": "color-contrast(serious,7×: .mb-0\\.5 | .hover\\:bg-teal-700); nested-interactive(serious,2×: .shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.p-4.cursor-pointer | .shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.p-4.cursor-pointer)",
+      "state": "hospital-list"
+    },
+    {
+      "name": "axe (all, for a person)",
+      "value": "button-name(critical,2×: .h-8.w-8.bg-black:nth-child(2) | .h-8.w-8.bg-black:nth-child(4)); color-contrast(serious,4×: .bg-teal-600 | .mt-0\\.5.text-slate-400)",
+      "state": "nh-list"
+    },
+    {
+      "name": "controls inside All Residents cards",
+      "value": [
+        "In Today ✓",
+        "In Today ✓"
+      ],
+      "state": "nh-all-residents"
+    },
+    {
+      "name": "axe (all, for a person)",
+      "value": "button-name(critical,2×: .h-8.w-8.bg-black:nth-child(2) | .h-8.w-8.bg-black:nth-child(4)); color-contrast(serious,4×: .bg-teal-600 | .mt-0\\.5.text-slate-400); nested-interactive(serious,2×: .overflow-hidden.border-l-4.border-l-teal-400:nth-child(2) > .cursor-pointer.p-4.text-left | .overflow-hidden.border-l-4.border-l-teal-400:nth-child(3) > .cursor-pointer.p-4.text-left)",
+      "state": "nh-all-residents"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-list",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/desktop--hospital-list.png",
+      "url": "/rounding",
+      "findings": 1,
+      "axe": [
+        "color-contrast/serious×7",
+        "nested-interactive/serious×2"
+      ]
+    },
+    {
+      "state": "nh-list",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/desktop--nh-list.png",
+      "url": "/snf",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×4"
+      ]
+    },
+    {
+      "state": "nh-all-residents",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/desktop--nh-all-residents.png",
+      "url": "/snf",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×4",
+        "nested-interactive/serious×2"
+      ]
+    }
+  ]
+}

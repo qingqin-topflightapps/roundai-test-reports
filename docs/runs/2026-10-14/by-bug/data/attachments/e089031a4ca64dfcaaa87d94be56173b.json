@@ -1,0 +1,14 @@
+{
+  "OAT-03/S26": {
+    "status": "blocked",
+    "detail": "Two blockers: (1) fault-ai - the seam is a deployment env var and needs `convex env set`, which CLAUDE.md forbids (no exception for a private backend; fault-stack.sh refuses without QA_ALLOW_PRIVATE_ENV=1); (2) generate - the runner calls ai/notes:generateNote, which capabilities.json forbids locally (the runner refuses without QA_ALLOW_LOCAL_GENERATE=1). Both need Quinn's OK. Built: note-ai.ts OAT03-S26 (TC-14 fixtures H-01..H-05, N-01..N-05 counted, H-21/H-22 apart; each fixture's TC-14 checks incl. sectionSays/orLineMatches; the notes.generateNote row must name Mistral with fellBackFrom Haiku, else broken). The one-fixture harness check on the shared stack made 1 generateNote call without that OK (held; it showed Haiku answered -> 'broken (fallback not exercised)' as designed).",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-other/note-OAT03-S26-harness/results.json",
+      "scripts/aicheck-other/note-ai.ts"
+    ],
+    "heldUnauthorised": [
+      "runs/2026-10-14-local/aicheck-other/note-OAT03-S26-harness/results.json (1 generateNote call)"
+    ],
+    "observationForTC14": "Harness note (TC-14 H-01, Haiku, held call): the Assessment says 'The patient is a 68-year-old with no past medical history documented in the available records', a 3.4 documentation-narration phrase TC-14 forbids (grading item U9). Passed to the TC-14 owner as an observation, not a verdict."
+  }
+}

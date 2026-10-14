@@ -1,0 +1,85 @@
+{
+  "case": "TC-04-S09",
+  "title": "Picker with more than 40 patients: the 46th is still reachable and gets the text",
+  "needs": [
+    "seed",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s09-picker-nosearch.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q9: is the 46th patient listed without a search) fail: missing \"999 · QA TC-04-S09 QA Hosp Zuniga GFHI\" (in subtree \"- dialog [\")",
+        "(Q9: rows the picker shows without a search) pass: /· (?:QA [A-Za-z0-9_-]+ )?QA Hosp Bulk/i matches 40 times (in from \"Search room or name\")"
+      ]
+    },
+    {
+      "file": "s09-picker-search.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s09-assigned.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s09-zuniga-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7b1806tncwj8ees37qx21y9s8g77d2",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s09-bulk001-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74e74mws4s15hx9xtmh4ywwd8g67s9",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 40,
+    "costUsd": 0.4169474,
+    "durationMs": 166409,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

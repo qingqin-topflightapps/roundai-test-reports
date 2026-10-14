@@ -1,0 +1,91 @@
+{
+  "ref": "TC-11/S25",
+  "title": "Course entries older than yesterday cleared at 36 h",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T07:18:39.499Z",
+  "summary": {
+    "pass": 4,
+    "fail": 2,
+    "failKnown": 2,
+    "failConflict": 0,
+    "record": 0,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "35h.QA-TC11-35h-day-2",
+      "item": "ledger line 'Oct 11' at T+35 h (app's today Oct 14)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "TC-11 S25: at T+37 h lines older than yesterday are gone from storage (rounding:get); at T+35 h nothing is cleared early"
+    },
+    {
+      "id": "35h.QA-TC11-35h-day-1",
+      "item": "ledger line 'Oct 12' at T+35 h (app's today Oct 14)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "TC-11 S25: at T+37 h lines older than yesterday are gone from storage (rounding:get); at T+35 h nothing is cleared early"
+    },
+    {
+      "id": "35h.QA-TC11-35h-day-0",
+      "item": "ledger line 'Oct 13' at T+35 h (app's today Oct 14)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "TC-11 S25: at T+37 h lines older than yesterday are gone from storage (rounding:get); at T+35 h nothing is cleared early"
+    },
+    {
+      "id": "37h.QA-TC11-37h-day-2",
+      "item": "ledger line 'Oct 11' at T+37 h (app's today Oct 14)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TC-11 S25: at T+37 h lines older than yesterday are gone from storage (rounding:get); at T+35 h nothing is cleared early",
+      "known": "K6 (no course purge on main) — TFA-94699 AC 1"
+    },
+    {
+      "id": "37h.QA-TC11-37h-day-1",
+      "item": "ledger line 'Oct 12' at T+37 h (app's today Oct 14)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TC-11 S25: at T+37 h lines older than yesterday are gone from storage (rounding:get); at T+35 h nothing is cleared early",
+      "known": "K6 (no course purge on main) — TFA-94699 AC 1"
+    },
+    {
+      "id": "37h.QA-TC11-37h-day-0",
+      "item": "ledger line 'Oct 13' at T+37 h (app's today Oct 14)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "TC-11 S25: at T+37 h lines older than yesterday are gone from storage (rounding:get); at T+35 h nothing is cleared early"
+    }
+  ],
+  "blocked": [],
+  "notes": [],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "purge": {
+      "physician": 0
+    },
+    "course.35h": {
+      "stored": "Oct 11: QA-TC11-35h-day-2 course entry\nOct 12: QA-TC11-35h-day-1 course entry\nOct 13: QA-TC11-35h-day-0 course entry",
+      "lastUpdatedAt": "2026-10-12T20:18:35.191Z",
+      "today": "Oct 14",
+      "yesterday": "Oct 13"
+    },
+    "course.37h": {
+      "stored": "Oct 11: QA-TC11-37h-day-2 course entry\nOct 12: QA-TC11-37h-day-1 course entry\nOct 13: QA-TC11-37h-day-0 course entry",
+      "lastUpdatedAt": "2026-10-12T18:18:36.460Z",
+      "today": "Oct 14",
+      "yesterday": "Oct 13"
+    }
+  }
+}

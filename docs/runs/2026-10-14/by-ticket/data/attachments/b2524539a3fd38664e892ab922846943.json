@@ -1,0 +1,103 @@
+{
+  "case": "OAT-01 step 7 — first-sign-in agreements screen (dev)",
+  "target": "dev",
+  "verdict": "Pass",
+  "startedAt": "2026-10-13T18:55:49.610Z",
+  "checks": [
+    {
+      "id": "B1",
+      "what": "before: agreements not yet accepted",
+      "expected": "acceptedVersion ≠ current version",
+      "got": "{\"version\":\"2026-10-05\",\"acceptedVersion\":null}",
+      "pass": true
+    },
+    {
+      "id": "C1",
+      "what": "the screen explains AI use and names the providers",
+      "expected": "AI services + Anthropic/Mistral, OpenAI, Deepgram, Google",
+      "got": "uses AI services to transcribe dictation, read photos and draft notes. What you enter is processed by:",
+      "pass": true
+    },
+    {
+      "id": "C2",
+      "what": "links to the Terms of Use and the BAA",
+      "expected": "two https links",
+      "got": "{\"terms\":\"https://roundcompanion.com/terms.html\",\"baa\":\"https://roundcompanion.com/baa.html\"}",
+      "pass": true
+    },
+    {
+      "id": "C3",
+      "what": "two checkboxes: agreement and authorization attestation",
+      "expected": "2 boxes; one 'read and agree…', one 'accepting on behalf…authorized'",
+      "got": "[\"I have read and agree to the Terms of Use and Business Assoc\",\"I'm accepting on behalf of myself or my practice and am auth\"]",
+      "pass": true
+    },
+    {
+      "id": "C4",
+      "what": "nothing ticked: Continue disabled, Decline present",
+      "expected": "Continue disabled, Decline visible",
+      "got": "{\"continueEnabled\":false,\"declineVisible\":true,\"ticked\":[false,false]}",
+      "pass": true
+    },
+    {
+      "id": "C5",
+      "what": "only the first box: Continue still disabled",
+      "expected": "disabled",
+      "got": "disabled",
+      "pass": true
+    },
+    {
+      "id": "C6",
+      "what": "only the second box: Continue still disabled",
+      "expected": "disabled",
+      "got": "disabled",
+      "pass": true
+    },
+    {
+      "id": "C7",
+      "what": "both boxes: Continue enabled",
+      "expected": "enabled",
+      "got": "enabled",
+      "pass": true
+    },
+    {
+      "id": "C8",
+      "what": "after Continue the app opens (no consent screen, no error screen)",
+      "expected": "consent gone, /rounding or /snf, no 'Something went wrong'",
+      "got": "{\"path\":\"/rounding\",\"consentHeadingInTrace\":false,\"patientListShown\":true,\"error\":false}",
+      "pass": true,
+      "originalGot": "{\"path\":\"/rounding\",\"consentShown\":true,\"error\":false}",
+      "originalPass": false,
+      "rejudged": "The live check matched body text 'Before you start', which is the baseline-survey card on the patient list ('Before you start: a 2-minute baseline survey'), not the consent screen. Re-judged with the corrected check (consent heading, exact) on the recorded evidence: trace.zip frame snapshot after@call@65 (first full render after the Continue click, call@63) has the survey card and 'Morning Rounds' and no consent heading; 05-after-continue.png shows the patient list. Script fixed for later runs."
+    },
+    {
+      "id": "D1",
+      "what": "saved acceptance: the current document version",
+      "expected": "acceptedVersion = version",
+      "got": "{\"version\":\"2026-10-05\",\"acceptedVersion\":\"2026-10-05\"}",
+      "pass": true
+    },
+    {
+      "id": "D2",
+      "what": "saved AI consent: a timestamp from this run and a version",
+      "expected": "aiConsentAt within this run, aiConsentVersion set",
+      "got": "{\"aiConsentAt\":\"2026-10-13T18:55:54.592Z\",\"aiConsentVersion\":\"ai-providers-c6cb6feb\"}",
+      "pass": true
+    }
+  ],
+  "consoleErrors": [],
+  "before": {
+    "agreements": {
+      "acceptedVersion": null,
+      "attestation": "I'm accepting on behalf of myself or my practice and am authorized to do so. If I'm employed by a hospital or facility, I've confirmed it allows me to use Round Companion with patient information.",
+      "baaUrl": "https://roundcompanion.com/baa.html",
+      "termsOfUseUrl": "https://roundcompanion.com/terms.html",
+      "version": "2026-10-05"
+    },
+    "settingsKeys": []
+  },
+  "notManual": [
+    "Decline signs the physician out — not pressed on dev (shared session); covered by the local suite"
+  ],
+  "verdictNote": "C8 re-judged from the trace after a test bug (see C8.rejudged); all other checks decided live."
+}

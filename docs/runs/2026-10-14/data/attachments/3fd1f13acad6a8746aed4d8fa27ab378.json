@@ -1,0 +1,20 @@
+{
+  "TC-10/S29": {
+    "status": "failed",
+    "detail": "(a) Hospital pass ('…structured processing was interrupted. Tap Save Note to continue.', text kept, Generate disabled). (a) Nursing Home: text kept and Generate disabled, but no interrupted message; the Encounter tab says 'The pre-round text was edited after it was last processed…'. (b) both modes pass: moving to B inside the app during the 8 s hold, A ends with A's values, B shows none of them. (c) after a successful Save Note the note text stays in IndexedDB 'roundcompanion-session-drafts' (still there after reopening the chart); sign-out clears that store but not 'round-ai-local-audio' (a kept recording survives). (d) the four unit specs pass.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s29/a-hospital.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s29/a-snf.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s29/b-hospital.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s29/b-snf.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s29/c-stores.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc10-s29-d-unit.txt"
+    ],
+    "productIssue": "(1) Nursing Home, Save Note cut off by a reload: no 'interrupted' message; the only hint says the physician edited the text, which they did not (TC-10 U6/T4, U10). (2) The saved pre-round note stays on the device in IndexedDB after the server has it, and recorded audio in the local audio store is not wiped at sign-out (TC-10 T8 / TFA-94745 AC 7; PHI at rest is Q16).",
+    "envReloads": {
+      "tests": 5,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    }
+  }
+}

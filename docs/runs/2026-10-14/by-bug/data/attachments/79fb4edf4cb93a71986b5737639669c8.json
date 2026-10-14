@@ -1,0 +1,198 @@
+{
+  "ref": "OAT-01/S21",
+  "profile": "iphone15",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .px-4 | .mt-8)",
+      "state": "sign-in"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "sign-in"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "sign-in"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "sign-in"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "sign-in"
+    },
+    {
+      "name": "the email field has a label",
+      "pass": true,
+      "detail": "Email",
+      "state": "sign-in"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .px-4 | .mt-8)",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": false,
+      "detail": "button \"Resend code\" is 297×16 (< 24 px, WCAG 2.5.8); button \"Use a different email\" is 297×16 (< 24 px, WCAG 2.5.8)",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "the code field has a label",
+      "pass": true,
+      "detail": "Sign-in code",
+      "state": "sign-in-code"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,1×: .mt-8)",
+      "state": "agreements"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "agreements"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "agreements"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "agreements"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "agreements"
+    },
+    {
+      "name": "both checkboxes have accessible names equal to their visible text",
+      "pass": true,
+      "detail": "[\"I have read and agree to the Terms of Use and Business Assoc\",\"I'm accepting on behalf of myself or my practice and am auth\"]",
+      "state": "agreements"
+    },
+    {
+      "name": "Continue and Decline are named buttons",
+      "pass": true,
+      "detail": "Continue ×1, Decline ×1",
+      "state": "agreements"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "button-name(critical,1×: .hover\\:text-slate-700); color-contrast(serious,1×: .font-semibold.text-slate-400)",
+      "state": "settings"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "settings"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "settings"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "settings"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "settings"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "T12 design look (Settings and agreements match the current app)",
+      "value": "for a person: screenshots settings / agreements, plus vision-review findings"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "sign-in",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-01_S21/iphone15--sign-in.png",
+      "url": "/",
+      "findings": 3,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "sign-in-code",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-01_S21/iphone15--sign-in-code.png",
+      "url": "/",
+      "findings": 5,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "agreements",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-01_S21/iphone15--agreements.png",
+      "url": "/rounding",
+      "findings": 7,
+      "axe": [
+        "color-contrast/serious×1"
+      ]
+    },
+    {
+      "state": "settings",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-01_S21/iphone15--settings.png",
+      "url": "/settings",
+      "findings": 13,
+      "axe": [
+        "button-name/critical×1",
+        "color-contrast/serious×1"
+      ]
+    }
+  ]
+}

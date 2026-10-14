@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Round Companion UAT — dev + 本地, by bug </title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg width='32' height='32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M22.232 4.662a3.6 3.6 0 0 1 5.09.035c2.855 2.894 4.662 6.885 4.662 11.295a3.6 3.6 0 0 1-7.2 0c0-2.406-.981-4.61-2.587-6.24a3.6 3.6 0 0 1 .035-5.09Z' fill='url(%23a)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.392 3.6a3.6 3.6 0 0 1 3.6-3.6c4.41 0 8.401 1.807 11.296 4.662a3.6 3.6 0 1 1-5.056 5.126C20.602 8.18 18.398 7.2 15.992 7.2a3.6 3.6 0 0 1-3.6-3.6Z' fill='url(%23b)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 15.992C0 7.157 7.157 0 15.992 0a3.6 3.6 0 0 1 0 7.2A8.789 8.789 0 0 0 7.2 15.992c0 2.406.981 4.61 2.588 6.24a3.6 3.6 0 0 1-5.126 5.056C1.807 24.393 0 20.402 0 15.992Z' fill='url(%23c)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.661 22.232a3.6 3.6 0 0 1 5.091-.035c1.63 1.606 3.834 2.587 6.24 2.587a3.6 3.6 0 0 1 0 7.2c-4.41 0-8.401-1.807-11.295-4.661a3.6 3.6 0 0 1-.036-5.091Z' fill='url(%23d)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M28.384 12.392a3.6 3.6 0 0 1 3.6 3.6c0 8.835-7.157 15.992-15.992 15.992a3.6 3.6 0 0 1 0-7.2 8.789 8.789 0 0 0 8.792-8.792 3.6 3.6 0 0 1 3.6-3.6Z' fill='url(%23e)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M28.385 12.392a3.6 3.6 0 0 1 3.6 3.6v12.392a3.6 3.6 0 0 1-7.2 0V15.992a3.6 3.6 0 0 1 3.6-3.6Z' fill='url(%23f)'/%3E%3Cg clip-path='url(%23g)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M22.232 4.662a3.6 3.6 0 0 1 5.091.035c2.855 2.894 4.662 6.885 4.662 11.295a3.6 3.6 0 0 1-7.2 0c0-2.406-.982-4.61-2.588-6.24a3.6 3.6 0 0 1 .035-5.09Z' fill='url(%23h)'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='a' x1='26.4' y1='9.6' x2='28.8' y2='15' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%237E22CE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='26.8' y1='9.4' x2='17.8' y2='3.6' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23EF4444'/%3E%3Cstop offset='1' stop-color='%23DC2626'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' x1='3.6' y1='14' x2='5.4' y2='24.8' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2322C55E'/%3E%3Cstop offset='1' stop-color='%2315803D'/%3E%3C/linearGradient%3E%3ClinearGradient id='d' x1='4.8' y1='22.2' x2='14.4' y2='29.2' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2394A3B8'/%3E%3Cstop offset='.958' stop-color='%2364748B'/%3E%3Cstop offset='1' stop-color='%2364748B'/%3E%3C/linearGradient%3E%3ClinearGradient id='e' x1='28.4' y1='22.173' x2='22.188' y2='28.384' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23D97706'/%3E%3Cstop offset='1' stop-color='%23FBBF24'/%3E%3C/linearGradient%3E%3ClinearGradient id='f' x1='29.2' y1='54.4' x2='30.626' y2='54.256' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23FBBF24'/%3E%3Cstop offset='1' stop-color='%23FBBF24'/%3E%3C/linearGradient%3E%3ClinearGradient id='h' x1='26.4' y1='9.6' x2='28.8' y2='15' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%237E22CE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3CclipPath id='g'%3E%3Cpath fill='%23fff' transform='translate(24.8 12)' d='M0 0h7.2v8H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E">
+    
+  <style>
+    .allure-app-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      background: #f7f8fb;
+      color: #22252a;
+      font: 14px/20px Arial, Helvetica, sans-serif;
+    }
+
+    .allure-app-loader__spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(34, 37, 42, 0.16);
+      border-bottom-color: #3d7eff;
+      border-radius: 50%;
+      animation: allure-app-loader-spin 0.7s linear infinite;
+    }
+
+    .allure-app-loader__logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .allure-app-loader {
+        background: #1c1c1e;
+        color: #e5e5e7;
+      }
+
+      .allure-app-loader__spinner {
+        border-color: rgba(229, 229, 231, 0.2);
+        border-bottom-color: #8ab4ff;
+      }
+    }
+
+    @keyframes allure-app-loader-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+    
+    <script>
+      window.allureReportOptions = {"id":"awesome","reportName":"Round Companion UAT — dev + 本地, by bug","logo":"","theme":"light","reportLanguage":"en","createdAt":1791972013371,"reportUuid":"7cf99a9e-4e64-43d3-9bcb-5b4f105631ab","groupBy":["缺陷级别","缺陷","feature"],"cacheKey":"1791972013371","ci":{"type":"local","detected":true,"repoName":"","jobUid":"local","jobUrl":"","jobName":"","jobRunUid":"1bc25313-5680-45dc-b100-02545ad764bc","jobRunUrl":"","jobRunName":"","jobRunBranch":"","pullRequestUrl":"","pullRequestName":""},"executor":{"name":"RoundAI QA agent","type":"dev+local","buildName":"2026-10-14-dev + 2026-10-14-local","reportName":"Round Companion UAT — dev 2026-10-14-dev + 本地 2026-10-14-local, by UAT item"},"runSummary":{"start":1791924562953,"stop":1791971927015,"duration":47364062},"runSummaryByEnv":{"default":{"start":1791924562953,"stop":1791971927015,"duration":47364062}},"layout":"base","allureVersion":"3.20.1","sections":["charts","timeline"],"defaultSection":""}
+    </script>
+<style data-roundai-i18n>
+.rc-lang{position:relative;display:inline-flex;align-items:center;flex:none;box-sizing:border-box;height:24px;margin-left:4px;border:1px solid var(--color-border-default,#d0d4dc);border-radius:4px;background:var(--color-control-bg-ghost,transparent);color:var(--color-text-primary,#1f2328);font-family:var(--font-family,system-ui,sans-serif);font-size:12px;line-height:1}
+.rc-lang>button{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;height:22px;min-width:28px;padding:0 7px;cursor:pointer;font:inherit;color:var(--color-text-secondary,#57606a);transition:background-color var(--color-change-transition-duration,.15s)}
+.rc-lang>button:first-child{border-radius:3px 0 0 3px}
+.rc-lang>button:last-of-type{border-radius:0 3px 3px 0;border-left:1px solid var(--color-border-default,#d0d4dc)}
+.rc-lang>button:hover{background:var(--color-control-bg-ghost-hover,rgba(0,0,0,.06))}
+.rc-lang>button[aria-pressed="true"]{background:var(--color-control-bg-ghost-active,rgba(0,0,0,.1));color:var(--color-text-primary,#1f2328);font-weight:var(--font-weight-bold,600)}
+.rc-lang>button:focus-visible{outline:2px solid var(--color-intent-primary-bg,#2f6feb);outline-offset:1px}
+.rc-lang[aria-busy="true"]>button[aria-pressed="true"]{animation:rc-lang-pulse 1.2s ease-in-out infinite}
+@keyframes rc-lang-pulse{50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){.rc-lang[aria-busy="true"]>button[aria-pressed="true"]{animation:none}}
+.rc-lang--fixed{position:fixed;top:8px;right:96px;z-index:1000;background:var(--color-bg-primary,#fff)}
+.rc-lang-tip{position:absolute;top:calc(100% + 6px);right:0;z-index:1001;box-sizing:border-box;width:max-content;max-width:min(520px,calc(100vw - 32px));padding:6px 10px;border:1px solid var(--color-border-default,#d0d4dc);border-radius:6px;background:var(--color-bg-primary,#fff);color:var(--color-text-primary,#1f2328);font-size:12px;font-weight:normal;line-height:1.4;white-space:normal;box-shadow:0 4px 12px rgba(0,0,0,.12);cursor:default}
+.rc-lang-tip[hidden]{display:none}
+html.rc-lang-busy body>div>aside{visibility:hidden!important}
+</style>
+<script data-roundai-i18n>
+(function(){"use strict";
+function pickLang(search, stored, fallback) {
+  let q = null;
+  try {
+    q = new URLSearchParams(search || "").get("lang");
+  } catch {
+    q = null;
+  }
+  const norm = (v) => {
+    const s = String(v ?? "").trim().toLowerCase();
+    return /^(zh|cn|中)/.test(s) ? "zh" : /^en/.test(s) ? "en" : null;
+  };
+  return norm(q) || norm(stored) || fallback;
+}
+function sourceFor(text, lang) {
+  const t = String(text ?? "").trim();
+  if (!t) return null;
+  const han = (t.match(/[㐀-䶿一-鿿豈-﫿]/g) || []).length;
+  if (lang === "en") return han ? "zh" : null;
+  if (lang !== "zh" || !/[A-Za-z]{3,}/.test(t)) return null;
+  if (!/\s/.test(t) && (/[\d._/\\:@#=-]/.test(t) || /^[A-Z]+$/.test(t))) return null;
+  const latin = (t.match(/[A-Za-z]/g) || []).length;
+  return latin > han * 2 ? "en" : null;
+}
+function splitText(text) {
+  const s = String(text ?? "");
+  const lead = /^\s*(?:\[dev\]\s*)?/.exec(s)[0];
+  const rest = s.slice(lead.length);
+  const trail = /\s*$/.exec(rest)[0];
+  return [lead, rest.slice(0, rest.length - trail.length), trail];
+}
+(function client(cfg) {
+  const hasApi = typeof self !== "undefined" && "Translator" in self && typeof self.Translator?.create === "function";
+  const store = {
+    get(k) {
+      try {
+        return window.localStorage.getItem(k);
+      } catch {
+        return null;
+      }
+    },
+    set(k, v) {
+      try {
+        window.localStorage.setItem(k, v);
+        return window.localStorage.getItem(k) === v;
+      } catch {
+        return false;
+      }
+    },
+  };
+  const state = { lang: pickLang(location.search, store.get(cfg.langKey), cfg.defaultLang) };
+  const T = () => cfg.text[state.lang];
+  if (/[?&]lang=/.test(location.search)) store.set(cfg.langKey, state.lang); // Allure drops ?lang on its first navigation
+
+  // Allure's UI language at start: the app reads localStorage first, then reportLanguage.
+  try {
+    if (window.allureReportOptions) window.allureReportOptions.reportLanguage = state.lang;
+  } catch {}
+  store.set(cfg.allureKey, state.lang);
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const waitFor = async (fn, ms) => {
+    const end = Date.now() + ms;
+    for (;;) {
+      const v = fn();
+      if (v || Date.now() > end) return v;
+      await sleep(50);
+    }
+  };
+  const SHORTS = new Set(cfg.shorts);
+  const NAMES = new Set([...cfg.shorts, ...Object.values(cfg.allure).map((x) => x.full)]);
+  const label = (el) => (el?.textContent || "").trim();
+  const allureTrigger = () => Array.from(document.querySelectorAll("button")).find((b) => !b.closest(".rc-lang") && SHORTS.has(label(b))) || null;
+
+  // In place, through Allure's own footer language menu (hidden while it is driven).
+  async function setAllureLang(lang) {
+    const want = cfg.allure[lang];
+    const trig = await waitFor(allureTrigger, 2000);
+    if (!trig) return false;
+    if (label(trig) === want.short) return true;
+    const root = document.documentElement;
+    root.classList.add("rc-lang-busy");
+    try {
+      trig.click();
+      const item = await waitFor(() => Array.from(document.querySelectorAll("[data-interactive-menu-item]")).find((b) => label(b) === want.full), 1500);
+      if (!item) {
+        document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+        return false;
+      }
+      item.click();
+      return !!(await waitFor(() => label(allureTrigger()) === want.short, 2000));
+    } finally {
+      setTimeout(() => root.classList.remove("rc-lang-busy"), 50);
+    }
+  }
+
+  // ------------------------------------------------ content: the browser's Translator API
+  const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEXTAREA", "INPUT", "SELECT", "OPTION", "CODE", "PRE", "KBD", "SAMP", "SVG", "MATH", "IFRAME", "TITLE", "CANVAS", "VIDEO", "IMG"]);
+  const SKIP_TESTID = /^(test-result-(attachment|error|diff|copy|id|ingest-order|retries-item-error-preview)|keyboard-shortcuts)/;
+  const skipMemo = new WeakMap();
+  function skipEl(el) {
+    if (!el) return true;
+    if (skipMemo.has(el)) return skipMemo.get(el);
+    let v = false;
+    try {
+      const tag = String(el.tagName || "").toUpperCase();
+      if (SKIP_TAGS.has(tag) || el.isContentEditable || el.getAttribute?.("translate") === "no" || SKIP_TESTID.test(el.getAttribute?.("data-testid") || "") || el.classList?.contains("notranslate")) v = true;
+      else if (el.parentElement) v = skipEl(el.parentElement);
+      else {
+        const frame = el.ownerDocument?.defaultView?.frameElement;
+        v = frame ? skipEl(frame.parentElement) : false;
+      }
+    } catch {
+      v = true;
+    }
+    skipMemo.set(el, v);
+    return v;
+  }
+
+  const recs = new WeakMap(); // text node -> { orig, shown }
+  const tracked = new Set();
+  const cache = new Map(); // "en>zh|text" -> translation | null (failed)
+  const pending = new Map(); // key -> { src, tgt, core, nodes }
+  const translators = {}; // "en>zh" -> { status: pending | ok | needs-click | none, inst }
+  const dirtyFrames = new Set();
+  const dirOf = (lang) => (lang === "zh" ? ["en", "zh"] : ["zh", "en"]);
+
+  function show(node, rec, text) {
+    rec.shown = text;
+    if (node.data !== text) {
+      node.data = text;
+      if (node.ownerDocument !== document) dirtyFrames.add(node.ownerDocument?.defaultView?.frameElement);
+    }
+  }
+  function render(node, rec) {
+    const src = sourceFor(rec.orig, state.lang);
+    const [lead, core, trail] = splitText(rec.orig);
+    if (!src || !core || NAMES.has(core) || cfg.keep.includes(core)) return show(node, rec, rec.orig);
+    const tgt = state.lang;
+    const key = `${src}>${tgt}|${core}`;
+    const hit = cache.get(key);
+    if (typeof hit === "string") return show(node, rec, lead + hit + trail);
+    show(node, rec, rec.orig);
+    if (hit === null || translators[`${src}>${tgt}`]?.status !== "ok") return;
+    const job = pending.get(key) || { src, tgt, core, nodes: new Set() };
+    job.nodes.add(node);
+    pending.set(key, job);
+  }
+  function consider(node) {
+    const rec = recs.get(node);
+    if (rec && node.data === rec.shown) return; // unchanged, or our own write
+    if (rec) {
+      rec.orig = node.data; // the app wrote a new text
+      rec.shown = node.data;
+    } else {
+      if (!/[A-Za-z㐀-鿿]/.test(node.data) || skipEl(node.parentElement)) return;
+      recs.set(node, { orig: node.data, shown: node.data });
+      tracked.add(node);
+    }
+    render(node, recs.get(node));
+  }
+  function walk(root) {
+    if (!root) return;
+    if (root.nodeType === 3) return consider(root);
+    if (root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
+    if (root.nodeType === 1) {
+      if (root.tagName === "IFRAME") return hookFrame(root);
+      if (skipEl(root)) return;
+    }
+    const doc = root.ownerDocument || root;
+    const w = doc.createTreeWalker(root, 5 /* SHOW_ELEMENT | SHOW_TEXT */, {
+      acceptNode(n) {
+        if (n.nodeType === 1) {
+          if (n.tagName === "IFRAME") hookFrame(n);
+          return skipEl(n) ? 2 /* REJECT */ : 3 /* SKIP */;
+        }
+        return 1;
+      },
+    });
+    for (let n = w.nextNode(); n; n = w.nextNode()) consider(n);
+  }
+  function applyAll() {
+    pending.clear();
+    for (const n of tracked) {
+      if (!n.isConnected) {
+        tracked.delete(n);
+        continue;
+      }
+      const rec = recs.get(n);
+      if (n.data !== rec.shown) rec.orig = n.data;
+      render(n, rec);
+    }
+    pump();
+    refitSoon();
+  }
+
+  // Description iframes (srcdoc, same origin): translated on load, then resized to the new text.
+  const frames = new WeakSet();
+  function hookFrame(f) {
+    if (frames.has(f)) return;
+    frames.add(f);
+    const go = () => {
+      try {
+        const d = f.contentDocument;
+        if (d?.body) {
+          walk(d.body);
+          pump();
+          refitSoon();
+        }
+      } catch {}
+    };
+    f.addEventListener("load", () => setTimeout(go, 0));
+    go();
+  }
+  let refitT = 0;
+  function refitSoon() {
+    if (!refitT) refitT = setTimeout(refit, 30);
+  }
+  function refit() {
+    refitT = 0;
+    for (const f of dirtyFrames) {
+      try {
+        const d = f?.contentDocument;
+        if (!f || !f.isConnected || !d?.body) continue;
+        f.setAttribute("height", "0");
+        f.setAttribute("height", String(Math.ceil(Math.max(d.body.scrollHeight, d.documentElement.scrollHeight))));
+      } catch {}
+    }
+    dirtyFrames.clear();
+  }
+
+  function inView(node) {
+    try {
+      const el = node.parentElement;
+      if (!el) return false;
+      let r = el.getBoundingClientRect();
+      if (!r.width && !r.height) return false;
+      const win = el.ownerDocument.defaultView;
+      if (win !== window) {
+        const fr = win.frameElement.getBoundingClientRect();
+        r = { top: fr.top + r.top, bottom: fr.top + r.bottom };
+      }
+      return r.bottom > 0 && r.top < window.innerHeight;
+    } catch {
+      return false;
+    }
+  }
+  let pumping = false;
+  async function pump() {
+    if (pumping) return;
+    pumping = true;
+    busy(true);
+    try {
+      while (pending.size) {
+        // what is on screen first
+        const keys = [];
+        let looked = 0;
+        for (const [k, job] of pending) {
+          if (keys.length >= 6 || looked++ > 400) break;
+          for (const n of job.nodes)
+            if (inView(n)) {
+              keys.push(k);
+              break;
+            }
+        }
+        for (const k of pending.keys()) {
+          if (keys.length >= 6) break;
+          if (!keys.includes(k)) keys.push(k);
+        }
+        const jobs = keys.map((k) => [k, pending.get(k)]);
+        for (const [k] of jobs) pending.delete(k);
+        await Promise.all(
+          jobs.map(async ([k, job]) => {
+            let out = null;
+            try {
+              const t = translators[`${job.src}>${job.tgt}`];
+              if (t?.status === "ok") out = await t.inst.translate(job.core);
+            } catch {
+              out = null;
+            }
+            cache.set(k, typeof out === "string" && out.trim() ? out.trim() : null);
+            for (const n of job.nodes) {
+              const rec = recs.get(n);
+              if (n.isConnected && rec && n.data === rec.shown) render(n, rec);
+            }
+          }),
+        );
+        refitSoon();
+        await sleep(0);
+      }
+    } finally {
+      pumping = false;
+      busy(false);
+    }
+  }
+
+  // One translator per direction. Created at once when its model is on the device; otherwise on a click
+  // (a model download needs a user gesture, so create() is called synchronously in the click handler).
+  function translatorFor(lang, gesture) {
+    const [src, tgt] = dirOf(lang);
+    const k = `${src}>${tgt}`;
+    const have = translators[k];
+    if (have && (have.status === "ok" || have.status === "pending" || have.status === "none")) return have;
+    const t = (translators[k] = { status: "pending", inst: null, done: null });
+    if (!hasApi) {
+      t.status = "none";
+      return t;
+    }
+    const opts = {
+      sourceLanguage: src,
+      targetLanguage: tgt,
+      monitor(m) {
+        m.addEventListener("downloadprogress", (e) => tip(`${cfg.text[tgt].downloading} ${Math.round((e.loaded || 0) * 100)}%`, 0));
+      },
+    };
+    let p;
+    try {
+      p = gesture
+        ? self.Translator.create(opts)
+        : Promise.resolve(self.Translator.availability({ sourceLanguage: src, targetLanguage: tgt })).then((a) => {
+            if (a === "available") return self.Translator.create(opts);
+            throw Object.assign(new Error(String(a)), { avail: a });
+          });
+    } catch (e) {
+      p = Promise.reject(e);
+    }
+    t.done = Promise.resolve(p).then(
+      (inst) => {
+        t.status = "ok";
+        t.inst = inst;
+        if (tipEl && /%$/.test(tipEl.textContent)) tip("", -1);
+        if (state.lang === tgt) applyAll();
+      },
+      (e) => {
+        const later = e?.avail ? e.avail !== "unavailable" : e?.name === "NotAllowedError";
+        t.status = later ? "needs-click" : "none";
+      },
+    );
+    return t;
+  }
+
+  // ------------------------------------------------ the button
+  let ctl = null;
+  let tipEl = null;
+  let tipT = 0;
+  let fallbackDue = false;
+  function tip(text, ms = 9000) {
+    if (!tipEl) return;
+    clearTimeout(tipT);
+    if (ms < 0 || !text) {
+      tipEl.hidden = true;
+      return;
+    }
+    tipEl.textContent = text;
+    tipEl.hidden = false;
+    if (ms) tipT = setTimeout(() => (tipEl.hidden = true), ms);
+  }
+  function busy(on) {
+    ctl?.setAttribute("aria-busy", on ? "true" : "false");
+  }
+  function paint() {
+    if (!ctl) return;
+    ctl.setAttribute("aria-label", T().label);
+    for (const b of ctl.querySelectorAll("button")) {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang));
+      b.title = cfg.text[b.dataset.lang][b.dataset.lang];
+    }
+  }
+  function build() {
+    ctl = document.createElement("div");
+    ctl.className = "rc-lang notranslate";
+    ctl.setAttribute("translate", "no");
+    ctl.setAttribute("role", "group");
+    ctl.setAttribute(cfg.mark, "");
+    for (const [l, text] of [["zh", "中"], ["en", "EN"]]) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.lang = l;
+      b.lang = l === "zh" ? "zh-CN" : "en";
+      b.textContent = text;
+      b.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        choose(l, true);
+      });
+      ctl.appendChild(b);
+    }
+    tipEl = document.createElement("div");
+    tipEl.className = "rc-lang-tip";
+    tipEl.setAttribute("role", "status");
+    tipEl.hidden = true;
+    tipEl.addEventListener("click", () => tip("", -1));
+    ctl.appendChild(tipEl);
+    paint();
+  }
+  function mount() {
+    if (!document.body) return;
+    if (!ctl) build();
+    const host = document.querySelector('[data-testid="toggle-layout-button"]')?.parentElement;
+    if (host) {
+      if (ctl.parentElement !== host) host.appendChild(ctl);
+      ctl.classList.remove("rc-lang--fixed");
+    } else if (!ctl.isConnected && fallbackDue) {
+      ctl.classList.add("rc-lang--fixed");
+      document.body.appendChild(ctl);
+    }
+  }
+
+  function choose(lang, gesture) {
+    const changed = lang !== state.lang;
+    state.lang = lang;
+    store.set(cfg.langKey, lang);
+    try {
+      const u = new URL(location.href);
+      if (u.searchParams.has("lang")) {
+        u.searchParams.set("lang", lang);
+        history.replaceState(history.state, "", u.href);
+      }
+    } catch {}
+    paint();
+    if (changed) tip("", -1);
+    const t = translatorFor(lang, gesture); // create() has to run inside the click (model download)
+    const noApi = () => tip(T().noApi, 12000);
+    if (t.status === "none") noApi();
+    else t.done?.then(() => t.status === "none" && state.lang === lang && noApi());
+    if (changed) {
+      setAllureLang(lang).then((ok) => {
+        if (!ok && state.lang === lang && label(allureTrigger()) !== cfg.allure[lang].short && store.set(cfg.allureKey, lang)) location.reload();
+      });
+      applyAll();
+    } else if (t.status === "ok") applyAll();
+  }
+
+  // ------------------------------------------------ wiring
+  let roots = new Set();
+  let texts = new Set();
+  let flushT = 0;
+  const schedule = () => {
+    if (!flushT) flushT = setTimeout(flush, 60);
+  };
+  function flush() {
+    flushT = 0;
+    mount();
+    const rs = roots;
+    const ts = texts;
+    roots = new Set();
+    texts = new Set();
+    if (!hasApi) return;
+    for (const r of rs) if (r.isConnected) walk(r);
+    for (const t of ts) if (t.isConnected) consider(t);
+    pump();
+    refitSoon();
+  }
+  function start() {
+    mount();
+    setTimeout(() => {
+      fallbackDue = true;
+      mount();
+    }, 4000);
+    new MutationObserver((list) => {
+      for (const m of list) {
+        if (m.type === "characterData") texts.add(m.target);
+        else for (const n of m.addedNodes) roots.add(n);
+      }
+      schedule();
+    }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    roots.add(document.body);
+    schedule();
+    if (hasApi) {
+      const t = translatorFor(state.lang, false);
+      t.done?.then(() => t.status === "needs-click" && tip(T().click, 9000));
+    }
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
+  else start();
+})({"mark":"data-roundai-i18n","langKey":"roundai-report-lang","allureKey":"currentLocale","defaultLang":"en","shorts":["Eng","En ISO","Ру","Ук","Pl","Es","Pt","De","Hy","Ar","Az","Fr","It","Ja","He","Ka","Kr","Nl","Sv","Tr","Zh","Zh-TW"],"allure":{"zh":{"short":"Zh","full":"中文"},"en":{"short":"Eng","full":"English"}},"text":{"zh":{"label":"语言 / Language","zh":"中文","en":"English","noApi":"这个浏览器没有内置翻译接口：用浏览器的「翻译网页」（Chrome：右键 →「翻译成中文」）","click":"点「中」开始翻译（浏览器第一次要下载翻译模型）","downloading":"正在下载浏览器的翻译模型"},"en":{"label":"Language / 语言","zh":"中文","en":"English","noApi":"No built-in translator in this browser: use its “Translate page” (Chrome: right-click → “Translate to English”)","click":"Click EN to translate (the browser downloads its translation model the first time)","downloading":"Downloading the browser’s translation model"}},"keep":["dev"]});
+})();
+</script>
+<style data-roundai-filter>
+.rc-filter{position:relative;display:inline-flex;align-items:center;flex:none;margin-right:4px;font-family:var(--font-family,system-ui,sans-serif);font-size:12px;line-height:1}
+.rc-filter-btn{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border:1px solid var(--color-border-default,#d0d4dc);border-radius:4px;cursor:pointer;color:var(--color-text-secondary,#57606a);background:var(--color-control-bg-ghost,transparent)}
+.rc-filter-btn:hover{background:var(--color-control-bg-ghost-hover,rgba(0,0,0,.06))}
+.rc-filter-btn.rc-on{color:var(--color-text-primary,#1f2328);font-weight:var(--font-weight-bold,600);border-color:var(--color-intent-primary-bg,#2f6feb)}
+.rc-filter-btn:focus-visible,.rc-chip:focus-visible,.rc-filter-clear:focus-visible{outline:2px solid var(--color-intent-primary-bg,#2f6feb);outline-offset:1px}
+.rc-filter-count:empty{display:none}
+.rc-filter-count{min-width:14px;padding:1px 4px;border-radius:7px;background:var(--color-intent-primary-bg,#2f6feb);color:#fff;font-size:10px;text-align:center}
+.rc-filter-panel{position:fixed;top:44px;right:8px;z-index:1002;box-sizing:border-box;width:min(440px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;padding:10px 12px;border:1px solid var(--color-border-default,#d0d4dc);border-radius:8px;background:var(--color-bg-primary,#fff);color:var(--color-text-primary,#1f2328);box-shadow:0 6px 18px rgba(0,0,0,.16);line-height:1.35}
+.rc-filter-panel[hidden]{display:none}
+.rc-filter-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.rc-filter-total{color:var(--color-text-secondary,#57606a)}
+.rc-filter-clear{all:unset;cursor:pointer;padding:2px 6px;border-radius:4px;color:var(--color-intent-primary-text,#2f6feb)}
+.rc-filter-clear:hover{background:var(--color-control-bg-ghost-hover,rgba(0,0,0,.06))}
+.rc-sec{margin:8px 0}
+.rc-sec-h{margin-bottom:4px;font-weight:var(--font-weight-bold,600)}
+.rc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rc-chip{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;gap:6px;min-height:26px;padding:3px 8px;border:1px solid var(--color-border-default,#d0d4dc);border-radius:13px;cursor:pointer;color:var(--color-text-primary,#1f2328)}
+.rc-chip:hover{background:var(--color-control-bg-ghost-hover,rgba(0,0,0,.06))}
+.rc-chip[aria-pressed="true"]{border-color:var(--color-intent-primary-bg,#2f6feb);background:var(--color-intent-primary-bg-subtle,rgba(47,111,235,.12));font-weight:var(--font-weight-bold,600)}
+.rc-chip.rc-zero{opacity:.55}
+.rc-chip-n{color:var(--color-text-secondary,#57606a);font-variant-numeric:tabular-nums}
+.rc-chip-f{padding:0 5px;border-radius:7px;background:var(--color-intent-negative-bg,#cf222e);color:#fff;font-size:10px;font-variant-numeric:tabular-nums}
+.rc-chip-f[hidden]{display:none}
+.rc-filter-note{margin-top:8px;color:var(--color-text-secondary,#57606a);font-size:11px}
+.rc-filter--fixed{position:fixed;top:8px;right:180px;z-index:1000}
+</style>
+<script data-roundai-filter>
+(function(){"use strict";
+function splitList(v) {
+  const out = [];
+  for (const x of [].concat(v ?? [])) for (const s of String(x).split(",")) if (s.trim() && !out.includes(s.trim())) out.push(s.trim());
+  return out;
+}
+function readState(search, stored, cfg) {
+  let sp;
+  try {
+    sp = new URLSearchParams(search || "");
+  } catch {
+    sp = new URLSearchParams("");
+  }
+  const statuses = cfg.statuses;
+  const issueOf = (v) => cfg.issues.find((i) => i.label === v || i.name === v || i.key === v)?.label ?? null;
+  const clean = (st) => ({ status: splitList(st.status).filter((s) => statuses.includes(s)), issue: splitList(st.issue).map(issueOf).filter((x, i, a) => x && a.indexOf(x) === i) });
+  if (sp.has(cfg.param.status) || sp.has(cfg.param.issue)) return { ...clean({ status: sp.getAll(cfg.param.status), issue: sp.getAll(cfg.param.issue) }), from: "url" };
+  const native = nativeState(sp, cfg);
+  if (native.status.length || native.issue.length) return { ...native, from: "allure" };
+  let st = null;
+  try {
+    st = stored ? JSON.parse(stored) : null;
+  } catch {
+    st = null;
+  }
+  if (st && typeof st === "object") return { ...clean(st), from: "stored" };
+  return { status: [], issue: [], from: "none" };
+}
+function nativeState(sp, cfg) {
+  const status = sp.getAll("tags").filter((t) => t.startsWith(cfg.tagPrefix)).map((t) => t.slice(cfg.tagPrefix.length)).filter((s, i, a) => cfg.statuses.includes(s) && a.indexOf(s) === i);
+  const issue = sp.getAll("categories").map((c) => cfg.issues.find((i) => i.name === c)?.label).filter((x, i, a) => x && a.indexOf(x) === i);
+  return { status, issue };
+}
+function writeSearch(search, state, cfg) {
+  let sp;
+  try {
+    sp = new URLSearchParams(search || "");
+  } catch {
+    sp = new URLSearchParams("");
+  }
+  const names = cfg.issues.map((i) => i.name);
+  const tags = sp.getAll("tags").filter((t) => !t.startsWith(cfg.tagPrefix));
+  const cats = sp.getAll("categories").filter((c) => !names.includes(c));
+  for (const k of ["tags", "categories", cfg.param.status, cfg.param.issue]) sp.delete(k);
+  for (const t of [...tags, ...state.status.map((s) => cfg.tagPrefix + s)]) sp.append("tags", t);
+  for (const c of [...cats, ...state.issue.map((l) => cfg.issues.find((i) => i.label === l)?.name).filter(Boolean)]) sp.append("categories", c);
+  const ours = [
+    state.status.length ? `${cfg.param.status}=${state.status.map(encodeURIComponent).join(",")}` : null,
+    state.issue.length ? `${cfg.param.issue}=${state.issue.map(encodeURIComponent).join(",")}` : null,
+  ].filter(Boolean);
+  const q = [sp.toString(), ...ours].filter(Boolean).join("&");
+  return q ? `?${q}` : "";
+}
+var sameState=(a, b) => a.status.join("\u0000") === b.status.join("\u0000") && a.issue.join("\u0000") === b.issue.join("\u0000");
+function chipCounts(data, state) {
+  const sIdx = state.status.map((s) => data.statuses.indexOf(s));
+  const iIdx = state.issue.map((l) => data.issues.findIndex((i) => i.label === l));
+  const okS = (r) => !sIdx.length || r[0].some((x) => sIdx.includes(x));
+  const okI = (r) => !iIdx.length || iIdx.includes(r[1]);
+  const status = data.statuses.map(() => ({ n: 0, f: 0 }));
+  const issue = data.issues.map(() => ({ n: 0, f: 0 }));
+  let total = 0;
+  let failed = 0;
+  for (const r of data.results) {
+    if (okI(r))
+      for (const x of r[0]) {
+        status[x].n += 1;
+        status[x].f += r[2];
+      }
+    if (okS(r) && r[1] >= 0) {
+      issue[r[1]].n += 1;
+      issue[r[1]].f += r[2];
+    }
+    if (okS(r) && okI(r)) {
+      total += 1;
+      failed += r[2];
+    }
+  }
+  return { status, issue, total, failed };
+}
+(function client(cfg, data) {
+  const store = {
+    get() {
+      try {
+        return window.localStorage.getItem(cfg.storeKey);
+      } catch {
+        return null;
+      }
+    },
+    set(v) {
+      try {
+        window.localStorage.setItem(cfg.storeKey, v);
+      } catch {}
+    },
+  };
+  const C = { ...cfg, statuses: data.statuses, issues: data.issues };
+  let state = readState(location.search, store.get(), C);
+  let lastHash = location.hash;
+  let writing = false;
+  const save = () => store.set(JSON.stringify({ status: state.status, issue: state.issue }));
+
+  // URL: ours + Allure's; Allure listens to these events (its router re-reads location on them)
+  function writeUrl(notify) {
+    const q = writeSearch(location.search, state, C);
+    if (q !== location.search) {
+      try {
+        writing = true;
+        history.replaceState(history.state, "", location.pathname + q + location.hash);
+        if (notify) window.dispatchEvent(new Event("replaceState"));
+      } catch {
+      } finally {
+        writing = false;
+      }
+    }
+  }
+  writeUrl(false); // before Allure's app starts: it reads the filter from the URL
+  save();
+
+  function onUrl() {
+    if (writing) return;
+    const sp = new URLSearchParams(location.search);
+    const native = nativeState(sp, C);
+    const hashMoved = location.hash !== lastHash;
+    lastHash = location.hash;
+    const lost = !native.status.length && !native.issue.length && !sp.has(C.param.status) && !sp.has(C.param.issue);
+    if (lost && hashMoved && (state.status.length || state.issue.length)) return writeUrl(true); // a navigation dropped the search
+    if (!sameState(native, state)) state = { ...native, from: "allure" };
+    save();
+    writeUrl(true);
+    paint();
+  }
+  for (const ev of ["popstate", "pushState", "replaceState", "hashchange"]) window.addEventListener(ev, onUrl);
+
+  // ------------------------------------------------ UI
+  let root = null;
+  let btn = null;
+  let panel = null;
+  let fallbackDue = false;
+  const chips = { status: [], issue: [] };
+  const T = cfg.text;
+  function chip(group, value, label, noTranslate) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "rc-chip";
+    b.dataset.group = group;
+    b.dataset.value = value;
+    const l = document.createElement("span");
+    l.className = "rc-chip-l";
+    if (noTranslate) {
+      l.setAttribute("translate", "no");
+      l.classList.add("notranslate");
+    }
+    l.textContent = label;
+    const n = document.createElement("span");
+    n.className = "rc-chip-n";
+    const f = document.createElement("span");
+    f.className = "rc-chip-f";
+    f.title = T.failedTip;
+    b.append(l, n, f);
+    b.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const list = state[group];
+      state = { ...state, [group]: list.includes(value) ? list.filter((x) => x !== value) : [...list, value] };
+      if (group === "status") state.status = C.statuses.filter((s) => state.status.includes(s));
+      else state.issue = C.issues.map((i) => i.label).filter((s) => state.issue.includes(s));
+      save();
+      writeUrl(true);
+      paint();
+    });
+    chips[group].push(b);
+    return b;
+  }
+  function section(title, group, items) {
+    const s = document.createElement("div");
+    s.className = "rc-sec";
+    const h = document.createElement("div");
+    h.className = "rc-sec-h";
+    h.textContent = title;
+    const box = document.createElement("div");
+    box.className = "rc-chips";
+    box.setAttribute("role", "group");
+    box.setAttribute("aria-label", title);
+    for (const it of items) box.appendChild(chip(group, it.value, it.label, it.noTranslate));
+    s.append(h, box);
+    return s;
+  }
+  function build() {
+    root = document.createElement("div");
+    root.className = "rc-filter";
+    root.setAttribute(cfg.mark, "");
+    btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "rc-filter-btn";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-haspopup", "true");
+    const bl = document.createElement("span");
+    bl.textContent = T.button;
+    const bn = document.createElement("span");
+    bn.className = "rc-filter-count";
+    btn.append(bl, bn);
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggle(panel.hidden);
+    });
+    panel = document.createElement("div");
+    panel.className = "rc-filter-panel";
+    panel.hidden = true;
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-label", T.button);
+    const head = document.createElement("div");
+    head.className = "rc-filter-head";
+    const total = document.createElement("span");
+    total.className = "rc-filter-total";
+    const clear = document.createElement("button");
+    clear.type = "button";
+    clear.className = "rc-filter-clear";
+    clear.textContent = T.clear;
+    clear.addEventListener("click", (e) => {
+      e.preventDefault();
+      state = { status: [], issue: [], from: "clear" };
+      save();
+      writeUrl(true);
+      paint();
+    });
+    head.append(total, clear);
+    const note = document.createElement("div");
+    note.className = "rc-filter-note";
+    note.textContent = T.note;
+    panel.append(
+      head,
+      section(T.status, "status", C.statuses.map((s) => ({ value: s, label: s, noTranslate: s !== cfg.none }))),
+      ...(C.issues.length ? [section(T.issue, "issue", C.issues.map((i) => ({ value: i.label, label: i.label })))] : []),
+      note,
+    );
+    panel.addEventListener("click", (e) => e.stopPropagation());
+    root.append(btn, panel);
+    document.addEventListener("click", () => toggle(false));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !panel.hidden) {
+        toggle(false);
+        btn.focus();
+      }
+    });
+    paint();
+  }
+  // fixed to the viewport under the button, right-aligned to it, never past either edge
+  function place() {
+    if (!panel || panel.hidden) return;
+    const r = btn.getBoundingClientRect();
+    const w = panel.offsetWidth;
+    panel.style.top = `${Math.round(r.bottom + 6)}px`;
+    panel.style.left = `${Math.round(Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8)))}px`;
+  }
+  function toggle(open) {
+    if (!panel) return;
+    panel.hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+    if (open) {
+      paint();
+      place();
+    }
+  }
+  window.addEventListener("resize", place);
+  function paint() {
+    if (!root) return;
+    const c = chipCounts(data, state);
+    const active = state.status.length + state.issue.length;
+    btn.querySelector(".rc-filter-count").textContent = active ? String(active) : "";
+    btn.classList.toggle("rc-on", active > 0);
+    btn.title = active ? `${T.status}: ${state.status.join(", ") || "—"} · ${T.issue}: ${state.issue.join(", ") || "—"}` : T.tip;
+    root.querySelector(".rc-filter-total").textContent = `${c.total} 个结果，其中 ${c.failed} 个 failed`;
+    for (const [group, list] of Object.entries(chips))
+      for (const b of list) {
+        const i = group === "status" ? C.statuses.indexOf(b.dataset.value) : C.issues.findIndex((x) => x.label === b.dataset.value);
+        const k = c[group][i] ?? { n: 0, f: 0 };
+        b.setAttribute("aria-pressed", String(state[group].includes(b.dataset.value)));
+        b.querySelector(".rc-chip-n").textContent = String(k.n);
+        const f = b.querySelector(".rc-chip-f");
+        f.textContent = k.f ? String(k.f) : "";
+        f.hidden = !k.f;
+        b.classList.toggle("rc-zero", !k.n);
+      }
+  }
+  function mount() {
+    if (!document.body) return;
+    if (!root) build();
+    const host = document.querySelector('[data-testid="toggle-layout-button"]')?.parentElement;
+    if (host) {
+      if (root.parentElement !== host) host.insertBefore(root, host.firstChild);
+      root.classList.remove("rc-filter--fixed");
+    } else if (!root.isConnected && fallbackDue) {
+      root.classList.add("rc-filter--fixed");
+      document.body.appendChild(root);
+    }
+  }
+  function start() {
+    mount();
+    setTimeout(() => {
+      fallbackDue = true;
+      mount();
+    }, 4000);
+    let t = 0;
+    new MutationObserver(() => {
+      if (!t)
+        t = setTimeout(() => {
+          t = 0;
+          mount();
+        }, 80);
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
+  else start();
+})({"mark":"data-roundai-filter","storeKey":"roundai-report-filter","param":{"status":"ticketStatus","issue":"issue"},"tagPrefix":"票状态: ","none":"无票","text":{"button":"筛选","tip":"按票状态 / 问题分类筛选（可多选）","status":"票状态","issue":"问题分类","clear":"清除","failedTip":"其中 failed 的结果数","note":"同一组里选几个 = 任一；两组之间 = 都要满足。数字只按这两组算（Allure 自己的状态筛选、搜索另算），红色 = 其中 failed。选择记在网址和这个浏览器里。"}},{"statuses":["ready for qa","ready for pr","in progress","rejected by qa","development backlog","无票"],"issues":[{"key":"new-product","name":"问题分类：新的产品问题","label":"新的产品问题"},{"key":"known-product","name":"问题分类：已知产品问题","label":"已知产品问题"},{"key":"needs-decision","name":"问题分类：要人拍板","label":"要人拍板"},{"key":"accessibility","name":"问题分类：无障碍","label":"无障碍"},{"key":"blocked-by-product","name":"问题分类：被产品问题挡住","label":"被产品问题挡住"},{"key":"ticket-not-ready","name":"问题分类：票没到 ready for qa","label":"票没到 ready for qa"},{"key":"test-issue","name":"问题分类：测试问题","label":"测试问题"},{"key":"duplicate","name":"问题分类：重复（看保留的那条）","label":"重复"}],"results":[[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,1,0],-1,0],[[1,0],0,1],[[1,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[2,1,0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[0],3,1],[[2,0],-1,0],[[0],-1,0],[[2],-1,0],[[2,1],-1,0],[[0],1,1],[[0],-1,0],[[2],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2],-1,0],[[2,0],0,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[0],-1,0],[[2],-1,0],[[0],-1,0],[[2,0],3,1],[[2],-1,0],[[0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[4,2],-1,0],[[2],-1,0],[[2,1],-1,0],[[2],-1,0],[[2,1],-1,0],[[2],-1,0],[[2],-1,0],[[4,0],-1,0],[[2],-1,0],[[2,1],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[2,0],6,0],[[2,0],-1,0],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],6,0],[[2,0],6,0],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[1,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],0,1],[[0],-1,0],[[0],-1,0],[[2,0],3,1],[[2,0],1,1],[[0],-1,0],[[0],6,0],[[2,0],-1,0],[[2,0],6,0],[[2,0],-1,0],[[0],-1,0],[[2],1,1],[[4,2],-1,0],[[2],-1,0],[[2],1,1],[[2],-1,0],[[2],-1,0],[[2],1,1],[[2],1,1],[[2],-1,0],[[2],1,1],[[2],0,1],[[2],-1,0],[[2],1,1],[[2,0],1,1],[[2],-1,0],[[2],1,1],[[2],2,1],[[4,2],-1,0],[[2],-1,0],[[2],1,1],[[2],1,1],[[2],0,1],[[2,0],1,1],[[2],1,1],[[2],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[4,2,0],-1,0],[[2],-1,0],[[2,0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[4,2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[4,2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],0,1],[[2],-1,0],[[0,3],-1,0],[[0,3],-1,0],[[1,0,3],-1,0],[[0,3],-1,0],[[0,3],-1,0],[[1,0],-1,0],[[1,0],-1,0],[[1,0],-1,0],[[0],-1,0],[[0],-1,0],[[1,0],-1,0],[[1],-1,0],[[1,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0,3],-1,0],[[1,0],-1,0],[[1,0,3],1,1],[[1,0],-1,0],[[1,0],3,1],[[1,0],3,1],[[1,0],-1,0],[[0],-1,0],[[1],2,1],[[0],-1,0],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],3,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[3],1,1],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[0],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[0],-1,0],[[0,3],-1,0],[[3],0,1],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],0,1],[[0],1,1],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],3,1],[[0],3,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],6,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],0,1],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[1,0],1,1],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[1],5,0],[[1],5,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],5,0],[[1],-1,0],[[1],5,0],[[1],5,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],4,0],[[2,0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],6,0],[[0],-1,0],[[0],-1,0],[[2,0],3,1],[[0],-1,0],[[0],-1,0],[[2,1,0],-1,0],[[2,1,0],-1,0],[[2,1],-1,0],[[1,0],-1,0],[[1,0],-1,0],[[1,0],-1,0],[[1,0],-1,0],[[1,0],-1,0],[[1,0],-1,0],[[1,0],1,1],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[2],1,1],[[5],1,1],[[2,1,0],3,1],[[2,1,0],-1,0],[[1,0],1,1],[[1,0],-1,0],[[1],-1,0],[[1,0],0,1],[[1,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],2,1],[[0],0,1],[[0],-1,0],[[0],-1,0],[[5],-1,0],[[0],3,1],[[0],-1,0],[[0],-1,0],[[2,0],1,1],[[0],-1,0],[[0],-1,0],[[0],2,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],1,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],1,1],[[2],3,1],[[2],-1,0],[[2],1,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],1,1],[[2],1,1],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2],-1,0],[[2],6,0],[[2],-1,0],[[2],1,1],[[2],1,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2],3,1],[[2],-1,0],[[0],-1,0],[[0],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],0,1],[[2],1,1],[[2,1],-1,0],[[2,1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1,0],-1,0],[[1,0],6,0],[[0],-1,0],[[2,1,0],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[1],-1,0],[[1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[0],-1,0],[[0],2,1],[[1],3,1],[[1,0],-1,0],[[2,1,0],-1,0],[[1],-1,0],[[1,0],-1,0],[[1],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],3,1],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],6,0],[[0],-1,0],[[5],-1,0],[[0],-1,0],[[0],-1,0],[[0],6,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],2,1],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],3,1],[[0],-1,0],[[2],2,1],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],2,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2],-1,0],[[2],5,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2,1],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1,0],1,1],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2],-1,0],[[2,1],-1,0],[[1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[1],-1,0],[[1],-1,0],[[0],-1,0],[[2,1,0],-1,0],[[0],-1,0],[[2,1,0],-1,0],[[2,1],-1,0],[[2],-1,0],[[2,1,0],5,0],[[2,1,0],-1,0],[[2,1],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],1,1],[[0],-1,0],[[0],-1,0],[[2,0],1,1],[[0],-1,0],[[2,0],0,1],[[2,0],5,0],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[2,0],-1,0],[[2,0],1,1],[[2,0],2,1],[[0],3,1],[[0],-1,0],[[2,0],-1,0],[[2,0],1,1],[[2,0],-1,0],[[2,0],0,1],[[0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],1,1],[[2],-1,0],[[2],-1,0],[[2,0],1,1],[[2,0],1,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],5,0],[[2],-1,0],[[2],-1,0],[[2,1],-1,0],[[2,0],1,1],[[5],-1,0],[[2],3,1],[[2],-1,0],[[0],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],2,1],[[5],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],5,0],[[2,1],-1,0],[[2],5,0],[[2],3,1],[[2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],2,1],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[2,1],-1,0],[[1],-1,0],[[5],-1,0],[[1],3,1],[[1],-1,0],[[1],-1,0],[[1],1,1],[[2,1],5,0],[[2,1],2,1],[[2,1],-1,0],[[1],-1,0],[[0],6,0],[[0],7,0],[[0],7,0],[[0],7,0],[[0],7,0],[[0],7,0],[[2,0],7,0],[[2,0],0,1],[[2,0],-1,0],[[2,0],0,1],[[2,0],7,0],[[2,0],7,0],[[2],7,0],[[2,0],7,0],[[0],2,1],[[0],-1,0],[[0],7,0],[[0],3,1],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[2],2,1],[[2,0],0,1],[[0],0,1],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2,0],-1,0],[[2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],5,0],[[2,0],-1,0],[[2],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2,1],6,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2,0],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],7,0],[[4,2],3,1],[[4,2,0],-1,0],[[4,2,0],-1,0],[[0],1,1],[[0],-1,0],[[4,2],-1,0],[[2],-1,0],[[2,0],0,1],[[4,2,0],0,1],[[0],-1,0],[[5],-1,0],[[0],0,1]]});
+})();
+</script>
+</head>
+<body>
+    
+    <div id="allure-app-loader" class="allure-app-loader" role="status" aria-label="Loading report" aria-live="polite">
+      <svg class="allure-app-loader__logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.232 4.662a3.6 3.6 0 0 1 5.09.035c2.855 2.894 4.662 6.885 4.662 11.295a3.6 3.6 0 0 1-7.2 0c0-2.406-.981-4.61-2.587-6.24a3.6 3.6 0 0 1 .035-5.09Z" fill="url(#allure-loader-a)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.392 3.6a3.6 3.6 0 0 1 3.6-3.6c4.41 0 8.401 1.807 11.296 4.662a3.6 3.6 0 1 1-5.056 5.126C20.602 8.18 18.398 7.2 15.992 7.2a3.6 3.6 0 0 1-3.6-3.6Z" fill="url(#allure-loader-b)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M0 15.992C0 7.157 7.157 0 15.992 0a3.6 3.6 0 0 1 0 7.2A8.789 8.789 0 0 0 7.2 15.992c0 2.406.981 4.61 2.588 6.24a3.6 3.6 0 0 1-5.126 5.056C1.807 24.393 0 20.402 0 15.992Z" fill="url(#allure-loader-c)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4.661 22.232a3.6 3.6 0 0 1 5.091-.035c1.63 1.606 3.834 2.587 6.24 2.587a3.6 3.6 0 0 1 0 7.2c-4.41 0-8.401-1.807-11.295-4.661a3.6 3.6 0 0 1-.036-5.091Z" fill="url(#allure-loader-d)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M28.384 12.392a3.6 3.6 0 0 1 3.6 3.6c0 8.835-7.157 15.992-15.992 15.992a3.6 3.6 0 0 1 0-7.2 8.789 8.789 0 0 0 8.792-8.792 3.6 3.6 0 0 1 3.6-3.6Z" fill="url(#allure-loader-e)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M28.385 12.392a3.6 3.6 0 0 1 3.6 3.6v12.392a3.6 3.6 0 0 1-7.2 0V15.992a3.6 3.6 0 0 1 3.6-3.6Z" fill="url(#allure-loader-f)"/><g clip-path="url(#allure-loader-g)"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.232 4.662a3.6 3.6 0 0 1 5.091.035c2.855 2.894 4.662 6.885 4.662 11.295a3.6 3.6 0 0 1-7.2 0c0-2.406-.982-4.61-2.588-6.24a3.6 3.6 0 0 1 .035-5.09Z" fill="url(#allure-loader-h)"/></g><defs><linearGradient id="allure-loader-a" x1="26.4" y1="9.6" x2="28.8" y2="15" gradientUnits="userSpaceOnUse"><stop stop-color="#7E22CE"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient><linearGradient id="allure-loader-b" x1="26.8" y1="9.4" x2="17.8" y2="3.6" gradientUnits="userSpaceOnUse"><stop stop-color="#EF4444"/><stop offset="1" stop-color="#DC2626"/></linearGradient><linearGradient id="allure-loader-c" x1="3.6" y1="14" x2="5.4" y2="24.8" gradientUnits="userSpaceOnUse"><stop stop-color="#22C55E"/><stop offset="1" stop-color="#15803D"/></linearGradient><linearGradient id="allure-loader-d" x1="4.8" y1="22.2" x2="14.4" y2="29.2" gradientUnits="userSpaceOnUse"><stop stop-color="#94A3B8"/><stop offset=".958" stop-color="#64748B"/><stop offset="1" stop-color="#64748B"/></linearGradient><linearGradient id="allure-loader-e" x1="28.4" y1="22.173" x2="22.188" y2="28.384" gradientUnits="userSpaceOnUse"><stop stop-color="#D97706"/><stop offset="1" stop-color="#FBBF24"/></linearGradient><linearGradient id="allure-loader-f" x1="29.2" y1="54.4" x2="30.626" y2="54.256" gradientUnits="userSpaceOnUse"><stop stop-color="#FBBF24"/><stop offset="1" stop-color="#FBBF24"/></linearGradient><linearGradient id="allure-loader-h" x1="26.4" y1="9.6" x2="28.8" y2="15" gradientUnits="userSpaceOnUse"><stop stop-color="#7E22CE"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient><clipPath id="allure-loader-g"><path fill="#fff" transform="translate(24.8 12)" d="M0 0h7.2v8H0z"/></clipPath></defs></svg>
+      <div class="allure-app-loader__spinner" aria-hidden="true"></div>
+    </div>
+  
+    <div id="app"></div>
+    
+    <script>
+      const { origin, pathname } = window.location; 
+      const url = new URL(pathname, origin);
+      const baseEl = document.createElement("base");
+      
+      baseEl.href = url.toString();
+      
+      window.document.head.appendChild(baseEl);
+    </script>
+  
+    <script>
+      window.allure = window.allure || {};
+    </script>
+    <script   src="app-37f09cbd4e17b2e88575.js"></script>
+    
+    
+    
+      <script async>
+        window.allureReportDataReady = true;
+      </script>
+    
+</body>
+</html>

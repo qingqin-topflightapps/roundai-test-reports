@@ -1,0 +1,30 @@
+{
+  "S03": {
+    "status": "passed",
+    "tests": [
+      "api/medication-golden-set.spec.ts [api] — a drug the dictation never names is not added (prior-note echo) — expected",
+      "api/medication-golden-set.spec.ts [api] — V2 the same one-time dose read twice stays one Given row — expected",
+      "api/medication-preround-merge.spec.ts [api] — G04 a dictated new dose takes over the row name; the old dose survives in the note — expected",
+      "api/medication-preround-merge.spec.ts [api] — G47 the final dictated dose wins after a self-correction — expected",
+      "api/medication-preround-merge.spec.ts [api] — G50 a rate change on a fluid is a dose change even when the model says active — expected",
+      "api/medication-preround-merge.spec.ts [api] — G46 a corrected start keeps one row with the corrected dose — expected",
+      "api/medication-preround-merge.spec.ts [api] — G54 brand on file, generic returned: one row — expected",
+      "api/medication-preround-merge.spec.ts [api] — a drug the dictation never names is not added (prior-note echo) — expected",
+      "api/medication-preround-merge.spec.ts [api] — rows the extractor does not return are never touched — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a conditional restart leaves a held row exactly as it was — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a plain mention of a held drug does not make it active — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a new dose on a held drug is not a restart either — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a stopped drug stays stopped when the model calls it active — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a dictated restart does turn the held row active — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a held drug may still be stopped — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a negated restart leaves a held anticoagulant held — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a stopped drug started again this morning turns active — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 2 with rule 4: a one-time dose of a held drug is its own Given row; the held row is untouched — expected",
+      "api/medication-preround-merge.spec.ts [api] — V2 the same one-time dose read twice stays one Given row — expected",
+      "api/medication-preround-merge.spec.ts [api] — rule 4: a held drug restarted today shows as started today, not with the old hold — expected",
+      "api/medication-preround-merge.spec.ts [api] — V1 G56: a stop re-reported on an already-stopped row changes nothing — expected",
+      "api/medication-preround-merge.spec.ts [api] — V1: a hold re-dictated on an already-held row keeps the original date and reason — expected"
+    ],
+    "at": 1791950493780
+  }
+}

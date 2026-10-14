@@ -1,0 +1,118 @@
+{
+  "case": "TC-04-S05",
+  "title": "Room phrasing classes: 'bed', 'Room', 'Rm. #', bare number, no room, a name only; the picker opened on a room box",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-order",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s05-bed.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-picker-room.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q1: where Patel sits in the picker opened on his room's box) pass: in order: \"415 · QA TC-04-S05 QA Hosp Patel LS0A\" < \"416 · QA TC-04-S05 QA Hosp Ortiz LS0A\" (in from \"Search room or name\")"
+      ]
+    },
+    {
+      "file": "s05-room.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-rm.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-bare.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-noroom.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-name.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-patel-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js77k1jywxap6atzbtpey5dr418g796h",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-ortiz-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js774tg9hgdnrj6e8s4p1kjr358g6s5n",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Q1: where QA Hosp Patel sits in the picker opened on his room's box, and whether he is marked: read s05-picker-room.png"
+  ],
+  "agent": {
+    "turns": 43,
+    "costUsd": 0.23146599999999998,
+    "durationMs": 123663,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

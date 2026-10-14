@@ -1,0 +1,67 @@
+{
+  "case": "TC-17-S12",
+  "title": "Ask on Post-Round, Nursing Home: 'What meds were changed?' reflects the tracker rows",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s12-postround-ask.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7d7v5bj94gbke8df4xjwg7wd8g90pk",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app)) pass: backend pt-before medications has 4 items",
+        "(seed precondition (harness, not app)) pass: backend pt-before medications[name=Lisinopril 10 mg PO daily].status = \"held\"",
+        "(seed precondition (harness, not app)) pass: backend pt-before medications[name=Oxycodone 2.5 mg PO q4h PRN].status = \"discontinued\"",
+        "(3.9: the model that answered, read from backend/diag-after.json) pass: backend diag-after [fn=assist.askChart].model exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read the answer in s12-postround-ask.png; a failing answer is quoted in the report (3.2). aiCheck group TC-17-ask pools the ten Ask fixtures at 9/10 (RG-POOL not built: each reports on its own)."
+  ],
+  "agent": {
+    "turns": 16,
+    "costUsd": 0.10750080000000001,
+    "durationMs": 87584,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U50",
+  "covers": [
+    "TC-17/S12"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u50",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U50.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

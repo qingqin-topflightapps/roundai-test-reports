@@ -1,0 +1,12 @@
+{
+  "OAT-04/S28": {
+    "status": "blocked",
+    "known": "TC-25 Q3",
+    "detail": "Re-checked after review 2026-10-14 (18:00 JST runs: fix-*.json). Known: no remove control for a Nursing Home resident on main, on the All Residents card or on the chart (control match tightened to a button naming this resident or a resident-level Remove / Delete; the chart path is now handled); the oracle rules this Blocked, known. The control resident and the target were both listed. Pre-evidence only (never the verdict): snf:remove (convex/snf.ts:240, which no screen calls) through the physician's own session on a second resident: document gone at the first read, list row gone, the earlier create + update audit rows kept, exactly one op=delete row, control untouched.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/oat04-s28/result.json",
+      "runs/2026-10-14-local/probes/evidence/oat04-s28/chart.png",
+      "runs/2026-10-14-local/probes/fix-oat04.json"
+    ]
+  }
+}

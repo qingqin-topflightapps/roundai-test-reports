@@ -1,0 +1,213 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16d",
+      "efs-s16-session-end.spec.ts",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16d",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "efs-s16-session-end.spec.ts",
+      "file": "efs-s16-session-end.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "EFS/S16 hospital: session ends mid-dictation in every autosave field; sign-in prompt; every tail back in its own field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 178551,
+                  "error": {
+                    "message": "TimeoutError: locator.inputValue: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Encounter observations' })\u001b[22m\n",
+                    "stack": "TimeoutError: locator.inputValue: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Encounter observations' })\u001b[22m\n\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:102:75",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                      "column": 75,
+                      "line": 102
+                    },
+                    "snippet": "  100 |     await page.waitForTimeout(2500);\n  101 |     const values: Record<string, string> = {};\n> 102 |     values[mode === \"hospital\" ? \"enc\" : \"visit\"] = await enc(page, mode).inputValue();\n      |                                                                           ^\n  103 |     await shot(page, `efs-s16/${mode}-2-encounter`);\n  104 |     await page.getByRole(\"button\", { name: \"Pre-Round\", exact: true }).click();\n  105 |     const notes2 = await openPreRoundEditor(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                        "column": 75,
+                        "line": 102
+                      },
+                      "message": "TimeoutError: locator.inputValue: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Encounter observations' })\u001b[22m\n\n\n  100 |     await page.waitForTimeout(2500);\n  101 |     const values: Record<string, string> = {};\n> 102 |     values[mode === \"hospital\" ? \"enc\" : \"visit\"] = await enc(page, mode).inputValue();\n      |                                                                           ^\n  103 |     await shot(page, `efs-s16/${mode}-2-encounter`);\n  104 |     await page.getByRole(\"button\", { name: \"Pre-Round\", exact: true }).click();\n  105 |     const notes2 = await openPreRoundEditor(page);\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:102:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:12:25.211Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16d/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16d/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16d/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16d/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                    "column": 75,
+                    "line": 102
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 144039,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T08:15:34.081Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "flaky"
+            }
+          ],
+          "id": "fdf3860e0d902597c82d-fea3741fa8e50fffe32c",
+          "file": "efs-s16-session-end.spec.ts",
+          "line": 33,
+          "column": 3
+        },
+        {
+          "title": "EFS/S16 snf: session ends mid-dictation in every autosave field; sign-in prompt; every tail back in its own field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 103917,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:17:58.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fdf3860e0d902597c82d-d43edb40948514c94022",
+          "file": "efs-s16-session-end.spec.ts",
+          "line": 33,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T08:12:22.017Z",
+    "duration": 440626.064,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 1
+  }
+}

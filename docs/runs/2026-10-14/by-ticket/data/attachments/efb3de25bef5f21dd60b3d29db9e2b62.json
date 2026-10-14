@@ -1,0 +1,181 @@
+{
+  "case": "TC-19-S25",
+  "title": "The generated note reflects the tracker: held/stopped from rows, restarted not 'held', Vikram's examples clean, dictated units kept (6 Hospital + 6 Nursing Home)",
+  "needs": [
+    "seed",
+    "generate",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s25-nh-1.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7325yd1s5zb5e3baphtr4men8g909n",
+      "problems": [
+        "backend nh1 note contains \"Maintain held\"",
+        "backend nh1 note contains \"At bedtime as needed held\""
+      ],
+      "known": [],
+      "recorded": [
+        "(Q17 (needsHumanIf): the '(name unverified — confirm)' marker on a drug carried from the tracker goes to a person, not Pass/Fail) fail: none of \"unverified\" | \"confirm)\" present (in from \"AI-Generated Note\" to \"Edit Note\")",
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nh1 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nh-2.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70v43keabba7cjnbhrmvxjxs8g9pt5",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nh2 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nh-3.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7089b9kpfj99f9pafsvz29td8g9ft5",
+      "problems": [
+        "backend nh3 note does not contain \"metoprolol\""
+      ],
+      "known": [],
+      "recorded": [
+        "(Q17 (needsHumanIf): the '(name unverified — confirm)' marker on a drug carried from the tracker goes to a person, not Pass/Fail) fail: none of \"unverified\" | \"confirm)\" present (in from \"AI-Generated Note\" to \"Edit Note\")",
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nh3 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nh-4.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7729xn60y5v8fgrdaem2yd0h8g9fff",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nh4 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nh-5.md",
+      "verdict": "Pass",
+      "url": "/rounding/js787q7x4qd2epqkyjnxsbtmwh8g8tqv",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nh5 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nh-6.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72jhm2wcbqhpctsm66sb99kx8g9jfk",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nh6 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nn-1.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7ejjqz1686vbmcnwqc7cx32x8g9ec2",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q17 (needsHumanIf): the '(name unverified — confirm)' marker on a drug carried from the tracker goes to a person, not Pass/Fail) fail: none of \"unverified\" | \"confirm)\" present (in from \"AI-Generated Note\" to \"Edit Note\")",
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nn1 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nn-2.md",
+      "verdict": "Pass",
+      "url": "/snf/jx770ha0ymycmn2c6vdvezn4758g9vc8",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nn2 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nn-3.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7d5a23hbxzwamajwg7mdyfb98g9frk",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nn3 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nn-4.md",
+      "verdict": "Pass",
+      "url": "/snf/jx71vny6dxhddh9p41s3m94tgh8g996p",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nn4 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nn-5.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7en5zbhxsg76hqrdk7madwvn8g9rcj",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q17 (needsHumanIf): the '(name unverified — confirm)' marker on a drug carried from the tracker goes to a person, not Pass/Fail) fail: none of \"unverified\" | \"confirm)\" present (in from \"AI-Generated Note\" to \"Edit Note\")",
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nn5 [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s25-nn-6.md",
+      "verdict": "Pass",
+      "url": "/snf/jx75wwy9pj6141gyrt1x2earkx8g956p",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.1 / grading build.json: the model that answered this Generate (fellBackFrom set = the fallback answered)) pass: backend diag-nn6 [fn=notes.generateNote].model exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Each fixture is a Pass/Fail of its requirement (U2, T3, T4, T5, U19, U17), every failure quoted from backend/<key>.json's note beside the fixture's rows; NH-6 and NN-6 are judged under U17/U19, outside S10's 9/10.",
+    "Dates and reasons the note gives for held / stopped drugs are recorded, not judged (Q15): read them from each checkpoint's note.",
+    "Q17: a '(name unverified — confirm)' marker found by the recorded check is 'needs a human', not Pass/Fail.",
+    "Grading skill, step 1: write runs/<id>/grading/build.json once; fallbackCalls from the diag-<key>.json reads (one generateNote row each), the model per Generate from the same rows."
+  ],
+  "agent": {
+    "turns": 134,
+    "costUsd": 1.3488908000000002,
+    "durationMs": 1074917,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": true,
+  "unit": "U68",
+  "covers": [
+    "TC-19/S25"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u68",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U68.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

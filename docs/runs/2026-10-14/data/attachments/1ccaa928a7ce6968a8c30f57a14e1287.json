@@ -1,0 +1,266 @@
+{
+  "TC-02/S13a": {
+    "status": "passed-partial",
+    "detail": "12/12 judged cells pass, 2 recorded. Partial: the census photo read is answered at the Convex socket with the h-/n-day2-overlap rows (reading accuracy is S11/S12's job, on dev). Recorded: QA Alder's room / diagnosis after the day-2 photo (Q7) = {\"room\":\"401\",\"diagnosis\":\"Heart failure\"} | QA Juniper's unit after the photo (Cedar 19) and the control leaving Today's Visits (Q6/Q7) = {\"juniperUnit\":\"Cedar 10\",\"yarrowInToday\":false}.",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/cells-hospital.json",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/cells-nursing-home.json",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/after-confirm-1000ms.png",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/after-confirm-2500ms.png",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/after-confirm-300ms.png",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/hospital.json",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/nursing-home.json",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/overlap-prompt-1.png",
+      "runs/2026-10-14-local/manual/evidence/TC-02-S13a/scan-sheet.png"
+    ],
+    "partial": "the census photo read is answered at the Convex socket with the h-/n-day2-overlap rows (reading accuracy is S11/S12's job, on dev)",
+    "counts": {
+      "judged": 12,
+      "pass": 12,
+      "fail": 0,
+      "recorded": 2,
+      "notRun": 0,
+      "notDiscriminating": 0
+    },
+    "cells": [
+      {
+        "part": "hospital",
+        "cell": "the overlap prompt appears and names QA Alder as already on the list",
+        "req": "U4",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "a prompt that names QA Alder and says already on your list",
+        "actual": {
+          "named": [
+            "Possible duplicate\n\nA patient with this name is already on your list. You decide — the app won't drop anyone on its own.\n\nQA Alder · 71y\nSame name and MRN\nAlready on your list: QA Alder · Room 401\nSame patient (don't add)\nDifferent — add anyway\n\nWednesday, October 14, 2026\n\nMorning Rounds\n0/6\nHandof"
+          ],
+          "prompts": [
+            "Possible duplicate\n\nA patient with this name is already on your list. You decide — the app won't drop anyone on its own.\n\nQA Alder · 71y\nSame name and MRN\nAlready on your list: QA Alder · Room 401\nSame patient (don't add)\nDifferent — add anyway\n\nWednesday, October 14, 2026\n\nMorning Rounds\n0/6\nHandof"
+          ],
+          "afterConfirm": [
+            "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nScan Patient List\nPhoto your census sheet — AI read",
+            "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nPossible duplicate\n\nA patient with this name is alr",
+            "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nPossible duplicate\n\nA patient with this name is alr"
+          ]
+        },
+        "note": "Not judged here: the UAT wording 'N patients are already on your list' with an 'add only the new ones' option (U4 is gated, TFA-92580 rejected by QA); the build asks per patient ('Possible duplicate … Same patient (don't add) / Different — add anyway')."
+      },
+      {
+        "part": "hospital",
+        "cell": "QA Alder's chart equals its control's retention-adjusted state (task, medication, vitals, status)",
+        "req": "U5",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "{\"encType\":\"follow-up\",\"tasks\":[\"QA-TASK-AGED\"],\"meds\":[\"Metoprolol tartrate 25 mg PO BID\"],\"vitals\":{\"bp\":\"130/80\"},\"preRoundNotes\":null,\"status\":\"pending\"}",
+        "actual": {
+          "encType": "follow-up",
+          "tasks": [
+            "QA-TASK-AGED"
+          ],
+          "meds": [
+            "Metoprolol tartrate 25 mg PO BID"
+          ],
+          "vitals": {
+            "bp": "130/80"
+          },
+          "preRoundNotes": null,
+          "status": "pending"
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "open task, medication row and vitals from yesterday still there (36 h windows)",
+        "req": "U5",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "present",
+        "actual": {
+          "encType": "follow-up",
+          "tasks": [
+            "QA-TASK-AGED"
+          ],
+          "meds": [
+            "Metoprolol tartrate 25 mg PO BID"
+          ],
+          "vitals": {
+            "bp": "130/80"
+          },
+          "preRoundNotes": null,
+          "status": "pending"
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "New Admission set yesterday has turned to Follow-up (day rule)",
+        "req": "U6",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "follow-up on both",
+        "actual": {
+          "alder": "follow-up",
+          "fig": "follow-up"
+        }
+      },
+      {
+        "part": "hospital",
+        "cell": "new patients are Follow-up",
+        "req": "U11",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "4 new rows, Follow-up",
+        "actual": [
+          {
+            "name": "QA Birch",
+            "encType": "follow-up"
+          },
+          {
+            "name": "QA Cedar",
+            "encType": "follow-up"
+          },
+          {
+            "name": "QA Dogwood",
+            "encType": "follow-up"
+          },
+          {
+            "name": "QA Elm",
+            "encType": "follow-up"
+          }
+        ]
+      },
+      {
+        "part": "hospital",
+        "cell": "QA Alder added only once",
+        "req": "U4",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "1",
+        "actual": 1
+      },
+      {
+        "part": "hospital",
+        "cell": "QA Alder's room / diagnosis after the day-2 photo (Q7)",
+        "req": "U4",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "record",
+        "expected": "recorded until Q7",
+        "actual": {
+          "room": "401",
+          "diagnosis": "Heart failure"
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "the scan sheet marks QA Juniper's own row as already in the panel",
+        "req": "U4",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "QA Juniper row '✓ In panel' and '1 already in All Residents'",
+        "actual": {
+          "juniperRow": "✓ In panel",
+          "summary": "1 already in All Residents · 4 new · 0 to review"
+        },
+        "note": "Not judged here: the UAT wording 'N patients are already on your list' with an 'add only the new ones' option (U4 is gated, TFA-92580 rejected by QA)."
+      },
+      {
+        "part": "nursing-home",
+        "cell": "QA Juniper's chart equals its control's retention-adjusted state (chronic medication, open task, status)",
+        "req": "U5",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "{\"encType\":\"follow-up\",\"tasks\":[\"QA-TASK-AGED\"],\"meds\":[\"Metoprolol tartrate 25 mg PO BID\"],\"vitals\":null,\"preRoundNotes\":null,\"status\":\"pre-rounded\"}",
+        "actual": {
+          "encType": "follow-up",
+          "tasks": [
+            "QA-TASK-AGED"
+          ],
+          "meds": [
+            "Metoprolol tartrate 25 mg PO BID"
+          ],
+          "vitals": null,
+          "preRoundNotes": null,
+          "status": "pre-rounded"
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "chronic medication and open task persist on the overlapped resident",
+        "req": "U5",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "present",
+        "actual": {
+          "encType": "follow-up",
+          "tasks": [
+            "QA-TASK-AGED"
+          ],
+          "meds": [
+            "Metoprolol tartrate 25 mg PO BID"
+          ],
+          "vitals": null,
+          "preRoundNotes": null,
+          "status": "pre-rounded"
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "New Admission set yesterday has turned to Follow-up",
+        "req": "U6",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "follow-up on both",
+        "actual": {
+          "juniper": "follow-up",
+          "yarrow": "follow-up"
+        }
+      },
+      {
+        "part": "nursing-home",
+        "cell": "new residents are Follow-up",
+        "req": "U11",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "4 new rows, Follow-up",
+        "actual": [
+          {
+            "name": "QA Kale",
+            "encType": "follow-up"
+          },
+          {
+            "name": "QA Larch",
+            "encType": "follow-up"
+          },
+          {
+            "name": "QA Maple",
+            "encType": "follow-up"
+          },
+          {
+            "name": "QA Nettle",
+            "encType": "follow-up"
+          }
+        ]
+      },
+      {
+        "part": "nursing-home",
+        "cell": "QA Juniper added only once",
+        "req": "U4",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "pass",
+        "expected": "1",
+        "actual": 1
+      },
+      {
+        "part": "nursing-home",
+        "cell": "QA Juniper's unit after the photo (Cedar 19) and the control leaving Today's Visits (Q6/Q7)",
+        "req": "U4",
+        "gate": "blocked: TFA-92580 rejected by qa",
+        "verdict": "record",
+        "expected": "recorded",
+        "actual": {
+          "juniperUnit": "Cedar 10",
+          "yarrowInToday": false
+        }
+      }
+    ],
+    "runNote": "1 of 3 Hospital runs (14:5x): right after 'Add 5 Patients…' the page showed 'Loading…' and nothing was added (no prompt, no console error), while the local backend was overloaded ('Function execution timed out (maximum duration: 1s)', disk full); the reruns were clean. Not counted."
+  }
+}

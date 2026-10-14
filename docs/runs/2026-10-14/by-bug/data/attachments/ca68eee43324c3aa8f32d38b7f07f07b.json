@@ -1,0 +1,11 @@
+{
+  "OAT-04/S06": {
+    "status": "passed",
+    "detail": "One confirmation ('Remove … from the rounding list? This will delete all notes, vitals, and encounter data…'); at the first admin read (83 ms after the list updated) the chart document is null and its roundingPatientList row is gone; every audit row written before the delete is kept plus exactly one op=delete; the same-name re-add has a new id and shows neither 'QA marker 7741' nor '131/77'; no row in roundingPatients/List, snfResidents/List, audit_logs, patientActivityEvents, aiCallLog, unassignedRoundingItems, handoffs holds the marker.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/oat04-s06/result.json",
+      "runs/2026-10-14-local/probes/evidence/oat04-s06/before-delete.png",
+      "runs/2026-10-14-local/probes/evidence/oat04-s06/readded-chart.png"
+    ]
+  }
+}

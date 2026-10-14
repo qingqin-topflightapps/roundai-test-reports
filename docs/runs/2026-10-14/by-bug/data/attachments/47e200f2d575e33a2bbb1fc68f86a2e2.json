@@ -1,0 +1,459 @@
+{
+  "ref": "TC-13/S29",
+  "method": "CODEREVIEW",
+  "status": "known-gap",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "For each UAT 3.6 window, find where its value comes from: Hospital pre-round, Important Points, encounter, note, previous note, vitals/labs/imaging, medication rows, open tasks, completed tasks; Nursing Home pre-round, encounter, note, last two visits. List each window with file:line and its value in answer.",
+  "rule": {
+    "pass": "every window is read from configuration (a deployment setting or a settings row) and can be lengthened without a code change",
+    "fail": "any window is only a code constant",
+    "basis": [
+      "Every window is read from a configuration value (deployment setting or a settings row), so it can be lengthened without a code change",
+      "A window defined only as a code constant is a Fail of T7"
+    ]
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [
+    {
+      "run": 1,
+      "label": "known:windows-consts",
+      "claim": "The Hospital windows are a code constant object, not a configuration value.",
+      "at": "apps/web/convex/lib/lifecycle.ts:8",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 1,
+      "label": "known:windows-consts",
+      "claim": "Hospital pre-round 12 h, Important Points 18 h, encounter 18 h, note 18 h, completed tasks 16 h are literals.",
+      "at": "apps/web/convex/lib/lifecycle.ts:9",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 1,
+      "label": "known:windows-consts",
+      "claim": "Hospital medication 36 h, previous note 36 h, encounter archive 48 h are literals.",
+      "at": "apps/web/convex/lib/lifecycle.ts:21",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 1,
+      "label": "known:windows-consts",
+      "claim": "Hospital vitals/labs/imaging window 36 h is a literal.",
+      "at": "apps/web/convex/lib/lifecycle.ts:27",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 1,
+      "label": "known:windows-consts",
+      "claim": "The Nursing Home windows are a code constant object: pre-round 12 h, encounter 12 h, note 18 h, done task 16 h, 3 transcripts, 3 notes, 3 medication visits.",
+      "at": "apps/web/convex/lib/lifecycle.ts:30",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 1,
+      "label": "known:windows-consts",
+      "claim": "The constants are used directly when deciding expiry (for example Hospital pre-round); no setting is read.",
+      "at": "apps/web/convex/lib/lifecycle.ts:122",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 1,
+      "label": "known:windows-consts",
+      "claim": "Nursing Home transcript visit count is used directly from the constant.",
+      "at": "apps/web/convex/lib/lifecycle.ts:336",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 2,
+      "label": "known:windows-consts",
+      "claim": "The medication, previous-note and objective-data (vitals/labs/imaging) windows are literal 36h constants.",
+      "at": "apps/web/convex/lib/lifecycle.ts:21",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 2,
+      "label": "known:windows-consts",
+      "claim": "The vitals/labs/imaging window is the constant objectiveData of 36h.",
+      "at": "apps/web/convex/lib/lifecycle.ts:27",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 2,
+      "label": "known:windows-consts",
+      "claim": "The Hospital pre-round clear reads the const directly, not a setting.",
+      "at": "apps/web/convex/lib/lifecycle.ts:122",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 2,
+      "label": "known:windows-consts",
+      "claim": "The Nursing Home visit history is trimmed by the const transcriptVisits (3), not by a configured value.",
+      "at": "apps/web/convex/lib/lifecycle.ts:336",
+      "gap": "windows-consts"
+    },
+    {
+      "run": 2,
+      "label": "known:windows-consts",
+      "claim": "The patch function takes only the record and now; no settings or configuration value is passed in.",
+      "at": "apps/web/convex/lib/lifecycle.ts:108",
+      "gap": "windows-consts"
+    }
+  ],
+  "pendingOn": [],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "This fails. Every 3.6 retention window the code applies is hard-coded in two `as const` objects in apps/web/convex/lib/lifecycle.ts: HOSPITAL_RETENTION (lines 8–28) and SNF_RETENTION (lines 30–38). No window reads an environment variable, a deployment setting or a settings row. A grep of convex/ for retention, window or TTL environment reads found none. The lifecycle functions use the constants directly. So changing any window, for example for a hospital affiliation, needs a code change and a redeploy. This is the recorded gap known:windows-consts.\n\nHospital windows:\n- Pre-round: 12 h (L9, used L122)\n- Important Points: 18 h (L10, used L138)\n- Encounter: 18 h (L11, used L152); the archived encounter is kept 48 h (L23, used L171)\n- Note: 18 h (L12, used L182)\n- Previous note: 36 h (L22, used L195)\n- Vitals/labs/imaging: 36 h (objectiveData, L27, used L233/239/245)\n- Medication rows: 36 h (L21, used L276)\n- Completed tasks: 16 h (doneTask, L13, used L223)\n- Open tasks: no window exists in lifecycle.ts at all. The task filter only removes done tasks (L221–223), and the 36 h patient window mentioned in the comments is not enforced anywhere I found.\n\nNursing Home windows:\n- Pre-round: 12 h (L31, used L304)\n- Encounter: 12 h (L32, used L318)\n- Note: 18 h (L33, used L348)\n- Last visits: kept as counts, not hours. Archived transcripts keep 3 (transcriptVisits, L35, used L336–337), previous notes keep 3 (L36, used L360), medication rows keep 3 visits (L37, used L394–395). The scenario says \"last two visits\"; the code keeps 3.\n- Completed tasks: 16 h (L34, used L381)\n\nThe open-task and visit-count points are about window values. Other scenarios own those; they don't change this verdict."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "Every 3.6 retention window that exists is a hard-coded literal in two module-level `as const` objects in apps/web/convex/lib/lifecycle.ts. They are HOSPITAL_RETENTION (lines 8-28) and SNF_RETENTION (lines 30-38). The patch functions use them directly, and no deployment setting (environment variable) or settings row feeds them. A search of convex/ found no other source for retention values.\n\nHospital windows:\n- Pre-round: 12h (line 9, used at line 122)\n- Important Points: 18h (line 10, used at line 138)\n- Encounter: 18h (line 11, used at line 152); the archived encounter is kept 48h (line 23)\n- Note: 18h (line 12, used at line 182)\n- Previous note: 36h (line 22, used at line 195)\n- Vitals, labs and imaging: 36h, as objectiveData (line 27, used at lines 233, 239 and 245)\n- Medication rows: 36h (line 21, used at line 276)\n- Completed tasks: 16h, as doneTask (line 13, used at line 223)\n- Open tasks: no window anywhere. The lifecycle drops only done tasks (line 223), so open tasks are kept with nothing to configure.\n\nNursing Home windows:\n- Pre-round: 12h (line 31, used at line 304)\n- Encounter: 12h (line 32, used at line 318)\n- Note: 18h (line 33, used at line 348)\n- Visit history: the code keeps the last 3 visits, not 2. That is transcriptVisits 3 (line 35), previousNotes 3 (line 36) and medicationVisits 3 (line 37), used at lines 336-337, 360 and 394-395.\n- Completed tasks: 16h (line 34).\n\nChanging any of these needs a code change, so T7 fails. This is the recorded gap known:windows-consts. The verdict waits on no open question."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The Hospital windows are a code constant object, not a configuration value.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 8,
+          "quote": "const HOSPITAL_RETENTION = {",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Hospital pre-round 12 h, Important Points 18 h, encounter 18 h, note 18 h, completed tasks 16 h are literals.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 9,
+          "quote": "preRound: 12 * HOUR,\n  importantPoints: 18 * HOUR,\n  encounter: 18 * HOUR,\n  note: 18 * HOUR,\n  doneTask: 16 * HOUR,",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Hospital medication 36 h, previous note 36 h, encounter archive 48 h are literals.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 21,
+          "quote": "medication: 36 * HOUR,\n  previousNote: 36 * HOUR,\n  encounterArchive: 48 * HOUR,",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Hospital vitals/labs/imaging window 36 h is a literal.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 27,
+          "quote": "objectiveData: 36 * HOUR,",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Nursing Home windows are a code constant object: pre-round 12 h, encounter 12 h, note 18 h, done task 16 h, 3 transcripts, 3 notes, 3 medication visits.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 30,
+          "quote": "const SNF_RETENTION = {\n  preRound: 12 * HOUR,\n  encounter: 12 * HOUR,\n  note: 18 * HOUR,",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The constants are used directly when deciding expiry (for example Hospital pre-round); no setting is read.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 122,
+          "quote": "expired(processedAt, HOSPITAL_RETENTION.preRound, now)",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Nursing Home transcript visit count is used directly from the constant.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 336,
+          "quote": "if (archived.length > SNF_RETENTION.transcriptVisits) {",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Hospital tasks: only completed tasks age out; lifecycle has no window for open tasks.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 223,
+          "quote": "!(task.done && expired(task.doneAt, HOSPITAL_RETENTION.doneTask, now)),",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Nursing Home 'last visits' windows keep 3 entries, not the 2 the scenario lists (this concerns the value, not configurability).",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 35,
+          "quote": "transcriptVisits: 3,\n  previousNotes: 3,\n  medicationVisits: 3,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The medication, previous-note and objective-data (vitals/labs/imaging) windows are literal 36h constants.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 21,
+          "quote": "medication: 36 * HOUR,\n  previousNote: 36 * HOUR,\n  encounterArchive: 48 * HOUR,",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The vitals/labs/imaging window is the constant objectiveData of 36h.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 27,
+          "quote": "objectiveData: 36 * HOUR,\n} as const;",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Hospital pre-round clear reads the const directly, not a setting.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 122,
+          "quote": "expired(processedAt, HOSPITAL_RETENTION.preRound, now)",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Nursing Home visit history is trimmed by the const transcriptVisits (3), not by a configured value.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 336,
+          "quote": "if (archived.length > SNF_RETENTION.transcriptVisits) {",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Only completed tasks are removed. Open tasks have no retention window at all, so there is no value to configure.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 221,
+          "quote": "!(task.done && expired(task.doneAt, HOSPITAL_RETENTION.doneTask, now)),",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The patch function takes only the record and now; no settings or configuration value is passed in.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 108,
+          "quote": "export function hospitalLifecyclePatch(\n  patient: Readonly<Partial<Doc<\"roundingPatients\">>>,\n  now: number,",
+          "supports": "fail",
+          "label": "known:windows-consts",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": [
+        {
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 8,
+          "why": "quote not found within ±4 lines of 8"
+        },
+        {
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 30,
+          "why": "quote not found within ±4 lines of 30"
+        }
+      ]
+    }
+  ],
+  "physicianImpact": "A hospital that needs longer retention (for example pre-round text kept 24 h instead of 12 h) cannot get it from an admin setting. An engineer has to change the code and redeploy, and until then pre-round text and other content is cleared on the fixed hard-coded schedule. / A hospital that needs longer retention, for example keeping pre-round text past 12h under a hospital affiliation, cannot get it without a code change and a new deployment. Every physician gets the same fixed clear times.",
+  "openQuestions": [
+    "Open tasks have no retention window in lifecycle.ts, and the 36 h patient window mentioned in the comments was not found anywhere. Confirm whether some other mechanism is meant to apply a window to open tasks.",
+    "The scenario lists Nursing Home 'last two visits', but the code keeps 3 transcripts, 3 previous notes and 3 medication visits. Confirm the intended count (this belongs to a different scenario than configurability).",
+    "The 3.6 list names 'last two visits' for the Nursing Home, but the code keeps 3 archived visits, 3 previous notes and 3 visits of medication history (SNF_RETENTION lines 35-37). This may differ from 3.6; it is outside T7 but worth confirming.",
+    "The 3.6 list names a Hospital open-task window, but the lifecycle code has no open-task expiry: only done tasks are removed. Confirm whether open tasks are meant to leave with a patient-level window."
+  ],
+  "notDecidableByCode": [
+    "The optional api-lane check (set pre-round to 24 h through a configuration path and confirm the text survives the 13 h point) cannot run, because no configuration path exists.",
+    "The optional api-lane check (set the pre-round window to 24h through a configuration path and confirm the pre-round text survives the 13h point) cannot run until a configuration path exists."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "4936b06b9a55"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 39900,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2125148,
+      "turns": 9,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 103751,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2272182,
+      "turns": 9,
+      "permissionDenials": 0,
+      "badCitations": 2,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:04:33.581Z"
+}

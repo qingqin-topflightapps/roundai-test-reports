@@ -1,0 +1,115 @@
+{
+  "case": "TC-04-S01",
+  "title": "Full UAT walk: three boxes, two assigned, one left as a log, close/reopen, re-assign, Nursing Home",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-order",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s01-typed.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-assigned.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-reopened.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-reassigned.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q7: after a re-assign the pad no longer names the first chart) pass: \"416 · QA TC-04-S01 QA Hosp Ortiz QQOX\" absent (in subtree \"- dialog [\")"
+      ]
+    },
+    {
+      "file": "s01-patel-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7frswx6zhg9j7fnenc0zrxy58g7byg",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-ortiz-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74c87rrfgna2fs30add9bjr58g6tzr",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-lund-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7agsz28871xcdz3p8dght52d8g6ay9",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-nh-list.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition) pass: backend patel-before encounterNotes = \"Overnight cross-cover: no events.\"",
+        "(Q4: outer-space trimming and the blank-line separator) pass: backend patel-after encounterNotes = \"Overnight cross-cover: no events.\\n\\nBed 415, telemetry overnight showed artifact only, no events.\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "real dictation into the boxes and the speech-to-text engine used (S25)"
+  ],
+  "agent": {
+    "turns": 65,
+    "costUsd": 0.602925,
+    "durationMs": 153217,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

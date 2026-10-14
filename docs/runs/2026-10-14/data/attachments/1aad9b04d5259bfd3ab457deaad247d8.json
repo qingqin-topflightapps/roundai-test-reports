@@ -1,0 +1,166 @@
+{
+  "case": "U55",
+  "title": "Ask AI on empty charts (the 10-item pool)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s03-ha-labs.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74r0ymranvgh2y529ckaj4ks8g8cph",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S03"
+    },
+    {
+      "file": "s03-hb-vitals.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7c9jv7g3vhgdkh7446f4temn8g94y8",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S03"
+    },
+    {
+      "file": "s03-hc-meds.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7e2zrqrh28fy1p7f6sajmapn8g94tm",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S03"
+    },
+    {
+      "file": "s03-hd-preround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7c25a0r69yyse6an9zc855xd8g82xf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S03"
+    },
+    {
+      "file": "s03-he-tasks.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dv571v6b7vv308hv99gk9kx8g9ptb",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S03"
+    },
+    {
+      "file": "s04-na-labs.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7ck37kfmf9hkkbywc3x4rz258g9zqt",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S04"
+    },
+    {
+      "file": "s04-nb-weight-bp.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7a6yzh4djwps24x15ptsq9k18g9jyj",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S04"
+    },
+    {
+      "file": "s04-nc-meds.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7fj0ps8se06rjsxbafsyacbx8g9k10",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S04"
+    },
+    {
+      "file": "s04-nd-last-visit.md",
+      "verdict": "Pass",
+      "url": "/snf/jx77s8pr40pfyzepcq1e0c70p18g95e3",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S04"
+    },
+    {
+      "file": "s04-ne-tasks.md",
+      "verdict": "Pass",
+      "url": "/snf/jx761kr5jj75vne8dxxntzar958g9vrd",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S04"
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app): the chart exists) pass: backend hA name = \"QA U55 QA Hosp Empty Reyes ERN6\"",
+        "(seed precondition (harness, not app): no labs on the chart the question is about) pass: backend hA labs is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend hB name = \"QA U55 QA Hosp Empty Dubois ERN6\"",
+        "(seed precondition (harness, not app): no vitals on the chart the question is about) pass: backend hB vitals is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend hC name = \"QA U55 QA Hosp Empty Kowalski ERN6\"",
+        "(seed precondition (harness, not app): no medications on the chart the question is about) pass: backend hC medications is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend hD name = \"QA U55 QA Hosp Empty Mensah ERN6\"",
+        "(seed precondition (harness, not app): no preRoundNotes on the chart the question is about) pass: backend hD preRoundNotes is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend hE name = \"QA U55 QA Hosp Empty Tanaka ERN6\"",
+        "(seed precondition (harness, not app): no tasks on the chart the question is about) pass: backend hE tasks is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend nA name = \"QA U55 QA Resident Empty Larsen ERN6\"",
+        "(seed precondition (harness, not app): no labs on the chart the question is about) pass: backend nA labs is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend nB name = \"QA U55 QA Resident Empty Okoro ERN6\"",
+        "(seed precondition (harness, not app): no vitals on the chart the question is about) pass: backend nB vitals is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend nC name = \"QA U55 QA Resident Empty Haddad ERN6\"",
+        "(seed precondition (harness, not app): no medications on the chart the question is about) pass: backend nC medications is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend nD name = \"QA U55 QA Resident Empty Silva ERN6\"",
+        "(seed precondition (harness, not app): no previousNotes on the chart the question is about) pass: backend nD previousNotes is missing",
+        "(seed precondition (harness, not app): the chart exists) pass: backend nE name = \"QA U55 QA Resident Empty Brennan ERN6\"",
+        "(seed precondition (harness, not app): no tasks on the chart the question is about) pass: backend nE tasks is missing"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "[EFS/S03] 3.2 pool (Q11): each checkpoint is one of the 10 items with the other case (S03 Hospital, S04 Nursing Home); count the Pass checkpoints of both (pass at \u22659/10) and quote every failing answer from its checkpoint file.",
+    "[EFS/S04] 3.2 pool (Q11): each checkpoint is one of the 10 items with the other case (S03 Hospital, S04 Nursing Home); count the Pass checkpoints of both (pass at \u22659/10) and quote every failing answer from its checkpoint file."
+  ],
+  "agent": {
+    "turns": 112,
+    "costUsd": 1.0577802,
+    "durationMs": 821520,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "rejudge": {
+    "why": "EFS 'says there is no data' regex widened (missing / cannot provide / 'no \u2026 recorded'); two correct NH answers had failed on wording; invented-value checks unchanged; saved evidence re-judged with QA_TARGET=dev.",
+    "original": "Fail"
+  },
+  "unit": "U55",
+  "covers": [
+    "EFS/S03",
+    "EFS/S04"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u55"
+}

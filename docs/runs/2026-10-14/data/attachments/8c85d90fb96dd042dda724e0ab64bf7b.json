@@ -1,0 +1,32 @@
+{
+  "account": "e2e-fresh-909ee284-806@roundai.test",
+  "patient": "kx7fq08sjag55kfqbezksj0h2d8g8rcy",
+  "inject": false,
+  "url": "http://localhost:6473/rounding/kx7fq08sjag55kfqbezksj0h2d8g8rcy",
+  "logChartAccessCallsSeenByProxy": 0,
+  "shown": {
+    "name": true,
+    "preRoundMarker": true,
+    "alert": ""
+  },
+  "bodyText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Logfail fb7b5\n\nRoom 4B-EY · 72y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nPRE-ROUND NOTES\n📝\nQA pre-round marker LOGFAIL-7731: sats 94% on 2 L.\nEdit\nPREVIOUS NOTES\n0/3\nPaste\nPhotograph\n\nExplicitly paste or photograph a prior note, then review and save it. AI extracts its background, labs, imaging, and key issues and uses only explicitly imported notes as today's template.\n\nNo previous notes added yet.\n\nVITALS\nEdit\nNo vitals recorded yet.\nLABS\nEdit\nNo labs recorded yet.\nDIAGNOSTIC TESTING\n0\nEdit\n\nNo testing results yet.\n\nMEDICATIONS\n0\nEdit\n\nNo medications recorded yet.\n\nBegin Encounter",
+  "consoleLines": [],
+  "reads": [
+    {
+      "_creationTime": 1791962453625.606,
+      "_id": "jd7cemymk19eecrmzadvyj28vh8g9z71",
+      "action": "PHI_READ",
+      "actor_id": "jd79kx1zndbk5hfxqdn7bxxnfn8g9ewj",
+      "metadata": {
+        "context": "rounding.patient"
+      },
+      "patient_id": "kx7fq08sjag55kfqbezksj0h2d8g8rcy",
+      "resource_id": "kx7fq08sjag55kfqbezksj0h2d8g8rcy",
+      "resource_type": "roundingPatients"
+    }
+  ],
+  "verdict": {
+    "status": "passed",
+    "detail": "control: the chart opened through the same socket proxy with nothing failed; exactly one PHI_READ row names the patient (the proxy passes logChartAccess through)"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "scenario": {
+    "raw": "TC-19 S25 NN-5",
+    "tc": "TC-19",
+    "id": "S25",
+    "fixture": "NN-5"
+  },
+  "outputType": "note",
+  "mode": "Nursing Home",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Continue current rehabilitation course and monitor clinical progress.\n\n1. Continue post-acute rehabilitation protocol for hip fracture recovery.",
+          "source_quote": "no source",
+          "why": "No plan was dictated. The only dictation is 'No urinary symptoms.' The chart gives a diagnosis but no plan, so the instructions to continue the rehab protocol and monitor progress are invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Continue current rehabilitation course and monitor clinical progress.\n\n1. Continue post-acute rehabilitation protocol for hip fracture recovery.",
+          "source_quote": "no source",
+          "why": "Nothing in the sources supports this plan or instruction. The dictation says only 'No urinary symptoms.' No plan to continue rehab or monitor progress was dictated, so it is invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    }
+  ],
+  "needsPerson": [],
+  "kitOnlyFails": []
+}

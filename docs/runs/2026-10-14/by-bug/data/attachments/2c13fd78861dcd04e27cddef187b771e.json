@@ -1,0 +1,258 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b",
+      "efs-s16-session-end.spec.ts",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "efs-s16-session-end.spec.ts",
+      "file": "efs-s16-session-end.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "EFS/S16 hospital: session ends mid-dictation in every autosave field; sign-in prompt; every tail back in its own field",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 85278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T07:59:58.754Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fdf3860e0d902597c82d-fea3741fa8e50fffe32c",
+          "file": "efs-s16-session-end.spec.ts",
+          "line": 31,
+          "column": 3
+        },
+        {
+          "title": "EFS/S16 snf: session ends mid-dictation in every autosave field; sign-in prompt; every tail back in its own field",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 106078,
+                  "error": {
+                    "message": "TimeoutError: locator.inputValue: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/pre-round observations/i)\u001b[22m\n",
+                    "stack": "TimeoutError: locator.inputValue: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/pre-round observations/i)\u001b[22m\n\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:98:66",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                      "column": 66,
+                      "line": 98
+                    },
+                    "snippet": "   96 |     const notes2 = await openPreRoundEditor(page);\n   97 |     await page.waitForTimeout(2500);\n>  98 |     values[mode === \"hospital\" ? \"pre\" : \"nhpre\"] = await notes2.inputValue();\n      |                                                                  ^\n   99 |     if (mode === \"hospital\") values.ip = await page.getByPlaceholder(\"Type the important point…\").inputValue().catch(() => \"\");\n  100 |     await shot(page, `efs-s16/${mode}-3-preround-editor`);\n  101 |     const rec: Obj = { mode, prompted, h1HasCodeCopy: /code sent to your email/i.test(h1), typedTails: typed, signedOutBeforeTail: signedOutEarly, values };"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                        "column": 66,
+                        "line": 98
+                      },
+                      "message": "TimeoutError: locator.inputValue: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder(/pre-round observations/i)\u001b[22m\n\n\n   96 |     const notes2 = await openPreRoundEditor(page);\n   97 |     await page.waitForTimeout(2500);\n>  98 |     values[mode === \"hospital\" ? \"pre\" : \"nhpre\"] = await notes2.inputValue();\n      |                                                                  ^\n   99 |     if (mode === \"hospital\") values.ip = await page.getByPlaceholder(\"Type the important point…\").inputValue().catch(() => \"\");\n  100 |     await shot(page, `efs-s16/${mode}-3-preround-editor`);\n  101 |     const rec: Obj = { mode, prompted, h1HasCodeCopy: /code sent to your email/i.test(h1), typedTails: typed, signedOutBeforeTail: signedOutEarly, values };\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:98:66"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:01:24.135Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                    "column": 66,
+                    "line": 98
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 75921,
+                  "error": {
+                    "message": "Error: visit: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: visit: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:116:109",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                      "column": 109,
+                      "line": 116
+                    },
+                    "snippet": "  114 |       perField[f] = { hasFirst: v.includes(one), hasOwnTail: v.includes(tail.trim()), holdsOtherTail: others.some((o) => v.includes(o)) };\n  115 |     }\n> 116 |     rec.perField = perField;\n      |                             ^\n  117 |     evidence(`efs-s16/${mode}.json`, rec);\n  118 |     expect.soft(prompted && rec.h1HasCodeCopy, \"a sign-in prompt shows at the next check-in\").toBe(true);\n  119 |     // A field whose tail could not be typed (the app already showed the sign-in screen) is judged on its"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                        "column": 109,
+                        "line": 116
+                      },
+                      "message": "Error: visit: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  114 |       perField[f] = { hasFirst: v.includes(one), hasOwnTail: v.includes(tail.trim()), holdsOtherTail: others.some((o) => v.includes(o)) };\n  115 |     }\n> 116 |     rec.perField = perField;\n      |                             ^\n  117 |     evidence(`efs-s16/${mode}.json`, rec);\n  118 |     expect.soft(prompted && rec.h1HasCodeCopy, \"a sign-in prompt shows at the next check-in\").toBe(true);\n  119 |     // A field whose tail could not be typed (the app already showed the sign-in screen) is judged on its\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:116:109"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T08:03:13.226Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16b/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                    "column": 109,
+                    "line": 116
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fdf3860e0d902597c82d-d43edb40948514c94022",
+          "file": "efs-s16-session-end.spec.ts",
+          "line": 31,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T07:59:58.427Z",
+    "duration": 272787.94299999997,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

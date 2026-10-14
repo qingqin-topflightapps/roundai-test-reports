@@ -1,0 +1,55 @@
+{
+  "case": "OAT-06-S18",
+  "title": "Live Ask AI in Hospital: the call's log row splits vendor time from the total and names the model",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s18-h-meds.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7faw27spw9dvch3knq3fhpw98g7jry",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "U13 / 3.5: in backend/log.json the assist.askChart row has 0 < providerMs <= durationMs (backend checks have no numeric comparison). A durationMs over 30 000 where the AI service was not the cause is recorded for review with Vikram, not failed (3.5: a target, no maxMs).",
+    "U13 / U15: the matching ai_disclosure audit row (resource_id assist.askChart) has provider_ms equal to the logged providerMs and holds no patient name or medication. That is an admin read (backend-read-admin), which dev does not allow: Tim reads it in the dev dashboard, or the lane-B run judges it on the local stack once R7 is built.",
+    "3.9: record the model from backend/log.json."
+  ],
+  "agent": {
+    "turns": 15,
+    "costUsd": 0.09402559999999999,
+    "durationMs": 92806,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U28",
+  "covers": [
+    "OAT-06/S18"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u28",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U28.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

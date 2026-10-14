@@ -1,0 +1,169 @@
+{
+  "ref": "TC-20/S01",
+  "title": "TC-20/S01 Hospital dashboard counts the whole roster and stays live; the list's Dashboard control reaches it",
+  "dataset": "bulk",
+  "target": "dev",
+  "at": "2026-10-14T08:47:37.726Z",
+  "cells": [
+    {
+      "name": "the list's Dashboard control opens the Rounding Dashboard",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Total covers the whole roster across the 50-row page (52)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": {
+          "total": 52,
+          "pending": 52,
+          "inProgress": 0,
+          "complete": 0
+        },
+        "rows": 52,
+        "mine": 52
+      }
+    },
+    {
+      "name": "the tiles match the stored statuses",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": {
+          "total": 52,
+          "pending": 52,
+          "inProgress": 0,
+          "complete": 0
+        },
+        "reading": "Note Ready counted In Progress"
+      }
+    },
+    {
+      "name": "Total = Pending + In Progress + Complete",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "total": 52,
+        "pending": 52,
+        "inProgress": 0,
+        "complete": 0
+      }
+    },
+    {
+      "name": "no Nursing Home resident on this dashboard",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "live: status → pre-rounded",
+      "kind": "record",
+      "ok": null,
+      "detail": "not run on dev: rounding:update / snf:update are not on the dev allowlist (dev-session.ts DEV_MUTATIONS)",
+      "ref": "dev allowlist"
+    },
+    {
+      "name": "live: status → in-encounter",
+      "kind": "record",
+      "ok": null,
+      "detail": "not run on dev: rounding:update / snf:update are not on the dev allowlist (dev-session.ts DEV_MUTATIONS)",
+      "ref": "dev allowlist"
+    },
+    {
+      "name": "live: status → seen",
+      "kind": "record",
+      "ok": null,
+      "detail": "not run on dev: rounding:update / snf:update are not on the dev allowlist (dev-session.ts DEV_MUTATIONS)",
+      "ref": "dev allowlist"
+    },
+    {
+      "name": "live: status → note-ready",
+      "kind": "record",
+      "ok": null,
+      "detail": "not run on dev: rounding:update / snf:update are not on the dev allowlist (dev-session.ts DEV_MUTATIONS)",
+      "ref": "dev allowlist"
+    },
+    {
+      "name": "live: status → post-rounded",
+      "kind": "record",
+      "ok": null,
+      "detail": "not run on dev: rounding:update / snf:update are not on the dev allowlist (dev-session.ts DEV_MUTATIONS)",
+      "ref": "dev allowlist"
+    },
+    {
+      "name": "live: day reset → pending",
+      "kind": "record",
+      "ok": null,
+      "detail": "not run on dev: rounding:update / snf:update are not on the dev allowlist (dev-session.ts DEV_MUTATIONS)",
+      "ref": "dev allowlist"
+    },
+    {
+      "name": "live: a patient added → the tiles follow the stored rows without a reload",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": {
+          "total": 53,
+          "pending": 53,
+          "inProgress": 0,
+          "complete": 0
+        },
+        "targetStatus": "pending",
+        "expected": {
+          "total": 53,
+          "pending": 53,
+          "ifNoteReadyInProgress": {
+            "inProgress": 0,
+            "complete": 0
+          },
+          "ifNoteReadyComplete": {
+            "inProgress": 0,
+            "complete": 0
+          }
+        },
+        "reading": "Note Ready counted In Progress"
+      }
+    },
+    {
+      "name": "live: that patient removed → the tiles follow the stored rows without a reload",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": {
+          "total": 52,
+          "pending": 52,
+          "inProgress": 0,
+          "complete": 0
+        },
+        "targetStatus": "pending",
+        "expected": {
+          "total": 52,
+          "pending": 52,
+          "ifNoteReadyInProgress": {
+            "inProgress": 0,
+            "complete": 0
+          },
+          "ifNoteReadyComplete": {
+            "inProgress": 0,
+            "complete": 0
+          }
+        },
+        "reading": "Note Ready counted In Progress"
+      }
+    },
+    {
+      "name": "a dashboard row opens that patient's chart",
+      "kind": "judged",
+      "ok": true,
+      "detail": "/rounding/js7bv32we4j3c9awxxmnjxtbr18g8q85"
+    }
+  ],
+  "shots": [
+    "evidence/TC-20-S01-after.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-20-S01-after.png": 0
+  }
+}

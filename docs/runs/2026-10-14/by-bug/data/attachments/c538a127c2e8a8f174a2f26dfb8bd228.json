@@ -1,0 +1,36 @@
+{
+  "beforeTap": {
+    "tasks": [],
+    "encounterNotes": "Bed 415. Recheck BMP in the morning. Task: call daughter at 5 pm.",
+    "aiRequests": []
+  },
+  "afterTap": {
+    "message": "✓ Tasks updated — 2 added",
+    "encounterNotes": "Bed 415. Recheck BMP in the morning. Task: call daughter at 5 pm.",
+    "tasks": [
+      {
+        "category": "task",
+        "createdAt": "2026-10-14T08:03:01.234Z",
+        "done": false,
+        "id": "1791964981534",
+        "text": "call daughter at 5 pm",
+        "urgent": false
+      },
+      {
+        "category": "labs",
+        "createdAt": "2026-10-14T08:03:01.234Z",
+        "done": false,
+        "id": "1791964981734",
+        "text": "Recheck BMP in the morning",
+        "urgent": false
+      }
+    ],
+    "extractTasksContent": [
+      "Bed 415. Recheck BMP in the morning."
+    ],
+    "allActions": [
+      "ai/parsing:extractTasks",
+      "ai/parsing:extractMedicationEvents"
+    ]
+  }
+}

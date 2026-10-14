@@ -1,0 +1,62 @@
+{
+  "case": "TC-13-S03",
+  "title": "Photograph a prior note: the read text lands in the box for review with every value as printed",
+  "needs": [
+    "seed",
+    "permission-upload",
+    "synthetic-media",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s03-read.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7bvdpavsggyw9d33bx7rsped8g9c4f",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(T4 model, judged in S21: which model read the photo (on dev also the vision-model probe)) pass: backend diag-at-read [fn=vision.scanPriorNote].model contains \"gemini\"",
+        "(the one photo-read call succeeded; a failed call explains a missing value) pass: backend diag-at-read [fn=vision.scanPriorNote].ok = true"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "media": [
+    {
+      "as": "note-photo",
+      "template": "prior-note-hosp",
+      "sha256": "cc3d519218a937ad742bfcf1164f52f86245078f4f8135792fc57ee89c25c612"
+    }
+  ],
+  "agent": {
+    "turns": 13,
+    "costUsd": 0.10758000000000001,
+    "durationMs": 68580,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U76",
+  "covers": [
+    "TC-13/S03"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u76",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U76.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

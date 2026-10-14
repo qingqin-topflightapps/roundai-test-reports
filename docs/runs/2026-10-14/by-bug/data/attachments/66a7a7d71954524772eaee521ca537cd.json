@@ -1,0 +1,519 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "e2e/unit.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat03-s30",
+      "-g",
+      "RT\\-05\\ without\\ a\\ fallback\\ a\\ temporary\\ failure\\ is\\ retried\\ once,\\ then\\ thrown|RT\\-07\\ a\\ primary\\ that\\ took\\ long\\ to\\ fail\\ is\\ not\\ asked\\ again;\\ the\\ time\\ goes\\ to\\ the\\ fallback|RT\\-08\\ each\\ attempt's\\ deadline\\ comes\\ from\\ the\\ remaining\\ budget|RT\\-08\\ \\(twin\\):\\ the\\ deadline\\ handed\\ to\\ each\\ attempt\\ shrinks\\ as\\ time\\ passes|RT\\-10\\ HTTP\\ failures:\\ 408,\\ 429\\ and\\ 5xx\\ are\\ temporary;\\ 4xx\\ is\\ not|RT\\-10\\ \\(twin\\):\\ a\\ Vertex\\ failure\\ keeps\\ its\\ class,\\ name,\\ status\\ and\\ first\\ line,\\ never\\ the\\ rest|a\\ connection\\ that\\ fails\\ before\\ any\\ audio\\ flowed\\ is\\ tried\\ once\\ more,\\ quietly|a\\ connection\\ that\\ fails\\ twice\\ is\\ reported\\ once,\\ after\\ the\\ second\\ try|a\\ session\\ that\\ fails\\ after\\ audio\\ flowed\\ hands\\ the\\ kept\\ recording\\ over\\ as\\ interrupted|an\\ interrupted\\ recording\\ keeps\\ audio\\ for\\ recovery\\ without\\ saving\\ a\\ partial\\ chart\\ entry|a\\ disconnected\\ session\\ reports\\ failure,\\ keeps\\ completed\\ words,\\ and\\ closes\\ the\\ mic|under\\ the\\ live\\ route\\ a\\ saved\\ recording\\ is\\ transcribed\\ by\\ the\\ same\\ vendor's\\ batch\\ model,\\ and\\ the\\ log\\ says\\ so"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/e2e/unit.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/e2e/unit",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat03-s30",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "round-companion-wt-qa/apps/web/e2e/unit",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.unit\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "live-dictation.unit.ts",
+      "file": "live-dictation.unit.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a disconnected session reports failure, keeps completed words, and closes the mic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 109,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:45.083Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f1271c93e8d8427a87d2-e51b0e19fdd97f42798e",
+          "file": "live-dictation.unit.ts",
+          "line": 254,
+          "column": 1
+        },
+        {
+          "title": "an interrupted recording keeps audio for recovery without saving a partial chart entry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 210,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:45.209Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f1271c93e8d8427a87d2-6d3dc38dd2374a2e7707",
+          "file": "live-dictation.unit.ts",
+          "line": 492,
+          "column": 1
+        },
+        {
+          "title": "a connection that fails before any audio flowed is tried once more, quietly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1863,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "[dictation:cloud] live-start-failed — reconnecting (2)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:45.427Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f1271c93e8d8427a87d2-83cccfb0cde7b99a9ab4",
+          "file": "live-dictation.unit.ts",
+          "line": 713,
+          "column": 1
+        },
+        {
+          "title": "a connection that fails twice is reported once, after the second try",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1860,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [
+                    {
+                      "text": "[dictation:cloud] live-start-failed — reconnecting (2)\n"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:47.299Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f1271c93e8d8427a87d2-59db87288bff97b5cc7d",
+          "file": "live-dictation.unit.ts",
+          "line": 739,
+          "column": 1
+        },
+        {
+          "title": "a session that fails after audio flowed hands the kept recording over as interrupted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 212,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.171Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f1271c93e8d8427a87d2-88a9d939df8e215c2f5c",
+          "file": "live-dictation.unit.ts",
+          "line": 793,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "live-session-action.unit.ts",
+      "file": "live-session-action.unit.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "under the live route a saved recording is transcribed by the same vendor's batch model, and the log says so",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.474Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e50db74d6fd9c9839f7f-0428509513066bc1626a",
+          "file": "live-session-action.unit.ts",
+          "line": 110,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "provider-retry.unit.ts",
+      "file": "provider-retry.unit.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "RT-05 without a fallback a temporary failure is retried once, then thrown",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.531Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5498daa7eb2a76f9c3f2-ff7aeb503a24398181c1",
+          "file": "provider-retry.unit.ts",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "RT-07 a primary that took long to fail is not asked again; the time goes to the fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.536Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5498daa7eb2a76f9c3f2-0808d4988cf441032c45",
+          "file": "provider-retry.unit.ts",
+          "line": 178,
+          "column": 1
+        },
+        {
+          "title": "RT-08 each attempt's deadline comes from the remaining budget",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.541Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5498daa7eb2a76f9c3f2-a7eaedaf829d93d5f473",
+          "file": "provider-retry.unit.ts",
+          "line": 189,
+          "column": 1
+        },
+        {
+          "title": "RT-08 (twin): the deadline handed to each attempt shrinks as time passes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.546Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5498daa7eb2a76f9c3f2-01fb445672b2fe0b0cdd",
+          "file": "provider-retry.unit.ts",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "RT-10 HTTP failures: 408, 429 and 5xx are temporary; 4xx is not",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.550Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5498daa7eb2a76f9c3f2-b2f2a0a5ad8350a625c6",
+          "file": "provider-retry.unit.ts",
+          "line": 258,
+          "column": 1
+        },
+        {
+          "title": "RT-10 (twin): a Vertex failure keeps its class, name, status and first line, never the rest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:15:49.556Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5498daa7eb2a76f9c3f2-1dd9f9d09144cd16a499",
+          "file": "provider-retry.unit.ts",
+          "line": 272,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T05:15:43.936Z",
+    "duration": 5634.358,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

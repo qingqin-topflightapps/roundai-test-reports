@@ -1,0 +1,151 @@
+{
+  "scenario": {
+    "raw": "TC-19 S25 NN-1",
+    "tc": "TC-19",
+    "id": "S25",
+    "fixture": "NN-1"
+  },
+  "outputType": "note",
+  "mode": "Nursing Home",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Resident demonstrating improved participation in therapy and increased oral intake. Will continue current rehabilitation program and monitor for further functional gains.",
+          "source_quote": "Eating a little more, participating in therapy.",
+          "why": "The dictation says only that the resident is participating in therapy. It does not say participation improved, and it does not mention any functional gains. Both claims are invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Resident demonstrating improved participation in therapy and increased oral intake. Will continue current rehabilitation program and monitor for further functional gains.",
+          "source_quote": "no source",
+          "why": "The dictation says only 'participating in therapy'. It does not say participation improved. The rehab-continuation plan and the 'functional gains' monitoring are also not in any source.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U9",
+      "severity": "defect",
+      "deciding": true,
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "No changes dictated today.",
+          "source_quote": "no source",
+          "why": "This sentence describes what was or wasn't dictated, which is narration about documentation. Rule U9 bans this.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "No changes dictated today.",
+          "source_quote": "no source",
+          "why": "This is narration about what was or was not dictated, not a clinical statement.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3"
+      ]
+    },
+    {
+      "id": "N6",
+      "severity": "defect",
+      "deciding": true,
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Vitals not recorded.",
+          "source_quote": "no source",
+          "why": "The empty vitals section uses 'Vitals not recorded' instead of the required 'Not dictated' or 'Not provided'. It also claims vitals were not recorded, which the sources do not show.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Vitals not recorded.",
+          "source_quote": "no source",
+          "why": "This section has nothing dictated, so it must say 'Not dictated' or 'Not provided'. 'Vitals not recorded' is neither.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ]
+    }
+  ],
+  "needsPerson": [],
+  "kitOnlyFails": []
+}

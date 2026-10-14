@@ -1,0 +1,89 @@
+{
+  "case": "TC-06-S13",
+  "title": "Typed 'new admission' / 'new patient' / 'H&P' / 'consult' text through Save Note and Save & Extract never moves the badge up from Follow-up (both contexts)",
+  "needs": [
+    "seed",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s13-h-after-save.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dfr25r55p0taxhkw9k1sz5x8g6y3f",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4 / AC 5: the evaluation-only dictation classifier is still on main; whether a save calls it is recorded, not judged) pass: backend h-ai [fn=parsing.classifyEncounterType] is missing (no element with fn=parsing.classifyEncounterType)"
+      ]
+    },
+    {
+      "file": "s13-h-after-reload.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dfr25r55p0taxhkw9k1sz5x8g6y3f",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s13-n-after-save.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7fea36c00ddr4f681w8s5q7s8g7dbd",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4 / AC 5: the evaluation-only dictation classifier is still on main; whether a save calls it is recorded, not judged) pass: backend n-ai [fn=parsing.classifyEncounterType] is missing (no element with fn=parsing.classifyEncounterType)",
+        "(evidence for the Nursing Home positive control: Save & Extract wrote a task from 'Recheck CBC Friday' (model output, so not judged)) pass: backend n-at-save tasks[0] exists"
+      ]
+    },
+    {
+      "file": "s13-n-after-reload.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7fea36c00ddr4f681w8s5q7s8g7dbd",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "3.9: record the pre-round and extraction models for this account from backend/h-ai.json and backend/n-ai.json (diagnostics:list rows: fn, model)"
+  ],
+  "agent": {
+    "turns": 65,
+    "costUsd": 0.5405632000000001,
+    "durationMs": 328556,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U33",
+  "covers": [
+    "TC-06/S13"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u33",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U33.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

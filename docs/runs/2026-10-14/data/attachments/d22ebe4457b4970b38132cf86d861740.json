@@ -1,0 +1,377 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c",
+      "efs-s16-session-end.spec.ts",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "efs-s16-session-end.spec.ts",
+      "file": "efs-s16-session-end.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "EFS/S16 hospital: session ends mid-dictation in every autosave field; sign-in prompt; every tail back in its own field",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 142788,
+                  "error": {
+                    "message": "Error: enc: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: enc: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:123:109",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                      "column": 109,
+                      "line": 123
+                    },
+                    "snippet": "  121 |     for (const f of fields) {\n  122 |       expect.soft(perField[f].hasFirst, `${f}: first line kept`).toBe(true);\n> 123 |       if (typed.includes(f)) expect.soft(perField[f].hasOwnTail, `${f}: its tail is back after signing in`).toBe(true);\n      |                                                                                                             ^\n  124 |       expect.soft(perField[f].holdsOtherTail, `${f}: holds another field's tail`).toBe(false);\n  125 |     }\n  126 |     await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                        "column": 109,
+                        "line": 123
+                      },
+                      "message": "Error: enc: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  121 |     for (const f of fields) {\n  122 |       expect.soft(perField[f].hasFirst, `${f}: first line kept`).toBe(true);\n> 123 |       if (typed.includes(f)) expect.soft(perField[f].hasOwnTail, `${f}: its tail is back after signing in`).toBe(true);\n      |                                                                                                             ^\n  124 |       expect.soft(perField[f].holdsOtherTail, `${f}: holds another field's tail`).toBe(false);\n  125 |     }\n  126 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:123:109"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                        "column": 109,
+                        "line": 123
+                      },
+                      "message": "Error: ip: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  121 |     for (const f of fields) {\n  122 |       expect.soft(perField[f].hasFirst, `${f}: first line kept`).toBe(true);\n> 123 |       if (typed.includes(f)) expect.soft(perField[f].hasOwnTail, `${f}: its tail is back after signing in`).toBe(true);\n      |                                                                                                             ^\n  124 |       expect.soft(perField[f].holdsOtherTail, `${f}: holds another field's tail`).toBe(false);\n  125 |     }\n  126 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:123:109"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                        "column": 109,
+                        "line": 123
+                      },
+                      "message": "Error: pre: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  121 |     for (const f of fields) {\n  122 |       expect.soft(perField[f].hasFirst, `${f}: first line kept`).toBe(true);\n> 123 |       if (typed.includes(f)) expect.soft(perField[f].hasOwnTail, `${f}: its tail is back after signing in`).toBe(true);\n      |                                                                                                             ^\n  124 |       expect.soft(perField[f].holdsOtherTail, `${f}: holds another field's tail`).toBe(false);\n  125 |     }\n  126 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:123:109"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:03:56.809Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                    "column": 109,
+                    "line": 123
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 83712,
+                  "error": {
+                    "message": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'QA Hosp Draft 9D5D8' }).or(getByText('Something went wrong on this screen.')).or(getByRole('heading', { name: 'Unable to connect' })).first() to be visible\u001b[22m\n\u001b[2m    - waiting for \"http://localhost:6473/rounding/kx744t2yq0k2ptc8vprpwfnhfn8g9b7x\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"http://localhost:6473/rounding/kx744t2yq0k2ptc8vprpwfnhfn8g9b7x\"\u001b[22m\n",
+                    "stack": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'QA Hosp Draft 9D5D8' }).or(getByText('Something went wrong on this screen.')).or(getByRole('heading', { name: 'Unable to connect' })).first() to be visible\u001b[22m\n\u001b[2m    - waiting for \"http://localhost:6473/rounding/kx744t2yq0k2ptc8vprpwfnhfn8g9b7x\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"http://localhost:6473/rounding/kx744t2yq0k2ptc8vprpwfnhfn8g9b7x\"\u001b[22m\n\n    at gotoOk (round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts:447:52)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:74:7",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts",
+                      "column": 52,
+                      "line": 447
+                    },
+                    "snippet": "   at support.ts:447\n\n  445 |     const noConnect = page.getByRole(\"heading\", { name: \"Unable to connect\" });\n  446 |     for (let i = 0; i <= 3; i++) {\n> 447 |       await ready.or(broken).or(noConnect).first().waitFor({ timeout });\n      |                                                    ^\n  448 |       const cannotConnect = await noConnect.isVisible().catch(() => false);\n  449 |       if (!(await broken.isVisible().catch(() => false)) && !cannotConnect) return;\n  450 |       // \"Unable to connect\" is the loaded backend not answering the auth handshake: environment, reloaded."
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts",
+                        "column": 52,
+                        "line": 447
+                      },
+                      "message": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'QA Hosp Draft 9D5D8' }).or(getByText('Something went wrong on this screen.')).or(getByRole('heading', { name: 'Unable to connect' })).first() to be visible\u001b[22m\n\u001b[2m    - waiting for \"http://localhost:6473/rounding/kx744t2yq0k2ptc8vprpwfnhfn8g9b7x\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"http://localhost:6473/rounding/kx744t2yq0k2ptc8vprpwfnhfn8g9b7x\"\u001b[22m\n\n\n   at support.ts:447\n\n  445 |     const noConnect = page.getByRole(\"heading\", { name: \"Unable to connect\" });\n  446 |     for (let i = 0; i <= 3; i++) {\n> 447 |       await ready.or(broken).or(noConnect).first().waitFor({ timeout });\n      |                                                    ^\n  448 |       const cannotConnect = await noConnect.isVisible().catch(() => false);\n  449 |       if (!(await broken.isVisible().catch(() => false)) && !cannotConnect) return;\n  450 |       // \"Unable to connect\" is the loaded backend not answering the auth handshake: environment, reloaded.\n    at gotoOk (round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts:447:52)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:74:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T08:06:24.465Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-67889--tail-back-in-its-own-field-probes-retry1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts",
+                    "column": 52,
+                    "line": 447
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fdf3860e0d902597c82d-fea3741fa8e50fffe32c",
+          "file": "efs-s16-session-end.spec.ts",
+          "line": 31,
+          "column": 3
+        },
+        {
+          "title": "EFS/S16 snf: session ends mid-dictation in every autosave field; sign-in prompt; every tail back in its own field",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 87072,
+                  "error": {
+                    "message": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'QA Resident Draft 9CF21' }).or(getByText('Something went wrong on this screen.')).or(getByRole('heading', { name: 'Unable to connect' })).first() to be visible\u001b[22m\n",
+                    "stack": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'QA Resident Draft 9CF21' }).or(getByText('Something went wrong on this screen.')).or(getByRole('heading', { name: 'Unable to connect' })).first() to be visible\u001b[22m\n\n    at gotoOk (round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts:447:52)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:74:7",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts",
+                      "column": 52,
+                      "line": 447
+                    },
+                    "snippet": "   at support.ts:447\n\n  445 |     const noConnect = page.getByRole(\"heading\", { name: \"Unable to connect\" });\n  446 |     for (let i = 0; i <= 3; i++) {\n> 447 |       await ready.or(broken).or(noConnect).first().waitFor({ timeout });\n      |                                                    ^\n  448 |       const cannotConnect = await noConnect.isVisible().catch(() => false);\n  449 |       if (!(await broken.isVisible().catch(() => false)) && !cannotConnect) return;\n  450 |       // \"Unable to connect\" is the loaded backend not answering the auth handshake: environment, reloaded."
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts",
+                        "column": 52,
+                        "line": 447
+                      },
+                      "message": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: 'QA Resident Draft 9CF21' }).or(getByText('Something went wrong on this screen.')).or(getByRole('heading', { name: 'Unable to connect' })).first() to be visible\u001b[22m\n\n\n   at support.ts:447\n\n  445 |     const noConnect = page.getByRole(\"heading\", { name: \"Unable to connect\" });\n  446 |     for (let i = 0; i <= 3; i++) {\n> 447 |       await ready.or(broken).or(noConnect).first().waitFor({ timeout });\n      |                                                    ^\n  448 |       const cannotConnect = await noConnect.isVisible().catch(() => false);\n  449 |       if (!(await broken.isVisible().catch(() => false)) && !cannotConnect) return;\n  450 |       // \"Unable to connect\" is the loaded backend not answering the auth handshake: environment, reloaded.\n    at gotoOk (round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts:447:52)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:74:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T08:07:55.430Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/support.ts",
+                    "column": 52,
+                    "line": 447
+                  }
+                },
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 135499,
+                  "error": {
+                    "message": "Error: visit: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: visit: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:123:109",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                      "column": 109,
+                      "line": 123
+                    },
+                    "snippet": "  121 |     for (const f of fields) {\n  122 |       expect.soft(perField[f].hasFirst, `${f}: first line kept`).toBe(true);\n> 123 |       if (typed.includes(f)) expect.soft(perField[f].hasOwnTail, `${f}: its tail is back after signing in`).toBe(true);\n      |                                                                                                             ^\n  124 |       expect.soft(perField[f].holdsOtherTail, `${f}: holds another field's tail`).toBe(false);\n  125 |     }\n  126 |     await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                        "column": 109,
+                        "line": 123
+                      },
+                      "message": "Error: visit: its tail is back after signing in\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  121 |     for (const f of fields) {\n  122 |       expect.soft(perField[f].hasFirst, `${f}: first line kept`).toBe(true);\n> 123 |       if (typed.includes(f)) expect.soft(perField[f].hasOwnTail, `${f}: its tail is back after signing in`).toBe(true);\n      |                                                                                                             ^\n  124 |       expect.soft(perField[f].holdsOtherTail, `${f}: holds another field's tail`).toBe(false);\n  125 |     }\n  126 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts:123:109"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T08:09:25.918Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/efs16c/efs-s16-session-end-EFS-S1-69262--tail-back-in-its-own-field-probes-retry1/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s16-session-end.spec.ts",
+                    "column": 109,
+                    "line": 123
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fdf3860e0d902597c82d-d43edb40948514c94022",
+          "file": "efs-s16-session-end.spec.ts",
+          "line": 31,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T08:03:52.529Z",
+    "duration": 470967.003,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

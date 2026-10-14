@@ -1,0 +1,13 @@
+{
+  "OAT-04/S17": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:15:01.831Z",
+    "detail": "5 judged items passed, 2 failed (2 known, 0 policy conflict, 0 not in the matrix knownGaps), 1 recorded against open questions — failed: chart501 (aged labs / meds on chart #501 of the 501-chart account after one cycle: expected absent, got present; known K13) | large.complete (charts of the 501-chart account still holding aged data: expected 0, got 1; known K13) — record-only: time = 2416 ms total; per call large=2416ms, a1=364ms, a2=595ms, a3=683ms, a4=780ms, a5=1189ms, a6=952ms, a7=1071ms, a8=905ms, a9=1786ms, a10=1297ms, a11=1727ms, a12=1876ms, a13=1489ms, a14=1831ms, a15=1974ms, a16=1425ms, a17=2010ms, a18=1938ms, a19=2138ms, a20=2098ms [OAT-04 sets no time target (3.5 covers Save Note / Generate only); the agreed lag is Q1] — notes: built: 1 x 501 charts + 20 x 50 charts; controls on chart #501 and on chart #50 of accounts 1-10 | Machine note: this ran on a laptop with several other local Convex backends up (4510, 5110, 5210); the local backend applies the same 1 s mutation limit as Convex cloud. — setup/read calls retried on the local 1 s limit: 1",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S17.json"
+    ],
+    "productIssue": "With 501 patients on one account, one purge pass leaves chart #501 untouched: its 37 h-old labs and medication rows stay until another pass. Breaks OAT-04 Expected 1 / TFA-94699 AC 7. Known in the matrix: K13."
+  }
+}

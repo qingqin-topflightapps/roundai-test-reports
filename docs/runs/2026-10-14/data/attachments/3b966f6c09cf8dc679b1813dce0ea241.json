@@ -1,0 +1,46 @@
+{
+  "OAT-06/S24b": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 32 judged check(s) passed, 14 failed. Baseline survey dialog ('Baseline survey', named), handoff follow-up dialog after a real send to a second fresh local account (generateHandoff mocked), Settings Feedback (named radio group), NH Post-Round with two open tasks. Not now, Skip and Send feedback are reached by Tab. The survey's answer chips are not exposed as radio groups (recorded).",
+    "failed": [
+      {
+        "check": "axe serious/critical = 0",
+        "where": [
+          "desktop:baseline-survey-open",
+          "desktop:handoff-follow-up",
+          "desktop:nh-postround-tasks",
+          "desktop:settings-feedback",
+          "iphone15:handoff-follow-up",
+          "iphone15:nh-postround-tasks",
+          "iphone15:settings-feedback",
+          "pixel7:baseline-survey-open",
+          "pixel7:handoff-follow-up",
+          "pixel7:nh-postround-tasks",
+          "pixel7:settings-feedback"
+        ],
+        "example": "color-contrast(serious,1×: .font-normal)"
+      },
+      {
+        "check": "every task button (complete, delete) has an accessible name",
+        "where": [
+          "desktop:nh-postround-tasks",
+          "iphone15:nh-postround-tasks",
+          "pixel7:nh-postround-tasks"
+        ],
+        "example": "2 unnamed button(s) in the task row"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/iphone15--baseline-survey-open.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/iphone15--handoff-follow-up.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/iphone15--nh-postround-tasks.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/iphone15--settings-feedback.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/vision/design/vision-findings.json"
+    ],
+    "productIssue": "On the Nursing Home Post-Round task list each task's complete (□) and delete (trash) buttons have no accessible name — VoiceOver reads 'button, button' per task (oracle: every task button has an accessible name; also axe button-name critical). Plus contrast (white on teal Yes / Start survey) and the unnamed back/close buttons on the Handoff and Settings screens."
+  }
+}

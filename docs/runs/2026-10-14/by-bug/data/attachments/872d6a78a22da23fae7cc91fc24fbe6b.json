@@ -1,0 +1,92 @@
+{
+  "case": "TC-06-S27",
+  "title": "Typed 'follow-up visit' / 'hospital day 3' / 'established patient' text never pushes a hand-set New Admission or Consult down (Save Note, Save & Extract, both contexts)",
+  "needs": [
+    "seed",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s27-h-after-save.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7412ktpzxenzbag30mdgdh998g7g90",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4 / AC 5: the evaluation-only dictation classifier is still on main; whether a save calls it is recorded, not judged) pass: backend h-ai [fn=parsing.classifyEncounterType] is missing (no element with fn=parsing.classifyEncounterType)"
+      ]
+    },
+    {
+      "file": "s27-h-after-reload.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7412ktpzxenzbag30mdgdh998g7g90",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s27-n-after-save.md",
+      "verdict": "Pass",
+      "url": "/snf/jx71aj5pqbm8hp945gf31nczz18g6pdm",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4 / AC 5: the evaluation-only dictation classifier is still on main; whether a save calls it is recorded, not judged) pass: backend n-ai [fn=parsing.classifyEncounterType] is missing (no element with fn=parsing.classifyEncounterType)",
+        "(evidence for the Nursing Home positive control: Save & Extract wrote a task from 'Recheck BMP Monday' (model output, so not judged)) pass: backend n-at-save tasks[0] exists"
+      ]
+    },
+    {
+      "file": "s27-n-after-reload.md",
+      "verdict": "Pass",
+      "url": "/snf/jx71aj5pqbm8hp945gf31nczz18g6pdm",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(the hand set stamps the day it was set) pass: backend h-after encTypeDay = \"2026-10-14\"",
+        "(the hand set stamps the day it was set) pass: backend n-after encTypeDay = \"2026-10-14\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "3.9: record the pre-round and extraction models for this account from backend/h-ai.json and backend/n-ai.json (diagnostics:list rows: fn, model)"
+  ],
+  "agent": {
+    "turns": 65,
+    "costUsd": 0.5283163999999999,
+    "durationMs": 336431,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U34",
+  "covers": [
+    "TC-06/S27"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u34",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U34.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

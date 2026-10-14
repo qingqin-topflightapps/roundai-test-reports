@@ -1,0 +1,1361 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/newspec-a/newspec-a.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10",
+      "oat01-revoke-timing.spec.ts",
+      "--workers=6"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/newspec-a.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 6
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "newspec-a",
+        "name": "newspec-a",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 6,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "oat01-revoke-timing.spec.ts",
+      "file": "oat01-revoke-timing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20403,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:41.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-4af8fa023b5c6d6c1e7c",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 19263,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:41.186Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-f04796e735515aaeb451",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 3",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 10622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:41.218Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-0f2d1825f7a87041491c",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 4",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "failed",
+                  "duration": 16369,
+                  "error": {
+                    "message": "Error: Protocol error (Page.handleJavaScriptDialog): Not attached to an active page",
+                    "stack": "Error: Protocol error (Page.handleJavaScriptDialog): Not attached to an active page"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Protocol error (Page.handleJavaScriptDialog): Not attached to an active page"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:41.206Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke-57f10-screen-no-interaction-run-4-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke-57f10-screen-no-interaction-run-4-newspec-a/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-864dc91c65381e869b8c",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 5",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 4,
+                  "status": "passed",
+                  "duration": 14663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:41.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-d63522c3a85dfd09a23d",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 6",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "passed",
+                  "duration": 19319,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:41.202Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-33224b2f8b657fef2e0d",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 7",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 16736,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:52.389Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-c77191e1dd31e3454230",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 8",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 4,
+                  "status": "passed",
+                  "duration": 16624,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:26:56.380Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-22322b7da72eb36e6765",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 9",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 12979,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:01.114Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-66d683d9edbcd6f9b7d3",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "passed",
+                  "duration": 13104,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:01.130Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-f26389cd138014389d17",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15074,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:02.087Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-caa1da17750401e9f530",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 3,
+                  "status": "passed",
+                  "duration": 16376,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:05.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-5b3966a6de4e47d562c1",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 3",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 17459,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:09.149Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-582e73531a22332a9cba",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 4,
+                  "status": "passed",
+                  "duration": 17142,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:13.061Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-b6cfc5383f228952ce33",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 5",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 15860,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:14.114Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-bc9230e0008a5ef10b28",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 6",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "passed",
+                  "duration": 15270,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:14.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-440d271b00512f492ae7",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 7",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:17.178Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-aee16f1db0bfad4199ca",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 8",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 3,
+                  "status": "timedOut",
+                  "duration": 480090,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                        "column": 32,
+                        "line": 18
+                      },
+                      "message": "Error: page.waitForResponse: Test ended.\n\n   at ../../e2e/support/session.ts:18\n\n  16 |   const otp = await prepareOtpThroughUi(page, credentials.email);\n  17 |   await page.getByLabel(\"Sign-in code\").fill(otp);\n> 18 |   const responsePromise = page.waitForResponse(\n     |                                ^\n  19 |     (response) =>\n  20 |       new URL(response.url()).pathname.endsWith(\n  21 |         \"/api/auth/sign-in/email-otp\",\n    at submitSignInForm (round-companion-wt-qa/apps/web/e2e/support/session.ts:18:32)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:35:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:22.052Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-8-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-8-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-8-newspec-a/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-db694080a20c7aaeb63e",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 9",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "timedOut",
+                  "duration": 480079,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                        "column": 32,
+                        "line": 18
+                      },
+                      "message": "Error: page.waitForResponse: Test ended.\n\n   at ../../e2e/support/session.ts:18\n\n  16 |   const otp = await prepareOtpThroughUi(page, credentials.email);\n  17 |   await page.getByLabel(\"Sign-in code\").fill(otp);\n> 18 |   const responsePromise = page.waitForResponse(\n     |                                ^\n  19 |     (response) =>\n  20 |       new URL(response.url()).pathname.endsWith(\n  21 |         \"/api/auth/sign-in/email-otp\",\n    at submitSignInForm (round-companion-wt-qa/apps/web/e2e/support/session.ts:18:32)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:35:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:26.627Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-9-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-9-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-9-newspec-a/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-9d77e7a4b834ea443bec",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 10",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 5,
+                  "status": "timedOut",
+                  "duration": 480040,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                        "column": 32,
+                        "line": 18
+                      },
+                      "message": "Error: page.waitForResponse: Test ended.\n\n   at ../../e2e/support/session.ts:18\n\n  16 |   const otp = await prepareOtpThroughUi(page, credentials.email);\n  17 |   await page.getByLabel(\"Sign-in code\").fill(otp);\n> 18 |   const responsePromise = page.waitForResponse(\n     |                                ^\n  19 |     (response) =>\n  20 |       new URL(response.url()).pathname.endsWith(\n  21 |         \"/api/auth/sign-in/email-otp\",\n    at submitSignInForm (round-companion-wt-qa/apps/web/e2e/support/session.ts:18:32)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:35:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:29.617Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-10-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-10-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-one-tap-run-10-newspec-a/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-c1c436c552cdd3043c8f",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 1",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 18739,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Sign-in code')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Sign-in code')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Sign-in code')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Sign-in code')\u001b[22m\n\n    at prepareOtpThroughUi (round-companion-wt-qa/apps/web/e2e/support/session.ts:111:49)\n    at submitSignInForm (round-companion-wt-qa/apps/web/e2e/support/session.ts:16:15)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:35:7",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                      "column": 49,
+                      "line": 111
+                    },
+                    "snippet": "   at ../../e2e/support/session.ts:111\n\n  109 |     .getByRole(\"button\", { name: \"Send sign-in code\", exact: true })\n  110 |     .click();\n> 111 |   await expect(page.getByLabel(\"Sign-in code\")).toBeVisible();\n      |                                                 ^\n  112 |   return otp;\n  113 | }\n  114 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                        "column": 49,
+                        "line": 111
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Sign-in code')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Sign-in code')\u001b[22m\n\n\n   at ../../e2e/support/session.ts:111\n\n  109 |     .getByRole(\"button\", { name: \"Send sign-in code\", exact: true })\n  110 |     .click();\n> 111 |   await expect(page.getByLabel(\"Sign-in code\")).toBeVisible();\n      |                                                 ^\n  112 |   return otp;\n  113 | }\n  114 |\n    at prepareOtpThroughUi (round-companion-wt-qa/apps/web/e2e/support/session.ts:111:49)\n    at submitSignInForm (round-companion-wt-qa/apps/web/e2e/support/session.ts:16:15)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:35:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:29.992Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-1-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-1-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-1-newspec-a/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                    "column": 49,
+                    "line": 111
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-12c4901010efcbb52659",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 2",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 4,
+                  "status": "timedOut",
+                  "duration": 480097,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                        "column": 32,
+                        "line": 18
+                      },
+                      "message": "Error: page.waitForResponse: Test ended.\n\n   at ../../e2e/support/session.ts:18\n\n  16 |   const otp = await prepareOtpThroughUi(page, credentials.email);\n  17 |   await page.getByLabel(\"Sign-in code\").fill(otp);\n> 18 |   const responsePromise = page.waitForResponse(\n     |                                ^\n  19 |     (response) =>\n  20 |       new URL(response.url()).pathname.endsWith(\n  21 |         \"/api/auth/sign-in/email-otp\",\n    at submitSignInForm (round-companion-wt-qa/apps/web/e2e/support/session.ts:18:32)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:35:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:30.216Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-2-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-2-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-2-newspec-a/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-a51f4eb9b6580e4fe514",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 3",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5180,
+                  "error": {
+                    "message": "Error: Browser sign-in failed (500).",
+                    "stack": "Error: Browser sign-in failed (500).\n    at createAuthSession (round-companion-wt-qa/apps/web/e2e/support/auth-state.ts:41:13)\n    at signIn (round-companion-wt-qa/apps/web/e2e/support/backend.ts:87:42)\n    at newPhysician (round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/support.ts:45:16)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:31:17",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/e2e/support/auth-state.ts",
+                      "column": 13,
+                      "line": 41
+                    },
+                    "snippet": "   at ../../e2e/support/auth-state.ts:41\n\n  39 |     );\n  40 |     if (!response.ok()) {\n> 41 |       throw new Error(`Browser sign-in failed (${response.status()}).`);\n     |             ^\n  42 |     }\n  43 |\n  44 |     const state = await client.storageState();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/e2e/support/auth-state.ts",
+                        "column": 13,
+                        "line": 41
+                      },
+                      "message": "Error: Browser sign-in failed (500).\n\n   at ../../e2e/support/auth-state.ts:41\n\n  39 |     );\n  40 |     if (!response.ok()) {\n> 41 |       throw new Error(`Browser sign-in failed (${response.status()}).`);\n     |             ^\n  42 |     }\n  43 |\n  44 |     const state = await client.storageState();\n    at createAuthSession (round-companion-wt-qa/apps/web/e2e/support/auth-state.ts:41:13)\n    at signIn (round-companion-wt-qa/apps/web/e2e/support/backend.ts:87:42)\n    at newPhysician (round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/support.ts:45:16)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:31:17"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:36.893Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-3-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-3-newspec-a/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/e2e/support/auth-state.ts",
+                    "column": 13,
+                    "line": 41
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-cd66dc3e826b614ecf82",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11216,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:45.016Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-29ea644a7661cce6607b",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 5",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 480040,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 480000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/e2e/support/session.ts",
+                        "column": 32,
+                        "line": 18
+                      },
+                      "message": "Error: page.waitForResponse: Test ended.\n\n   at ../../e2e/support/session.ts:18\n\n  16 |   const otp = await prepareOtpThroughUi(page, credentials.email);\n  17 |   await page.getByLabel(\"Sign-in code\").fill(otp);\n> 18 |   const responsePromise = page.waitForResponse(\n     |                                ^\n  19 |     (response) =>\n  20 |       new URL(response.url()).pathname.endsWith(\n  21 |         \"/api/auth/sign-in/email-otp\",\n    at submitSignInForm (round-companion-wt-qa/apps/web/e2e/support/session.ts:18:32)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/oat01-revoke-timing.spec.ts:35:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:51.652Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-5-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-5-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10/oat01-revoke-timing-revoke---sign-in-screen-tab-switch-run-5-newspec-a/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "655016539fcca67891aa-018f9ddb7c97c8966873",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 6",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9327,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:27:56.619Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-a5b3417fab102713b276",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 7",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6658,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:28:05.971Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-10b2b8437e841b892090",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 8",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7951,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:28:12.644Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-8a8512f8f768e8154d8e",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 9",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10222,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:28:20.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-a2b1c5f3dcb245b1de4c",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19666,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:28:30.883Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-32fcceed5d1aeb89d9d9",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T05:26:40.192Z",
+    "duration": 552322.7609999999,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 8,
+    "flaky": 0
+  }
+}

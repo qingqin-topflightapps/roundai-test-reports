@@ -1,0 +1,115 @@
+{
+  "case": "TC-15-S14",
+  "title": "Switch patient and context between questions, with an unsaved draft — no cross-patient bleed",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "cp1-a-meds.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70aky2p4c6j57zpgepd32q958g7xgd",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(not in S14's oracle; S02 judges the full current list) pass: \"Ceftriaxone\" present (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ]
+    },
+    {
+      "file": "cp2-a-draft-symptoms.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70aky2p4c6j57zpgepd32q958g7xgd",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp3-b-symptoms.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7a30t3bwytvaf5xgk3kdab818g60e0",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp4-b-meds.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7a30t3bwytvaf5xgk3kdab818g60e0",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(B's tracker is empty; S11 judges the empty-tracker wording) pass: \"no medications\" present (anyOf) (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ]
+    },
+    {
+      "file": "cp5-c-meds.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7bfn09bs2e1n3dfvarjpb5p98g7q6y",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp6-c-draft-symptoms.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7bfn09bs2e1n3dfvarjpb5p98g7q6y",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q9: whether the NH Encounter Ask sees the unsaved draft) pass: \"knee pain\" present (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")",
+        "(Q9 evidence; cross-patient bleed is judged in cp3–cp5) pass: \"black stool\" absent (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(autosave: whether A's 'unsaved' draft was stored anyway (the Hospital Ask context reads the on-screen draft first)) pass: backend a-after encounterNotes contains \"black stools\"",
+        "(B's tracker still empty after the run) pass: backend b-after medications has 0 items",
+        "(nothing of A's draft was written to B) pass: backend b-after encounterNotes is missing",
+        "(Q9: whether C's draft was stored, which is what the NH Ask context can see) pass: backend c-after encounterNotes contains \"knee pain\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read the cp1 answer: 'held' belongs to Lisinopril, not to Ceftriaxone (S02 reads the same from the quoted answer)",
+    "Read the cp6 answer for Q9: does the NH Encounter Ask answer use the unsaved draft ('new left knee pain')?"
+  ],
+  "agent": {
+    "turns": 78,
+    "costUsd": 0.5442834000000001,
+    "durationMs": 358196,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U39",
+  "covers": [
+    "TC-15/S14"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u39",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U39.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

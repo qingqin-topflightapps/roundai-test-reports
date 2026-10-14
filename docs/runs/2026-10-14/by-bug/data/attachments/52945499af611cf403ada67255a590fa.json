@@ -1,0 +1,82 @@
+{
+  "ref": "TC-16/S14",
+  "part": "hospital",
+  "at": "2026-10-14T07:50:30.029Z",
+  "recorder": "bedside recorder with the e2e speech stub; device clock via page.clock",
+  "dialogs": [],
+  "generateWithheld": "on main a stopped bedside recording starts Generate Note & Finish by itself (useGenerateAfterCapture); ai/notes:generateNote was answered with a failure at the socket (1 + 1 requests), no model call",
+  "cells": [
+    {
+      "cell": "day 1: the recording was stored with day 1's date",
+      "expected": "transcriptDate Tue Oct 13 2026",
+      "actual": {
+        "transcriptDate": "Tue Oct 13 2026",
+        "lines": 1
+      },
+      "verdict": "pass",
+      "req": "T2"
+    },
+    {
+      "cell": "day 2: day 1's recording listed on its own as prior, with day 1's date, no archive tapped",
+      "expected": "a Oct 13 row, none for Oct 14",
+      "actual": [
+        "Oct 13 · Encounter notes",
+        "Oct 13 (prior)"
+      ],
+      "verdict": "pass",
+      "req": "U6a"
+    },
+    {
+      "cell": "day 2: the typed day-1 note is gone from the working box and listed",
+      "expected": "not in encounterNotes; in the prior list",
+      "actual": {
+        "working": "",
+        "listed": true
+      },
+      "verdict": "pass",
+      "req": "U6a"
+    },
+    {
+      "cell": "day 2: today's recording is in the working transcript, dated today",
+      "expected": "transcriptDate Wed Oct 14 2026",
+      "actual": {
+        "transcriptDate": "Wed Oct 14 2026"
+      },
+      "verdict": "pass",
+      "req": "T2"
+    },
+    {
+      "cell": "day 3: day 1 gone and day 2 listed as yesterday (Q1 calendar vs hours, Q12)",
+      "expected": "judged after Q1/Q12",
+      "actual": {
+        "prior": [
+          "Oct 12 · Encounter notes",
+          "Oct 12 (prior)"
+        ],
+        "day1ListedAsPrior": true,
+        "day2ListedAsPrior": false,
+        "day1StillStored": true,
+        "day2InWorkingTranscript": true
+      },
+      "verdict": "record",
+      "req": "U6b",
+      "note": "day2InWorkingTranscript = day 2's recording is still the working transcript (it moves to the prior list only on the next recording), not that it is listed"
+    },
+    {
+      "cell": "day 3: archive stamps on the prior entries (bedside '(prior)' rows carry no archivedAt, so the 48 h prune never removes them)",
+      "expected": "recorded (U6b is judged after Q1/Q12)",
+      "actual": [
+        {
+          "label": "Oct 12 · Encounter notes",
+          "archivedAt": "2026-10-13T07:49:56.460Z"
+        },
+        {
+          "label": "Oct 12 (prior)",
+          "archivedAt": null
+        }
+      ],
+      "verdict": "record",
+      "req": "U6b"
+    }
+  ]
+}

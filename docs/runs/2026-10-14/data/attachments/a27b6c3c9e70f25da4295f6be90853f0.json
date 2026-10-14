@@ -1,0 +1,71 @@
+{
+  "case": "TC-06-S28",
+  "title": "Two patients in one context: a status or a template pick never carries over to the next patient opened (both contexts)",
+  "needs": [
+    "seed",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s28-h-b-first.md",
+      "verdict": "Pass",
+      "url": "/rounding/js763fd8b3vttx4aq5115hdh9s8g7j8r",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s28-h-a-again.md",
+      "verdict": "Pass",
+      "url": "/rounding/js76cm1r23jgs8ahgg8djexp0n8g6z36",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s28-n-b-first.md",
+      "verdict": "Pass",
+      "url": "/snf/jx781s1fs7s0wjasypht7zdc6d8g6kna",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s28-n-a-again.md",
+      "verdict": "Pass",
+      "url": "/snf/jx77a1pvde3zh6jcnet9swtvkx8g6hs4",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 53,
+    "costUsd": 0.3957368,
+    "durationMs": 149733,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

@@ -1,0 +1,33 @@
+{
+  "result": {
+    "background_narrative": "Rehab after left hip ORIF.",
+    "labs": [
+      {
+        "name": "Hemoglobin",
+        "value": "9.8",
+        "trend": ""
+      }
+    ],
+    "imaging": [
+      "Hip X-ray: hardware in good position"
+    ],
+    "key_issues": [
+      "Anemia"
+    ]
+  },
+  "calls": [
+    "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "mistral.mistral-large-3-675b-instruct"
+  ],
+  "diagnostics": {
+    "userId": "physician-1",
+    "fn": "parsing.extractPriorNote",
+    "model": "mistral.mistral-large-3-675b-instruct",
+    "ok": true,
+    "durationMs": 1004,
+    "providerMs": 1,
+    "promptChars": 130,
+    "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+  }
+}

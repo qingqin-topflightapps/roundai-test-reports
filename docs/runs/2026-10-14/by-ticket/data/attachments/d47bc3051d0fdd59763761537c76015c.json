@@ -1,0 +1,20 @@
+{
+  "TC-02/S26": {
+    "status": "failed",
+    "detail": "Re-checked after review 2026-10-14 (18:00 JST runs: fix-*.json). Legs error / empty / no-name / slow (35 s), both contexts: the right message shows ('The photo couldn't be read…' / 'No patients found in the image. Try a clearer photo.' / 'No residents found. Try a clearer photo.'), loading ends, nothing added. Slow leg, both contexts: loading visible at 3 / 15 / 30 s, message at ~35 s (Hospital re-run 18:00 JST, kept in evidence/history; NH from the 17:1x run). Retrying with the SAME photo starts no new read in every leg and context, on Chromium 151 (the file input still holds the file after a read, so no change event fires; the old message stays). With a byte-identical copy the retry adds its one row exactly once. NH double tap: Pecan 1, Rue 1, Quassia 0.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/error-hospital.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/error-snf.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/empty-hospital.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/no-name-snf.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/slow-hospital.json",
+      "runs/2026-10-14-local/probes/evidence/history/tc02-s26/slow-hospital-2026-10-14T08-59-03-367Z.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/slow-snf.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/error-hospital-after-same-file-retry.png",
+      "runs/2026-10-14-local/probes/evidence/tc02-s26/nh-double-tap.json",
+      "runs/2026-10-14-local/probes/evidence/diag/same-file-retry.json"
+    ],
+    "platform": "shown on Chromium (desktop; Android WebView uses the same engine rule). The iOS photo picker hands over a new file object each time and may not show it; not checked on a device.",
+    "productIssue": "After a failed or empty photo read, choosing the same image again ('Retake photo' in Hospital / 'Take Photo or Choose Image' in Nursing Home) starts no read and the old message stays, so the physician has to find or take a different photo. Shown on Chromium (desktop / Android WebView): the hidden file input is not cleared after a read (useCensusScan.ts handleImage / useResidentListScan never reset input.value), so the browser fires no change event for the same file. Breaks TC-02 S26 'lets the physician retry without retaking the photo' (oracle: a retry that needs the photo retaken is a Fail)."
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "beforeDelete": {
+    "markerShown": true,
+    "bpShown": true
+  },
+  "removeConfirmations": [
+    "Remove QA Hosp Del C12EB from the rounding list? This will delete all notes, vitals, and encounter data for this patient."
+  ],
+  "readdDialogs": [],
+  "documentAfterDelete": null,
+  "readMsAfterDelete": 83,
+  "listRowsAfterDelete": 0,
+  "listShowsControl": true,
+  "listShowsDeleted": false,
+  "auditBefore": [
+    {
+      "action": "PHI_WRITE",
+      "op": "update"
+    },
+    {
+      "action": "PHI_WRITE",
+      "op": "update"
+    },
+    {
+      "action": "PHI_WRITE",
+      "op": "update"
+    },
+    {
+      "action": "PHI_READ"
+    },
+    {
+      "action": "PHI_WRITE",
+      "op": "create"
+    }
+  ],
+  "auditAfter": [
+    {
+      "action": "PHI_WRITE",
+      "op": "delete"
+    },
+    {
+      "action": "PHI_WRITE",
+      "op": "update"
+    },
+    {
+      "action": "PHI_WRITE",
+      "op": "update"
+    },
+    {
+      "action": "PHI_WRITE",
+      "op": "update"
+    },
+    {
+      "action": "PHI_READ"
+    },
+    {
+      "action": "PHI_WRITE",
+      "op": "create"
+    }
+  ],
+  "newIdDiffers": true,
+  "readdedShowsMarker": false,
+  "readdedShowsBp": false,
+  "rowsHoldingMarker": {
+    "roundingPatients": 0,
+    "roundingPatientList": 0,
+    "snfResidents": 0,
+    "snfResidentList": 0,
+    "audit_logs": 0,
+    "patientActivityEvents": 0,
+    "aiCallLog": 0,
+    "unassignedRoundingItems": 0,
+    "handoffs": 0
+  }
+}

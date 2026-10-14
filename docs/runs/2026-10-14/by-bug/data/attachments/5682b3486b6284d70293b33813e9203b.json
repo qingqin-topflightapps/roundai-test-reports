@@ -1,0 +1,79 @@
+{
+  "name": "tc20-s25-rounding",
+  "at": "2026-10-14T07:10:29.943Z",
+  "checks": [
+    {
+      "id": "offline: a clear no-network message",
+      "ok": true,
+      "detail": "banner: No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then."
+    },
+    {
+      "id": "offline: stale counts not presented as current",
+      "ok": true,
+      "detail": "counts {\"total\":\"1\",\"pending\":\"1\",\"inProgress\":\"0\",\"complete\":\"0\"} with the banner"
+    },
+    {
+      "id": "reconnect: counts catch up (Pending 0, In Progress 1)",
+      "ok": true,
+      "detail": "after 3775 ms: {\"total\":\"1\",\"pending\":\"0\",\"inProgress\":\"1\",\"complete\":\"0\"}"
+    },
+    {
+      "id": "reconnect: no reload",
+      "ok": true,
+      "detail": "page not reloaded"
+    }
+  ],
+  "data": {
+    "before": {
+      "total": "1",
+      "pending": "1",
+      "inProgress": "0",
+      "complete": "0"
+    },
+    "setOfflineClosedSocketByItself": false,
+    "bWroteAt": 17233,
+    "offlineBanner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+    "offlineCounts": {
+      "total": "1",
+      "pending": "1",
+      "inProgress": "0",
+      "complete": "0"
+    },
+    "catchUpMs": 3620,
+    "afterCounts": {
+      "total": "1",
+      "pending": "0",
+      "inProgress": "1",
+      "complete": "0"
+    },
+    "navigationsAfterReconnect": [],
+    "bannerGoneAfterReconnect": true,
+    "socketEvents": [
+      "open 1791961804393",
+      "open 1791961805444",
+      "open 1791961827014"
+    ],
+    "pageLog": [
+      "159 debug [vite] connecting...",
+      "632 debug [vite] connected.",
+      "1031 load",
+      "5276 log WebSocket closed with code 1006: QA offline",
+      "5277 log Attempting reconnect in 1110ms",
+      "6403 log WebSocket closed with code 1006: QA offline",
+      "6403 log Attempting reconnect in 2820ms",
+      "9227 log WebSocket closed with code 1006: QA offline",
+      "9227 log Attempting reconnect in 4835ms",
+      "14077 log WebSocket closed with code 1006: QA offline",
+      "14078 log Attempting reconnect in 7734ms",
+      "21861 log WebSocket closed with code 1006: QA offline",
+      "21861 log Attempting reconnect in 12691ms",
+      "22706 log Network recovery detected, reconnecting immediately",
+      "22909 log WebSocket reconnected at t=22.9s after disconnect due to QA offline",
+      "22912 log Network recovery reconnect saved ~12s of waiting"
+    ],
+    "timeline": {
+      "droppedAt": 3705,
+      "backAt": 21983
+    }
+  }
+}

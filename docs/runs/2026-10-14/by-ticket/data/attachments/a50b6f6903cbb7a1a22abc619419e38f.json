@@ -1,0 +1,31 @@
+{
+  "name": "tc22-s23-rounding-minus24h",
+  "at": "2026-10-14T07:52:11.934Z",
+  "checks": [
+    {
+      "id": "doneAt within ±5 min of server time",
+      "ok": false,
+      "detail": "doneAt 2026-10-13T07:51:49.592Z vs server 2026-10-14T07:51:51.276Z (-1440 min)"
+    },
+    {
+      "id": "after the lifecycle run 'follow up BMP' is still under Finished Tasks (U13: Hospital completed tasks 16 h)",
+      "ok": false,
+      "detail": "stored: task removed; Task Export Finished Tasks section absent"
+    }
+  ],
+  "data": {
+    "access": {
+      "signedOutByClock": false,
+      "uiSignIn": null
+    },
+    "deviceNow": "2026-10-13T07:51:48.951Z",
+    "doneAt": {
+      "doneAt": "2026-10-13T07:51:49.592Z",
+      "serverNow": "2026-10-14T07:51:51.276Z",
+      "offMinutes": -1440
+    },
+    "afterLifecycle": {
+      "bmp": null
+    }
+  }
+}

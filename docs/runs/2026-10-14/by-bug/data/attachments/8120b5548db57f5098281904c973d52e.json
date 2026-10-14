@@ -1,0 +1,128 @@
+{
+  "case": "OAT-03-S27",
+  "title": "Generate on patient A, open patient B at once: A's dictation stays on A and nothing of A lands on B (both contexts, not gated)",
+  "needs": [
+    "seed",
+    "generate",
+    "max-turns",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s27-hosp-b-open.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7bnp8dekwpy8x24e08x12z2s8g990g",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(premise: A's Generate was still in flight when B opened; a note already stored here means the run did not test leaving mid-Generate) fail: backend ha-at-b-open note exists"
+      ]
+    },
+    {
+      "file": "s27-hosp-b-postround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7bnp8dekwpy8x24e08x12z2s8g990g",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s27-hosp-b-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7bnp8dekwpy8x24e08x12z2s8g990g",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s27-hosp-a-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7afqdadagngvkw1vzgq99z098g9cjk",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(A has the note, an explicit failure or no note yet; whether the note is there on return is S15 (gated)) pass: backend ha-at-return note exists"
+      ]
+    },
+    {
+      "file": "s27-snf-b-open.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72cwev0sh9gjwapd5wgtsazd8g9nx6",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(premise: A's Generate was still in flight when B opened; a note already stored here means the run did not test leaving mid-Generate) fail: backend na-at-b-open note exists"
+      ]
+    },
+    {
+      "file": "s27-snf-b-postround.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72cwev0sh9gjwapd5wgtsazd8g9nx6",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s27-snf-b-encounter.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72cwev0sh9gjwapd5wgtsazd8g9nx6",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s27-snf-a-encounter.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7b9h0vtz48agfppe4168et058g8wnc",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(A has the note, an explicit failure or no note yet; whether the note is there on return is S15 (gated)) pass: backend na-at-return note exists"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(whether A's note arrived (S15, gated)) pass: backend ha-after note exists",
+        "(whether A's note arrived (S15, gated)) pass: backend na-after note exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read s27-hosp-a-encounter.png and s27-snf-a-encounter.png: A shows its note, an explicit failure or no note yet, never B's text"
+  ],
+  "agent": {
+    "turns": 62,
+    "costUsd": 0.4631344000000001,
+    "durationMs": 266780,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": true,
+  "unit": "U65",
+  "covers": [
+    "OAT-03/S27"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u65",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U65.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

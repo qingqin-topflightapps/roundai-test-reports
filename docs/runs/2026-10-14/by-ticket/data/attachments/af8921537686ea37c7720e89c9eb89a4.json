@@ -1,0 +1,260 @@
+{
+  "TC-20/S11": {
+    "status": "failed",
+    "detail": "8/10 judged cells pass, 5 recorded, 1 NOT RUN. Fail: (b) pre-round 11 h: In Progress and the pre-round text is on the chart [U1; gate: blocked: TFA-92598 in progress] | (d) open task 37 h after last processing: the row's pending task count drops it [U1; gate: blocked: TFA-92598 in progress]. Not run: (b) pre-rounded 05:00 UTC read at 18:00 UTC the same server day (it is 06:59 UTC now: a stamp 13 h back crosses the server's midnight; rerun after 13:00 UTC (22:00 JST)). Recorded: (a) note 19 h: bucket after the note left the chart (Q4) = {\"status\":\"pending\",\"bucket\":\"Pending\",\"preRound\":\"\",\"encounter\":\"\",\"note\":\"\",\"openTasks\":0} | (b) pre-round 13 h: text cleared by the clock; bucket (Q10: counted as work in progress?) = {\"status\":\"pending\",\"bucket\":\"Pending\",\"preRound\":\"\",\"encounter\":\"\",\"note\":\"\",\"openTasks\":0} | (c) seen, encounter 19 h: encounter left the working tab; bucket (Q10) = {\"status\":\"seen\",\"bucket\":\"In Progress\",\"preRound\":\"\",\"encounter\":\"\",\"note\":\"\",\"openTasks\":0} | (c) seen, encounter 36 h: encounter left the working tab; bucket (Q10) = {\"status\":\"seen\",\"bucket\":\"In Progress\",\"preRound\":\"\",\"encounter\":\"\",\"note\":\"\",\"openTasks\":0} | (f) NH resident marked In Today and completed on the previous server day: In Today and its bucket this morning (Q3 / Q4) = {\"status\":\"pending\",\"bucket\":\"Pending\",\"preRound\":\"\",\"encounter\":\"\",\"note\":\"\",\"openTasks\":0,\"inTodaysSession\":true,\"snfCounts\":{\"done\":0,\"re.",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-20-S11/cells-main.json",
+      "runs/2026-10-14-local/manual/evidence/TC-20-S11/dashboard-hosp.png",
+      "runs/2026-10-14-local/manual/evidence/TC-20-S11/dashboard-snf.png",
+      "runs/2026-10-14-local/manual/evidence/TC-20-S11/dashboard-tiles.json",
+      "runs/2026-10-14-local/manual/evidence/TC-20-S11/rows-after-lifecycle.json"
+    ],
+    "counts": {
+      "judged": 10,
+      "pass": 8,
+      "fail": 2,
+      "recorded": 5,
+      "notRun": 1,
+      "notDiscriminating": 0
+    },
+    "cells": [
+      {
+        "part": "main",
+        "cell": "(a) note 17 h: Complete and the chart still shows the note",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "pass",
+        "expected": "Complete + note shown",
+        "actual": {
+          "status": "complete",
+          "bucket": "Complete",
+          "preRound": "",
+          "encounter": "",
+          "note": "QA-S11-NOTE-17",
+          "openTasks": 0
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(a) note 19 h: bucket after the note left the chart (Q4)",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "record",
+        "expected": "judged after Q4",
+        "actual": {
+          "status": "pending",
+          "bucket": "Pending",
+          "preRound": "",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(b) pre-round 11 h: In Progress and the pre-round text is on the chart",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "fail",
+        "expected": "In Progress + text",
+        "actual": {
+          "status": "pending",
+          "bucket": "Pending",
+          "preRound": "QA-S11-PR-11",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0,
+          "preRoundAtUtc": "2026-10-13T19:59:32.344Z",
+          "readAtUtc": "2026-10-14T06:59:32.344Z"
+        },
+        "note": "the server's UTC midnight fell between the Save Note and the read: the server-day rule turned the badge back to Pending while the 12 h text is still on the chart (whose day counts is Q9)"
+      },
+      {
+        "part": "main",
+        "cell": "(b) pre-round 13 h: text cleared by the clock; bucket (Q10: counted as work in progress?)",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "record",
+        "expected": "judged after Q10",
+        "actual": {
+          "status": "pending",
+          "bucket": "Pending",
+          "preRound": "",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(b) pre-rounded 05:00 UTC read at 18:00 UTC the same server day",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "it is 06:59 UTC now: a stamp 13 h back crosses the server's midnight; rerun after 13:00 UTC (22:00 JST)"
+      },
+      {
+        "part": "main",
+        "cell": "(b) pre-rounded on the previous server day: back to Pending after the server-day change, chart empty",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "pass",
+        "expected": "Pending + no text",
+        "actual": {
+          "status": "pending",
+          "bucket": "Pending",
+          "preRound": "",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(c) seen, encounter 17 h: In Progress and the encounter is on the chart",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "pass",
+        "expected": "In Progress + encounter",
+        "actual": {
+          "status": "seen",
+          "bucket": "In Progress",
+          "preRound": "",
+          "encounter": "QA-S11-ENC-17",
+          "note": "",
+          "openTasks": 0
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(c) seen, encounter 19 h: encounter left the working tab; bucket (Q10)",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "record",
+        "expected": "judged after Q10",
+        "actual": {
+          "status": "seen",
+          "bucket": "In Progress",
+          "preRound": "",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(c) seen, encounter 36 h: encounter left the working tab; bucket (Q10)",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "record",
+        "expected": "judged after Q10",
+        "actual": {
+          "status": "seen",
+          "bucket": "In Progress",
+          "preRound": "",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(d) open task 35 h after last processing: still counted on the row",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "pass",
+        "expected": "1 open task",
+        "actual": 1
+      },
+      {
+        "part": "main",
+        "cell": "(d) open task 37 h after last processing: the row's pending task count drops it",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "fail",
+        "expected": "0 open tasks",
+        "actual": 1
+      },
+      {
+        "part": "main",
+        "cell": "(e) NH pre-round 11 h: In Progress and the text is on the chart",
+        "req": "U5",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "In Progress + text",
+        "actual": {
+          "status": "pre-rounded",
+          "bucket": "In Progress",
+          "preRound": "QA-S11-NPR-11",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0,
+          "inTodaysSession": true
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(e) NH pre-round 13 h: bucket matches the emptied chart (not In Progress)",
+        "req": "U5",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "Pending + no text",
+        "actual": {
+          "status": "pending",
+          "bucket": "Pending",
+          "preRound": "",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0,
+          "inTodaysSession": true
+        }
+      },
+      {
+        "part": "main",
+        "cell": "(f) NH resident marked In Today and completed on the previous server day: In Today and its bucket this morning (Q3 / Q4)",
+        "req": "T4",
+        "gate": null,
+        "verdict": "record",
+        "expected": "In Today follows today's attendance; judged after Q3/Q4",
+        "actual": {
+          "status": "pending",
+          "bucket": "Pending",
+          "preRound": "",
+          "encounter": "",
+          "note": "",
+          "openTasks": 0,
+          "inTodaysSession": true,
+          "snfCounts": {
+            "done": 0,
+            "ready": true,
+            "today": 3,
+            "todayDone": 0,
+            "total": 3
+          }
+        }
+      },
+      {
+        "part": "main",
+        "cell": "Hospital dashboard tiles = the rows' buckets",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "pass",
+        "expected": "{\"total\":10,\"pending\":6,\"inProgress\":3,\"complete\":1}",
+        "actual": "Total 10 Pending 6 In Progress 3 Complete 1"
+      },
+      {
+        "part": "main",
+        "cell": "Nursing Home dashboard tiles = the rows' buckets",
+        "req": "U1",
+        "gate": "blocked: TFA-92598 in progress",
+        "verdict": "pass",
+        "expected": "{\"total\":3,\"pending\":2,\"inProgress\":1,\"complete\":0}",
+        "actual": "Total 3 Pending 2 In Progress 1 Complete 0"
+      }
+    ],
+    "productIssue": "Gated (U1: TFA-92598 in progress); whose day counts is Q9. A Hospital patient pre-rounded 11 h ago (19:xx UTC, 04:xx Tokyo) and read at 06:xx UTC has gone back to Pending. Pending means 'not yet prepped', yet the pre-round text is still on the chart. The server-day rule resets the badge at the server's UTC midnight, not at the physician's day or the 12 h window. In Tokyo a pre-round done before 09:00 flips at 09:00. In New York every pre-round still showing at 20:00 that evening flips then. Also known: an open task 37 h after the last processing is still counted on the row (no Hospital open-task window on main, TFA-94699).",
+    "runNote": "Re-run 15:59 JST (06:59 UTC) on the current spec (Hospital bucket cells tagged U1): same observations as the 05:52 UTC run, no relabelling. The '05:00 UTC read at 18:00 UTC the same server day' cell can only run after 13:00 UTC (22:00 JST) and is not run."
+  }
+}

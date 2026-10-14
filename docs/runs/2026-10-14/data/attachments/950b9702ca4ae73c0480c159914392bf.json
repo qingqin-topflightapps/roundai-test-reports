@@ -1,0 +1,49 @@
+{
+  "TC-22/S25": {
+    "ref": "TC-22/S25",
+    "method": "CODEREVIEW",
+    "secondary": "STATIC",
+    "status": "needs-doc",
+    "verdict": "fail",
+    "agreed": true,
+    "why": "both runs agree",
+    "halves": {
+      "code": "fail (wording differences)",
+      "Vikram's approval of each difference": "DOC: not run in this lane"
+    },
+    "newFindings": [],
+    "knownGapsConfirmed": [],
+    "signoff": true,
+    "detail": "tasks/system.md (v1.1) matches the p72 TASK_SYSTEM_PROMPT (line 2433) word for word. That includes the four-category whitelist, the 'EVERYTHING ELSE IS NOT A TASK: monitoring/trending instructions, … future conditional considerations' line and the B2-N7 'STATUS IS NOT A TASK' rule. So the app keeps Vikram's own exclusion of conditional and monitoring orders. That clashes with U5/U7, but it is a UAT-vs-prompt conflict to list for Q1 (pending:Q1), not a port deviation.\n\nThe other two prompts each lost one prototype sentence:\n1. encounter-review.md drops 'A bare \"continue [medication]\" is STATUS, not a task — never create a task for it.' In p72 (line 7273) it ends the 'Only add NEW tasks…' paragraph. In the library (line 17) that paragraph ends at '\"continue current plan\".'\n2. post-note.md drops 'A bare continuation (\"continue X\", \"will continue to follow\") is STATUS, not a task — never create a task for continuing an existing therapy.' In p72 it sits between 'Extract only specific physician action items.' and 'Return ONLY valid JSON' (lines 7690 and 7859). In the library (line 12) those two sentences run straight together.\n\nNo code under apps/web adds either sentence back at runtime (grep finds no match). The static diff also lists the 'cleaned_notes' sentence (p72 lines 5591/11641) as missing from encounter-review. That is a false positive: it belongs to the pre-round notes cleanup prompt, not the task prompts.\n\nUnder the question's rule, any wording difference fails, and these two dropped sentences are decided now. Whether Vikram approved them is a separate half for a person to check. No recorded gap applies.",
+    "detailRun2": "The system role, tasks/system.md (v1.1), matches the prototype's TASK_SYSTEM_PROMPT at p72 line 2433 word for word. That includes the four-category STRICT WHITELIST and the \"STATUS IS NOT A TASK (B2-N7…)\" paragraph.\n\nThe two user prompts each drop one prototype sentence:\n- **Encounter review:** p72 line 7273 ends with 'A bare \"continue [medication]\" is STATUS, not a task — never create a task for it.' That sentence is missing from encounter-review.md line 17.\n- **Post-note harvest:** p72 lines 7690 and 7859 contain 'A bare continuation (\"continue X\", \"will continue to follow\") is STATUS, not a task — never create a task for continuing an existing therapy.' That sentence is missing from post-note.md line 12.\n\nNothing else in apps/web/convex adds either sentence back. So the fail rests on these two dropped sentences. They are new gaps, and the matrix has no recorded gap for them. Whether Vikram approved the change is the person-run half.\n\nThe static diff also lists a third missing sentence, 'Return ONLY valid JSON: {\"cleaned_notes\"…}' (p72 lines 5591 and 11641). That is a false positive: it belongs to the pre-round notes cleanup prompt, not to a task prompt.\n\nOn conditional orders and monitoring, the prototype's own system prompt says 'EVERYTHING ELSE IS NOT A TASK: monitoring/trending instructions, … future conditional considerations (\"may consider a beta blocker if heart rate stays stable\")…'. The app keeps this word for word at system.md line 14. That is Vikram's wording, not a port deviation. It clashes with U5 and U7, so it is listed for Q1 (pending:Q1) and does not decide S04 or S05.",
+    "physicianImpact": "The encounter-review and post-note task prompts no longer carry the prototype's explicit instruction that \"continue X\" is a status. A physician may therefore see more tasks like \"Continue heparin\" that only restate ongoing therapy. Separately, conditional orders (\"advance diet if pain < 4\") and monitoring orders still produce no task, because the prototype prompt excludes them on purpose. / When a physician dictates \"continue the metoprolol\" or \"will continue to follow\", the encounter-review and post-note task steps no longer get the prototype's explicit rule against turning that into a task, so stray \"continue X\" tasks may show up. Separately, a conditional order (\"advance diet to clears if pain stays under 4\") or a monitoring order is still never made into a task, as in Vikram's prototype, which is the UAT conflict for Q1.",
+    "openQuestions": [
+      "Q1: UAT U5/U7 expect conditional and monitoring orders to become tasks, but Vikram's prototype prompt (and the app's system.md line 14) explicitly excludes them. Which one wins? Per the oracle this is listed for Q1 and does not decide S04/S05.",
+      "Did Vikram approve dropping the bare-continuation sentence from encounter-review and post-note (v1.1)? The system role's B2-N7 rule may partly cover it, but the wording is not the prototype's.",
+      "The static diff's 'cleaned_notes' entry (p72 5591/11641) is a false positive from the cleanup prompt. It is not a task-prompt difference.",
+      "Q1: the prototype and the app both exclude 'monitoring/trending instructions' and 'future conditional considerations' (system.md line 14), which conflicts with U5 and U7. This is listed for Q1 as a UAT-vs-prompt conflict, not a port deviation, and it does not decide S04/S05.",
+      "The static parity diff lists a third missing sentence ('Return ONLY valid JSON: {\"cleaned_notes\"…}', p72 lines 5591 and 11641). That sentence belongs to the pre-round notes cleanup prompt, not to the task prompts, so it is a false positive and is not counted as a difference here."
+    ],
+    "notDecidableByCode": [
+      "Vikram's approval of each difference (DOC)",
+      "Whether Vikram approved each wording difference (the person-run half of this scenario).",
+      "How Q1 resolves the UAT-vs-prompt conflict on conditional and monitoring orders.",
+      "Whether Vikram approved dropping the 'bare continuation is STATUS, not a task' sentences from the encounter-review and post-note prompts.",
+      "Whether the conditional and monitoring exclusion should be kept (prompt wins) or changed to meet U5/U7 (UAT wins). This is Q1."
+    ],
+    "checkedFindings": [
+      6,
+      6
+    ],
+    "discardedFindings": [
+      0,
+      0
+    ],
+    "costUsd": 0.39435,
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-22-S25.json",
+      "runs/2026-10-14-local/code-review/raw/TC-22-S25.raw.json"
+    ],
+    "needsDoc": "Vikram's approval on record for each wording difference listed in the findings"
+  }
+}

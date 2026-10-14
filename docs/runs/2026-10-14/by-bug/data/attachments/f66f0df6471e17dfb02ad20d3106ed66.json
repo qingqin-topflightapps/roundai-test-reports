@@ -1,0 +1,13 @@
+{
+  "TC-01/S06": {
+    "status": "failed",
+    "detail": "N1 (admitted today, 0 prior), N3 (1 prior), N4 (2 prior), N5 (4 prior on distinct days) seeded on a fresh account; on Today's Visits and All Residents no card shows any visit number (no 'Visit N', 'Day N' or similar), so N1 < N3 < N4 < N5 cannot hold under either Q3 reading.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s06.json",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s06-nh-today.png",
+      "runs/2026-10-14-local/newspec-a/evidence/tc01-s06-nh-all.png",
+      "runs/2026-10-14-local/newspec-a/final2.json"
+    ],
+    "productIssue": "A physician looking at the Nursing Home list sees no visit number on any resident card (cards show unit, age, stored diagnosis, status and admission badge only), so a resident on their 5th visit looks the same as one admitted today. Breaks UAT TC-01 Expected Result: 'the hospital day or visit number. The day/visit number advances each calendar day and must not stay frozen' (TFA-92579 AC 3/4)."
+  }
+}

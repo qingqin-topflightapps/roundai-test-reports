@@ -1,0 +1,521 @@
+{
+  "ref": "TC-18/S04",
+  "method": "CODEREVIEW",
+  "status": "known-gap",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "In convex/ai/billingCodes.ts and convex/ai/notes.ts (suggestBilling and its callers in src, e.g. useBillingSuggestion): is the billing code family keyed only on the note template, or can the admission-status badge (encounterType), the note's wording or the model's answer change the family? Give the family the code computes for cell d1-new-soap (template SOAP progress with a New Admission badge) and cell d2-consult-soap (SOAP progress with a Consult badge). Also: for a discharge note with no time in it, does the code ask for the time rather than pick a code? Which families exist for Nursing Home templates?",
+  "rule": {
+    "pass": "the family depends only on the note template, and a discharge note with no time asks for the time",
+    "fail": "the badge or anything else can change the family, or a timeless discharge gets a code",
+    "basis": [
+      "Every code comes from the template's family",
+      "a discharge with no time still asks for the time",
+      "On main the badge is part of the family key"
+    ]
+  },
+  "halves": {
+    "code": "fail",
+    "billing-ai cells d1-d8 and traps i1-i5": "lane B billing-ai runner (AICHECK): not run in this lane"
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [
+    {
+      "run": 1,
+      "label": "known:badge-family",
+      "claim": "The hospital family depends on the badge: a Consult badge gives 99252-99255 and a New Admission badge gives 99221-99223, even when the template is SOAP progress. So d1-new-soap computes 99221-99223 and d2-consult-soap computes 99252-99255, not 99231-99233.",
+      "at": "apps/web/convex/ai/billingCodes.ts:58",
+      "gap": "badge-family"
+    },
+    {
+      "run": 1,
+      "label": "known:badge-family",
+      "claim": "A New Admission badge switches a SOAP progress note to the initial-care family.",
+      "at": "apps/web/convex/ai/billingCodes.ts:61",
+      "gap": "badge-family"
+    },
+    {
+      "run": 1,
+      "label": "known:badge-family",
+      "claim": "The client sends the badge, as read on the day, to the billing action.",
+      "at": "apps/web/src/features/rounding/patient/useBillingSuggestion.ts:148",
+      "gap": "badge-family"
+    },
+    {
+      "run": 1,
+      "label": "known:no-discharge-time-prompt",
+      "claim": "A discharge note maps to 99238/99239, but the model picks between them. Nothing checks for a time in the note or asks for one, so a discharge note with no time still gets a code.",
+      "at": "apps/web/convex/ai/billingCodes.ts:55",
+      "gap": "no-discharge-time-prompt"
+    },
+    {
+      "run": 1,
+      "label": "known:no-snf-consult-discharge-family",
+      "claim": "Only two Nursing Home families exist: snf-admission gives 99304-99306 and every other SNF template gives 99307-99310. There is no SNF discharge family (99315/99316), and an SNF consult falls into the follow-up family.",
+      "at": "apps/web/convex/ai/billingCodes.ts:53",
+      "gap": "no-snf-consult-discharge-family"
+    },
+    {
+      "run": 2,
+      "label": "known:badge-family",
+      "claim": "A Consult badge forces the 99252-99255 consult family whatever the template is, so d2-consult-soap (SOAP + Consult badge) gets 99252-99255 instead of 99231-99233.",
+      "at": "apps/web/convex/ai/billingCodes.ts:58",
+      "gap": "badge-family"
+    },
+    {
+      "run": 2,
+      "label": "known:badge-family",
+      "claim": "A New Admission badge forces 99221-99223 whatever the template is, so d1-new-soap (SOAP + New Admission badge) gets 99221-99223 instead of 99231-99233.",
+      "at": "apps/web/convex/ai/billingCodes.ts:61",
+      "gap": "badge-family"
+    },
+    {
+      "run": 2,
+      "label": "known:badge-family",
+      "claim": "The client sends the badge, read from patient.encType, to suggestBilling on purpose ('Priced as the badge reads it').",
+      "at": "apps/web/src/features/rounding/patient/useBillingSuggestion.ts:108",
+      "gap": "badge-family"
+    },
+    {
+      "run": 2,
+      "label": "known:no-discharge-time-prompt",
+      "claim": "A discharge template maps to 99238/99239, and the model chooses between them from the description. No code path asks for the time or holds back a code when the time is missing.",
+      "at": "apps/web/convex/ai/billingCodes.ts:55",
+      "gap": "no-discharge-time-prompt"
+    },
+    {
+      "run": 2,
+      "label": "known:no-snf-consult-discharge-family",
+      "claim": "There are only two SNF families: snf-admission gives 99304-99306 and every other SNF template (including SNF consult and SNF discharge) gives 99307-99310. There is no 99315/99316 family.",
+      "at": "apps/web/convex/ai/billingCodes.ts:53",
+      "gap": "no-snf-consult-discharge-family"
+    }
+  ],
+  "pendingOn": [
+    "Q1"
+  ],
+  "againstThen": [
+    {
+      "run": 1,
+      "label": "half:billing-ai cells d1-d8 and traps i1-i5",
+      "claim": "The family is fixed on the server before the model runs, and the note text is not an input to the family lookup. So the word traps i1, i2, i4 and i5 cannot change the family; whether they sway the level is for the AI runner. Cell i3 (discharge, no time) will get a code instead of a prompt to ask for the time.",
+      "at": "apps/web/convex/ai/billingCodes.ts:47",
+      "half": "billing-ai cells d1-d8 and traps i1-i5"
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "The code fails this scenario. `billingCodeFamilyFor` (convex/ai/billingCodes.ts) does not key the family on the template alone. On the hospital side, a Consult badge (encounterType \"consult\") gives the consult family 99252-99255 and a New Admission badge (\"new\") gives the initial-care family 99221-99223. Both checks come before the template falls through to the progress-note family 99231-99233. `useBillingSuggestion` sends the badge as read on the day, and `suggestBilling` passes it straight in.\n\n- **d1-new-soap** (SOAP progress, New Admission badge): the code computes 99221-99223 instead of 99231-99233.\n- **d2-consult-soap** (SOAP progress, Consult badge): the code computes 99252-99255.\n\nThat is the recorded gap known:badge-family. The note's wording and the model's answer cannot change the family. The family is computed on the server before the model runs, and any code outside it is rejected (\"Billing model returned a code outside the allowed family\"). Whether the wording or an instruction in the note sways the level inside the family is for the billing-ai runner.\n\n**Discharge:** a discharge note maps to 99238/99239, but nothing asks for the time. The model always returns a code, so a discharge note with no time still gets one (recorded gap known:no-discharge-time-prompt).\n\n**Nursing Home:** only two families exist. snf-admission gives 99304-99306, and every other SNF template gives 99307-99310. So an SNF consult or SNF discharge note is billed as a follow-up visit, never 99304-99306 or 99315/99316 (recorded gap known:no-snf-consult-discharge-family).\n\n**Consult note:** the code gives a Consult note 99252-99255, but U1 says 99221-99223. The oracle hands that cell to Q1.\n\nThe verdict is fail because the badge and discharge failures are decided now and wait on no question."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "The billing code family is not keyed only on the note template. In convex/ai/billingCodes.ts, `billingCodeFamilyFor` takes the care setting, the template and the encounterType (the admission-status badge). For hospital patients, a Consult badge gives 99252-99255 and a New Admission badge gives 99221-99223, even when the template is SOAP progress.\n\n- **Cell d1-new-soap** (SOAP template, New Admission badge): the code computes Initial hospital care, 99221-99223. The oracle wants 99231-99233.\n- **Cell d2-consult-soap** (SOAP template, Consult badge): the code computes Inpatient consultation, 99252-99255. The oracle wants 99231-99233.\n- **Where the badge comes from:** `useBillingSuggestion` reads it from `patient.encType` and sends it to `suggestBilling`. This is the recorded gap known:badge-family.\n- **Note wording and model answer:** neither can change the family. The note text is only placed in the prompt, and the server rejects any code outside the family with an error. Whether the model actually ignores the trap wording is for lane B to check.\n- **Discharge with no time:** nothing asks for the time. A discharge template maps to 99238/99239, and the model picks the code from the family description. There is no \"≤ 30 min / > 30 min\" prompt (known:no-discharge-time-prompt).\n- **Nursing Home families:** only two exist. `snf-admission` gives 99304-99306; every other SNF template, including SNF consult and SNF discharge, gives 99307-99310. There is no 99315/99316 family (known:no-snf-consult-discharge-family).\n- **Consult template:** a Consult-template note always maps to 99252-99255. Which family is correct is open question Q1.\n\nThe verdict is fail now because the badge-family gap waits on no open question."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The hospital family depends on the badge: a Consult badge gives 99252-99255 and a New Admission badge gives 99221-99223, even when the template is SOAP progress. So d1-new-soap computes 99221-99223 and d2-consult-soap computes 99252-99255, not 99231-99233.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 58,
+          "quote": "if (noteTemplate === \"consult\" || encounterType === \"consult\") {",
+          "supports": "fail",
+          "label": "known:badge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "A New Admission badge switches a SOAP progress note to the initial-care family.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 61,
+          "quote": "if (noteTemplate === \"hp\" || encounterType === \"new\") {",
+          "supports": "fail",
+          "label": "known:badge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The client sends the badge, as read on the day, to the billing action.",
+          "file": "apps/web/src/features/rounding/patient/useBillingSuggestion.ts",
+          "line": 148,
+          "quote": "...(encounterType ? { encounterType } : {}),",
+          "supports": "fail",
+          "label": "known:badge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The server passes the badge into the family lookup.",
+          "file": "apps/web/convex/ai/notes.ts",
+          "line": 263,
+          "quote": "const family = billingCodeFamilyFor(",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The model's answer cannot change the family: any code outside the allowed family is rejected. The note text only reaches the prompt and does not feed the family lookup.",
+          "file": "apps/web/convex/ai/notes.ts",
+          "line": 287,
+          "quote": "if (!family.allowedCodes.includes(code)) {",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "A discharge note maps to 99238/99239, but the model picks between them. Nothing checks for a time in the note or asks for one, so a discharge note with no time still gets a code.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 55,
+          "quote": "if (noteTemplate === \"discharge\") {\n    return HOSPITAL_DISCHARGE;",
+          "supports": "fail",
+          "label": "known:no-discharge-time-prompt",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Only two Nursing Home families exist: snf-admission gives 99304-99306 and every other SNF template gives 99307-99310. There is no SNF discharge family (99315/99316), and an SNF consult falls into the follow-up family.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 53,
+          "quote": "return noteTemplate === \"snf-admission\" ? SNF_INITIAL : SNF_SUBSEQUENT;",
+          "supports": "fail",
+          "label": "known:no-snf-consult-discharge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "A Consult note gets the inpatient consult family 99252-99255, while U1 says 99221-99223. The oracle hands this cell to Q1.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 29,
+          "quote": "\"Inpatient consultation: 99252 (straightforward), 99253 (low), 99254 (moderate), 99255 (high complexity)\"",
+          "supports": "fail",
+          "label": "pending:Q1",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Billing is requested from the browser as soon as a generated note is present.",
+          "file": "apps/web/src/features/rounding/patient/useBillingSuggestion.ts",
+          "line": 143,
+          "quote": "const resp = await suggestBilling({",
+          "supports": "context",
+          "label": "known:billing-in-browser",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The family is fixed on the server before the model runs, and the note text is not an input to the family lookup. So the word traps i1, i2, i4 and i5 cannot change the family; whether they sway the level is for the AI runner. Cell i3 (discharge, no time) will get a code instead of a prompt to ask for the time.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 47,
+          "quote": "export function billingCodeFamilyFor(",
+          "supports": "fail",
+          "label": "half:billing-ai cells d1-d8 and traps i1-i5",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The family function takes the badge (encounterType) as a key next to the template.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 47,
+          "quote": "export function billingCodeFamilyFor(",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "A Consult badge forces the 99252-99255 consult family whatever the template is, so d2-consult-soap (SOAP + Consult badge) gets 99252-99255 instead of 99231-99233.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 58,
+          "quote": "if (noteTemplate === \"consult\" || encounterType === \"consult\") {",
+          "supports": "fail",
+          "label": "known:badge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "A New Admission badge forces 99221-99223 whatever the template is, so d1-new-soap (SOAP + New Admission badge) gets 99221-99223 instead of 99231-99233.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 61,
+          "quote": "if (noteTemplate === \"hp\" || encounterType === \"new\") {",
+          "supports": "fail",
+          "label": "known:badge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The client sends the badge, read from patient.encType, to suggestBilling on purpose ('Priced as the badge reads it').",
+          "file": "apps/web/src/features/rounding/patient/useBillingSuggestion.ts",
+          "line": 108,
+          "quote": "// Priced as the badge reads it (TFA-92584): a New Admission or Consult set",
+          "supports": "fail",
+          "label": "known:badge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The badge is passed into the server action call.",
+          "file": "apps/web/src/features/rounding/patient/useBillingSuggestion.ts",
+          "line": 148,
+          "quote": "...(encounterType ? { encounterType } : {}),",
+          "supports": "context",
+          "label": "known:badge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The server rejects any model code outside the family, so the model's answer or an instruction in the note cannot change the family; at worst the request fails.",
+          "file": "apps/web/convex/ai/notes.ts",
+          "line": 287,
+          "quote": "if (!family.allowedCodes.includes(code)) {",
+          "supports": "pass",
+          "label": "half:billing-ai cells d1-d8 and traps i1-i5",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "A discharge template maps to 99238/99239, and the model chooses between them from the description. No code path asks for the time or holds back a code when the time is missing.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 55,
+          "quote": "if (noteTemplate === \"discharge\") {\n    return HOSPITAL_DISCHARGE;",
+          "supports": "fail",
+          "label": "known:no-discharge-time-prompt",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "There are only two SNF families: snf-admission gives 99304-99306 and every other SNF template (including SNF consult and SNF discharge) gives 99307-99310. There is no 99315/99316 family.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 53,
+          "quote": "return noteTemplate === \"snf-admission\" ? SNF_INITIAL : SNF_SUBSEQUENT;",
+          "supports": "fail",
+          "label": "known:no-snf-consult-discharge-family",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "A Consult-template note always gets the 99252-99255 consult family. Whether that is correct (rather than 99221-99223) is open question Q1.",
+          "file": "apps/web/convex/ai/billingCodes.ts",
+          "line": 29,
+          "quote": "\"Inpatient consultation: 99252 (straightforward), 99253 (low), 99254 (moderate), 99255 (high complexity)\"",
+          "supports": "fail",
+          "label": "pending:Q1",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Billing runs from a client hook when a generated note exists, not on the server at Generate.",
+          "file": "apps/web/src/features/rounding/patient/useBillingSuggestion.ts",
+          "line": 143,
+          "quote": "const resp = await suggestBilling({",
+          "supports": "context",
+          "label": "known:billing-in-browser",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "A doctor who writes a SOAP progress note for a patient marked New Admission or Consult is offered an initial-care code (99221-99223) or a consult code (99252-99255) instead of a progress code (99231-99233), which risks wrong billing. A discharge note with no time in it gets a code without asking, and Nursing Home discharge and consult notes are billed as follow-up visits. / If the badge says New Admission or Consult but the doctor wrote a SOAP progress note, the app suggests an initial-care code (99221-99223) or a consult code (99252-99255) instead of a progress-note code (99231-99233), which risks overbilling. For a discharge note with no time in it, the app picks 99238 or 99239 itself instead of asking whether the discharge took 30 minutes or less; SNF discharges and SNF consults are priced as follow-up visits (99307-99310).",
+  "openQuestions": [
+    "Q1: which family a Consult-template note belongs to. The code uses 99252-99255; U1 says 99221-99223 (some commercial payers accept 99252-99255).",
+    "Q1: which family a Consult-template note belongs to. The code maps it to 99252-99255; the oracle hands this to Q1 (cell d4).",
+    "The question's pass rule and the oracle agree here; both make d1 and d2 fail on the badge key."
+  ],
+  "notDecidableByCode": [
+    "billing-ai cells d1-d8 and traps i1-i5 (lane B billing-ai runner (AICHECK))",
+    "Whether the note's wording or an instruction in the note sways the model's level inside the family. That is for the billing-ai runner.",
+    "minQuotes, quotesInNote, noReasoning and levelMatchesCode on the model's output.",
+    "Whether the model ignores 'admitted', 'readmitted', 'follow-up' and in-note billing instructions when it picks the level within a family (lane B, traps i1-i5).",
+    "minQuotes, levelMatchesCode, quotesInNote and noReasoning in the model's output (oracle rules 4-8) depend on what the model returns at run time."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "7175a43ccf8e"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31455,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.1605302,
+      "turns": 8,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 35785,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.1544676,
+      "turns": 9,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:04:38.985Z"
+}

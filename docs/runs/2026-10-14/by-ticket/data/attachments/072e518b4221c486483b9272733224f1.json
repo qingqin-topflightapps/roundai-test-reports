@@ -1,0 +1,80 @@
+{
+  "scenario": {
+    "raw": "TC-19 S25 NN-2",
+    "tc": "TC-19",
+    "id": "S25",
+    "fixture": "NN-2"
+  },
+  "outputType": "note",
+  "mode": "Nursing Home",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "resident tolerating oral intake and resuming home medications as appropriate.",
+          "source_quote": "no source",
+          "why": "The sources mention only one drug, metformin, being restarted. Nothing supports resuming 'home medications' in general. The reason given in 'Metformin restarted today given improved oral tolerance' is also inferred, not dictated.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "resident tolerating oral intake and resuming home medications as appropriate.",
+          "source_quote": "no source",
+          "why": "The sources mention only one drug being restarted (metformin). Nothing says metformin is a home medication, and nothing supports more than one medication being resumed. The causal claim 'Metformin restarted today given improved oral tolerance' is also an inference: the dictation puts the two facts side by side but never gives a reason.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    }
+  ],
+  "needsPerson": [],
+  "kitOnlyFails": []
+}

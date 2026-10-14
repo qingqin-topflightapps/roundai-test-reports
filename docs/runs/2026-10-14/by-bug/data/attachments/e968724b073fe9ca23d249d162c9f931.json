@@ -1,0 +1,43 @@
+{
+  "name": "tc19-s27-a",
+  "at": "2026-10-14T07:54:07.731Z",
+  "checks": [
+    {
+      "id": "(a) a visible message names medications",
+      "ok": true,
+      "detail": "Notes saved, but medication extraction failed. Tap again to retry."
+    },
+    {
+      "id": "(a) the encounter text stays in the box",
+      "ok": true,
+      "detail": "Hold the apixaban, procedure tomorrow."
+    },
+    {
+      "id": "(a) the encounter text is stored",
+      "ok": true,
+      "detail": "Hold the apixaban, procedure tomorrow."
+    },
+    {
+      "id": "(a) the medication rows deep-equal the rows before",
+      "ok": true,
+      "detail": "[{\"name\":\"Apixaban 5 mg BID\",\"status\":\"active\"}]"
+    },
+    {
+      "id": "(a) the retry gives exactly one Held apixaban row",
+      "ok": true,
+      "detail": "[{\"name\":\"Apixaban 5 mg BID\",\"status\":\"held\",\"changeType\":\"held\",\"changeDate\":\"Oct 14\",\"changedNote\":\"Apixaban held, procedure tomorrow\"}]"
+    }
+  ],
+  "data": {
+    "rowsAfterRetry": [
+      {
+        "name": "Apixaban 5 mg BID",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 14",
+        "changedNote": "Apixaban held, procedure tomorrow"
+      }
+    ],
+    "medExtractCalls": 2
+  }
+}

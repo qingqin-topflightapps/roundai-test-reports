@@ -1,0 +1,94 @@
+- generic [ref=e8]:
+  - generic [ref=e9]: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+  - generic [ref=e391]:
+    - generic [ref=e393]:
+      - button "Back" [ref=e394]
+      - generic [ref=e397]:
+        - heading "Add Patient" [level=1] [ref=e398]
+        - paragraph [ref=e399]: Add to today's rounding list
+    - generic [ref=e400]:
+      - generic [ref=e401]:
+        - generic [ref=e402]:
+          - generic [ref=e403]: Smart dictation
+          - button "Dictate all" [ref=e408]
+        - paragraph [ref=e412]: Say it in one breath — “Margaret Chen, 72, room 4B-12, CHF exacerbation, day 3” — and the fields below fill in. Anything you have already typed is left alone.
+      - generic [ref=e413]:
+        - heading "Patient" [level=3] [ref=e416]
+        - generic [ref=e417]:
+          - generic [ref=e418]:
+            - generic [ref=e419]: Full Name*
+            - generic [ref=e420]:
+              - textbox "Full Name*" [ref=e421]:
+                - /placeholder: e.g. Margaret Chen
+              - button "Dictate" [ref=e422]
+          - generic [ref=e426]:
+            - generic [ref=e427]:
+              - generic [ref=e428]: Age*
+              - textbox "Age*" [ref=e429]:
+                - /placeholder: e.g. 72
+            - generic [ref=e430]:
+              - generic [ref=e431]: Room*
+              - textbox "Room*" [ref=e432]:
+                - /placeholder: e.g. 4B-12
+          - generic [ref=e433]:
+            - generic [ref=e434]: MRN
+            - textbox "MRN" [ref=e435]:
+              - /placeholder: Optional
+            - paragraph [ref=e436]: Auto-generated if left blank
+      - generic [ref=e437]:
+        - heading "Encounter" [level=3] [ref=e440]
+        - generic [ref=e441]:
+          - generic [ref=e442]:
+            - generic [ref=e443]: Diagnosis*
+            - generic [ref=e444]:
+              - textbox "Diagnosis*" [ref=e445]:
+                - /placeholder: e.g. CHF exacerbation
+              - button "Dictate" [ref=e446]
+          - generic [ref=e450]:
+            - generic [ref=e451]:
+              - generic [ref=e452]: Encounter Type
+              - combobox "Encounter Type" [ref=e453]:
+                - option "New Admission"
+                - option "Follow-Up" [selected]
+                - option "Consult"
+            - generic [ref=e454]:
+              - generic [ref=e455]: Hospital Day
+              - textbox "Hospital Day" [ref=e456]:
+                - /placeholder: "0"
+                - text: "0"
+          - generic [ref=e457]:
+            - generic [ref=e458]:
+              - generic [ref=e459]: Admit Date
+              - textbox "Admit Date" [ref=e460]:
+                - /placeholder: e.g. Apr 4
+              - paragraph [ref=e461]: Defaults from hospital day
+            - generic [ref=e462]:
+              - generic [ref=e463]: Specialty
+              - combobox "Specialty" [ref=e464]:
+                - option "General Internal Medicine" [selected]
+                - option "Hospital Medicine"
+                - option "Cardiology"
+                - option "Pulmonology"
+                - option "Nephrology"
+                - option "Neurology"
+                - option "Gastroenterology"
+                - option "Oncology"
+                - option "Surgery"
+                - option "Orthopedics"
+                - option "Pediatrics"
+                - option "Critical Care"
+                - option "Other"
+      - generic [ref=e465]:
+        - generic [ref=e467]:
+          - heading "Current Medications" [level=3] [ref=e468]
+          - generic [ref=e469]: "0"
+        - generic [ref=e471]:
+          - textbox "e.g. Metoprolol 25mg PO BID" [ref=e472]
+          - button "Add" [disabled]
+      - generic [ref=e473]:
+        - generic [ref=e474]:
+          - heading "Admission Notes" [level=3] [ref=e476]
+          - button "Dictate" [ref=e477]
+        - textbox "Dictate or type the admission story — presentation, findings, initial plan. This becomes the patient's background summary." [ref=e482]
+        - paragraph [ref=e483]: Optional. When present it is summarised into the patient's background; if that fails, a plain factual line is used instead.
+    - button "Add Patient to Rounds" [ref=e485]

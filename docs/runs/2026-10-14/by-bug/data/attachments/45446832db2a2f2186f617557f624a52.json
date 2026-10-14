@@ -1,0 +1,24 @@
+{
+  "TC-25/S24a": {
+    "status": "failed",
+    "detail": "Failed on a cell that ran; partial — the Generate cells (note date, transcriptDate, prior transcripts) NOT RUN. Phone in Pacific/Honolulu with its clock one day ahead (signed in on that device) vs computer on the real clock, chart set New Admission on the server's yesterday (both show Follow-up): the Hospital card on the computer shows 'NEW TODAY', the phone's does not; chart headers equal; NH equal. Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13); those cells run only with QA_ALLOW_LOCAL_GENERATE=1.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc25-s24a/hospital.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s24a/snf.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s24a/hospital-phone-list.png"
+    ],
+    "productIssue": "Known TFA-92584 AC 8: the same Hospital patient shows 'New today' on the computer but not on a phone whose clock is a day ahead (the badge is decided by each device's clock).",
+    "known": "TFA-92584 AC 8",
+    "partial": {
+      "needs": [
+        "generate"
+      ],
+      "notRun": [
+        "note date",
+        "transcriptDate",
+        "prior transcripts"
+      ],
+      "note": "Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13); those cells run only with QA_ALLOW_LOCAL_GENERATE=1."
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "ref": "TC-13/S16",
+  "part": "main",
+  "at": "2026-10-14T05:24:00.092Z",
+  "method": "T0 = now − 37 h, activity at now − 7 h; one chart per variant; prior-note import = real extractPriorNote + the app's buildPriorNoteExtractionPatch; applyLifecycle as on page load",
+  "liveCalls": 1,
+  "cells": [
+    {
+      "cell": "never processed: vital not refreshed since T0 cleared",
+      "expected": "cleared",
+      "actual": null,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "never processed: lab not refreshed since T0 cleared",
+      "expected": "cleared",
+      "actual": null,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "never processed: imaging not refreshed since T0 cleared",
+      "expected": "cleared",
+      "actual": false,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "never processed: active med not mentioned since T0 cleared",
+      "expected": "cleared",
+      "actual": false,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "never processed: held med cleared",
+      "expected": "cleared",
+      "actual": false,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "never processed: open task cleared",
+      "expected": "cleared",
+      "actual": true,
+      "verdict": "fail",
+      "req": "U10"
+    },
+    {
+      "cell": "processed at 30 h, no new value: vital still cleared (processing is not a refresh)",
+      "expected": "cleared",
+      "actual": null,
+      "verdict": "pass",
+      "req": "T2"
+    },
+    {
+      "cell": "processed at 30 h, no new value: lab still cleared",
+      "expected": "cleared",
+      "actual": null,
+      "verdict": "pass",
+      "req": "T2"
+    },
+    {
+      "cell": "processed at 30 h, no new value: imaging still cleared",
+      "expected": "cleared",
+      "actual": false,
+      "verdict": "pass",
+      "req": "T2"
+    },
+    {
+      "cell": "processed at 30 h: active med not mentioned since T0 cleared",
+      "expected": "cleared",
+      "actual": false,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "processed at 30 h: held med kept",
+      "expected": "kept",
+      "actual": true,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "processed at 30 h: open task kept",
+      "expected": "kept",
+      "actual": true,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "vital refreshed with a new value at 30 h: kept",
+      "expected": "kept (134/80)",
+      "actual": "134/80",
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "lab refreshed at 30 h: kept",
+      "expected": "kept (Cr 1.4)",
+      "actual": "1.4",
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "imaging refreshed at 30 h: kept",
+      "expected": "kept",
+      "actual": true,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "active med mentioned at 30 h: kept",
+      "expected": "kept",
+      "actual": true,
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "lab panel: Cr refreshed at 30 h (1.4) kept",
+      "expected": "kept",
+      "actual": "1.4",
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "lab panel: K not refreshed since T0 (4.2) cleared",
+      "expected": "cleared",
+      "actual": "4.2",
+      "verdict": "fail",
+      "req": "U10"
+    },
+    {
+      "cell": "vitals: BP refreshed at 30 h kept",
+      "expected": "kept",
+      "actual": "132/78",
+      "verdict": "pass",
+      "req": "U10"
+    },
+    {
+      "cell": "vitals: temperature not refreshed since T0 cleared",
+      "expected": "cleared",
+      "actual": "99.1",
+      "verdict": "fail",
+      "req": "U10"
+    },
+    {
+      "cell": "import only at 30 h: T0's lab still cleared at 37 h",
+      "expected": "cleared (the import's old values are not a refresh)",
+      "actual": {
+        "labs": [
+          {
+            "name": "Cr",
+            "value": "1.1"
+          },
+          {
+            "name": "K",
+            "value": "4.2"
+          },
+          {
+            "name": "Creatinine",
+            "trend": "",
+            "value": "1.1"
+          }
+        ],
+        "labsUpdatedAt": "2026-10-13T22:23:50.211Z"
+      },
+      "verdict": "fail",
+      "req": "T2"
+    },
+    {
+      "cell": "import only at 30 h: T0's imaging still cleared at 37 h",
+      "expected": "cleared",
+      "actual": [
+        "QA-CXR-T0 chest X-ray: right lower lobe opacity",
+        "Chest X-ray October 9: bilateral pleural effusions"
+      ],
+      "verdict": "fail",
+      "req": "T2"
+    },
+    {
+      "cell": "import only at 30 h: labsUpdatedAt / radiologyUpdatedAt not moved by the import",
+      "expected": "labsUpdatedAt stays 2026-10-12T16:23:50.211Z",
+      "actual": {
+        "labsUpdatedAt": "2026-10-13T22:23:50.211Z",
+        "radiologyUpdatedAt": "2026-10-13T22:23:50.211Z"
+      },
+      "verdict": "fail",
+      "req": "T2"
+    },
+    {
+      "cell": "import only at 30 h: held med (Q8)",
+      "expected": "recorded",
+      "actual": "cleared",
+      "verdict": "record",
+      "req": "U10"
+    },
+    {
+      "cell": "import only at 30 h: open task (Q8)",
+      "expected": "recorded",
+      "actual": "kept",
+      "verdict": "record",
+      "req": "U10"
+    }
+  ]
+}

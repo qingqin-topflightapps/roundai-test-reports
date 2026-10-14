@@ -1,0 +1,115 @@
+{
+  "case": "TC-01-S16",
+  "title": "Trash icon opens an app-style pop-up that explains the delete; Cancel keeps the patient",
+  "needs": [
+    "permission-delete",
+    "permission-dialog",
+    "max-turns",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s16-n-popup.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "missing \"button \"Cancel\"\"",
+        "missing \"button \"OK\"\"",
+        "no match for /^\\s*- (alert)?dialog\\b/im"
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-n-popup-text.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "scope not found: subtree \"dialog\"",
+        "scope not found: subtree \"dialog\""
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-n-after-cancel.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-h-popup.md",
+      "verdict": "Fail",
+      "url": null,
+      "nativeDialog": {
+        "type": "confirm",
+        "message": "Remove QA TC-01-S16 QA Hosp NYZ4 from the rounding list?  This will delete all notes, vitals, and encounter data for this patient."
+      },
+      "problems": [
+        "missing \"button \"Cancel\"\"",
+        "missing \"button \"OK\"\"",
+        "no match for /^\\s*- (alert)?dialog\\b/im"
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-h-popup-text.md",
+      "verdict": "Pass",
+      "url": null,
+      "nativeDialog": {
+        "type": "confirm",
+        "message": "Remove QA TC-01-S16 QA Hosp NYZ4 from the rounding list?  This will delete all notes, vitals, and encounter data for this patient."
+      },
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "notes": [
+        "scopes ignored: a native-dialog checkpoint is judged on the dialog message only"
+      ]
+    },
+    {
+      "file": "s16-h-after-cancel.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 1,
+  "manual": [
+    "Consequence sentence in each pop-up (permanent; all of this patient's data; cannot be undone), until Q7: read s16-n-popup.png / s16-h-popup.png",
+    "The pop-up looks like the app UI, not a system alert: same screenshots"
+  ],
+  "agent": {
+    "turns": 22,
+    "costUsd": 0.12906659999999998,
+    "durationMs": 71140,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

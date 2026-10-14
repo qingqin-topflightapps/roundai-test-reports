@@ -1,0 +1,31 @@
+{
+  "TC-15/S19": {
+    "status": "record-only",
+    "detail": "desktop, iphone15, pixel7: record-only (oracle: visual-lane findings are evidence for a person, not Pass/Fail). Then-clause checks evaluated, not judged: 46 held, 6 did not. Record-only per the oracle ('evidence for a person … not Pass/Fail'). Then-clause checks (not judged): presets, input, Dictate and Ask AI have names (the input only via its placeholder; the close X has none — recorded); nothing in the sheet is off-screen at phone width; axe recorded for a person.",
+    "notMetUnjudged": [
+      {
+        "check": "the answer region is announced (live region)",
+        "where": [
+          "desktop:hospital-ask-answer",
+          "desktop:nh-ask-answer",
+          "iphone15:hospital-ask-answer",
+          "iphone15:nh-ask-answer",
+          "pixel7:hospital-ask-answer",
+          "pixel7:nh-ask-answer"
+        ],
+        "example": "answer is not in a role=status / aria-live region"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19/iphone15--hospital-ask-answer.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19/iphone15--hospital-encounter-ask-open.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19/iphone15--hospital-postround-ask-open.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-15_S19/iphone15--hospital-preround-ask-open.png"
+    ],
+    "productIssue": "Routed for a person (record-only): the answer that appears after 'Ask AI' is not in a live region (src/components/AskModal.tsx), so a screen-reader user who asks a question is not told the answer arrived (then: 'the answer region is announced')."
+  }
+}

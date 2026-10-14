@@ -1,0 +1,14 @@
+{
+  "TC-16/S25": {
+    "status": "record-only",
+    "detail": "Re-run 16:49 JST after review (3/3 judged parts pass, as in 3 earlier runs). (a) passed on its then: device clock 23:58 -> M1, fast-forward past midnight -> M2; server has M1 once under 'Oct 14 (prior)', M2 alone in Most Recent, panel 'Oct 14 (prior) 1 lines' + 'Most Recent 1 lines'. (b)/(c) pass but are only PARTLY covered: the spec writes the recovery record and reopens the chart, so the failed line is neither in the open page's live transcript nor on the server and the app always takes the 'not held, append' branch; the re-append vs 'already archived' decision the oracle names (failed line still in the open page, most at risk after midnight) never runs and needs the cloud recording/transcription path. Not a plain pass because (a)'s then conflicts with U9 (UAT 3.8, not gated): only the device crossed midnight - the server day was still 2026-10-14 (UTC and Tokyo) - yet the stored transcriptDate is 'Thu Oct 15 2026' (the device's day) and M1 became a prior entry. S25's then expects that roll; U9 says the server clock decides. Quinn to rule which governs (cross-reference TC-16 S19, the wrong-clock phone step).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s25-a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s25-b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s25-c.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s25-a-a.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s25-c-c.png"
+    ],
+    "productIssue": "If U9 governs: a physician whose device clock has passed midnight while the server's day has not (wrong clock, or a device ahead of the server day) records a bedside line; the line before it is moved to 'Oct 14 (prior)' and the new one is filed under the device's date (transcriptDate 'Thu Oct 15 2026' while the server day is 2026-10-14), for every device on the account. useEncounterCapture uses the device clock for the transcript day. Breaks UAT 3.8 / TC-16 U9 ('when a transcript becomes a prior entry ... use the server clock'); same root as the wrong-clock step of TC-16 S19 (a new finding against TFA-92594 per that oracle)."
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "ref": "TC-09/S10",
+  "title": "TC-09/S10 Today's Visits and All Residents page correctly, and an un-marked resident leaves only today",
+  "dataset": "bulk",
+  "target": "dev",
+  "at": "2026-10-14T08:48:06.511Z",
+  "cells": [
+    {
+      "name": "first page before 'Load more patients'",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": 50,
+        "loadMoreShown": true
+      },
+      "ref": "page size (app: 50)"
+    },
+    {
+      "name": "Today's Visits pages through every dataset resident once (52)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": 52,
+        "unique": 52
+      }
+    },
+    {
+      "name": "header counts the residents In Today (52)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "done": 0,
+        "today": 52
+      }
+    },
+    {
+      "name": "All Residents pages through every dataset resident once (52)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": 52
+      }
+    },
+    {
+      "name": "after un-marking, the resident leaves Today's Visits",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": 51
+      }
+    },
+    {
+      "name": "header today count drops by one (51)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "done": 0,
+        "today": 51
+      }
+    },
+    {
+      "name": "the un-marked resident stays in All Residents (total unchanged)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": 52
+      }
+    },
+    {
+      "name": "an added resident shows in All Residents (+1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": 53
+    },
+    {
+      "name": "removing it lowers the All Residents total again",
+      "kind": "judged",
+      "ok": true,
+      "detail": 52
+    }
+  ],
+  "shots": [
+    "evidence/TC-09-S10-all.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-09-S10-all.png": 0
+  }
+}

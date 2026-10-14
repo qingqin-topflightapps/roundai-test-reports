@@ -1,0 +1,14 @@
+{
+  "OAT-02/S20": {
+    "status": "record-only",
+    "judged": {
+      "total": 0,
+      "failed": 0
+    },
+    "preQaOnly": true,
+    "detail": "Pre-QA evidence only, not decidable here: the local stack is plain HTTP by design, so this run is never a Pass for U1 (UAT 4); a person decides U1 on the HTTPS acceptance build. Recorded: 1,512 requests over the walk (both lists, all tabs both modes, typed line, Ask AI preset 'What were today's labs?', Handoff, task review, NH Handoff): only localhost:6473 (http, ws = Vite HMR), 127.0.0.1:4510 (ws) and 127.0.0.1:4511 (http); no other host, no non-local http/ws.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/oat02-s20/hosts.json"
+    ]
+  }
+}

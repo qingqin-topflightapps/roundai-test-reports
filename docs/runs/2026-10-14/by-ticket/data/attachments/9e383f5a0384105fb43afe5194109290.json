@@ -1,0 +1,18 @@
+{
+  "TC-04/S28": {
+    "status": "failed",
+    "detail": "Re-run 17:02 with the oracle's '^⚠' assertion restored (no widened banner check). Success path passes: during 'Transcribing…' Assign is disabled and no Link is offered (box empty); the box then holds the transcript word for word and Link puts it on the chart exactly. On the 429: the box keeps 'Bed 415, stable.', no 'Transcribing…' left, Assign enabled 1.3 s after Stop, chart unchanged — all pass. Fails: no message starting with '⚠' anywhere on the page (warnLine null). The only notice is the app's global error banner, recorded: '[CONVEX A(ai/transcribe:transcribeAudio)] [Request ID: qa] Server Error Uncaught Error: 429 You exceeded your current quota (credit_balance_exhausted) Called by client'. Whether that banner may count as the oracle's message is a decision for Daniela, not a test edit.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc04-s28/observed.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc04-s28/transcribing.png",
+      "runs/2026-10-14-local/newspec-b/evidence/tc04-s28/after-429.png"
+    ],
+    "productIssue": "When cloud transcription fails (429 quota), the Quick Dictation pad shows no '⚠' line telling the physician what to do; the only notice is the app's error banner with the raw server string '[CONVEX A(ai/transcribe:transcribeAudio)] [Request ID: …] Server Error Uncaught Error: 429 … Called by client'. (The 429 wording comes from our mock, modelled on dev's 10-09 error, but the app prints err.message verbatim.) Cause on main: src/lib/speech/whisperSession.ts 'transcribe-failed' → report(err.message, true), then onInterim(''), so useQuickDictation.ts:287's '⚠' convention never fires. Breaks TC-04 S28 (U4/3.5 '⚠' message) and UAT Empty & Failure States: 'a clear message telling the physician what to do next' / transcription that still fails shows a clear message. The box text is kept (no data loss).",
+    "envReloads": {
+      "tests": 1,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    },
+    "impact": "medium (wording/guidance; no data lost)"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "ref": "OAT-02/S05",
+  "method": "STATIC",
+  "status": "partial",
+  "detail": "Web bundle http:// / ws:// request targets: none (XML namespaces excluded; third-party literals that never become a request: http://[${o}] — zod IPv6/CIDR validation: new URL(`http://[${value}]`) parses, never fetches; http://[${s.value}] — zod IPv6/CIDR validation: new URL(`http://[${value}]`) parses, never fetches; http://json-schema.org — JSON Schema $schema identifier (zod toJSONSchema), not fetched; http://localhost — react-router createURL fallback base when window is undefined (SSR); the browser uses window.location.origin); the Convex URLs come only from VITE_CONVEX_URL / VITE_CONVEX_SITE_URL at build time, so a hosted build is https exactly when its build env is (store builds: vite.config.ts refuses non-https in mobile mode unless VITE_MOBILE_LOCAL=true). iOS Info.plist: NSAllowsArbitraryLoads absent, NSExceptionDomains absent, NSAllowsLocalNetworking present (line 31; judged per Q6). Android main manifest: usesCleartextTraffic=\"false\" (line 12); network security config only in src/debug (cleartext domains localhost, 127.0.0.1, 172.20.10.6), merged into debug builds only. capacitor.config.ts: server.url not set, cleartext false, androidScheme https.",
+  "build": "e02167f",
+  "at": "2026-10-14T06:53:04.996Z",
+  "evidence": [
+    "runs/2026-10-14-local/code-review/static/scan-web.json",
+    "runs/2026-10-14-local/code-review/static/native-config.json"
+  ],
+  "needs": "release artefacts (deployed web bundle, IPA Info.plist, release APK merged manifest) — the deployed web bundle waits for dev sign-in; IPA/APK need Tim (CI)"
+}

@@ -1,0 +1,124 @@
+{
+  "ref": "TC-03/S23",
+  "profile": "pixel7",
+  "part": null,
+  "judged": [
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-list"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-list"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-list"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-list"
+    },
+    {
+      "name": "search box visible and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "hospital-list"
+    },
+    {
+      "name": "sort control visible and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "hospital-list"
+    },
+    {
+      "name": "every card can be scrolled into view uncovered",
+      "pass": true,
+      "detail": "4 cards ok",
+      "state": "hospital-list"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-list"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-list"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-list"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-list"
+    },
+    {
+      "name": "search box visible and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "nh-list"
+    },
+    {
+      "name": "sort control visible and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "nh-list"
+    },
+    {
+      "name": "every card can be scrolled into view uncovered",
+      "pass": true,
+      "detail": "4 cards ok",
+      "state": "nh-list"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "low-severity findings (fixed bar / 44 pt)",
+      "value": "\"QH\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); \"QA Hosp ZXKKO 4\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); \"New today\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); input \"Search patients\" is 303×20 (< 24 px, passes the WCAG 2.5.8 spacing exception); select \"Sort patients\" is 182×27 (< 44 pt, Apple HIG); button \"Remove QA Hosp ZXKKO 1 from the rounding list\" is 28×28 (< 44 pt, Apple HIG) … (+3)",
+      "state": "hospital-list"
+    },
+    {
+      "name": "low-severity findings (fixed bar / 44 pt)",
+      "value": "\"QR\" is under button \"Residents\" (a fixed/sticky layer — may just need scrolling); \"QA Resident ZXKKO 4\" is under button \"Handoff\" (a fixed/sticky layer — may just need scrolling); \"MRN-J9RXHK\" is under span \"Handoff\" (a fixed/sticky layer — may just need scrolling); input \"Search patients\" is 297×20 (< 24 px, passes the WCAG 2.5.8 spacing exception); select \"Sort patients\" is 182×27 (< 44 pt, Apple HIG)",
+      "state": "nh-list"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-list",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S23/pixel7--hospital-list.png",
+      "url": "/rounding",
+      "findings": 9,
+      "axe": [
+        "color-contrast/serious×8",
+        "nested-interactive/serious×4"
+      ]
+    },
+    {
+      "state": "nh-list",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-03_S23/pixel7--nh-list.png",
+      "url": "/snf",
+      "findings": 5,
+      "axe": []
+    }
+  ]
+}

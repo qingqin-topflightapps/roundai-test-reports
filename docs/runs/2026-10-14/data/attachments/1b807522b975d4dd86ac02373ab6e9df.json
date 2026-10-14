@@ -1,0 +1,23 @@
+{
+  "TC-01/S21": {
+    "status": "record-only",
+    "dataset": "bulk",
+    "target": "dev",
+    "title": "List load and tap → Pre-Round time with 52 Hospital and 52 Nursing Home rows (recorded, no target: Q9)",
+    "detail": "4 recorded cell(s)",
+    "judged": {
+      "total": 0,
+      "failed": 0
+    },
+    "recorded": [
+      "Q9: hospital: navigation → first card / every dataset row loaded (ms) → {\"firstCard\":3727,\"allLoaded\":5581,\"datasetCards\":52}",
+      "Q9: hospital: tap a card → its Pre-Round notes shown (ms) → 805",
+      "Q9: snf: navigation → first card / every dataset row loaded (ms) → {\"firstCard\":3111,\"allLoaded\":4159,\"datasetCards\":52}",
+      "Q9: snf: tap a card → its Pre-Round notes shown (ms) → 861"
+    ],
+    "durationMs": 11514,
+    "evidence": [
+      "runs/2026-10-14-dev/datasets/bulk/evidence/TC-01-S21.json"
+    ]
+  }
+}

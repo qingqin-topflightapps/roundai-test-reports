@@ -1,0 +1,128 @@
+{
+  "ref": "TC-23/S11",
+  "mode": "scripted",
+  "kind": "harness self-test (scripted far end: the checks ran on the item's own written text)",
+  "hospital": {
+    "pass": 1,
+    "of": 1
+  },
+  "nursingHome": {
+    "pass": 1,
+    "of": 1
+  },
+  "recovered": [],
+  "blocked": [],
+  "failures": [],
+  "takes": [
+    {
+      "item": "A-01",
+      "mode": "hospital",
+      "surface": "hospital pre-round notes",
+      "verdict": {
+        "id": "A-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Hydroxyzine 25 milligrams at bedtime for itching.",
+        "numbersFound": [
+          25
+        ],
+        "numbersWanted": [
+          25
+        ]
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j97cr8m3zze3txm9g7yns64c5d8g9sgk",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 314,
+          "providerMs": 309
+        }
+      ],
+      "take": {
+        "ids": [
+          "A-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Hydroxyzine 25 milligrams at bedtime for itching.",
+        "added": "Hydroxyzine 25 milligrams at bedtime for itching.",
+        "tapToReadyMs": 1256,
+        "stopToTextMs": 993,
+        "stopToCompletedMs": 950,
+        "playedSec": 3.3255625,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "A-01",
+      "mode": "nursing-home",
+      "surface": "nursing-home Pre-Round notes",
+      "verdict": {
+        "id": "A-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Hydroxyzine 25 milligrams at bedtime for itching.",
+        "numbersFound": [
+          25
+        ],
+        "numbersWanted": [
+          25
+        ]
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j971hw6gfm2axp8nrrs2k76c2d8g9hhv",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 305,
+          "providerMs": 302
+        }
+      ],
+      "take": {
+        "ids": [
+          "A-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Hydroxyzine 25 milligrams at bedtime for itching.",
+        "added": "Hydroxyzine 25 milligrams at bedtime for itching.",
+        "tapToReadyMs": 551,
+        "stopToTextMs": 1335,
+        "stopToCompletedMs": 1229,
+        "playedSec": 3.3255625000000006,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    }
+  ],
+  "aiProvider": {
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "provider": "bedrock",
+    "transcription": "gpt-live",
+    "visionModel": "gemini-2.5-flash",
+    "visionProvider": "vertex"
+  },
+  "disclosures": [
+    {
+      "at": 1791961491260.802,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 302
+    },
+    {
+      "at": 1791961477791.292,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 309
+    }
+  ],
+  "at": "2026-10-14T07:05:01.020Z"
+}

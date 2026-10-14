@@ -1,0 +1,174 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-s18",
+      "oat03-s18-photo-fail.spec.ts",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-s18",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "oat03-s18-photo-fail.spec.ts",
+      "file": "oat03-s18-photo-fail.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "OAT-03/S18 photo capture: blank photo says no patients; a failing provider gives an explicit message, nothing added, and the photo works again once it is back (both contexts)",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 420000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 50339,
+                  "error": {
+                    "message": "Error: hospital (b): the photo proposes its rows once the provider is back\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: hospital (b): the photo proposes its rows once the provider is back\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/oat03-s18-photo-fail.spec.ts:180:122",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/oat03-s18-photo-fail.spec.ts",
+                      "column": 122,
+                      "line": 180
+                    },
+                    "snippet": "  178 |     expect.soft(r.b.added, `${mode} (b): nothing added on failure`).toBe(0);\n  179 |     // Q10 (same photo again starts a read): recorded in result.json, never decides the verdict.\n> 180 |     expect.soft(Number(r.b.againProposesRows) > 0, `${mode} (b): the photo proposes its rows once the provider is back`).toBe(true);\n      |                                                                                                                          ^\n  181 |     expect.soft(r.addedAtEnd, `${mode}: nothing confirmed, nothing added`).toBe(0);\n  182 |   }\n  183 |   await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/oat03-s18-photo-fail.spec.ts",
+                        "column": 122,
+                        "line": 180
+                      },
+                      "message": "Error: hospital (b): the photo proposes its rows once the provider is back\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  178 |     expect.soft(r.b.added, `${mode} (b): nothing added on failure`).toBe(0);\n  179 |     // Q10 (same photo again starts a read): recorded in result.json, never decides the verdict.\n> 180 |     expect.soft(Number(r.b.againProposesRows) > 0, `${mode} (b): the photo proposes its rows once the provider is back`).toBe(true);\n      |                                                                                                                          ^\n  181 |     expect.soft(r.addedAtEnd, `${mode}: nothing confirmed, nothing added`).toBe(0);\n  182 |   }\n  183 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/oat03-s18-photo-fail.spec.ts:180:122"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/oat03-s18-photo-fail.spec.ts",
+                        "column": 122,
+                        "line": 180
+                      },
+                      "message": "Error: snf (b): the photo proposes its rows once the provider is back\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  178 |     expect.soft(r.b.added, `${mode} (b): nothing added on failure`).toBe(0);\n  179 |     // Q10 (same photo again starts a read): recorded in result.json, never decides the verdict.\n> 180 |     expect.soft(Number(r.b.againProposesRows) > 0, `${mode} (b): the photo proposes its rows once the provider is back`).toBe(true);\n      |                                                                                                                          ^\n  181 |     expect.soft(r.addedAtEnd, `${mode}: nothing confirmed, nothing added`).toBe(0);\n  182 |   }\n  183 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/oat03-s18-photo-fail.spec.ts:180:122"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:00:21.574Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-s18/oat03-s18-photo-fail-OAT-0-87b2a-e-it-is-back-both-contexts--probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-s18/oat03-s18-photo-fail-OAT-0-87b2a-e-it-is-back-both-contexts--probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-s18/oat03-s18-photo-fail-OAT-0-87b2a-e-it-is-back-both-contexts--probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-s18/oat03-s18-photo-fail-OAT-0-87b2a-e-it-is-back-both-contexts--probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/oat03-s18-photo-fail.spec.ts",
+                    "column": 122,
+                    "line": 180
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "df0cc184ba3fbad7b5c0-e36c714fabe722f34595",
+          "file": "oat03-s18-photo-fail.spec.ts",
+          "line": 40,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T09:00:21.288Z",
+    "duration": 50770.7,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "ref": "TC-16/S20",
+  "profile": "desktop",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,3×: .overflow-hidden.border-slate-200.rounded-2xl:nth-child(1) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.flex.items-center > .px-1\\.5.bg-slate-100.py-0\\.5 | .overflow-hidden.border-slate-200.rounded-2xl:nth-child(2) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.flex.items-center > .px-1\\.5.bg-slate-100.py-0\\.5)",
+      "state": "hospital-transcripts-collapsed"
+    },
+    {
+      "name": "each row button's name holds its label and line count",
+      "pass": true,
+      "detail": "[\"Oct 13 (prior) 12 lines\",\"Oct 13 · Encounter notes 1 lines\",\"Most Recent 3 lines\"]",
+      "state": "hospital-transcripts-collapsed"
+    },
+    {
+      "name": "aria-expanded is false on every collapsed row",
+      "pass": true,
+      "detail": "[\"false\",\"false\",\"false\"]",
+      "state": "hospital-transcripts-collapsed"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,9×: .overflow-hidden.border-slate-200.rounded-2xl:nth-child(1) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.flex.items-center > .px-1\\.5.bg-slate-100.py-0\\.5 | .py-2\\.5.px-4:nth-child(1) > .mb-0\\.5.gap-2.flex > .text-teal-600.font-bold); scrollable-region-focusable(serious,1×: .max-h-72)",
+      "state": "hospital-transcripts-open"
+    },
+    {
+      "name": "aria-expanded is true only on the open row",
+      "pass": true,
+      "detail": "[{\"name\":\"Oct 13 (prior) 12 lines\",\"expanded\":\"true\"},{\"name\":\"Oct 13 · Encounter notes 1 lines\",\"expanded\":\"false\"},{\"name\":\"Most Recent 3 lines\",\"expanded\":\"false\"}]",
+      "state": "hospital-transcripts-open"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .overflow-hidden.shadow-sm.border:nth-child(1) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.items-center.flex > .px-1\\.5.bg-slate-100.py-0\\.5 | .overflow-hidden.shadow-sm.border:nth-child(2) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.items-center.flex > .px-1\\.5.bg-slate-100.py-0\\.5)",
+      "state": "nh-transcripts-collapsed"
+    },
+    {
+      "name": "each row button's name holds its label and line count",
+      "pass": true,
+      "detail": "[\"Oct 7 · Visit notes 1 lines\",\"Oct 13 · Visit notes 1 lines\"]",
+      "state": "nh-transcripts-collapsed"
+    },
+    {
+      "name": "aria-expanded is false on every collapsed row",
+      "pass": true,
+      "detail": "[\"false\",\"false\"]",
+      "state": "nh-transcripts-collapsed"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,3×: .overflow-hidden.shadow-sm.border:nth-child(1) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.items-center.flex > .px-1\\.5.bg-slate-100.py-0\\.5 | .overflow-hidden.shadow-sm.border:nth-child(2) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.items-center.flex > .px-1\\.5.bg-slate-100.py-0\\.5); scrollable-region-focusable(serious,1×: .max-h-72)",
+      "state": "nh-transcripts-open"
+    },
+    {
+      "name": "aria-expanded is true only on the open row",
+      "pass": true,
+      "detail": "[{\"name\":\"Oct 7 · Visit notes 1 lines\",\"expanded\":\"false\"},{\"name\":\"Oct 13 · Visit notes 1 lines\",\"expanded\":\"true\"}]",
+      "state": "nh-transcripts-open"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "rows",
+      "value": [
+        {
+          "name": "Oct 13 (prior) 12 lines",
+          "expanded": "false"
+        },
+        {
+          "name": "Oct 13 · Encounter notes 1 lines",
+          "expanded": "false"
+        },
+        {
+          "name": "Most Recent 3 lines",
+          "expanded": "false"
+        }
+      ],
+      "state": "hospital-transcripts-collapsed"
+    },
+    {
+      "name": "rows",
+      "value": [
+        {
+          "name": "Oct 7 · Visit notes 1 lines",
+          "expanded": "false"
+        },
+        {
+          "name": "Oct 13 · Visit notes 1 lines",
+          "expanded": "false"
+        }
+      ],
+      "state": "nh-transcripts-collapsed"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-transcripts-collapsed",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/desktop--hospital-transcripts-collapsed.png",
+      "url": "/rounding/kx75rkq2skv5d9dbj2mf2xnbyx8g8xtr",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×3"
+      ]
+    },
+    {
+      "state": "hospital-transcripts-open",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/desktop--hospital-transcripts-open.png",
+      "url": "/rounding/kx75rkq2skv5d9dbj2mf2xnbyx8g8xtr",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×9",
+        "scrollable-region-focusable/serious×1"
+      ]
+    },
+    {
+      "state": "nh-transcripts-collapsed",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/desktop--nh-transcripts-collapsed.png",
+      "url": "/snf/m57c0wd1q5egmm8anj1aen0kf98g8hvw",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "nh-transcripts-open",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/desktop--nh-transcripts-open.png",
+      "url": "/snf/m57c0wd1q5egmm8anj1aen0kf98g8hvw",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×3",
+        "scrollable-region-focusable/serious×1"
+      ]
+    }
+  ]
+}

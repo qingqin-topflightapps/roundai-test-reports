@@ -1,0 +1,20 @@
+{
+  "TC-19/S24": {
+    "ref": "TC-19/S24",
+    "method": "STATIC",
+    "status": "needs-doc",
+    "detail": "Prompt parity vs p72 (whitespace-normalised, sentence by sentence; placeholders and ${...} are gaps (scripts/code-review/parity.mjs)): medications/events.md: differs (segments 1/2, sentences 14/39 verbatim, 5 changed, 20 new, 5 p72 sentences not in the library); system-roles/medication-events.md: differs (segments 1/1, sentences 3/3 verbatim, 0 changed, 0 new, 3 p72 sentences not in the library); pre-round/extraction.md: differs (segments 7/7, sentences 188/188 verbatim, 0 changed, 0 new, 14 p72 sentences not in the library); note/clinical-quality.md (medication lines only): differs (segments 0/1, sentences 72/80 verbatim, 0 changed, 8 new, 0 p72 sentences not in the library). EVALUATION_FRAMEWORK.md is not saved under tools/qa-agent/uat/, so the S09/S10-vs-framework half is needs-doc.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/static/parity-TC-19-S24.json",
+      "runs/2026-10-14-local/code-review/TC-19-S24.json"
+    ],
+    "differingPrompts": [
+      "apps/web/convex/ai/prompts/library/v1/medications/events.md",
+      "apps/web/convex/ai/prompts/library/v1/system-roles/medication-events.md",
+      "apps/web/convex/ai/prompts/library/v1/pre-round/extraction.md",
+      "apps/web/convex/ai/prompts/library/v1/note/clinical-quality.md (medication lines only)"
+    ],
+    "needsDoc": "Vikram's approval on record for each listed difference (none of these approvals is in the repo; docs/2026-10-03-vikram-prompt-batch.md lists changes still waiting for him); EVALUATION_FRAMEWORK.md (TFA-94229 attachment) saved under tools/qa-agent/uat/",
+    "secondary": "DOC"
+  }
+}

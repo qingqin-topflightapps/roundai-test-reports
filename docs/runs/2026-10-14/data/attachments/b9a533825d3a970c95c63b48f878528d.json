@@ -1,0 +1,16 @@
+{
+  "ref": "TC-23/S21",
+  "method": "STATIC",
+  "status": "partial",
+  "detail": "Bundle half: web + mobile vite builds of e02167f: sk-(proj-|svcacct-|admin-)? key pattern absent; OPENAI_API_KEY name absent; the OPENAI_API_KEY canary set at build time is not in either bundle. Capture half (the bearer the browser sends equals prepareSession's value and expires within 60 s) is the dictation harness, not run here.",
+  "build": "e02167f",
+  "at": "2026-10-14T06:53:04.995Z",
+  "evidence": [
+    "runs/2026-10-14-local/code-review/static/scan-web.json",
+    "runs/2026-10-14-local/code-review/static/scan-mobile.json"
+  ],
+  "halves": {
+    "bundle": "pass",
+    "capture": "not run (dictation harness, lane B)"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "tc19-s27-d",
+  "at": "2026-10-14T07:54:46.702Z",
+  "checks": [
+    {
+      "id": "(d) after leaving and reopening, apixaban is Held, or a message says the change was not saved",
+      "ok": true,
+      "detail": "apixaban held Oct 14 Apixaban held, procedure tomorrow"
+    }
+  ],
+  "data": {
+    "rows": [
+      {
+        "name": "Apixaban 5 mg BID",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 14",
+        "changedNote": "Apixaban held, procedure tomorrow"
+      }
+    ],
+    "chart": {
+      "status": "note-ready",
+      "note": true
+    },
+    "calls": [
+      "time:now:?",
+      "time:now:?",
+      "rounding:applyLifecycle:?",
+      "access:logChartAccess:?",
+      "rounding:applyLifecycle:?",
+      "usage:record:?",
+      "rounding:update:?",
+      "ai/notes:generateNote:ok",
+      "usage:record:?",
+      "rounding:update:?",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "rounding:update:?",
+      "rounding:update:?",
+      "access:logPanelAccess:?",
+      "access:logPanelAccess:?",
+      "access:logPanelAccess:?",
+      "rounding:update:?",
+      "rounding:update:?",
+      "access:logChartAccess:?",
+      "usage:record:?"
+    ]
+  }
+}

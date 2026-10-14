@@ -1,0 +1,13 @@
+{
+  "OAT-04/S11": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:11:29.445Z",
+    "detail": "5 judged items passed, 1 failed (1 known, 0 policy conflict, 0 not in the matrix knownGaps), 0 recorded against open questions — failed: open-proc37 (open task 'PT eval' (created 37 h ago, chart processed 37 h ago): expected absent, got present; known K2)",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S11.json"
+    ],
+    "productIssue": "An open task on a chart nobody has processed for 37 h is still in the task list. Breaks UAT 3.6 (open tasks deleted 36 h after the chart was last processed). Known in the matrix: K2."
+  }
+}

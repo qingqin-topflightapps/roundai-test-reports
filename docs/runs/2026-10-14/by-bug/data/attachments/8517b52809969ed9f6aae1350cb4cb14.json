@@ -1,0 +1,75 @@
+{
+  "case": "TC-11-S04",
+  "title": "Generate with no pre-round today still creates the entry, in both contexts (live AI)",
+  "needs": [
+    "seed",
+    "generate",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s04-hospital.md",
+      "verdict": "Pass",
+      "url": "/rounding/js705b2fdn2d2xmxen4y7veppn8g9s6c",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(dated lines on the whole page: the carry-forward card's '<today>:' line sits outside the Course Timeline and is only recorded) pass: /\\]: \"?(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \\d{1,2}:/i matches 2 times"
+      ]
+    },
+    {
+      "file": "s04-snf.md",
+      "verdict": "Pass",
+      "url": "/snf/jx753rpvt6e2ytbxcj9xkfqaw98g893a",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "The date label on today's line (s04-hospital.png, s04-snf.png) is the run day as the server dates it ('Mon D', e.g. 'Oct 14'): the oracle judges the label's shape only (no 'Mon D' time token, §3.2)."
+  ],
+  "agent": {
+    "turns": 41,
+    "costUsd": 0.2537358,
+    "durationMs": 244495,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": true,
+  "unit": "U42",
+  "covers": [
+    "TC-11/S04"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u42",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U42.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

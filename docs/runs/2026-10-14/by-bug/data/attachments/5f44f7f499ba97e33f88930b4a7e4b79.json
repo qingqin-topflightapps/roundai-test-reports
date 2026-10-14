@@ -1,0 +1,247 @@
+{
+  "_meta": {
+    "which": "S07",
+    "target": "local QA stack 127.0.0.1:4510",
+    "account": "e2e-fresh-833ed12b-bc8@roundai.test",
+    "at": "2026-10-14T05:27:45.087Z"
+  },
+  "R3/hospital": {
+    "kind": "conditional order → one task that keeps its condition",
+    "encounter": "Advance diet to clears if pain stays under 4.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "newTask",
+        "pattern": "clear|diet",
+        "why": " task /clear|diet/ not added"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] Recheck weight in two weeks"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 2792,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 2484,
+        "providerMs": 2480,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    }
+  },
+  "R3/nursing-home": {
+    "kind": "conditional order → one task that keeps its condition",
+    "encounter": "Advance diet to clears if pain stays under 4.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "newTask",
+        "pattern": "clear|diet",
+        "why": " task /clear|diet/ not added"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] Recheck weight in two weeks"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 2481,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 2356,
+        "providerMs": 2354,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    }
+  },
+  "R4H/hospital": {
+    "kind": "monitoring-phrased physician order → task",
+    "encounter": "Trend the troponin every 6 hours until it peaks.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "newTask",
+        "pattern": "troponin",
+        "why": " task /troponin/ not added"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] Recheck weight in two weeks"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 2770,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 2367,
+        "providerMs": 2363,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    }
+  },
+  "R4N/nursing-home": {
+    "kind": "monitoring-phrased physician order → task",
+    "encounter": "Monitor her blood pressure twice daily this week and call me if the systolic is over 160.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "newTask",
+        "pattern": "blood pressure|\\bbp\\b|systolic",
+        "why": " task /blood pressure|\\bbp\\b|systolic/ not added"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] Recheck weight in two weeks"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 2962,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 2554,
+        "providerMs": 2490,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    }
+  },
+  "B4b/hospital": {
+    "kind": "visit with an outcome (UAT wording) → that task closes",
+    "encounter": "PT saw her, walking with a walker.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "closes",
+        "pattern": "\\bpt\\b|physical therap",
+        "why": "no task matching /\\bpt\\b|physical therap/ was closed"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] PT eval"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 3732,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 3534,
+        "providerMs": 3528,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    }
+  },
+  "B4b/nursing-home": {
+    "kind": "visit with an outcome (UAT wording) → that task closes",
+    "encounter": "PT saw her, walking with a walker.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "closes",
+        "pattern": "\\bpt\\b|physical therap",
+        "why": "no task matching /\\bpt\\b|physical therap/ was closed"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] PT eval"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 2414,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 2209,
+        "providerMs": 2207,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    }
+  },
+  "_summary": {
+    "cells": 6,
+    "passed": 0,
+    "failed": 6,
+    "failedKnown": 0,
+    "recordOnly": 0,
+    "broken": 0,
+    "models": [
+      "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+    ]
+  }
+}

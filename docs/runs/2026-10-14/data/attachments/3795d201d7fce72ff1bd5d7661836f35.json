@@ -1,0 +1,24 @@
+{
+  "TC-25/S17": {
+    "status": "passed-partial",
+    "detail": "Partial — 3/3 judged cells pass ((a) server + computer; (b) Hospital, NH after Sign out), (b)'s Generate step NOT RUN. (a) computer deletes 500 ms after the phone typed: the patient never returns on the computer (at +60 s and after the phone's reload) and the server has no row with the name, id or 'QA-SYNC-PR-E'. Device storage (record-only, Q10): the phone's IndexedDB 'roundcompanion-session-drafts' keeps a row with the deleted chart's id and the typed text at +1 s, +60 s and after reload (drafts are not removed on a patient delete). (b) both modes: after Settings → Sign out no store holds a patient name, id or chart marker; end of run the Hospital phone held patient text only in the session-draft store (Q10).",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc25-s17/a.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s17/b-hospital.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s17/b-snf.json"
+    ],
+    "judged": {
+      "total": 3,
+      "failed": 0
+    },
+    "partial": {
+      "needs": [
+        "generate"
+      ],
+      "notRun": [
+        "(b) Generate step before Sign out"
+      ],
+      "note": "Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13); those cells run only with QA_ALLOW_LOCAL_GENERATE=1."
+    }
+  }
+}

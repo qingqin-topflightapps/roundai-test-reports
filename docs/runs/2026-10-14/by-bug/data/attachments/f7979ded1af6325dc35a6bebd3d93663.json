@@ -1,0 +1,9 @@
+{
+  "TC-23/S07": {
+    "status": "blocked",
+    "detail": "laneB-preconditions not met: the local OPENAI_API_KEY ends …PUMA and there is no OK on record from Quinn that it is not the key dev uses (her 2026-10-09 notes say it may be), so no audio was sent to OpenAI. Run after that OK: QA_DICT_MODE=live QA_DICTATION_LIVE_OK=PUMA scripts/aicheck-dictation/run.sh. harness self-test with the scripted far end: 3/3 long takes landed in the box and passed the checks (shim, Dictate/Stop, read rule, engine attribution, checks.ts). The scripted self-test behind this entry ran before the review fix and used the real prepareSession: each take minted one OpenAI client secret (client.realtime.clientSecrets.create on api.openai.com) with the local key …PUMA — no audio, but the gated key was used. Scripted self-test ran L-02 on Hospital pre-round, NH Pre-Round and NH Encounter (split by anchor, per-sentence checks, tab alive); L-01/L-03/L-04 and the 12 s final window need the live engine.",
+    "evidence": [
+      "raw/TC-23-S07-selftest.json"
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "case": "TC-17-S16",
+  "title": "Ask on Post-Round, Hospital: 'What did the patient say?' answer time and model are logged",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s16-postround-ask.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7akxfc1hybm2503vb03tvhfn8g8ysf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app)) pass: backend pt-before transcript[*].text contains \"inhaler twice overnight\"",
+        "(one Ask call in this case; a second row means the question was asked twice) pass: backend diag-after [fn=assist.askChart] has 1 item"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Timing is a target (3.5): if backend/diag-after.json shows the askChart durationMs over 30000 (lane B spec.reviewOverMs), flag it for review with Vikram; it never makes the case Fail.",
+    "Read the answer in s16-postround-ask.png; a failing answer is quoted in the report (3.2). aiCheck group TC-17-ask pools the ten Ask fixtures at 9/10 (RG-POOL not built: each reports on its own)."
+  ],
+  "agent": {
+    "turns": 18,
+    "costUsd": 0.11353340000000002,
+    "durationMs": 90737,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U45",
+  "covers": [
+    "TC-17/S16"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u45",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U45.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

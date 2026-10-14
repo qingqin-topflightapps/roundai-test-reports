@@ -1,0 +1,98 @@
+{
+  "_meta": {
+    "which": "S07",
+    "target": "local QA stack 127.0.0.1:4510",
+    "account": "e2e-fresh-fb6f9df8-2f8@roundai.test",
+    "at": "2026-10-14T06:17:24.610Z"
+  },
+  "R3/hospital": {
+    "kind": "conditional order → one task that keeps its condition",
+    "encounter": "Advance diet to clears if pain stays under 4.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "newTask",
+        "pattern": "clear|diet",
+        "why": " task /clear|diet/ not added"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] Recheck weight in two weeks"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 5512,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 4715,
+        "providerMs": 4710,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    },
+    "medicationCallMade": false
+  },
+  "R3/nursing-home": {
+    "kind": "conditional order → one task that keeps its condition",
+    "encounter": "Advance diet to clears if pain stays under 4.",
+    "status": "failed",
+    "problems": [
+      {
+        "check": "newTask",
+        "pattern": "clear|diet",
+        "why": " task /clear|diet/ not added"
+      }
+    ],
+    "closed": [],
+    "added": [],
+    "finalTasks": [
+      "[ ] Follow up BMP",
+      "[ ] Recheck weight in two weeks"
+    ],
+    "rawModel": {
+      "completed_task_ids": [],
+      "new_tasks": []
+    },
+    "call": {
+      "what": "extractTasks encounter",
+      "ms": 3101,
+      "error": null,
+      "log": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "durationMs": 2320,
+        "providerMs": 2314,
+        "error": null
+      },
+      "rowMissing": false,
+      "over30s": false,
+      "noProviderMs": false
+    },
+    "medicationCallMade": false
+  },
+  "_summary": {
+    "cells": 2,
+    "passed": 0,
+    "failed": 2,
+    "failedKnown": 0,
+    "recordOnly": 0,
+    "broken": 0,
+    "models": [
+      "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+    ],
+    "medicationCallsMade": 0
+  }
+}

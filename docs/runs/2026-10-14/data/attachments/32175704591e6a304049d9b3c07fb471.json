@@ -1,0 +1,97 @@
+{
+  "ref": "TC-11/S03",
+  "part": "nursing-home",
+  "at": "2026-10-14T08:08:14.334Z",
+  "liveCalls": "3 Nursing Home pre-round Save Notes (3 aiCallLog rows)",
+  "clock": "page.clock per visit; server time:now answer withheld so the device clock stands (src/data/time.ts)",
+  "cells": [
+    {
+      "cell": "positive control: the three Save Notes processed (notesProcessedAt moved, preRoundError empty)",
+      "expected": "processed (else the run is Invalid)",
+      "actual": [
+        {
+          "notesProcessedAtBefore": null,
+          "notesProcessedAtAfter": "2026-10-11T08:07:05.317Z",
+          "preRoundError": null,
+          "processed": true
+        },
+        {
+          "notesProcessedAtBefore": "2026-10-11T08:07:05.317Z",
+          "notesProcessedAtAfter": "2026-10-13T08:07:05.317Z",
+          "preRoundError": null,
+          "processed": true
+        },
+        {
+          "notesProcessedAtBefore": "2026-10-13T08:07:05.317Z",
+          "notesProcessedAtAfter": "2026-10-14T08:07:05.317Z",
+          "preRoundError": null,
+          "processed": true
+        }
+      ],
+      "verdict": "pass"
+    },
+    {
+      "cell": "Visit Timeline shows Visit 1 – Oct 11, Visit 2 – Oct 13, Visit 3 – Oct 14 (each with its own date, in order)",
+      "expected": "Visit 1 – Oct 11 | Visit 2 – Oct 13 | Visit 3 – Oct 14",
+      "actual": [
+        "Visit 1 – Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+        "Visit 2 – Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+        "Visit 3 – Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+      ],
+      "verdict": "pass",
+      "req": "U4"
+    },
+    {
+      "cell": "one entry per visit, never duplicated (cards and stored ledger)",
+      "expected": "3 cards, 3 ledger lines, no repeat",
+      "actual": {
+        "cards": 3,
+        "ledger": [
+          "Visit 1 · Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+          "Visit 2 · Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+          "Visit 3 · Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+        ]
+      },
+      "verdict": "pass",
+      "req": "U1"
+    },
+    {
+      "cell": "the skipped days (Oct 12) are absent: no entry, no filler line",
+      "expected": "absent",
+      "actual": {
+        "skipped": [
+          "Oct 12"
+        ],
+        "cards": [
+          "Visit 1 – Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+          "Visit 2 – Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+          "Visit 3 – Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+        ]
+      },
+      "verdict": "pass",
+      "req": "U2"
+    },
+    {
+      "cell": "T4: the Nursing Home Visit Timeline as a trend view (Q8: no written oracle; a person rates it)",
+      "expected": "a person answers: is the trend of the stay clear? (yes/no + one reason)",
+      "actual": {
+        "cards": [
+          "Visit 1 – Oct 11: Patient admitted for rehabilitation following left hip ORIF. Ambulating 10 feet with walker, pain controlled at 6/10. Continue PT/OT..",
+          "Visit 2 – Oct 13: Patient progressing well in rehab post-ORIF. Ambulation improved to 50 feet with walker, pain decreased to 4/10, appetite improving..",
+          "Visit 3 – Oct 14: Patient progressing well post-ORIF with improved ambulation to 150 feet and pain reduced to 2/10. Discharge home with PT arranged.."
+        ],
+        "screenshot": "nursing-home-after-visit3-pre-round.png"
+      },
+      "verdict": "record",
+      "req": "T4"
+    },
+    {
+      "cell": "entries generated from the finished visit note (Generate Note & Finish at each visit)",
+      "expected": "-",
+      "actual": null,
+      "verdict": "not-run",
+      "note": "Generate is forbidden on the local stack (capabilities.json); the dev lane runs it. Here every entry is the pre-round line (Q12)",
+      "req": "T2"
+    }
+  ]
+}

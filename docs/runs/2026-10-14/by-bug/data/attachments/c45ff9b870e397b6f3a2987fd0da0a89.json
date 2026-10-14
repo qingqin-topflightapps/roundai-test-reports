@@ -1,0 +1,141 @@
+{
+  "ref": "TC-20/S17",
+  "part": "main",
+  "at": "2026-10-14T05:57:10.654Z",
+  "liveCalls": "2 Save Notes (parse + task pass each)",
+  "cells": [
+    {
+      "cell": "Hospital: the pre-round processing call is logged with the model that ran it",
+      "expected": "an aiCallLog row naming the model",
+      "actual": {
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "providerMs": 4940,
+        "durationMs": 4946,
+        "appMs": 6
+      },
+      "verdict": "pass",
+      "req": "U7"
+    },
+    {
+      "cell": "Hospital: the logged model is the configured primary, or the row names the primary it fell back from",
+      "expected": "model us.anthropic.claude-haiku-4-5-20251001-v1:0 or fellBackFrom it",
+      "actual": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null
+      },
+      "verdict": "pass",
+      "req": "U7"
+    },
+    {
+      "cell": "Hospital: AI time logged apart from the total on every call",
+      "expected": "providerMs ≤ durationMs on each row",
+      "actual": [
+        {
+          "fn": "parsing.extractTasks",
+          "providerMs": 2382,
+          "durationMs": 2384
+        },
+        {
+          "fn": "parsing.classifyAdmissionReason",
+          "providerMs": 2766,
+          "durationMs": 2777
+        },
+        {
+          "fn": "parsing.parsePreRoundNotes",
+          "providerMs": 4940,
+          "durationMs": 4946
+        }
+      ],
+      "verdict": "pass",
+      "req": "U7"
+    },
+    {
+      "cell": "Hospital: Save Note time against the 15 s target / 30 s investigation limit",
+      "expected": "flag for Vikram if over (never a fail)",
+      "actual": {
+        "saveNoteWallMs": 10403,
+        "over15s": false,
+        "slowNotVendor": []
+      },
+      "verdict": "record",
+      "req": "U8"
+    },
+    {
+      "cell": "Nursing Home: the pre-round processing call is logged with the model that ran it",
+      "expected": "an aiCallLog row naming the model",
+      "actual": {
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null,
+        "ok": true,
+        "providerMs": 4214,
+        "durationMs": 4222,
+        "appMs": 8
+      },
+      "verdict": "pass",
+      "req": "U7"
+    },
+    {
+      "cell": "Nursing Home: the logged model is the configured primary, or the row names the primary it fell back from",
+      "expected": "model us.anthropic.claude-haiku-4-5-20251001-v1:0 or fellBackFrom it",
+      "actual": {
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "fellBackFrom": null
+      },
+      "verdict": "pass",
+      "req": "U7"
+    },
+    {
+      "cell": "Nursing Home: AI time logged apart from the total on every call",
+      "expected": "providerMs ≤ durationMs on each row",
+      "actual": [
+        {
+          "fn": "parsing.parsePreRoundNotes",
+          "providerMs": 4214,
+          "durationMs": 4222
+        }
+      ],
+      "verdict": "pass",
+      "req": "U7"
+    },
+    {
+      "cell": "Nursing Home: Save Note time against the 15 s target / 30 s investigation limit",
+      "expected": "flag for Vikram if over (never a fail)",
+      "actual": {
+        "saveNoteWallMs": 12114,
+        "over15s": false,
+        "slowNotVendor": []
+      },
+      "verdict": "record",
+      "req": "U8"
+    },
+    {
+      "cell": "Generate Note & Finish trace (both settings)",
+      "expected": "-",
+      "actual": null,
+      "verdict": "not-run",
+      "note": "Generate is forbidden on the local stack (capabilities.json); dev S15 records notes.generateNote rows",
+      "req": "U7"
+    },
+    {
+      "cell": "cold dashboard load (Hospital, 1 patient)",
+      "expected": "recorded (no target, Q8)",
+      "actual": {
+        "coldMs": 6688
+      },
+      "verdict": "record"
+    },
+    {
+      "cell": "status write → Complete tile moves",
+      "expected": "recorded (no target, Q8)",
+      "actual": {
+        "moveMs": 1786,
+        "beforeComplete": 0
+      },
+      "verdict": "record"
+    }
+  ]
+}

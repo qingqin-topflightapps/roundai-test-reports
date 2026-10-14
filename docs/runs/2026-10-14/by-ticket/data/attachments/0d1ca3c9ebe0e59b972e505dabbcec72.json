@@ -1,0 +1,16 @@
+{
+  "TC-25/S28": {
+    "status": "failed",
+    "detail": "Re-checked after review 2026-10-14 (18:00 JST runs: fix-*.json). NH: going offline inside the 800 ms autosave keeps a device copy (one put, no delete); (b) F is restored on the phone and reaches the computer, draft row gone after the echo; (a) the computer's later G wins and F is dropped silently (record-only, Q11). Hospital: the probe (every put/delete on the draft store, init script) shows the copy IS written with a valid key while offline (so the session / draftId is not null) and deleted 4–7 ms later, still offline, while the server never had F; after the page closes F is gone: (b) neither the phone, the computer nor the server has it; (a) G shown, F gone. Cause, from the probe + code: Hospital saves through rounding.update with an optimistic update (src/routes/rounding/Patient.tsx:33) that patches the local chart at once, so useAutosave's 'server echoed my text' check (src/lib/useAutosave.ts:101-110) fires locally and deletes the copy before anything reached the server; Nursing Home saves without one and keeps the copy. That path is local and does not depend on how the network is cut, so it should hold on a real phone in airplane mode — still worth one device check.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc25-s28/hospital-b.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s28/hospital-a.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s28/snf-b.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s28/snf-a.json",
+      "runs/2026-10-14-local/probes/evidence/diag/s28-offline-draft.json",
+      "runs/2026-10-14-local/probes/fix-tc25.json"
+    ],
+    "confidence": "cause established in this run (draft written, then deleted 4–7 ms later while offline, by the local echo of the optimistic update); real-device confirmation pending",
+    "productIssue": "Hospital pre-round (and every Hospital autosave field that saves through the same optimistic rounding.update): a line typed just before the phone loses signal (within the 0.8 s autosave) is lost if the app is closed before the signal returns — on reopening, the pre-round notes and the computer show nothing of it, while the same flow in Nursing Home restores it. The device copy is written and then deleted at once by the local optimistic echo (Patient.tsx:33 + useAutosave.ts:101-110), before the server has the text. Breaks Empty & Failure States 'nothing typed is lost' (TC-25 S28 b)."
+  }
+}

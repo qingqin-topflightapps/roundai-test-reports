@@ -1,0 +1,82 @@
+{
+  "case": "TC-03-S13",
+  "title": "Name order edges, both contexts: first-name vs last-name order, two identical names",
+  "needs": [
+    "seed",
+    "oracle-order",
+    "oracle-regex",
+    "oracle-record-only"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s13-hosp-name.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q3: first-name order) pass: in order: \"Open chart for QA TC-03-S13 QA Hosp Aaron Zimmer\" < \"Open chart for QA TC-03-S13 QA Hosp Mary Baker\" < \"Open chart for QA TC-03-S13 QA Hosp Zoe Adams\"",
+        "(Q3: last-name order) fail: order: \"Open chart for QA TC-03-S13 QA Hosp Mary Baker\" does not come after \"Open chart for QA TC-03-S13 QA Hosp Zoe Adams\"",
+        "(Q5: same-name tie broken by room (room 3 first)) fail: order: \"Open chart for QA TC-03-S13 QA Hosp Sam Lee\" does not come after \"Open chart for QA TC-03-S13 QA Hosp Sam Lée\"",
+        "(Q5: same-name tie in the order added (room 30 first)) pass: in order: \"Open chart for QA TC-03-S13 QA Hosp Sam Lee\" < \"Open chart for QA TC-03-S13 QA Hosp Sam Lée\""
+      ]
+    },
+    {
+      "file": "s13-nh-today-name.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q3: first-name order) pass: in order: \"Open chart for QA TC-03-S13 QA Resident Aaron Zimmer\" < \"Open chart for QA TC-03-S13 QA Resident Mary Baker\" < \"Open chart for QA TC-03-S13 QA Resident Zoe Adams\"",
+        "(Q3: last-name order) fail: order: \"Open chart for QA TC-03-S13 QA Resident Mary Baker\" does not come after \"Open chart for QA TC-03-S13 QA Resident Zoe Adams\"",
+        "(Q5: same-name tie broken by unit (Rm 3 first)) fail: order: \"Open chart for QA TC-03-S13 QA Resident Sam Lee\" does not come after \"Open chart for QA TC-03-S13 QA Resident Sam Lée\"",
+        "(Q5: same-name tie in the order added (Rm 30 first)) pass: in order: \"Open chart for QA TC-03-S13 QA Resident Sam Lee\" < \"Open chart for QA TC-03-S13 QA Resident Sam Lée\""
+      ]
+    },
+    {
+      "file": "s13-nh-all-name.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q3: first-name order) pass: in order: \"Open chart for QA TC-03-S13 QA Resident Aaron Zimmer\" < \"Open chart for QA TC-03-S13 QA Resident Mary Baker\" < \"Open chart for QA TC-03-S13 QA Resident Zoe Adams\"",
+        "(Q3: last-name order) fail: order: \"Open chart for QA TC-03-S13 QA Resident Mary Baker\" does not come after \"Open chart for QA TC-03-S13 QA Resident Zoe Adams\"",
+        "(Q5: same-name tie broken by unit (Rm 3 first)) fail: order: \"Open chart for QA TC-03-S13 QA Resident Sam Lee\" does not come after \"Open chart for QA TC-03-S13 QA Resident Sam Lée\"",
+        "(Q5: same-name tie in the order added (Rm 30 first)) pass: in order: \"Open chart for QA TC-03-S13 QA Resident Sam Lee\" < \"Open chart for QA TC-03-S13 QA Resident Sam Lée\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 18,
+    "costUsd": 0.124661,
+    "durationMs": 61446,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U71",
+  "covers": [
+    "TC-03/S13"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u71",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U71.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

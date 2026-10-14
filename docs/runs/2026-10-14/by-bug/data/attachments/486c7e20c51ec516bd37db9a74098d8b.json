@@ -1,0 +1,18 @@
+{
+  "OAT-03/S18": {
+    "status": "failed",
+    "detail": "Re-checked after review 2026-10-14 (18:00 JST runs: fix-*.json). (a) blank photo, live read, both contexts: 'No patients found in the image. Try a clearer photo.' / 'No residents found. Try a clearer photo.', nothing added. (b) provider failing (socket), both contexts: 'The photo couldn't be read. Check your connection and try again, or retake the photo.', nothing added. Provider back: the census was re-rendered without the '(synthetic)' heading, the run tag or QA-xxxx MRNs (4 rows, 'QA Alder Hale' …); the read that starts (a byte-identical copy, since the same file starts none — Q10, recorded only) returns {patients: []} / {residents: []}, so the sheet says 'No patients found…' for a clear census. One raw call to the same model (gemini-2.5-flash, ai/providers/vertex:invokeVision) on that image returned all 4 names, inside a ```json fence; a bare JSON.parse of that reply fails. So 'proposes its rows' fails because of the parser, not the fixture. Live calls this run: 5.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/oat03-s18/result.json",
+      "runs/2026-10-14-local/probes/evidence/oat03-s18/hospital-b-failed-scan.png",
+      "runs/2026-10-14-local/probes/evidence/oat03-s18/hospital-b-again.png",
+      "runs/2026-10-14-local/probes/evidence/oat03-s18/snf-b-again.aria.yml",
+      "runs/2026-10-14-local/probes/media/census-hosp-neutral.jpg",
+      "runs/2026-10-14-local/probes/fix-s18.json"
+    ],
+    "recorded": {
+      "Q10": "choosing the SAME photo again starts no read (Chromium); whether that counts as 'the photo isn't lost' is Daniela's call"
+    },
+    "productIssue": "[census-scan-fenced-json] Photo census reads return no rows: once the provider is back (and on any read), a clear 4-row census gives 'No patients found in the image. Try a clearer photo.' (Hospital) / 'No residents found. Try a clearer photo.' (Nursing Home), so the physician cannot add patients from a photo. Cause: the vision model answers with the rows inside a ```json fence and scanCensusSheet parses it with a bare JSON.parse (convex/ai/vision.ts:49 → convex/lib/modelJson.ts:98 parseModelJson returns {} → 0 rows). Same root cause as the dev run's U77 (TC-09 S08): one issue. Breaks OAT-03 S18 'the photo works again once the provider is back' and the TC-02 photo-census path."
+  }
+}

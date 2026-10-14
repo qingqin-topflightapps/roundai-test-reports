@@ -1,0 +1,63 @@
+{
+  "TC-11/S20": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 53 judged check(s) passed, 18 failed. Entries wrap with no horizontal scroll or clipping; 'Visit N – <date>' lines are whole; Edit/Save/Cancel are named.",
+    "failed": [
+      {
+        "check": "axe serious/critical = 0",
+        "where": [
+          "desktop:hospital-course-edit",
+          "desktop:nh-course-edit",
+          "desktop:nh-course-read",
+          "iphone15:hospital-course-edit",
+          "iphone15:nh-course-edit",
+          "iphone15:nh-course-read",
+          "pixel7:hospital-course-edit",
+          "pixel7:nh-course-edit",
+          "pixel7:nh-course-read"
+        ],
+        "example": "label(critical,1×: textarea)"
+      },
+      {
+        "check": "the timeline editor textarea has an accessible name (axe semantics: a placeholder counts)",
+        "where": [
+          "desktop:hospital-course-edit",
+          "iphone15:hospital-course-edit",
+          "pixel7:hospital-course-edit"
+        ],
+        "example": "no name at all (no label, no placeholder)"
+      },
+      {
+        "check": "tap targets >= 44 pt",
+        "where": [
+          "iphone15:hospital-course-edit",
+          "iphone15:hospital-course-read",
+          "iphone15:nh-course-edit",
+          "iphone15:nh-course-read"
+        ],
+        "example": "button \"Edit Background Summary\" is 44×24 (< 44 pt, Apple HIG); button \"Edit Course Timeline\" is 44×24 (< 44 pt, Apple HIG)"
+      },
+      {
+        "check": "the Edit buttons are at least 44 px",
+        "where": [
+          "iphone15:hospital-course-read",
+          "iphone15:nh-course-read"
+        ],
+        "example": "[24,24]"
+      }
+    ],
+    "recorded": "The Nursing Home timeline textarea is named only by its placeholder 'One line per visit…' (passes axe; recorded for a person, WCAG 3.3.2).",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20/iphone15--hospital-course-edit.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20/iphone15--hospital-course-read.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20/iphone15--nh-course-edit.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-11_S20/iphone15--nh-course-read.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/vision/tasks-meds/vision-findings.json"
+    ],
+    "productIssue": "In Hospital the course-timeline editor textarea has no accessible name at all — no label and no placeholder (axe 'label', critical): a screen-reader user lands in an unnamed text box. On iPhone the Edit buttons are 24 px tall (oracle: 44 pt on iPhone). NH course header contrast fails."
+  }
+}

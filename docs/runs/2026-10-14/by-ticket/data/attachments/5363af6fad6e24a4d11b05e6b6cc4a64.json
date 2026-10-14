@@ -1,0 +1,89 @@
+{
+  "OAT-04/S19": {
+    "ref": "OAT-04/S19",
+    "method": "CODEREVIEW",
+    "secondary": "CONFIG",
+    "status": "failed",
+    "verdict": "fail",
+    "agreed": true,
+    "why": "both runs agree",
+    "newFindings": [
+      {
+        "run": 2,
+        "label": "new",
+        "claim": "COPY: the Nursing Home Previous Notes panel holds its own number for the same window (3) instead of reading SNF_RETENTION.previousNotes. It caps adding notes and drives the n/3 badge.",
+        "at": "apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx:23"
+      },
+      {
+        "run": 2,
+        "label": "new",
+        "claim": "The copied number gates adding a Nursing Home previous note.",
+        "at": "apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx:60"
+      }
+    ],
+    "knownGapsConfirmed": [
+      {
+        "run": 1,
+        "label": "known:K9",
+        "claim": "The hospital windows are defined once as a module constant (pre-round 12h, important points 18h, encounter and note 18h, done task 16h, medication, previous note and objective data 36h), with no environment or settings source.",
+        "at": "apps/web/convex/lib/lifecycle.ts:8",
+        "gap": "K9"
+      },
+      {
+        "run": 1,
+        "label": "known:K9",
+        "claim": "The Nursing Home windows are a second module constant with no environment or settings row. The visit counts are 3.",
+        "at": "apps/web/convex/lib/lifecycle.ts:30",
+        "gap": "K9"
+      },
+      {
+        "run": 2,
+        "label": "known:K9",
+        "claim": "Hospital windows are named module constants, not an env value or a settings row (K9).",
+        "at": "apps/web/convex/lib/lifecycle.ts:8",
+        "gap": "K9"
+      },
+      {
+        "run": 2,
+        "label": "known:K9",
+        "claim": "Nursing Home windows, including the visit counts, are named module constants (K9).",
+        "at": "apps/web/convex/lib/lifecycle.ts:30",
+        "gap": "K9"
+      }
+    ],
+    "pendingOn": [
+      "Q11"
+    ],
+    "detail": "The verdict is pending: nothing fails under either answer to Q11, but two points wait on it. The server windows are defined once, in two module constants in apps/web/convex/lib/lifecycle.ts. HOSPITAL_RETENTION (lines 8-28) holds pre-round 12h, important points 18h, encounter and note 18h, done task 16h, medication, previous note and objective data (vitals, labs, imaging) 36h, and encounter archive 48h. SNF_RETENTION (lines 30-38) holds pre-round 12h, encounter 12h, note 18h, done task 16h, and transcript, previous-note and medication visit counts of 3. hospitalLifecyclePatch and snfLifecyclePatch read every window through these objects. I searched apps/web (convex and src) for hour arithmetic (N * HOUR, 60*60*1000, 12/16/18/36 hours). No other code path keeps its own copy of any window the objects define, so there is no kind-(a) copy. That copy is the only point the oracle fails under either answer to Q11. The windows themselves are compile-time constants with no environment or settings row. That is known gap K9: it passes if Q11 = 'a named constant is enough' and fails if Q11 = 'changeable without a release'. One window is defined only outside the objects (kind b): the client constant NOT_MENTIONED_AFTER_MS = 18h in MedicationsPanel.tsx. It sets when a hospital medication is labelled \"not mentioned today\" and has no entry in HOSPITAL_RETENTION, so it is pending:Q11 (and on whether a label threshold counts as a retention window). Context only: open tasks and handoffs (36h in the table) have no window entry or clearing code anywhere. Important points is 18h in the config, not the table's 12h. The Nursing Home visit counts are 3, not 2. These are value or coverage differences for other scenarios, not copies.",
+    "detailRun2": "The server windows live in two module constants in apps/web/convex/lib/lifecycle.ts: HOSPITAL_RETENTION (pre-round 12h, Important Points 18h, encounter 18h, note 18h, done task 16h, medication 36h, previous note 36h, encounter archive 48h, objective data 36h) and SNF_RETENTION (pre-round 12h, encounter 12h, note 18h, done task 16h, and visit counts of 3 for transcripts, previous notes and medications). hospitalLifecyclePatch and snfLifecyclePatch read every window from these objects. Nothing comes from an env variable or a settings row, which is known gap K9; whether that is acceptable waits on Q11.\n\nThe verdict is fail without waiting on Q11 because the code holds second copies of window numbers. The Nursing Home Previous Notes panel has its own `const KEEP = 3` (apps/web/src/features/snf/patient/panels/PreviousNotesPanel.tsx:23). This repeats SNF_RETENTION.previousNotes = 3 and is used to cap adding notes and to show the \"n/3\" badge. If someone lengthened the config value, the panel would stay at 3. The hospital Previous Notes panel also has `KEEP = 3`, but the hospital config has a 36h time window for previous notes and no count. So that cap is a window defined only outside the config (pending:Q11), as is the client-only 18h \"not mentioned today\" medication label (NOT_MENTIONED_AFTER_MS in MedicationsPanel.tsx).\n\nContext for other scenarios: the configured values do not match the TFA-94699 figures in the question. Important Points is 18h, not 12h, and the Nursing Home visit counts are 3, not 2. The config has no entry for open tasks or handoffs; I found no 36h number for those elsewhere either.",
+    "physicianImpact": "To lengthen any retention window (for example under a hospital affiliation), a developer has to edit lifecycle.ts and release new code; an admin cannot change it in settings or the environment. The 18h \"not mentioned today\" medication label lives separately in the web client, so it needs its own client change and release. / If the Nursing Home previous-notes window were lengthened in the server config, the Previous Notes panel would still stop the physician adding a note at 3 and show \"3/3\", so the app would not behave the same everywhere. A hospital affiliation's longer windows would also need code changes in several client files, not just one value.",
+    "openQuestions": [
+      "Q11: Is a named constant in code enough, or must every window be changeable without a code change and release? This decides K9 (HOSPITAL_RETENTION / SNF_RETENTION) and the client-only NOT_MENTIONED_AFTER_MS.",
+      "Does the 18h \"not mentioned today\" medication label count as a TFA-94699 retention window, or is it only a display threshold?",
+      "The table lists open tasks and handoffs at 36h, but the code has no window or clearing for them; the same goes for important points at 12h (code: 18h) and Nursing Home at 2 visits (code: 3). These belong to the value and coverage scenarios, not this one.",
+      "Q11: must the windows be changeable without a code change and release, or is a named constant enough? This decides K9 and the hospital previous-notes cap of 3 and the 18h medication label, which are defined only outside the config.",
+      "Do the hospital Previous Notes cap (3) and the 18h 'not mentioned today' label count as retention windows under U12?",
+      "The configured values differ from the TFA-94699 figures in the question (Important Points 18h vs 12h; Nursing Home visit counts 3 vs 2). This should be checked in the scenario that verifies the window values.",
+      "The TFA-94699 table lists open tasks and handoffs at 36h, but the config has no entry for them. Is that a missing window or deliberate?"
+    ],
+    "notDecidableByCode": [
+      "Whether the deployed (production or dev) environment overrides any window: production check goes to Tim with S02",
+      "Whether U12 requires changing a window at runtime without a release (Q11)",
+      "Production environment check (Tim, with S02)",
+      "Whether a named constant meets 'configuration value' in U12 (Q11)"
+    ],
+    "checkedFindings": [
+      9,
+      10
+    ],
+    "discardedFindings": [
+      0,
+      0
+    ],
+    "costUsd": 0.5947654,
+    "evidence": [
+      "runs/2026-10-14-local/code-review/OAT-04-S19.json",
+      "runs/2026-10-14-local/code-review/raw/OAT-04-S19.raw.json"
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "case": "TC-17-S13",
+  "title": "Ask on Post-Round, Hospital: 'What tasks are still pending?' lists open tasks only",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s13-postround-ask.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74mbfayr75m0qwbf5m1m9d618g92n1",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app)) pass: backend pt-before tasks has 4 items",
+        "(seed precondition (harness, not app)) pass: backend pt-before tasks[done=false].text contains \"Call cardiology about the echo read\"",
+        "(3.9: the model that answered, read from backend/diag-after.json) pass: backend diag-after [fn=assist.askChart].model exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read the answer in s13-postround-ask.png; a failing answer is quoted in the report (3.2). aiCheck group TC-17-ask pools the ten Ask fixtures at 9/10 (RG-POOL not built: each reports on its own)."
+  ],
+  "agent": {
+    "turns": 18,
+    "costUsd": 0.11604640000000001,
+    "durationMs": 92940,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U47",
+  "covers": [
+    "TC-17/S13"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u47",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U47.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

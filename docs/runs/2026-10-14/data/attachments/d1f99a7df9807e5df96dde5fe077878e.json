@@ -1,0 +1,101 @@
+{
+  "case": "TC-19-S14",
+  "title": "One drug through its states: active \u2192 held \u2192 conditional restart \u2192 restarted \u2192 stopped \u2192 reload",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s14-cp1-held.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70e4x94g5efdy59e13dq8ebn8g7nt0",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U8/U23: the tag should carry today's date ('Mon D'); that form is not a contract time token, so the date is recorded and read against the run day (spec.manual)) pass: /lisinopril[^\\n]*\\n\\s*- generic[^\\n]*: \"?Held \u00b7 [A-Z][a-z]{2} \\d{1,2}\\b/i matches \"Lisinopril 20 mg daily\\n                - generic [ref=e391\u2026 (in from \"Medication Tracker\")"
+      ]
+    },
+    {
+      "file": "s14-cp2-conditional.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70e4x94g5efdy59e13dq8ebn8g7nt0",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s14-cp3-restarted.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70e4x94g5efdy59e13dq8ebn8g7nt0",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U8/U23: the tag should carry today's date ('Mon D'); that form is not a contract time token, so the date is recorded and read against the run day (spec.manual)) pass: /lisinopril[^\\n]*\\n\\s*- generic[^\\n]*: \"?Started \u00b7 [A-Z][a-z]{2} \\d{1,2}\\b/i matches \"Lisinopril 20 mg daily\\n                - generic [ref=e625\u2026 (in from \"Medication Tracker\")"
+      ]
+    },
+    {
+      "file": "s14-cp4-stopped.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70e4x94g5efdy59e13dq8ebn8g7nt0",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U8/U23: the tag should carry today's date ('Mon D'); that form is not a contract time token, so the date is recorded and read against the run day (spec.manual)) pass: /lisinopril[^\\n]*\\n\\s*- generic[^\\n]*: \"?Stopped \u00b7 [A-Z][a-z]{2} \\d{1,2}\\b/i matches \"Lisinopril 20 mg daily\\n                - generic [ref=e743\u2026 (in from \"Medication Tracker\")"
+      ]
+    },
+    {
+      "file": "s14-cp5-preround-after-reload.md",
+      "verdict": "Pass",
+      "url": "/rounding/js70e4x94g5efdy59e13dq8ebn8g7nt0",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "the Held / Started / Stopped tags show today's date ('Mon D'): read the recorded dates in the verdict against the run day",
+    "the row checks read the line right after the drug's name line (tag) and the reason line; if a row check fails, read the checkpoint snapshot to confirm the layout before filing"
+  ],
+  "agent": {
+    "turns": 85,
+    "costUsd": 0.6085396,
+    "durationMs": 507986,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "rejudge": {
+    "why": "TC-19 scopes ran from 'Medication Tracker' to 'Encounter Complete'; without Generate the button reads 'Finalizing Encounter Data\u2026', so the end anchor never matched. Scope end dropped in cases/TC-19.matrix.json (9 places, diff checked: only that); saved evidence re-judged with QA_TARGET=dev.",
+    "original": "Fail"
+  },
+  "unit": "U35",
+  "covers": [
+    "TC-19/S14"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u35"
+}

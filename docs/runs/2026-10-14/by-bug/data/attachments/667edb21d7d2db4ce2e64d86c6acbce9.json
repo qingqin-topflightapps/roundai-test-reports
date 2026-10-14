@@ -1,0 +1,13 @@
+{
+  "OAT-04/S07": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:10:46.003Z",
+    "detail": "20 judged items passed, 4 failed (4 known, 0 policy conflict, 0 not in the matrix knownGaps), 0 recorded against open questions — failed: L.point (Important Point (L): expected absent, got present; known K1) | L.previousNoteKept (note kept as previous note (L): expected present, got absent; known K4) | W+1m.point (Important Point (W+1m): expected absent, got present; known K1) | W+1m.previousNoteKept (note kept as previous note (W+1m): expected present, got absent; known K4) — notes: Clock anchors: pre-round = notesProcessedAt and preRoundEditedAt set to the same instant (Q2); point = ptsEditedAt = notesProcessedAt (Q3). W±1 min probes run seconds after the clocks were moved.",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S07.json"
+    ],
+    "productIssue": "13 h (and 12 h + 1 min) after it was written an Important Point is still in the pre-round editor; and the day's note is wiped at 18 h instead of being kept as yesterday's previous note. Breaks UAT 3.6 (points 12 h; note kept as previous note) and TFA-94699 AC 1. Known in the matrix: K1, K4."
+  }
+}

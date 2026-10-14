@@ -1,0 +1,62 @@
+{
+  "case": "TC-04-S15",
+  "title": "Unassigned box through chart visits, a Nursing Home round trip and a reload; no Rounding Sheet entry",
+  "needs": [
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s15-nh-chart.md",
+      "verdict": "Pass",
+      "url": "/snf/jx78a16tgjk88tqzr2aby7wxfd8g7z9j",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s15-reopened.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s15-hosp-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js778g6tzsfe4n83240w19xf2x8g76rf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 33,
+    "costUsd": 0.22050899999999996,
+    "durationMs": 121144,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

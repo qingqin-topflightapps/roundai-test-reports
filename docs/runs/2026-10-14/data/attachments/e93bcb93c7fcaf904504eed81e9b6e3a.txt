@@ -1,0 +1,276 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: prior-transcripts.spec.ts >> prior encounter transcripts >> a new day's bedside recording archives yesterday's transcript instead of overwriting it
+- Location: e2e/prior-transcripts.spec.ts:96:3
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByText('Your breathing sounds clearer today H2SWPK', { exact: true })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for getByText('Your breathing sounds clearer today H2SWPK', { exact: true })
+
+```
+
+```yaml
+- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+- button "Back to patient list"
+- heading "E2E Patient N4ILZN" [level=2]
+- paragraph: Room 4B-N4 · 72y · —
+- combobox "Admission status":
+  - option "New Admission"
+  - option "Follow-up" [selected]
+  - option "Consult"
+- paragraph: CHF exacerbation
+- button "Pre-Round"
+- button "Encounter"
+- button "Post-Round"
+- button "Stop bedside recording"
+- paragraph: Recording · Tap to stop
+- group "Recorder mode":
+  - button "Tap to toggle" [disabled] [pressed]
+  - button "Hold to talk" [disabled]
+- button "Physician speaking — tap when patient speaks"
+- button "Ask About Pre-Round Info or Labs"
+- text: Encounter Notes
+- button "Full screen"
+- textbox "Encounter observations":
+  - /placeholder: Dictate or type reassessment updates, exam findings, plan changes…
+- button "Dictate" [disabled]
+- button "Save & Extract" [disabled]
+- text: Tasks 0 pending
+- button "Dictate" [disabled]
+- button "Add"
+- paragraph: No pending tasks — tap Add or Dictate to create one.
+- text: Prior Encounter Transcripts
+- button "Sep 24 (prior) 2 lines"
+- button "Most Recent 1 lines"
+- text: Note Format
+- combobox "Note Format":
+  - option "H&P"
+  - option "SOAP progress" [selected]
+  - option "Consult note"
+  - option "Discharge summary"
+- paragraph: Standard Subjective · Objective · Assessment · Plan
+- button "Generate Note & Finish" [disabled]
+```
+
+# Test source
+
+```ts
+  61  |       await page.getByRole("button", { name: "Encounter" }).click();
+  62  |       // The PatientCard SectionHeader is a span, not a heading.
+  63  |       await expect(
+  64  |         page.getByText("Prior Encounter Transcripts", { exact: true }),
+  65  |       ).toBeVisible();
+  66  | 
+  67  |       const archivedRow = page.getByRole("button", {
+  68  |         name: /Sep 23 · Encounter notes/,
+  69  |       });
+  70  |       const mostRecentRow = page.getByRole("button", { name: /^Most Recent/ });
+  71  |       await expect(archivedRow).toContainText("1 lines");
+  72  |       await expect(mostRecentRow).toContainText("2 lines");
+  73  |       await expect(page.getByText(patientText, { exact: true })).toBeHidden();
+  74  | 
+  75  |       await mostRecentRow.click();
+  76  |       const patientLine = page
+  77  |         .getByText(patientText, { exact: true })
+  78  |         .locator("..");
+  79  |       await expect(patientLine).toContainText("Patient");
+  80  |       await expect(patientLine).toContainText("09:13 AM");
+  81  |       await expect(
+  82  |         page.getByText(physicianText, { exact: true }).locator(".."),
+  83  |       ).toContainText("Physician");
+  84  |       await expect(mostRecentRow).toHaveAttribute("aria-expanded", "true");
+  85  | 
+  86  |       // One open row at a time: opening the archived session closes the other.
+  87  |       await archivedRow.click();
+  88  |       await expect(page.getByText(typedText, { exact: true })).toBeVisible();
+  89  |       await expect(page.getByText(patientText, { exact: true })).toBeHidden();
+  90  |       await expect(mostRecentRow).toHaveAttribute("aria-expanded", "false");
+  91  |     } finally {
+  92  |       await deleteRoundingPatient(jwt, id);
+  93  |     }
+  94  |   });
+  95  | 
+  96  |   test("a new day's bedside recording archives yesterday's transcript instead of overwriting it", async ({
+  97  |     auth,
+  98  |     page,
+  99  |   }) => {
+  100 |     const suffix = tag();
+  101 |     const todaysLine = `Your breathing sounds clearer today ${suffix}`;
+  102 |     const generatedNote = `Assessment\n\nBreathing clearer ${suffix}`;
+  103 |     await installSpeechRecognitionMock(page, [todaysLine]);
+  104 |     await trackActionRequests(page, "ai/notes:generateNote", {
+  105 |       mockResponses: [{ success: true, result: generatedNote }],
+  106 |       additionalMockResponses: {
+  107 |         "ai/notes:refreshCourseAndBackground": [
+  108 |           {
+  109 |             success: true,
+  110 |             result: {
+  111 |               course_entry: "Breathing clearer",
+  112 |               one_liner: "CHF exacerbation",
+  113 |               active_issues: [],
+  114 |             },
+  115 |           },
+  116 |         ],
+  117 |         "ai/parsing:extractMedicationEvents": [
+  118 |           { success: true, result: { events: [] } },
+  119 |         ],
+  120 |         "ai/parsing:extractTasks": [
+  121 |           { success: true, result: { completed_task_ids: [], new_tasks: [] } },
+  122 |         ],
+  123 |         "ai/notes:suggestBilling": [
+  124 |           { success: true, result: "99232 — Moderate — reassessment" },
+  125 |         ],
+  126 |       },
+  127 |     });
+  128 |     const { jwt } = auth;
+  129 |     const client = clientFor(jwt);
+  130 |     const id = await client.mutation(api.rounding.add, patientFixture());
+  131 |     const yesterday = [
+  132 |       {
+  133 |         speaker: "Dr",
+  134 |         text: `Any chest pain overnight ${suffix}`,
+  135 |         time: "09:12 AM",
+  136 |       },
+  137 |       {
+  138 |         speaker: "Pt",
+  139 |         text: `No, I slept through ${suffix}`,
+  140 |         time: "09:13 AM",
+  141 |       },
+  142 |     ];
+  143 | 
+  144 |     try {
+  145 |       await client.mutation(api.rounding.update, {
+  146 |         id,
+  147 |         patch: { transcript: yesterday, transcriptDate: PRIOR_DAY },
+  148 |       });
+  149 |       await page.goto(`/rounding/${id}`);
+  150 |       await page.getByRole("button", { name: "Encounter" }).click();
+  151 |       await expect(
+  152 |         page.getByRole("button", { name: /^Most Recent/ }),
+  153 |       ).toContainText("2 lines");
+  154 |       await expect(page.getByRole("button", { name: /\(prior\)/ })).toHaveCount(
+  155 |         0,
+  156 |       );
+  157 | 
+  158 |       await page
+  159 |         .getByRole("button", { name: "Start bedside recording" })
+  160 |         .click();
+> 161 |       await expect(page.getByText(todaysLine, { exact: true })).toBeVisible();
+      |                                                                 ^ Error: expect(locator).toBeVisible() failed
+  162 |       await page
+  163 |         .getByRole("button", { name: "Stop bedside recording" })
+  164 |         .click();
+  165 | 
+  166 |       await expect
+  167 |         .poll(async () => {
+  168 |           const saved = await client.query(api.rounding.get, { id });
+  169 |           return {
+  170 |             history: saved?.transcriptHistory,
+  171 |             transcript: saved?.transcript,
+  172 |           };
+  173 |         })
+  174 |         .toEqual({
+  175 |           history: [{ label: "Sep 24 (prior)", entries: yesterday }],
+  176 |           transcript: [
+  177 |             { speaker: "Dr", text: todaysLine, time: expect.any(String) },
+  178 |           ],
+  179 |         });
+  180 | 
+  181 |       // Most Recent is not expanded here: its one line is already on screen in
+  182 |       // the Live Transcript section.
+  183 |       await expect(
+  184 |         page.getByRole("button", { name: /Sep 24 \(prior\)/ }),
+  185 |       ).toContainText("2 lines");
+  186 |       await expect(
+  187 |         page.getByRole("button", { name: /^Most Recent/ }),
+  188 |       ).toContainText("1 lines");
+  189 | 
+  190 |       // Generate writes the live transcript twice more (the pre-model save and
+  191 |       // the note save in useNoteGeneration); neither may drop the time from
+  192 |       // the line, and a same-day write does not archive again.
+  193 |       await page
+  194 |         .getByRole("button", { name: "Generate Note & Finish" })
+  195 |         .click();
+  196 |       await expect
+  197 |         .poll(async () => {
+  198 |           const saved = await client.query(api.rounding.get, { id });
+  199 |           return {
+  200 |             note: saved?.note,
+  201 |             history: saved?.transcriptHistory,
+  202 |             transcript: saved?.transcript,
+  203 |           };
+  204 |         })
+  205 |         .toEqual({
+  206 |           note: generatedNote,
+  207 |           history: [{ label: "Sep 24 (prior)", entries: yesterday }],
+  208 |           transcript: [
+  209 |             {
+  210 |               speaker: "Dr",
+  211 |               text: todaysLine,
+  212 |               time: expect.stringMatching(/\S/),
+  213 |             },
+  214 |           ],
+  215 |         });
+  216 |     } finally {
+  217 |       await deleteRoundingPatient(jwt, id);
+  218 |     }
+  219 |   });
+  220 | 
+  221 |   test("five or more sessions fold into Earlier sessions rows, one open at a time", async ({
+  222 |     auth,
+  223 |     page,
+  224 |   }) => {
+  225 |     const { jwt } = auth;
+  226 |     const client = clientFor(jwt);
+  227 |     const id = await client.mutation(api.rounding.add, patientFixture());
+  228 |     const suffix = tag();
+  229 |     // Sep 19..23, one line on odd days and two on even: 4 lines in the first
+  230 |     // chunk of three sessions, 3 in the remaining two.
+  231 |     const history = [19, 20, 21, 22, 23].map((day) => ({
+  232 |       label: `Sep ${day} (prior)`,
+  233 |       entries: [
+  234 |         {
+  235 |           speaker: "Dr",
+  236 |           text: `How is the pain on the ${day}th ${suffix}`,
+  237 |           time: "09:12 AM",
+  238 |         },
+  239 |         ...(day % 2 === 0
+  240 |           ? [
+  241 |               {
+  242 |                 speaker: "Pt",
+  243 |                 text: `Better than yesterday on the ${day}th ${suffix}`,
+  244 |                 time: "09:13 AM",
+  245 |               },
+  246 |             ]
+  247 |           : []),
+  248 |       ],
+  249 |     }));
+  250 | 
+  251 |     try {
+  252 |       await client.mutation(api.rounding.update, {
+  253 |         id,
+  254 |         patch: { transcriptHistory: history, transcript: [] },
+  255 |       });
+  256 |       await page.goto(`/rounding/${id}`);
+  257 |       await page.getByRole("button", { name: "Encounter" }).click();
+  258 | 
+  259 |       const groups = page.getByRole("button", { name: /^Earlier sessions/ });
+  260 |       await expect(groups).toHaveCount(2);
+  261 |       await expect(groups.first()).toContainText("4 lines");
+```

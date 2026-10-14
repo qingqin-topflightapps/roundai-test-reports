@@ -1,0 +1,140 @@
+{
+  "ref": "TC-10/S21",
+  "part": 2,
+  "at": "2026-10-14T06:59:23.510Z",
+  "method": "rows seeded with the stamps each save path writes, aged by back-dating; applyLifecycle as on page load",
+  "cells": [
+    {
+      "cell": "Hospital processed: text kept at 11 h",
+      "expected": "present",
+      "actual": "present",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Hospital failed-first-save: text kept at 11 h",
+      "expected": "present",
+      "actual": "present",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Hospital failed-after-processing: text kept at 11 h",
+      "expected": "present",
+      "actual": "present",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Hospital processed: text gone at 13 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "absent",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Hospital failed-first-save: text gone at 13 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13"
+    },
+    {
+      "cell": "Hospital failed-after-processing: text gone at 13 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13"
+    },
+    {
+      "cell": "Hospital processed: text gone at 100 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "absent",
+      "verdict": "pass",
+      "req": "U13",
+      "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+    },
+    {
+      "cell": "Hospital failed-first-save: text gone at 100 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13",
+      "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+    },
+    {
+      "cell": "Hospital failed-after-processing: text gone at 100 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13",
+      "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+    },
+    {
+      "cell": "Nursing Home processed: text kept at 11 h",
+      "expected": "present",
+      "actual": "present",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Nursing Home failed-first-save: text kept at 11 h",
+      "expected": "present",
+      "actual": "present",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Nursing Home failed-after-processing: text kept at 11 h",
+      "expected": "present",
+      "actual": "present",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Nursing Home processed: text gone at 13 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "absent",
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Nursing Home failed-first-save: text gone at 13 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13"
+    },
+    {
+      "cell": "Nursing Home failed-after-processing: text gone at 13 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13"
+    },
+    {
+      "cell": "Nursing Home processed: text gone at 100 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "absent",
+      "verdict": "pass",
+      "req": "U13",
+      "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+    },
+    {
+      "cell": "Nursing Home failed-first-save: text gone at 100 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13",
+      "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+    },
+    {
+      "cell": "Nursing Home failed-after-processing: text gone at 100 h",
+      "expected": "absent (3.6: pre-round 12 h)",
+      "actual": "present",
+      "verdict": "fail",
+      "req": "U13",
+      "note": "100 h: shows whether failed-summary text ever ages out (not only inferred from 13 h)"
+    }
+  ]
+}

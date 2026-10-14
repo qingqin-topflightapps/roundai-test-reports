@@ -1,0 +1,63 @@
+{
+  "case": "TC-16-S16",
+  "title": "Odd stored rows, both modes: markup and instruction-looking text shown as plain text; a row with no label or no lines is not shown blank",
+  "needs": [
+    "seed",
+    "permission-dialog",
+    "oracle-regex",
+    "oracle-record-only"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s16-h-collapsed.md",
+      "verdict": "Fail",
+      "url": "/rounding/js748xbgrvreh0tjdxraeatjgx8g6qg6",
+      "problems": [
+        "should not show \"0 lines\""
+      ],
+      "known": [],
+      "recorded": [
+        "(T2: a row with a line count and no label (recorded, not judged)) pass: /button \"\\s*\\d+ lines\"/i matches \"button \\\"1 lines\\\"\""
+      ]
+    },
+    {
+      "file": "s16-inj-open.md",
+      "verdict": "Pass",
+      "url": "/rounding/js748xbgrvreh0tjdxraeatjgx8g6qg6",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-n-inj-open.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7egfb4cryzn56aax10sfdxfd8g6nwa",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Record (T2): in checkpoint 1, say in notes.md whether any row shows a line count with no label beside it, and what each row's label is."
+  ],
+  "agent": {
+    "turns": 24,
+    "costUsd": 0.1738632,
+    "durationMs": 69034,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

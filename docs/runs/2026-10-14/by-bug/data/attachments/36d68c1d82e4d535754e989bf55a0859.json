@@ -1,0 +1,88 @@
+{
+  "name": "tc20-s24-snf",
+  "at": "2026-10-14T07:47:50.593Z",
+  "checks": [
+    {
+      "id": "chart: an explicit failure message about the note",
+      "ok": true,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "chart: the typed dictation is still in the box",
+      "ok": true,
+      "detail": "box: Seen at bedside, comfortable, lungs clear. Plan unchanged."
+    },
+    {
+      "id": "server: the typed dictation is stored",
+      "ok": true,
+      "detail": "encounterNotes: Seen at bedside, comfortable, lungs clear. Plan unchanged."
+    },
+    {
+      "id": "server: no note saved",
+      "ok": true,
+      "detail": "note: (none)"
+    },
+    {
+      "id": "chart: shows 'Note not generated' (UAT Empty & Failure States state 4, TC-20 U9; EFS Q1 / OAT-03 Q3 open)",
+      "ok": false,
+      "detail": "not on the Encounter tab ('The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.') nor on the Note tab ('Note | No note generated yet.')"
+    },
+    {
+      "id": "chart: no endless spinner on any tab after the failure (UAT 3.5 / OAT-03)",
+      "ok": true,
+      "detail": "Encounter tab 10 s after the failure: none; Post-Round tab 10 s later: none"
+    },
+    {
+      "id": "Note (Post-Round) tab names the failed note (EFS U4b, gated TFA-92595)",
+      "ok": false,
+      "detail": "Note | No note generated yet.",
+      "recordOnly": true
+    },
+    {
+      "id": "dashboard: the row never showed Note Ready or Complete",
+      "ok": true,
+      "detail": "badges seen on the row: Not Yet Prepped"
+    },
+    {
+      "id": "dashboard: Nursing Home counts Total 1, Pending 1, In Progress 0, Complete 0",
+      "ok": true,
+      "detail": "{\"total\":\"1\",\"pending\":\"1\",\"inProgress\":\"0\",\"complete\":\"0\"}"
+    }
+  ],
+  "data": {
+    "dashboardBefore": {
+      "counts": {
+        "total": "1",
+        "pending": "1",
+        "inProgress": "0",
+        "complete": "0"
+      },
+      "row": "QA Resident GenFail\n\nQA2 · 0 tasks pending\n\nNot Yet Prepped"
+    },
+    "generateCalls": 1,
+    "chartFailureText": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+    "serverAfter": {
+      "status": "pending",
+      "note": null,
+      "noteGeneratedAt": null
+    },
+    "postRoundTabText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident GenFail\n\nMRN-SFIEWM · QA2\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete",
+    "spinnersAfterFailure": {
+      "encounterTab": [],
+      "postRoundTab": [],
+      "generateCalls": 1
+    },
+    "dashboardAfter": {
+      "counts": {
+        "total": "1",
+        "pending": "1",
+        "inProgress": "0",
+        "complete": "0"
+      },
+      "row": "QA Resident GenFail\n\nQA2 · 0 tasks pending\n\nNot Yet Prepped",
+      "badgesSeen": [
+        "Not Yet Prepped"
+      ]
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "case": "TC-04-S12",
+  "title": "Re-assign table through the UI: same patient again, words added (not placed until re-assigned), then another patient",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-count",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s12-first.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-abbott-not-reassigned.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7cyyh2nyn4b06bpht7qerfyd8g7v5g",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-pad-after-words.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q13: any cue that the added words are not on the chart yet) fail: none of \"not on the chart\" | \"Added after it was placed\" present (in subtree \"- dialog [\")"
+      ]
+    },
+    {
+      "file": "s12-abbott-more.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7cyyh2nyn4b06bpht7qerfyd8g7v5g",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4: separator between the two placements) pass: backend abbott-cp4 encounterNotes = \"Wound check: clean, dry, intact.\\n\\nAmbulating in the hall.\""
+      ]
+    },
+    {
+      "file": "s12-baker.md",
+      "verdict": "Pass",
+      "url": "/rounding/js797k0pjryz9da2jj61vxq0n18g69ks",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-abbott-keeps.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7cyyh2nyn4b06bpht7qerfyd8g7v5g",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Q13: does the reopened pad say the added words are not on the chart yet: read s12-pad-after-words.png"
+  ],
+  "agent": {
+    "turns": 67,
+    "costUsd": 0.5320224000000001,
+    "durationMs": 109894,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

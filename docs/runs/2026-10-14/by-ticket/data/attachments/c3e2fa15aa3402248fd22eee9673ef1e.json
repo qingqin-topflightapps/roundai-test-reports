@@ -1,0 +1,103 @@
+{
+  "ref": "TC-21/S17",
+  "part": "deleted",
+  "at": "2026-10-14T07:58:28.667Z",
+  "liveCalls": "Hospital Save Note + Save & Extract, NH Save Note",
+  "cells": [
+    {
+      "cell": "positive control: Hospital Save Note processed (notesProcessedAt moved, preRoundError empty)",
+      "expected": "processed (else the Hospital cells are Invalid)",
+      "actual": {
+        "notesProcessedAtBefore": "2026-10-14T05:57:49.864Z",
+        "notesProcessedAtAfter": "2026-10-14T07:57:53.564Z",
+        "preRoundError": null,
+        "processed": true
+      },
+      "verdict": "pass"
+    },
+    {
+      "cell": "positive control: Hospital Save & Extract saved the encounter text and reported its result",
+      "expected": "encounter saved + '✓ …' message",
+      "actual": {
+        "encounterNotes": "Lungs clearer today. Plan unchanged.",
+        "encounterEditedAtBefore": null,
+        "encounterEditedAtAfter": 1791964689046,
+        "message": "✓ Notes saved — no new tasks or medication changes found"
+      },
+      "verdict": "pass"
+    },
+    {
+      "cell": "positive control: Nursing Home Save Note processed (notesProcessedAt moved, preRoundError empty)",
+      "expected": "processed (else the NH cells are Invalid)",
+      "actual": {
+        "notesProcessedAtBefore": "2026-10-13T05:57:49.864Z",
+        "notesProcessedAtAfter": "2026-10-14T07:58:14.416Z",
+        "preRoundError": null,
+        "processed": true
+      },
+      "verdict": "pass"
+    },
+    {
+      "cell": "Hospital: deleted med row not back after Save Note + Save & Extract",
+      "expected": "absent",
+      "actual": [
+        "Ceftriaxone 1 g IV daily"
+      ],
+      "verdict": "pass",
+      "req": "T4"
+    },
+    {
+      "cell": "Hospital: deleted task not back",
+      "expected": "absent",
+      "actual": [],
+      "verdict": "pass",
+      "req": "T4"
+    },
+    {
+      "cell": "Hospital: deleted Important Point not back",
+      "expected": "absent",
+      "actual": [],
+      "verdict": "pass",
+      "req": "T4"
+    },
+    {
+      "cell": "Nursing Home: deleted med row not back after Save Note",
+      "expected": "absent",
+      "actual": [
+        "Furosemide 20 mg PO daily"
+      ],
+      "verdict": "pass",
+      "req": "T4"
+    },
+    {
+      "cell": "Nursing Home: deleted task not back",
+      "expected": "absent",
+      "actual": [],
+      "verdict": "pass",
+      "req": "T4"
+    },
+    {
+      "cell": "Nursing Home: deleted Important Point not back",
+      "expected": "absent",
+      "actual": [],
+      "verdict": "pass",
+      "req": "T4"
+    },
+    {
+      "cell": "positive control: kept rows still there (Hospital ceftriaxone, NH furosemide)",
+      "expected": "present",
+      "actual": {
+        "ceftriaxone": true,
+        "furosemide": true
+      },
+      "verdict": "pass"
+    },
+    {
+      "cell": "Nursing Home Save & Extract half",
+      "expected": "-",
+      "actual": null,
+      "verdict": "not-run",
+      "note": "kept to the Hospital Save & Extract to bound live calls; NH Save Note covers the visit write"
+    }
+  ]
+}

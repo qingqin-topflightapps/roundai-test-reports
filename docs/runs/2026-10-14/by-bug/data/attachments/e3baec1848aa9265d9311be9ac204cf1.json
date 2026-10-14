@@ -1,0 +1,103 @@
+{
+  "case": "TC-15-S07",
+  "title": "Typed medication questions with one right answer: why held, held now, stopped, given once (Hospital; NH variants)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s07-h-why-held.md",
+      "verdict": "Pass",
+      "url": "/rounding/js729cbpxecwmgjha2snm93ep58g6158",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-h-lisinopril-now.md",
+      "verdict": "Pass",
+      "url": "/rounding/js729cbpxecwmgjha2snm93ep58g6158",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-h-enoxaparin.md",
+      "verdict": "Pass",
+      "url": "/rounding/js729cbpxecwmgjha2snm93ep58g6158",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-h-ondansetron.md",
+      "verdict": "Pass",
+      "url": "/rounding/js729cbpxecwmgjha2snm93ep58g6158",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-n-lisinopril-now.md",
+      "verdict": "Pass",
+      "url": "/snf/jx704szhtsq0yvwf56x3ymgbk58g7z1s",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-n-enoxaparin.md",
+      "verdict": "Pass",
+      "url": "/snf/jx704szhtsq0yvwf56x3ymgbk58g7z1s",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s07-n-ondansetron.md",
+      "verdict": "Pass",
+      "url": "/snf/jx704szhtsq0yvwf56x3ymgbk58g7z1s",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "A stopped drug presented as current is a Fail whatever Q3 decides: read the s07-*-enoxaparin answers for 'yes, still on' wording next to the matched word"
+  ],
+  "agent": {
+    "turns": 69,
+    "costUsd": 0.4348136,
+    "durationMs": 384996,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U36",
+  "covers": [
+    "TC-15/S07"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u36",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U36.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "tc16-s25-c",
+  "at": "2026-10-14T07:50:09.418Z",
+  "checks": [
+    {
+      "id": "(c) precondition: the failed save left the line off the server",
+      "ok": true,
+      "detail": "{\"transcript\":[],\"transcriptDate\":null,\"history\":[]}"
+    },
+    {
+      "id": "(c) the app offers to recover the bedside recording",
+      "ok": true,
+      "detail": "Recover bedside recording shown"
+    },
+    {
+      "id": "(c) the recovered line once, in exactly one session",
+      "ok": true,
+      "detail": "{\"transcript\":[\"QA16-CLI-REC patient reports less pain MPSI\"],\"transcriptDate\":\"Thu Oct 15 2026\",\"history\":[]}"
+    },
+    {
+      "id": "(c) no line on screen twice",
+      "ok": true,
+      "detail": "REC x1"
+    }
+  ],
+  "data": {
+    "saveErrorShown": "The transcription is still visible, but it couldn’t be saved. Check your connection before leaving this encounter.",
+    "serverAfterFailedSave": {
+      "transcript": [],
+      "transcriptDate": null,
+      "history": []
+    },
+    "deviceAtRecover": "Thu Oct 15 2026 00:08:03 GMT+0900 (Japan Standard Time)",
+    "serverAfterRecover": {
+      "transcript": [
+        "QA16-CLI-REC patient reports less pain MPSI"
+      ],
+      "transcriptDate": "Thu Oct 15 2026",
+      "history": []
+    },
+    "updates": 2,
+    "panelRows": [
+      "Most Recent 1 lines"
+    ]
+  }
+}

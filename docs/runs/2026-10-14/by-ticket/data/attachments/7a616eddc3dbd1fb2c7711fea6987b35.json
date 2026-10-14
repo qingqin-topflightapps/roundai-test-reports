@@ -1,0 +1,770 @@
+{
+  "ref": "OAT-04/S27",
+  "title": "Every write path stamps a usable clock",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T07:38:55.260Z",
+  "summary": {
+    "pass": 34,
+    "fail": 1,
+    "failKnown": 1,
+    "failConflict": 0,
+    "record": 1,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "clock.Save Note.vitals {\"bp\":\"126/78\"}",
+      "item": "Save Note: vitals {\"bp\":\"126/78\"} has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:04.263Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Save Note.labs Creatinine 1.0",
+      "item": "Save Note: labs Creatinine 1.0 has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:04.263Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Save Note.imaging CXR: clear",
+      "item": "Save Note: imaging CXR: clear has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:04.263Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Save Note.medication row 'Pantoprazole 40 mg daily",
+      "item": "Save Note: medication row 'Pantoprazole 40 mg daily' (active) has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:08.927Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Panels.vitals {\"bp\":\"126/78\"}",
+      "item": "Panels: vitals {\"bp\":\"126/78\"} has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:16.865Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Panels.labs Cr 1.0",
+      "item": "Panels: labs Cr 1.0 has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:17.082Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Panels.imaging CXR: clear",
+      "item": "Panels: imaging CXR: clear has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:17.241Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Panels.medication row 'pantoprazole 40 mg daily",
+      "item": "Panels: medication row 'pantoprazole 40 mg daily' (active) has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:17.364Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Save & Extract.medication row 'Pantoprazole' (active)",
+      "item": "Save & Extract: medication row 'Pantoprazole' (active) has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:24.499Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Save & Extract.encounter text on the working tab",
+      "item": "Save & Extract: encounter text on the working tab has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "1791963501961",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Prior note paste.labs Creatinine 2.1",
+      "item": "Prior note paste: labs Creatinine 2.1 has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:35.265Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Prior note paste.imaging CXR (Oct 9): clear",
+      "item": "Prior note paste: imaging CXR (Oct 9): clear has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:35.265Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Prior note paste.prior note 'Oct 9'",
+      "item": "Prior note paste: prior note 'Oct 9' has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:31.756Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Prior note photo.labs Creatinine 1.4",
+      "item": "Prior note photo: labs Creatinine 1.4 has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:45.251Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Prior note photo.imaging TTE showed EF 45%",
+      "item": "Prior note photo: imaging TTE showed EF 45% has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:45.251Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Prior note photo.prior note 'Oct 9'",
+      "item": "Prior note photo: prior note 'Oct 9' has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "2026-10-14T07:38:41.696Z",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "clock.Quick Dictation.encounter text on the working tab",
+      "item": "Quick Dictation: encounter text on the working tab has a clock the purge can read",
+      "expected": "a parseable timestamp",
+      "observed": "1791963531265",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: a null clock (it can never clear) = Fail"
+    },
+    {
+      "id": "priorNoteLabDate",
+      "item": "prior note dated 5 days ago: the clock its extracted labs got",
+      "expected": "needs a decision: Q5 / TC-13 'stored with the note's date' (K16)",
+      "observed": "labsUpdatedAt 2026-10-14T07:38:35.265Z (import time, not the note's date Oct 9)",
+      "verdict": "record"
+    },
+    {
+      "id": "gone.Save Note.vitals {\"bp\":\"126/78\"}",
+      "item": "Save Note: vitals {\"bp\":\"126/78\"} after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Save Note.labs Creatinine 1.0",
+      "item": "Save Note: labs Creatinine 1.0 after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Save Note.imaging CXR: clear",
+      "item": "Save Note: imaging CXR: clear after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Save Note.medication row 'Pantoprazole 40 mg daily",
+      "item": "Save Note: medication row 'Pantoprazole 40 mg daily' (active) after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Panels.vitals {\"bp\":\"126/78\"}",
+      "item": "Panels: vitals {\"bp\":\"126/78\"} after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Panels.labs Cr 1.0",
+      "item": "Panels: labs Cr 1.0 after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Panels.imaging CXR: clear",
+      "item": "Panels: imaging CXR: clear after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Panels.medication row 'pantoprazole 40 mg daily",
+      "item": "Panels: medication row 'pantoprazole 40 mg daily' (active) after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Save & Extract.medication row 'Pantoprazole' (active)",
+      "item": "Save & Extract: medication row 'Pantoprazole' (active) after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Save & Extract.encounter text on the working tab",
+      "item": "Save & Extract: encounter text on the working tab after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Prior note paste.labs Creatinine 2.1",
+      "item": "Prior note paste: labs Creatinine 2.1 after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Prior note paste.imaging CXR (Oct 9): clear",
+      "item": "Prior note paste: imaging CXR (Oct 9): clear after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Prior note paste.prior note 'Oct 9'",
+      "item": "Prior note paste: prior note 'Oct 9' after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Prior note photo.labs Creatinine 1.4",
+      "item": "Prior note photo: labs Creatinine 1.4 after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Prior note photo.imaging TTE showed EF 45%",
+      "item": "Prior note photo: imaging TTE showed EF 45% after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Prior note photo.prior note 'Oct 9'",
+      "item": "Prior note photo: prior note 'Oct 9' after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Quick Dictation.encounter text on the working tab",
+      "item": "Quick Dictation: encounter text on the working tab after every clock moved back 37 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 (B), 3.6, TFA-94699 AC 1: an item that survives = Fail"
+    },
+    {
+      "id": "gone.Save & Extract.tasks",
+      "item": "Save & Extract: open tasks it created (start pantoprazole 40 mg daily; recheck creatinine tomorrow morning) after 37 h",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.6 open tasks 36 h after the chart was last processed",
+      "known": "K2: open Hospital tasks are never purged — TFA-94699 AC 1"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "vision setup: VERTEX_AI_CONFIG on this throwaway backend (5910, started by this runner) has location 'global' (copied from the QA stack with 'us-central1'); the model is the app default gemini-3.6-flash: with an empty aiProvider row resolveConfig returns DEFAULT_VISION_MODEL (convex/aiProvider.ts:52, 75) and vision() passes it as args.model, which overrides VERTEX_AI_CONFIG.model (convex/ai/providers/vertex.ts:166), so changing the env model does nothing. In us-central1 that default returns 404 (first run here; dev shows the same 404).",
+    "Prior note photo: ",
+    "Quick Dictation: assigned on the first tap",
+    "live AI: {\"total\":7,\"failed\":0,\"byFn\":{\"parsing.parsePreRoundNotes\":1,\"parsing.extractTasks\":2,\"parsing.extractMedicationEvents\":1,\"parsing.extractPriorNote\":2,\"vision.scanPriorNote\":1}} app actions (aiCallLog); {\"total\":10,\"failed\":0,\"byFn\":{\"ai/parsing:parsePreRoundNotes\":4,\"ai/parsing:extractTasks\":2,\"ai/parsing:extractMedicationEvents\":1,\"ai/parsing:extractPriorNote\":2,\"ai/vision:scanPriorNote\":1}} model requests (backend log)"
+  ],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "paths": {
+      "Save Note": "ok",
+      "Panels": "ok",
+      "Save & Extract": "ok",
+      "Prior note paste": "ok",
+      "Prior note photo": "ok",
+      "Quick Dictation": "ok"
+    },
+    "legNotes": {
+      "Prior note photo": [],
+      "Quick Dictation": [
+        "assigned on the first tap"
+      ]
+    },
+    "before.Save Note": {
+      "_id": "kx71e1x10z9hqp59frx38khc3d8g9y5q",
+      "name": "QA Hosp Path 1",
+      "preRoundNotes": "BP 126/78. Creatinine 1.0. CXR clear. Started pantoprazole 40 mg daily.",
+      "rawPreRoundNotes": "BP 126/78. Creatinine 1.0. CXR clear. Started pantoprazole 40 mg daily.",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-14T07:38:04.263Z",
+      "preRoundEditedAt": 1791963484263,
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791963484263,
+      "status": "pre-rounded",
+      "vitals": {
+        "bp": "126/78"
+      },
+      "vitalsUpdatedAt": "2026-10-14T07:38:04.263Z",
+      "labs": [
+        {
+          "name": "Creatinine",
+          "trend": "",
+          "value": "1.0"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-14T07:38:04.263Z",
+      "radiology": [
+        "CXR: clear"
+      ],
+      "radiologyUpdatedAt": "2026-10-14T07:38:04.263Z",
+      "medications": [
+        {
+          "changeDay": null,
+          "changed": false,
+          "changedNote": "started today",
+          "id": "1791963493927",
+          "name": "Pantoprazole 40 mg daily",
+          "status": "active",
+          "updatedAt": "2026-10-14T07:38:08.927Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-14T07:38:04.263Z",
+      "vitalsHistory": [
+        {
+          "bp": "126/78",
+          "date": "Wed Oct 14 2026"
+        }
+      ],
+      "labsHistory": [
+        {
+          "date": "Wed Oct 14 2026",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "1.0"
+            }
+          ]
+        }
+      ],
+      "admissionSummary": {
+        "course": "Oct 14: Patient stable on exam. Creatinine normal. CXR clear. Initiated pantoprazole 40 mg daily for GI prophylaxis.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-14T07:38:04.263Z",
+        "reason": "Patient admitted for evaluation. Renal function preserved (creatinine 1.0). No acute cardiopulmonary process on imaging. Started on acid suppression therapy."
+      }
+    },
+    "before.Panels": {
+      "_id": "kx73nsbatsymxx62g7g4bq8ncn8g87z1",
+      "name": "QA Hosp Path 2",
+      "vitals": {
+        "bp": "126/78"
+      },
+      "vitalsUpdatedAt": "2026-10-14T07:38:16.865Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "trend": "",
+          "value": "1.0"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-14T07:38:17.082Z",
+      "radiology": [
+        "CXR: clear"
+      ],
+      "radiologyUpdatedAt": "2026-10-14T07:38:17.241Z",
+      "medications": [
+        {
+          "id": "1791963497316",
+          "name": "pantoprazole 40 mg daily",
+          "status": "active",
+          "updatedAt": "2026-10-14T07:38:17.364Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-14T07:38:17.365Z"
+    },
+    "before.Save & Extract": {
+      "_id": "kx73788mswsd5qd0qb9yyfe8dx8g8tn9",
+      "name": "QA Hosp Path 3",
+      "encounterNotes": "Started pantoprazole 40 mg daily. BP 126/78. Recheck creatinine tomorrow morning.",
+      "encounterEditedAt": 1791963501961,
+      "status": "seen",
+      "tasks": [
+        {
+          "category": "medication",
+          "createdAt": "2026-10-14T07:38:24.691Z",
+          "done": false,
+          "id": "1791963505191",
+          "text": "start pantoprazole 40 mg daily",
+          "urgent": false
+        },
+        {
+          "category": "labs",
+          "createdAt": "2026-10-14T07:38:24.691Z",
+          "done": false,
+          "id": "1791963505192",
+          "text": "recheck creatinine tomorrow morning",
+          "urgent": false
+        }
+      ],
+      "medications": [
+        {
+          "changeDate": "Oct 14",
+          "changeType": "started",
+          "changed": true,
+          "changedNote": "Started pantoprazole 40 mg daily",
+          "id": "1791963511498",
+          "name": "Pantoprazole",
+          "status": "active",
+          "updatedAt": "2026-10-14T07:38:24.499Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-14T07:38:24.504Z",
+      "medicationEvents": [
+        {
+          "event": "Started pantoprazole 40 mg daily",
+          "name": "Pantoprazole",
+          "type": "start"
+        }
+      ]
+    },
+    "before.Prior note paste": {
+      "_id": "kx753t25w183x685r11w55g10x8g8by9",
+      "name": "QA Hosp Path 4",
+      "importantPoints": [
+        {
+          "id": "prior-note:1791963511756:0",
+          "source": "prior-note",
+          "text": "Pneumonia (admitted for)"
+        },
+        {
+          "id": "prior-note:1791963511756:1",
+          "source": "prior-note",
+          "text": "Elevated creatinine (Cr 2.1)"
+        },
+        {
+          "id": "prior-note:1791963511756:2",
+          "source": "prior-note",
+          "text": "Continue pantoprazole 40 mg daily"
+        }
+      ],
+      "ptsEditedAt": "2026-10-14T07:38:35.265Z",
+      "labs": [
+        {
+          "name": "Creatinine",
+          "trend": "",
+          "value": "2.1"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-14T07:38:35.265Z",
+      "radiology": [
+        "CXR (Oct 9): clear"
+      ],
+      "radiologyUpdatedAt": "2026-10-14T07:38:35.265Z",
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-14T07:38:31.756Z",
+          "content": "Prior progress note (Oct 9). Admitted for pneumonia. Cr 2.1. CXR: clear. Continue pantoprazole 40 mg daily.",
+          "dateLabel": "Oct 9",
+          "extractedAt": "2026-10-14T07:38:35.265Z",
+          "id": "1791963511756",
+          "source": "explicit-import"
+        }
+      ],
+      "admissionSummary": {
+        "lastUpdatedAt": "2026-10-14T07:38:35.265Z",
+        "reason": "Patient was admitted for pneumonia. Prior creatinine was 2.1. Chest X-ray from October 9 was clear. Pantoprazole 40 mg daily was continued."
+      }
+    },
+    "before.Prior note photo": {
+      "_id": "kx709mntc5jrnaj6s6ar3m0whh8g8tfj",
+      "name": "QA Hosp Path 5",
+      "importantPoints": [
+        {
+          "id": "prior-note:1791963521696:0",
+          "source": "prior-note",
+          "text": "Volume overload - continue oral diuresis"
+        },
+        {
+          "id": "prior-note:1791963521696:1",
+          "source": "prior-note",
+          "text": "CKD - avoid nephrotoxins"
+        }
+      ],
+      "ptsEditedAt": "2026-10-14T07:38:45.251Z",
+      "labs": [
+        {
+          "name": "Creatinine",
+          "trend": "down from 1.8",
+          "value": "1.4"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-14T07:38:45.251Z",
+      "radiology": [
+        "TTE showed EF 45%"
+      ],
+      "radiologyUpdatedAt": "2026-10-14T07:38:45.251Z",
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-14T07:38:41.696Z",
+          "content": "**Progress note — QA RET-S27 Alder**\n\nOct 10\n\nPrior progress note (Oct 10). Admitted for volume overload with CKD stage 3. Creatinine 1.4, down from 1.8. TTE showed EF 45%. Key issues: volume overload - continue oral diuresis; CKD - avoid nephrotoxins.",
+          "dateLabel": "Oct 9",
+          "extractedAt": "2026-10-14T07:38:45.251Z",
+          "id": "1791963521696",
+          "source": "explicit-import"
+        }
+      ],
+      "admissionSummary": {
+        "lastUpdatedAt": "2026-10-14T07:38:45.251Z",
+        "reason": "Patient admitted for volume overload with CKD stage 3. Creatinine has improved from 1.8 to 1.4. Transthoracic echocardiogram showed ejection fraction of 45%."
+      }
+    },
+    "before.Quick Dictation": {
+      "_id": "kx72h4v97cyj1rbd1a1vfdpnzn8g865z",
+      "name": "QA Hosp Path 6",
+      "encounterNotes": "QA quick dictation path 6: lungs clear, BP 126/78.",
+      "encounterEditedAt": 1791963531265
+    },
+    "shift": 7,
+    "purge": {
+      "physician": 6
+    },
+    "after.Save Note": {
+      "_id": "kx71e1x10z9hqp59frx38khc3d8g9y5q",
+      "name": "QA Hosp Path 1",
+      "preRoundNotes": "",
+      "rawPreRoundNotes": "",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-12T18:38:04.263Z",
+      "preRoundEditedAt": 1791830284263,
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791830284263,
+      "status": "pending",
+      "vitals": {},
+      "vitalsUpdatedAt": "2026-10-12T18:38:04.263Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T18:38:04.263Z",
+      "radiology": [],
+      "radiologyUpdatedAt": "2026-10-12T18:38:04.263Z",
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T18:38:04.263Z",
+      "vitalsHistory": [
+        {
+          "bp": "126/78",
+          "date": "Wed Oct 14 2026"
+        }
+      ],
+      "labsHistory": [
+        {
+          "date": "Wed Oct 14 2026",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "1.0"
+            }
+          ]
+        }
+      ],
+      "admissionSummary": {
+        "course": "Oct 14: Patient stable on exam. Creatinine normal. CXR clear. Initiated pantoprazole 40 mg daily for GI prophylaxis.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-12T18:38:04.263Z",
+        "reason": "Patient admitted for evaluation. Renal function preserved (creatinine 1.0). No acute cardiopulmonary process on imaging. Started on acid suppression therapy."
+      }
+    },
+    "after.Panels": {
+      "_id": "kx73nsbatsymxx62g7g4bq8ncn8g87z1",
+      "name": "QA Hosp Path 2",
+      "vitals": {},
+      "vitalsUpdatedAt": "2026-10-12T18:38:16.865Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T18:38:17.082Z",
+      "radiology": [],
+      "radiologyUpdatedAt": "2026-10-12T18:38:17.241Z",
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T18:38:17.365Z"
+    },
+    "after.Save & Extract": {
+      "_id": "kx73788mswsd5qd0qb9yyfe8dx8g8tn9",
+      "name": "QA Hosp Path 3",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791830301961,
+      "status": "seen",
+      "tasks": [
+        {
+          "category": "medication",
+          "createdAt": "2026-10-12T18:38:24.691Z",
+          "done": false,
+          "id": "1791963505191",
+          "text": "start pantoprazole 40 mg daily",
+          "urgent": false
+        },
+        {
+          "category": "labs",
+          "createdAt": "2026-10-12T18:38:24.691Z",
+          "done": false,
+          "id": "1791963505192",
+          "text": "recheck creatinine tomorrow morning",
+          "urgent": false
+        }
+      ],
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T18:38:24.504Z",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T07:38:54.200Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "Started pantoprazole 40 mg daily. BP 126/78. Recheck creatinine tomorrow morning.",
+              "time": ""
+            }
+          ],
+          "label": "Oct 12 · Encounter notes"
+        }
+      ],
+      "medicationEvents": [
+        {
+          "event": "Started pantoprazole 40 mg daily",
+          "name": "Pantoprazole",
+          "type": "start"
+        }
+      ]
+    },
+    "after.Prior note paste": {
+      "_id": "kx753t25w183x685r11w55g10x8g8by9",
+      "name": "QA Hosp Path 4",
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": "2026-10-12T18:38:35.265Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T18:38:35.265Z",
+      "radiology": [],
+      "radiologyUpdatedAt": "2026-10-12T18:38:35.265Z",
+      "previousNotes": [],
+      "admissionSummary": {
+        "lastUpdatedAt": "2026-10-12T18:38:35.265Z",
+        "reason": "Patient was admitted for pneumonia. Prior creatinine was 2.1. Chest X-ray from October 9 was clear. Pantoprazole 40 mg daily was continued."
+      }
+    },
+    "after.Prior note photo": {
+      "_id": "kx709mntc5jrnaj6s6ar3m0whh8g8tfj",
+      "name": "QA Hosp Path 5",
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": "2026-10-12T18:38:45.251Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T18:38:45.251Z",
+      "radiology": [],
+      "radiologyUpdatedAt": "2026-10-12T18:38:45.251Z",
+      "previousNotes": [],
+      "admissionSummary": {
+        "lastUpdatedAt": "2026-10-12T18:38:45.251Z",
+        "reason": "Patient admitted for volume overload with CKD stage 3. Creatinine has improved from 1.8 to 1.4. Transthoracic echocardiogram showed ejection fraction of 45%."
+      }
+    },
+    "after.Quick Dictation": {
+      "_id": "kx72h4v97cyj1rbd1a1vfdpnzn8g865z",
+      "name": "QA Hosp Path 6",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791830331265,
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T07:38:54.200Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA quick dictation path 6: lungs clear, BP 126/78.",
+              "time": ""
+            }
+          ],
+          "label": "Oct 12 · Encounter notes"
+        }
+      ]
+    },
+    "aiCalls": [
+      {
+        "at": 1791963488857,
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791963491425,
+        "fn": "parsing.extractTasks",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791963504130,
+        "fn": "parsing.extractTasks",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791963504485,
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791963515232,
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791963521222,
+        "fn": "vision.scanPriorNote",
+        "model": "gemini-3.6-flash",
+        "ok": true
+      },
+      {
+        "at": 1791963525179,
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      }
+    ]
+  }
+}

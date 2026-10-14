@@ -1,0 +1,12 @@
+{
+  "OAT-01/S10": {
+    "status": "record-only",
+    "detail": "Seconds from sessions:_revokeForEmail to 'Send sign-in code' on an open chart, 10 runs per case, fresh account signed in through the form: no interaction median 1.24 s, worst 3.40 s (all 10 cleared without input: the session row is in every query's read set, so the open subscriptions re-run and refuse at once); one tap median 1.21 s, worst 2.23 s; tab switch median 0.63 s, worst 5.75 s (visibilitychange hidden->visible dispatched in the page: headless tabs never go hidden). No run kept the chart on screen. No target exists (Q7); e-mail arrival seconds (Q12) are S01's and need a real mailbox, not measured here. 8 of the first 30 runs failed in SETUP under load (sign-in 500 / response timeout) and were re-run. Manual gap: e-mail arrival seconds (Q12) need a real mailbox.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s10-summary.json",
+      "runs/2026-10-14-local/newspec-a/evidence/oat01-s10/",
+      "runs/2026-10-14-local/newspec-a/oat01-s10.json",
+      "runs/2026-10-14-local/newspec-a/oat01-s10-rerun.json"
+    ]
+  }
+}

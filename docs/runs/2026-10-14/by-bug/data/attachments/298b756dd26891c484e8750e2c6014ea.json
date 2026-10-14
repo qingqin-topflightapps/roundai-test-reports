@@ -1,0 +1,28 @@
+{
+  "TC-20/S23": {
+    "status": "gated",
+    "dataset": "status",
+    "target": "dev",
+    "title": "Nursing Home dashboard tabs: switching Today's Visits / All Residents moves rows and counts; list state does not leak in",
+    "detail": "the dashboard has Today's Visits / All Residents tabs (TFA-92598) → {\"tabs\":false}",
+    "judged": {
+      "total": 1,
+      "failed": 0
+    },
+    "gated": [
+      {
+        "cell": "the dashboard has Today's Visits / All Residents tabs",
+        "ok": false,
+        "ref": "TFA-92598"
+      }
+    ],
+    "recorded": [
+      "U5: tiles count the In Today set (U5 evidence only here; judged in S04a) → {\"total\":22,\"inToday\":19,\"all\":22}"
+    ],
+    "durationMs": 12861,
+    "evidence": [
+      "runs/2026-10-14-dev/datasets/status/evidence/TC-20-S23.json",
+      "runs/2026-10-14-dev/datasets/status/evidence/TC-20-S23-dashboard.png"
+    ]
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "case": "U41",
+  "title": "Pre-Round Ask: meds, weight, temperature units",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read",
+    "oracle-regex"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s12-h-meds.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7chcvs936vzeg6x113fjqsqs8g98tp",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q3: how the stopped enoxaparin row is worded) pass: \"stopped\" present (anyOf) (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")",
+        "(Q3: how the one-time ondansetron dose is worded) pass: \"one-time\" present (anyOf) (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ],
+      "scenario": "TC-15/S12"
+    },
+    {
+      "file": "s08-n-weight.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7eaajpezhk78vjzc01nrxjr18g9arq",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S08"
+    },
+    {
+      "file": "s16-nc-temp.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7fz7w1adqzzme3akv3z9ga898g8a96",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S16"
+    },
+    {
+      "file": "s16-hc-temp.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72zqmd7njjy9fp5mqkactj1x8g9s2x",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S16"
+    },
+    {
+      "file": "s16-hf-temp.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7bpg0pcgm5ev09x7235s0hx18g8qky",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S16"
+    },
+    {
+      "file": "s16-hbare37-temp.md",
+      "verdict": "Pass",
+      "url": "/rounding/js704ks7kg33bsrqg5j0aqjesd8g9sz4",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4: fmtTemp adds °C to a bare 37.9 before the model sees it; whether that unit is allowed is not judged) pass: \"°C\" present (anyOf) (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ],
+      "scenario": "TC-15/S16"
+    },
+    {
+      "file": "s16-hbare100-temp.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7fq08e1qhsy0rqnxx0drpvcd8g9ev3",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4: fmtTemp adds °F to a bare 100.4 before the model sees it; whether that unit is allowed is not judged) pass: \"°F\" present (anyOf) (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ],
+      "scenario": "TC-15/S16"
+    },
+    {
+      "file": "s16-hbare60-temp.md",
+      "verdict": "Fail",
+      "url": "/rounding/js747m55746mvm9qvw4sckp60d8g888h",
+      "problems": [
+        "should not show \"°F\" (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S16"
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 101,
+    "costUsd": 0.8802619999999998,
+    "durationMs": 653465,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U41",
+  "covers": [
+    "TC-15/S12",
+    "TC-15/S08",
+    "TC-15/S16"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u41",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U41.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

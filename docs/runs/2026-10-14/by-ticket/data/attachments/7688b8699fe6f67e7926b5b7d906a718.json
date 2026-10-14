@@ -1,0 +1,13 @@
+{
+  "OAT-04/S23": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:12:19.352Z",
+    "detail": "0 judged items passed, 3 failed (3 known, 0 policy conflict, 0 not in the matrix knownGaps), 5 recorded against open questions — failed: RET-PRE-912 (P1 typed 37 h ago, never processed: expected absent, got present; known K11) | RET-PRE-913 (P2 processed 40 h, edited 37 h ago: expected absent, got present; known K11) | RET-PRE-914 (P3 raw text only from a failed Save Note, 37 h: expected absent, got present; known K11) — record-only: RET-PRE-915 = kept [Q2 (the 36 h claim is Hospital-only; 3.6 NH pre-round 12 h)] | RET-PRE-922 = kept [Q2 (12 h from writing vs from the last Save Note; does it cover unprocessed text?)] | RET-PRE-923 = kept [Q2 (12 h from writing vs from the last Save Note; does it cover unprocessed text?)] | RET-PRE-924 = kept [Q2 (12 h from writing vs from the last Save Note; does it cover unprocessed text?)] | RET-PRE-925 = kept [Q2 (12 h from writing vs from the last Save Note; does it cover unprocessed text?)]",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S23.json"
+    ],
+    "productIssue": "Pre-round text that was typed but never processed, edited after processing, or left raw by a failed Save Note is never deleted: it is still on the chart at 37 h. Breaks the UAT 3.7 claim and OAT-04 Expected 2 (U11). Known in the matrix: K11."
+  }
+}

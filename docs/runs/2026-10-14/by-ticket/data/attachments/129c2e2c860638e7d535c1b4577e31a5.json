@@ -1,0 +1,170 @@
+{
+  "ref": "OAT-06/S24b",
+  "profile": "pixel7",
+  "part": null,
+  "judged": [
+    {
+      "name": "Not now reachable by keyboard",
+      "pass": true,
+      "detail": "",
+      "state": "baseline-card"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,1×: .font-normal)",
+      "state": "baseline-survey-open"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "baseline-survey-open"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "baseline-survey-open"
+    },
+    {
+      "name": "the baseline survey is a dialog with an accessible name",
+      "pass": true,
+      "detail": "name \"Baseline survey\"",
+      "state": "baseline-survey-open"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .hover\\:bg-teal-700 | .mt-3)",
+      "state": "handoff-follow-up"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "handoff-follow-up"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "handoff-follow-up"
+    },
+    {
+      "name": "the follow-up dialog has an accessible name",
+      "pass": true,
+      "detail": "Handoff follow-up question",
+      "state": "handoff-follow-up"
+    },
+    {
+      "name": "Skip reachable by keyboard",
+      "pass": true,
+      "detail": "",
+      "state": "handoff-follow-up"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,1×: .hover\\:text-slate-700); color-contrast(serious,2×: .font-semibold.text-slate-400 | .border-t.border-slate-100.pt-4:nth-child(4) > .text-slate-400)",
+      "state": "settings-feedback"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "settings-feedback"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "settings-feedback"
+    },
+    {
+      "name": "the rating buttons are a named radio group",
+      "pass": true,
+      "detail": "Rating, 1 is not useful and 5 is essential",
+      "state": "settings-feedback"
+    },
+    {
+      "name": "Send feedback reachable by keyboard (after a rating)",
+      "pass": true,
+      "detail": "",
+      "state": "settings-feedback"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,5×: .-ml-1 | .px-3.gap-2.border:nth-child(1) > .flex-shrink-0.p-0\\.5); color-contrast(serious,1×: .uppercase)",
+      "state": "nh-postround-tasks"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-postround-tasks"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-postround-tasks"
+    },
+    {
+      "name": "every task button (complete, delete) has an accessible name",
+      "pass": false,
+      "detail": "2 unnamed button(s) in the task row",
+      "state": "nh-postround-tasks"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "radio groups in the survey (name)",
+      "value": [],
+      "state": "baseline-survey-open"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "baseline-survey-open",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/pixel7--baseline-survey-open.png",
+      "url": "/rounding",
+      "findings": 22,
+      "axe": [
+        "color-contrast/serious×1"
+      ]
+    },
+    {
+      "state": "handoff-follow-up",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/pixel7--handoff-follow-up.png",
+      "url": "/rounding/handoff",
+      "findings": 4,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "settings-feedback",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/pixel7--settings-feedback.png",
+      "url": "/settings",
+      "findings": 13,
+      "axe": [
+        "button-name/critical×1",
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "nh-postround-tasks",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24b/pixel7--nh-postround-tasks.png",
+      "url": "/snf/m57e81rzcpxffvzsedbqg5c5as8g8zjp",
+      "findings": 11,
+      "axe": [
+        "button-name/critical×5",
+        "color-contrast/serious×1"
+      ]
+    }
+  ]
+}

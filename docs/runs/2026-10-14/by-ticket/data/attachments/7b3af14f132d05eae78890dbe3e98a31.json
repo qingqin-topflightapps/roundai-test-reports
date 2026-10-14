@@ -1,0 +1,462 @@
+{
+  "ref": "OAT-04/S04",
+  "title": "Nursing Home counterpart",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:15:30.904Z",
+  "summary": {
+    "pass": 17,
+    "fail": 2,
+    "failKnown": 2,
+    "record": 3,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "V1.gone",
+      "item": "any trace of visit 1 ('V1-7731': note, transcript, medication events)",
+      "expected": "absent",
+      "observed": "present (medications+previousNotes+transcriptHistory)",
+      "verdict": "fail",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)",
+      "known": "K7: Nursing Home keeps 3 visits, not 2 (lifecycle.ts:30-38) — TFA-94699 Nursing Home line / TC-13 Q6"
+    },
+    {
+      "id": "V2-7732.note",
+      "item": "visit V2-7732 note kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "V2-7732.transcript",
+      "item": "visit V2-7732 transcript kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "V2-7732.medEvent",
+      "item": "visit V2-7732 medication event kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "V3-7733.note",
+      "item": "visit V3-7733 note kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "V3-7733.transcript",
+      "item": "visit V3-7733 transcript kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "V3-7733.medEvent",
+      "item": "visit V3-7733 medication event kept",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "chronic",
+      "item": "chronic medication list (amlodipine, levothyroxine) unchanged since visit 1",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "openTask",
+      "item": "open task 'Podiatry referral' added at visit 1",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT OAT-04 (B) and 3.6 Nursing Home (last two visits)"
+    },
+    {
+      "id": "preRound13",
+      "item": "pre-round text processed 13 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home pre-round 12 h"
+    },
+    {
+      "id": "point13",
+      "item": "Important Point written 13 h ago",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TC-12 step 6 'Repeat in Nursing Home' + 3.3 (clock anchor Q3)",
+      "known": "K14: snfLifecyclePatch has no Important Points branch — TFA-94699 AC 1 / TC-12 step 6"
+    },
+    {
+      "id": "doneTask17",
+      "item": "completed task done 17 h ago",
+      "expected": "needs a decision: Q18 (NH completed tasks: no window in 3.6 NH or the ticket)",
+      "observed": "deleted",
+      "verdict": "record"
+    },
+    {
+      "id": "handoff37",
+      "item": "Nursing Home handoff sent 37 h ago",
+      "expected": "needs a decision: Q8 / Q20 (does 36 h apply to NH handoffs; what may remain)",
+      "observed": "kept with its text on both sides (sender recipient)",
+      "verdict": "record"
+    },
+    {
+      "id": "R2.encounterOnTab",
+      "item": "resident 2 encounter recorded 13 h ago still on the working tab",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home encounter 12 h"
+    },
+    {
+      "id": "R2.noteOnTab",
+      "item": "resident 2 note generated 19 h ago still on the working tab",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home note 18 h"
+    },
+    {
+      "id": "R2.where",
+      "item": "where the encounter and note went",
+      "expected": "needs a decision: Q17 (moved into the visit history or deleted; does the move count as a visit, Q9)",
+      "observed": "encounter in transcriptHistory; note in previousNotes",
+      "verdict": "record"
+    },
+    {
+      "id": "W-1m.preRound",
+      "item": "NH pre-round text at 12 h -1 min",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home (pre-round 12 h, encounter 12 h, note 18 h): present at W-1m"
+    },
+    {
+      "id": "W-1m.encounterOnTab",
+      "item": "NH encounter on the working tab at 12 h -1 min",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home (pre-round 12 h, encounter 12 h, note 18 h): present at W-1m"
+    },
+    {
+      "id": "W-1m.noteOnTab",
+      "item": "NH note on the working tab at 18 h -1 min",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home (pre-round 12 h, encounter 12 h, note 18 h): present at W-1m"
+    },
+    {
+      "id": "W+1m.preRound",
+      "item": "NH pre-round text at 12 h +1 min",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home (pre-round 12 h, encounter 12 h, note 18 h): absent at W+1m"
+    },
+    {
+      "id": "W+1m.encounterOnTab",
+      "item": "NH encounter on the working tab at 12 h +1 min",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home (pre-round 12 h, encounter 12 h, note 18 h): absent at W+1m"
+    },
+    {
+      "id": "W+1m.noteOnTab",
+      "item": "NH note on the working tab at 18 h +1 min",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home (pre-round 12 h, encounter 12 h, note 18 h): absent at W+1m"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "Visits are three back-dated visits (10, 5, 2 days ago) in snfVisitDates, transcriptHistory (archivedAt), previousNotes (addedAt) and one single-dose row per visit plus a visit-1 dose change; what counts as a visit is Q9."
+  ],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "aged": [
+      [
+        {
+          "changed": [
+            "notesProcessedAt",
+            "preRoundEditedAt",
+            "ptsEditedAt"
+          ],
+          "id": "m572wjnfmd6xz239vaav22w7858g87m6"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "tasks[1].createdAt",
+            "tasks[1].doneAt"
+          ],
+          "id": "m572wjnfmd6xz239vaav22w7858g87m6"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "encounterEditedAt"
+          ],
+          "id": "m572sn2qpgnbjh41mv2ntts0x18g8ck4"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "noteGeneratedAt"
+          ],
+          "id": "m572sn2qpgnbjh41mv2ntts0x18g8ck4"
+        }
+      ],
+      [
+        {
+          "changed": [
+            "sentAt"
+          ],
+          "id": "jn78475h1c460qc2h2znkag3a58g8xz3"
+        }
+      ]
+    ],
+    "purge": {
+      "snf": 2,
+      "hospital": 0,
+      "colleagueSnf": 0,
+      "cron": {
+        "agedOut": 0,
+        "expired": 0
+      }
+    },
+    "raw.R1": {
+      "_id": "m572wjnfmd6xz239vaav22w7858g87m6",
+      "name": "QA Resident Retention",
+      "preRoundNotes": "",
+      "rawPreRoundNotes": "",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-13T17:15:15.631Z",
+      "preRoundEditedAt": 1791911715631,
+      "importantPoints": [
+        {
+          "id": "p1",
+          "source": "manual",
+          "text": "QA NH point 13h"
+        }
+      ],
+      "ptsEditedAt": 1791911715631,
+      "status": "pending",
+      "tasks": [
+        {
+          "createdAt": "2026-10-04T06:15:15.631Z",
+          "done": false,
+          "id": "t-open",
+          "text": "Podiatry referral"
+        }
+      ],
+      "medications": [
+        {
+          "id": "m-aml",
+          "name": "amlodipine 5 mg daily",
+          "status": "active",
+          "updatedAt": "2026-10-04T06:15:15.631Z"
+        },
+        {
+          "id": "m-levo",
+          "name": "levothyroxine 50 mcg daily",
+          "status": "active",
+          "updatedAt": "2026-10-04T06:15:15.631Z"
+        },
+        {
+          "id": "m-sd-1",
+          "name": "V1-7731 ondansetron 4 mg once",
+          "status": "single-dose",
+          "updatedAt": "2026-10-04T06:15:15.631Z"
+        },
+        {
+          "id": "m-sd-2",
+          "name": "V2-7732 ondansetron 4 mg once",
+          "status": "single-dose",
+          "updatedAt": "2026-10-09T06:15:15.631Z"
+        },
+        {
+          "id": "m-sd-3",
+          "name": "V3-7733 ondansetron 4 mg once",
+          "status": "single-dose",
+          "updatedAt": "2026-10-12T06:15:15.631Z"
+        },
+        {
+          "changeType": "dose",
+          "changed": true,
+          "changedNote": "V1-7731 increased from 10 mg",
+          "id": "m-chg",
+          "name": "furosemide 20 mg daily",
+          "status": "changed",
+          "updatedAt": "2026-10-04T06:15:15.631Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-12T06:15:15.631Z",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-04T18:15:15.631Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "V1-7731 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "Oct 4 · Visit notes"
+        },
+        {
+          "archivedAt": "2026-10-09T18:15:15.631Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "V2-7732 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "Oct 9 · Visit notes"
+        },
+        {
+          "archivedAt": "2026-10-12T18:15:15.631Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "V3-7733 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "Oct 12 · Visit notes"
+        }
+      ],
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-05T00:15:15.631Z",
+          "content": "V1-7731 visit note",
+          "dateLabel": "Oct 4",
+          "id": "pn-1"
+        },
+        {
+          "addedAt": "2026-10-10T00:15:15.631Z",
+          "content": "V2-7732 visit note",
+          "dateLabel": "Oct 9",
+          "id": "pn-2"
+        },
+        {
+          "addedAt": "2026-10-13T00:15:15.631Z",
+          "content": "V3-7733 visit note",
+          "dateLabel": "Oct 12",
+          "id": "pn-3"
+        }
+      ],
+      "snfVisitDates": [
+        "Sun Oct 04 2026",
+        "Fri Oct 09 2026",
+        "Mon Oct 12 2026"
+      ]
+    },
+    "raw.R2": {
+      "_id": "m572sn2qpgnbjh41mv2ntts0x18g8ck4",
+      "name": "QA Resident Retention 2",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791911715631,
+      "note": "",
+      "noteGeneratedAt": "2026-10-13T11:15:15.631Z",
+      "status": "pending",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T06:15:20.268Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA NH encounter 13h",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Visit notes"
+        }
+      ],
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-14T06:15:20.268Z",
+          "content": "QA NH note 19h",
+          "dateLabel": "Oct 13",
+          "id": "1791958520268"
+        }
+      ]
+    },
+    "raw.W-1m": {
+      "_id": "m577qd00nzwcdd362cc3exp72h8g9b9n",
+      "name": "QA Resident Edge W-1m",
+      "preRoundNotes": "QA NH edge pre-round W-1m",
+      "rawPreRoundNotes": "QA NH edge pre-round W-1m",
+      "notesProcessedAt": "2026-10-13T18:16:25.636Z",
+      "preRoundEditedAt": 1791915385636,
+      "encounterNotes": "QA NH edge encounter W-1m",
+      "encounterEditedAt": 1791915385636,
+      "note": "QA NH edge note W-1m",
+      "noteGeneratedAt": "2026-10-13T12:16:25.636Z",
+      "status": "note-ready"
+    },
+    "raw.W+1m": {
+      "_id": "m575jawfnwh82j5ffbt6pnwfrx8g89jc",
+      "name": "QA Resident Edge W+1m",
+      "preRoundNotes": "",
+      "rawPreRoundNotes": "",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-13T18:14:27.707Z",
+      "preRoundEditedAt": 1791915267707,
+      "encounterNotes": "",
+      "encounterEditedAt": 1791915267707,
+      "note": "",
+      "noteGeneratedAt": "2026-10-13T12:14:27.707Z",
+      "status": "pending",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T06:15:29.687Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA NH edge encounter W+1m",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Visit notes"
+        }
+      ],
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-14T06:15:29.687Z",
+          "content": "QA NH edge note W+1m",
+          "dateLabel": "Oct 13",
+          "id": "1791958529687"
+        }
+      ]
+    }
+  }
+}

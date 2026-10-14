@@ -1,0 +1,16 @@
+{
+  "EFS/S16": {
+    "status": "passed",
+    "scope": "dictation-style appends (each tail added in one input event), one session-end cycle per field",
+    "detail": "Passed for dictation-style appends, one session-end cycle per field, both contexts (efs16d, spec of 17:12 JST): per field (Hospital Encounter, Important Points, pre-round editor; NH visit box, NH pre-round) the session ended on the server, the tail was appended, the sign-in prompt showed ('…code sent to your email'), a new code was entered, and every field held its first line + its own tail, no tail in another field. Hospital passed on its retry (first attempt: Encounter box not found within 20 s on the loaded stack); NH passed first time. NOT exercised: one session end across all fields (the scenario's 'when'); on main the app shows sign-in at the next server call (a tab switch is enough), so a physician cannot reach a second field after the session ends. The patch's oracleNote recording this scope change is PROPOSED for Quinn / Daniela's approval, not merged. History (tails typed key by key until 17:12 JST): efs16 4 attempts timed out on the loaded stack; efs16b + efs16c 7 attempts: 1 passed, 3 with tails missing after sign-in (NH visit x2, Hospital all three x1), 3 timeouts. Key-by-key typing is not a valid driver here: the app switches to sign-in at the first refused autosave and the remaining keys go to the sign-in screen, so only the text that was in the field at the switch exists to restore (a test artifact, not a loss).",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/efs-s16/hospital.json",
+      "runs/2026-10-14-local/probes/evidence/efs-s16/snf.json",
+      "runs/2026-10-14-local/probes/efs16b.json",
+      "runs/2026-10-14-local/probes/efs16c.json",
+      "runs/2026-10-14-local/probes/efs16d.json",
+      "runs/2026-10-14-local/probes/evidence/efs-s16/typed-char-by-char/hospital.json"
+    ],
+    "needsApproval": "oracleNote (scope change) — Quinn / Daniela"
+  }
+}

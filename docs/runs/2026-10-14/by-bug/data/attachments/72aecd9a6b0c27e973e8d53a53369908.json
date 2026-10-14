@@ -1,0 +1,227 @@
+{
+  "ref": "OAT-04/S17",
+  "title": "Purge at scale",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:15:01.831Z",
+  "summary": {
+    "pass": 5,
+    "fail": 2,
+    "failKnown": 2,
+    "record": 1,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "calls",
+      "item": "every applyLifecycle call returns without throwing",
+      "expected": "21/21 ok",
+      "observed": "21/21 ok",
+      "verdict": "pass",
+      "oracle": "OAT-04 Expected 1 / TFA-94699 AC 7: every aged item on every chart gone after one cycle; controls kept; no thrown call or limit error"
+    },
+    {
+      "id": "log",
+      "item": "no read/write-limit or timeout error in the local Convex log during the cycle",
+      "expected": "none",
+      "observed": "none",
+      "verdict": "pass",
+      "oracle": "OAT-04 Expected 1 / TFA-94699 AC 7: every aged item on every chart gone after one cycle; controls kept; no thrown call or limit error"
+    },
+    {
+      "id": "chart501",
+      "item": "aged labs / meds on chart #501 of the 501-chart account after one cycle",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "OAT-04 Expected 1 / TFA-94699 AC 7: every aged item on every chart gone after one cycle; controls kept; no thrown call or limit error",
+      "known": "K13: rounding:applyLifecycle reads at most 500 charts per call (rounding.ts:142 take(500)) — TFA-94699 AC 7"
+    },
+    {
+      "id": "large.complete",
+      "item": "charts of the 501-chart account still holding aged data",
+      "expected": "0",
+      "observed": "1",
+      "verdict": "fail",
+      "oracle": "OAT-04 Expected 1 / TFA-94699 AC 7: every aged item on every chart gone after one cycle; controls kept; no thrown call or limit error",
+      "known": "K13"
+    },
+    {
+      "id": "small.complete",
+      "item": "charts of the 20 x 50 accounts still holding aged data",
+      "expected": "0",
+      "observed": "0",
+      "verdict": "pass",
+      "oracle": "OAT-04 Expected 1 / TFA-94699 AC 7: every aged item on every chart gone after one cycle; controls kept; no thrown call or limit error"
+    },
+    {
+      "id": "control501",
+      "item": "fresh control items on chart #501 (vitals 1 h, open task on a chart processed 2 h ago)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "OAT-04 Expected 1 / TFA-94699 AC 7: every aged item on every chart gone after one cycle; controls kept; no thrown call or limit error"
+    },
+    {
+      "id": "controls10",
+      "item": "fresh control items on the 10 control accounts",
+      "expected": "all 10 kept",
+      "observed": "10/10 kept",
+      "verdict": "pass",
+      "oracle": "OAT-04 Expected 1 / TFA-94699 AC 7: every aged item on every chart gone after one cycle; controls kept; no thrown call or limit error"
+    },
+    {
+      "id": "time",
+      "item": "cycle time (21 parallel calls)",
+      "expected": "needs a decision: OAT-04 sets no time target (3.5 covers Save Note / Generate only); the agreed lag is Q1",
+      "observed": "2416 ms total; per call large=2416ms, a1=364ms, a2=595ms, a3=683ms, a4=780ms, a5=1189ms, a6=952ms, a7=1071ms, a8=905ms, a9=1786ms, a10=1297ms, a11=1727ms, a12=1876ms, a13=1489ms, a14=1831ms, a15=1974ms, a16=1425ms, a17=2010ms, a18=1938ms, a19=2138ms, a20=2098ms",
+      "verdict": "record"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "built: 1 x 501 charts + 20 x 50 charts; controls on chart #501 and on chart #50 of accounts 1-10",
+    "Machine note: this ran on a laptop with several other local Convex backends up (4510, 5110, 5210); the local backend applies the same 1 s mutation limit as Convex cloud."
+  ],
+  "retriesOnLocalTimeout": [
+    "ensureConsent (attempt 1: mutation settings:recordConsent failed: [Request ID: 343a9602a564043c] Server Er)"
+  ],
+  "uiRetries": [],
+  "snapshots": {
+    "cycle": {
+      "cycleMs": 2416,
+      "calls": [
+        {
+          "label": "large",
+          "ok": true,
+          "updated": 500,
+          "ms": 2416
+        },
+        {
+          "label": "a1",
+          "ok": true,
+          "updated": 50,
+          "ms": 364
+        },
+        {
+          "label": "a2",
+          "ok": true,
+          "updated": 50,
+          "ms": 595
+        },
+        {
+          "label": "a3",
+          "ok": true,
+          "updated": 50,
+          "ms": 683
+        },
+        {
+          "label": "a4",
+          "ok": true,
+          "updated": 50,
+          "ms": 780
+        },
+        {
+          "label": "a5",
+          "ok": true,
+          "updated": 50,
+          "ms": 1189
+        },
+        {
+          "label": "a6",
+          "ok": true,
+          "updated": 50,
+          "ms": 952
+        },
+        {
+          "label": "a7",
+          "ok": true,
+          "updated": 50,
+          "ms": 1071
+        },
+        {
+          "label": "a8",
+          "ok": true,
+          "updated": 50,
+          "ms": 905
+        },
+        {
+          "label": "a9",
+          "ok": true,
+          "updated": 50,
+          "ms": 1786
+        },
+        {
+          "label": "a10",
+          "ok": true,
+          "updated": 50,
+          "ms": 1297
+        },
+        {
+          "label": "a11",
+          "ok": true,
+          "updated": 50,
+          "ms": 1727
+        },
+        {
+          "label": "a12",
+          "ok": true,
+          "updated": 50,
+          "ms": 1876
+        },
+        {
+          "label": "a13",
+          "ok": true,
+          "updated": 50,
+          "ms": 1489
+        },
+        {
+          "label": "a14",
+          "ok": true,
+          "updated": 50,
+          "ms": 1831
+        },
+        {
+          "label": "a15",
+          "ok": true,
+          "updated": 50,
+          "ms": 1974
+        },
+        {
+          "label": "a16",
+          "ok": true,
+          "updated": 50,
+          "ms": 1425
+        },
+        {
+          "label": "a17",
+          "ok": true,
+          "updated": 50,
+          "ms": 2010
+        },
+        {
+          "label": "a18",
+          "ok": true,
+          "updated": 50,
+          "ms": 1938
+        },
+        {
+          "label": "a19",
+          "ok": true,
+          "updated": 50,
+          "ms": 2138
+        },
+        {
+          "label": "a20",
+          "ok": true,
+          "updated": 50,
+          "ms": 2098
+        }
+      ]
+    },
+    "convexLogLimitLines": []
+  }
+}

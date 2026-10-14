@@ -1,0 +1,16 @@
+{
+  "TC-04/S07b": {
+    "status": "passed",
+    "detail": "Flag-on build of the same commit (VITE_SHOW_ROUNDING_SHEET=true, Vite on localhost:6481, own cacheDir, same local backend; build serves the flag as \"true\"). The four 'Rounding Sheet' tests from e2e/quick-dictation.spec.ts, ported unchanged except for a fresh account per test, all pass: sheet under today's date with open/ticked task, words added after placement flagged then placed alone, three patients + one unclear piece with no model call, sheet absent in Nursing Home. Record-only (Q8): it comes back only through a rebuild with a build-time flag, not a runtime switch.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc04-s07b/build-flag.txt",
+      "runs/2026-10-14-local/newspec-b/evidence/tc04-s07b/sheet-today.png",
+      "runs/2026-10-14-local/newspec-b/evidence/tc04-s07b/sheet-three-patients.png"
+    ],
+    "envReloads": {
+      "tests": 5,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    }
+  }
+}

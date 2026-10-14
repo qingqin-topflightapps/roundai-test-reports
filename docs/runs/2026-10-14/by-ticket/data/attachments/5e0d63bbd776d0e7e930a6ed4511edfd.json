@@ -1,0 +1,30 @@
+{
+  "ref": "TC-10/S21",
+  "part": 1,
+  "at": "2026-10-14T06:59:07.744Z",
+  "cells": [
+    {
+      "cell": "Part 1: Hospital and Nursing Home pre-round windows come from HOSPITAL_RETENTION.preRound / SNF_RETENTION.preRound, no literal inside the sweep",
+      "expected": "two config entries, both used by the sweep, no hour literal in the sweep",
+      "actual": {
+        "config": [
+          "9: preRound: 12 * HOUR,",
+          "31: preRound: 12 * HOUR,"
+        ],
+        "uses": [
+          "122: expired(processedAt, HOSPITAL_RETENTION.preRound, now)",
+          "304: expired(processedAt, SNF_RETENTION.preRound, now)"
+        ],
+        "literal": false
+      },
+      "verdict": "pass",
+      "req": "U13"
+    },
+    {
+      "cell": "Part 1 note: the config objects are module constants",
+      "expected": "-",
+      "actual": "HOSPITAL_RETENTION / SNF_RETENTION are constants in convex/lib/lifecycle.ts: lengthening a window is a code change + deploy, not an environment or table setting (TC-13 T7 / 3.6 'without a code change' is judged there)",
+      "verdict": "record"
+    }
+  ]
+}

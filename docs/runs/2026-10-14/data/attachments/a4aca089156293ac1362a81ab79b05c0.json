@@ -1,0 +1,10 @@
+{
+  "TC-11/S19": {
+    "status": "passed",
+    "detail": "DIRECT-CALL HALF ONLY. The 10 S13+S14 refresh calls each left one notes.refreshCourseAndBackground aiCallLog row with model, durationMs and providerMs; all Haiku, no fallback; 3.2-4.6 s per call (providerMs 3.1-4.5 s, app overhead under 0.1 s); none over 30 s. The end-to-end half of the oracle (Generate tap -> Post-Round / 'Encounter done' replaced, paired with the refresh row, from S02/S11) is not covered here and needs Generate; this 'passed' does not cover it.",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-other/course-entry-main/results.json"
+    ],
+    "scope": "passed (direct-call half only); end-to-end half not run"
+  }
+}

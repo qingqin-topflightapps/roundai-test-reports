@@ -1,0 +1,99 @@
+{
+  "name": "tc19-s19",
+  "at": "2026-10-14T07:03:00.353Z",
+  "checks": [
+    {
+      "id": "row updatedAt within a minute of server time",
+      "ok": false,
+      "detail": "updatedAt 2026-10-12T07:02:29.416Z vs server 2026-10-14T07:02:41.568Z"
+    },
+    {
+      "id": "chart medicationsUpdatedAt within a minute of server time",
+      "ok": false,
+      "detail": "medicationsUpdatedAt 2026-10-12T07:02:29.419Z vs server 2026-10-14T07:02:41.568Z"
+    },
+    {
+      "id": "stored hold date (changeDate) is the server's day",
+      "ok": false,
+      "detail": "changeDate Oct 11 vs server day Oct 14 / Oct 14"
+    },
+    {
+      "id": "gated TFA-94699 (U20): the resident's newest visit date is the server's day",
+      "ok": false,
+      "detail": "snfVisitDates newest Sun Oct 11 2026 vs server Wed Oct 14 2026 / Wed Oct 14 2026",
+      "recordOnly": true
+    },
+    {
+      "id": "the held lisinopril row is still on the chart after both devices opened it",
+      "ok": false,
+      "detail": "server medications: []"
+    },
+    {
+      "id": "Held tag on A shows the server's day",
+      "ok": false,
+      "detail": "A: (no Held tag) vs server day Oct 14 / Oct 14"
+    },
+    {
+      "id": "row on A not cleared or 'not mentioned today'",
+      "ok": false,
+      "detail": "A: row missing, 'not mentioned today' x0"
+    },
+    {
+      "id": "Held tag on B shows the server's day",
+      "ok": false,
+      "detail": "B: Held · Oct 11 vs server day Oct 14 / Oct 14"
+    },
+    {
+      "id": "row on B not cleared or 'not mentioned today'",
+      "ok": true,
+      "detail": "B: row present, 'not mentioned today' x0"
+    }
+  ],
+  "data": {
+    "Baccess": {
+      "signedOutByClock": false,
+      "uiSignIn": null
+    },
+    "Bclock": {
+      "now": "Sun Oct 11 2026 21:02:28 GMT-1000 (Hawaii-Aleutian Standard Time)",
+      "tz": "Pacific/Honolulu"
+    },
+    "server": {
+      "now": "2026-10-14T07:02:41.568Z",
+      "serverDays": [
+        "Oct 14",
+        "Oct 14"
+      ],
+      "lisinopril": {
+        "changeDate": "Oct 11",
+        "changeType": "held",
+        "changed": true,
+        "changedNote": "Lisinopril held, BP soft",
+        "id": "qa-lis",
+        "name": "Lisinopril 10 mg",
+        "status": "held",
+        "updatedAt": "2026-10-12T07:02:29.416Z"
+      },
+      "medicationsUpdatedAt": "2026-10-12T07:02:29.419Z",
+      "snfVisitDates": [
+        "Sun Oct 11 2026"
+      ]
+    },
+    "heldTag": {
+      "A": {
+        "tag": null,
+        "notMentioned": 0,
+        "rowPresent": false
+      },
+      "B": {
+        "tag": "Held · Oct 11",
+        "notMentioned": 0,
+        "rowPresent": true
+      }
+    },
+    "serverAfterBothOpened": {
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T07:02:29.419Z"
+    }
+  }
+}

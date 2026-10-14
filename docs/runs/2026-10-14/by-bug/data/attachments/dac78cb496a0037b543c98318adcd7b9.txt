@@ -1,0 +1,70 @@
+- generic [ref=e6]:
+  - generic [ref=e7]: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+  - generic [ref=e130]:
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - button "Back to patient list" [ref=e133]
+        - generic [ref=e136]:
+          - heading "QA TC-17-S26 QA Hosp Ana 766P" [level=2] [ref=e137]
+          - paragraph [ref=e138]: Room 412 · 74y · —
+        - generic "Admission status" [ref=e139]:
+          - generic [ref=e141] [cursor=pointer]:
+            - text: Follow-up
+            - generic [ref=e142]: ▾
+          - combobox "Admission status" [ref=e143] [cursor=pointer]:
+            - option "New Admission"
+            - option "Follow-up" [selected]
+            - option "Consult"
+      - paragraph [ref=e144]: Community-acquired pneumonia
+      - generic [ref=e145]:
+        - button "Pre-Round" [ref=e146]
+        - button "Encounter" [ref=e150]
+        - button "Post-Round" [ref=e154]
+    - generic [ref=e228]:
+      - generic [ref=e292]:
+        - generic [ref=e295]:
+          - heading "Ask About This Patient" [level=3] [ref=e305]
+          - button [ref=e306]
+        - generic [ref=e310]:
+          - generic [ref=e311]:
+            - textbox "Type your question or tap Dictate below…" [ref=e312]: What's in the plan section?
+            - generic [ref=e313]:
+              - button "Dictate" [ref=e314]
+              - button "Ask AI →" [ref=e335]
+          - generic [ref=e322]:
+            - paragraph [ref=e323]: Quick questions
+            - generic [ref=e324]:
+              - button "Summarize the encounter" [ref=e325]
+              - button "What did the patient say?" [ref=e326]
+              - button "What meds were changed?" [ref=e327]
+              - button "What tasks are still pending?" [ref=e328]
+              - button "What's in the plan section?" [ref=e329]
+              - button "Any abnormal labs to follow?" [ref=e330]
+          - generic [ref=e339]:
+            - generic [ref=e340]: Patient Record
+            - paragraph [ref=e350]: "Based on the SOAP note, the plan includes: 1. **Community-acquired pneumonia**: Continue ceftriaxone, day 3 of 5 (improving clinical course with resolving cough and mild pleuritic pain). 2. **Acute kidney injury** (Cr 1.4, up from 1.1): Hold lisinopril and repeat BMP in the morning. 3. **Pending medication order**: Start metoprolol 12.5 mg PO BID (flagged as \"QA-ASK-EDIT\" — awaiting confirmation). Note: The PENDING TASKS section is empty, so there are no formally documented pending action items beyond these plan elements."
+      - button "Ask About the Encounter or Patient" [ref=e229]
+      - generic [ref=e239]:
+        - button "note" [pressed] [ref=e240]
+        - button "tasks" [ref=e241]
+        - button "meds" [ref=e242]
+      - generic [ref=e243]:
+        - generic [ref=e250]:
+          - paragraph [ref=e251]: AI-Generated Note
+          - paragraph [ref=e252]: 6:43 AM · Oct 14
+        - document "Generated clinical note" [ref=e277]:
+          - paragraph [ref=e278]: SUBJECTIVE
+          - paragraph [ref=e279]: Cough improving; mild pleuritic pain on deep breath.
+          - paragraph [ref=e281]: OBJECTIVE
+          - paragraph [ref=e282]: T 37.4 °C, BP 128/76, HR 88, SpO2 95% on 2 L.
+          - paragraph [ref=e284]: ASSESSMENT AND PLAN
+          - paragraph [ref=e285]: 1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.
+          - paragraph [ref=e286]: 2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.
+          - paragraph [ref=e287]: QA-ASK-EDIT start metoprolol 12.5 mg PO BID
+        - generic [ref=e264]:
+          - button "Edit Note" [ref=e288]
+          - button "Copy to EMR" [ref=e289]
+      - button "Mark Encounter Complete" [ref=e267]
+      - generic [ref=e271]:
+        - paragraph [ref=e272]: Billing Suggestion · Physician Verify Before Submitting
+        - generic [ref=e273]: "QA seed billing: 99232 subsequent hospital care (suggested)"

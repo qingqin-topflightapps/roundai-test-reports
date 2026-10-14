@@ -1,0 +1,203 @@
+{
+  "case": "U23",
+  "title": "Search box, both contexts",
+  "needs": [
+    "max-turns"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s07-hosp-dx.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S07"
+    },
+    {
+      "file": "s07-hosp-nh-dx.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S07"
+    },
+    {
+      "file": "s07-nh-today-dx.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "missing \"No residents match\"",
+        "should not show \"QA U23 QA Resident LXHO\"",
+        "should not show \"diagnosis\""
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S07"
+    },
+    {
+      "file": "s07-nh-all-dx.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "missing \"No residents match\"",
+        "should not show \"QA U23 QA Resident LXHO\"",
+        "should not show \"diagnosis\""
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S07"
+    },
+    {
+      "file": "s17-hosp-search.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S17"
+    },
+    {
+      "file": "s17-hosp-nh-name.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S17"
+    },
+    {
+      "file": "s17-nh-after-switch.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S17"
+    },
+    {
+      "file": "s17-nh-search-hosp.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S17"
+    },
+    {
+      "file": "s17-hosp-back.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S17"
+    },
+    {
+      "file": "s17-hosp-back-nh-name.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S17"
+    },
+    {
+      "file": "s17-hosp-back-nh-mrn.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S17"
+    },
+    {
+      "file": "s20-hosp-retype.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S20"
+    },
+    {
+      "file": "s20-hosp-cleared.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S20"
+    },
+    {
+      "file": "s20-hosp-spaces.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S20"
+    },
+    {
+      "file": "s20-nh-retype.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S20"
+    },
+    {
+      "file": "s20-nh-cleared.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S20"
+    },
+    {
+      "file": "s20-nh-spaces.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-03/S20"
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 88,
+    "costUsd": 0.6019110000000001,
+    "durationMs": 262712,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U23",
+  "covers": [
+    "TC-03/S07",
+    "TC-03/S17",
+    "TC-03/S20"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u23",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U23.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

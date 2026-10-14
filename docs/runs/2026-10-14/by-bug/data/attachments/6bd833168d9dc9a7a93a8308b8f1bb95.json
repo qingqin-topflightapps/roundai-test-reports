@@ -1,0 +1,7 @@
+{
+  "OAT-03/S01": {
+    "status": "blocked",
+    "detail": "Not built as a run: the verdict is the server's fallback rows (model = Mistral, fellBackFrom = Haiku), which need BEDROCK_TEST_FAIL_MODEL on a backend. That is `convex env set` (forbidden by CLAUDE.md without Quinn's OK) and must never touch the shared 4510 stack. Path: aicheck-other's private fault backend (scripts/aicheck-other/fault-stack.sh, QA_ALLOW_PRIVATE_ENV=1) + a Vite pointed at it + QA_ALLOW_LOCAL_GENERATE=1.",
+    "evidence": []
+  }
+}

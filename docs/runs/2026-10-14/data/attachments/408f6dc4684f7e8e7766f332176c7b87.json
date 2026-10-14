@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "sid": "S07",
+    "target": "local QA stack 127.0.0.1:4510",
+    "account": "e2e-fresh-d00f180c-37b@roundai.test",
+    "harness": true,
+    "at": "2026-10-14T05:35:10.307Z",
+    "expectModel": "mistral.mistral-large-3-675b-instruct",
+    "expectFellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+  },
+  "H-01": {
+    "fixture": "H-01",
+    "mode": "hospital",
+    "question": "What were today's labs?",
+    "status": "broken (fallback not exercised)",
+    "problems": [],
+    "answer": "I don't have today's encounter transcript or encounter notes documented yet, so I cannot confirm what labs were drawn or resulted today specifically.\n\nHowever, the data shows **current labs on file** are: WBC 14.2 (elevated from prior 11.0) and Creatinine 1.4 (elevated from prior 1.1). Without timestamps in the available records, I cannot definitively state whether these are from today or a prior timepoint during this admission.\n\nI'd recommend checking the lab system directly or reviewing the hospital course timeline once it's populated to confirm today's specific lab draw times and results.",
+    "error": null,
+    "ms": 7540,
+    "reviewOver30s": false,
+    "log": {
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "fellBackFrom": null,
+      "ok": true,
+      "durationMs": 7393,
+      "providerMs": 7389,
+      "error": null
+    },
+    "timing": {
+      "providerMs": 7389,
+      "durationMs": 7393,
+      "appMs": 4
+    },
+    "haikuAttemptsSeenByProxy": null
+  },
+  "_summary": {
+    "fixtures": 1,
+    "fixturesPassed": 0,
+    "broken": 1,
+    "passAt": "9/10 across the 10 fixtures (H-01 + spec.fixtures)"
+  }
+}

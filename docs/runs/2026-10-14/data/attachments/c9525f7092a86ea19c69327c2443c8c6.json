@@ -1,0 +1,16 @@
+{
+  "OAT-02/S15": {
+    "ref": "OAT-02/S15",
+    "method": "STATIC",
+    "status": "partial",
+    "detail": "Built bundles (placeholder https env): local strings web {\"localhost\":3}, mobile {\"localhost\":3}; http:// URL literals: none. Source leftovers: Android debug network config allows cleartext to localhost, 127.0.0.1, 172.20.10.6 (debug builds only); iOS NSAllowsLocalNetworking present; .env.mobile.local is git-ignored (not in the commit). The convex/auth.ts SITE_URL fallback and trusted origins are backend code, see OAT-02/S06 and OAT-02/S08's code review; the SITE_URL and BETTER_AUTH_TRUSTED_ORIGINS values on the deployment need Tim (CONFIG).",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/static/scan-web.json",
+      "runs/2026-10-14-local/code-review/static/scan-mobile.json",
+      "runs/2026-10-14-local/code-review/static/native-config.json",
+      "runs/2026-10-14-local/code-review/OAT-02-S15.json"
+    ],
+    "needs": "CONFIG (Tim): scheme of SITE_URL and each BETTER_AUTH_TRUSTED_ORIGINS entry; store build env (VITE_MOBILE_LOCAL=false, https URLs)",
+    "secondary": "CONFIG"
+  }
+}

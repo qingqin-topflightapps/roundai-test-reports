@@ -1,0 +1,26 @@
+{
+  "account": "e2e-fresh-5da8f71c-307@roundai.test",
+  "wrongResults": [
+    {
+      "status": 400,
+      "code": "INVALID_OTP"
+    },
+    {
+      "status": 400,
+      "code": "INVALID_OTP"
+    },
+    {
+      "status": 400,
+      "code": "INVALID_OTP"
+    }
+  ],
+  "rightAfterThree": {
+    "status": 403,
+    "code": "TOO_MANY_ATTEMPTS",
+    "body": "{\"message\":\"Too many attempts\",\"code\":\"TOO_MANY_ATTEMPTS\"}"
+  },
+  "freshCode": {
+    "status": 200,
+    "code": null
+  }
+}

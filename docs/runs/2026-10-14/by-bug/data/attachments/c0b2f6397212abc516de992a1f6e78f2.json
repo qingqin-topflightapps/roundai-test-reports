@@ -1,0 +1,13 @@
+{
+  "OAT-04/S24": {
+    "status": "failed",
+    "target": "local",
+    "stack": "isolated local stack: Convex 127.0.0.1:5910, web localhost:7973, main e02167f (scripts/retention/stack.sh)",
+    "ranAt": "2026-10-14T06:30:17.762Z",
+    "detail": "2 judged items passed, 2 failed (2 known, 0 policy conflict, 0 not in the matrix knownGaps), 0 recorded against open questions — failed: H1.A (H1 point A written at T0, at T0+13 h (Save Note at T0+11 h, point B added at T0+12 h): expected absent, got present; known K1) | H2.C (H2 point C written at T0, at T0+37 h (Save Notes every 10 h, D added at T0+32 h): expected absent, got present; known K1) — notes: Points were added through the pre-round editor (Add Point, Save Point, Close editor); each Save Note is a real pre-round Save Note (live AI). Every page open also ran the app's own Hospital purge, as AppLayout does. — setup/read calls retried on the local 1 s limit: 4",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/retention/evidence/OAT-04-S24.json"
+    ],
+    "productIssue": "An Important Point written yesterday stays as long as the physician adds any newer point or presses Save Note (one clock for the whole list): point A is still there at 13 h and point C at 37 h. Breaks TC-12 ('Points expire 12 h after they were written'), UAT 3.6 and the 3.7 claim. Known in the matrix: K1."
+  }
+}

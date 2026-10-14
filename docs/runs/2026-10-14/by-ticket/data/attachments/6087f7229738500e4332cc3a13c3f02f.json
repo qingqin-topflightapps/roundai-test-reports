@@ -1,0 +1,24 @@
+{
+  "TC-24/S21": {
+    "status": "passed-partial",
+    "detail": "Partial — 2/2 judged cells pass, Generate / Regenerate NOT RUN. Pass/Fail item (U5): at the first read after the remove returned (472 ms) the document is null and the list row gone. Save Note logged parsePreRoundNotes / extractTasks / classifyAdmissionReason with model (Haiku), durationMs and providerMs, matching ai_disclosure rows; Save Note 9.7 s (≤ 15 s target, record-only). Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13); those cells run only with QA_ALLOW_LOCAL_GENERATE=1.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc24-s21/delete-read.json",
+      "runs/2026-10-14-local/probes/evidence/tc24-s21/diagnostics.json"
+    ],
+    "judged": {
+      "total": 2,
+      "failed": 0
+    },
+    "partial": {
+      "needs": [
+        "generate"
+      ],
+      "notRun": [
+        "Generate row (model, providerMs, durationMs)",
+        "Regenerate row"
+      ],
+      "note": "Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13); those cells run only with QA_ALLOW_LOCAL_GENERATE=1."
+    }
+  }
+}

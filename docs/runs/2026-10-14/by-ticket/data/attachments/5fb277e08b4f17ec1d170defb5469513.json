@@ -1,0 +1,282 @@
+{
+  "ref": "OAT-04/S13",
+  "title": "Held row across processing",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:17:15.754Z",
+  "summary": {
+    "pass": 3,
+    "fail": 0,
+    "failKnown": 0,
+    "record": 1,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "T0+37",
+      "item": "held furosemide row at T0+37 h (chart processed at T0+30 h)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / OAT-04 (B) / TFA-94699 table ('refreshed each time the chart is processed'): present at T0+37 h, absent at T0+67 h"
+    },
+    {
+      "id": "open50",
+      "item": "opening the chart at T0+50 h without processing does not refresh the row",
+      "expected": "no processing stamp and no row stamp changed",
+      "observed": "nothing changed",
+      "verdict": "pass",
+      "oracle": "Q5 open: opening a chart is not processing (S13 then)"
+    },
+    {
+      "id": "T0+67",
+      "item": "held furosemide row at T0+67 h",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 / OAT-04 (B) / TFA-94699 table ('refreshed each time the chart is processed'): present at T0+37 h, absent at T0+67 h"
+    },
+    {
+      "id": "Q19",
+      "item": "reading where AC 2 also covers held rows",
+      "expected": "needs a decision: Q19",
+      "observed": "under that reading the row should already be gone at T0+37 h; observed present",
+      "verdict": "record"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "after the T0+30 h Save Note: furosemide row {\"id\":\"m1\",\"name\":\"furosemide 40 mg, held for AKI\",\"status\":\"held\",\"updatedAt\":\"2026-10-13T00:16:49.743Z\"}; notesProcessedAt 2026-10-14T06:16:54.189Z; medicationsUpdatedAt 2026-10-14T06:16:54.189Z"
+  ],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "afterSaveNoteT0+30h": {
+      "_id": "kx736dn8g6rnq3wmecerj3cjy58g9b0d",
+      "name": "QA Hosp Held Row",
+      "preRoundNotes": "Creatinine trending down, urine output improving",
+      "rawPreRoundNotes": "Creatinine trending down, urine output improving",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-14T06:16:54.189Z",
+      "preRoundEditedAt": 1791958614189,
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791958614189,
+      "status": "pre-rounded",
+      "labs": [
+        {
+          "name": "Creatinine",
+          "trend": "",
+          "value": "trending down"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-14T06:16:54.189Z",
+      "medications": [
+        {
+          "id": "m1",
+          "name": "furosemide 40 mg, held for AKI",
+          "status": "held",
+          "updatedAt": "2026-10-13T00:16:49.743Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-14T06:16:54.189Z",
+      "labsHistory": [
+        {
+          "date": "Wed Oct 14 2026",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "trending down"
+            }
+          ]
+        }
+      ],
+      "admissionSummary": {
+        "course": "Oct 14: Acute kidney injury improving with creatinine trending down and urine output recovering. Continue monitoring renal function.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-14T06:16:54.189Z",
+        "reason": "Patient with acute kidney injury. Furosemide held due to AKI. Creatinine and urine output showing signs of improvement."
+      }
+    },
+    "raw.T0+37h": {
+      "_id": "kx736dn8g6rnq3wmecerj3cjy58g9b0d",
+      "name": "QA Hosp Held Row",
+      "preRoundNotes": "Creatinine trending down, urine output improving",
+      "rawPreRoundNotes": "Creatinine trending down, urine output improving",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-13T23:16:54.189Z",
+      "preRoundEditedAt": 1791933414189,
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791933414189,
+      "status": "pending",
+      "labs": [
+        {
+          "name": "Creatinine",
+          "trend": "",
+          "value": "trending down"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-13T23:16:54.189Z",
+      "medications": [
+        {
+          "id": "m1",
+          "name": "furosemide 40 mg, held for AKI",
+          "status": "held",
+          "updatedAt": "2026-10-12T17:16:49.743Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-13T23:16:54.189Z",
+      "labsHistory": [
+        {
+          "date": "Wed Oct 14 2026",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "trending down"
+            }
+          ]
+        }
+      ],
+      "admissionSummary": {
+        "course": "Oct 14: Acute kidney injury improving with creatinine trending down and urine output recovering. Continue monitoring renal function.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-13T23:16:54.189Z",
+        "reason": "Patient with acute kidney injury. Furosemide held due to AKI. Creatinine and urine output showing signs of improvement."
+      }
+    },
+    "open.T0+50h": {
+      "before": {
+        "_id": "kx736dn8g6rnq3wmecerj3cjy58g9b0d",
+        "name": "QA Hosp Held Row",
+        "preRoundNotes": "Creatinine trending down, urine output improving",
+        "rawPreRoundNotes": "Creatinine trending down, urine output improving",
+        "preRoundError": null,
+        "notesProcessedAt": "2026-10-13T10:16:54.189Z",
+        "preRoundEditedAt": 1791886614189,
+        "importantPoints": [],
+        "importantPointsDraft": "",
+        "ptsEditedAt": 1791886614189,
+        "status": "pending",
+        "labs": [
+          {
+            "name": "Creatinine",
+            "trend": "",
+            "value": "trending down"
+          }
+        ],
+        "labsUpdatedAt": "2026-10-13T10:16:54.189Z",
+        "medications": [
+          {
+            "id": "m1",
+            "name": "furosemide 40 mg, held for AKI",
+            "status": "held",
+            "updatedAt": "2026-10-12T04:16:49.743Z"
+          }
+        ],
+        "medicationsUpdatedAt": "2026-10-13T10:16:54.189Z",
+        "labsHistory": [
+          {
+            "date": "Wed Oct 14 2026",
+            "labs": [
+              {
+                "name": "Creatinine",
+                "trend": "",
+                "value": "trending down"
+              }
+            ]
+          }
+        ],
+        "admissionSummary": {
+          "course": "Oct 14: Acute kidney injury improving with creatinine trending down and urine output recovering. Continue monitoring renal function.. ⏳ Encounter pending.",
+          "lastUpdatedAt": "2026-10-13T10:16:54.189Z",
+          "reason": "Patient with acute kidney injury. Furosemide held due to AKI. Creatinine and urine output showing signs of improvement."
+        }
+      },
+      "after": {
+        "_id": "kx736dn8g6rnq3wmecerj3cjy58g9b0d",
+        "name": "QA Hosp Held Row",
+        "preRoundNotes": "",
+        "rawPreRoundNotes": "",
+        "preRoundError": null,
+        "notesProcessedAt": "2026-10-13T10:16:54.189Z",
+        "preRoundEditedAt": 1791886614189,
+        "importantPoints": [],
+        "importantPointsDraft": "",
+        "ptsEditedAt": 1791886614189,
+        "status": "pending",
+        "labs": [
+          {
+            "name": "Creatinine",
+            "trend": "",
+            "value": "trending down"
+          }
+        ],
+        "labsUpdatedAt": "2026-10-13T10:16:54.189Z",
+        "medications": [
+          {
+            "id": "m1",
+            "name": "furosemide 40 mg, held for AKI",
+            "status": "held",
+            "updatedAt": "2026-10-12T04:16:49.743Z"
+          }
+        ],
+        "medicationsUpdatedAt": "2026-10-13T10:16:54.189Z",
+        "labsHistory": [
+          {
+            "date": "Wed Oct 14 2026",
+            "labs": [
+              {
+                "name": "Creatinine",
+                "trend": "",
+                "value": "trending down"
+              }
+            ]
+          }
+        ],
+        "admissionSummary": {
+          "course": "Oct 14: Acute kidney injury improving with creatinine trending down and urine output recovering. Continue monitoring renal function.. ⏳ Encounter pending.",
+          "lastUpdatedAt": "2026-10-13T10:16:54.189Z",
+          "reason": "Patient with acute kidney injury. Furosemide held due to AKI. Creatinine and urine output showing signs of improvement."
+        }
+      }
+    },
+    "raw.T0+67h": {
+      "_id": "kx736dn8g6rnq3wmecerj3cjy58g9b0d",
+      "name": "QA Hosp Held Row",
+      "preRoundNotes": "",
+      "rawPreRoundNotes": "",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-12T17:16:54.189Z",
+      "preRoundEditedAt": 1791825414189,
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791825414189,
+      "status": "pending",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T17:16:54.189Z",
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T17:16:54.189Z",
+      "labsHistory": [
+        {
+          "date": "Wed Oct 14 2026",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "trending down"
+            }
+          ]
+        }
+      ],
+      "admissionSummary": {
+        "course": "Oct 14: Acute kidney injury improving with creatinine trending down and urine output recovering. Continue monitoring renal function.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-12T17:16:54.189Z",
+        "reason": "Patient with acute kidney injury. Furosemide held due to AKI. Creatinine and urine output showing signs of improvement."
+      }
+    }
+  }
+}

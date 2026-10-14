@@ -1,0 +1,22 @@
+{
+  "account": "e2e-fresh-06c3bc7e-66f@roundai.test",
+  "patient": "kx79ej5tpnz6cvcs4px2dqrhz18g8swx",
+  "inject": true,
+  "url": "http://localhost:6473/rounding/kx79ej5tpnz6cvcs4px2dqrhz18g8swx",
+  "logChartAccessCallsSeenByProxy": 1,
+  "shown": {
+    "name": true,
+    "preRoundMarker": true,
+    "alert": "Chart access couldn’t be recorded. Check your connection and reload."
+  },
+  "bodyText": "Chart access couldn’t be recorded. Check your connection and reload.\nThis preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Logfail 75e2b\n\nRoom 4B-Z2 · 72y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nPRE-ROUND NOTES\n📝\nQA pre-round marker LOGFAIL-7731: sats 94% on 2 L.\nEdit\nPREVIOUS NOTES\n0/3\nPaste\nPhotograph\n\nExplicitly paste or photograph a prior note, then review and save it. AI extracts its background, labs, imaging, and key issues and uses only explicitly imported notes as today's template.\n\nNo previous notes added yet.\n\nVITALS\nEdit\nNo vitals recorded yet.\nLABS\nEdit\nNo labs recorded yet.\nDIAGNOSTIC TESTING\n0\nEdit\n\nNo testing results yet.\n\nMEDICATIONS\n0\nEdit\n\nNo medications recorded yet.\n\nBegin Encounter",
+  "consoleLines": [
+    "error: [CONVEX M(access:logChartAccess)] E2E injected connection failure before write",
+    "error: [client] Chart access couldn’t be recorded. Check your connection and reload. Error: [CONVEX M(access:logChartAccess)] E2E injected connection failure before write\n  Called by client\n    at BaseConvexClient.mutation (http://localhost:6473/node_modules/.vite/deps/chunk-CQFEFXB6.js?v=6bc06203:2632:13)"
+  ],
+  "reads": [],
+  "verdict": {
+    "status": "record-only",
+    "detail": "the chart stayed on screen (name true, pre-round text true) with NO PHI_READ row after its log call failed once; 1 logChartAccess call(s) seen, not retried; alert: \"Chart access couldn’t be recorded. Check your connection and reload.\". Fail or finding depends on Q14."
+  }
+}

@@ -1,0 +1,474 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02",
+      "tc02-scan.spec.ts",
+      "-g",
+      "TC-02/S13b|TC-02/S27|S26 photo read slow \\(hospital\\)",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tc02-scan.spec.ts",
+      "file": "tc02-scan.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-02 scan-probe",
+          "file": "tc02-scan.spec.ts",
+          "line": 21,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-02/S13b a browser clock 2 days off or a far time zone stores the same admit date, day and badge",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "probes",
+                  "projectName": "probes",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 11102,
+                      "error": {
+                        "message": "Error: runs differ from the real-clock run: plus2d.hospital, utc14.hospital, plus2d.hCards, utc14.hCards (see runs.json)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"plus2d.hospital\",\u001b[39m\n\u001b[31m+   \"utc14.hospital\",\u001b[39m\n\u001b[31m+   \"plus2d.hCards\",\u001b[39m\n\u001b[31m+   \"utc14.hCards\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: runs differ from the real-clock run: plus2d.hospital, utc14.hospital, plus2d.hCards, utc14.hCards (see runs.json)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"plus2d.hospital\",\u001b[39m\n\u001b[31m+   \"utc14.hospital\",\u001b[39m\n\u001b[31m+   \"plus2d.hCards\",\u001b[39m\n\u001b[31m+   \"utc14.hCards\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:106:95",
+                        "location": {
+                          "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                          "column": 95,
+                          "line": 106
+                        },
+                        "snippet": "  104 |     // not part of S13b's oracle, which compares the stored rows and cards.\n  105 |     evidenceKept(\"tc02-s13b/diffs.json\", diffs);\n> 106 |     expect(diffs, `runs differ from the real-clock run: ${diffs.join(\", \")} (see runs.json)`).toEqual([]);\n      |                                                                                               ^\n  107 |   });\n  108 |\n  109 |   test(\"TC-02/S17 duplicate matching stays inside its context and the physician's own list\", async ({ browser }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                            "column": 95,
+                            "line": 106
+                          },
+                          "message": "Error: runs differ from the real-clock run: plus2d.hospital, utc14.hospital, plus2d.hCards, utc14.hCards (see runs.json)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"plus2d.hospital\",\u001b[39m\n\u001b[31m+   \"utc14.hospital\",\u001b[39m\n\u001b[31m+   \"plus2d.hCards\",\u001b[39m\n\u001b[31m+   \"utc14.hCards\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  104 |     // not part of S13b's oracle, which compares the stored rows and cards.\n  105 |     evidenceKept(\"tc02-s13b/diffs.json\", diffs);\n> 106 |     expect(diffs, `runs differ from the real-clock run: ${diffs.join(\", \")} (see runs.json)`).toEqual([]);\n      |                                                                                               ^\n  107 |   });\n  108 |\n  109 |   test(\"TC-02/S17 duplicate matching stays inside its context and the physician's own list\", async ({ browser }) => {\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:106:95"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T08:57:58.071Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes/test-failed-1.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes/test-failed-2.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes/test-failed-3.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes/error-context.md"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                        "column": 95,
+                        "line": 106
+                      }
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10597,
+                      "error": {
+                        "message": "Error: runs differ from the real-clock run: plus2d.hospital, utc14.hospital, plus2d.hCards, utc14.hCards (see runs.json)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"plus2d.hospital\",\u001b[39m\n\u001b[31m+   \"utc14.hospital\",\u001b[39m\n\u001b[31m+   \"plus2d.hCards\",\u001b[39m\n\u001b[31m+   \"utc14.hCards\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                        "stack": "Error: runs differ from the real-clock run: plus2d.hospital, utc14.hospital, plus2d.hCards, utc14.hCards (see runs.json)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"plus2d.hospital\",\u001b[39m\n\u001b[31m+   \"utc14.hospital\",\u001b[39m\n\u001b[31m+   \"plus2d.hCards\",\u001b[39m\n\u001b[31m+   \"utc14.hCards\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:106:95",
+                        "location": {
+                          "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                          "column": 95,
+                          "line": 106
+                        },
+                        "snippet": "  104 |     // not part of S13b's oracle, which compares the stored rows and cards.\n  105 |     evidenceKept(\"tc02-s13b/diffs.json\", diffs);\n> 106 |     expect(diffs, `runs differ from the real-clock run: ${diffs.join(\", \")} (see runs.json)`).toEqual([]);\n      |                                                                                               ^\n  107 |   });\n  108 |\n  109 |   test(\"TC-02/S17 duplicate matching stays inside its context and the physician's own list\", async ({ browser }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                            "column": 95,
+                            "line": 106
+                          },
+                          "message": "Error: runs differ from the real-clock run: plus2d.hospital, utc14.hospital, plus2d.hCards, utc14.hCards (see runs.json)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 6\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"plus2d.hospital\",\u001b[39m\n\u001b[31m+   \"utc14.hospital\",\u001b[39m\n\u001b[31m+   \"plus2d.hCards\",\u001b[39m\n\u001b[31m+   \"utc14.hCards\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  104 |     // not part of S13b's oracle, which compares the stored rows and cards.\n  105 |     evidenceKept(\"tc02-s13b/diffs.json\", diffs);\n> 106 |     expect(diffs, `runs differ from the real-clock run: ${diffs.join(\", \")} (see runs.json)`).toEqual([]);\n      |                                                                                               ^\n  107 |   });\n  108 |\n  109 |   test(\"TC-02/S17 duplicate matching stays inside its context and the physician's own list\", async ({ browser }) => {\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:106:95"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-14T08:58:09.523Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes-retry1/test-failed-2.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes-retry1/test-failed-3.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes-retry1/error-context.md"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-e9c8e-me-admit-date-day-and-badge-probes-retry1/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                        "column": 95,
+                        "line": 106
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "e549e142e3356144b59d-4e7e21c13a519d7179c5",
+              "file": "tc02-scan.spec.ts",
+              "line": 27,
+              "column": 3
+            },
+            {
+              "title": "TC-02/S26 photo read slow (hospital): clear message, nothing added, retry with the same photo adds its one row",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 300000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "probes",
+                  "projectName": "probes",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 42489,
+                      "error": {
+                        "message": "Error: hospital: choosing the same photo again starts a new read (no retake needed)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: hospital: choosing the same photo again starts a new read (no retake needed)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:313:141",
+                        "location": {
+                          "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                          "column": 141,
+                          "line": 313
+                        },
+                        "snippet": "  311 |         expect.soft(rec[`${mode}.addedOnFailure`], `${mode}: nothing added on failure`).toBe(0);\n  312 |         expect.soft(rec[`${mode}.retryRowCount`], `${mode}: retry adds its row exactly once`).toBe(1);\n> 313 |         expect.soft(rec[`${mode}.sameFileRetryStartedRead`], `${mode}: choosing the same photo again starts a new read (no retake needed)`).toBe(true);\n      |                                                                                                                                             ^\n  314 |         if (leg === \"slow\") {\n  315 |           const samples = rec[`${mode}.loadingSamples`] as { loading: boolean }[];\n  316 |           expect.soft(samples.every((s) => s.loading), `${mode}: loading visible throughout the 35 s wait`).toBe(true);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                            "column": 141,
+                            "line": 313
+                          },
+                          "message": "Error: hospital: choosing the same photo again starts a new read (no retake needed)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  311 |         expect.soft(rec[`${mode}.addedOnFailure`], `${mode}: nothing added on failure`).toBe(0);\n  312 |         expect.soft(rec[`${mode}.retryRowCount`], `${mode}: retry adds its row exactly once`).toBe(1);\n> 313 |         expect.soft(rec[`${mode}.sameFileRetryStartedRead`], `${mode}: choosing the same photo again starts a new read (no retake needed)`).toBe(true);\n      |                                                                                                                                             ^\n  314 |         if (leg === \"slow\") {\n  315 |           const samples = rec[`${mode}.loadingSamples`] as { loading: boolean }[];\n  316 |           expect.soft(samples.every((s) => s.loading), `${mode}: loading visible throughout the 35 s wait`).toBe(true);\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:313:141"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T08:58:20.474Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-4183d-same-photo-adds-its-one-row-probes/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-4183d-same-photo-adds-its-one-row-probes/error-context.md"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-4183d-same-photo-adds-its-one-row-probes/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                        "column": 141,
+                        "line": 313
+                      }
+                    },
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 42756,
+                      "error": {
+                        "message": "Error: hospital: choosing the same photo again starts a new read (no retake needed)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: hospital: choosing the same photo again starts a new read (no retake needed)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:313:141",
+                        "location": {
+                          "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                          "column": 141,
+                          "line": 313
+                        },
+                        "snippet": "  311 |         expect.soft(rec[`${mode}.addedOnFailure`], `${mode}: nothing added on failure`).toBe(0);\n  312 |         expect.soft(rec[`${mode}.retryRowCount`], `${mode}: retry adds its row exactly once`).toBe(1);\n> 313 |         expect.soft(rec[`${mode}.sameFileRetryStartedRead`], `${mode}: choosing the same photo again starts a new read (no retake needed)`).toBe(true);\n      |                                                                                                                                             ^\n  314 |         if (leg === \"slow\") {\n  315 |           const samples = rec[`${mode}.loadingSamples`] as { loading: boolean }[];\n  316 |           expect.soft(samples.every((s) => s.loading), `${mode}: loading visible throughout the 35 s wait`).toBe(true);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                            "column": 141,
+                            "line": 313
+                          },
+                          "message": "Error: hospital: choosing the same photo again starts a new read (no retake needed)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  311 |         expect.soft(rec[`${mode}.addedOnFailure`], `${mode}: nothing added on failure`).toBe(0);\n  312 |         expect.soft(rec[`${mode}.retryRowCount`], `${mode}: retry adds its row exactly once`).toBe(1);\n> 313 |         expect.soft(rec[`${mode}.sameFileRetryStartedRead`], `${mode}: choosing the same photo again starts a new read (no retake needed)`).toBe(true);\n      |                                                                                                                                             ^\n  314 |         if (leg === \"slow\") {\n  315 |           const samples = rec[`${mode}.loadingSamples`] as { loading: boolean }[];\n  316 |           expect.soft(samples.every((s) => s.loading), `${mode}: loading visible throughout the 35 s wait`).toBe(true);\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts:313:141"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-14T08:59:03.379Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-4183d-same-photo-adds-its-one-row-probes-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-4183d-same-photo-adds-its-one-row-probes-retry1/error-context.md"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc02/tc02-scan-TC-02-scan-probe-4183d-same-photo-adds-its-one-row-probes-retry1/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc02-scan.spec.ts",
+                        "column": 141,
+                        "line": 313
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "e549e142e3356144b59d-a6408a3486e833aeb34e",
+              "file": "tc02-scan.spec.ts",
+              "line": 228,
+              "column": 5
+            },
+            {
+              "title": "TC-02/S27 overlap N0: prompt wording and added count (both contexts)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "probes",
+                  "projectName": "probes",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8724,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T08:59:46.572Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e549e142e3356144b59d-ad868ecc99cebcb039bc",
+              "file": "tc02-scan.spec.ts",
+              "line": 348,
+              "column": 5
+            },
+            {
+              "title": "TC-02/S27 overlap N1: prompt wording and added count (both contexts)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "probes",
+                  "projectName": "probes",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9215,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T08:59:55.407Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e549e142e3356144b59d-4a5c11a2c45612790326",
+              "file": "tc02-scan.spec.ts",
+              "line": 348,
+              "column": 5
+            },
+            {
+              "title": "TC-02/S27 overlap all: prompt wording and added count (both contexts)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 240000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "probes",
+                  "projectName": "probes",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10595,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-14T09:00:04.628Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e549e142e3356144b59d-5f3904d091f30a464443",
+              "file": "tc02-scan.spec.ts",
+              "line": 348,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T08:57:57.803Z",
+    "duration": 137410.306,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

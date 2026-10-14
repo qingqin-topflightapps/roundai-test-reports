@@ -1,0 +1,139 @@
+{
+  "ref": "TC-20/S06",
+  "title": "TC-20/S06 Status × care setting → bucket, including the legacy and Note Ready states",
+  "dataset": "status",
+  "target": "dev",
+  "at": "2026-10-14T08:43:34.765Z",
+  "cells": [
+    {
+      "name": "Hospital: Total 21, Pending 6, In Progress / Complete 10/5 or 8/7 (Q1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": {
+          "total": 21,
+          "pending": 6,
+          "inProgress": 10,
+          "complete": 5
+        },
+        "expected": {
+          "total": 21,
+          "pending": 6,
+          "ifNoteReadyInProgress": {
+            "inProgress": 10,
+            "complete": 5
+          },
+          "ifNoteReadyComplete": {
+            "inProgress": 8,
+            "complete": 7
+          }
+        },
+        "reading": "Note Ready counted In Progress"
+      }
+    },
+    {
+      "name": "Hospital: where Note Ready landed",
+      "kind": "record",
+      "ok": null,
+      "detail": "Note Ready counted In Progress",
+      "ref": "Q1"
+    },
+    {
+      "name": "Hospital: tiles add up (Total = Pending + In Progress + Complete)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "total": 21,
+        "pending": 6,
+        "inProgress": 10,
+        "complete": 5
+      }
+    },
+    {
+      "name": "Nursing Home: tiles add up (Total = Pending + In Progress + Complete)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "total": 22,
+        "pending": 7,
+        "inProgress": 9,
+        "complete": 6
+      }
+    },
+    {
+      "name": "Nursing Home: set the tiles count",
+      "kind": "record",
+      "ok": null,
+      "detail": "every resident (U5 gap, see S04a)",
+      "ref": "U5"
+    },
+    {
+      "name": "Nursing Home buckets on the counted set: Total 22, Pending 7, In Progress / Complete 9/6 or 7/8 (Q1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": {
+          "total": 22,
+          "pending": 7,
+          "inProgress": 9,
+          "complete": 6
+        },
+        "expected": {
+          "total": 22,
+          "pending": 7,
+          "ifNoteReadyInProgress": {
+            "inProgress": 9,
+            "complete": 6
+          },
+          "ifNoteReadyComplete": {
+            "inProgress": 7,
+            "complete": 8
+          }
+        },
+        "reading": "Note Ready counted In Progress"
+      }
+    },
+    {
+      "name": "Nursing Home buckets on the counted set: where Note Ready landed",
+      "kind": "record",
+      "ok": null,
+      "detail": "Note Ready counted In Progress",
+      "ref": "Q1"
+    },
+    {
+      "name": "Nursing Home buckets on the In Today set: Total 19, Pending 6, In Progress / Complete 8/5 or 6/7 (Q1)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "got": {
+          "total": 22,
+          "pending": 7,
+          "inProgress": 9,
+          "complete": 6
+        },
+        "expected": {
+          "total": 19,
+          "pending": 6,
+          "ifNoteReadyInProgress": {
+            "inProgress": 8,
+            "complete": 5
+          },
+          "ifNoteReadyComplete": {
+            "inProgress": 6,
+            "complete": 7
+          }
+        },
+        "reading": "total/pending differ"
+      },
+      "ref": "TFA-92587 AC 6"
+    }
+  ],
+  "shots": [
+    "evidence/TC-20-S06-hospital.png",
+    "evidence/TC-20-S06-snf.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-20-S06-hospital.png": 0,
+    "evidence/TC-20-S06-snf.png": 0
+  }
+}

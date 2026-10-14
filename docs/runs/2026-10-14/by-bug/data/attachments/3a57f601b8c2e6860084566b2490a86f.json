@@ -1,0 +1,90 @@
+{
+  "case": "TC-06-S16",
+  "title": "Generate with status words in the dictation: badge unchanged, note written in the template chosen (hand pick in Hospital, pre-selection in Nursing Home), badge still changeable after Generate",
+  "needs": [
+    "seed",
+    "generate",
+    "max-turns",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s16-h-after-generate.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7e1e8r0fvqfkfqmc9vqwcdr98g9m1y",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: the note model of the Hospital Generate) pass: backend h-ai [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s16-n-before-generate.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7bbgzhw6et8hc5ca83zyr8198g9k9g",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s16-n-after-generate.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7bbgzhw6et8hc5ca83zyr8198g9k9g",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: the note model of the Nursing Home Generate) pass: backend n-ai [fn=notes.generateNote].model exists"
+      ]
+    },
+    {
+      "file": "s16-n-changed-after-generate.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7bbgzhw6et8hc5ca83zyr8198g9k9g",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "3.9: record the note model of both Generate calls from backend/h-ai.json and backend/n-ai.json (diagnostics:list rows fn notes.generateNote: model, fellBackFrom; the list keeps the newest 8 rows)"
+  ],
+  "agent": {
+    "turns": 39,
+    "costUsd": 0.274906,
+    "durationMs": 161403,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": true,
+  "unit": "U43",
+  "covers": [
+    "TC-06/S16"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u43",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U43.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

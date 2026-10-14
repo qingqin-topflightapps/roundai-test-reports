@@ -1,0 +1,27 @@
+{
+  "TC-01/S22": {
+    "status": "record-only",
+    "detail": "desktop, iphone15, pixel7: record-only (oracle: Lane V decides nothing; axe findings go to a human, serious/critical routed to TFA-92579). Then-clause checks evaluated, not judged: 24 held, 3 did not. Record-only per the oracle ('Lane V decides nothing … routed to TFA-92579'). Then-clause checks (held, not judged): every card is a button named 'Open chart for <name>' and every control inside a card has a name, in both lists.",
+    "notMetUnjudged": [
+      {
+        "check": "no control nested inside the card button (axe nested-interactive)",
+        "where": [
+          "desktop:hospital-list",
+          "iphone15:hospital-list",
+          "pixel7:hospital-list"
+        ],
+        "example": "nested-interactive(serious,2×: .shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.p-4.cursor-pointer | .shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.p-4.cursor-pointer)"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/iphone15--hospital-list.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/iphone15--nh-all-residents.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-01_S22/iphone15--nh-list.png"
+    ],
+    "productIssue": "Routed to TFA-92579 (record-only, as the oracle asks): on the Hospital list the trash (Remove …) button sits inside the card's role=button — axe nested-interactive (serious). A screen-reader user cannot reliably reach 'Remove <patient> from the rounding list' on its own; it is read as part of the card (TFA-92579 AC 7, as the oracle predicts). NH All Residents has the same pattern with the In Today toggle."
+  }
+}

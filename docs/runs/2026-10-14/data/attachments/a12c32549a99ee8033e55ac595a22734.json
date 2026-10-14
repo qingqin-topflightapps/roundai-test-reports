@@ -1,0 +1,101 @@
+{
+  "ref": "TC-09/S24",
+  "profile": "pixel7",
+  "part": null,
+  "judged": [
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "all-residents"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "all-residents"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "all-residents"
+    },
+    {
+      "name": "Today's Visits tab visible and tappable (not covered)",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "all-residents"
+    },
+    {
+      "name": "All Residents tab visible and tappable (not covered)",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "all-residents"
+    },
+    {
+      "name": "scan control visible and tappable (not covered)",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "all-residents"
+    },
+    {
+      "name": "long-name resident's toggle visible and tappable (not covered)",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "all-residents"
+    },
+    {
+      "name": "the long name does not push the toggle off-screen",
+      "pass": true,
+      "detail": "toggle 273..340 of 412px, 67×28; card right 381",
+      "state": "all-residents"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "toggle-tapped"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "toggle-tapped"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "toggle text before / after a tap",
+      "value": {
+        "before": "+ Today",
+        "after": "In Today ✓"
+      },
+      "state": "toggle-tapped"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "all-residents",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-09_S24/pixel7--all-residents.png",
+      "url": "/snf",
+      "findings": 5,
+      "axe": [
+        "color-contrast/serious×1",
+        "nested-interactive/serious×2"
+      ]
+    },
+    {
+      "state": "toggle-tapped",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-09_S24/pixel7--toggle-tapped.png",
+      "url": "/snf",
+      "findings": 5,
+      "axe": [
+        "color-contrast/serious×1",
+        "nested-interactive/serious×2"
+      ]
+    }
+  ]
+}

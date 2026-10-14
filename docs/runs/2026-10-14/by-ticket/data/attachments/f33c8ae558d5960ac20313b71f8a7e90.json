@@ -1,0 +1,254 @@
+{
+  "TC-19/S12": {
+    "status": "failed",
+    "detail": "9/11 judged cells pass, 4 recorded, 1 NOT RUN. Fail: 37 h variant A: rows gone from the server record before any device opens the chart (no purge waits for a client) [U14b; gate: blocked: TFA-94699 in progress] | 37 h, pre-round Save Note at 30 h: metoprolol and magnesium (last mentioned T0) gone [U14a]. Not run: 37 h, Generate at 30 h (Generate is forbidden on the local stack (capabilities.json forbidden: generate); dev only). Recorded: 19 h: magnesium (Given) label (Q3) = \"label shown\" | 37 h, extract-event at 30 h (Q5) = {\"held\":true,\"stopped\":true,\"metoprolol\":false,\"magnesium\":false,\"message\":\"✓ Tasks updated — 1 added, 1 medication change\"} | 37 h, extract-none at 30 h (Q5) = {\"held\":false,\"stopped\":false,\"metoprolol\":false,\"magnesium\":false,\"message\":\"✓ Notes saved — no new tasks or medication changes found\"} | 37 h, panel-edit at 30 h (Q5) = {\"held\":true,\"stopped\":true,\"metoprolol\":false,\"magnesium\":false,\"message\":\"panel save\"}.",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/cells-variantA.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/cells-variantB.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/A17-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/A19-after-extract-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/A19-control-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/A19-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/day2-silent-extract.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/diag-row.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/labels.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/processing-messages.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/server-after-lifecycle.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/server-before-lifecycle.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/variantB-37h.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/variantB-rows-right-after-processing.json",
+      "runs/2026-10-14-local/manual/evidence/TC-19-S12/cells-diag-mocked-parse.json"
+    ],
+    "counts": {
+      "judged": 11,
+      "pass": 9,
+      "fail": 2,
+      "recorded": 4,
+      "notRun": 1,
+      "notDiscriminating": 0
+    },
+    "cells": [
+      {
+        "part": "variantA",
+        "cell": "19 h reader control: an active row with a Changed tag and a reason line reads 'not mentioned today'",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "label (else the held/stopped cell below is not discriminating)",
+        "actual": {
+          "found": true,
+          "label": true,
+          "text": "changed\n\nAmlodipine 10 mg PO daily\n\nChanged · Oct 13\nnot mentioned today\n\nwas: 5"
+        }
+      },
+      {
+        "part": "variantA",
+        "cell": "17 h: no 'not mentioned today' label on any row",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "four rows found, no label",
+        "actual": {
+          "met": false,
+          "lis": false,
+          "van": false,
+          "mag": false
+        }
+      },
+      {
+        "part": "variantA",
+        "cell": "19 h: metoprolol reads 'not mentioned today'",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "label",
+        "actual": {
+          "found": true,
+          "label": true,
+          "text": "active\n\nMetoprolol tartrate 25 mg PO BID\n\nnot mentioned today"
+        }
+      },
+      {
+        "part": "variantA",
+        "cell": "19 h: held lisinopril and stopped vancomycin carry no label",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "no label on either (and the reader control saw its label)",
+        "actual": {
+          "lis": {
+            "found": true,
+            "label": false,
+            "text": "held\n\nLisinopril 10 mg PO daily\n\nHeld · Oct 13\n\nsoft BP"
+          },
+          "van": {
+            "found": true,
+            "label": false,
+            "text": "discontinued\n\nVancomycin 1 g IV q12h\n\nStopped · Oct 13\n\nAKI"
+          },
+          "readerControl": true
+        }
+      },
+      {
+        "part": "variantA",
+        "cell": "19 h: magnesium (Given) label (Q3)",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "record",
+        "expected": "label expected per oracle, Q3 open",
+        "actual": "label shown",
+        "note": "single dose\n\nMagnesium sulfate 2 g IV once\n\nGiven · Oct 13\nnot mentioned today"
+      },
+      {
+        "part": "variantA",
+        "cell": "after the silent day-2 Save & Extract: lisinopril still Held · Oct 13 'soft BP'",
+        "req": "U8",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "Held · Oct 13, reason 'soft BP'",
+        "actual": {
+          "status": "held",
+          "changeDate": "Oct 13",
+          "changedNote": "soft BP",
+          "tagOnScreen": "Held · Oct 13",
+          "message": "✓ Notes saved — no new tasks or medication changes found"
+        }
+      },
+      {
+        "part": "variantA",
+        "cell": "35 h: all four rows present",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "all present",
+        "actual": {
+          "met": true,
+          "lis": true,
+          "van": true,
+          "mag": true
+        }
+      },
+      {
+        "part": "variantA",
+        "cell": "37 h variant A: all four rows gone",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "none",
+        "actual": {
+          "met": false,
+          "lis": false,
+          "van": false,
+          "mag": false
+        }
+      },
+      {
+        "part": "variantA",
+        "cell": "37 h variant A: rows gone from the server record before any device opens the chart (no purge waits for a client)",
+        "req": "U14b",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "none on the server record",
+        "actual": {
+          "met": true,
+          "lis": true,
+          "van": true,
+          "mag": true
+        }
+      },
+      {
+        "part": "variantB",
+        "cell": "37 h, pre-round Save Note at 30 h: held and stopped rows kept",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": {
+          "lis": true,
+          "van": true
+        }
+      },
+      {
+        "part": "variantB",
+        "cell": "37 h, pre-round Save Note at 30 h: held row keeps its original date and reason",
+        "req": "U8",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "Oct 13 · 'soft BP'",
+        "actual": {
+          "changeDate": "Oct 13",
+          "changedNote": "soft BP"
+        }
+      },
+      {
+        "part": "variantB",
+        "cell": "37 h, pre-round Save Note at 30 h: metoprolol and magnesium (last mentioned T0) gone",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "fail",
+        "expected": "gone",
+        "actual": {
+          "met": false,
+          "mag": true
+        }
+      },
+      {
+        "part": "variantB",
+        "cell": "37 h, extract-event at 30 h (Q5)",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "record",
+        "expected": "recorded",
+        "actual": {
+          "held": true,
+          "stopped": true,
+          "metoprolol": false,
+          "magnesium": false,
+          "message": "✓ Tasks updated — 1 added, 1 medication change"
+        }
+      },
+      {
+        "part": "variantB",
+        "cell": "37 h, extract-none at 30 h (Q5)",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "record",
+        "expected": "recorded",
+        "actual": {
+          "held": false,
+          "stopped": false,
+          "metoprolol": false,
+          "magnesium": false,
+          "message": "✓ Notes saved — no new tasks or medication changes found"
+        }
+      },
+      {
+        "part": "variantB",
+        "cell": "37 h, panel-edit at 30 h (Q5)",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "record",
+        "expected": "recorded",
+        "actual": {
+          "held": true,
+          "stopped": true,
+          "metoprolol": false,
+          "magnesium": false,
+          "message": "panel save"
+        }
+      },
+      {
+        "part": "variantB",
+        "cell": "37 h, Generate at 30 h",
+        "req": "U14a",
+        "gate": null,
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "Generate is forbidden on the local stack (capabilities.json forbidden: generate); dev only"
+      }
+    ],
+    "productIssue": "NEW (U14a / U8, no gate). A silent pre-round Save Note re-dates yesterday's one-time dose. The chart was processed at T0 with 'Magnesium sulfate 2 g IV once', shown as Given · Oct 13. At T0+30 h the physician saves the pre-round 'Overnight uneventful. No complaints this morning.' The row now reads Given · Oct 14 (today) and its updatedAt is restamped to now, so at 37 h it is still on the Medications panel, when it should have left with metoprolol (last mentioned at T0). Seen in 2 of 2 completed live runs (a third attempt, report-142730, timed out). Root cause: src/domain/medications.ts mergePreRoundMedications (e02167f, the echo guard at lines 491-503 and the restamp at 532-550) skips a row the extractor only echoes back from the names on file only when the echo says st === 'active'. A single-dose row that comes back is restamped: changeDate = today (isSingle → stampDate2) and updatedAt = now, which also breaks the function's own comment ('neither is a row it only echoes back'). Checked by calling the pure function (scratchpad merge-echo.ts): an echoed 'Magnesium sulfate' (single-dose) is re-dated to Oct 14; an echoed active metoprolol is untouched; an empty answer leaves the row alone (as the socket-mocked diag run on the app showed). Breaks UAT TC-19 ER 8 (a one-time dose shows as Given and expires), ER 10 / 3.6 (36 h window), and the TC-19 AI check (no change dictated → no row changed). Also seen (gated, TFA-94699 in progress, U14b): at 37 h the four rows are still on the server record until a device runs rounding:applyLifecycle; convex/crons.ts has only the session sweep.",
+    "runNote": "Variant A re-run 15:58 JST with the per-row DOM label reader (the text-split reader stopped at each row's own tag line). evidence/TC-19-S12/diag-row.json: the same silent Save Note with the parse answered at the socket with no medications leaves the Given row untouched, so the re-dating comes from the model's answer and the merge accepting it. Variant B: 2 of 2 completed live runs re-dated the row (a third attempt, report-142730, timed out)."
+  }
+}

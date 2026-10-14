@@ -1,0 +1,130 @@
+{
+  "ref": "TC-23/S05",
+  "mode": "scripted",
+  "kind": "harness self-test (scripted far end: the checks ran on the item's own written text)",
+  "hospital": {
+    "pass": 1,
+    "of": 1
+  },
+  "nursingHome": {
+    "pass": 1,
+    "of": 1
+  },
+  "recovered": [],
+  "blocked": [],
+  "failures": [],
+  "takes": [
+    {
+      "item": "B-01",
+      "mode": "hospital",
+      "surface": "hospital pre-round notes",
+      "verdict": {
+        "id": "B-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Prednisone 15 milligrams daily.",
+        "numbersFound": [
+          15
+        ],
+        "numbersWanted": [
+          15
+        ],
+        "anchorCount": 1
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j97f3r932ze7zmnmbkzqe97hax8g8r6s",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 314,
+          "providerMs": 309
+        }
+      ],
+      "take": {
+        "ids": [
+          "B-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Prednisone 15 milligrams daily.",
+        "added": "Prednisone 15 milligrams daily.",
+        "tapToReadyMs": 730,
+        "stopToTextMs": 1032,
+        "stopToCompletedMs": 977,
+        "playedSec": 2.14025,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "B-01",
+      "mode": "nursing-home",
+      "surface": "nursing-home Pre-Round notes",
+      "verdict": {
+        "id": "B-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "Prednisone 15 milligrams daily.",
+        "numbersFound": [
+          15
+        ],
+        "numbersWanted": [
+          15
+        ],
+        "anchorCount": 1
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j971k4b80xzppwt831xxq7b2mh8g8149",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 380,
+          "providerMs": 374
+        }
+      ],
+      "take": {
+        "ids": [
+          "B-01"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Prednisone 15 milligrams daily.",
+        "added": "Prednisone 15 milligrams daily.",
+        "tapToReadyMs": 729,
+        "stopToTextMs": 1075,
+        "stopToCompletedMs": 980,
+        "playedSec": 2.14025,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    }
+  ],
+  "aiProvider": {
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "provider": "bedrock",
+    "transcription": "gpt-live",
+    "visionModel": "gemini-2.5-flash",
+    "visionProvider": "vertex"
+  },
+  "disclosures": [
+    {
+      "at": 1791961435293.701,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 374
+    },
+    {
+      "at": 1791961424639.284,
+      "fn": "transcribe.prepareSession",
+      "model": "gpt-live-transcribe",
+      "disclosed_to": "openai",
+      "provider_ms": 309
+    }
+  ],
+  "at": "2026-10-14T07:04:02.299Z"
+}

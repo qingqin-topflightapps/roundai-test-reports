@@ -1,0 +1,132 @@
+{
+  "case": "TC-15-S18",
+  "title": "Ask AI answer time and model, 10 calls with the labs preset",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s18-cp01.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp02.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp03.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp04.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp05.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: the answering model per call (RG-MODEL), read backend/log5.json) pass: backend log5 [fn=assist.askChart].model exists",
+        "(3.9: whether any call fell back to the backup model) pass: backend log5 [fn=assist.askChart].fellBackFrom is missing"
+      ]
+    },
+    {
+      "file": "s18-cp06.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp07.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp08.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp09.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s18-cp10.md",
+      "verdict": "Pass",
+      "url": "/rounding/js757kac8axvha0khsby6cr2ms8g7drq",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: the answering model per call (RG-MODEL), read backend/log10.json) pass: backend log10 [fn=assist.askChart].model exists",
+        "(3.9: whether any call fell back to the backup model) pass: backend log10 [fn=assist.askChart].fellBackFrom is missing"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Q7 / 3.5: read durationMs and providerMs in backend/log5.json and backend/log10.json; a call over 30 s is flagged for review, not failed. Record model and fellBackFrom per call (3.9)."
+  ],
+  "agent": {
+    "turns": 70,
+    "costUsd": 0.3596762,
+    "durationMs": 458004,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U37",
+  "covers": [
+    "TC-15/S18"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u37",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U37.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

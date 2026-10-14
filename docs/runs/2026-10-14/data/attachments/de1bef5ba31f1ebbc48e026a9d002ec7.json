@@ -1,0 +1,47 @@
+{
+  "TC-25/S21": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 9 judged check(s) passed, 18 failed. Sign-in email and code fields are labelled; the deleted-elsewhere chart shows 'Patient not found.' with Back to rounds (axe clean). Focus after deleting the focused patient on the other device falls to the page body (recorded for a person, WCAG 2.4.3).",
+    "failed": [
+      {
+        "check": "axe violations = 0",
+        "where": [
+          "desktop:hospital-chart",
+          "desktop:hospital-list",
+          "desktop:nh-chart",
+          "desktop:nh-list",
+          "desktop:sign-in",
+          "desktop:sign-in-code",
+          "iphone15:hospital-chart",
+          "iphone15:hospital-list",
+          "iphone15:nh-chart",
+          "iphone15:nh-list",
+          "iphone15:sign-in",
+          "iphone15:sign-in-code",
+          "pixel7:hospital-chart",
+          "pixel7:hospital-list",
+          "pixel7:nh-chart",
+          "pixel7:nh-list",
+          "pixel7:sign-in",
+          "pixel7:sign-in-code"
+        ],
+        "example": "color-contrast(serious,2×: .px-4 | .mt-8)"
+      }
+    ],
+    "recorded": "After the remote deletes no alert or banner is shown on the list (recorded 'alerts shown on the list after the remote deletes: []' on all three profiles). A red 'Chart access couldn’t be recorded. Check your connection and reload.' banner was seen once, in OAT-03/S22 desktop nh-scan-error (pre-review run, nothing deleted), while the shared local backend was under other jobs' load: not tied to a delete, unconfirmed (convex/access.ts logChartAccess returns null without an error for a missing row). vision-review (for a person): the deleted-elsewhere chart says only 'Patient not found.'",
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/iphone15--hospital-chart-deleted-elsewhere.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/iphone15--hospital-chart.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/iphone15--hospital-list.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/iphone15--list-after-remote-delete.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/vision/failure-states/vision-findings.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-25_S21/desktop--list-after-remote-delete.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/iterations/pre-review/evidence/OAT-03_S22/desktop--nh-scan-error.png"
+    ],
+    "productIssue": "axe violations on the sign-in screen (footer and Send-code contrast), both lists and both charts (oracle: violation count = 0)."
+  }
+}

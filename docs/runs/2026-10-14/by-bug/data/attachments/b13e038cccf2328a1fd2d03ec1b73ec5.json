@@ -1,0 +1,23 @@
+{
+  "TC-25/S20": {
+    "status": "passed-partial",
+    "detail": "Partial — 14/14 judged cells pass (every repeat shown on the other device without reload within 60 s), Generate cell NOT RUN. Add / edit (room, unit) / delete (Hospital), 10 repeats per cell, both directions, both modes: p50 54–61 ms, max 162 ms, none over 5 s. Pre-round save (1 repeat per cell, live): first Labs row on the other device after 4.8–8.4 s (≤ 15 s target; record-only). Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13); those cells run only with QA_ALLOW_LOCAL_GENERATE=1.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc25-s20/hospital.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s20/snf.json"
+    ],
+    "judged": {
+      "total": 14,
+      "failed": 0
+    },
+    "partial": {
+      "needs": [
+        "generate"
+      ],
+      "notRun": [
+        "Generate cell (40 repeats), both modes"
+      ],
+      "note": "Generate / Regenerate is forbidden on the local target (scripts/capabilities.json, Quinn 2026-10-13); those cells run only with QA_ALLOW_LOCAL_GENERATE=1."
+    }
+  }
+}

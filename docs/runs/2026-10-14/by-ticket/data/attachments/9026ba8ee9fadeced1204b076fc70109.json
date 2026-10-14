@@ -1,0 +1,14 @@
+{
+  "TC-11/S13": {
+    "status": "record-only",
+    "detail": "Shares the 9/10 with S14. Counted (main) layer, no generateNote: deterministic layer 10/10 (no blacklisted procedure, every number from the note or timeline). Judge layer (grade.mjs, uncalibrated): S13 H-02/H-03/H-04 PASS; H-01 FAIL U1/U2 on 'Upper GI bleed with melena resolved' (the chart's diagnosis field, not in the note text: whether the diagnosis on file counts as a source is open, GK8); H-05 judges disagree on U1 ('continuing bowel rest' comes from the Oct 11 timeline line) -> a person decides. Across S13+S14: 5 pass, 2 judge FAIL, 3 need a person, so 9/10 cannot be decided without a person and the GK8 call (with H-01 counted as a fail it is at most 8/10). No entry stated a procedure (Q7 list empty). Second layer (generateNote -> refresh, not counted, Q16): HELD AS UNAUTHORISED - its 5 generateNote calls were made on the local stack where 'generate' is forbidden; the result is not reported. It needs Quinn's OK for local Generate (the runner now refuses without QA_ALLOW_LOCAL_GENERATE=1). Fallback layer (Mistral, not counted) not run: needs fault-ai (see OAT-03).",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-other/course-entry-main/results.json",
+      "runs/2026-10-14-local/aicheck-other/course-entry-main/judge-merged.json",
+      "runs/2026-10-14-local/aicheck-other/course-entry-main/grading/"
+    ],
+    "heldUnauthorised": [
+      "runs/2026-10-14-local/aicheck-other/course-entry-second/results.json (5 generateNote calls without Quinn's OK; not counted, not reported)"
+    ]
+  }
+}

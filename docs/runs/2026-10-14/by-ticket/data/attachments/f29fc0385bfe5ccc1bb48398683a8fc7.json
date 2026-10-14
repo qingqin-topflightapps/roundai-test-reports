@@ -1,0 +1,176 @@
+{
+  "case": "U22",
+  "title": "Lists and cards, both contexts",
+  "needs": [
+    "max-turns"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s13-h-list.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S13"
+    },
+    {
+      "file": "s13-n-today.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S13"
+    },
+    {
+      "file": "s13-n-all.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S13"
+    },
+    {
+      "file": "s12-cp1-hosp-one.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S12"
+    },
+    {
+      "file": "s12-cp2-nh-today-zero.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S12"
+    },
+    {
+      "file": "s12-cp3-nh-all-one.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S12"
+    },
+    {
+      "file": "s12-cp4-nh-today-one.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "EFS/S12"
+    },
+    {
+      "file": "s01-hospital-list.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S01"
+    },
+    {
+      "file": "s01-hospital-chart.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7833vjczzrrq4r2ym18bsh758g632h",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S01"
+    },
+    {
+      "file": "s02-snf-today.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "should not show \"Post-acute rehab after hip fracture\""
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S02"
+    },
+    {
+      "file": "s02-snf-chart.md",
+      "verdict": "Pass",
+      "url": "/snf/jx78xjchw3csrv4c9a4dcrj37n8g7y13",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S02"
+    },
+    {
+      "file": "s02-snf-all.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "should not show \"Post-acute rehab after hip fracture\""
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S02"
+    },
+    {
+      "file": "s02-snf-all-chart.md",
+      "verdict": "Pass",
+      "url": "/snf/jx78xjchw3csrv4c9a4dcrj37n8g7y13",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S02"
+    },
+    {
+      "file": "s02-snf-toggle.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S02"
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "[TC-01/S13] '0y' or any age on the age-less resident: read s13-n-today.png / s13-n-all.png",
+    "[TC-01/S01] age/sex '76F' and hospital day: S03/S05/S26 (need the seeded census)"
+  ],
+  "agent": {
+    "turns": 81,
+    "costUsd": 0.6206992,
+    "durationMs": 275017,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U22",
+  "covers": [
+    "TC-01/S13",
+    "EFS/S12",
+    "TC-01/S01",
+    "TC-01/S02"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u22",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U22.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "TC-25/S26": {
+    "status": "passed",
+    "detail": "Tim's two anonymous-project tests pass on the local stack (2/2, runs/2026-10-14-local/newspec-c/tc25-s26.json); they open /rounding, /clinic, /snf, /rounding/sheet, /settings. Our complement (tc25-anon-routes.spec.ts) opens '/', a real Hospital chart and a real Nursing Home chart address, both dashboards, add, tasks, handoff and /handoffs: 15/15 show the sign-in form and no chart content. The patch now wires both halves (Tim's titles + our title with runner qa-spec); without ours the scenario's '/' and chart-address routes would not be covered.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/tc25-s26.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc25-s26-anon-routes.json",
+      "runs/2026-10-14-local/newspec-c/reports/tc25-anon-routes.json"
+    ]
+  }
+}

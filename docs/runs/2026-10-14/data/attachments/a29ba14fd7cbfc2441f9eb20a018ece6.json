@@ -1,0 +1,10 @@
+{
+  "TC-23/S04": {
+    "status": "blocked",
+    "detail": "Model half decided (no OpenAI; dictated words given as a perfect transcript to the action the app calls): 6/6 pass (VF-1, VF-2, VF-3, VF-4, VF-5, AP-1; Haiku on Bedrock). The merge into the panel is a copy of VitalsPanel/MedicationsPanel's merge as on main e02167f (scripts/aicheck-dictation/voicefix-check.ts), not the panels themselves; it would not follow the panels if they change. laneB-preconditions not met: the local OPENAI_API_KEY ends …PUMA and there is no OK on record from Quinn that it is not the key dev uses (her 2026-10-09 notes say it may be), so no audio was sent to OpenAI. Run after that OK: QA_DICT_MODE=live QA_DICTATION_LIVE_OK=PUMA scripts/aicheck-dictation/run.sh. harness self-test with the scripted far end: 8/8 takes landed in the box and passed the checks (shim, Dictate/Stop, read rule, engine attribution, checks.ts). The scripted self-test behind this entry ran before the review fix and used the real prepareSession: each take minted one OpenAI client secret (client.realtime.clientSecrets.create on api.openai.com) with the local key …PUMA — no audio, but the gated key was used. Free-text surfaces driven: Hospital pre-round, Hospital Important Points, NH Pre-Round, NH Encounter. Not driven yet: Hospital encounter notes, 'Start bedside recording', Quick Dictation, Ask AI question box (both contexts), encounter tasks (ET-1, transcript goes verbatim into the task box), NH Important Points, and the Dictate buttons of Fix by voice / add-patient (their model half is decided above).",
+    "evidence": [
+      "raw/TC-23-S04-selftest.json",
+      "raw/TC-23-S04-voicefix.json"
+    ]
+  }
+}

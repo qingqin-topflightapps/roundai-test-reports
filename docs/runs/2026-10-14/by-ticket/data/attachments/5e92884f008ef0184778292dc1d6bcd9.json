@@ -1,0 +1,172 @@
+{
+  "ref": "TC-14/S22",
+  "profile": "desktop",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,1×: .disabled\\:cursor-not-allowed.px-2.text-\\[10px\\]:nth-child(2))",
+      "state": "hospital-encounter"
+    },
+    {
+      "name": "Dictate, Save & Extract, Generate and the note-format picker have accessible names",
+      "pass": true,
+      "detail": "{\"dictate\":\"Dictate\",\"saveExtract\":\"Save & Extract\",\"generate\":\"Generate Note & Finish\",\"noteFormat\":\"Note Format\"}",
+      "state": "hospital-encounter"
+    },
+    {
+      "name": "the notepad textarea has an accessible name (axe semantics: a placeholder counts)",
+      "pass": true,
+      "detail": "Encounter observations",
+      "state": "hospital-encounter"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,1×: .disabled\\:cursor-not-allowed.px-2.text-\\[10px\\]:nth-child(2))",
+      "state": "hospital-notepad-fullscreen"
+    },
+    {
+      "name": "the full-screen notepad textarea has an accessible name (axe semantics: a placeholder counts)",
+      "pass": true,
+      "detail": "Encounter observations",
+      "state": "hospital-notepad-fullscreen"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,4×: .bg-slate-900.hover\\:bg-slate-800.py-1\\.5 | .text-slate-400)",
+      "state": "hospital-postround-note"
+    },
+    {
+      "name": "the generated note is exposed as a named document",
+      "pass": true,
+      "detail": "role=document ×1, name \"Generated clinical note\"",
+      "state": "hospital-postround-note"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,1×: .-ml-1)",
+      "state": "nh-encounter"
+    },
+    {
+      "name": "Dictate, Save & Extract, Generate and the note-format picker have accessible names",
+      "pass": true,
+      "detail": "{\"dictate\":\"Dictate\",\"saveExtract\":\"Save & Extract\",\"generate\":\"Generate Note & Finish\",\"noteFormat\":\"Note Format\"}",
+      "state": "nh-encounter"
+    },
+    {
+      "name": "the notepad textarea has an accessible name (axe semantics: a placeholder counts)",
+      "pass": true,
+      "detail": "Dictate or type today's visit: interval history, exam, assessment, plan…",
+      "state": "nh-encounter"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,1×: .-ml-1)",
+      "state": "nh-notepad-fullscreen"
+    },
+    {
+      "name": "the full-screen notepad textarea has an accessible name (axe semantics: a placeholder counts)",
+      "pass": true,
+      "detail": "Dictate or type today's visit: interval history, exam, assessment, plan…",
+      "state": "nh-notepad-fullscreen"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,1×: .-ml-1); color-contrast(serious,3×: .text-slate-400 | .bg-teal-600)",
+      "state": "nh-postround-note"
+    },
+    {
+      "name": "the generated note is exposed as a named document",
+      "pass": true,
+      "detail": "role=document ×1, name \"Generated clinical note\"",
+      "state": "nh-postround-note"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "notepad name without the placeholder (placeholder-only = for a person, WCAG 3.3.2)",
+      "value": "Encounter observations",
+      "state": "hospital-encounter"
+    },
+    {
+      "name": "full-screen notepad name without the placeholder (placeholder-only = for a person, WCAG 3.3.2)",
+      "value": "Encounter observations",
+      "state": "hospital-notepad-fullscreen"
+    },
+    {
+      "name": "notepad name without the placeholder (placeholder-only = for a person, WCAG 3.3.2)",
+      "value": "(none — placeholder only: \"Dictate or type today's visit: interval history, exam, assessment, plan…\")",
+      "state": "nh-encounter"
+    },
+    {
+      "name": "full-screen notepad name without the placeholder (placeholder-only = for a person, WCAG 3.3.2)",
+      "value": "(none — placeholder only: \"Dictate or type today's visit: interval history, exam, assessment, plan…\")",
+      "state": "nh-notepad-fullscreen"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-encounter",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-14_S22/desktop--hospital-encounter.png",
+      "url": "/rounding/kx7f3gm2pv0vp2zvswra1z4qc18g8g8g",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×1"
+      ]
+    },
+    {
+      "state": "hospital-notepad-fullscreen",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-14_S22/desktop--hospital-notepad-fullscreen.png",
+      "url": "/rounding/kx7f3gm2pv0vp2zvswra1z4qc18g8g8g",
+      "findings": 25,
+      "axe": [
+        "color-contrast/serious×1"
+      ]
+    },
+    {
+      "state": "hospital-postround-note",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-14_S22/desktop--hospital-postround-note.png",
+      "url": "/rounding/kx735sqcxe6vm43tbky0x7h45x8g8pa2",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×4"
+      ]
+    },
+    {
+      "state": "nh-encounter",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-14_S22/desktop--nh-encounter.png",
+      "url": "/snf/m570k54x6f7v44c91941nns0558g8p3p",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×1"
+      ]
+    },
+    {
+      "state": "nh-notepad-fullscreen",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-14_S22/desktop--nh-notepad-fullscreen.png",
+      "url": "/snf/m570k54x6f7v44c91941nns0558g8p3p",
+      "findings": 12,
+      "axe": [
+        "button-name/critical×1"
+      ]
+    },
+    {
+      "state": "nh-postround-note",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-14_S22/desktop--nh-postround-note.png",
+      "url": "/snf/m5732wmb5xxgbabs6923n9ywms8g8714",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×1",
+        "color-contrast/serious×3"
+      ]
+    }
+  ]
+}

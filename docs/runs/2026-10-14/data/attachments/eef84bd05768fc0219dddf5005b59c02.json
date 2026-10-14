@@ -1,0 +1,17 @@
+{
+  "S19": {
+    "status": "passed",
+    "tests": [
+      "api/admission-status.spec.ts [api] — nothing dictated sets the status: an add, a chart save and a placed compartment all leave it alone — expected",
+      "api/quick-dictation.spec.ts [api] — dictated words never set the admission status: a placed 'new admission' leaves it as the physician set it — expected",
+      "api/quick-dictation.spec.ts [api] — another physician's patient or compartment is refused, and nothing moves — expected",
+      "api/quick-dictation.spec.ts [api] — Quick Dictate is hospital only: a nursing-home resident cannot be the target — expected",
+      "api/quick-dictation.spec.ts [api] — a plain compartment update cannot mark it placed — only assign can — expected",
+      "quick-dictation.spec.ts [chromium] — tapping the patient it already went to does not put the text on the chart twice — expected",
+      "quick-dictation.spec.ts [chromium] — an assignment that does not reach the server leaves the compartment unassigned and says so — expected",
+      "quick-dictation.spec.ts [chromium] — a compartment deleted while its last words are arriving stays deleted, without an error — expected",
+      "quick-dictation.spec.ts [chromium] — a delete that does not reach the server leaves the compartment usable, with what was typed — expected"
+    ],
+    "at": 1791951503532
+  }
+}

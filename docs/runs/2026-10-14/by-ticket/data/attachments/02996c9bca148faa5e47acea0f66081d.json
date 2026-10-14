@@ -1,0 +1,29 @@
+{
+  "OAT-06/S24a": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 22 judged check(s) passed, 6 failed.",
+    "failed": [
+      {
+        "check": "axe serious/critical = 0",
+        "where": [
+          "desktop:hospital-list-baseline",
+          "desktop:nh-list-baseline",
+          "iphone15:hospital-list-baseline",
+          "iphone15:nh-list-baseline",
+          "pixel7:hospital-list-baseline",
+          "pixel7:nh-list-baseline"
+        ],
+        "example": "color-contrast(serious,1×: .hover\\:bg-teal-700.bg-teal-600.py-2)"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24a",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24a/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24a/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24a/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24a/iphone15--hospital-list-baseline.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/OAT-06_S24a/iphone15--nh-list-baseline.png"
+    ],
+    "productIssue": "The 'Start survey' button on the baseline card is white on teal-600 (3.66:1, needs 4.5:1) — a serious axe contrast violation on the card on both lists (oracle: serious/critical = 0). Names, Tab reach, tap size and no sideways scroll pass."
+  }
+}

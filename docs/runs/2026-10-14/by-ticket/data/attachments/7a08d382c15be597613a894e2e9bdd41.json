@@ -1,0 +1,30 @@
+{
+  "name": "tc18-s26-b",
+  "at": "2026-10-14T07:01:04.774Z",
+  "checks": [
+    {
+      "id": "(b) the card never shows 99310",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING Couldn't generate billing suggestion — tap to retry"
+    },
+    {
+      "id": "(b) the billing area shows the clear error with a retry",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING Couldn't generate billing suggestion — tap to retry"
+    },
+    {
+      "id": "(b) the note is still shown",
+      "ok": true,
+      "detail": "note text on the Post-Round tab"
+    },
+    {
+      "id": "(b) retry sends a new request and still never shows 99310",
+      "ok": true,
+      "detail": "2 requests; BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING Couldn't generate billing suggestion — tap to retry"
+    }
+  ],
+  "data": {
+    "cardText": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING Couldn't generate billing suggestion — tap to retry",
+    "afterRetry": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING Couldn't generate billing suggestion — tap to retry"
+  }
+}

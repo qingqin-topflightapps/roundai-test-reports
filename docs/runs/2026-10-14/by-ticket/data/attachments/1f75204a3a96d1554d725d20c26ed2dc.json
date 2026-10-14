@@ -1,0 +1,56 @@
+{
+  "OAT-02/S06": {
+    "ref": "OAT-02/S06",
+    "method": "CODEREVIEW",
+    "secondary": "CONFIG",
+    "status": "partial",
+    "verdict": "pass",
+    "agreed": true,
+    "why": "both runs agree",
+    "halves": {
+      "code": "pass",
+      "env overrides on the deployment": "CONFIG (Tim reads each scheme): not run in this lane",
+      "unused paths on the deployment": "CONFIG (Tim): not run in this lane"
+    },
+    "newFindings": [],
+    "knownGapsConfirmed": [],
+    "detail": "The code passes. Every outbound call in apps/web/convex uses https, set in one of three ways:\n- **Hard-coded https:** OpenAI transcription posts by fetch() to \"https://api.openai.com/v1/audio/transcriptions\" (transcribe.ts:12/156). SES requests are signed by the code itself and built as `https://${host}` with host = email.<region>.amazonaws.com; AWS_SES_REGION or AWS_REGION only picks the region, never the scheme (ses.ts:39/89/101/120).\n- **SDK default (https):** Bedrock uses a BedrockRuntimeClient with no endpoint set (bedrock.ts:85). Vertex uses a GoogleGenAI client with vertexai=true and no base URL (vertex.ts:150). OpenAI chat and vision use `new OpenAI({ apiKey })` with no baseURL (openai.ts:92). Live-session key minting calls client.realtime.clientSecrets.create on an OpenAI client with no baseURL (transcribe.ts:71-74). Each of these can still be redirected by an env var the SDK reads itself: OPENAI_BASE_URL, AWS_ENDPOINT_URL / AWS_ENDPOINT_URL_BEDROCK_RUNTIME, and the GenAI SDK's base-URL vars.\n- **Built from an env var:** the Specode relay does fetch(SPECODE_EMAIL_RELAY_URL) (email.ts:18/25). It only runs when AUTH_EMAIL_PROVIDER is not \"ses\" and SPECODE_EMAIL_MODE is \"platform\"; when AUTH_EMAIL_PROVIDER=ses it is never reached.\n\nThe scheme-relevant http:// literal in the code is the dev fallback `process.env.SITE_URL ?? \"http://localhost:5173\"` (auth.ts:105). The backend never fetches that value. It is used as the crossDomain siteUrl and a trusted origin, so it is not an outbound endpoint under the question's rule. It would only apply if SITE_URL were unset, which is part of Tim's env check. The only other http strings are origin-matching patterns, not endpoints. Provider choice is 'openai' | 'bedrock' and visionProvider 'openai' | 'vertex' (providers/index.ts:23/26); which one the aiProvider row picks is a data question. No recorded gaps or open questions are involved.",
+    "detailRun2": "The code passes. Every outbound call in apps/web/convex either uses a hard-coded https:// URL or relies on an SDK default, which is https. The only other kind is a URL taken from an env var, and its scheme can only be checked on the deployment.\n\nThe calls:\n- **OpenAI transcription:** hard-coded https://api.openai.com/v1/audio/transcriptions (transcribe.ts:12, called with fetch at :156).\n- **OpenAI chat completions and vision:** the OpenAI SDK with no baseURL in code (openai.ts:92). The SDK default is https://api.openai.com/v1, though the SDK also reads OPENAI_BASE_URL. It is selectable as provider 'openai' and visionProvider 'openai' (providers/index.ts:23,26).\n- **Live-session key minting:** the OpenAI SDK, realtime.clientSecrets.create (transcribe.ts:71-74). The default is https.\n- **Bedrock:** BedrockRuntimeClient with region only and no endpoint (bedrock.ts:85). The SDK default is https://bedrock-runtime.<region>.amazonaws.com, unless AWS_ENDPOINT_URL or AWS_ENDPOINT_URL_BEDROCK_RUNTIME is set.\n- **Vertex:** GoogleGenAI with vertexai:true and no baseUrl (vertex.ts:150). The SDK default is https.\n- **SES:** a hand-signed fetch to `https://email.${region}.amazonaws.com` (ses.ts:39, :89), with the region from AWS_SES_REGION or AWS_REGION. The scheme is fixed to https.\n- **Specode relay:** fetch to process.env.SPECODE_EMAIL_RELAY_URL (email.ts:18,25). It is used only when AUTH_EMAIL_PROVIDER is not \"ses\" and SPECODE_EMAIL_MODE is \"platform\" (email.ts:52-57).\n\nNo other fetch() call or SDK client exists. SITE_URL is never called: it serves only as the auth redirect and trusted-origin value. Its code fallback is \"http://localhost:5173\" (auth.ts:105), a local-development default rather than an outbound endpoint. It matters only if SITE_URL is unset on the deployment, which Tim checks. No open questions or recorded gaps apply.",
+    "openQuestions": [
+      "The SITE_URL fallback 'http://localhost:5173' (auth.ts:105) is not an outbound call, but it would become the crossDomain siteUrl and a trusted origin if SITE_URL were unset on UAT. Tim's env check should confirm that SITE_URL is set to https.",
+      "The question's pass/fail rule fails on 'any http:// endpoint in code'. The only http:// literal is the SITE_URL dev fallback (auth.ts:105). It is a redirect/trusted-origin value, not an outbound call, so it was not counted as a failure. Tim should confirm SITE_URL is set to an https value on the UAT deployment."
+    ],
+    "notDecidableByCode": [
+      "env overrides on the deployment (CONFIG (Tim reads each scheme))",
+      "unused paths on the deployment (CONFIG (Tim))",
+      "Scheme of SITE_URL on the UAT deployment (unset would mean the http://localhost fallback)",
+      "SPECODE_EMAIL_RELAY_URL scheme, and whether the relay is unused (AUTH_EMAIL_PROVIDER=ses, SPECODE_EMAIL_MODE)",
+      "AUTH_EMAIL_PROVIDER value",
+      "AWS_SES_REGION / AWS_REGION (only picks the region; the https scheme is fixed in code)",
+      "OPENAI_BASE_URL (read by the OpenAI SDK for chat, vision and live-session minting; the transcription fetch ignores it)",
+      "AWS_ENDPOINT_URL and AWS_ENDPOINT_URL_BEDROCK_RUNTIME (read by the AWS SDK)",
+      "GOOGLE_VERTEX_BASE_URL / GOOGLE_GEMINI_BASE_URL or any other base-URL override the Google GenAI SDK reads",
+      "BETTER_AUTH_TRUSTED_ORIGINS schemes",
+      "CONVEX_SITE_URL (Better Auth baseURL)",
+      "Which provider and visionProvider the deployment's aiProvider row selects",
+      "Convex log-stream and webhook destinations (Integrations page)",
+      "Scheme of these env values on the deployment: SITE_URL, SPECODE_EMAIL_RELAY_URL, OPENAI_BASE_URL (read by the openai SDK), AWS_ENDPOINT_URL, AWS_ENDPOINT_URL_BEDROCK_RUNTIME, BETTER_AUTH_TRUSTED_ORIGINS, and any Google GenAI base-URL override (e.g. GOOGLE_VERTEX_BASE_URL / GOOGLE_GEMINI_BASE_URL).",
+      "AUTH_EMAIL_PROVIDER and SPECODE_EMAIL_MODE values (whether the relay is unused), and AWS_SES_REGION/AWS_REGION.",
+      "Which provider and visionProvider the deployment's aiProvider row selects.",
+      "Convex log-stream and webhook destinations (Integrations page)."
+    ],
+    "checkedFindings": [
+      12,
+      12
+    ],
+    "discardedFindings": [
+      0,
+      0
+    ],
+    "costUsd": 0.47908780000000006,
+    "evidence": [
+      "runs/2026-10-14-local/code-review/OAT-02-S06.json",
+      "runs/2026-10-14-local/code-review/raw/OAT-02-S06.raw.json"
+    ]
+  }
+}

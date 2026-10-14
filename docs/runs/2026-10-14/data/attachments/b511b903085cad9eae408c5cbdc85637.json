@@ -1,0 +1,395 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r",
+      "tc25-sync.spec.ts",
+      "-g",
+      "TC-25/S27 R-",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tc25-sync.spec.ts",
+      "file": "tc25-sync.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-25/S27 R-preround: text the server cleared at its window never comes back from a phone's kept copy",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 64868,
+                  "error": {
+                    "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 123,
+                      "line": 573
+                    },
+                    "snippet": "  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 123,
+                        "line": 573
+                      },
+                      "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 78,
+                        "line": 574
+                      },
+                      "message": "Error: the computer shows no cleared text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n  573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n> 574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n      |                                                                              ^\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n  577 |     await computer.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:574:78"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:02:21.794Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 123,
+                    "line": 573
+                  }
+                },
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 64790,
+                  "error": {
+                    "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 123,
+                      "line": 573
+                    },
+                    "snippet": "  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 123,
+                        "line": 573
+                      },
+                      "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 78,
+                        "line": 574
+                      },
+                      "message": "Error: the computer shows no cleared text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n  573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n> 574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n      |                                                                              ^\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n  577 |     await computer.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:574:78"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T09:03:27.176Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes-retry1/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-prer-861e8-ck-from-a-phone-s-kept-copy-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 123,
+                    "line": 573
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-efa9750b13f44a6a2a89",
+          "file": "tc25-sync.spec.ts",
+          "line": 516,
+          "column": 3
+        },
+        {
+          "title": "TC-25/S27 R-encounter: text the server cleared at its window never comes back from a phone's kept copy",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 64505,
+                  "error": {
+                    "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 123,
+                      "line": 573
+                    },
+                    "snippet": "  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 123,
+                        "line": 573
+                      },
+                      "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 78,
+                        "line": 574
+                      },
+                      "message": "Error: the computer shows no cleared text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n  573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n> 574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n      |                                                                              ^\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n  577 |     await computer.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:574:78"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T09:04:32.388Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 123,
+                    "line": 573
+                  }
+                },
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 65120,
+                  "error": {
+                    "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 123,
+                      "line": 573
+                    },
+                    "snippet": "  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 123,
+                        "line": 573
+                      },
+                      "message": "Error: the server field stays empty after phone A's 60 s idle\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  571 |     evidence(`tc25-s27/${leg}.json`, rec);\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n> 573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n      |                                                                                                                           ^\n  574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:573:123"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 78,
+                        "line": 574
+                      },
+                      "message": "Error: the computer shows no cleared text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  572 |     expect(rec.serverFieldAfterSweep, \"setup: the retention sweep cleared the field\").toBe(\"\");\n  573 |     expect.soft(rec.serverFieldAfterPhoneIdle.includes(marker), \"the server field stays empty after phone A's 60 s idle\").toBe(false);\n> 574 |     expect.soft(rec.computerShowsText, \"the computer shows no cleared text\").toBe(false);\n      |                                                                              ^\n  575 |     expect.soft(rec.phoneDraftRowsForField, \"phone A keeps no draft row for that field\").toEqual([]);\n  576 |     await phone.context.close();\n  577 |     await computer.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:574:78"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-14T09:05:37.339Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes-retry1/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/fix-tc25r/tc25-sync-TC-25-S27-R-enco-b80ef-ck-from-a-phone-s-kept-copy-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 123,
+                    "line": 573
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-6784856c985149ec8e97",
+          "file": "tc25-sync.spec.ts",
+          "line": 516,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T09:02:21.369Z",
+    "duration": 261310.149,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

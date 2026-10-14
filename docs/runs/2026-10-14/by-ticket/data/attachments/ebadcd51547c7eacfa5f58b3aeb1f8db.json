@@ -1,0 +1,157 @@
+{
+  "ref": "TC-07/S02",
+  "title": "TC-07/S02 Nursing Home: three residents' tasks, one completed, on one screen and in Copy Text, no email",
+  "dataset": "status",
+  "target": "dev",
+  "at": "2026-10-14T08:44:35.081Z",
+  "cells": [
+    {
+      "name": "before the tick: every open task appears once, under its own resident (U1/U2)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "problems": [],
+        "groups": [
+          "Res Dora Nguyen (Unit Cedar 101): 2",
+          "Res Eli Brooks (Unit Cedar 102): 2",
+          "Res Fay Mendes (Unit Cedar 103): 1"
+        ]
+      }
+    },
+    {
+      "name": "each group shows its room / unit",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "Res Dora Nguyen: Unit Cedar 101",
+        "Res Eli Brooks: Unit Cedar 102",
+        "Res Fay Mendes: Unit Cedar 103"
+      ]
+    },
+    {
+      "name": "the Hospital patient's task (bleed probe) is not on this Task Export",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "found": []
+      }
+    },
+    {
+      "name": "a resident who is not In Today (n6) is not on this Task Export",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "found": []
+      }
+    },
+    {
+      "name": "no Email control and no mailto link (U9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "email": 0,
+        "mailto": 0
+      }
+    },
+    {
+      "name": "after ticking 'PT re-evaluation': every open task appears once, under its own resident (U1/U2)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "problems": [],
+        "groups": [
+          "Res Dora Nguyen (Unit Cedar 101): 2",
+          "Res Eli Brooks (Unit Cedar 102): 1",
+          "Res Fay Mendes (Unit Cedar 103): 1"
+        ]
+      }
+    },
+    {
+      "name": "completed tasks are listed under Finished, each with its patient and room / unit (U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "missing": [],
+        "finished": [
+          "Review fall precautions / Res Dora Nguyen · Unit Cedar 101",
+          "PT re-evaluation / Res Eli Brooks · Unit Cedar 102",
+          "Weight check / Res Fay Mendes · Unit Cedar 103"
+        ]
+      }
+    },
+    {
+      "name": "on screen, each patient's open tasks sit above that patient's completed ones (same-patient pairs)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "pairs": 4,
+        "notAbove": []
+      }
+    },
+    {
+      "name": "on screen: every open task above every completed task (cross-patient order)",
+      "kind": "record",
+      "ok": null,
+      "detail": true,
+      "ref": "Q5"
+    },
+    {
+      "name": "Copy Text: every open task once, under its own patient's header (U1/U2, U10)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "problems": [],
+        "headers": [
+          "Res Dora Nguyen — Unit Cedar 101",
+          "Res Eli Brooks — Unit Cedar 102",
+          "Res Fay Mendes — Unit Cedar 103"
+        ]
+      }
+    },
+    {
+      "name": "Copy Text: the Hospital patient's task (bleed probe) is not in the copy",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Copy Text: a resident who is not In Today (n6) is not in the copy",
+      "kind": "record",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Copy Text: no 'undefined' / 'null'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Copy Text: each completed task is in the copy, after that patient's open tasks, with its patient (same-patient pairs)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "problems": [
+          "'Review fall precautions' not in the copy under Res Dora Nguyen",
+          "'Weight check' not in the copy under Res Fay Mendes",
+          "'PT re-evaluation' not in the copy under Res Eli Brooks"
+        ],
+        "completed": 3
+      },
+      "ref": "TFA-92585 (completed block is PR #106)"
+    },
+    {
+      "name": "Copy Text: every completed task below every open task (cross-patient order)",
+      "kind": "record",
+      "ok": null,
+      "detail": "no completed task in the copy",
+      "ref": "Q5"
+    }
+  ],
+  "shots": [
+    "evidence/TC-07-S02-screen.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-07-S02-screen.png": 0
+  }
+}

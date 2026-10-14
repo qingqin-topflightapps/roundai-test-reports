@@ -1,0 +1,250 @@
+{
+  "ref": "OAT-04/S15",
+  "title": "No copy survives (marker search)",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T07:17:59.783Z",
+  "summary": {
+    "pass": 1,
+    "fail": 4,
+    "failKnown": 4,
+    "failConflict": 0,
+    "record": 7,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "RET-VIT-901",
+      "item": "vitals (36 h)",
+      "expected": "absent",
+      "observed": "present (physician.roundingPatients.vitalsHistory)",
+      "verdict": "fail",
+      "oracle": "OAT-04 Expected 2 and the 3.7 claim: a marker of an item whose window has passed = Fail",
+      "known": "K6: the dated histories are untouched by the purge (lifecycle.ts:24-26) — TFA-94699 AC 1"
+    },
+    {
+      "id": "RET-LAB-902",
+      "item": "labs (36 h)",
+      "expected": "absent",
+      "observed": "present (physician.roundingPatients.labsHistory)",
+      "verdict": "fail",
+      "oracle": "OAT-04 Expected 2 and the 3.7 claim: a marker of an item whose window has passed = Fail",
+      "known": "K6 — TFA-94699 AC 1"
+    },
+    {
+      "id": "RET-MED-903",
+      "item": "active medication row (36 h)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "OAT-04 Expected 2 and the 3.7 claim: a marker of an item whose window has passed = Fail"
+    },
+    {
+      "id": "RET-HO-910",
+      "item": "handoff (36 h after sending)",
+      "expected": "absent",
+      "observed": "present (physician.handoffsSent.text, colleague.handoffsReceived.text)",
+      "verdict": "fail",
+      "oracle": "OAT-04 Expected 2 and the 3.7 claim: a marker of an item whose window has passed = Fail",
+      "known": "K3: handoffs are never purged — TFA-94699 AC 1 / AC 7"
+    },
+    {
+      "id": "RET-COURSE-912",
+      "item": "course line dated 3 days ago (U16)",
+      "expected": "absent",
+      "observed": "present (physician.roundingPatients.admissionSummary)",
+      "verdict": "fail",
+      "oracle": "OAT-04 Expected 2 and the 3.7 claim: a marker of an item whose window has passed = Fail",
+      "known": "K6: the lifecycle does not touch admissionSummary.course — TFA-94699 (TFA-92589 handoff)"
+    },
+    {
+      "id": "RET-NOTE-905",
+      "item": "note at 37 h",
+      "expected": "needs a decision: Q4",
+      "observed": "gone everywhere",
+      "verdict": "record"
+    },
+    {
+      "id": "RET-TX-909",
+      "item": "encounter / transcript at 37 h (transcriptDate moved 37 h with the chart)",
+      "expected": "needs a decision: Q4; the live 'transcript' column is kept per stay by design (convex/lib/lifecycle.ts hospitalLifecyclePatch has no 'transcript' branch; convex/lib/transcriptArchive.ts:92-95) — UAT 3.6 / 3.7 vs design, needs a decision",
+      "observed": "found in physician.roundingPatients.transcript+transcriptHistory",
+      "verdict": "record"
+    },
+    {
+      "id": "RET-EVT-904",
+      "item": "medication events",
+      "expected": "needs a decision: Q6",
+      "observed": "found in physician.roundingPatients.medicationEvents",
+      "verdict": "record"
+    },
+    {
+      "id": "RET-BILL-906",
+      "item": "billing suggestion",
+      "expected": "needs a decision: Q6",
+      "observed": "found in physician.roundingPatients.billingSuggestion",
+      "verdict": "record"
+    },
+    {
+      "id": "RET-ADD-907",
+      "item": "addendum",
+      "expected": "needs a decision: Q6",
+      "observed": "found in physician.roundingPatients.addendum",
+      "verdict": "record"
+    },
+    {
+      "id": "RET-NEXT-908",
+      "item": "carry-forward line",
+      "expected": "needs a decision: Q6",
+      "observed": "found in physician.roundingPatients.nextPreRoundSummary",
+      "verdict": "record"
+    },
+    {
+      "id": "RET-QD-911",
+      "item": "Quick Dictation compartment (and its copy on the chart)",
+      "expected": "needs a decision: Q10 (compartment) / Q4 (copy appended to the encounter)",
+      "observed": "found in physician.quickDictationDrafts.assignedText+text, physician.roundingPatients.transcriptHistory",
+      "verdict": "record"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "after aging: transcriptDate Tue Oct 13 2026 (was Wed Oct 14 2026); vitalsHistory/labsHistory dates [\"Tue Oct 13 2026\"] / [\"Tue Oct 13 2026\"]"
+  ],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "aged": {
+      "chart": [
+        {
+          "changed": [
+            "addedAt",
+            "addendumAt",
+            "admissionSummary.lastUpdatedAt",
+            "billingForNoteAt",
+            "encounterEditedAt",
+            "labsHistory[0].date",
+            "labsUpdatedAt",
+            "medications[0].updatedAt",
+            "medicationsUpdatedAt",
+            "nextPreRoundSummaryAt",
+            "noteGeneratedAt",
+            "transcriptDate",
+            "vitalsHistory[0].date",
+            "vitalsUpdatedAt"
+          ],
+          "id": "kx76692c2tygn3s2dad5bv5d3n8g9cph"
+        }
+      ],
+      "handoff": [
+        {
+          "changed": [
+            "sentAt"
+          ],
+          "id": "jn7aw8mh1jbpdw6vq68jc1yaed8g88c6"
+        }
+      ],
+      "quickDictation": [
+        {
+          "changed": [
+            "assignedAt"
+          ],
+          "id": "kn7er49jdhte1w26fn971176hn8g96tm"
+        }
+      ]
+    },
+    "purge": {
+      "physician": 1,
+      "colleague": 0,
+      "cron": {
+        "agedOut": 0,
+        "expired": 0
+      }
+    },
+    "rawAfter": {
+      "_id": "kx76692c2tygn3s2dad5bv5d3n8g9cph",
+      "name": "QA Hosp Markers",
+      "encounterNotes": "",
+      "encounterEditedAt": 1791829073005,
+      "note": "",
+      "noteGeneratedAt": "2026-10-12T18:17:51.243Z",
+      "status": "pending",
+      "vitals": {},
+      "vitalsUpdatedAt": "2026-10-12T18:17:51.243Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T18:17:51.243Z",
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T18:17:51.243Z",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-14T07:17:55.973Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "RET-TX-909 bedside encounter\n\nRET-QD-911 bedside quick note",
+              "time": ""
+            }
+          ],
+          "label": "Oct 12 · Encounter notes"
+        }
+      ],
+      "vitalsHistory": [
+        {
+          "bp": "131/77",
+          "date": "Tue Oct 13 2026",
+          "io": "RET-VIT-901"
+        }
+      ],
+      "labsHistory": [
+        {
+          "date": "Tue Oct 13 2026",
+          "labs": [
+            {
+              "name": "RET-LAB-902",
+              "value": "1.2"
+            }
+          ]
+        }
+      ],
+      "medicationEvents": [
+        {
+          "event": "started RET-EVT-904",
+          "name": "RET-EVT-904 pantoprazole",
+          "type": "start"
+        }
+      ],
+      "admissionSummary": {
+        "course": "Oct 11: RET-COURSE-912 admitted",
+        "lastUpdatedAt": "2026-10-12T18:17:51.243Z",
+        "reason": "QA background"
+      },
+      "nextPreRoundSummary": "RET-NEXT-908 carry-forward line",
+      "billingSuggestion": "RET-BILL-906 99232",
+      "addendum": "RET-ADD-907 addendum",
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "RET-TX-909 transcript line"
+        }
+      ],
+      "transcriptDate": "Tue Oct 13 2026"
+    },
+    "listRow": {
+      "_creationTime": 1791962271363.6433,
+      "_id": "ks740xe9asgbennjeq1yb7qzvn8g9js6",
+      "addedAt": "2026-10-12T18:17:51.363Z",
+      "inTodaysSession": false,
+      "name": "QA Hosp Markers",
+      "nameKey": "qa hosp markers",
+      "patientId": "kx76692c2tygn3s2dad5bv5d3n8g9cph",
+      "pendingTaskCount": 0,
+      "roomKey": "",
+      "status": "pending",
+      "statusRank": 0,
+      "userId": "jd7egepc8qqz5rbxftb6npc9dd8g9wxa"
+    }
+  }
+}

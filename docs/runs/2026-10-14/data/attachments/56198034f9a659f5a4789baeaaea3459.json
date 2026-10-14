@@ -1,0 +1,114 @@
+{
+  "ref": "OAT-04/S10",
+  "title": "Medication rows decision table",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:11:16.285Z",
+  "summary": {
+    "pass": 7,
+    "fail": 0,
+    "failKnown": 0,
+    "record": 4,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "active-35",
+      "item": "active row, mention 35 h, chart processed 35 h ago",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'all rows (active, held, stopped) cleared at 36 h; held rows are refreshed each time the chart is processed', OAT-04 (B), TFA-94699 table"
+    },
+    {
+      "id": "active-37-proc2",
+      "item": "active row, mention 37 h, chart processed 2 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'all rows (active, held, stopped) cleared at 36 h; held rows are refreshed each time the chart is processed', OAT-04 (B), TFA-94699 table"
+    },
+    {
+      "id": "held-37-proc2",
+      "item": "held row, mention 37 h, chart processed 2 h ago",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'all rows (active, held, stopped) cleared at 36 h; held rows are refreshed each time the chart is processed', OAT-04 (B), TFA-94699 table"
+    },
+    {
+      "id": "held-37-proc35",
+      "item": "held row, mention 37 h, chart processed 35 h ago",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'all rows (active, held, stopped) cleared at 36 h; held rows are refreshed each time the chart is processed', OAT-04 (B), TFA-94699 table"
+    },
+    {
+      "id": "held-96-proc2",
+      "item": "held row, mention 96 h, chart processed 2 h ago",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'all rows (active, held, stopped) cleared at 36 h; held rows are refreshed each time the chart is processed', OAT-04 (B), TFA-94699 table"
+    },
+    {
+      "id": "held-37-proc37",
+      "item": "held row, mention 37 h, chart processed 37 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'all rows (active, held, stopped) cleared at 36 h; held rows are refreshed each time the chart is processed', OAT-04 (B), TFA-94699 table"
+    },
+    {
+      "id": "stopped-37-proc37",
+      "item": "discontinued row, mention 37 h, chart processed 37 h ago",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 'all rows (active, held, stopped) cleared at 36 h; held rows are refreshed each time the chart is processed', OAT-04 (B), TFA-94699 table"
+    },
+    {
+      "id": "stopped-37-proc2",
+      "item": "discontinued row, mention 37 h, chart processed 2 h ago",
+      "expected": "needs a decision: Q16 (UAT 3.6 names held only for the refresh → deleted; ticket table 'held/stopped … refreshed' → kept)",
+      "observed": "kept",
+      "verdict": "record"
+    },
+    {
+      "id": "single-35",
+      "item": "single-dose row, mention 35 h, chart processed 35 h ago",
+      "expected": "needs a decision: Q16 (TC-19 Expected 8 'expires' without a window; 36 h active rule → 35 h kept, 37 h deleted)",
+      "observed": "kept",
+      "verdict": "record"
+    },
+    {
+      "id": "single-37-proc2",
+      "item": "single-dose row, mention 37 h, chart processed 2 h ago",
+      "expected": "needs a decision: Q16 (TC-19 Expected 8 'expires' without a window; 36 h active rule → 35 h kept, 37 h deleted)",
+      "observed": "deleted",
+      "verdict": "record"
+    },
+    {
+      "id": "changed-37-proc2",
+      "item": "changed row, mention 37 h, chart processed 2 h ago",
+      "expected": "needs a decision: Q16 (changed row follows the active rule → deleted)",
+      "observed": "deleted",
+      "verdict": "record"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "'Processed' = a pre-round Save Note (notesProcessedAt). Which other actions count is Q5; whether AC 2 changes the held cells is Q19."
+  ],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "purge": {
+      "physician": 5
+    }
+  }
+}

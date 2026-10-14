@@ -1,0 +1,633 @@
+{
+  "TC-21/S17": {
+    "status": "failed",
+    "detail": "48/56 judged cells pass (4 of them not discriminating on main), 2 NOT RUN. Fail: H Important Point 13 h cleared [U7a; gate: blocked: TFA-92599 in progress; TFA-94699 in progress] | H encounter 37 h gone [U7b; gate: blocked: TFA-92599 in progress; TFA-94699 in progress] | H note 19 h previous note [U7b; gate: blocked: TFA-92599 in progress; TFA-94699 in progress] | H note 35 h still previous [U7b; gate: blocked: TFA-92599 in progress; TFA-94699 in progress] | H open task 37 h after last processing cleared [U7c; gate: blocked: TFA-92599 in progress; TFA-94699 in progress] | NH after visit 3: visit-1 transcript gone, visits 2 and 3 kept [U7h; gate: blocked: TFA-92599 in progress; TFA-94699 in progress] | NH after visit 3: visit-1 note gone, visits 2 and 3 kept [U7h; gate: blocked: TFA-92599 in progress; TFA-94699 in progress] | NH after visit 3: visit-1 medication event (Given) gone [U7h; gate: blocked: TFA-92599 in progress; TFA-94699 in progress]. Not run: H handoff 35 h / 37 h after sent (ticket only, Q1) (needs a sent handoff with a server-stamped sentAt and a recipient account (server-stamped-fields, seed-second-account: not built)) | Nursing Home Save & Extract half (kept to the Hospital Save & Extract to bound live calls; NH Save Note covers the visit write).",
+    "evidence": [
+      "runs/2026-10-14-local/manual/evidence/TC-21-S17/cells-cells.json",
+      "runs/2026-10-14-local/manual/evidence/TC-21-S17/cells-deleted.json",
+      "runs/2026-10-14-local/manual/evidence/TC-21-S17/H17-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-21-S17/H19-pre-round.png",
+      "runs/2026-10-14-local/manual/evidence/TC-21-S17/after.json",
+      "runs/2026-10-14-local/manual/evidence/TC-21-S17/server-after-lifecycle.json",
+      "runs/2026-10-14-local/manual/evidence/TC-21-S17/server-before-lifecycle.json"
+    ],
+    "counts": {
+      "judged": 56,
+      "pass": 48,
+      "fail": 8,
+      "recorded": 0,
+      "notRun": 2,
+      "notDiscriminating": 4
+    },
+    "cells": [
+      {
+        "part": "cells",
+        "cell": "H pre-round text 11 h kept",
+        "req": "U7a",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "H pre-round text 13 h cleared",
+        "req": "U7a",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": false
+      },
+      {
+        "part": "cells",
+        "cell": "H Important Point 11 h kept",
+        "req": "U7a",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": [
+          "QA21-IP-11 wean O2"
+        ]
+      },
+      {
+        "part": "cells",
+        "cell": "H Important Point 13 h cleared",
+        "req": "U7a",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "cleared",
+        "actual": [
+          "QA21-IP-13 wean O2"
+        ]
+      },
+      {
+        "part": "cells",
+        "cell": "H encounter 17 h on the Encounter tab",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "working",
+        "actual": "QA21-ENC-17 Wheezes improved."
+      },
+      {
+        "part": "cells",
+        "cell": "H encounter 19 h only in prior transcripts",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "prior only",
+        "actual": {
+          "working": "",
+          "prior": true
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "H encounter 35 h still prior",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "prior",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "H encounter 37 h gone",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "gone",
+        "actual": {
+          "working": "",
+          "prior": true
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "H note 17 h current",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "current",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "H note 19 h previous note",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "out of the working note, kept as previous note",
+        "actual": {
+          "working": false,
+          "anywhere": false
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "H note 35 h still previous",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "previous note",
+        "actual": false
+      },
+      {
+        "part": "cells",
+        "cell": "H note 37 h gone",
+        "req": "U7b",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "gone",
+        "actual": false
+      },
+      {
+        "part": "cells",
+        "cell": "H completed task 15 h kept",
+        "req": "U7c",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": [
+          "QA21-DONE-15 sputum culture",
+          "QA21-OPEN-15 PFTs outpatient"
+        ]
+      },
+      {
+        "part": "cells",
+        "cell": "H completed task 17 h cleared",
+        "req": "U7c",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": [
+          "QA21-OPEN-17 PFTs outpatient"
+        ]
+      },
+      {
+        "part": "cells",
+        "cell": "H open task 35 h after last processing kept",
+        "req": "U7c",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": [
+          "QA21-OPEN-35 PFTs outpatient"
+        ],
+        "discriminating": false,
+        "note": "not discriminating on main: main has no open-task purge (Hospital or Nursing Home), so this cell cannot fail today; it means something once TFA-94699 lands"
+      },
+      {
+        "part": "cells",
+        "cell": "H open task 37 h after last processing cleared",
+        "req": "U7c",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "cleared",
+        "actual": [
+          "QA21-OPEN-37 PFTs outpatient"
+        ]
+      },
+      {
+        "part": "cells",
+        "cell": "H open task, chart processed at 30 h: kept at 37 h",
+        "req": "U7c",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": [
+          "QA21-OPEN-37 PFTs outpatient"
+        ],
+        "discriminating": false,
+        "note": "not discriminating on main: main has no open-task purge (Hospital or Nursing Home), so this cell cannot fail today; it means something once TFA-94699 lands"
+      },
+      {
+        "part": "cells",
+        "cell": "H vital 35 h kept",
+        "req": "U7d",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": {
+          "bp": "126/70",
+          "o2": "93% 2L"
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "H vital 37 h cleared",
+        "req": "U7d",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": {}
+      },
+      {
+        "part": "cells",
+        "cell": "H vital: chart saved at 30 h with no new value, still cleared at 37 h",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": {}
+      },
+      {
+        "part": "cells",
+        "cell": "H lab 35 h kept",
+        "req": "U7d",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": [
+          {
+            "name": "WBC",
+            "value": "11.2"
+          }
+        ]
+      },
+      {
+        "part": "cells",
+        "cell": "H lab 37 h cleared",
+        "req": "U7d",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": []
+      },
+      {
+        "part": "cells",
+        "cell": "H lab: chart saved at 30 h with no new value, still cleared at 37 h",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": []
+      },
+      {
+        "part": "cells",
+        "cell": "H imaging 35 h kept",
+        "req": "U7d",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": [
+          "QA21-CXR-35 hyperinflation"
+        ]
+      },
+      {
+        "part": "cells",
+        "cell": "H imaging 37 h cleared",
+        "req": "U7d",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": []
+      },
+      {
+        "part": "cells",
+        "cell": "H imaging: chart saved at 30 h with no new value, still cleared at 37 h",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": []
+      },
+      {
+        "part": "cells",
+        "cell": "H active med 35 h kept",
+        "req": "U7e",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "H active med 37 h cleared",
+        "req": "U7e",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": false
+      },
+      {
+        "part": "cells",
+        "cell": "H held / stopped rows 37 h not processed: cleared",
+        "req": "U7e",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": {
+          "lis": false,
+          "azi": false
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "H held / stopped rows, processed at 30 h: kept at 37 h",
+        "req": "U7e",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": {
+          "lis": true,
+          "azi": true
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "H handoff 35 h / 37 h after sent (ticket only, Q1)",
+        "req": "U7f",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "needs a sent handoff with a server-stamped sentAt and a recipient account (server-stamped-fields, seed-second-account: not built)"
+      },
+      {
+        "part": "cells",
+        "cell": "NH pre-round 11 h kept",
+        "req": "U7g",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": "QA21-NPR-11 Slept well."
+      },
+      {
+        "part": "cells",
+        "cell": "NH pre-round 13 h cleared",
+        "req": "U7g",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": ""
+      },
+      {
+        "part": "cells",
+        "cell": "NH encounter 11 h kept",
+        "req": "U7g",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "kept",
+        "actual": "QA21-NENC-11 Gait steady with walker."
+      },
+      {
+        "part": "cells",
+        "cell": "NH encounter 13 h cleared from the working tab",
+        "req": "U7g",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "cleared",
+        "actual": ""
+      },
+      {
+        "part": "cells",
+        "cell": "NH note 17 h current",
+        "req": "U7g",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "current",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "NH note 19 h out of the working tab",
+        "req": "U7g",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "out",
+        "actual": false
+      },
+      {
+        "part": "cells",
+        "cell": "NH after visit 3: visit-1 transcript gone, visits 2 and 3 kept",
+        "req": "U7h",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "V1 gone, V2 + V3 kept",
+        "actual": {
+          "v1": true,
+          "v2": true,
+          "v3": true
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "NH after visit 3: visit-1 note gone, visits 2 and 3 kept",
+        "req": "U7h",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "V1 gone, V2 + V3 kept",
+        "actual": {
+          "v1": true,
+          "v2": true,
+          "v3": true
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "NH after visit 3: visit-1 medication event (Given) gone",
+        "req": "U7h",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "fail",
+        "expected": "gone",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "NH chronic med row unchanged 37 h: still present",
+        "req": "U7i",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "present",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "NH open task unchanged 37 h: still present",
+        "req": "U7i",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "present",
+        "actual": [
+          "QA21-NOPEN-37 weekly weight"
+        ],
+        "discriminating": false,
+        "note": "not discriminating on main: main has no open-task purge (Hospital or Nursing Home), so this cell cannot fail today; it means something once TFA-94699 lands"
+      },
+      {
+        "part": "cells",
+        "cell": "NH chronic med row unchanged 7 days: still present",
+        "req": "U7i",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "present",
+        "actual": true
+      },
+      {
+        "part": "cells",
+        "cell": "NH open task unchanged 7 days: still present",
+        "req": "U7i",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "present",
+        "actual": [
+          "QA21-NOPEN-168 weekly weight"
+        ],
+        "discriminating": false,
+        "note": "not discriminating on main: main has no open-task purge (Hospital or Nursing Home), so this cell cannot fail today; it means something once TFA-94699 lands"
+      },
+      {
+        "part": "cells",
+        "cell": "aged-out items queried on the server are gone (no hidden flag)",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "no trace in the stored row",
+        "actual": {
+          "H 13 h pre-round": false,
+          "H 37 h objective": false,
+          "H 37 h active med": false,
+          "NH 13 h pre-round": false
+        }
+      },
+      {
+        "part": "cells",
+        "cell": "H active med 17 h: normal (no label)",
+        "req": "U7e",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "no label",
+        "actual": false
+      },
+      {
+        "part": "cells",
+        "cell": "H active med 19 h: 'not mentioned today'",
+        "req": "U7e",
+        "gate": "blocked: TFA-92599 in progress; TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "label",
+        "actual": true
+      },
+      {
+        "part": "deleted",
+        "cell": "positive control: Hospital Save Note processed (notesProcessedAt moved, preRoundError empty)",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "processed (else the Hospital cells are Invalid)",
+        "actual": {
+          "notesProcessedAtBefore": "2026-10-14T05:57:49.864Z",
+          "notesProcessedAtAfter": "2026-10-14T07:57:53.564Z",
+          "preRoundError": null,
+          "processed": true
+        }
+      },
+      {
+        "part": "deleted",
+        "cell": "positive control: Hospital Save & Extract saved the encounter text and reported its result",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "encounter saved + '✓ …' message",
+        "actual": {
+          "encounterNotes": "Lungs clearer today. Plan unchanged.",
+          "encounterEditedAtBefore": null,
+          "encounterEditedAtAfter": 1791964689046,
+          "message": "✓ Notes saved — no new tasks or medication changes found"
+        }
+      },
+      {
+        "part": "deleted",
+        "cell": "positive control: Nursing Home Save Note processed (notesProcessedAt moved, preRoundError empty)",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "processed (else the NH cells are Invalid)",
+        "actual": {
+          "notesProcessedAtBefore": "2026-10-13T05:57:49.864Z",
+          "notesProcessedAtAfter": "2026-10-14T07:58:14.416Z",
+          "preRoundError": null,
+          "processed": true
+        }
+      },
+      {
+        "part": "deleted",
+        "cell": "Hospital: deleted med row not back after Save Note + Save & Extract",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": [
+          "Ceftriaxone 1 g IV daily"
+        ]
+      },
+      {
+        "part": "deleted",
+        "cell": "Hospital: deleted task not back",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": []
+      },
+      {
+        "part": "deleted",
+        "cell": "Hospital: deleted Important Point not back",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": []
+      },
+      {
+        "part": "deleted",
+        "cell": "Nursing Home: deleted med row not back after Save Note",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": [
+          "Furosemide 20 mg PO daily"
+        ]
+      },
+      {
+        "part": "deleted",
+        "cell": "Nursing Home: deleted task not back",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": []
+      },
+      {
+        "part": "deleted",
+        "cell": "Nursing Home: deleted Important Point not back",
+        "req": "T4",
+        "gate": "blocked: TFA-94699 in progress",
+        "verdict": "pass",
+        "expected": "absent",
+        "actual": []
+      },
+      {
+        "part": "deleted",
+        "cell": "positive control: kept rows still there (Hospital ceftriaxone, NH furosemide)",
+        "gate": null,
+        "verdict": "pass",
+        "expected": "present",
+        "actual": {
+          "ceftriaxone": true,
+          "furosemide": true
+        }
+      },
+      {
+        "part": "deleted",
+        "cell": "Nursing Home Save & Extract half",
+        "gate": null,
+        "verdict": "not-run",
+        "expected": "-",
+        "actual": null,
+        "note": "kept to the Hospital Save & Extract to bound live calls; NH Save Note covers the visit write"
+      }
+    ],
+    "productIssue": "Known (TFA-92599 / TFA-94699 in progress). Hospital: Important Points are still there at 13 h. The note is not kept as the previous note at 19 h or 35 h; it is deleted at 18 h. Yesterday's encounter is still listed at 37 h (48 h archive). Open tasks are still there at 37 h. Nursing Home, after visit 3: the visit-1 transcript, note and Given row are still kept (main keeps 3 visits). The deleted-items cells pass in both contexts.",
+    "runNote": "Intermittent, not counted: in 4 Save Notes today (TC-20/S17 NH during the 14:4x overload; TC-21/S17 Hospital at 16:55; TC-11/S03 NH at 16:59 and 17:02 JST) the text was saved but the structured summary never arrived and no error was set within 90 s (preRoundProcessing stuck true, or no notesProcessedAt and no preRoundError); the retries were clean. No aiCallLog row was captured for those attempts, so the cause (model latency vs app) is open; worth watching on dev."
+  }
+}

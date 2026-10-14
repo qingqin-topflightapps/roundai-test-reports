@@ -1,0 +1,13 @@
+{
+  "ref": "OAT-05/S02",
+  "method": "STATIC",
+  "status": "partial",
+  "detail": "What can be checked without the store artefacts: the mobile web bundle (vite --mode mobile, what Capacitor copies into the app) has key/credential hits: none; server canaries baked: none. Native sources (apps/web/ios, apps/web/android, 40 text files): pattern hits none; google-services.json / GoogleService-Info.plist: none. The TestFlight IPA and the Play AAB/APK themselves are not scanned (needs the CI artefacts from Tim, plus apktool/aapt, not installed).",
+  "build": "e02167f",
+  "at": "2026-10-14T06:53:04.996Z",
+  "evidence": [
+    "runs/2026-10-14-local/code-review/static/scan-mobile.json",
+    "runs/2026-10-14-local/code-review/static/native-config.json"
+  ],
+  "needs": "IPA + AAB/APK from CI (Tim); set aside for the dev run (iOS/Android)"
+}

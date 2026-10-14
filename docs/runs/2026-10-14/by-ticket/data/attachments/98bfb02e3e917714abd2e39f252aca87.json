@@ -1,0 +1,107 @@
+{
+  "case": "TC-10-S10",
+  "title": "Generate gate by pre-round state and context: nothing today / typed but not saved / saved",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-regex",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "cp1-hosp-gate-none.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7ekf1mhy21d5p7z78c6s9n298g9m0s",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q2: row 'nothing today' (disabled or not is evidence only)) fail: no match for /button \"Generate Note & Finish\"[^\\n]*\\[disabled\\]/i"
+      ]
+    },
+    {
+      "file": "cp2-hosp-gate-unsaved.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7ekf1mhy21d5p7z78c6s9n298g9m0s",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q2: row 'typed but not saved' (disabled or not is evidence only)) pass: /button \"Generate Note & Finish\"[^\\n]*\\[disabled\\]/i matches \"button \\\"Generate Note & Finish\\\" [disabled]\""
+      ]
+    },
+    {
+      "file": "cp3-hosp-gate-saved.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7ekf1mhy21d5p7z78c6s9n298g9m0s",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(precondition: the Save succeeded (positive controls are not built)) pass: backend hosp-saved preRoundError is missing"
+      ]
+    },
+    {
+      "file": "cp4-snf-gate-none.md",
+      "verdict": "Pass",
+      "url": "/snf/jx79nqzm7564n1vffvae1b83058g8kxq",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q2: row 'nothing today' (disabled or not is evidence only)) fail: no match for /button \"Generate Note & Finish\"[^\\n]*\\[disabled\\]/i"
+      ]
+    },
+    {
+      "file": "cp5-snf-gate-unsaved.md",
+      "verdict": "Pass",
+      "url": "/snf/jx79nqzm7564n1vffvae1b83058g8kxq",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q2: row 'typed but not saved' (disabled or not is evidence only)) pass: /button \"Generate Note & Finish\"[^\\n]*\\[disabled\\]/i matches \"button \\\"Generate Note & Finish\\\" [disabled]\""
+      ]
+    },
+    {
+      "file": "cp6-snf-gate-saved.md",
+      "verdict": "Pass",
+      "url": "/snf/jx79nqzm7564n1vffvae1b83058g8kxq",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(precondition: the Save succeeded (positive controls are not built)) pass: backend res-saved preRoundError is missing"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "rows 'nothing today' and 'typed but not saved': record whether Generate Note & Finish is [disabled] and the reason shown (Q2)",
+    "rows 'summary failed' and 'still processing' (S12, S26, S29)"
+  ],
+  "agent": {
+    "turns": 67,
+    "costUsd": 0.5993513999999999,
+    "durationMs": 250868,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U64",
+  "covers": [
+    "TC-10/S10"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u64",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U64.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

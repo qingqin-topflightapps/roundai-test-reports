@@ -1,0 +1,206 @@
+{
+  "case": "U27",
+  "title": "Card fields and day counts, seeded identities",
+  "needs": [
+    "seed",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read",
+    "oracle-record-only",
+    "max-turns"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s03-h1-card.md",
+      "verdict": "Fail",
+      "url": "/rounding",
+      "problems": [
+        "no match for /\\b76F\\b/i (in subtree \"Open chart for QA U27 QA Hosp Ana Rivera Z6AJ\")",
+        "no match for /\\bDay 3\\b/i (in subtree \"Open chart for QA U27 QA Hosp Ana Rivera Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S03"
+    },
+    {
+      "file": "s03-n1-today.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "should not show \"Post-acute rehab after hip fracture\"",
+        "no match for /\\b87F\\b/i (in subtree \"Open chart for QA U27 QA Resident Dora Nguyen Z6AJ\")",
+        "no match for /\\bVisit 1\\b/i (in subtree \"Open chart for QA U27 QA Resident Dora Nguyen Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S03"
+    },
+    {
+      "file": "s03-n1-all.md",
+      "verdict": "Fail",
+      "url": "/snf",
+      "problems": [
+        "should not show \"Post-acute rehab after hip fracture\"",
+        "no match for /\\b87F\\b/i (in subtree \"Open chart for QA U27 QA Resident Dora Nguyen Z6AJ\")",
+        "no match for /\\bVisit 1\\b/i (in subtree \"Open chart for QA U27 QA Resident Dora Nguyen Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S03"
+    },
+    {
+      "file": "s14-h-ben.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7fncyn5cspe1n51kz4hhb2xd8g73jf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S14"
+    },
+    {
+      "file": "s14-h-ana.md",
+      "verdict": "Pass",
+      "url": "/rounding/js75x2zp7afz575bmnw1rdejs58g6cm3",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S14"
+    },
+    {
+      "file": "s14-n-hoa.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7dfckejnqde6bnrjn87k6fbx8g70wd",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S14"
+    },
+    {
+      "file": "s14-n-dora.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7880am0pgeeja75k59cm07an8g6skm",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S14"
+    },
+    {
+      "file": "s05-h3-admitted-today.md",
+      "verdict": "Fail",
+      "url": "/rounding",
+      "problems": [
+        "no match for /\\bDay 1\\b/i (in subtree \"Open chart for QA U27 QA Hosp Cara Okafor Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S05"
+    },
+    {
+      "file": "s05-h1-admitted-2d.md",
+      "verdict": "Fail",
+      "url": "/rounding",
+      "problems": [
+        "no match for /\\bDay 3\\b/i (in subtree \"Open chart for QA U27 QA Hosp Ana Rivera Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S05"
+    },
+    {
+      "file": "s05-h2-admitted-5d-stale.md",
+      "verdict": "Fail",
+      "url": "/rounding",
+      "problems": [
+        "no match for /\\bDay 6\\b/i (in subtree \"Open chart for QA U27 QA Hosp Ben Rivera Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S05"
+    },
+    {
+      "file": "s05-h4-entered-2d.md",
+      "verdict": "Fail",
+      "url": "/rounding",
+      "problems": [
+        "no match for /\\bDay 3\\b/i (in subtree \"Open chart for QA U27 QA Hosp Dev Patel Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S05"
+    },
+    {
+      "file": "s05-h5-disagree.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q11: day by admit date) fail: no match for /\\bDay 5\\b/i (in subtree \"Open chart for QA U27 QA Hosp Eve Moreau Z6AJ\")",
+        "(Q11: day by the entered Hospital Day) fail: no match for /\\bDay 2\\b/i (in subtree \"Open chart for QA U27 QA Hosp Eve Moreau Z6AJ\")"
+      ],
+      "scenario": "TC-01/S05"
+    },
+    {
+      "file": "s05-h6-neither.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q2: what the card shows with neither an admit date nor a day) fail: no match for /\\bDay \\d+\\b/i (in subtree \"Open chart for QA U27 QA Hosp Gus Hale Z6AJ\")"
+      ],
+      "scenario": "TC-01/S05"
+    },
+    {
+      "file": "s05-h7-scanned-today.md",
+      "verdict": "Fail",
+      "url": "/rounding",
+      "problems": [
+        "no match for /\\bDay 1\\b/i (in subtree \"Open chart for QA U27 QA Hosp Ivy Chen Z6AJ\")"
+      ],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-01/S05"
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 95,
+    "costUsd": 0.8068081999999999,
+    "durationMs": 346302,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U27",
+  "covers": [
+    "TC-01/S03",
+    "TC-01/S14",
+    "TC-01/S05"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u27",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U27.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

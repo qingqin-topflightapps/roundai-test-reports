@@ -1,0 +1,65 @@
+{
+  "case": "TC-17-S11",
+  "title": "Ask on Post-Round, Hospital: 'Summarize the encounter' uses only this patient's stored data",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s11-postround-ask.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7518m5jg03easgew8e7k91918g8xht",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app)) pass: backend pt-before medications[name=Lisinopril 10 mg PO daily].status = \"held\"",
+        "(seed precondition (harness, not app)) pass: backend pt-before note contains \"Continue ceftriaxone\"",
+        "(3.9: the model that answered, read from backend/diag-after.json) pass: backend diag-after [fn=assist.askChart].model exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read the answer in s11-postround-ask.png; a failing answer is quoted in the report (3.2). aiCheck group TC-17-ask pools the ten Ask fixtures at 9/10 (RG-POOL not built: each reports on its own)."
+  ],
+  "agent": {
+    "turns": 16,
+    "costUsd": 0.10382559999999999,
+    "durationMs": 85219,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U46",
+  "covers": [
+    "TC-17/S11"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u46",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U46.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

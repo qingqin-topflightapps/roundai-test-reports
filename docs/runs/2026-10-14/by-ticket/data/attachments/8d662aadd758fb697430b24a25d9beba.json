@@ -1,0 +1,65 @@
+{
+  "case": "TC-17-S14",
+  "title": "Ask on Post-Round, Nursing Home: 'What's in the plan section?' quotes the note's plan",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s14-postround-ask.md",
+      "verdict": "Pass",
+      "url": "/snf/jx70nas42y8p80tv1eex8hzy0s8g8h5b",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition (harness, not app)) pass: backend pt-before note contains \"Family meeting Friday\"",
+        "(3.9: the model that answered, read from backend/diag-after.json) pass: backend diag-after [fn=assist.askChart].model exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Read the answer in s14-postround-ask.png; a failing answer is quoted in the report (3.2). aiCheck group TC-17-ask pools the ten Ask fixtures at 9/10 (RG-POOL not built: each reports on its own)."
+  ],
+  "agent": {
+    "turns": 19,
+    "costUsd": 0.12645540000000002,
+    "durationMs": 97022,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U51",
+  "covers": [
+    "TC-17/S14"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u51",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U51.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

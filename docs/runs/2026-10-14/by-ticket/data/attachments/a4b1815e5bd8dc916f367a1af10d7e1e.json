@@ -1,0 +1,94 @@
+{
+  "case": "TC-03-S12",
+  "title": "Room/unit order edges, both contexts: 2/9/10/12/100, '4B-3' vs '4B-12', blank room, three patients in one room",
+  "needs": [
+    "seed",
+    "oracle-order",
+    "oracle-regex",
+    "oracle-record-only"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s12-hosp-room-default.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q13: room 12 listed in name order) fail: order: \"Open chart for QA TC-03-S12 QA Hosp Bishop\" does not come after \"Open chart for QA TC-03-S12 QA Hosp Allen\"",
+        "(Q13/Q5: room 12 listed in the order added) pass: in order: \"Open chart for QA TC-03-S12 QA Hosp Carter\" < \"Open chart for QA TC-03-S12 QA Hosp Bishop\" < \"Open chart for QA TC-03-S12 QA Hosp Allen\"",
+        "(Q6: the blank room (Reyes) is the first card) pass: /^(?:(?!Open chart for )[\\s\\S])*Open chart for QA TC-03-S12 QA Hosp Reyes/i matches \"- generic [ref=e6]:\\n  - generic [ref=e7]: This preview is …",
+        "(Q6: 4B-3 listed before room 9) pass: in order: \"Open chart for QA TC-03-S12 QA Hosp Tran\" < \"Open chart for QA TC-03-S12 QA Hosp Xu\"",
+        "(Q6: 4B-* listed after room 100) fail: order: \"Open chart for QA TC-03-S12 QA Hosp Tran\" does not come after \"Open chart for QA TC-03-S12 QA Hosp Upton\""
+      ]
+    },
+    {
+      "file": "s12-hosp-name.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-hosp-room-again.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-nh-today-room.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q13: 'Rm 12' listed in name order) fail: order: \"Open chart for QA TC-03-S12 QA Resident Bishop\" does not come after \"Open chart for QA TC-03-S12 QA Resident Allen\"",
+        "(Q13/Q5: 'Rm 12' listed in the order added) pass: in order: \"Open chart for QA TC-03-S12 QA Resident Carter\" < \"Open chart for QA TC-03-S12 QA Resident Bishop\" < \"Open chart for QA TC-03-S12 QA Resident Allen\"",
+        "(Q6: units sort by label first ('Long-Term Care · Rm 12' before 'Memory Care · Rm 1')) pass: in order: \"Open chart for QA TC-03-S12 QA Resident Abbott\" < \"Open chart for QA TC-03-S12 QA Resident Cole\"",
+        "(Q6: the blank unit (Ellis) is the first card) pass: /^(?:(?!Open chart for )[\\s\\S])*Open chart for QA TC-03-S12 QA Resident Ellis/i matches \"- generic [ref=e6]:\\n  - generic [ref=e7]: This preview is …"
+      ]
+    },
+    {
+      "file": "s12-nh-all-room.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 22,
+    "costUsd": 0.182808,
+    "durationMs": 73629,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U70",
+  "covers": [
+    "TC-03/S12"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u70",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U70.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

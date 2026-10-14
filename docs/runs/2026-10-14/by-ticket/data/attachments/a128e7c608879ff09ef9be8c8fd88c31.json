@@ -1,0 +1,49 @@
+{
+  "TC-16/S20": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 36 judged check(s) passed, 16 failed. Row buttons carry label + line count; aria-expanded follows the open row; L12 is reached by the inner scroll; tap sizes pass.",
+    "failed": [
+      {
+        "check": "axe serious/critical = 0",
+        "where": [
+          "desktop:hospital-transcripts-collapsed",
+          "desktop:hospital-transcripts-open",
+          "desktop:nh-transcripts-collapsed",
+          "desktop:nh-transcripts-open",
+          "iphone15:hospital-transcripts-collapsed",
+          "iphone15:hospital-transcripts-open",
+          "iphone15:nh-transcripts-collapsed",
+          "iphone15:nh-transcripts-open",
+          "pixel7:hospital-transcripts-collapsed",
+          "pixel7:hospital-transcripts-open",
+          "pixel7:nh-transcripts-collapsed",
+          "pixel7:nh-transcripts-open"
+        ],
+        "example": "color-contrast(serious,3×: .overflow-hidden.border-slate-200.rounded-2xl:nth-child(1) > .text-left.hover\\:bg-slate-50.justify-between > .gap-2.flex.items-center > .px-1\\.5.bg-slate-100.py-0\\.5 | .overflow-hidden.border-slate-200.rounded-2xl:nth-child(2) > .tex"
+      },
+      {
+        "check": "the line with a 120-character word wraps: nothing clipped, no sideways scroll",
+        "where": [
+          "iphone15:hospital-transcripts-open",
+          "iphone15:nh-transcripts-open",
+          "pixel7:hospital-transcripts-open",
+          "pixel7:nh-transcripts-open"
+        ],
+        "example": "paragraph clientWidth 318px but its text is 791px wide (the word runs past the card edge and is clipped by it); page width 393"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/iphone15--hospital-transcripts-collapsed.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/iphone15--hospital-transcripts-open.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/iphone15--nh-transcripts-collapsed.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/iphone15--nh-transcripts-open.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/vision/tasks-meds/vision-findings.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-16_S20/iphone15--hospital-transcripts-open.png"
+    ],
+    "productIssue": "A transcript line that contains a long unbroken token (the 120-character word) does not wrap: the paragraph is 318 px wide but its text 791 px, so the end of the line is cut off by the card edge on Pixel 7 and iPhone 15 — seen in the Nursing Home prior-visit row and the Hospital Recorded Transcript (oracle: no text covered or clipped). axe also flags the open row's scroll box as not keyboard-focusable (scrollable-region-focusable, serious) plus contrast."
+  }
+}

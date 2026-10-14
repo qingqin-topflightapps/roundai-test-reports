@@ -1,0 +1,195 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/newspec-a/newspec-a.config.ts",
+      "--reporter=json,list",
+      "--workers=1",
+      "--output=tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-iso",
+      "oat01-iso.iso.spec.ts"
+    ],
+    "configFile": "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a/newspec-a.config.ts",
+    "rootDir": "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-iso",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "newspec-a",
+        "name": "newspec-a",
+        "testDir": "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "oat01-iso.iso.spec.ts",
+      "file": "oat01-iso.iso.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "S05 (d): an operator version change brings the screen back with the new text; Continue stores the new version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20860,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:41:16.392Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b5be5c921e70bd11c37-8ba59a6a96aa52c2b17e",
+          "file": "oat01-iso.iso.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "S07 (d): when the code e-mail cannot be sent, the screen does not claim it was",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6562,
+                  "error": {
+                    "message": "Error: the screen claims a code was sent although sending failed (status 200); screen: RC Round Companion Physician Assistant Sign in or create an account with a code sent to your email. Email Sign-in code Check your email for a 6-digit code. It expires in 5 minutes. Sign in Resend code Use a different email Round Companion — Physician Access Only\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: the screen claims a code was sent although sending failed (status 200); screen: RC Round Companion Physician Assistant Sign in or create an account with a code sent to your email. Email Sign-in code Check your email for a 6-digit code. It expires in 5 minutes. Sign in Resend code Use a different email Round Companion — Physician Access Only\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at /private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a/oat01-iso.iso.spec.ts:66:121",
+                    "location": {
+                      "file": "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a/oat01-iso.iso.spec.ts",
+                      "column": 121,
+                      "line": 66
+                    },
+                    "snippet": "  64 |   evidence(\"oat01-s07-d.json\", { backend: CONVEX_URL, account: a.email, sendStatus: status, sendBody: body, screen, alert, claimsSent, codeFieldShown });\n  65 |   await context.close();\n> 66 |   expect(claimsSent, `the screen claims a code was sent although sending failed (status ${status}); screen: ${screen}`).toBe(false);\n     |                                                                                                                         ^\n  67 |   // It must say something: that the e-mail could not be sent (exact wording is Q17, recorded).\n  68 |   expect(alert.trim().length, \"an error message is shown\").toBeGreaterThan(0);\n  69 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a/oat01-iso.iso.spec.ts",
+                        "column": 121,
+                        "line": 66
+                      },
+                      "message": "Error: the screen claims a code was sent although sending failed (status 200); screen: RC Round Companion Physician Assistant Sign in or create an account with a code sent to your email. Email Sign-in code Check your email for a 6-digit code. It expires in 5 minutes. Sign in Resend code Use a different email Round Companion — Physician Access Only\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  64 |   evidence(\"oat01-s07-d.json\", { backend: CONVEX_URL, account: a.email, sendStatus: status, sendBody: body, screen, alert, claimsSent, codeFieldShown });\n  65 |   await context.close();\n> 66 |   expect(claimsSent, `the screen claims a code was sent although sending failed (status ${status}); screen: ${screen}`).toBe(false);\n     |                                                                                                                         ^\n  67 |   // It must say something: that the e-mail could not be sent (exact wording is Q17, recorded).\n  68 |   expect(alert.trim().length, \"an error message is shown\").toBeGreaterThan(0);\n  69 | });\n    at /private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a/oat01-iso.iso.spec.ts:66:121"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:41:37.556Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-iso/oat01-iso.iso-S07-d-when-t-26555-creen-does-not-claim-it-was-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-iso/oat01-iso.iso-S07-d-when-t-26555-creen-does-not-claim-it-was-newspec-a/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-iso/oat01-iso.iso-S07-d-when-t-26555-creen-does-not-claim-it-was-newspec-a/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/private/tmp/claude-501/-Users-fqq-Desktop-Topflightapps-roundai/2a408671-6ff1-4104-9d24-9f97da7d0ee6/scratchpad/na-iso/apps/web/qa-agent-tests/newspec-a/oat01-iso.iso.spec.ts",
+                    "column": 121,
+                    "line": 66
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6b5be5c921e70bd11c37-d8e6fbcf36fb61dd32bc",
+          "file": "oat01-iso.iso.spec.ts",
+          "line": 47,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T05:41:12.526Z",
+    "duration": 32505.418,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

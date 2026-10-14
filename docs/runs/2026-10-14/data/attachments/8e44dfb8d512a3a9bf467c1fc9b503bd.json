@@ -1,0 +1,62 @@
+{
+  "name": "tc19-s27-c",
+  "at": "2026-10-14T07:54:23.031Z",
+  "checks": [
+    {
+      "id": "(c) after the reload metformin is Held · today with 'poor intake', or a message says the change was not saved",
+      "ok": false,
+      "detail": "metformin {\"name\":\"Metformin 500 mg BID\",\"status\":\"active\"}; no message about medications on screen"
+    }
+  ],
+  "data": {
+    "reloadedMsAfterRender": 316,
+    "rows": [
+      {
+        "name": "Metformin 500 mg BID",
+        "status": "active"
+      }
+    ],
+    "calls": [
+      "time:now:?",
+      "time:now:?",
+      "settings:update:?",
+      "snf:applyLifecycle:?",
+      "access:logChartAccess:?",
+      "snf:applyLifecycle:?",
+      "usage:record:?",
+      "snf:update:?",
+      "snf:update:?",
+      "ai/notes:generateNote:ok",
+      "snf:update:?",
+      "usage:record:?",
+      "snf:update:?",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "snf:update:?",
+      "snf:update:?",
+      "ai/notes:suggestBilling:fail",
+      "time:now:?",
+      "time:now:?",
+      "snf:applyLifecycle:?",
+      "access:logChartAccess:?",
+      "snf:applyLifecycle:?",
+      "usage:record:?"
+    ],
+    "messagesAfterReload": [],
+    "pageLog": [
+      "86 document-request http://localhost:6473/snf/m57dcbmb6fx79arrpb17gcpkms8g9km9 redirectedFrom=-",
+      "90 nav http://localhost:6473/snf/m57dcbmb6fx79arrpb17gcpkms8g9km9",
+      "118 debug [vite] connecting...",
+      "248 debug [vite] connected.",
+      "413 nav http://localhost:6473/snf/m57dcbmb6fx79arrpb17gcpkms8g9km9",
+      "409 load(navigate) http://localhost:6473/snf/m57dcbmb6fx79arrpb17gcpkms8g9km9",
+      "1670 error [CONVEX A(ai/notes:suggestBilling)] QA: billing not under test",
+      "1671 error [billing] suggestion failed Error: [CONVEX A(ai/notes:suggestBilling)] QA: billing not under test Called by client at BaseConvexClient",
+      "1713 document-request http://localhost:6473/snf/m57dcbmb6fx79arrpb17gcpkms8g9km9 redirectedFrom=-",
+      "1718 nav http://localhost:6473/snf/m57dcbmb6fx79arrpb17gcpkms8g9km9",
+      "1739 debug [vite] connecting...",
+      "1903 debug [vite] connected.",
+      "1994 load(reload) http://localhost:6473/snf/m57dcbmb6fx79arrpb17gcpkms8g9km9"
+    ]
+  }
+}

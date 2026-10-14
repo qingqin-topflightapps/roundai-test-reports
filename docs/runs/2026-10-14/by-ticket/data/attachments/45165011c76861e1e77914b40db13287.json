@@ -1,0 +1,22 @@
+{
+  "TC-03/S02": {
+    "status": "passed",
+    "dataset": "lists",
+    "target": "dev",
+    "title": "Hospital sort on a filtered list: room (untouched), name, status, re-filter, back to room",
+    "detail": "7 judged cell(s) held",
+    "judged": {
+      "total": 7,
+      "failed": 0
+    },
+    "recorded": [
+      "Q4: Hospital: status sort: Delta, Bravo, Alpha, Charlie (app's STATUS_RANK; order unconfirmed) → {\"got\":[\"Hosp Sort Delta\",\"Hosp Sort Bravo\",\"Hosp Sort Alpha\",\"Hosp Sort Charlie\"]}",
+      "Q4: Hospital: status sort kept after re-filtering → {\"got\":[\"Hosp Sort Delta\",\"Hosp Sort Bravo\",\"Hosp Sort Alpha\",\"Hosp Sort Charlie\"]}"
+    ],
+    "durationMs": 8178,
+    "evidence": [
+      "runs/2026-10-14-dev/datasets/lists/evidence/TC-03-S02.json",
+      "runs/2026-10-14-dev/datasets/lists/evidence/TC-03-S02-room-again.png"
+    ]
+  }
+}

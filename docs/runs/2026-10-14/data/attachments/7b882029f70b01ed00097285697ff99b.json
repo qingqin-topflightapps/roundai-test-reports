@@ -1,0 +1,361 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/newspec-a/newspec-a.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10-rerun",
+      "oat01-revoke-timing.spec.ts",
+      "--workers=2",
+      "-g",
+      "no-interaction, run 4$|one-tap, run (8|9|10)$|tab-switch, run (1|2|3|5)$"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/newspec-a.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/oat01-s10-rerun",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "newspec-a",
+        "name": "newspec-a",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "oat01-revoke-timing.spec.ts",
+      "file": "oat01-revoke-timing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "revoke -> sign-in screen, no-interaction, run 4",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8023,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:35.629Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-864dc91c65381e869b8c",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 8",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7782,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:35.634Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-db694080a20c7aaeb63e",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 9",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7093,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:43.824Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-9d77e7a4b834ea443bec",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, one-tap, run 10",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7075,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:44.027Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-c1c436c552cdd3043c8f",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4745,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:50.929Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-12c4901010efcbb52659",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4665,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:51.120Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-a51f4eb9b6580e4fe514",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 3",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3837,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:55.684Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-cd66dc3e826b614ecf82",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        },
+        {
+          "title": "revoke -> sign-in screen, tab-switch, run 5",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 480000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4142,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T05:39:55.794Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "655016539fcca67891aa-018f9ddb7c97c8966873",
+          "file": "oat01-revoke-timing.spec.ts",
+          "line": 29,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T05:39:34.618Z",
+    "duration": 25371.061,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

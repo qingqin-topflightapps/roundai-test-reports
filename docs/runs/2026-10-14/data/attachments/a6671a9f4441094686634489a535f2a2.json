@@ -1,0 +1,78 @@
+{
+  "ref": "OAT-04/S11",
+  "title": "Tasks decision table",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:11:29.445Z",
+  "summary": {
+    "pass": 5,
+    "fail": 1,
+    "failKnown": 1,
+    "record": 0,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "open-proc35",
+      "item": "open task 'Recheck K' (created 35 h ago, chart processed 35 h ago)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6: open tasks 36 h after the chart was last processed; completed tasks 16 h"
+    },
+    {
+      "id": "open-proc37",
+      "item": "open task 'PT eval' (created 37 h ago, chart processed 37 h ago)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "UAT 3.6: open tasks 36 h after the chart was last processed; completed tasks 16 h",
+      "known": "K2: open Hospital tasks are never purged (lifecycle.ts:220-227) — TFA-94699 AC 1"
+    },
+    {
+      "id": "open37-proc2",
+      "item": "open task 'Wean O2 to RA' (created 37 h ago, chart processed 2 h ago)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6: open tasks 36 h after the chart was last processed; completed tasks 16 h"
+    },
+    {
+      "id": "done-15",
+      "item": "completed task 'Order CXR' (done 15 h ago, chart processed 15 h ago)",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6: open tasks 36 h after the chart was last processed; completed tasks 16 h"
+    },
+    {
+      "id": "done-17",
+      "item": "completed task 'Call pharmacy' (done 17 h ago, chart processed 17 h ago)",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "UAT 3.6: open tasks 36 h after the chart was last processed; completed tasks 16 h"
+    },
+    {
+      "id": "nh-open-72",
+      "item": "Nursing Home open task untouched 72 h",
+      "expected": "present",
+      "observed": "present",
+      "verdict": "pass",
+      "oracle": "UAT 3.6 Nursing Home: open tasks persist until changed"
+    }
+  ],
+  "blocked": [],
+  "notes": [],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "purge": {
+      "hospital": 1,
+      "snf": 0
+    }
+  }
+}

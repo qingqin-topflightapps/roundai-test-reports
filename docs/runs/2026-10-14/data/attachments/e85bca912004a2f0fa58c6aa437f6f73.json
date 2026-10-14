@@ -1,0 +1,136 @@
+{
+  "kind": "mobile",
+  "files": 7,
+  "bytes": 999943,
+  "secretPatternHits": [],
+  "recordedOnly": [
+    {
+      "kind": "'Bearer' word (no token after it)",
+      "count": 4
+    }
+  ],
+  "highEntropyLiterals": {
+    "count": 0,
+    "where": []
+  },
+  "urlUserinfo": {
+    "count": 0,
+    "where": []
+  },
+  "bakedEnvValues": [
+    "VITE_CONVEX_URL",
+    "VITE_CONVEX_SITE_URL"
+  ],
+  "serverSecretCanariesBaked": [],
+  "wholeEnvObjectBaked": false,
+  "httpUrls": [],
+  "httpLiteralsNotRequests": [
+    {
+      "url": "http://[${o}]",
+      "count": 1,
+      "where": [
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 372488
+        }
+      ],
+      "why": "zod IPv6/CIDR validation: new URL(`http://[${value}]`) parses, never fetches"
+    },
+    {
+      "url": "http://[${s.value}]",
+      "count": 1,
+      "where": [
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 372028
+        }
+      ],
+      "why": "zod IPv6/CIDR validation: new URL(`http://[${value}]`) parses, never fetches"
+    },
+    {
+      "url": "http://json-schema.org",
+      "count": 2,
+      "where": [
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 397257
+        },
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 397331
+        }
+      ],
+      "why": "JSON Schema $schema identifier (zod toJSONSchema), not fetched"
+    },
+    {
+      "url": "http://localhost",
+      "count": 1,
+      "where": [
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 279423
+        }
+      ],
+      "why": "react-router createURL fallback base when window is undefined (SSR); the browser uses window.location.origin"
+    }
+  ],
+  "httpsHosts": [
+    {
+      "url": "https://api.openai.com",
+      "count": 1
+    },
+    {
+      "url": "https://docs.convex.dev",
+      "count": 8
+    },
+    {
+      "url": "<dev address>",
+      "count": 1
+    },
+    {
+      "url": "https://json-schema.org",
+      "count": 1
+    },
+    {
+      "url": "https://qacanary-backend.invalid",
+      "count": 1
+    },
+    {
+      "url": "https://qacanary-site.invalid",
+      "count": 1
+    },
+    {
+      "url": "https://react.dev",
+      "count": 2
+    },
+    {
+      "url": "https://reactrouter.com",
+      "count": 2
+    },
+    {
+      "url": "https://roundcompanion.com",
+      "count": 1
+    }
+  ],
+  "localLeftovers": [
+    {
+      "name": "localhost",
+      "count": 3,
+      "where": [
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 279430
+        },
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 488427
+        },
+        {
+          "file": "assets/index-BsRmTWU-.js",
+          "offset": 489230
+        }
+      ]
+    }
+  ],
+  "verdict": "pass"
+}

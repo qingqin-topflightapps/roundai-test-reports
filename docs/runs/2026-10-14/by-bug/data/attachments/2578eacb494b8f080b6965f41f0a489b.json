@@ -1,0 +1,20 @@
+{
+  "TC-12/S28": {
+    "status": "failed",
+    "detail": "Re-run 17:05. Hospital (fail; and the 65 s hang): the error shows (after ~0.9 s; on the hang after ~65–67 s, with 'Updating structured summary…' during the wait), but the stored points are already 'Call ID re cultures', 'Check drain site', 'Draft: ask about home O2' and the draft is '' — the case-only twin 'call ID re cultures' is dropped and the draft is turned into a card before the model call, and it stays so after the retry. Nursing Home with the matrix's seed (a points list plus a separate one-line draft, a state the NH editor never writes): all three points replaced by one card 'Draft: ask about dentures'. Nursing Home with the draft shape its own editor writes (the whole box): text and order kept, ids re-issued, the draft line becomes a card (Q4).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s28/hospital-fails.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s28/hospital-hangs.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s28/snf-fails.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s28/snf-hangs.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc12-s28/snf-app-shaped-draft-fails.json"
+    ],
+    "productIssue": "Save Note rewrites the Important Points before the AI call, so they change even when the summary fails: Hospital drops a point that differs only in case ('call ID re cultures') and turns the unsaved draft into a card; Nursing Home re-issues the ids. Fails TC-12 U11/T5 and TFA-92590 AC 2/4 as the oracle words them (points identical, draft kept); what the physician notices is minor. Question for Daniela (with TC-12/S19): do ids belong in the U3/T5 check for Nursing Home?",
+    "envReloads": {
+      "tests": 5,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    },
+    "impact": "low: Hospital drops only a case-only duplicate and promotes the draft to a card (not lost); in the app-shaped NH case only ids change. The NH all-points-replaced result needs a state the NH editor does not write."
+  }
+}

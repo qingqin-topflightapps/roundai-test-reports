@@ -1,0 +1,68 @@
+{
+  "TC-07/S24": {
+    "ref": "TC-07/S24",
+    "method": "CODEREVIEW",
+    "secondary": "STATIC",
+    "status": "partial",
+    "verdict": "pass",
+    "agreed": true,
+    "why": "both runs agree",
+    "halves": {
+      "code": "pass",
+      "side-by-side vs p72": "VISUAL (a person signs off): not run in this lane",
+      "Send / completed tasks vs AC text (Q13)": "a person, Q13: not run in this lane",
+      "HAR while pressing Copy/Send": "PW: not run in this lane"
+    },
+    "newFindings": [],
+    "knownGapsConfirmed": [],
+    "againstThen": [
+      {
+        "run": 1,
+        "label": "half:Send / completed tasks vs AC text (Q13)",
+        "claim": "The task screen has no Send control that hands the task list to another signed-in user through Handoff delivery. The header holds only the Copy Text button, so U7's Send is not present on this screen. A person decides this against the AC text (Q13).",
+        "at": "apps/web/src/components/TasksOverlay.tsx:249",
+        "half": "Send / completed tasks vs AC text (Q13)"
+      },
+      {
+        "run": 2,
+        "label": "half:Send / completed tasks vs AC text (Q13)",
+        "claim": "The task screen has no Send button. Sending a handoff is offered only by SendHandoffModal in the handoff feature, so U7's in-app sending of the task list is not available from TasksOverlay. This is for the person judging Send under Q13.",
+        "at": "apps/web/src/features/handoff/SendHandoffModal.tsx:33",
+        "half": "Send / completed tasks vs AC text (Q13)"
+      }
+    ],
+    "signoff": true,
+    "detail": "Both task routes render the same component. /rounding/tasks uses TasksOverlay directly, and /snf/tasks (routes/snf/Tasks.tsx) wraps it with today's residents. The only control in the header is \"⎘ Copy Text\"; the source has no 'Email Tasks' control, and a comment says the mail button was removed on Sep 24. copyTasks builds plain text with buildPendingTasksText, which does no I/O. It writes that text through copyTextToClipboard (the browser clipboard or @capacitor/clipboard), falls back to execCommand('copy'), and logs the export through the app's own Convex mutation api.access.logExport. Ticking a task off calls api.rounding.update or api.snf.update.\n\nA source-wide grep finds no navigator.share, no @capacitor/share and no 'Email Tasks'. The only mailto: is the Support link in SettingsModal, which is not on the task screens; the static bundle grep likewise finds one mailto: in the bundle.\n\nconvex/email.ts sendEmail has two callers:\n- emailOtpAuth.deliverSignInOtp, which rejects every code type other than 'sign-in'.\n- The generated sendResetPassword in auth_provider_extension. auth.ts spreads emailOtpAuthOptions after it, which sets emailAndPassword to { enabled: false } and disables the reset-password paths, so that caller can't be reached.\n\nSo email only carries sign-in codes, and the code-decidable part of the scenario passes.\n\nNote for the Q13 / U7 half: the task screen has no Send button at all. Neither TasksOverlay nor the SNF route offers sending the task list to another signed-in user through Handoff delivery. That is for the person judging Send against the AC text (Q13). It doesn't affect this question's rule.",
+    "detailRun2": "Both task screens use the same TasksOverlay component: the nursing-home route (routes/snf/Tasks.tsx) passes its residents into it. The only export control is \"⎘ Copy Text\". It logs the export through the app's own Convex backend and writes to the clipboard, either with the Capacitor Clipboard plugin or with navigator.clipboard plus a hidden-textarea fallback. No mailto:, navigator.share, @capacitor/share or window.open appears anywhere in apps/web/src. The only mailto: links are the Support link in Settings and some comments, and the code has no 'Email Tasks' control. A comment in the file records that the mail button was removed on Sep 24. convex/email.ts has two callers. One sends the sign-in code (emailOtpAuth.ts, which also refuses any OTP type other than sign-in). The other is a password-reset sender in the generated auth_provider_extension.ts, but emailOtpAuthOptions is spread after it in auth.ts. That override sets emailAndPassword to disabled and turns off every reset path, so in practice the backend only emails sign-in codes. handoffs.ts makes no fetch or email call. On the question's rule this is a pass. One point for the person reviewing the Send / completed-tasks half (Q13): the task screen has no Send button at all. SendHandoffModal is used only from the handoff feature, so U7's \"send the task list in-app\" is not offered from the task screen. The HAR half and the side-by-side half are still open.",
+    "openQuestions": [
+      "U7 / Q13: the task screen has no Send button for handing the task list to an NP or covering physician through Handoff delivery. The person reviewing Send against the AC text needs to confirm whether that is acceptable or whether it is a gap.",
+      "The question's pass rule mentions 'Send' calling only the app's backend, but there is no Send on the task screens, so that part passes only because nothing is there to call.",
+      "The Then names 'Send' from the task screens, but TasksOverlay has no Send control. Whether a separate Send on the task screen is required (U7) or the Handoff screen is enough is for the Q13 reviewer to decide.",
+      "The scenario lists no open questions, yet the Then refers to Q13. This verdict leaves that half to the person reviewing it."
+    ],
+    "notDecidableByCode": [
+      "side-by-side vs p72 (VISUAL (a person signs off))",
+      "Send / completed tasks vs AC text (Q13) (a person, Q13)",
+      "HAR while pressing Copy/Send (PW)",
+      "Visual side-by-side match with RoundCompanion_PLAYGROUND_p72_HAIKU.html (layout, grouping, labels, completed section)",
+      "Whether the missing task-screen Send and the completed-task grouping meet the AC text (Q13, person)",
+      "HAR capture while pressing Copy Text or Send (PW lane)",
+      "Visual match of layout, labels and grouping with p72 (person sign-off).",
+      "The HAR capture while pressing Copy/Send (PW lane).",
+      "Whether the built bundle's single mailto: hit (assets/index-*.js) is only the Settings support link. The source grep points that way, but the bundle offset was not checked."
+    ],
+    "checkedFindings": [
+      13,
+      12
+    ],
+    "discardedFindings": [
+      0,
+      0
+    ],
+    "costUsd": 0.5313326,
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-07-S24.json",
+      "runs/2026-10-14-local/code-review/raw/TC-07-S24.raw.json"
+    ]
+  }
+}

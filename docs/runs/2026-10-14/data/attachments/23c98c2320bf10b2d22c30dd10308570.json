@@ -1,0 +1,97 @@
+{
+  "case": "TC-09-S03",
+  "title": "Add a resident by hand: lands in All Residents as Follow-up",
+  "needs": [
+    "seed",
+    "permission-add-patient",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s03-form.md",
+      "verdict": "Pass",
+      "url": "/snf/add",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s03-all.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s03-chart.md",
+      "verdict": "Pass",
+      "url": "/snf/jx74y7seyfadj7808f5n1rkcq98g9ya0",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s03-today.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q5: does a hand-added resident join Today's Visits?) pass: \"Open chart for QA TC-09-S03 Handadd\" present"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q5) pass: backend list-after [name={handadd}].inTodaysSession = true"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Q5: whether {handadd} is on Today's Visits (s03-today) is recorded, not judged"
+  ],
+  "added": [
+    {
+      "kind": "snfResident",
+      "id": "jx74y7seyfadj7808f5n1rkcq98g9ya0",
+      "name": "QA TC-09-S03 Handadd"
+    }
+  ],
+  "agent": {
+    "turns": 29,
+    "costUsd": 0.18355120000000003,
+    "durationMs": 72409,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U75",
+  "covers": [
+    "TC-09/S03"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u75",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U75.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "case": "TC-24-S11",
+  "title": "Bulk-delete hunt: no 'delete all' or similar control on any screen, in both modes",
+  "needs": [
+    "seed",
+    "oracle-regex",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s11-settings.md",
+      "verdict": "Pass",
+      "url": "/settings",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-hospital-list.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-quick-dictation.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-inbox.md",
+      "verdict": "Pass",
+      "url": "/handoffs",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-handoff.md",
+      "verdict": "Pass",
+      "url": "/rounding/handoff",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-preround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7exsgrw67ttjs6eryffw39ss8g90xt",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7exsgrw67ttjs6eryffw39ss8g90xt",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-pending-dialog.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7exsgrw67ttjs6eryffw39ss8g90xt",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q5: the dialog's delete-and-complete choice (required by TFA-92595 AC 8) is recorded, not judged as a bulk delete) pass: \"Delete Pending Tasks & Complete\" present",
+        "(Q5: the dialog's other choices are recorded) pass: \"Keep Tasks & Mark Complete\" present"
+      ]
+    },
+    {
+      "file": "s11-snf-all.md",
+      "verdict": "Pass",
+      "url": "/snf",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s11-snf-tasks.md",
+      "verdict": "Pass",
+      "url": "/snf/tasks",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(run sanity: 'Cancel — go back' kept both pending tasks (the agent pressed no delete)) pass: backend hosp-after tasks has 2 items",
+        "(run sanity: the encounter was not marked complete) pass: backend hosp-after status = \"note-ready\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Record the Pending Tasks dialog's choices from s11-pending-dialog.md for Q5. Its delete-and-complete choice is required by TFA-92595 AC 8, so it is not judged as a bulk delete until Q5 is answered (S29 exercises it)."
+  ],
+  "agent": {
+    "turns": 60,
+    "costUsd": 0.43329659999999987,
+    "durationMs": 150446,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U60",
+  "covers": [
+    "TC-24/S11"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u60",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U60.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

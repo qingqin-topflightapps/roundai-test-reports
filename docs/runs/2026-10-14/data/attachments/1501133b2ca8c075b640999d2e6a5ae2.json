@@ -1,0 +1,29 @@
+{
+  "TC-13/S22": {
+    "status": "failed",
+    "detail": "desktop, iphone15, pixel7: 6 judged check(s) passed, 6 failed.",
+    "failed": [
+      {
+        "check": "axe violations = 0",
+        "where": [
+          "desktop:hospital-previous-notes",
+          "desktop:nh-previous-notes",
+          "iphone15:hospital-previous-notes",
+          "iphone15:nh-previous-notes",
+          "pixel7:hospital-previous-notes",
+          "pixel7:nh-previous-notes"
+        ],
+        "example": "color-contrast(serious,2×: div[data-qa-root=\"1\"] > .mb-0.gap-2.flex > h3 | div[data-qa-root=\"1\"] > .mb-0.gap-2.flex > .bg-slate-100.px-2.py-0\\.5)"
+      }
+    ],
+    "evidence": [
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-13_S22",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-13_S22/desktop.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-13_S22/iphone15.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-13_S22/pixel7.verdict.json",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-13_S22/iphone15--hospital-previous-notes.png",
+      "tools/qa-agent/runs/2026-10-14-local/visual/evidence/TC-13_S22/iphone15--nh-previous-notes.png"
+    ],
+    "productIssue": "Previous Notes header and the '0/3' counter fail AA contrast (2.5:1 and 4.34:1) — the oracle asks axe violations = 0. Paste and Photograph are named."
+  }
+}

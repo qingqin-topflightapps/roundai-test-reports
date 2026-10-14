@@ -1,0 +1,12 @@
+{
+  "TC-25/S13": {
+    "status": "passed",
+    "detail": "Re-checked after review 2026-10-14 (18:00 JST runs: fix-*.json). Both modes: the fresh computer on the chart address gets 'Send sign-in code' (no name, no text); after its own code it shows the list; the phone (no reload) is still signed in with its text and its fullscreen editor still open (read before any capture, and again after a viewport-only capture); with the caret at the end of the text (checked: at 66/66 Hospital, 43/43 NH) the second line went in after the first: the stored pre-round and the computer's editor hold 'QA-SYNC-PR-4 …' then 'QA-SYNC-PR-5 …' (NH: NPR-4 then NPR-5). The earlier 'editor closed by itself' note and the reversed line order were test artifacts: the full-page screenshot of the mobile page resized it and closed the editor; the reopened editor's caret sat at 0.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc25-s13/hospital.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s13/snf.json",
+      "runs/2026-10-14-local/probes/evidence/tc25-s13/hospital-cp2-phone-still-in.png",
+      "runs/2026-10-14-local/probes/fix-tc25.json"
+    ]
+  }
+}

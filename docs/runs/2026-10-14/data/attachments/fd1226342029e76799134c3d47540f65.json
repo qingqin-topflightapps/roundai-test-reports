@@ -1,0 +1,175 @@
+{
+  "ref": "EFS/S22",
+  "profile": "pixel7",
+  "part": "microphone",
+  "judged": [
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,12×: .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3 | section:nth-child(3) > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "covered = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "the failure message sits in a role=alert / role=status (or aria-live) region",
+      "pass": false,
+      "detail": "not announced: \"Microphone access is blocked. Allow the microphone for this site (tap the lock icon in the address bar), or on iPhone/Android open Settings \"",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "the message is on screen, not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "the message is not truncated",
+      "pass": true,
+      "detail": "w 378/378, right 396 of 412",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "Close editor is reachable and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "Save Note is reachable and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "Dictate is reachable and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "the Dictate control are at least 24 px",
+      "pass": true,
+      "detail": "Dictate 103×40",
+      "state": "hospital-microphone-blocked"
+    },
+    {
+      "name": "axe violations = 0",
+      "pass": false,
+      "detail": "button-name(critical,1×: .-ml-1); color-contrast(serious,16×: .flex-\\[1_1_0\\] > .mt-1.flex-shrink-0 | section:nth-child(3) > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "overflow = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "covered = 0",
+      "pass": false,
+      "detail": "\"Pre-round notes\" is under span \"Microphone access is blocked. Allow the microphone for this \" (a fixed layer over a fixed layer — scrolling cannot clear it)",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "truncated = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "tap targets >= 24 px",
+      "pass": false,
+      "detail": "button \"Dismiss error\" is 20×20 (< 24 px, WCAG 2.5.8)",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "the failure message sits in a role=alert / role=status (or aria-live) region",
+      "pass": true,
+      "detail": "role=alert",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "the message is on screen, not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "the message is not truncated",
+      "pass": true,
+      "detail": "w 306/306, right 357 of 412",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "Close editor is reachable and not covered",
+      "pass": false,
+      "detail": "covered by svg \"\"",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "Save Note is reachable and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "Dictate is reachable and not covered",
+      "pass": true,
+      "detail": "visible and on top",
+      "state": "nh-microphone-blocked"
+    },
+    {
+      "name": "the Dictate control are at least 24 px",
+      "pass": true,
+      "detail": "Dictate 94×36",
+      "state": "nh-microphone-blocked"
+    }
+  ],
+  "recorded": [],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-microphone-blocked",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/pixel7--hospital-microphone-blocked.png",
+      "url": "/rounding/kx7czgzp7s2124t5jtew8x8k0d8g8dt0",
+      "findings": 47,
+      "axe": [
+        "color-contrast/serious×12"
+      ]
+    },
+    {
+      "state": "nh-microphone-blocked",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/evidence/EFS_S22/pixel7--nh-microphone-blocked.png",
+      "url": "/snf/m57e9anr42ngthsbney6bg9aeh8g9zwb",
+      "findings": 43,
+      "axe": [
+        "button-name/critical×1",
+        "color-contrast/serious×16"
+      ]
+    }
+  ]
+}

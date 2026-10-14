@@ -1,0 +1,25 @@
+{
+  "TC-03/S04": {
+    "status": "passed",
+    "dataset": "lists",
+    "target": "dev",
+    "title": "Nursing Home sort on a filtered list: room (untouched), name, status, in both views",
+    "detail": "14 judged cell(s) held",
+    "judged": {
+      "total": 14,
+      "failed": 0
+    },
+    "recorded": [
+      "Q4: NH Today's Visits: status sort: Delta, Bravo, Alpha, Charlie (app's STATUS_RANK; order unconfirmed) → {\"got\":[\"Res SortT Delta\",\"Res SortT Bravo\",\"Res SortT Alpha\",\"Res SortT Charlie\"]}",
+      "Q4: NH Today's Visits: status sort kept after re-filtering → {\"got\":[\"Res SortT Delta\",\"Res SortT Bravo\",\"Res SortT Alpha\",\"Res SortT Charlie\"]}",
+      "Q4: NH All Residents: status sort: Delta, Bravo, Alpha, Charlie (app's STATUS_RANK; order unconfirmed) → {\"got\":[\"Res SortA Delta\",\"Res SortA Bravo\",\"Res SortA Alpha\",\"Res SortA Charlie\"]}",
+      "Q4: NH All Residents: status sort kept after re-filtering → {\"got\":[\"Res SortA Delta\",\"Res SortA Bravo\",\"Res SortA Alpha\",\"Res SortA Charlie\"]}"
+    ],
+    "durationMs": 15453,
+    "evidence": [
+      "runs/2026-10-14-dev/datasets/lists/evidence/TC-03-S04.json",
+      "runs/2026-10-14-dev/datasets/lists/evidence/TC-03-S04-today.png",
+      "runs/2026-10-14-dev/datasets/lists/evidence/TC-03-S04-all.png"
+    ]
+  }
+}

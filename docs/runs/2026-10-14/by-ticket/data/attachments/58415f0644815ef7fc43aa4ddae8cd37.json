@@ -1,0 +1,15 @@
+{
+  "TC-02/S13b": {
+    "status": "failed",
+    "known": "TFA-92584",
+    "detail": "Re-checked after review 2026-10-14 (18:00 JST runs: fix-*.json). Real clock vs page.clock +2 d vs Pacific/Kiritimati with the device clock pinned to 11:00 UTC (UTC+14 date Oct 15 while UTC and Tokyo are Oct 14), plus a control with the same pinned clock in Tokyo. Hospital: real and control store admitDate 'Oct 14' with the 'NEW TODAY' badge; +2 d stores 'Oct 16' and Kiritimati 'Oct 15', both without the badge. NH rows identical in all runs (random auto-MRN masked). The control equals the real run, so the Kiritimati difference comes from the time zone, not the pinned clock. Side finding: with the device clock 2 days ahead an existing valid session is shown the sign-in screen at once (re-sign-in on that device works). Real phone with a wrong date stays manual (spec.manual).",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/tc02-s13b/runs.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s13b/diffs.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s13b/control.json",
+      "runs/2026-10-14-local/probes/evidence/tc02-s13b/plus2d-signed-out-by-device-clock.png",
+      "runs/2026-10-14-local/probes/fix-tc02b.json"
+    ],
+    "productIssue": "Known TFA-92584 (day logic by device clock) plus a device-dated admitDate: a physician whose phone date is 2 days ahead scans a census and every patient is stored as admitted 'Oct 16'; a physician whose phone is in a far-east time zone (UTC+14) where it is already tomorrow stores 'Oct 15'; in both cases without the 'New today' badge, while a colleague on a correct clock in Tokyo sees 'Oct 14' / New today. Breaks TC-02 S13b and ground rule 3.8."
+  }
+}

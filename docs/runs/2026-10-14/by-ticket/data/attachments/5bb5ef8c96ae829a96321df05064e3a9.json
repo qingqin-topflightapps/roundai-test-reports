@@ -1,0 +1,477 @@
+{
+  "ref": "OAT-04/S25",
+  "title": "After the purge nothing brings the data back",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T07:21:57.511Z",
+  "summary": {
+    "pass": 8,
+    "fail": 4,
+    "failKnown": 1,
+    "failConflict": 0,
+    "record": 1,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "b.vitals",
+      "item": "(b) BP 142/88 stored again after Save Vitals in the stale tab",
+      "expected": "absent",
+      "observed": "present (vitalsUpdatedAt 2026-10-14T07:21:11.110Z)",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 2 + UAT 3.7 claim (U11): no purged value stored again with a fresh clock by a save without a new value (S25 then (b))"
+    },
+    {
+      "id": "b.labs",
+      "item": "(b) Cr 1.6 stored again after Save Labs in the stale tab",
+      "expected": "absent",
+      "observed": "present (labsUpdatedAt 2026-10-14T07:21:11.226Z)",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 2 + UAT 3.7 claim (U11): no purged value stored again with a fresh clock by a save without a new value (S25 then (b))"
+    },
+    {
+      "id": "b.meds",
+      "item": "(b) purged medication rows (lisinopril active, metoprolol held) written back by Save Medications in the stale tab",
+      "expected": "absent",
+      "observed": "present (lisinopril, metoprolol; medicationsUpdatedAt 2026-10-14T07:21:12.826Z)",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 5 (T6): a deleted med row is not written back by a stale client"
+    },
+    {
+      "id": "a.vitals",
+      "item": "(a) BP 142/88 back in vitals after day-3 processing",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "TFA-94699 AC 5 read for purge deletions (T6): any purged row, task or point re-created by day-3 processing = Fail"
+    },
+    {
+      "id": "a.labs",
+      "item": "(a) Cr 1.6 back in labs after day-3 processing",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "TFA-94699 AC 5 read for purge deletions (T6): any purged row, task or point re-created by day-3 processing = Fail"
+    },
+    {
+      "id": "a.lisinopril",
+      "item": "(a) lisinopril row re-created",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "TFA-94699 AC 5 read for purge deletions (T6): any purged row, task or point re-created by day-3 processing = Fail"
+    },
+    {
+      "id": "a.metoprolol",
+      "item": "(a) metoprolol row re-created",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "TFA-94699 AC 5 read for purge deletions (T6): any purged row, task or point re-created by day-3 processing = Fail"
+    },
+    {
+      "id": "a.task",
+      "item": "(a) 'Recheck BMP' task after day-3 processing",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 5 read for purge deletions (T6): any purged row, task or point re-created by day-3 processing = Fail",
+      "known": "K2: the open task was never purged in the first place (open Hospital tasks are never purged)"
+    },
+    {
+      "id": "a.points",
+      "item": "(a) a purged item re-created as an Important Point",
+      "expected": "absent",
+      "observed": "absent",
+      "verdict": "pass",
+      "oracle": "TFA-94699 AC 5 read for purge deletions (T6): any purged row, task or point re-created by day-3 processing = Fail"
+    },
+    {
+      "id": "c.askContext",
+      "item": "(c) Ask AI context built from A's stored chart holds none of '142/88', '1.6', 'metoprolol'",
+      "expected": "no marker",
+      "observed": "no marker",
+      "verdict": "pass",
+      "oracle": "3.4 + 3.7 claim / OAT-04 Expected 2: any marker in a context = Fail (deterministic check decides (c))"
+    },
+    {
+      "id": "c.noteContext",
+      "item": "(c) the stored fields the note-generation context reads hold none of the markers",
+      "expected": "no marker",
+      "observed": "no marker",
+      "verdict": "pass",
+      "oracle": "3.4 + 3.7 claim"
+    },
+    {
+      "id": "c.otherCopies",
+      "item": "(c) where A's chart still holds the markers (fields no context reads)",
+      "expected": "needs a decision: Q6 (dated histories, medication events)",
+      "observed": "labsHistory, medicationEvents, vitalsHistory",
+      "verdict": "record"
+    },
+    {
+      "id": "c.askAnswer",
+      "item": "(c) Ask AI answer says the values are not available and names none of them (supporting evidence)",
+      "expected": "saysNone, noLabValue, mustNotInclude 142/88 and 1.6",
+      "observed": "says not available: I cannot answer your question based on the available data. Here's what's missing:\n\n1. **Blood pressure & creatinine**: No vitals or labs are recorded in this patient's chart.\n2. **Metoprolol status**:",
+      "verdict": "pass",
+      "oracle": "S25 spec.askAiFollowUp checks (supporting evidence, not a UAT AI Check)"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "stale tab before the purge: BP input '142/88'; Medications editor values [\"lisinopril 10 mg daily\",\"metoprolol 25 mg, held for bradycardia\"]",
+    "precondition: purge removed vitals / labs / both rows on A2a true, A2b true, A true; open task 'Recheck BMP' kept on all (K2)",
+    "stale tab after the purge, before saving: BP input '142/88'",
+    "stale tab after the purge, before Save Medications: Medications editor values [\"lisinopril 10 mg daily\",\"metoprolol 25 mg, held for bradycardia\"]",
+    "A stale task editor (the other AC 5 case) cannot be tried on main: the open task 'Recheck BMP' is never purged (K2), so there is no deleted task to write back.",
+    "(a) day-3 Save Note finished (notesProcessedAt 2026-10-14T07:21:20.377Z); Save & Extract wrote medicationEventsSourceHash yes",
+    "live AI calls this scenario (app): {\"total\":5,\"failed\":0,\"byFn\":{\"parsing.parsePreRoundNotes\":1,\"parsing.extractTasks\":2,\"parsing.extractMedicationEvents\":1,\"assist.askChart\":1}}"
+  ],
+  "retriesOnLocalTimeout": [],
+  "uiRetries": [],
+  "snapshots": {
+    "purge": {
+      "physician": 3
+    },
+    "afterPurge": {
+      "a2a": {
+        "_id": "kx785njjyftdxj9ttb751efp6d8g91kx",
+        "name": "QA Hosp A2 day-3",
+        "notesProcessedAt": "2026-10-12T18:20:54.525Z",
+        "tasks": [
+          {
+            "createdAt": "2026-10-12T18:20:54.525Z",
+            "done": false,
+            "id": "t-open",
+            "text": "Recheck BMP"
+          }
+        ],
+        "vitals": {},
+        "vitalsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "labs": [],
+        "labsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "medications": [],
+        "medicationsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "transcriptHistory": [
+          {
+            "archivedAt": "2026-10-13T11:20:54.525Z",
+            "entries": [
+              {
+                "speaker": "Dr",
+                "text": "BP 142/88, Cr 1.6, continue lisinopril 10 mg daily, metoprolol 25 mg held for bradycardia, recheck BMP",
+                "time": ""
+              }
+            ],
+            "label": "Yesterday · Encounter notes"
+          }
+        ],
+        "previousNotes": [
+          {
+            "addedAt": "2026-10-13T11:20:54.525Z",
+            "content": "Progress note: BP 142/88. Cr 1.6. Lisinopril 10 mg daily continued. Metoprolol 25 mg held for bradycardia. Plan: recheck BMP.",
+            "dateLabel": "Yesterday",
+            "id": "pn1",
+            "source": "explicit-import"
+          }
+        ],
+        "medicationEvents": [
+          {
+            "event": "held for bradycardia",
+            "name": "metoprolol 25 mg",
+            "type": "held"
+          },
+          {
+            "event": "continued",
+            "name": "lisinopril 10 mg daily",
+            "type": "continued"
+          }
+        ],
+        "nextPreRoundSummary": "BP 142/88, Cr 1.6; metoprolol held for bradycardia; lisinopril continued; recheck BMP"
+      },
+      "a2b": {
+        "_id": "kx76yqt1wjaqzg47ck7as8ppbd8g8gdj",
+        "name": "QA Hosp A2 stale tab",
+        "notesProcessedAt": "2026-10-12T18:20:54.525Z",
+        "tasks": [
+          {
+            "createdAt": "2026-10-12T18:20:54.525Z",
+            "done": false,
+            "id": "t-open",
+            "text": "Recheck BMP"
+          }
+        ],
+        "vitals": {},
+        "vitalsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "labs": [],
+        "labsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "medications": [],
+        "medicationsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "transcriptHistory": [
+          {
+            "archivedAt": "2026-10-13T11:20:54.525Z",
+            "entries": [
+              {
+                "speaker": "Dr",
+                "text": "BP 142/88, Cr 1.6, continue lisinopril 10 mg daily, metoprolol 25 mg held for bradycardia, recheck BMP",
+                "time": ""
+              }
+            ],
+            "label": "Yesterday · Encounter notes"
+          }
+        ],
+        "previousNotes": [
+          {
+            "addedAt": "2026-10-13T11:20:54.525Z",
+            "content": "Progress note: BP 142/88. Cr 1.6. Lisinopril 10 mg daily continued. Metoprolol 25 mg held for bradycardia. Plan: recheck BMP.",
+            "dateLabel": "Yesterday",
+            "id": "pn1",
+            "source": "explicit-import"
+          }
+        ],
+        "medicationEvents": [
+          {
+            "event": "held for bradycardia",
+            "name": "metoprolol 25 mg",
+            "type": "held"
+          },
+          {
+            "event": "continued",
+            "name": "lisinopril 10 mg daily",
+            "type": "continued"
+          }
+        ],
+        "nextPreRoundSummary": "BP 142/88, Cr 1.6; metoprolol held for bradycardia; lisinopril continued; recheck BMP"
+      },
+      "a": {
+        "_id": "kx735kcp9k6cm996948bwa93fx8g9shx",
+        "name": "QA Hosp Retention A (S01 shape)",
+        "notesProcessedAt": "2026-10-12T18:20:54.525Z",
+        "tasks": [
+          {
+            "createdAt": "2026-10-12T18:20:54.525Z",
+            "done": false,
+            "id": "t-open",
+            "text": "Recheck BMP"
+          }
+        ],
+        "vitals": {},
+        "vitalsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "labs": [],
+        "labsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "medications": [],
+        "medicationsUpdatedAt": "2026-10-12T18:20:54.525Z",
+        "vitalsHistory": [
+          {
+            "bp": "142/88",
+            "date": "Tue Oct 13 2026"
+          }
+        ],
+        "labsHistory": [
+          {
+            "date": "Tue Oct 13 2026",
+            "labs": [
+              {
+                "name": "Cr",
+                "value": "1.6"
+              }
+            ]
+          }
+        ],
+        "medicationEvents": [
+          {
+            "event": "held for bradycardia",
+            "name": "metoprolol 25 mg",
+            "type": "held"
+          },
+          {
+            "event": "continued",
+            "name": "lisinopril 10 mg daily",
+            "type": "continued"
+          }
+        ]
+      }
+    },
+    "b.afterStaleSaves": {
+      "_id": "kx76yqt1wjaqzg47ck7as8ppbd8g8gdj",
+      "name": "QA Hosp A2 stale tab",
+      "notesProcessedAt": "2026-10-12T18:20:54.525Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T18:20:54.525Z",
+          "done": false,
+          "id": "t-open",
+          "text": "Recheck BMP"
+        }
+      ],
+      "vitals": {
+        "bp": "142/88"
+      },
+      "vitalsUpdatedAt": "2026-10-14T07:21:11.110Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "value": "1.6"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-14T07:21:11.226Z",
+      "medications": [
+        {
+          "id": "m-act",
+          "name": "lisinopril 10 mg daily",
+          "status": "active",
+          "updatedAt": "2026-10-14T07:20:54.525Z"
+        },
+        {
+          "id": "m-held",
+          "name": "metoprolol 25 mg, held for bradycardia",
+          "status": "held",
+          "updatedAt": "2026-10-14T07:20:54.525Z"
+        }
+      ],
+      "medicationsUpdatedAt": "2026-10-14T07:21:12.826Z",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-13T11:20:54.525Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "BP 142/88, Cr 1.6, continue lisinopril 10 mg daily, metoprolol 25 mg held for bradycardia, recheck BMP",
+              "time": ""
+            }
+          ],
+          "label": "Yesterday · Encounter notes"
+        }
+      ],
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-13T11:20:54.525Z",
+          "content": "Progress note: BP 142/88. Cr 1.6. Lisinopril 10 mg daily continued. Metoprolol 25 mg held for bradycardia. Plan: recheck BMP.",
+          "dateLabel": "Yesterday",
+          "id": "pn1",
+          "source": "explicit-import"
+        }
+      ],
+      "medicationEvents": [
+        {
+          "event": "held for bradycardia",
+          "name": "metoprolol 25 mg",
+          "type": "held"
+        },
+        {
+          "event": "continued",
+          "name": "lisinopril 10 mg daily",
+          "type": "continued"
+        }
+      ],
+      "nextPreRoundSummary": "BP 142/88, Cr 1.6; metoprolol held for bradycardia; lisinopril continued; recheck BMP"
+    },
+    "a.afterDay3": {
+      "_id": "kx785njjyftdxj9ttb751efp6d8g91kx",
+      "name": "QA Hosp A2 day-3",
+      "preRoundNotes": "Comfortable overnight, ambulating in hall",
+      "rawPreRoundNotes": "Comfortable overnight, ambulating in hall",
+      "preRoundError": null,
+      "notesProcessedAt": "2026-10-14T07:21:20.377Z",
+      "preRoundEditedAt": 1791962480377,
+      "importantPoints": [],
+      "importantPointsDraft": "",
+      "ptsEditedAt": 1791962480377,
+      "encounterNotes": "Comfortable overnight, ambulating in hall",
+      "encounterEditedAt": 1791962496192,
+      "status": "seen",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T18:20:54.525Z",
+          "done": false,
+          "id": "t-open",
+          "text": "Recheck BMP"
+        }
+      ],
+      "vitals": {},
+      "vitalsUpdatedAt": "2026-10-12T18:20:54.525Z",
+      "labs": [],
+      "labsUpdatedAt": "2026-10-12T18:20:54.525Z",
+      "medications": [],
+      "medicationsUpdatedAt": "2026-10-12T18:20:54.525Z",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-13T11:20:54.525Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "BP 142/88, Cr 1.6, continue lisinopril 10 mg daily, metoprolol 25 mg held for bradycardia, recheck BMP",
+              "time": ""
+            }
+          ],
+          "label": "Yesterday · Encounter notes"
+        }
+      ],
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-13T11:20:54.525Z",
+          "content": "Progress note: BP 142/88. Cr 1.6. Lisinopril 10 mg daily continued. Metoprolol 25 mg held for bradycardia. Plan: recheck BMP.",
+          "dateLabel": "Yesterday",
+          "id": "pn1",
+          "source": "explicit-import"
+        }
+      ],
+      "medicationEvents": [
+        {
+          "event": "held for bradycardia",
+          "name": "metoprolol 25 mg",
+          "type": "held"
+        },
+        {
+          "event": "continued",
+          "name": "lisinopril 10 mg daily",
+          "type": "continued"
+        }
+      ],
+      "admissionSummary": {
+        "course": "Oct 14: Patient comfortable overnight with good mobility; continue current management and monitor clinical status.. ⏳ Encounter pending.",
+        "lastUpdatedAt": "2026-10-14T07:21:20.377Z",
+        "reason": "Patient admitted; currently comfortable and ambulating. No acute issues noted overnight. Awaiting further clinical assessment and diagnostic workup as indicated."
+      },
+      "nextPreRoundSummary": "BP 142/88, Cr 1.6; metoprolol held for bradycardia; lisinopril continued; recheck BMP"
+    },
+    "c.askContext": "PATIENT: QA Hosp Retention A (S01 shape), undefinedyo, undefined\nADMITTED: Unknown | QUERY TYPE: medication-change-recall\nVITALS: BP —, HR —, Temp —, O2 —%, Wt —\nLABS: None recorded\nMEDICATION TRACKER (one row per drug, with the status, date and reason the physician sees — the source of truth for what the patient is on):\nACTIVE MEDICATIONS: None\nHELD MEDICATIONS: None\nSTOPPED MEDICATIONS: None\nONE-TIME DOSES GIVEN: None\nPRE-ROUND NOTES: None documented\nTODAY'S ENCOUNTER NOTES (dictated/typed by the physician during or after seeing the patient — treat as a primary source for what happened in the room today): None documented\nPENDING TASKS: Recheck BMP\nSOAP NOTE: Not yet generated\nDIAGNOSTIC TESTING / STUDIES ON FILE (dated — includes procedures and implanted devices; the Timeline Ted fix: without this block the Ask could not see that a device was placed THIS admission):\nNone recorded\nHOSPITAL COURSE TIMELINE (dated ledger of this admission — AUTHORITATIVE for WHEN events happened; any timing answer must agree with it):\nNone recorded\nBACKGROUND SUMMARY: None recorded\nPRIOR ENCOUNTERS THIS ADMISSION:\nNone on record\nCURRENT ENCOUNTER TRANSCRIPT:\nNo encounter transcript recorded yet.",
+    "c.askAnswer": "I cannot answer your question based on the available data. Here's what's missing:\n\n1. **Blood pressure & creatinine**: No vitals or labs are recorded in this patient's chart.\n2. **Metoprolol status**: The medication tracker shows no active, held, or stopped medications documented—metoprolol is not listed.\n\nThere is also no encounter transcript, prior encounters, or hospital course timeline on file for this admission. I'd recommend checking the EHR directly or reviewing the patient at bedside to obtain current vitals and labs, and to clarify the medication list.",
+    "c.askJudge": null,
+    "aiCalls": [
+      {
+        "at": 1791962487028,
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791962490491,
+        "fn": "parsing.extractTasks",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791962498749,
+        "fn": "parsing.extractTasks",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791962499627,
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      },
+      {
+        "at": 1791962517347,
+        "fn": "assist.askChart",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true
+      }
+    ]
+  }
+}

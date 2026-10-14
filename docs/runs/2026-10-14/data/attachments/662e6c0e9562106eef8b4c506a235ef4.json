@@ -1,0 +1,607 @@
+{
+  "ref": "OAT-03/S23",
+  "method": "CODEREVIEW",
+  "status": "failed",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Read convex/ai/providers/bedrock.ts (invoke), convex/ai/providers/index.ts (chat, vision), convex/ai/transcribe.ts and infra/stacks/aws.ts (the guardrail resource, its exported version, the IAM policy). U6: are the Haiku primary and the Mistral fallback sent through the same invoke with the same guardrailConfig (id and version)? Does the IAM policy deny any Bedrock invocation without a guardrail? Is the guardrail version pinned: does the stack publish a guardrail version (a GuardrailVersion resource or equivalent), what does it export as the version, and what does the code send when BEDROCK_GUARDRAIL_VERSION is unset? U6b (record only, gated on TFA-92568): which AI calls leave without the Bedrock guardrail (photo reading on Vertex, OpenAI transcription, OpenAI text if selectable)? Label U6b findings half:U6b.",
+  "rule": {
+    "pass": "same invoke and same guardrailConfig (id and version) for Haiku and Mistral, the IAM policy denies a Bedrock invocation without a guardrail, and the version the stack publishes and the code sends is pinned (never DRAFT)",
+    "fail": "Mistral can be called without the guardrail or with a different one, the IAM policy allows an invocation without a guardrail, or the version the stack exports or the code falls back to is DRAFT",
+    "basis": [
+      "U6: primary and fallback are sent through the same invoke with the same guardrailConfig (id and version); the IAM policy denies any invocation without a guardrail; the guardrail version is pinned (not DRAFT) where UAT runs",
+      "U6 is judged now (TFA-94422 AC 4)"
+    ]
+  },
+  "halves": {
+    "code": "fail",
+    "deployed guardrail id/version": "CONFIG (Tim's 3.1 record): not run in this lane",
+    "U6b": "gated on TFA-92568: reported as Blocked: not run in this lane"
+  },
+  "newFindings": [
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "invoke adds guardrailConfig from env for every model; when BEDROCK_GUARDRAIL_VERSION is unset the code sends DRAFT.",
+      "at": "apps/web/convex/ai/providers/bedrock.ts:123"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "The stack creates only a Guardrail resource (no published GuardrailVersion), and exports guardrail.version, which is the working DRAFT for an unpublished guardrail.",
+      "at": "infra/stacks/aws.ts:197"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "The Guardrail resource definition; there is no aws.bedrock.GuardrailVersion in infra/.",
+      "at": "infra/stacks/aws.ts:118"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "If BEDROCK_GUARDRAIL_VERSION is unset, the code sends the unpinned DRAFT version",
+      "at": "apps/web/convex/ai/providers/bedrock.ts:124"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "Only a Guardrail resource is created; there is no GuardrailVersion resource, so no numbered version is published",
+      "at": "infra/stacks/aws.ts:118"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "The stack exports the Guardrail resource's own version (the working draft) as guardrailVersion",
+      "at": "infra/stacks/aws.ts:197"
+    }
+  ],
+  "knownGapsConfirmed": [],
+  "pendingOn": [],
+  "againstThen": [
+    {
+      "run": 1,
+      "label": "half:deployed guardrail id/version",
+      "claim": "The infra workflow copies the exported stack version into the Convex env, so a DRAFT export becomes the version the app sends.",
+      "at": ".github/workflows/infra.yml:238",
+      "half": "deployed guardrail id/version"
+    },
+    {
+      "run": 1,
+      "label": "half:U6b",
+      "claim": "Photo reading goes to Vertex or to OpenAI vision, never through the Bedrock guardrail.",
+      "at": "apps/web/convex/ai/providers/index.ts:259",
+      "half": "U6b"
+    },
+    {
+      "run": 1,
+      "label": "half:U6b",
+      "claim": "Text chat can be sent to OpenAI (when the provider is not bedrock) without the Bedrock guardrail.",
+      "at": "apps/web/convex/ai/providers/index.ts:198",
+      "half": "U6b"
+    },
+    {
+      "run": 1,
+      "label": "half:U6b",
+      "claim": "Transcription calls the OpenAI audio endpoint directly, with no Bedrock guardrail.",
+      "at": "apps/web/convex/ai/transcribe.ts:12",
+      "half": "U6b"
+    },
+    {
+      "run": 2,
+      "label": "half:deployed guardrail id/version",
+      "claim": "The infra workflow writes that exported version into the Convex env BEDROCK_GUARDRAIL_VERSION",
+      "at": ".github/workflows/infra.yml:238",
+      "half": "deployed guardrail id/version"
+    },
+    {
+      "run": 2,
+      "label": "half:U6b",
+      "claim": "Photo reading goes to Vertex (or OpenAI vision) and never through the Bedrock guardrail",
+      "at": "apps/web/convex/ai/providers/index.ts:259",
+      "half": "U6b"
+    },
+    {
+      "run": 2,
+      "label": "half:U6b",
+      "claim": "Transcription posts audio straight to OpenAI, outside the Bedrock guardrail",
+      "at": "apps/web/convex/ai/transcribe.ts:12",
+      "half": "U6b"
+    },
+    {
+      "run": 2,
+      "label": "half:U6b",
+      "claim": "An operator can switch text generation to OpenAI, which then bypasses the Bedrock guardrail",
+      "at": "apps/web/convex/ai/providers/index.ts:197",
+      "half": "U6b"
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "Two parts of U6 pass and one fails. First, Haiku and Mistral both go through the same invoke. chat() builds the request once (bedrockRequest) and sends both the primary and the fallback through internal.ai.providers.bedrock.invoke. That function adds one guardrailConfig built from the environment (BEDROCK_GUARDRAIL_ID / BEDROCK_GUARDRAIL_VERSION), so both models get the same guardrail id and version. Second, the IAM policy has a Deny rule (DenyInvokeWithoutGuardrail) on InvokeModel and InvokeModelWithResponseStream whenever bedrock:GuardrailIdentifier is missing. The version, though, is not pinned, so U6 fails. The stack creates only an aws.bedrock.Guardrail. There is no GuardrailVersion resource anywhere in infra/, and the stack exports `guardrail.version`, which for an unpublished guardrail is the working DRAFT (that last point comes from the provider's behaviour, not from the repo). The infra workflow writes that export into BEDROCK_GUARDRAIL_VERSION. And when that variable is unset, bedrock.ts falls back to \"DRAFT\" in the code itself. U6b is recorded only (gated on TFA-92568, reported as Blocked): photo reading on Vertex or OpenAI, transcription on OpenAI, and text when the provider is set to openai all leave without the Bedrock guardrail. Q7 (a guardrail that intervenes never triggers the fallback) is out of scope; the code comment matches it."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "Same invoke: yes. chat() builds one request with bedrockRequest() and sends both the Haiku primary and the Mistral fallback through the same internal.ai.providers.bedrock.invoke. In invoke, the guardrailConfig comes from the same env vars no matter which model is called, so both models get the same guardrail id and version. IAM: the stack has an explicit Deny on bedrock:InvokeModel and InvokeModelWithResponseStream when bedrock:GuardrailIdentifier is Null. So the policy refuses a Bedrock call that carries no guardrail. Two limits: the Deny only checks that some guardrail is present, not this one; and invoke itself skips guardrailConfig entirely when BEDROCK_GUARDRAIL_ID is unset, leaving the IAM Deny as the only stop. Pinning: this fails, and that is decided now. The stack creates only an aws.bedrock.Guardrail. It has no GuardrailVersion resource and publishes no numbered version. It exports guardrail.version, which on a newly created guardrail is normally the working \"DRAFT\" (that comes from the AWS/Pulumi resource, not from this repo). The infra workflow writes that output into BEDROCK_GUARDRAIL_VERSION, and if the variable is unset, invoke falls back to the literal \"DRAFT\". The question's fail rule says a DRAFT fallback or a DRAFT export fails, so the verdict is fail (new gap). U6b (record only, blocked on TFA-92568): photo reading goes to Vertex (the default) or OpenAI vision, transcription posts to api.openai.com, and an operator can switch text generation to OpenAI. None of these goes through the Bedrock guardrail. The note that a masking or blocking guardrail never triggers the fallback (Q7) is confirmed by a comment only and is not judged here."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "Primary and fallback both go through the same internal invoke action with the same request object (only the model differs).",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 161,
+          "quote": "const invoke = (model: string, timeoutMs: number) =>",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The request is built once so primary and fallback get exactly the same thing.",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 207,
+          "quote": "fallback are sent exactly the same thing",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "invoke adds guardrailConfig from env for every model; when BEDROCK_GUARDRAIL_VERSION is unset the code sends DRAFT.",
+          "file": "apps/web/convex/ai/providers/bedrock.ts",
+          "line": 123,
+          "quote": "process.env.BEDROCK_GUARDRAIL_VERSION ?? \"DRAFT\",",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The guardrail is sent only when BEDROCK_GUARDRAIL_ID is set; otherwise the request goes without one and relies on the IAM deny.",
+          "file": "apps/web/convex/ai/providers/bedrock.ts",
+          "line": 119,
+          "quote": "...(guardrailId",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The IAM policy denies InvokeModel and InvokeModelWithResponseStream when no guardrail identifier is present.",
+          "file": "infra/stacks/aws.ts",
+          "line": 169,
+          "quote": "Sid: \"DenyInvokeWithoutGuardrail\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The deny condition is Null on bedrock:GuardrailIdentifier. It does not tie the call to this guardrail's ARN or version.",
+          "file": "infra/stacks/aws.ts",
+          "line": 176,
+          "quote": "Condition: { Null: { \"bedrock:GuardrailIdentifier\": \"true\" } },",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The stack creates only a Guardrail resource (no published GuardrailVersion), and exports guardrail.version, which is the working DRAFT for an unpublished guardrail.",
+          "file": "infra/stacks/aws.ts",
+          "line": 197,
+          "quote": "guardrailVersion: guardrail.version,",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Guardrail resource definition; there is no aws.bedrock.GuardrailVersion in infra/.",
+          "file": "infra/stacks/aws.ts",
+          "line": 118,
+          "quote": "const guardrail = new aws.bedrock.Guardrail(\"round-ai\", {",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The infra workflow copies the exported stack version into the Convex env, so a DRAFT export becomes the version the app sends.",
+          "file": ".github/workflows/infra.yml",
+          "line": 238,
+          "quote": "npx convex env set BEDROCK_GUARDRAIL_VERSION \"$(cd ../../infra && pulumi stack output guardrailVersion)\"",
+          "supports": "fail",
+          "label": "half:deployed guardrail id/version",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Photo reading goes to Vertex or to OpenAI vision, never through the Bedrock guardrail.",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 259,
+          "quote": "? ctx.runAction(internal.ai.providers.vertex.invokeVision, {",
+          "supports": "fail",
+          "label": "half:U6b",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Text chat can be sent to OpenAI (when the provider is not bedrock) without the Bedrock guardrail.",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 198,
+          "quote": "callOpenAI(messages, {",
+          "supports": "fail",
+          "label": "half:U6b",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Transcription calls the OpenAI audio endpoint directly, with no Bedrock guardrail.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 12,
+          "quote": "const TRANSCRIBE_URL = \"https://api.openai.com/v1/audio/transcriptions\";",
+          "supports": "fail",
+          "label": "half:U6b",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "Haiku primary and Mistral fallback both go through the same bedrock.invoke action with the same request object",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 161,
+          "quote": "const invoke = (model: string, timeoutMs: number) =>",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The request is built once so primary and fallback get exactly the same thing",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 206,
+          "quote": "The Converse request, minus the model, built once so the primary and the",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "guardrailConfig is taken from env, the same for every model, but is left out entirely when BEDROCK_GUARDRAIL_ID is unset",
+          "file": "apps/web/convex/ai/providers/bedrock.ts",
+          "line": 119,
+          "quote": "...(guardrailId",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "If BEDROCK_GUARDRAIL_VERSION is unset, the code sends the unpinned DRAFT version",
+          "file": "apps/web/convex/ai/providers/bedrock.ts",
+          "line": 124,
+          "quote": "process.env.BEDROCK_GUARDRAIL_VERSION ?? \"DRAFT\",",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The IAM policy denies Bedrock invocation when no guardrail identifier is present (it checks presence only, not which guardrail)",
+          "file": "infra/stacks/aws.ts",
+          "line": 169,
+          "quote": "Sid: \"DenyInvokeWithoutGuardrail\",",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Deny condition is a Null check on bedrock:GuardrailIdentifier",
+          "file": "infra/stacks/aws.ts",
+          "line": 176,
+          "quote": "Condition: { Null: { \"bedrock:GuardrailIdentifier\": \"true\" } },",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Only a Guardrail resource is created; there is no GuardrailVersion resource, so no numbered version is published",
+          "file": "infra/stacks/aws.ts",
+          "line": 118,
+          "quote": "const guardrail = new aws.bedrock.Guardrail(\"round-ai\", {",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The stack exports the Guardrail resource's own version (the working draft) as guardrailVersion",
+          "file": "infra/stacks/aws.ts",
+          "line": 197,
+          "quote": "guardrailVersion: guardrail.version,",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The infra workflow writes that exported version into the Convex env BEDROCK_GUARDRAIL_VERSION",
+          "file": ".github/workflows/infra.yml",
+          "line": 238,
+          "quote": "npx convex env set BEDROCK_GUARDRAIL_VERSION \"$(cd ../../infra && pulumi stack output guardrailVersion)\"",
+          "supports": "fail",
+          "label": "half:deployed guardrail id/version",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Photo reading goes to Vertex (or OpenAI vision) and never through the Bedrock guardrail",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 259,
+          "quote": "? ctx.runAction(internal.ai.providers.vertex.invokeVision, {",
+          "supports": "fail",
+          "label": "half:U6b",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Transcription posts audio straight to OpenAI, outside the Bedrock guardrail",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 12,
+          "quote": "const TRANSCRIBE_URL = \"https://api.openai.com/v1/audio/transcriptions\";",
+          "supports": "fail",
+          "label": "half:U6b",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "An operator can switch text generation to OpenAI, which then bypasses the Bedrock guardrail",
+          "file": "apps/web/convex/ai/providers/index.ts",
+          "line": 197,
+          "quote": "return timeProviderCall(ctx, () =>\n    callOpenAI(messages, {",
+          "supports": "fail",
+          "label": "half:U6b",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Vertex is the default provider for photo reading",
+          "file": "apps/web/convex/aiProvider.ts",
+          "line": 51,
+          "quote": "export const DEFAULT_VISION_PROVIDER = \"vertex\" as const;",
+          "supports": "context",
+          "label": "half:U6b",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "Physicians see no difference day to day. But the guardrail that masks or blocks identifiers in AI requests runs on the editable draft rather than a frozen version, so a change to the guardrail in the console takes effect at once, with no new version to review or record. Photo reading and voice transcription do not go through the guardrail at all. / A physician would see no difference. But the PII guardrail on every AI draft runs from the editable DRAFT copy, not a fixed numbered version. A later edit to the guardrail would change, without notice, what gets masked or blocked in their notes. Photos and dictation are not screened by this guardrail at all.",
+  "openQuestions": [
+    "The question says pass if the stack publishes a pinned version. The oracle ties that to Tim's 3.1 build record and OAT-05 step 7. If UAT's BEDROCK_GUARDRAIL_VERSION was set by hand to a published number, the deployment could be pinned even though the code exports DRAFT and falls back to DRAFT. The code fail stands either way.",
+    "The scenario's Then makes the DRAFT check a config item for the deployed build (Tim's 3.1 record, OAT-05 step 7). The question's fail rule also fails a DRAFT export or a DRAFT code fallback, and that is what I applied. If the deployed build pins a numbered version by hand, U6 can pass on the deployment, but the stack and code still default to DRAFT.",
+    "Should the IAM Deny check the specific guardrail ARN or version, not just that some guardrail is present? As written, any guardrail id satisfies it."
+  ],
+  "notDecidableByCode": [
+    "deployed guardrail id/version (CONFIG (Tim's 3.1 record))",
+    "U6b (gated on TFA-92568: reported as Blocked)",
+    "The actual guardrail id and version set on the UAT deployment (Tim's 3.1 build record)",
+    "That Pulumi's aws.bedrock.Guardrail 'version' output is 'DRAFT' for an unpublished guardrail is the provider's behaviour, not code in this repo",
+    "Whether the IAM Null-condition deny is enforced for Converse calls in the deployed account",
+    "Which guardrail id and version the UAT deployment actually has set in BEDROCK_GUARDRAIL_ID and BEDROCK_GUARDRAIL_VERSION (Tim's 3.1 build record)",
+    "Whether aws.bedrock.Guardrail.version resolves to DRAFT at runtime. That comes from AWS/Pulumi behaviour, not this repo, though CreateGuardrail normally returns DRAFT",
+    "Whether the Converse API call is checked against the bedrock:InvokeModel IAM action and the bedrock:GuardrailIdentifier condition key in the deployed account"
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "fc6d947bd72c"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 38912,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.20085560000000002,
+      "turns": 8,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 44278,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2339096,
+      "turns": 11,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:06:52.987Z"
+}

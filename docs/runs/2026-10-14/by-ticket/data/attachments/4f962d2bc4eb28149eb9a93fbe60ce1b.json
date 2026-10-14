@@ -1,0 +1,213 @@
+{
+  "ref": "TC-03/S04",
+  "title": "TC-03/S04 Nursing Home sort on a filtered list: room (untouched), name, status, in both views",
+  "dataset": "lists",
+  "target": "dev",
+  "at": "2026-10-14T08:36:21.864Z",
+  "cells": [
+    {
+      "name": "NH Today's Visits: the filter lists the four rows",
+      "kind": "judged",
+      "ok": true,
+      "detail": 4
+    },
+    {
+      "name": "NH Today's Visits: sort control starts on room (U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "room"
+    },
+    {
+      "name": "NH Today's Visits: untouched sort = room order 2, 3, 7, 12 (numeric, U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortT Charlie",
+          "Res SortT Delta",
+          "Res SortT Bravo",
+          "Res SortT Alpha"
+        ]
+      }
+    },
+    {
+      "name": "NH Today's Visits: name sort A-Z",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortT Alpha",
+          "Res SortT Bravo",
+          "Res SortT Charlie",
+          "Res SortT Delta"
+        ]
+      }
+    },
+    {
+      "name": "NH Today's Visits: status sort: Delta, Bravo, Alpha, Charlie (app's STATUS_RANK; order unconfirmed)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortT Delta",
+          "Res SortT Bravo",
+          "Res SortT Alpha",
+          "Res SortT Charlie"
+        ]
+      },
+      "ref": "Q4"
+    },
+    {
+      "name": "NH Today's Visits: status sort kept after re-filtering",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortT Delta",
+          "Res SortT Bravo",
+          "Res SortT Alpha",
+          "Res SortT Charlie"
+        ]
+      },
+      "ref": "Q4"
+    },
+    {
+      "name": "NH Today's Visits: sort choice kept after re-filtering",
+      "kind": "judged",
+      "ok": true,
+      "detail": "status"
+    },
+    {
+      "name": "NH Today's Visits: name sort again",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortT Alpha",
+          "Res SortT Bravo",
+          "Res SortT Charlie",
+          "Res SortT Delta"
+        ]
+      }
+    },
+    {
+      "name": "NH Today's Visits: room sort again",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortT Charlie",
+          "Res SortT Delta",
+          "Res SortT Bravo",
+          "Res SortT Alpha"
+        ]
+      }
+    },
+    {
+      "name": "NH All Residents: the filter lists the four rows",
+      "kind": "judged",
+      "ok": true,
+      "detail": 4
+    },
+    {
+      "name": "NH All Residents: sort control starts on room (U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "room"
+    },
+    {
+      "name": "NH All Residents: untouched sort = room order 2, 3, 7, 12 (numeric, U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortA Charlie",
+          "Res SortA Delta",
+          "Res SortA Bravo",
+          "Res SortA Alpha"
+        ]
+      }
+    },
+    {
+      "name": "NH All Residents: name sort A-Z",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortA Alpha",
+          "Res SortA Bravo",
+          "Res SortA Charlie",
+          "Res SortA Delta"
+        ]
+      }
+    },
+    {
+      "name": "NH All Residents: status sort: Delta, Bravo, Alpha, Charlie (app's STATUS_RANK; order unconfirmed)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortA Delta",
+          "Res SortA Bravo",
+          "Res SortA Alpha",
+          "Res SortA Charlie"
+        ]
+      },
+      "ref": "Q4"
+    },
+    {
+      "name": "NH All Residents: status sort kept after re-filtering",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortA Delta",
+          "Res SortA Bravo",
+          "Res SortA Alpha",
+          "Res SortA Charlie"
+        ]
+      },
+      "ref": "Q4"
+    },
+    {
+      "name": "NH All Residents: sort choice kept after re-filtering",
+      "kind": "judged",
+      "ok": true,
+      "detail": "status"
+    },
+    {
+      "name": "NH All Residents: name sort again",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortA Alpha",
+          "Res SortA Bravo",
+          "Res SortA Charlie",
+          "Res SortA Delta"
+        ]
+      }
+    },
+    {
+      "name": "NH All Residents: room sort again",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Res SortA Charlie",
+          "Res SortA Delta",
+          "Res SortA Bravo",
+          "Res SortA Alpha"
+        ]
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-03-S04-today.png",
+    "evidence/TC-03-S04-all.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-03-S04-today.png": 0,
+    "evidence/TC-03-S04-all.png": 0
+  }
+}

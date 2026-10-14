@@ -1,0 +1,369 @@
+{
+  "ref": "TC-23/S23",
+  "method": "CODEREVIEW",
+  "status": "partial",
+  "verdict": "pass",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Part (1) of the then. Compare DEFAULT_MEDICAL_HINT in convex/ai/transcribe.ts with the prototype text it cites ('source :4765'; prototypes handoff-docs/RoundCompanion_aug21b.html and handoff-docs/RoundCompanion_PLAYGROUND_p72_HAIKU.html). A scripted whitespace-normalised comparison is in staticEvidence (parity-TC-23-S23-hint.json). Then list which surfaces and contexts send the hint (every call site of the transcription path, Hospital and Nursing Home, live and recovery) and whether any per-surface vocabulary prompts exist.",
+  "rule": {
+    "pass": "the hint matches the prototype word for word",
+    "fail": "the hint differs from the prototype (list each difference)",
+    "basis": [
+      "(1) The hint matches the prototype exactly, or Vikram's approval of the difference is on record"
+    ]
+  },
+  "halves": {
+    "code": "pass",
+    "Part 2": "DOC (EVALUATION_FRAMEWORK.md not saved under tools/qa-agent/uat/): not run in this lane"
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [],
+  "pendingOn": [],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "Part (1) passes. DEFAULT_MEDICAL_HINT (apps/web/convex/ai/transcribe.ts:41) is word for word the same as the Whisper prompt string in both prototypes. I ran an exact-string search with the full text, ending at the closing quote, and it found one match in RoundCompanion_aug21b.html (line 6281, formData.append('prompt', ...)) and one in RoundCompanion_PLAYGROUND_p72_HAIKU.html (line 7085). The scripted parity check agrees (verbatim against both). The only thing that differs is the \"source :4765\" pointer in the code comment: the string sits at line 6281/7085 in these prototype files, not 4765. That is a comment and does not change the hint.\n\nWhere the hint goes:\n- **Live path:** prepareSession always sends DEFAULT_MEDICAL_HINT in the realtime transcription session.\n- **Batch and recovery path:** transcribeAudio sends args.medicalHint || DEFAULT_MEDICAL_HINT. No client call passes medicalHint, so every caller gets the same hospital-oriented hint. The callers are:\n  - Hospital rounding: AddPatient, quick dictation, PreRoundTab, encounter capture, encounter tasks.\n  - Clinic: PreVisitTab, EncounterTab.\n  - Nursing Home (SNF): PreRoundTab, encounter dictation.\n  - The Ask modal.\n\nThere are no per-surface vocabulary prompts. Whether the hospital vocabulary is right for Nursing Home is Q9 and is outside this verdict. Part (2) waits on the EVALUATION_FRAMEWORK.md copy, which is not under tools/qa-agent/uat/ at this commit."
+    },
+    {
+      "run": 2,
+      "verdict": "pass",
+      "claimed": "pass",
+      "reason": null,
+      "answer": "The hint matches the prototype word for word, so Part (1) passes. DEFAULT_MEDICAL_HINT in apps/web/convex/ai/transcribe.ts:41 is character-identical to the prompt string in RoundCompanion_aug21b.html:6281 and RoundCompanion_PLAYGROUND_p72_HAIKU.html:7085. I compared them by reading both files, and the scripted parity check agrees (verbatim in both). One small point: the code comment cites 'source :4765', but in these two prototype files the string is at lines 6281 and 7085. The text is still the same.\n\nWho gets the hint: there is a single hint for the whole app, and every transcription path sends it.\n- **Live path:** prepareSession always sets transcription.prompt to DEFAULT_MEDICAL_HINT. Its only caller is src/data/dictation.ts, which passes no arguments.\n- **Batch and recovery path:** transcribeAudio sends `args.medicalHint || DEFAULT_MEDICAL_HINT`. No client call site passes medicalHint, so every caller gets the default. The callers are:\n  - Hospital rounding: AddPatient, quick dictation, PreRound, encounter capture, encounter tasks\n  - Nursing Home: PreRound, encounter dictation\n  - Clinic: PreVisit, Encounter\n  - AskModal\n\nNo per-surface vocabulary prompts exist: nothing in the prompt library or anywhere else supplies a different vocabulary. Using the hospital-oriented vocabulary in Nursing Home is Q9 and is not judged here. Part (2), mapping EVALUATION_FRAMEWORK.md onto the S01/S02 checks, is a document task the code cannot decide."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "DEFAULT_MEDICAL_HINT text, which exactly matches the prompt string in both prototypes (exact full-string search, one occurrence each in aug21b line 6281 and p72_HAIKU line 7085).",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 41,
+          "quote": "\"Physician clinical encounter recording. Medical terms: community-acquired pneumonia, normocardiac, tachycardia, bradycardia, tachypneic, hypoxia, dyspnea, creatinine, procalcitonin, lactate, leukocytosis,",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The code comment cites the source as ':4765', but in the handoff prototype files the string is at line 6281 (aug21b) and 7085 (p72). Only the comment pointer is off; the text matches.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 39,
+          "quote": "(source :4765). The client may override it via medicalHint.",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The live (realtime) transcription session always sends the default hint as its prompt.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 84,
+          "quote": "prompt: DEFAULT_MEDICAL_HINT,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The batch and recovery path sends the client's medicalHint or the default. No client call site passes medicalHint, so every surface gets the default.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 150,
+          "quote": "fd.append(\"prompt\", args.medicalHint || DEFAULT_MEDICAL_HINT);",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Nursing Home encounter dictation calls transcribeAudio without a medicalHint, so it gets the hospital default hint (whether that fits is Q9, not this verdict).",
+          "file": "apps/web/src/features/snf/patient/useEncounterDictation.ts",
+          "line": 42,
+          "quote": "const { text } = await transcribeAudio({ audio, mimeType });",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Hospital encounter capture calls transcribeAudio with no per-surface hint.",
+          "file": "apps/web/src/features/rounding/patient/useEncounterCapture.ts",
+          "line": 52,
+          "quote": "const { text } = await transcribeAudio({ audio, mimeType });",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Clinic encounter calls transcribeAudio with no per-surface hint, so no per-surface vocabulary prompts exist.",
+          "file": "apps/web/src/features/clinic/patient/EncounterTab.tsx",
+          "line": 66,
+          "quote": "const { text } = await transcribeAudio({ audio, mimeType });",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Live dictation on every surface goes through one shared prepareSession call that takes no arguments, so it uses the same hint.",
+          "file": "apps/web/src/data/dictation.ts",
+          "line": 50,
+          "quote": "prepareCloudSession: () => prepareSession({}),",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Part 2 cannot be run from the code: there is no EVALUATION_FRAMEWORK file under tools/qa-agent/uat/ at this commit, so T5's mapping onto S01/S02 waits on that copy (and on Q14 if the file has no dictation rubric).",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 38,
+          "quote": "Default medical-term hint prompt biasing Whisper toward clinical vocabulary",
+          "supports": "context",
+          "label": "half:Part 2",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "DEFAULT_MEDICAL_HINT is the exact prototype prompt string (same terms, order and punctuation as aug21b:6281 and p72_HAIKU:7085).",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 41,
+          "quote": "\"Physician clinical encounter recording. Medical terms: community-acquired pneumonia, normocardiac, tachycardia, bradycardia, tachypneic",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The code comment cites the source as ':4765', but in the two named prototype files the string is at lines 6281 (aug21b) and 7085 (p72_HAIKU). Only the cited location is off; the text matches.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 39,
+          "quote": "(source :4765). The client may override it via medicalHint.",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The live (realtime) transcription session always sends DEFAULT_MEDICAL_HINT as its prompt, whatever the surface or context.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 84,
+          "quote": "prompt: DEFAULT_MEDICAL_HINT,",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The batch and recovery path sends the default hint unless the client passes medicalHint. No client call site passes one (all calls use { audio, mimeType }), so Hospital, Nursing Home, Clinic and Ask all get the same hint.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 150,
+          "quote": "fd.append(\"prompt\", args.medicalHint || DEFAULT_MEDICAL_HINT);",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Nursing Home encounter dictation calls transcribeAudio without a medicalHint, so it gets the same hospital-oriented default (whether that is acceptable is Q9, not judged here).",
+          "file": "apps/web/src/features/snf/patient/useEncounterDictation.ts",
+          "line": 42,
+          "quote": "const { text } = await transcribeAudio({ audio, mimeType });",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The live session is prepared with no arguments, so no surface-specific vocabulary can reach the live path.",
+          "file": "apps/web/src/data/dictation.ts",
+          "line": 50,
+          "quote": "prepareCloudSession: () => prepareSession({}),",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "",
+  "openQuestions": [
+    "The comment's 'source :4765' line does not match where the string sits in the handoff prototype files (6281 in aug21b, 7085 in p72). It may refer to another prototype version; it does not affect the text match.",
+    "Q9: one hospital-oriented hint is used on every surface, including Nursing Home and Clinic, and there are no per-surface vocabulary prompts. Whether that is acceptable is outside this verdict.",
+    "Q9: every surface, including Nursing Home and Clinic, gets the same hospital/pneumonia-oriented vocabulary hint, and no per-surface vocabulary prompts exist. Whether that is acceptable is for Q9.",
+    "Q14 / Part 2: whether EVALUATION_FRAMEWORK.md has a dictation rubric that grades TC-23 cannot be judged until a copy is saved under tools/qa-agent/uat/."
+  ],
+  "notDecidableByCode": [
+    "Part 2 (DOC (EVALUATION_FRAMEWORK.md not saved under tools/qa-agent/uat/))",
+    "Part 2: mapping EVALUATION_FRAMEWORK.md criteria onto the S01/S02 checks needs the saved copy under tools/qa-agent/uat/, which is not at this commit; if the file has no dictation rubric, it also waits on Q14.",
+    "Whether Vikram approved any planned per-surface vocabulary prompts (none exist in code).",
+    "Part 2: mapping EVALUATION_FRAMEWORK.md criteria (numbers, boundaries, occurrences, drug names, units, the 9/10 bar) onto the S01/S02 checks is a document task, and the file is not in the repository.",
+    "Whether Vikram approved any change is not needed, because no difference was found."
+  ],
+  "diffNeedsApproval": true,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "617ef8ce4dc2"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 51338,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2048874,
+      "turns": 15,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 47398,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.2035642,
+      "turns": 16,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:05:47.811Z"
+}

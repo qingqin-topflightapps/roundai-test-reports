@@ -1,0 +1,85 @@
+{
+  "case": "TC-04-S17",
+  "title": "Never split, never routed by name or room, never merged: one box about two patients, a second box for the same room, and a room box placed on another patient through the picker",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-order",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s17-typed.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s17-reopened.md",
+      "verdict": "Pass",
+      "url": "/rounding",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s17-patel-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74s5rx349bvjzv3gr9dxa8tx8g7q5d",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s17-ortiz-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7a6n7e2c8f2vptz5xy9admfx8g7bcy",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s17-fixture-encounter.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7fh140h9wt8ek2ytm2kz806h8g6vyp",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q4: separator between the two placements) pass: backend patel-after encounterNotes = \"Bed 415 stable overnight. Bed 416 (QA TC-04-S17 QA Hosp Ortiz ALHA) spiked to 38.6 °C, K 3.1, give KCl 40 mEq PO x1. Ig…"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 44,
+    "costUsd": 0.33045080000000004,
+    "durationMs": 115337,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

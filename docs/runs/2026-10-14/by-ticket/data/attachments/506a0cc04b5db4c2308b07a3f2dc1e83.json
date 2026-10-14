@@ -1,0 +1,548 @@
+{
+  "ref": "OAT-05/S30",
+  "method": "CODEREVIEW",
+  "status": "failed",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Trace each provider and email error path to the client: convex/ai/providers/vertex.ts toVertexConvexError, convex/ai/providers/bedrockErrors.ts toBedrockConvexError, convex/lib/ses.ts (SES delivery errors), convex/email.ts (the Specode email relay's error text), and the OpenAI paths (transcribe, live session, openai.ts). For each: what goes into the ConvexError data or the thrown message that reaches the client (action result over the WebSocket, toast text)? Could provider-controlled message text that holds an AWS access key id, a service-account email, a project id or a key reach the client?",
+  "rule": {
+    "pass": "no error path forwards provider-controlled message text to the client (only class / status / fixed text)",
+    "fail": "any error path forwards provider-controlled message text to the client (quote it with file:line)",
+    "basis": [
+      "No ConvexError data and no client-visible text contains a sentinel, an access key ID, a service-account email, a project ID or a key",
+      "A mapper that forwards provider message text able to carry any sentinel to the client is a Fail, quoted with file and line"
+    ]
+  },
+  "newFindings": [
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "The Vertex mapper puts the first line of the provider's error message (up to 300 characters) into ConvexError data, which reaches the client.",
+      "at": "apps/web/convex/ai/providers/vertex.ts:135"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "Any error from the Vertex SDK call is turned into that ConvexError and thrown out of invokeVision.",
+      "at": "apps/web/convex/ai/providers/vertex.ts:168"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "Vision has no fallback model, so runWithRetry rethrows the last error (the Vertex ConvexError) without changing it.",
+      "at": "apps/web/convex/ai/providers/retry.ts:182"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "The aiAction wrapper rethrows the original error untouched to the client and only reduces the audit-log copy to a class.",
+      "at": "apps/web/convex/lib/phi.ts:191"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "apiErrorMessage returns OpenAI's own error.message, and the comment says it is meant to surface to the physician.",
+      "at": "apps/web/convex/ai/openai.ts:19"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "The batch transcription path throws OpenAI's own error message text. It is a plain Error, so whether the client sees it depends on Convex hiding plain Error text in production.",
+      "at": "apps/web/convex/ai/transcribe.ts:162"
+    },
+    {
+      "run": 1,
+      "label": "new",
+      "claim": "The Specode email relay puts the relay's own error string into the thrown message. It is a plain Error, so whether the client sees it depends on production hiding.",
+      "at": "apps/web/convex/email.ts:47"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "The Vertex mapper copies the first line of the provider's error message, up to 300 characters, into the ConvexError data.",
+      "at": "apps/web/convex/ai/providers/vertex.ts:135"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "invokeVision wraps any Google SDK error with toVertexConvexError, so the raw SDK message becomes the detail.",
+      "at": "apps/web/convex/ai/providers/vertex.ts:168"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "The public aiAction wrapper rethrows the error unchanged to the client. Only the audit log gets a classification.",
+      "at": "apps/web/convex/lib/phi.ts:191"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "The batch transcription path throws OpenAI's own error.message text, through apiErrorMessage, to the client as a plain Error.",
+      "at": "apps/web/convex/ai/transcribe.ts:162"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "apiErrorMessage returns the provider's error.message as is and says it is what surfaces to the physician.",
+      "at": "apps/web/convex/ai/openai.ts:19"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "The Specode relay's own error string is put into the thrown message.",
+      "at": "apps/web/convex/email.ts:47"
+    },
+    {
+      "run": 2,
+      "label": "new",
+      "claim": "callOpenAI does not catch OpenAI SDK errors, so the SDK's message reaches the aiAction rethrow unchanged.",
+      "at": "apps/web/convex/ai/openai.ts:108"
+    }
+  ],
+  "knownGapsConfirmed": [],
+  "pendingOn": [],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "Fail. The Vertex mapper, toVertexConvexError, copies the first line of the provider's error message (up to 300 characters) into ConvexError data.detail (vertex.ts:135). invokeVision throws it on any failure (vertex.ts:168). Both vision()'s runWithRetry (retry.ts:183) and the aiAction wrapper (phi.ts:191-196) pass it on unchanged. ConvexError data always reaches the client, so the photo scans (scanCensusSheet, scanClinicSchedule, scanPriorNote) hand provider-controlled text to the browser. Google error lines name resource paths such as projects/<id>/locations/..., so a project ID can get through, and so can a service-account email or a sentinel if the provider message holds one. The OpenAI batch transcription path also forwards OpenAI's own error.message (apiErrorMessage, openai.ts:19; transcribe.ts:162). An OpenAI 401 echoes a partly masked sk-proj key, and the comment at openai.ts:6-7 says this text is meant to reach the physician. That one is a plain Error, which Convex normally hides from clients on production deployments, so it reaches the client on dev and preview, and on production only if that hiding is off. The Specode email relay does the same with the relay's payload.error (email.ts:42-47), under the same caveat. Clean paths: Bedrock sends only the kind, error name and HTTP status (bedrockErrors.ts:92); SES sends only the HTTP status (ses.ts:123); the live-session path sends fixed text plus the HTTP status (transcribe.ts:105-106). No recorded gap or open question applies."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "This fails because of the Vertex path. Two other paths (transcription upload and the email relay) also pass provider text, and a third (OpenAI chat) probably does.\n\n**Vertex (fail, decided now):** `toVertexConvexError` (convex/ai/providers/vertex.ts:133-135) puts `detail: (err.message ?? \"\").split(\"\\n\")[0].slice(0, 300)` into the ConvexError data. That is the first line of the Google SDK's own error text, up to 300 characters. Nothing in between removes it:\n- `invokeVision` throws it.\n- `runWithRetry` rethrows it as is.\n- `vision()` returns it to the public `aiAction`s `scanCensusSheet`, `scanClinicSchedule` and `scanPriorNote`.\n- `aiAction` (convex/lib/phi.ts:191-196) says it rethrows \"untouched, so the client still sees the original error\".\n\nConvexError data is sent to the client in full over the WebSocket. So a Vertex message naming the service-account email or the project id (for example a permission-denied message) reaches the client. That is a Fail under the oracle.\n\n**Bedrock (pass):** `toBedrockConvexError` carries only kind, name and status. The comment says \"Never the message\".\n\n**SES (pass):** `lib/ses.ts` throws fixed text plus the HTTP status.\n\n**Live session (pass):** `transcribe.prepareSession` throws fixed text plus the status.\n\n**Other forwarding paths (also fail):**\n- `transcribe.transcribeAudio` throws `new Error(await apiErrorMessage(res))`, which is OpenAI's own `error.message`.\n- `email.ts` throws `Specode managed email failed: ${payload.error}`, the relay's own text.\n- `openai.ts` `callOpenAI` does not catch OpenAI SDK errors, so the SDK's message goes out unchanged.\n\nThese are plain Errors, not ConvexErrors. Convex replaces plain Error text with a generic server error in production deployments, but not in dev. Whether that happens on the UAT deployment is a runtime question.\n\nNo open questions or recorded gaps apply. The oracle and the question agree."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The Vertex mapper puts the first line of the provider's error message (up to 300 characters) into ConvexError data, which reaches the client.",
+          "file": "apps/web/convex/ai/providers/vertex.ts",
+          "line": 135,
+          "quote": "detail: (err.message ?? \"\").split(\"\\n\")[0].slice(0, 300),",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Any error from the Vertex SDK call is turned into that ConvexError and thrown out of invokeVision.",
+          "file": "apps/web/convex/ai/providers/vertex.ts",
+          "line": 168,
+          "quote": "throw toVertexConvexError(\n        err instanceof Error ? err : new Error(String(err)),",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "Vision has no fallback model, so runWithRetry rethrows the last error (the Vertex ConvexError) without changing it.",
+          "file": "apps/web/convex/ai/providers/retry.ts",
+          "line": 182,
+          "quote": "if (!plan.fallback) {\n    throw lastError;",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The aiAction wrapper rethrows the original error untouched to the client and only reduces the audit-log copy to a class.",
+          "file": "apps/web/convex/lib/phi.ts",
+          "line": 191,
+          "quote": "Rethrown untouched, so the client still sees the original error.",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "scanCensusSheet is a client-callable action that calls vision(), so a Vertex failure reaches the client through it.",
+          "file": "apps/web/convex/ai/vision.ts",
+          "line": 44,
+          "quote": "const resp = await vision(",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "apiErrorMessage returns OpenAI's own error.message, and the comment says it is meant to surface to the physician.",
+          "file": "apps/web/convex/ai/openai.ts",
+          "line": 19,
+          "quote": "message = typeof error.message === \"string\" ? error.message : undefined;",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The batch transcription path throws OpenAI's own error message text. It is a plain Error, so whether the client sees it depends on Convex hiding plain Error text in production.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 162,
+          "quote": "throw new Error(await apiErrorMessage(res));",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Specode email relay puts the relay's own error string into the thrown message. It is a plain Error, so whether the client sees it depends on production hiding.",
+          "file": "apps/web/convex/email.ts",
+          "line": 47,
+          "quote": "throw new Error(`Specode managed email failed: ${detail}`);",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Bedrock mapper sends only the kind, error name and HTTP status, never the message.",
+          "file": "apps/web/convex/ai/providers/bedrockErrors.ts",
+          "line": 92,
+          "quote": "return new ConvexError(classifyBedrockError(err));",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SES delivery errors send only the HTTP status; the response body is never forwarded.",
+          "file": "apps/web/convex/lib/ses.ts",
+          "line": 123,
+          "quote": "throw new Error(`SES email delivery failed (HTTP ${response.status}).`);",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The live transcription session error is fixed text plus the HTTP status, with no SDK message.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 106,
+          "quote": "`Live transcription session unavailable${status ? ` (HTTP ${status})` : \"\"}. Please retry or select another dictation engine.`",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The Vertex mapper copies the first line of the provider's error message, up to 300 characters, into the ConvexError data.",
+          "file": "apps/web/convex/ai/providers/vertex.ts",
+          "line": 135,
+          "quote": "detail: (err.message ?? \"\").split(\"\\n\")[0].slice(0, 300),",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "invokeVision wraps any Google SDK error with toVertexConvexError, so the raw SDK message becomes the detail.",
+          "file": "apps/web/convex/ai/providers/vertex.ts",
+          "line": 168,
+          "quote": "throw toVertexConvexError(\n        err instanceof Error ? err : new Error(String(err)),",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The public aiAction wrapper rethrows the error unchanged to the client. Only the audit log gets a classification.",
+          "file": "apps/web/convex/lib/phi.ts",
+          "line": 191,
+          "quote": "// Rethrown untouched, so the client still sees the original error. An",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The public action scanCensusSheet calls vision(), which runs invokeVision when the provider is Vertex. The ConvexError and its detail reach the client action result.",
+          "file": "apps/web/convex/ai/vision.ts",
+          "line": 44,
+          "quote": "const resp = await vision(",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Bedrock mapper carries only kind, name and status, never the message.",
+          "file": "apps/web/convex/ai/providers/bedrockErrors.ts",
+          "line": 92,
+          "quote": "return new ConvexError(classifyBedrockError(err));",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SES delivery failure throws fixed text plus the HTTP status only.",
+          "file": "apps/web/convex/lib/ses.ts",
+          "line": 123,
+          "quote": "throw new Error(`SES email delivery failed (HTTP ${response.status}).`);",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The live-session path replaces the SDK error with fixed text plus the status and leaves out the cause.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 106,
+          "quote": "`Live transcription session unavailable${status ? ` (HTTP ${status})` : \"\"}. Please retry or select another dictation engine.`",
+          "supports": "pass",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The batch transcription path throws OpenAI's own error.message text, through apiErrorMessage, to the client as a plain Error.",
+          "file": "apps/web/convex/ai/transcribe.ts",
+          "line": 162,
+          "quote": "throw new Error(await apiErrorMessage(res));",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "apiErrorMessage returns the provider's error.message as is and says it is what surfaces to the physician.",
+          "file": "apps/web/convex/ai/openai.ts",
+          "line": 19,
+          "quote": "message = typeof error.message === \"string\" ? error.message : undefined;",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Specode relay's own error string is put into the thrown message.",
+          "file": "apps/web/convex/email.ts",
+          "line": 47,
+          "quote": "throw new Error(`Specode managed email failed: ${detail}`);",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "callOpenAI does not catch OpenAI SDK errors, so the SDK's message reaches the aiAction rethrow unchanged.",
+          "file": "apps/web/convex/ai/openai.ts",
+          "line": 108,
+          "quote": "const completion = await openAIClient().chat.completions.create({",
+          "supports": "fail",
+          "label": "new",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "When a photo scan (census sheet, clinic schedule or prior note) fails at Vertex, the browser receives Google's raw error line in the error data. That line can contain the Google Cloud project ID and, in IAM denials, a service-account email, both of which are visible in the network traffic or devtools. On non-production deployments, a failed recorded-audio transcription can also show OpenAI's error text, which can include a partly masked API key. / When a census, schedule or prior-note photo scan fails on Vertex, Google's own error text (which can name the service-account email or the GCP project) is sent to the physician's browser or phone. The client may also show it in an error toast. On a dev deployment, OpenAI and email-relay error text can reach the client the same way.",
+  "openQuestions": [
+    "Does the production Convex deployment hide plain Error messages from clients? That decides whether the OpenAI transcription text (transcribe.ts:162) and the Specode relay text (email.ts:47) reach clients in production. The Vertex ConvexError detail reaches them either way.",
+    "Does any client toast print error.data.detail? Showing it on screen is not needed for the fail, because the data is already in the WebSocket frame.",
+    "Does the UAT deployment run in Convex production mode, which replaces plain Error messages (transcribeAudio, the email relay, callOpenAI) with a generic server error? ConvexError data, such as the Vertex detail, is never replaced.",
+    "Does the client show ConvexError data.detail in a toast, or does it only travel in the WebSocket frame? The oracle treats either as a Fail."
+  ],
+  "notDecidableByCode": [
+    "What text Vertex, OpenAI and the Specode relay actually put in their error messages at runtime (for example, whether a service-account email or a full key ever appears). The S05 network capture of response bodies and WebSocket frames is the runtime check.",
+    "Whether the Convex deployment the client talks to hides plain Error messages (production versus dev or preview).",
+    "What text Google Vertex, OpenAI and the Specode relay actually put in their error messages at runtime (for example, whether a permission-denied message names the service account or the project).",
+    "The S05 network capture of response bodies and WebSocket frames."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "64d13b740196"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 70381,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.346129,
+      "turns": 21,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 59259,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.3072726,
+      "turns": 16,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:08:03.506Z"
+}

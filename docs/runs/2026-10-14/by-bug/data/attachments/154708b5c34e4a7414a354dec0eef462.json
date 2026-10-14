@@ -1,0 +1,368 @@
+{
+  "ref": "OAT-04/S14",
+  "title": "Purge with no page of that mode open",
+  "stack": {
+    "convex": "http://127.0.0.1:5910",
+    "web": "http://localhost:7973",
+    "build": "e02167f (detached worktree wt-retention)"
+  },
+  "writtenAt": "2026-10-14T06:40:08.571Z",
+  "summary": {
+    "pass": 0,
+    "fail": 5,
+    "failKnown": 5,
+    "record": 3,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "A.aged",
+      "item": "A (no session open): vitals / labs / active row aged 37 h",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 7 ('the purge runs on the server'), 3.7 claim, 3.3: aged data still present after the agreed lag = Fail",
+      "known": "K12: the purge is a client-called mutation for the active route only (AppLayout.tsx:78-79, 115); no scheduled job in convex/crons.ts — TFA-94699 AC 7"
+    },
+    {
+      "id": "A.task",
+      "item": "A (no session open): open task on a chart last processed 37 h ago",
+      "expected": "needs a decision: covered by S11 / K2; listed here for completeness",
+      "observed": "kept (also K2: open tasks are never purged)",
+      "verdict": "record"
+    },
+    {
+      "id": "B.aged",
+      "item": "B (signed out): vitals / labs / active row aged 37 h",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 7 ('the purge runs on the server'), 3.7 claim, 3.3: aged data still present after the agreed lag = Fail",
+      "known": "K12: the purge is a client-called mutation for the active route only (AppLayout.tsx:78-79, 115); no scheduled job in convex/crons.ts — TFA-94699 AC 7"
+    },
+    {
+      "id": "B.task",
+      "item": "B (signed out): open task on a chart last processed 37 h ago",
+      "expected": "needs a decision: covered by S11 / K2; listed here for completeness",
+      "observed": "kept (also K2: open tasks are never purged)",
+      "verdict": "record"
+    },
+    {
+      "id": "C.aged",
+      "item": "C (only /snf open): vitals / labs / active row aged 37 h",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 7 ('the purge runs on the server'), 3.7 claim, 3.3: aged data still present after the agreed lag = Fail",
+      "known": "K12: the purge is a client-called mutation for the active route only (AppLayout.tsx:78-79, 115); no scheduled job in convex/crons.ts — TFA-94699 AC 7"
+    },
+    {
+      "id": "C.task",
+      "item": "C (only /snf open): open task on a chart last processed 37 h ago",
+      "expected": "needs a decision: covered by S11 / K2; listed here for completeness",
+      "observed": "kept (also K2: open tasks are never purged)",
+      "verdict": "record"
+    },
+    {
+      "id": "D.olderVisits",
+      "item": "D (only /rounding open): visits older than the last two (D1, D2)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 7 ('the purge runs on the server'), 3.7 claim, 3.3: aged data still present after the agreed lag = Fail",
+      "known": "K12: the purge is a client-called mutation for the active route only (AppLayout.tsx:78-79, 115); no scheduled job in convex/crons.ts — TFA-94699 AC 7; K7: Nursing Home keeps 3 visits"
+    },
+    {
+      "id": "D2.olderVisits",
+      "item": "D2 (signed out): visits older than the last two (D1, D2)",
+      "expected": "absent",
+      "observed": "present",
+      "verdict": "fail",
+      "oracle": "TFA-94699 AC 7 ('the purge runs on the server'), 3.7 claim, 3.3: aged data still present after the agreed lag = Fail",
+      "known": "K12: the purge is a client-called mutation for the active route only (AppLayout.tsx:78-79, 115); no scheduled job in convex/crons.ts — TFA-94699 AC 7; K7: Nursing Home keeps 3 visits"
+    }
+  ],
+  "blocked": [],
+  "notes": [
+    "sign-out e2e-fresh-b45f23da-54c: HTTP 200",
+    "sign-out e2e-fresh-04ece432-9e0: HTTP 200",
+    "C's page is on /snf; D's page is on /rounding",
+    "Waited 3 min with C on /snf and D on /rounding, A idle, B and D2 signed out; ran the app's only cron (sessions:_sweep). No client purge call was made by the runner. The agreed lag is Q1; main has no server-side purge job (convex/crons.ts), so a longer wait cannot change the outcome.",
+    "control: after A's own rounding:applyLifecycle the aged vitals/labs/row are gone",
+    "control: after D's own snf:applyLifecycle visit D1 is still present (main keeps 3 visits, K7)"
+  ],
+  "retriesOnLocalTimeout": [
+    "ensureConsent (attempt 1: mutation settings:recordConsent failed: [Request ID: 90555f9ccc6ad1dd] Server Er)"
+  ],
+  "uiRetries": [],
+  "snapshots": {
+    "cron": {
+      "agedOut": 0,
+      "expired": 0
+    },
+    "cron2": {
+      "agedOut": 0,
+      "expired": 0
+    },
+    "raw.A": {
+      "_id": "kx70dm7x23rgdfbz05yzn6chp18g9ahz",
+      "name": "QA Hosp Idle A",
+      "notesProcessedAt": "2026-10-12T17:36:09.674Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T17:36:09.674Z",
+          "done": false,
+          "id": "t1",
+          "text": "Repeat lactate"
+        }
+      ],
+      "vitals": {
+        "bp": "140/90"
+      },
+      "vitalsUpdatedAt": "2026-10-12T17:36:09.674Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "value": "1.5"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-12T17:36:09.674Z",
+      "medications": [
+        {
+          "id": "m1",
+          "name": "amlodipine 5 mg",
+          "status": "active",
+          "updatedAt": "2026-10-12T17:36:09.674Z"
+        }
+      ]
+    },
+    "raw.B": {
+      "_id": "kx7fmm334j3qy6tj1epj3vekk18g9dyq",
+      "name": "QA Hosp Idle B",
+      "notesProcessedAt": "2026-10-12T17:36:32.304Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T17:36:32.304Z",
+          "done": false,
+          "id": "t1",
+          "text": "Repeat lactate"
+        }
+      ],
+      "vitals": {
+        "bp": "140/90"
+      },
+      "vitalsUpdatedAt": "2026-10-12T17:36:32.304Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "value": "1.5"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-12T17:36:32.304Z",
+      "medications": [
+        {
+          "id": "m1",
+          "name": "amlodipine 5 mg",
+          "status": "active",
+          "updatedAt": "2026-10-12T17:36:32.304Z"
+        }
+      ]
+    },
+    "raw.C": {
+      "_id": "kx7ebcezecay3pbh11ngrv14en8g9vjm",
+      "name": "QA Hosp Idle C",
+      "notesProcessedAt": "2026-10-12T17:36:47.339Z",
+      "tasks": [
+        {
+          "createdAt": "2026-10-12T17:36:47.339Z",
+          "done": false,
+          "id": "t1",
+          "text": "Repeat lactate"
+        }
+      ],
+      "vitals": {
+        "bp": "140/90"
+      },
+      "vitalsUpdatedAt": "2026-10-12T17:36:47.339Z",
+      "labs": [
+        {
+          "name": "Cr",
+          "value": "1.5"
+        }
+      ],
+      "labsUpdatedAt": "2026-10-12T17:36:47.339Z",
+      "medications": [
+        {
+          "id": "m1",
+          "name": "amlodipine 5 mg",
+          "status": "active",
+          "updatedAt": "2026-10-12T17:36:47.339Z"
+        }
+      ]
+    },
+    "raw.D": {
+      "_id": "m574zsg9mv9d21fg62dqfs4d9n8g9g07",
+      "name": "QA Resident Idle D",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-02T18:36:52.373Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D1-6601 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D1-6601 visit"
+        },
+        {
+          "archivedAt": "2026-10-05T18:36:52.373Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D2-6602 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D2-6602 visit"
+        },
+        {
+          "archivedAt": "2026-10-08T18:36:52.373Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D3-6603 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D3-6603 visit"
+        },
+        {
+          "archivedAt": "2026-10-11T18:36:52.373Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D4-6604 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D4-6604 visit"
+        }
+      ],
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-03T00:36:52.373Z",
+          "content": "D1-6601 visit note",
+          "dateLabel": "D1-6601",
+          "id": "pn0"
+        },
+        {
+          "addedAt": "2026-10-06T00:36:52.373Z",
+          "content": "D2-6602 visit note",
+          "dateLabel": "D2-6602",
+          "id": "pn1"
+        },
+        {
+          "addedAt": "2026-10-09T00:36:52.373Z",
+          "content": "D3-6603 visit note",
+          "dateLabel": "D3-6603",
+          "id": "pn2"
+        },
+        {
+          "addedAt": "2026-10-12T00:36:52.373Z",
+          "content": "D4-6604 visit note",
+          "dateLabel": "D4-6604",
+          "id": "pn3"
+        }
+      ],
+      "snfVisitDates": [
+        "Fri Oct 02 2026",
+        "Mon Oct 05 2026",
+        "Thu Oct 08 2026",
+        "Sun Oct 11 2026"
+      ]
+    },
+    "raw.D2": {
+      "_id": "m5768tcej2f33hgcsnmtypyy5d8g86bd",
+      "name": "QA Resident Idle D signed out",
+      "transcriptHistory": [
+        {
+          "archivedAt": "2026-10-02T18:36:55.631Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D1-6601 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D1-6601 visit"
+        },
+        {
+          "archivedAt": "2026-10-05T18:36:55.631Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D2-6602 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D2-6602 visit"
+        },
+        {
+          "archivedAt": "2026-10-08T18:36:55.631Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D3-6603 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D3-6603 visit"
+        },
+        {
+          "archivedAt": "2026-10-11T18:36:55.631Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "D4-6604 visit transcript",
+              "time": ""
+            }
+          ],
+          "label": "D4-6604 visit"
+        }
+      ],
+      "previousNotes": [
+        {
+          "addedAt": "2026-10-03T00:36:55.631Z",
+          "content": "D1-6601 visit note",
+          "dateLabel": "D1-6601",
+          "id": "pn0"
+        },
+        {
+          "addedAt": "2026-10-06T00:36:55.631Z",
+          "content": "D2-6602 visit note",
+          "dateLabel": "D2-6602",
+          "id": "pn1"
+        },
+        {
+          "addedAt": "2026-10-09T00:36:55.631Z",
+          "content": "D3-6603 visit note",
+          "dateLabel": "D3-6603",
+          "id": "pn2"
+        },
+        {
+          "addedAt": "2026-10-12T00:36:55.631Z",
+          "content": "D4-6604 visit note",
+          "dateLabel": "D4-6604",
+          "id": "pn3"
+        }
+      ],
+      "snfVisitDates": [
+        "Fri Oct 02 2026",
+        "Mon Oct 05 2026",
+        "Thu Oct 08 2026",
+        "Sun Oct 11 2026"
+      ]
+    }
+  }
+}

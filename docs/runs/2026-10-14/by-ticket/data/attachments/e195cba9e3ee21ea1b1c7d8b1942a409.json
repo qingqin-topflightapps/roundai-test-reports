@@ -1,0 +1,144 @@
+{
+  "case": "U40",
+  "title": "Medication tracker live, Hospital then Nursing Home",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail (known)",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s07-cp1-preround-panel.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7653nge0gtxgzy2xf2kx1w718g7qjf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-19/S07"
+    },
+    {
+      "file": "s07-cp2-encounter-saved.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7653nge0gtxgzy2xf2kx1w718g7qjf",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(the result message clears after a few seconds) fail: none of \"Tasks updated\" | \"Medications updated\" | \"no new tasks or medication changes\" present"
+      ],
+      "scenario": "TC-19/S07"
+    },
+    {
+      "file": "s07-cp3-tracker.md",
+      "verdict": "Fail (known)",
+      "url": "/rounding/js7653nge0gtxgzy2xf2kx1w718g7qjf",
+      "problems": [],
+      "known": [
+        "no match for /^\\s*- paragraph\\b(?![^\\n]*\u26a1)[^\\n]*furosemide[^\\n]*\\b20\\b/im (in from \"Medication Tracker\") \u2014 known: TFA-92597 R7 (risk 4, Q18): on main the Save & Extract event merge (mergeMedEventsIntoList) does not rename the row to the new dose",
+        "should not match /^\\s*- paragraph\\b(?![^\\n]*\u26a1)[^\\n]*furosemide[^\\n]*\\b40\\b/im (found \"                - paragraph [ref=f1e196]: Furosemide 40\") (in from \"Medication Tracker\") \u2014 known: TFA-92597 R7 (risk 4, Q18): on main the Save & Extract event merge (mergeMedEventsIntoList) does not rename the row to the new dose"
+      ],
+      "recorded": [
+        "(U8/U23: the tag should carry today's date ('Mon D'); that form is not a contract time token, so the date is recorded and read against the run day (spec.manual)) pass: /apixaban[^\\n]*\\n\\s*- generic[^\\n]*: \"?Held \u00b7 [A-Z][a-z]{2} \\d{1,2}\\b/i matches \"Apixaban 5 mg\\n                - generic [ref=f1e185]: Held\u2026 (in from \"Medication Tracker\")"
+      ],
+      "scenario": "TC-19/S07"
+    },
+    {
+      "file": "s07-cp4-tasks.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7653nge0gtxgzy2xf2kx1w718g7qjf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-19/S07"
+    },
+    {
+      "file": "s07-cp5-preround-after.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7653nge0gtxgzy2xf2kx1w718g7qjf",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-19/S07"
+    },
+    {
+      "file": "s08-cp1-panel.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72ttzw0nh29h9s3b6z0a9b1x8g740q",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-19/S08"
+    },
+    {
+      "file": "s08-cp2-hold.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72ttzw0nh29h9s3b6z0a9b1x8g740q",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U8/U23: the tag should carry today's date ('Mon D'); that form is not a contract time token, so the date is recorded and read against the run day (spec.manual)) pass: /metformin[^\\n]*\\n\\s*- generic[^\\n]*: \"?Held \u00b7 [A-Z][a-z]{2} \\d{1,2}\\b/i matches \"Metformin 500 mg\\n                - generic [ref=f2e331]: H\u2026 (in from \"heading \"Medications\"\" to \"heading \"Diagnostic Testing\"\")"
+      ],
+      "scenario": "TC-19/S08"
+    },
+    {
+      "file": "s08-cp3-repeat.md",
+      "verdict": "Pass",
+      "url": "/snf/jx72ttzw0nh29h9s3b6z0a9b1x8g740q",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U8/U23: the tag should carry today's date ('Mon D'); that form is not a contract time token, so the date is recorded and read against the run day (spec.manual)) pass: /metformin[^\\n]*\\n\\s*- generic[^\\n]*: \"?Held \u00b7 [A-Z][a-z]{2} \\d{1,2}\\b/i matches \"Metformin 500 mg\\n                - generic [ref=f2e331]: H\u2026 (in from \"heading \"Medications\"\" to \"heading \"Diagnostic Testing\"\")"
+      ],
+      "scenario": "TC-19/S08"
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(compare with res-cp3 (same date); oracle-same-as is not built) pass: backend res-cp2 medications[status=held].changeDate exists",
+        "(compare with res-cp2 (same date); oracle-same-as is not built) pass: backend res-cp3 medications[status=held].changeDate exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "[TC-19/S07] apixaban's Held tag shows today's date ('Mon D'): read the recorded date in the verdict against the run day",
+    "[TC-19/S07] the row checks read the line right after the drug's name line (tag) and the \u26a1 reason line; if a row check fails, read s07-cp3-tracker.md to confirm the layout before filing",
+    "[TC-19/S08] metformin's Held date is today's 'Mon D' at cp2 and the same at cp3: compare backend/res-cp2.json and backend/res-cp3.json changeDate (no re-dating)"
+  ],
+  "agent": {
+    "turns": 95,
+    "costUsd": 0.8101850000000002,
+    "durationMs": 556789,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "rejudge": {
+    "why": "TC-19 S07 cp4 scope ended at 'Encounter Complete' (button reads 'Finalizing Encounter Data\u2026' without Generate); end anchor dropped (diff checked: only that), saved evidence re-judged with QA_TARGET=dev.",
+    "original": "Fail"
+  },
+  "unit": "U40",
+  "covers": [
+    "TC-19/S07",
+    "TC-19/S08"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u40"
+}

@@ -1,0 +1,358 @@
+{
+  "ref": "TC-23/S13",
+  "mode": "scripted",
+  "kind": "harness self-test (scripted far end: the checks ran on the item's own written text)",
+  "hospital": {
+    "pass": 1,
+    "of": 1
+  },
+  "nursingHome": {
+    "pass": 2,
+    "of": 2
+  },
+  "recovered": [
+    "Z-01",
+    "Z-01",
+    "Z-01"
+  ],
+  "blocked": [],
+  "failures": [],
+  "takes": [
+    {
+      "item": "Z-01",
+      "mode": "hospital",
+      "surface": "hospital pre-round notes",
+      "verdict": {
+        "id": "Z-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "",
+        "numbersFound": []
+      },
+      "engine": "recovered (whisper-1)",
+      "rows": [
+        {
+          "_id": "j97b07cqcw9jnzys61jjp9c08h8g9fjv",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 385,
+          "providerMs": 383
+        }
+      ],
+      "take": {
+        "ids": [
+          "silence-10s"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "",
+        "added": "",
+        "tapToReadyMs": 1170,
+        "stopToTextMs": null,
+        "stopToCompletedMs": null,
+        "playedSec": 10,
+        "notices": [
+          "A local recording is waiting for transcription.",
+          "Local recording recovery failed: [CONVEX A(ai/transcribe:transcribeAudio)] QA harness: recovery transcription not run (scripted mode) Called by client"
+        ],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "Z-03",
+      "mode": "hospital",
+      "surface": "hospital pre-round notes",
+      "verdict": {
+        "id": "Z-03",
+        "pass": true,
+        "problems": [],
+        "transcript": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "numbersFound": [
+          1.8,
+          1.2,
+          5.6,
+          131,
+          1.9
+        ],
+        "numbersWanted": [
+          1.8,
+          1.2,
+          5.6,
+          131,
+          1.9
+        ],
+        "anchorCount": 1
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j97dg48wnvdwz6vyhbt6wsrz958g8sm4",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 320,
+          "providerMs": 310
+        }
+      ],
+      "take": {
+        "ids": [
+          "H-03-trailing-silence"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "added": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "tapToReadyMs": 582,
+        "stopToTextMs": 1094,
+        "stopToCompletedMs": 980,
+        "playedSec": 16.4804375,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "Z-01",
+      "mode": "nursing-home",
+      "surface": "nursing-home Pre-Round notes",
+      "verdict": {
+        "id": "Z-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "",
+        "numbersFound": []
+      },
+      "engine": "recovered (whisper-1)",
+      "rows": [
+        {
+          "_id": "j972h1ck2qp6cva5ccr3hfsyn98g8008",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 298,
+          "providerMs": 295
+        }
+      ],
+      "take": {
+        "ids": [
+          "silence-10s"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "",
+        "added": "",
+        "tapToReadyMs": 658,
+        "stopToTextMs": null,
+        "stopToCompletedMs": null,
+        "playedSec": 10,
+        "notices": [
+          "Local recording recovery failed: [CONVEX A(ai/transcribe:transcribeAudio)] QA harness: recovery transcription not run (scripted mode) Called by client",
+          "A local note recording is waiting for recovery."
+        ],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "Z-03",
+      "mode": "nursing-home",
+      "surface": "nursing-home Pre-Round notes",
+      "verdict": {
+        "id": "Z-03",
+        "pass": true,
+        "problems": [],
+        "transcript": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "numbersFound": [
+          1.8,
+          1.2,
+          5.6,
+          131,
+          1.9
+        ],
+        "numbersWanted": [
+          1.8,
+          1.2,
+          5.6,
+          131,
+          1.9
+        ],
+        "anchorCount": 1
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j971ebc1h6n3pf5zhkgpkj6dh98g8p3n",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 443,
+          "providerMs": 440
+        }
+      ],
+      "take": {
+        "ids": [
+          "H-03-trailing-silence"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "added": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "tapToReadyMs": 714,
+        "stopToTextMs": 1255,
+        "stopToCompletedMs": 1064,
+        "playedSec": 16.4804375,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "Z-01",
+      "mode": "nursing-home",
+      "surface": "nursing-home Encounter › Dictate",
+      "verdict": {
+        "id": "Z-01",
+        "pass": true,
+        "problems": [],
+        "transcript": "",
+        "numbersFound": []
+      },
+      "engine": "recovered (whisper-1)",
+      "rows": [
+        {
+          "_id": "j97d27frbhyx5p67481zz9g9ns8g9sqk",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 380,
+          "providerMs": 365
+        }
+      ],
+      "take": {
+        "ids": [
+          "silence-10s"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "",
+        "added": "",
+        "tapToReadyMs": 1016,
+        "stopToTextMs": null,
+        "stopToCompletedMs": null,
+        "playedSec": 10,
+        "notices": [
+          "Local recording recovery failed: [CONVEX A(ai/transcribe:transcribeAudio)] QA harness: recovery transcription not run (scripted mode) Called by client",
+          "A local visit recording is waiting for recovery."
+        ],
+        "headerAtTap": "Listening…"
+      }
+    },
+    {
+      "item": "Z-03",
+      "mode": "nursing-home",
+      "surface": "nursing-home Encounter › Dictate",
+      "verdict": {
+        "id": "Z-03",
+        "pass": true,
+        "problems": [],
+        "transcript": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "numbersFound": [
+          1.8,
+          1.2,
+          5.6,
+          131,
+          1.9
+        ],
+        "numbersWanted": [
+          1.8,
+          1.2,
+          5.6,
+          131,
+          1.9
+        ],
+        "anchorCount": 1
+      },
+      "engine": "gpt-live",
+      "rows": [
+        {
+          "_id": "j972r80sev265abses08xeqch58g9jr6",
+          "fn": "notes.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 4180,
+          "providerMs": 4172
+        },
+        {
+          "_id": "j97ebnxff7czah4nqjm7m1cxr58g80bm",
+          "fn": "notes.refreshCourseAndBackground",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3801,
+          "providerMs": 3798
+        },
+        {
+          "_id": "j97114tm7mwyn58wvs3hq44pv98g8z97",
+          "fn": "parsing.extractMedicationEvents",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2616,
+          "providerMs": 2614
+        },
+        {
+          "_id": "j97fdde84dbvw3wsgkxxr400y98g9saa",
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3758,
+          "providerMs": 3751
+        },
+        {
+          "_id": "j971xphfqfymrgt52xj5vkmwp18g9ph2",
+          "fn": "transcribe.prepareSession",
+          "model": "gpt-live-transcribe",
+          "ok": true,
+          "durationMs": 405,
+          "providerMs": 392
+        },
+        {
+          "_id": "j978k4anp2njrnepgzpfhtb3yx8g817q",
+          "fn": "notes.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 4468,
+          "providerMs": 4466
+        },
+        {
+          "_id": "j97439ejp6c4hrwkesmekxx4j18g9smy",
+          "fn": "notes.refreshCourseAndBackground",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3780,
+          "providerMs": 3769
+        },
+        {
+          "_id": "j974vrjkdqray0pre03kpykb3d8g8krw",
+          "fn": "parsing.extractMedicationEvents",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2679,
+          "providerMs": 2676
+        }
+      ],
+      "take": {
+        "ids": [
+          "H-03-trailing-silence"
+        ],
+        "ok": true,
+        "before": "",
+        "after": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "added": "Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9.",
+        "tapToReadyMs": 810,
+        "stopToTextMs": 1015,
+        "stopToCompletedMs": 964,
+        "playedSec": 16.4804375,
+        "notices": [],
+        "headerAtTap": "Listening…"
+      }
+    }
+  ],
+  "at": "2026-10-14T07:30:44.728Z"
+}

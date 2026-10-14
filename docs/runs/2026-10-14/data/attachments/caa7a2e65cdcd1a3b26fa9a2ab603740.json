@@ -1,0 +1,17 @@
+{
+  "TC-11/S27": {
+    "status": "passed",
+    "detail": "All six templates offered on main (H&P, SOAP progress, Consult note, Discharge summary; SNF admission, SNF follow-up), each on a fresh chart: exactly one line for today, '<Oct 14>: Dyspnea and pulmonary exam improved' / 'Visit 1 · Oct 14: Participating in therapy, appetite improved', no '⏳', no 'Encounter done'; noteTemplate stored as picked. generateNote and every follow-up answered at the socket, any other ai/* refused: no AI call reached the backend.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc11-s27/hospital-H_P.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc11-s27/hospital-Discharge_summary.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc11-s27/snf-SNF_admission.json",
+      "runs/2026-10-14-local/newspec-b/evidence/tc11-s27/snf-SNF_follow_up.json"
+    ],
+    "envReloads": {
+      "tests": 6,
+      "reloadsTotal": 0,
+      "note": "error-screen reloads by the harness, per test run (evidence/_env); 0 everywhere"
+    }
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "ref": "TC-12/S29",
+  "method": "CODEREVIEW",
+  "status": "known-gap",
+  "verdict": "fail",
+  "agreed": true,
+  "why": "both runs agree",
+  "question": "Where is the Important Points retention window defined for Hospital and for Nursing Home, what is its value, and how would it be changed (a code edit and deploy, a Convex environment variable, or a settings row)?",
+  "rule": {
+    "pass": "the window is read from configuration (a Convex environment variable or a settings row) that changes without a code deploy, and it is 12 h in both modes",
+    "fail": "a code constant (named or literal), a value other than 12 h, or no Nursing Home window",
+    "basis": [
+      "The window is read from configuration (a Convex environment variable or a settings row) and can be changed without a code deploy; its value is 12 h in both modes"
+    ]
+  },
+  "newFindings": [],
+  "knownGapsConfirmed": [
+    {
+      "run": 1,
+      "label": "known:ip-hospital-18h",
+      "claim": "The Hospital Important Points window is 18 h, not 12 h.",
+      "at": "apps/web/convex/lib/lifecycle.ts:10",
+      "gap": "ip-hospital-18h"
+    },
+    {
+      "run": 1,
+      "label": "known:ip-no-nh-window",
+      "claim": "SNF_RETENTION has no Important Points entry, and nothing in lifecycle.ts clears Nursing Home Important Points.",
+      "at": "apps/web/convex/lib/lifecycle.ts:30",
+      "gap": "ip-no-nh-window"
+    },
+    {
+      "run": 2,
+      "label": "known:ip-hospital-18h",
+      "claim": "The Hospital Important Points window is a TypeScript code constant of 18 h, not 12 h.",
+      "at": "apps/web/convex/lib/lifecycle.ts:10",
+      "gap": "ip-hospital-18h"
+    },
+    {
+      "run": 2,
+      "label": "known:ip-no-nh-window",
+      "claim": "SNF_RETENTION has no importantPoints entry, and nothing in the SNF lifecycle clears Nursing Home Important Points.",
+      "at": "apps/web/convex/lib/lifecycle.ts:30",
+      "gap": "ip-no-nh-window"
+    }
+  ],
+  "pendingOn": [
+    "Q1",
+    "Q12"
+  ],
+  "againstThen": [],
+  "answers": [
+    {
+      "run": 1,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "The Hospital Important Points window is set in code, as `importantPoints: 18 * HOUR` inside the TypeScript const `HOSPITAL_RETENTION` in apps/web/convex/lib/lifecycle.ts at line 10. The Hospital lifecycle purge reads it at line 138 and empties `importantPoints` and `importantPointsDraft` when it runs out. No Convex environment variable or settings row feeds it: no `process.env` retention or window lookup exists under convex/. Changing it takes a code edit and a deploy.\n\nNursing Home has no window at all. `SNF_RETENTION` (lines 30–38) has no `importantPoints` entry, and nothing in the Nursing Home lifecycle in lifecycle.ts clears Important Points.\n\nThe verdict is fail because the Hospital value of 18 h instead of 12 h is a recorded gap that waits on no question (known:ip-hospital-18h, TFA-92590 AC 6 / TFA-94699). Two other failing points are held back for open questions. The missing Nursing Home window (known:ip-no-nh-window) waits on Q1. Whether a named code constant counts as a configuration value waits on Q12."
+    },
+    {
+      "run": 2,
+      "verdict": "fail",
+      "claimed": "fail",
+      "reason": null,
+      "answer": "The Hospital window is set in apps/web/convex/lib/lifecycle.ts as `HOSPITAL_RETENTION.importantPoints: 18 * HOUR`, a TypeScript `as const` object. hospitalLifecyclePatch reads it to clear importantPoints and importantPointsDraft once 18 h have passed since the later of ptsEditedAt and notesProcessedAt. No code in convex/ reads a Convex environment variable or a settings row for this window, so changing it takes a code edit and a redeploy. Nursing Home has no window at all: SNF_RETENTION has no importantPoints entry, and the SNF lifecycle code never touches importantPoints, so Nursing Home points are never cleared by time. The verdict is fail because the Hospital value is 18 h, not 12 h (known:ip-hospital-18h, TFA-92590 AC 6 / TFA-94699), and that gap waits on no open question. The missing Nursing Home window is the recorded gap known:ip-no-nh-window, and its verdict waits on Q1. Whether a named code constant counts as a configuration value waits on Q12; the oracle records it as Fail pending Q12."
+    }
+  ],
+  "findings": [
+    {
+      "run": 1,
+      "checked": [
+        {
+          "claim": "The Hospital Important Points window is 18 h, not 12 h.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 10,
+          "quote": "importantPoints: 18 * HOUR,",
+          "supports": "fail",
+          "label": "known:ip-hospital-18h",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The window is a named TypeScript constant compiled into the backend, not an environment variable or a settings row. Changing it needs a code edit and a deploy.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 8,
+          "quote": "const HOSPITAL_RETENTION = {",
+          "supports": "fail",
+          "label": "pending:Q12",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Hospital purge reads the constant directly and clears the points on the server, as a real deletion of the array and the draft.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 138,
+          "quote": "HOSPITAL_RETENTION.importantPoints,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SNF_RETENTION has no Important Points entry, and nothing in lifecycle.ts clears Nursing Home Important Points.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 30,
+          "quote": "const SNF_RETENTION = {",
+          "supports": "fail",
+          "label": "known:ip-no-nh-window",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    },
+    {
+      "run": 2,
+      "checked": [
+        {
+          "claim": "The Hospital Important Points window is a TypeScript code constant of 18 h, not 12 h.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 10,
+          "quote": "importantPoints: 18 * HOUR,",
+          "supports": "fail",
+          "label": "known:ip-hospital-18h",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The retention windows are a hard-coded `as const` object in source, not read from an env var or a settings row, so changing them needs a code deploy.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 8,
+          "quote": "const HOSPITAL_RETENTION = {",
+          "supports": "fail",
+          "label": "pending:Q12",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "The Hospital purge uses the constant to clear points once the 18 h window has passed since the later of ptsEditedAt and notesProcessedAt.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 137,
+          "quote": "Math.max(pointsEditedAt || 0, processedAt || 0),\n        HOSPITAL_RETENTION.importantPoints,",
+          "supports": "context",
+          "label": "context",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        },
+        {
+          "claim": "SNF_RETENTION has no importantPoints entry, and nothing in the SNF lifecycle clears Nursing Home Important Points.",
+          "file": "apps/web/convex/lib/lifecycle.ts",
+          "line": 30,
+          "quote": "const SNF_RETENTION = {\n  preRound: 12 * HOUR,\n  encounter: 12 * HOUR,",
+          "supports": "fail",
+          "label": "known:ip-no-nh-window",
+          "check": {
+            "ok": true,
+            "kind": "code",
+            "support": true,
+            "reason": null
+          }
+        }
+      ],
+      "discarded": []
+    }
+  ],
+  "physicianImpact": "In Hospital mode, Important Points stay up to 18 h instead of 12 h, so last shift's points can still show on the next round. In Nursing Home mode, points never expire. Changing either window needs a code release. / In Hospital mode, Important Points stay on the patient card for 18 h instead of 12 h, so yesterday's points can still show on the next morning's round. In Nursing Home mode they never expire by time. An admin cannot shorten the window without a code release.",
+  "openQuestions": [
+    "Q12: does a named code constant (HOSPITAL_RETENTION.importantPoints) count as a 'configuration value' under UAT 3.6? Following the oracle, this is recorded as pending, not decided here.",
+    "Q1: should Nursing Home have its own 12 h Important Points window? SNF_RETENTION has none today.",
+    "Q12: does a named code constant (HOSPITAL_RETENTION) count as a 'configuration value' under UAT 3.6? The oracle records it as Fail pending Q12.",
+    "Q1: should Nursing Home have a 12 h Important Points window? There is none today (SNF_RETENTION has no entry)."
+  ],
+  "notDecidableByCode": [
+    "Whether the product owner accepts a named code constant as meeting 'configuration value, not hard-coded' (Q12).",
+    "The intended Nursing Home Important Points behaviour (Q1).",
+    "Whether the business accepts a named code constant as configuration (Q12).",
+    "The intended Nursing Home Important Points policy (Q1)."
+  ],
+  "diffNeedsApproval": false,
+  "signoff": false,
+  "build": "e02167f",
+  "reviewer": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "runs": 2,
+    "tools": "Read,Grep,Glob",
+    "permissionMode": "dontAsk",
+    "safeMode": true,
+    "cwd": "round-companion-wt-qa (read-only)",
+    "deniedReadPaths": [
+      "**/.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.p12",
+      "**/*.keystore",
+      "**/*.jks",
+      "**/.convex/**",
+      "**/.convex.*/**",
+      "**/*.sqlite*",
+      "**/export.zip",
+      "**/state/**",
+      "//**/.env*",
+      "//**/*.pem",
+      "//**/*.key",
+      "//**/*.p12",
+      "//**/*.keystore",
+      "//**/*.jks",
+      "//**/.convex/**",
+      "//**/.convex.*/**",
+      "//**/*.sqlite*",
+      "//**/export.zip",
+      "//**/state/**",
+      "/<roundai>/tools/qa-agent/**",
+      "/<roundai>/.agents/**",
+      "/<roundai>/.claude/**",
+      "/<roundai>/docs/**",
+      "/<roundai>/round-companion/**",
+      "/<roundai>/round-companion-main/**",
+      "/<roundai>/round-companion-wt-94700/**",
+      "/<roundai>/round-companion-wt-audit/**",
+      "/<roundai>/round-companion-wt-e2efix/**",
+      "/<roundai>/round-companion-wt-infra/**",
+      "/<roundai>/round-companion-wt-native/**",
+      "/<roundai>/round-companion-wt-notes/**",
+      "/<roundai>/round-companion-wt-ssm/**",
+      "/<roundai>/round-companion-wt-vision/**",
+      "/<roundai>/tools/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent-tests/**",
+      "/<roundai>/round-companion-wt-qa/apps/web/qa-agent.config.ts"
+    ],
+    "promptHash": "a4f78a14a9f7"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 22901,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.0978818,
+      "turns": 7,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    },
+    {
+      "run": 2,
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 24285,
+      "error": null,
+      "models": [
+        "claude-opus-5-5"
+      ],
+      "costUsd": 0.1130324,
+      "turns": 6,
+      "permissionDenials": 0,
+      "badCitations": 0,
+      "weakOrContextOnly": 0,
+      "secretsRedacted": {},
+      "rawWithheld": null
+    }
+  ],
+  "at": "2026-10-14T07:03:00.365Z"
+}

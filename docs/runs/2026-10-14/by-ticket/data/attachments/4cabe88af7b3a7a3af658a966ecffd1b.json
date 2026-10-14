@@ -1,0 +1,39 @@
+{
+  "OAT-02/S14": {
+    "ref": "OAT-02/S14",
+    "method": "CODEREVIEW",
+    "secondary": "STATIC",
+    "status": "passed",
+    "verdict": "pass",
+    "agreed": true,
+    "why": "both runs agree",
+    "newFindings": [],
+    "knownGapsConfirmed": [],
+    "detail": "The code passes. apps/web/convex has only two places that call sendEmail (the shared helper in convex/email.ts, which sends through SES or the Specode relay). The first is deliverSignInOtp in convex/lib/emailOtpAuth.ts:40. It receives only {email, otp, type} and refuses any type other than \"sign-in\". Its subject is \"Your Round Companion sign-in code\". The body holds only the code, the line \"It expires in 5 minutes.\" and the line \"If you did not request this code, you can ignore this email.\" It has no name, room, MRN, diagnosis or link. The second is sendResetPassword in convex/auth_provider_extension.ts:21, the generated migration hook. It is switched off: convex/auth.ts spreads ...emailOtpAuthOptions after ...migrationAuth.options, so emailAndPassword becomes { enabled: false }, and disabledPaths blocks the password reset routes (/request-password-reset, /reset-password, /forget-password/email-otp, /email-otp/reset-password and others). The plugin list is the empty migration plugins, emailOTP, convex and crossDomain, and none of these sends any other email. A grep found no third place that sends email. The scenario defers to no open question and touches no recorded gap. Whether a code-only email is acceptable (Q9) and whether delivery uses TLS (S22) are outside this verdict.",
+    "detailRun2": "The backend at e02167f calls sendEmail from only two places. The first is deliverSignInOtp in convex/lib/emailOtpAuth.ts:40. It takes only {email, otp, type}, refuses any type other than \"sign-in\", and sends the subject \"Your Round Companion sign-in code\". The body holds only the code, \"It expires in 5 minutes.\" and \"If you did not request this code, you can ignore this email.\" It carries no name, room, MRN, diagnosis or link. The second is sendResetPassword in convex/auth_provider_extension.ts:21. That hook is never active. In convex/auth.ts, createAuthOptions spreads migrationAuth.options first and emailOtpAuthOptions after it, so `emailAndPassword: { enabled: false }` replaces the extension's whole emailAndPassword object, including sendResetPassword. All reset and password paths are also in disabledPaths. sendEmail (convex/email.ts) is the only entry point to SES or the relay, and sendSesEmail is called only from email.ts (and a unit test). No other code in convex/ sends email. Everything the oracle requires holds, so the verdict is pass. Delivery over TLS (S22) and whether a code-only email is acceptable (Q9) are outside this verdict.",
+    "openQuestions": [
+      "Q9 (whether a code-only sign-in email is acceptable) does not decide this verdict.",
+      "The scenario's Then and the question agree; I found no difference between them.",
+      "Q9: whether a code-only sign-in email is acceptable is left to Q9 and does not affect this verdict."
+    ],
+    "notDecidableByCode": [
+      "Whether the email is delivered over TLS (S22, CONFIG): which provider runs in production (AUTH_EMAIL_PROVIDER=ses or SPECODE_EMAIL_MODE=platform) is set by the environment.",
+      "Whether better-auth's runtime really drops the replaced sendResetPassword and honours disabledPaths depends on the library's behaviour, not on this repository.",
+      "Whether email is delivered over TLS (S22, a configuration check).",
+      "Whether the deployed environment variables (AUTH_EMAIL_PROVIDER / SPECODE_EMAIL_MODE) choose SES or the relay in production."
+    ],
+    "checkedFindings": [
+      9,
+      9
+    ],
+    "discardedFindings": [
+      0,
+      0
+    ],
+    "costUsd": 0.3919112,
+    "evidence": [
+      "runs/2026-10-14-local/code-review/OAT-02-S14.json",
+      "runs/2026-10-14-local/code-review/raw/OAT-02-S14.raw.json"
+    ]
+  }
+}

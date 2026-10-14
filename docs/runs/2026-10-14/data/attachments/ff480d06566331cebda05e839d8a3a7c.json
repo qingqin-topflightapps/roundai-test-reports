@@ -1,0 +1,113 @@
+{
+  "ref": "TC-03/S02",
+  "title": "TC-03/S02 Hospital sort on a filtered list: room (untouched), name, status, re-filter, back to room",
+  "dataset": "lists",
+  "target": "dev",
+  "at": "2026-10-14T08:35:20.954Z",
+  "cells": [
+    {
+      "name": "Hospital: the filter lists the four rows",
+      "kind": "judged",
+      "ok": true,
+      "detail": 4
+    },
+    {
+      "name": "Hospital: sort control starts on room (U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "room"
+    },
+    {
+      "name": "Hospital: untouched sort = room order 2, 3, 7, 12 (numeric, U3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Hosp Sort Charlie",
+          "Hosp Sort Delta",
+          "Hosp Sort Bravo",
+          "Hosp Sort Alpha"
+        ]
+      }
+    },
+    {
+      "name": "Hospital: name sort A-Z",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Hosp Sort Alpha",
+          "Hosp Sort Bravo",
+          "Hosp Sort Charlie",
+          "Hosp Sort Delta"
+        ]
+      }
+    },
+    {
+      "name": "Hospital: status sort: Delta, Bravo, Alpha, Charlie (app's STATUS_RANK; order unconfirmed)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Hosp Sort Delta",
+          "Hosp Sort Bravo",
+          "Hosp Sort Alpha",
+          "Hosp Sort Charlie"
+        ]
+      },
+      "ref": "Q4"
+    },
+    {
+      "name": "Hospital: status sort kept after re-filtering",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Hosp Sort Delta",
+          "Hosp Sort Bravo",
+          "Hosp Sort Alpha",
+          "Hosp Sort Charlie"
+        ]
+      },
+      "ref": "Q4"
+    },
+    {
+      "name": "Hospital: sort choice kept after re-filtering",
+      "kind": "judged",
+      "ok": true,
+      "detail": "status"
+    },
+    {
+      "name": "Hospital: name sort again",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Hosp Sort Alpha",
+          "Hosp Sort Bravo",
+          "Hosp Sort Charlie",
+          "Hosp Sort Delta"
+        ]
+      }
+    },
+    {
+      "name": "Hospital: room sort again",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "Hosp Sort Charlie",
+          "Hosp Sort Delta",
+          "Hosp Sort Bravo",
+          "Hosp Sort Alpha"
+        ]
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-03-S02-room-again.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-03-S02-room-again.png": 0
+  }
+}
