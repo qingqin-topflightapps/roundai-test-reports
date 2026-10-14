@@ -55,7 +55,7 @@
 
     
     <script>
-      window.allureReportOptions = {"id":"awesome","reportName":"Round Companion UAT — dev + local, by bug","logo":"","theme":"light","reportLanguage":"en","createdAt":1791983353409,"reportUuid":"da8b1582-bd94-4971-b49f-007112caf133","groupBy":["Bug level","Bug","feature"],"cacheKey":"1791983353409","ci":{"type":"local","detected":true,"repoName":"","jobUid":"local","jobUrl":"","jobName":"","jobRunUid":"35297fdc-a802-4455-b978-70b4f82b1854","jobRunUrl":"","jobRunName":"","jobRunBranch":"","pullRequestUrl":"","pullRequestName":""},"executor":{"name":"RoundAI QA agent","type":"dev+local","buildName":"2026-10-14-dev + 2026-10-14-local","reportName":"Round Companion UAT — dev 2026-10-14-dev + local 2026-10-14-local, by UAT item"},"runSummary":{"start":1791924562953,"stop":1791983304030,"duration":58741077},"runSummaryByEnv":{"default":{"start":1791924562953,"stop":1791983304030,"duration":58741077}},"layout":"base","allureVersion":"3.20.1","sections":["charts","timeline"],"defaultSection":""}
+      window.allureReportOptions = {"id":"awesome","reportName":"Round Companion UAT — dev + local, by bug","logo":"","theme":"light","reportLanguage":"en","createdAt":1791985513180,"reportUuid":"b966d829-6c89-4043-ac77-257d9cff2b63","groupBy":["Bug level","Bug","feature"],"cacheKey":"1791985513180","ci":{"type":"local","detected":true,"repoName":"","jobUid":"local","jobUrl":"","jobName":"","jobRunUid":"d55e8e06-c867-455e-beff-a81fcb2db453","jobRunUrl":"","jobRunName":"","jobRunBranch":"","pullRequestUrl":"","pullRequestName":""},"executor":{"name":"RoundAI QA agent","type":"dev+local","buildName":"2026-10-14-dev + 2026-10-14-local","reportName":"Round Companion UAT — dev 2026-10-14-dev + local 2026-10-14-local, by UAT item"},"runSummary":{"start":1791924562953,"stop":1791985462189,"duration":60899236},"runSummaryByEnv":{"default":{"start":1791924562953,"stop":1791985462189,"duration":60899236}},"layout":"base","allureVersion":"3.20.1","sections":["charts","timeline"],"defaultSection":""}
     </script>
 <style data-roundai-i18n>
 .rc-lang{position:relative;display:inline-flex;align-items:center;flex:none;box-sizing:border-box;height:24px;margin-left:4px;border:1px solid var(--color-border-default,#d0d4dc);border-radius:4px;background:var(--color-control-bg-ghost,transparent);color:var(--color-text-primary,#1f2328);font-family:var(--font-family,system-ui,sans-serif);font-size:12px;line-height:1}
@@ -975,7 +975,14 @@ function chipCounts(data, state) {
     const meta = document.createElement("span");
     meta.className = "rc-bugs-meta";
     const t = s.byType;
-    meta.textContent = `new ${(t["new"] || 0) + (t["new (partly known)"] || 0)} · known ${t["known"] || 0} · accessibility ${t["accessibility"] || 0} · decisions ${s.decisions}${s.excluded ? ` · excluded (ticket in progress) ${s.excluded}` : ""}`;
+    meta.textContent = [
+      `new ${(t["new"] || 0) + (t["new (partly known)"] || 0)}`,
+      `known ${t["known"] || 0}`,
+      ...(t["accessibility"] ? [`accessibility ${t["accessibility"]}`] : []),
+      `decisions ${s.decisions}`,
+      ...(s.suggestions ? [`suggestions ${s.suggestions}`] : []),
+      ...(s.excluded ? [`excluded (ticket in progress) ${s.excluded}`] : []),
+    ].join(" · ");
     card.appendChild(meta);
   }
   function mount() {
@@ -1008,7 +1015,7 @@ function chipCounts(data, state) {
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
   else start();
-})({"views":[["uat","By UAT"],["ticket","By ticket"],["bug","By bug"]],"current":"bug","links":{"uat":".././","ticket":"../by-ticket/","bug":"../by-bug/"},"summary":{"byLevel":{"P0":5,"P1":15,"P2":11,"P3":1},"byType":{"new":15,"known":11,"new (partly known)":1,"accessibility":5},"bugs":32,"decisions":9,"excluded":6},"levelTag":"Bug level"});})();
+})({"views":[["uat","By UAT"],["ticket","By ticket"],["bug","By bug"]],"current":"bug","links":{"uat":".././","ticket":"../by-ticket/","bug":"../by-bug/"},"summary":{"byLevel":{"P0":5,"P1":15,"P2":7},"byType":{"new":15,"known":11,"new (partly known)":1},"bugs":27,"decisions":9,"excluded":6,"suggestions":5},"levelTag":"Bug level"});})();
 </script>
 </head>
 <body>
