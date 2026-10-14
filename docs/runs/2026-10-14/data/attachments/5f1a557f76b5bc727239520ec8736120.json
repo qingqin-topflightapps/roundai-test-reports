@@ -1,0 +1,17 @@
+{
+  "TC-16/S02": {
+    "status": "passed",
+    "replacesLaneA": true,
+    "ranAt": "2026-10-14T14:22:00Z",
+    "title": "Hospital: a new day's recording archives yesterday's automatically (no manual step), and today's lines survive a reload",
+    "detail": "New spec written 2026-10-14 to replace Tim's two out-of-date tests (they wait for the line while recording; since 7f3907f the transcript shows only after Stop, and the Stop starts Generate by itself). Same checks, read after the Stop; speech recogniser and every model action mocked (no live AI). (a) yesterday's two lines are one 'Sep 24 (prior)' session with speaker and time kept; today's line is the only current line; the Generate after the Stop ran once and did not archive again. (b) the physician's line is stored as Dr and the patient's as Pt, and both keep their labels after a reload. 6/6 judged checks pass, 3 runs (4/4 on repeat). Recorded only: after a Stop and its Generate, the speaker switch is back on Physician for the next recording.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s02-a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s02-b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s02-a-encounter-after-generate.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s02-b-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/reports/tc16-s02-new-day-archive.json"
+    ],
+    "method": "PW"
+  }
+}

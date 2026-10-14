@@ -1,0 +1,112 @@
+{
+  "name": "tc16-s17-a",
+  "at": "2026-10-14T14:45:16.848Z",
+  "checks": [
+    {
+      "id": "(a) yesterday's two lines are one '(prior)' row",
+      "ok": true,
+      "detail": "[{\"entries\":[{\"speaker\":\"Dr\",\"text\":\"QA16-MID-1 Any pain before bed? aa35k\",\"time\":\"11:50 PM\"},{\"speaker\":\"Pt\",\"text\":\"QA16-MID-2 Only a little. aa35k\",\"time\":\"11:51 PM\"}],\"label\":\"Oct 13 (prior)\"}]"
+    },
+    {
+      "id": "(a) 'Most Recent' holds only today's line",
+      "ok": true,
+      "detail": "[{\"speaker\":\"Dr\",\"text\":\"QA16-MID-3 Rest now, we will check at six. aa35k\",\"time\":\"12:05 AM\"}]"
+    },
+    {
+      "id": "(a) no line is listed twice",
+      "ok": true,
+      "detail": "QA16-MID-1×1, QA16-MID-2×1, QA16-MID-3×1"
+    },
+    {
+      "id": "(a) the panel shows no three-line row",
+      "ok": true,
+      "detail": "Oct 13 (prior) 2 lines | Most Recent 1 lines"
+    },
+    {
+      "id": "(a2) a diverging resend: A and B are listed in both rows",
+      "ok": false,
+      "detail": "A×2 B×2; Oct 13 (prior) 2 lines | Most Recent 3 lines",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "patient1": {
+      "panel": [
+        "Oct 13 (prior) 2 lines",
+        "Most Recent 1 lines"
+      ],
+      "server": {
+        "transcript": [
+          {
+            "speaker": "Dr",
+            "text": "QA16-MID-3 Rest now, we will check at six. aa35k",
+            "time": "12:05 AM"
+          }
+        ],
+        "history": [
+          {
+            "entries": [
+              {
+                "speaker": "Dr",
+                "text": "QA16-MID-1 Any pain before bed? aa35k",
+                "time": "11:50 PM"
+              },
+              {
+                "speaker": "Pt",
+                "text": "QA16-MID-2 Only a little. aa35k",
+                "time": "11:51 PM"
+              }
+            ],
+            "label": "Oct 13 (prior)"
+          }
+        ],
+        "encounterNotes": "",
+        "transcriptDate": "Wed Oct 14 2026"
+      }
+    },
+    "patient2": {
+      "panel": [
+        "Oct 13 (prior) 2 lines",
+        "Most Recent 3 lines"
+      ],
+      "server": {
+        "transcript": [
+          {
+            "speaker": "Dr",
+            "text": "QA16-DIV-A How was the evening? aa35k",
+            "time": "10:00 PM"
+          },
+          {
+            "speaker": "Pt",
+            "text": "QA16-DIV-B Quiet. aa35k",
+            "time": "10:02 PM"
+          },
+          {
+            "speaker": "Dr",
+            "text": "QA16-DIV-C Good night. aa35k",
+            "time": "12:10 AM"
+          }
+        ],
+        "history": [
+          {
+            "entries": [
+              {
+                "speaker": "Dr",
+                "text": "QA16-DIV-A How was the evening? aa35k",
+                "time": "10:00 PM"
+              },
+              {
+                "speaker": "Pt",
+                "text": "QA16-DIV-B Quiet. aa35k",
+                "time": "10:01 PM"
+              }
+            ],
+            "label": "Oct 13 (prior)"
+          }
+        ],
+        "encounterNotes": "",
+        "transcriptDate": "Wed Oct 14 2026"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "OAT-05/S01": {
+    "ref": "OAT-05/S01",
+    "method": "STATIC",
+    "status": "passed",
+    "detail": "Local half: vite build of e02167f (git archive, scratch outDir, no source maps emitted: 0 .map files) scanned: 7 files, 999943 bytes. Key/credential pattern hits: none; user:pass@ in a URL: none. Server-secret canaries baked: none (canary values set for 15 server env names at build time). Baked VITE values: VITE_CONVEX_URL, VITE_CONVEX_SITE_URL; whole import.meta.env object baked: no. Env NAMES that appear without a value: none. High-entropy quoted literals (a key with no known prefix): none. Source references (computed from apps/web/src at the commit, client-env-refs.json): import.meta.env.VITE_CONVEX_SITE_URL, import.meta.env.VITE_CONVEX_URL, import.meta.env.VITE_HIDE_HIPAA_BANNER, import.meta.env.VITE_SHOW_ROUNDING_SHEET; vite define keys __APP_VERSION__, __APP_COMMIT__. Deployed half (2026-10-15): the dev web bundle (index-CmEHJwvx.js, one chunk, 940 KB, plus CSS) scanned with the same rules: no key or credential pattern, no high-entropy literal, no source map served (404) and no sourceMappingURL; hosts referenced: api.openai.com (the live-dictation call with the short-lived credential), the dev Convex URLs, docs and library links.",
+    "scope": "Local build of the commit with placeholder env, and the deployed dev web bundle (public, fetched read-only).",
+    "halves": {
+      "localBuild": "pass",
+      "deployedBundle": "pass (2026-10-15 00:12 JST: the dev web bundle, index.html + 1 JS + 1 CSS, 991 KB, fetched read-only from the public dev origin; 0 key-pattern hits, 0 high-entropy literals, no user:pass URL, the .map returns 404 and no sourceMappingURL)"
+    },
+    "evidence": [
+      "runs/2026-10-14-local/code-review/static/scan-web.json",
+      "runs/2026-10-14-local/code-review/static/builds.json",
+      "runs/2026-10-14-local/code-review/static/build-web.log",
+      "runs/2026-10-14-local/code-review/static/client-env-refs.json",
+      "runs/2026-10-14-local/code-review/OAT-05-S01.json",
+      "runs/2026-10-14-local/code-review/static/scan-dev-web.json"
+    ],
+    "secondary": "CODEREVIEW"
+  }
+}

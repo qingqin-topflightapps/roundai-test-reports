@@ -1,0 +1,12 @@
+{
+  "OAT-05/S12": {
+    "ref": "OAT-05/S12",
+    "method": "UNIT",
+    "status": "passed",
+    "detail": "e2e/unit/live-session-action.unit.ts run locally under e2e/unit.config.ts (in process, OpenAI mocked, no deployment): 11/11 pass, including the four this case names: anonymous session creation is refused before contacting OpenAI; the backend fixes the model and returns only an ephemeral credential with safe audit metadata; a provider failure cannot leak credentials or raw request details; under the live route a saved recording is transcribed by the batch model and logged as such. Code read: convex/ai/transcribe.ts:75 sets expires_after 60 s from created_at and returns only value + expiresAt (:96-99); the error text carries only an HTTP status (:101-109); the client refuses an expired secret before calling OpenAI (src/lib/speech/liveSession.ts:388). That check uses the device clock, so a device 60 s or more fast refuses every live session (the dictation half of B33).",
+    "scope": "Local, main e02167f, review of TFA-94423 / TFA-94700 (2026-10-15 00:09 JST). No model call (tripwire clean).",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/oat05-s12/unit-results.json"
+    ]
+  }
+}

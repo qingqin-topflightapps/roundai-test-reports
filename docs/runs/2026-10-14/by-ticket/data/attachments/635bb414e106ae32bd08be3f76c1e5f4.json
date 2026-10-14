@@ -1,0 +1,120 @@
+{
+  "name": "tc16-s02-a",
+  "at": "2026-10-14T14:22:14.947Z",
+  "checks": [
+    {
+      "id": "yesterday's two lines are one '(prior)' session, speaker and time kept",
+      "ok": true,
+      "detail": "[{\"entries\":[{\"speaker\":\"Dr\",\"text\":\"Any chest pain overnight 01jbc0\",\"time\":\"09:12 AM\"},{\"speaker\":\"Pt\",\"text\":\"No, I slept through 01jbc0\",\"time\":\"09:13 AM\"}],\"label\":\"Sep 24 (prior)\"}]"
+    },
+    {
+      "id": "today's line is the only current line, with a time",
+      "ok": true,
+      "detail": "[{\"speaker\":\"Dr\",\"text\":\"Your breathing sounds clearer today 01jbc0\",\"time\":\"11:22 PM\"}]"
+    },
+    {
+      "id": "the Generate after the Stop ran once and did not archive again",
+      "ok": true,
+      "detail": "generateNote calls 1"
+    }
+  ],
+  "data": {
+    "stored": {
+      "note": "Assessment\n\nBreathing clearer 01jbc0",
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "Your breathing sounds clearer today 01jbc0",
+          "time": "11:22 PM"
+        }
+      ],
+      "history": [
+        {
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "Any chest pain overnight 01jbc0",
+              "time": "09:12 AM"
+            },
+            {
+              "speaker": "Pt",
+              "text": "No, I slept through 01jbc0",
+              "time": "09:13 AM"
+            }
+          ],
+          "label": "Sep 24 (prior)"
+        }
+      ]
+    },
+    "calls": [
+      {
+        "udfPath": "time:now",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "time:now",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:applyLifecycle",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "access:logChartAccess",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:applyLifecycle",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "usage:record",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "usage:record",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      }
+    ]
+  }
+}

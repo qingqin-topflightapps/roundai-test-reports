@@ -1,0 +1,15 @@
+{
+  "TC-16/S18": {
+    "status": "failed",
+    "ranAt": "2026-10-14T14:45:00Z",
+    "title": "Wrong device date (3.8), seeded: a phone one day ahead records a line between two writes from a correct device",
+    "detail": "New local spec: the three rounding.update writes the two clients send (device A today [A1, A2]; device B, clock a day ahead, tomorrow [B1]; device A today [A1, A2, A3]), then the Encounter tab on a correctly clocked browser. FAIL, 0/3, exactly as the code reading predicted: the panel shows 'Oct 14 (prior) 2 lines', 'Oct 15 (prior) 1 lines' (tomorrow) and 'Most Recent 3 lines'; A1 and A2 are listed twice; B1 is kept. UAT 3.8 asks for one session with each line once and no row dated tomorrow.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s18.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s18-encounter.png",
+      "runs/2026-10-14-local/newspec-c/reports/tc16-day-boundaries.json"
+    ],
+    "method": "PW",
+    "productIssue": "A phone whose clock is a day ahead files its bedside line in a row dated tomorrow, on the shared record every device sees; the next write from a correctly clocked device then archives that row and lists the lines recorded before it twice. The transcript archive trusts the device date (useEncounterCapture.ts transcriptDate = device toDateString; transcriptArchive.ts). Breaks UAT 3.8 (server time; one device set to the wrong date shows the same state) and U11 (no line listed twice)."
+  }
+}

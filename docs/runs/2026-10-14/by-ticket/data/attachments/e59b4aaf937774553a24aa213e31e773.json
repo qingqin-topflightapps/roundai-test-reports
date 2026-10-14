@@ -1,0 +1,15 @@
+{
+  "TC-16/S17": {
+    "status": "passed",
+    "ranAt": "2026-10-14T14:45:00Z",
+    "title": "Day boundaries, seeded: a new-day write that resends yesterday's lines lists none twice; a diverging resend and late-evening row dates are recorded",
+    "detail": "New local spec (API writes the clients send, then the Encounter tab read on a correctly clocked browser; no model call, tripwire clean). (a) judged, 4/4: yesterday's M1, M2 are one 'Oct 13 (prior)' row, Most Recent holds only M3, no line twice, no three-line row. Recorded only: (a2) a resend that differs from yesterday's in one time string is stored as sent, so A and B are listed in both rows (A×2, B×2) — a human judges this against U11; (c) late-evening typed notes rotate into rows dated by the server's UTC day, not the physician's Eastern day: Hospital typed 20:30 ET Oct 12 → 'Oct 13 · Encounter notes'; Nursing Home typed 20:30 ET Oct 13 → 'Oct 14 · Visit notes' (Q9, D10).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s17-a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s17-c.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s17-a-patient1.png",
+      "runs/2026-10-14-local/newspec-c/reports/tc16-day-boundaries.json"
+    ],
+    "method": "PW"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "tc16-s17-c",
+  "at": "2026-10-14T14:45:18.746Z",
+  "checks": [
+    {
+      "id": "(c) Hospital: the rotated row is dated by the physician's Eastern day",
+      "ok": false,
+      "detail": "Eastern Oct 12, UTC Oct 13; Oct 13 · Encounter notes 1 lines",
+      "recordOnly": true
+    },
+    {
+      "id": "(c) Nursing Home: the rotated row is dated by the physician's Eastern day",
+      "ok": false,
+      "detail": "Eastern Oct 13, UTC Oct 14; Oct 14 · Visit notes 1 lines",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "hospital": {
+      "editedAt": "2026-10-13T00:30:00.000Z",
+      "easternDay": "Oct 12",
+      "utcDay": "Oct 13",
+      "panel": [
+        "Oct 13 · Encounter notes 1 lines"
+      ],
+      "server": [
+        {
+          "archivedAt": "2026-10-14T14:45:18.175Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA16-EVE-H typed at 20:30 ET kaeum",
+              "time": ""
+            }
+          ],
+          "label": "Oct 13 · Encounter notes"
+        }
+      ]
+    },
+    "nursingHome": {
+      "editedAt": "2026-10-14T00:30:00.000Z",
+      "easternDay": "Oct 13",
+      "utcDay": "Oct 14",
+      "panel": [
+        "Oct 14 · Visit notes 1 lines"
+      ],
+      "server": [
+        {
+          "archivedAt": "2026-10-14T14:45:18.548Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA16-EVE-N visit typed at 20:30 ET kaeum",
+              "time": ""
+            }
+          ],
+          "label": "Oct 14 · Visit notes"
+        }
+      ]
+    }
+  }
+}

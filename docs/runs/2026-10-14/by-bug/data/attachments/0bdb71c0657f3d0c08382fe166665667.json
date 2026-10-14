@@ -1,0 +1,163 @@
+{
+  "name": "tc16-s02-b",
+  "at": "2026-10-14T14:22:17.648Z",
+  "checks": [
+    {
+      "id": "after the first Stop (and its Generate) the speaker switch is back on Physician",
+      "ok": true,
+      "detail": "speaker switch shown as 'Physician speaking' at the second recording",
+      "recordOnly": true
+    },
+    {
+      "id": "stored: the physician's line as Dr, the patient's as Pt",
+      "ok": true,
+      "detail": "[{\"speaker\":\"Dr\",\"text\":\"Your breathing sounds clearer today fjezv8\",\"time\":\"11:22 PM\"},{\"speaker\":\"Pt\",\"text\":\"I am breathing more comfortably today fjezv8\",\"time\":\"11:22 PM\"}]"
+    },
+    {
+      "id": "after a reload the physician's line is labelled Physician",
+      "ok": true,
+      "detail": "Physician\n11:22 PM\n\nYour breathing sounds clearer today fjezv8"
+    },
+    {
+      "id": "after a reload the patient's line is labelled Patient",
+      "ok": true,
+      "detail": "Patient\n11:22 PM\n\nI am breathing more comfortably today fjezv8"
+    }
+  ],
+  "data": {
+    "stored": {
+      "note": "Note two fjezv8",
+      "transcript": [
+        {
+          "speaker": "Dr",
+          "text": "Your breathing sounds clearer today fjezv8",
+          "time": "11:22 PM"
+        },
+        {
+          "speaker": "Pt",
+          "text": "I am breathing more comfortably today fjezv8",
+          "time": "11:22 PM"
+        }
+      ],
+      "history": []
+    },
+    "calls": [
+      {
+        "udfPath": "time:now",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "time:now",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:applyLifecycle",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "access:logChartAccess",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:applyLifecycle",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "usage:record",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "usage:record",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "usage:record",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "rounding:update",
+        "answered": "forwarded"
+      }
+    ],
+    "afterReload": {
+      "drLabel": "Physician\n11:22 PM\n\nYour breathing sounds clearer today fjezv8",
+      "ptLabel": "Patient\n11:22 PM\n\nI am breathing more comfortably today fjezv8"
+    }
+  }
+}

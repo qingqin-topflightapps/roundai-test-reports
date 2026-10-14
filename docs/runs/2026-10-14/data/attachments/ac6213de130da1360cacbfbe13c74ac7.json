@@ -1,0 +1,104 @@
+{
+  "label": "dev-web",
+  "dir": "runs/2026-10-14-local/code-review/static/dev-web",
+  "files": 3,
+  "bytes": 991418,
+  "secretPatternHits": [],
+  "recordedOnly": [
+    {
+      "kind": "'Bearer' word (no token after it)",
+      "count": 4
+    }
+  ],
+  "highEntropyLiterals": {
+    "count": 0,
+    "where": []
+  },
+  "urlUserinfo": {
+    "count": 0,
+    "where": []
+  },
+  "httpUrls": [],
+  "httpLiteralsNotRequests": [
+    {
+      "url": "http://[${o}]",
+      "count": 1,
+      "why": "zod IPv6/CIDR validation: new URL(`http://[${value}]`) parses, never fetches"
+    },
+    {
+      "url": "http://[${s.value}]",
+      "count": 1,
+      "why": "zod IPv6/CIDR validation: new URL(`http://[${value}]`) parses, never fetches"
+    },
+    {
+      "url": "http://json-schema.org",
+      "count": 2,
+      "why": "JSON Schema $schema identifier (zod toJSONSchema), not fetched"
+    },
+    {
+      "url": "http://localhost",
+      "count": 1,
+      "why": "react-router createURL fallback base when window is undefined (SSR); the browser uses window.location.origin"
+    }
+  ],
+  "httpsHosts": [
+    {
+      "url": "https://api.openai.com",
+      "count": 1
+    },
+    {
+      "url": "https://docs.convex.dev",
+      "count": 8
+    },
+    {
+      "url": "<dev address>",
+      "count": 1
+    },
+    {
+      "url": "https://json-schema.org",
+      "count": 1
+    },
+    {
+      "url": "<dev address>",
+      "count": 1
+    },
+    {
+      "url": "<dev address>",
+      "count": 1
+    },
+    {
+      "url": "https://react.dev",
+      "count": 2
+    },
+    {
+      "url": "https://reactrouter.com",
+      "count": 2
+    },
+    {
+      "url": "https://roundcompanion.com",
+      "count": 1
+    }
+  ],
+  "localLeftovers": [
+    {
+      "name": "localhost",
+      "count": 3,
+      "where": [
+        {
+          "file": "assets/index-CmEHJwvx.js",
+          "offset": 279430
+        },
+        {
+          "file": "assets/index-CmEHJwvx.js",
+          "offset": 488438
+        },
+        {
+          "file": "assets/index-CmEHJwvx.js",
+          "offset": 489241
+        }
+      ]
+    }
+  ],
+  "sourceMaps": 0,
+  "verdict": "pass"
+}

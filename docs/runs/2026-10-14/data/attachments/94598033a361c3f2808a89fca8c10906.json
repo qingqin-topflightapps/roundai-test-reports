@@ -1,0 +1,12 @@
+{
+  "OAT-03/S28": {
+    "ref": "OAT-03/S28",
+    "method": "CODEREVIEW",
+    "status": "record-only",
+    "detail": "Our own boundary (record only). The 9.5 s / 10.5 s pair is the RETRY_PRIMARY_IF_FAILED_WITHIN_MS rule (retry.ts:167), covered by the RT-07 / RT-08 unit tests (OAT-03/S30). A long note is not cut off by a timeout: Bedrock Converse is not streamed, so an attempt either returns the whole note or fails, and nothing partial is stored. After a 20 s Haiku hang Mistral has 10 s (Q14, Daniela).",
+    "scope": "Local, main e02167f, code read only.",
+    "evidence": [
+      "convex/ai/providers/retry.ts:17-26 (CALL_BUDGET_MS 30 s, RETRY_DELAY_MS 1 s, ATTEMPT_TIMEOUT_MS 20 s, MIN 8 s, RETRY_PRIMARY_IF_FAILED_WITHIN_MS 10 s), :53 (AbortError is temporary), :105-112 (attemptTimeout), :155-200 (runWithRetry); convex/ai/providers/index.ts:101-121 (timeProviderCall), :161-189 (Bedrock chat: each attempt timed on its own, answeredBy sets fellBackFrom and logs \"[ai] <model> answered after N attempt(s)\"); convex/lib/phi.ts:72-97 (providerMs logged next to durationMs)"
+    ]
+  }
+}
