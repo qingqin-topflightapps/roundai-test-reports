@@ -1,0 +1,1543 @@
+{
+  "ref": "TC-14/S13",
+  "title": "TC-14/S13 AI Check 2: the initial doubt survives a confirmation later in the same dictation, 5 Hospital + 5 Nursing Home (live note model)",
+  "dataset": "gen-notes-b",
+  "target": "dev",
+  "at": "2026-10-15T09:52:26.550Z",
+  "cells": [
+    {
+      "name": "H-06 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-06 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today\n\nPhysical examination: not documented in today's dictation\n\nTesting Results\n\nChest X-ray this morning: right lower lobe pneumonia\n\nAssessment\n\nPatient is a 74-year-old admitted with cough and fever. Yesterday the clinical picture was thought to represent possible early pneumonia versus atelectasis. Follow-up chest X-ray this morning confirms right lower lobe pneumonia. The patient will continue inpatient management with antibiotics.\n\nPlan\n\n1. Continue intravenous ceftriaxone for right lower lobe pneumonia.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3604,
+            "providerMs": 3598,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude pneumonia",
+            "ok": true,
+            "detail": "found 'pneumonia'"
+          },
+          {
+            "id": "sameSentence (initially|initial|at first|worried|conce…) + atelectasis",
+            "ok": true,
+            "detail": "Yesterday the clinical picture was thought to represent possible early pneumonia versus atelectasis."
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-07 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-07 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "SUBJECTIVE\n\nNot provided\n\nOBJECTIVE\n\nVital signs: not dictated today\n\nPhysical examination: not documented in today's dictation\n\nTESTING RESULTS\n\nNot provided\n\nASSESSMENT\n\nPatient is a 63-year-old with left leg redness. On examination, the patient was noted to have new warmth and streaking today. Ultrasound of the left lower extremity was negative for deep venous thrombosis. The clinical presentation with localized warmth, erythema, and streaking is most consistent with cellulitis rather than venous stasis dermatitis. The patient will be treated with intravenous cefazolin.\n\nPLAN\n\n1. Start intravenous cefazolin for cellulitis of the left leg.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3865,
+            "providerMs": 3861,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude stasis",
+            "ok": true,
+            "detail": "found 'stasis'"
+          },
+          {
+            "id": "mustInclude cellulitis",
+            "ok": true,
+            "detail": "found 'cellulitis'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-08 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-08 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "SUBJECTIVE\n\nNot provided\n\nOBJECTIVE\n\nVital signs: not dictated today\n\nPhysical examination: not documented in today's dictation\n\nTESTING RESULTS\n\nNot provided\n\nASSESSMENT\n\nPatient is a 70-year-old with a history of anemia who presented with troponin elevation. Initial troponin was elevated; repeat troponin rose to 0.9. Cardiology was consulted and agrees this represents an acute non-ST-elevation myocardial infarction (NSTEMI). The clinical picture is most consistent with demand ischemia in the setting of anemia with superimposed acute coronary syndrome. Management will proceed with anticoagulation and cardiology co-management.\n\nPLAN\n\n1. Initiate heparin per protocol for NSTEMI.\n2. Continue cardiology consultation and co-management.\n3. Monitor troponin trend and clinical response to anticoagulation.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4302,
+            "providerMs": 4297,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude demand",
+            "ok": true,
+            "detail": "found 'demand'"
+          },
+          {
+            "id": "mustInclude NSTEMI|non-ST",
+            "ok": true,
+            "detail": "found 'NSTEMI'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-09 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "sameSentence (initially|initial|at first|worried|conce…) + stroke: no sentence has 'stroke' with a doubt word; sentences naming it: MRI of the brain obtained this morning was unremarkable, excluding acute stroke."
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-09 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "SUBJECTIVE\n\nNot provided\n\nOBJECTIVE\n\nVital signs: not dictated today\n\nPhysical examination: not documented in today's dictation\n\nTESTING RESULTS\n\nMRI brain this morning: unremarkable\n\nASSESSMENT\n\nThe patient is an 81-year-old with acute confusion. MRI of the brain obtained this morning was unremarkable, excluding acute stroke. The clinical presentation and imaging findings are most consistent with delirium, likely related to a urinary tract infection. The patient will continue on current antibiotic therapy with close monitoring for clinical improvement and resolution of confusion.\n\nPLAN\n\n1. Continue intravenous ceftriaxone for urinary tract infection and delirium management.\n2. Implement delirium precautions.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4026,
+            "providerMs": 4021,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude delirium",
+            "ok": true,
+            "detail": "found 'delirium'"
+          },
+          {
+            "id": "sameSentence (initially|initial|at first|worried|conce…) + stroke",
+            "ok": false,
+            "detail": "no sentence has 'stroke' with a doubt word; sentences naming it: MRI of the brain obtained this morning was unremarkable, excluding acute stroke."
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-10 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-10 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "SUBJECTIVE\n\nNot provided\n\nOBJECTIVE\n\nVital signs: not dictated today\n\nPhysical examination: not documented in today's dictation\n\nTESTING RESULTS\n\nHemoglobin 7.1 (down from 9.0 on admission). Melena noted on gastrointestinal examination.\n\nASSESSMENT\n\nPatient is a 67-year-old with dark stools who presented with an upper gastrointestinal bleed. Hemoglobin has declined from 9.0 to 7.1, and gastrointestinal examination revealed melena. The clinical picture is consistent with an upper gastrointestinal bleed, likely related to iron supplementation as a contributing factor. Endoscopy is planned for tomorrow to identify and treat the bleeding source.\n\nPLAN\n\n1. Initiate pantoprazole drip for upper gastrointestinal bleed.\n2. Schedule esophagogastroduodenoscopy for tomorrow.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4345,
+            "providerMs": 4340,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude iron",
+            "ok": true,
+            "detail": "found 'iron'"
+          },
+          {
+            "id": "mustInclude bleed",
+            "ok": true,
+            "detail": "found 'bleed'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-06 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-06 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nNot documented.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nConfusion — New onset. Urinalysis was clean. Sodium level 128. Assessment: hyponatremia as likely etiology of confusion. Fluid restriction initiated. Sodium recheck planned for Friday.\n\nMedication Changes\n\nNot documented.\n\nAssessment and Plan\n\nHyponatremia with associated confusion. The resident presented with new confusion. Urinalysis was negative, ruling out urinary tract infection as the cause. Serum sodium of 128 indicates hyponatremia as the likely etiology of the acute mental status change. Fluid restriction has been implemented to address the low sodium. Sodium level will be rechecked on Friday to assess response to intervention and guide further management.\n\nPlan:\n\n1. Implement fluid restriction for hyponatremia.\n2. Recheck serum sodium on Friday.\n3. Monitor mental status for improvement with sodium correction.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3608,
+            "providerMs": 3601,
+            "appMs": 7,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude UTI|urinary tract",
+            "ok": true,
+            "detail": "found 'urinary tract'"
+          },
+          {
+            "id": "mustInclude hyponatremia|low sodium|sodium of 128|sodium 128",
+            "ok": true,
+            "detail": "found 'hyponatremia'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-07 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "sameSentence (initially|initial|at first|worried|conce…) + hardware: no sentence has 'hardware' with a doubt word; sentences naming it: Pain attributed to muscular etiology rather than hardware-related complication."
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-07 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nResident reports hip pain. X-ray obtained today shows no acute findings. Pain attributed to muscular etiology rather than hardware-related complication.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\n1. Status post right hip open reduction internal fixation (ORIF) — resident experiencing hip pain, evaluated with X-ray today which shows no acute findings. Pain thought to be muscular in origin. Continuing physical therapy with heat application prior to sessions.\n\nAssessment and Plan\n\n1. Hip pain post-ORIF — X-ray today without acute findings; pain likely muscular. Continue physical therapy. Apply heat prior to therapy sessions. Monitor pain response and reassess at next visit.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3483,
+            "providerMs": 3478,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude muscul",
+            "ok": true,
+            "detail": "found 'muscul'"
+          },
+          {
+            "id": "sameSentence (initially|initial|at first|worried|conce…) + hardware",
+            "ok": false,
+            "detail": "no sentence has 'hardware' with a doubt word; sentences naming it: Pain attributed to muscular etiology rather than hardware-related complication."
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-08 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-08 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nStage 2 pressure injury identified on the sacrum today, confirmed by wound nurse. Previously noted as possible early pressure injury on Monday.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\n1. Immobility — resident remains immobile. Stage 2 sacral pressure injury newly confirmed today.\n\n2. Stage 2 sacral pressure injury — confirmed by wound nurse on examination today. Foam dressing applied. Turning schedule initiated.\n\nAssessment and Plan\n\nImmobility with new stage 2 sacral pressure injury. Resident requires frequent repositioning and wound care to prevent further skin breakdown.\n\n1. Turn resident every 2 hours to relieve pressure on sacrum.\n\n2. Apply and maintain foam dressing to stage 2 sacral pressure injury.\n\n3. Monitor sacral wound for signs of progression or infection at each turn.\n\n4. Continue current medications and care plan for immobility.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3614,
+            "providerMs": 3607,
+            "appMs": 7,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude possible|initially|suspected|early",
+            "ok": true,
+            "detail": "found 'possible'"
+          },
+          {
+            "id": "mustInclude stage 2",
+            "ok": true,
+            "detail": "found 'stage 2'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-09 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "mustInclude worried|concern|suspected|possible|initially: absent"
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-09 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nCough after meals noted. Swallow study performed, confirming aspiration with thin liquids.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\n1. Cough after meals with aspiration — swallow study confirms aspiration with thin liquids. Resident to receive nectar-thick liquids. Speech therapy to follow.\n\nMedication Changes\n\nNot dictated.\n\nAssessment and Plan\n\nAspiration risk with thin liquids confirmed on swallow study. Resident will transition to nectar-thick liquids to reduce aspiration risk. Speech therapy will be initiated for swallowing assessment and training.\n\n1. Transition diet to nectar-thick liquids.\n2. Initiate speech therapy for swallowing evaluation and intervention.\n3. Monitor for cough and signs of aspiration with meals.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3217,
+            "providerMs": 3211,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude worried|concern|suspected|possible|initially",
+            "ok": false,
+            "detail": "absent"
+          },
+          {
+            "id": "mustInclude swallow study|swallow evaluation|swallowing study",
+            "ok": true,
+            "detail": "found 'swallow study'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-10 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-10 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nNot documented.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nWeight Loss\n\nThe resident has experienced weight loss. Initial concern was for depression versus thyroid etiology. Thyroid-stimulating hormone (TSH) returned at 0.1, consistent with hyperthyroidism. Further evaluation with free T4 level and endocrinology referral is planned.\n\nMedication Changes\n\nNot documented.\n\nAssessment and Plan\n\nWeight Loss — Hyperthyroidism\n\nThe resident presents with weight loss. TSH is suppressed at 0.1, supporting a diagnosis of hyperthyroidism as the underlying etiology. Free T4 level will be obtained to further characterize thyroid function, and endocrinology referral has been initiated for specialist evaluation and management.\n\n1. Obtain free T4 level.\n2. Refer to endocrinology for evaluation and management of suspected hyperthyroidism.\n3. Monitor weight and nutritional intake.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4005,
+            "providerMs": 3997,
+            "appMs": 8,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude depression",
+            "ok": true,
+            "detail": "found 'depression'"
+          },
+          {
+            "id": "mustInclude hyperthyroid",
+            "ok": true,
+            "detail": "found 'hyperthyroid'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AI Check 2 (U13, TFA-92592 AC 9): 7/10 notes keep the doubt and the confirmation; pass at 9/10 (3.2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "failing": [
+          {
+            "id": "H-09",
+            "failed": [
+              "sameSentence (initially|initial|at first|worried|conce…) + stroke: no sentence has 'stroke' with a doubt word; sentences naming it: MRI of the brain obtained this morning was unremarkable, excluding acute stroke."
+            ],
+            "note": "SUBJECTIVE\n\nNot provided\n\nOBJECTIVE\n\nVital signs: not dictated today\n\nPhysical examination: not documented in today's dictation\n\nTESTING RESULTS\n\nMRI brain this morning: unremarkable\n\nASSESSMENT\n\nThe patient is an 81-year-old with acute confusion. MRI of the brain obtained this morning was unremarkable, excluding acute stroke. The clinical presentation and imaging findings are most consistent with delirium, likely related to a urinary tract infection. The patient will continue on current antibiotic therapy with close monitoring for clinical improvement and resolution of confusion.\n\nPLAN\n\n1. Continue intravenous ceftriaxone for urinary tract infection and delirium management.\n2. Implement delirium precautions."
+          },
+          {
+            "id": "N-07",
+            "failed": [
+              "sameSentence (initially|initial|at first|worried|conce…) + hardware: no sentence has 'hardware' with a doubt word; sentences naming it: Pain attributed to muscular etiology rather than hardware-related complication."
+            ],
+            "note": "Interval Changes Since Last Visit\n\nResident reports hip pain. X-ray obtained today shows no acute findings. Pain attributed to muscular etiology rather than hardware-related complication.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\n1. Status post right hip open reduction internal fixation (ORIF) — resident experiencing hip pain, evaluated with X-ray today which shows no acute findings. Pain thought to be muscular in origin. Continuing physical therapy with heat application prior to sessions.\n\nAssessment and Plan\n\n1. Hip pain post-ORIF — X-ray today without acute findings; pain likely muscular. Continue physical therapy. Apply heat prior to therapy sessions. Monitor pain response and reassess at next visit."
+          },
+          {
+            "id": "N-09",
+            "failed": [
+              "mustInclude worried|concern|suspected|possible|initially: absent"
+            ],
+            "note": "Interval Changes Since Last Visit\n\nCough after meals noted. Swallow study performed, confirming aspiration with thin liquids.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\n1. Cough after meals with aspiration — swallow study confirms aspiration with thin liquids. Resident to receive nectar-thick liquids. Speech therapy to follow.\n\nMedication Changes\n\nNot dictated.\n\nAssessment and Plan\n\nAspiration risk with thin liquids confirmed on swallow study. Resident will transition to nectar-thick liquids to reduce aspiration risk. Speech therapy will be initiated for swallowing assessment and training.\n\n1. Transition diet to nectar-thick liquids.\n2. Initiate speech therapy for swallowing evaluation and intervention.\n3. Monitor for cough and signs of aspiration with meals."
+          }
+        ]
+      }
+    },
+    {
+      "name": "verdict basis",
+      "kind": "record",
+      "ok": null,
+      "detail": "provisional: substring pre-screen (TFA-94229 AC 2 / Q19); how much doubt must survive is Q9"
+    }
+  ],
+  "shots": [],
+  "error": "Error: TC-14/S13: judged cells that failed"
+}

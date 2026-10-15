@@ -1,0 +1,16 @@
+{
+  "TC-18/S01": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:53:00Z",
+    "title": "Hospital follow-up: Generate with SOAP progress shows one 99231-99233 code with quoted elements, labelled a suggestion",
+    "detail": "Dev 43c38a4f (deployed 2026-10-14 21:30Z), live model, run 17:46-18:17 JST under runs/.dev.lock and the dev-session run lock; only rows named 'QA TC18-BIL …' were created and all were deleted (59 cell rows at the end of D1, 8 more in the cleanup: 0 remaining, 0 changes to other rows). Hospital chart, badge Follow-up, S01 text typed, Note Format left on SOAP progress (pre-selected), Generate Note & Finish (live note + server billing job): card 'CODE: 99231 / LEVEL: Low Complexity', PROBLEMS 'Acute, uncomplicated illness … requiring hospital … care' and RISK 'Prescription drug management' each with sentences of the generated note quoted underneath (all found in the Note section of the same page), DATA 'Test result reviewed', labelled 'Physician Verify Before Submitting', exactly one code, no reasoning outside quotes; stored noteTemplate soap, billing for this note. Model Haiku 4.5. Level choice (Low for day 3 of IV antibiotics) is for Preston (Q13 / S28).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d2-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s01.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

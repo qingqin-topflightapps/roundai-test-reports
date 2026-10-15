@@ -1,0 +1,17 @@
+{
+  "TC-18/S10": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:36:00Z",
+    "title": "Editing the note never re-runs billing or loses the edit (edit while 'Analyzing note…', live model)",
+    "detail": "Dev 43c38a4f, live model, runs 17:46-18:17, 18:34-18:39 and 18:54-18:55 JST under runs/.dev.lock and the dev-session run lock; only 'QA TC18-BIL …' rows (and one 'QA TC18-BIL SNF discharge' template) were created and all were deleted, 0 remaining, 0 changes to other rows. inflight-snf: Generate -> Post-Round showed 'Analyzing note…' -> Edit Note tapped at once -> marker 'Daughter will bring reading glasses tomorrow.' typed -> billing finished (99308 Low) -> Save Edits -> reload: marker kept, card unchanged, one billing call for the note, billingSource still the generated note (the edit is not billed, Q5). inflight-hospital: the Hospital flow opens Post-Round only after the course refresh, so billing had already finished (99231 Low); marker kept, one billing call. Seeded and double-tap legs: local (passed).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-d2b-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-s10-inflight-snf.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-s10-inflight-hospital.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

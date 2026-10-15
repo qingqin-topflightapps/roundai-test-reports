@@ -1,0 +1,174 @@
+{
+  "name": "tc18-s27-clock",
+  "at": "2026-10-15T09:20:19.232Z",
+  "checks": [
+    {
+      "id": "day-ahead hospital: KNOWN B18 / TFA-92584 AC 8 — the device day decides the badge (follow-up) and the pre-selected template (soap); a correct device shows New Admission / hp",
+      "ok": false,
+      "detail": "{\"deviceDay\":\"2026-10-16\",\"correctDay\":\"2026-10-15\",\"badge\":\"follow-up\",\"pre\":{\"value\":\"soap\",\"label\":\"SOAP progress\"}}",
+      "recordOnly": true
+    },
+    {
+      "id": "day-ahead hospital: Generate with the pre-selected soap bills hospital-subsequent (the template's family, whatever the device day)",
+      "ok": true,
+      "detail": "{\"picked\":\"soap\",\"family\":\"hospital-subsequent\"}"
+    },
+    {
+      "id": "day-ahead hospital: KNOWN B18 — so the pre-selected Generate bills hospital-subsequent, not the correct device's hospital-initial",
+      "ok": false,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "day-ahead hospital: hand-picked soap bills hospital-subsequent on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"soap\",\"family\":\"hospital-subsequent\"}"
+    },
+    {
+      "id": "day-ahead hospital: hand-picked hp bills hospital-initial on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"hp\",\"family\":\"hospital-initial\"}"
+    },
+    {
+      "id": "day-ahead hospital: no AI action left the browser",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "day-ahead snf: KNOWN B18 / TFA-92584 AC 8 — the device day decides the badge (follow-up) and the pre-selected template (snf-progress); a correct device shows New Admission / snf-admission",
+      "ok": false,
+      "detail": "{\"deviceDay\":\"2026-10-16\",\"correctDay\":\"2026-10-15\",\"badge\":\"follow-up\",\"pre\":{\"value\":\"snf-progress\",\"label\":\"SNF follow-up\"}}",
+      "recordOnly": true
+    },
+    {
+      "id": "day-ahead snf: Generate with the pre-selected snf-progress bills snf-subsequent (the template's family, whatever the device day)",
+      "ok": true,
+      "detail": "{\"picked\":\"snf-progress\",\"family\":\"snf-subsequent\"}"
+    },
+    {
+      "id": "day-ahead snf: KNOWN B18 — so the pre-selected Generate bills snf-subsequent, not the correct device's snf-initial",
+      "ok": false,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "day-ahead snf: hand-picked snf-progress bills snf-subsequent on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"snf-progress\",\"family\":\"snf-subsequent\"}"
+    },
+    {
+      "id": "day-ahead snf: hand-picked snf-admission bills snf-initial on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"snf-admission\",\"family\":\"snf-initial\"}"
+    },
+    {
+      "id": "day-ahead snf: no AI action left the browser",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "honolulu hospital: badge and pre-selected template are the correct device's (New Admission, hp)",
+      "ok": true,
+      "detail": "{\"deviceDay\":\"2026-10-14\",\"badge\":\"new\",\"pre\":{\"value\":\"hp\",\"label\":\"H&P\"}}"
+    },
+    {
+      "id": "honolulu hospital: Generate with the pre-selected hp bills hospital-initial (the template's family, whatever the device day)",
+      "ok": true,
+      "detail": "{\"picked\":\"hp\",\"family\":\"hospital-initial\"}"
+    },
+    {
+      "id": "honolulu hospital: hand-picked soap bills hospital-subsequent on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"soap\",\"family\":\"hospital-subsequent\"}"
+    },
+    {
+      "id": "honolulu hospital: hand-picked hp bills hospital-initial on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"hp\",\"family\":\"hospital-initial\"}"
+    },
+    {
+      "id": "honolulu hospital: no AI action left the browser",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "honolulu snf: badge and pre-selected template are the correct device's (New Admission, snf-admission)",
+      "ok": true,
+      "detail": "{\"deviceDay\":\"2026-10-14\",\"badge\":\"new\",\"pre\":{\"value\":\"snf-admission\",\"label\":\"SNF admission\"}}"
+    },
+    {
+      "id": "honolulu snf: Generate with the pre-selected snf-admission bills snf-initial (the template's family, whatever the device day)",
+      "ok": true,
+      "detail": "{\"picked\":\"snf-admission\",\"family\":\"snf-initial\"}"
+    },
+    {
+      "id": "honolulu snf: hand-picked snf-progress bills snf-subsequent on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"snf-progress\",\"family\":\"snf-subsequent\"}"
+    },
+    {
+      "id": "honolulu snf: hand-picked snf-admission bills snf-initial on this device (G2)",
+      "ok": true,
+      "detail": "{\"picked\":\"snf-admission\",\"family\":\"snf-initial\"}"
+    },
+    {
+      "id": "honolulu snf: no AI action left the browser",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "day-ahead-hospital": {
+      "deviceDay": "2026-10-16",
+      "correctDay": "2026-10-15",
+      "signed": {
+        "signedOutByClock": true,
+        "uiSignIn": "reached-app"
+      },
+      "badge": "follow-up",
+      "preselected": {
+        "value": "soap",
+        "label": "SOAP progress"
+      }
+    },
+    "day-ahead-snf": {
+      "deviceDay": "2026-10-16",
+      "correctDay": "2026-10-15",
+      "signed": {
+        "signedOutByClock": true,
+        "uiSignIn": "reached-app"
+      },
+      "badge": "follow-up",
+      "preselected": {
+        "value": "snf-progress",
+        "label": "SNF follow-up"
+      }
+    },
+    "honolulu-hospital": {
+      "deviceDay": "2026-10-14",
+      "correctDay": "2026-10-15",
+      "signed": {
+        "signedOutByClock": false,
+        "uiSignIn": null
+      },
+      "badge": "new",
+      "preselected": {
+        "value": "hp",
+        "label": "H&P"
+      }
+    },
+    "honolulu-snf": {
+      "deviceDay": "2026-10-14",
+      "correctDay": "2026-10-15",
+      "signed": {
+        "signedOutByClock": false,
+        "uiSignIn": null
+      },
+      "badge": "new",
+      "preselected": {
+        "value": "snf-admission",
+        "label": "SNF admission"
+      }
+    }
+  }
+}

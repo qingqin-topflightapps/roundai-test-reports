@@ -1,0 +1,20 @@
+{
+  "TC-14/S22": {
+    "status": "record-only",
+    "known": true,
+    "ranAt": "2026-10-15T09:41:54Z",
+    "title": "Encounter tab, full-screen notepad and Post-Round note pass axe (WCAG 2 A/AA), both modes",
+    "detail": "Visual lane on 43c38a4f (web/qa-agent-tests/visual/encounter.spec.ts, desktop / Pixel 7 / iPhone 15; every action firewalled at the socket; outputs kept in package gen's folder; tripwire: no model call). Per profile 8/14 judged checks pass: Dictate, Save & Extract, Generate and the note-format picker are named, both notepads have a name (axe semantics), the note is a named document in both modes. 6/14 fail on axe serious/critical, the same as on e02167f: color contrast (a small disabled button on the Hospital Encounter tab and notepad, grey text on Post-Round), and the Nursing Home chart's back arrow has no accessible name (button-name, critical). Recorded: the Nursing Home notepad is named only by its placeholder (WCAG 3.3.2). Axe is our own addition (no UAT item or ticket asks for it), so this is record-only; known A1 (accessibility suggestion).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s22-visual/TC-14_S22/desktop.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s22-visual/TC-14_S22/pixel7.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s22-visual/TC-14_S22/iphone15.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s22-visual/TC-14_S22/desktop--nh-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s22-visual/TC-14_S22/desktop--hospital-postround-note.png"
+    ],
+    "method": "VISUAL",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

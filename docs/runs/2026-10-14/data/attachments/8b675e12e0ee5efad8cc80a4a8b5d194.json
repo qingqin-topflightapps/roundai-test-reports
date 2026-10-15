@@ -1,0 +1,19 @@
+{
+  "TC-22/S10": {
+    "status": "failed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:13:36.766Z",
+    "title": "Long dictation in Save & Extract: in Nursing Home a result dictated after character 1,200 never closes its task (Hospital control passes)",
+    "detail": "Local stack on main 43c38a4f; every model call the page makes is answered in the page by ext-support.ts (an ai/* call it is not told about is failed, never forwarded) and the tripwire showed no model call. The task extractor is a rule-based stand-in that can only find what the app sends it (args.content / args.openTasks), so the app's own request, cut, merge and storage are what is judged, not the model. Spec ext-tc22-s09-s10-length.spec.ts, both contexts, tasks 'follow up BMP' and 'recheck weight in two weeks', dictation = the 1,213-character narrative + ' BMP is back: sodium 138, potassium 4.0, creatinine 1.1.' (1,269 characters; the result starts at character 1,214). Both contexts store the whole text as the encounter note. Hospital (control) sends all 1,269 characters, 'follow up BMP' closes ('1 pending task'). Nursing Home sends only the first 1,200 characters (useSaveAndExtract.ts: substring(0, 1200), unchanged since e02167f), so the result never reaches the extractor and 'follow up BMP' stays open ('2 pending tasks'). Deterministic: no model can close it, so judged here.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s10-b43-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s10-b43-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s10-b43-rounding-after-extract.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s10-b43-snf-after-extract.png"
+    ],
+    "method": "PW",
+    "productIssue": "Nursing Home: after a long visit note, a result dictated near the end ('BMP is back…') does not close 'follow up BMP' — Save & Extract sends only the first 1,200 characters; the note is saved in full, so nothing looks wrong.",
+    "pkg": "ext"
+  }
+}

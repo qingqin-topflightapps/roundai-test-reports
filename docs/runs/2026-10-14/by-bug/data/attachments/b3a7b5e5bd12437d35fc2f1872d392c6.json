@@ -1,0 +1,20 @@
+{
+  "TC-17/S27": {
+    "status": "failed",
+    "ranAt": "2026-10-15T08:56:10.638Z",
+    "title": "A re-generate over an existing note fails, then succeeds after the physician leaves: the old note is never presented as the new one; 'generating', then the new note",
+    "detail": "PW, local stack. Judged (U12 = UAT 3.5 / TFA-92592 AC 15): Hospital Regenerate with new dictation (QA-DICT-9), at once to the Nursing Home resident and back (in-app), Post-Round 1.1 s after the press while the call was still held: FAILED — no generating state; Post-Round shows the earlier note (N-H) as the current note with 'Mark Encounter Complete'; once the call was released the new note (metoprolol) appeared without a reload (passed). Recorded only (TFA-92595 in progress, todo): after a failed Regenerate, both modes, the Encounter tab says '…couldn’t be generated…', but the Note tab shows the earlier note unlabelled as the current note and says nothing (T6 / U10 / Q12), and Copy to EMR copies that earlier note (clipboard starts 'SUBJECTIVE Cough improving…' / 'SNF FOLLOW-UP…'); Tomorrow's Pre-Round Summary card shows under the new note and none of the listed inventions appear (T7 / U10, mocked note). Seeded notes carried a stored billing suggestion for their own note time, so no billing job was queued. Every Generate used a 'procedure-other' custom note template because on 43c38a4f saving a generated note queues a server billing job (billing/persistence.ts enqueueBilling → ai/billing.ts run) that no socket mock can answer and that would reach Bedrock on this stack; the template only changes the (mocked) model's instruction text. Tripwire: no model call at all during the run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc17-s27-cp1-hosp-after-failure.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc17-s27-cp3-snf-after-failure.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc17-s27-cp4-hosp-return-early.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc17-s27-cp5-hosp-settled.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc17-s27.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "After tapping Regenerate and stepping away, Post-Round shows the previous note as the current one with nothing saying a new note is being written; if the regenerate fails, the previous note stays there (and Copy to EMR copies it) as if it were today's.",
+    "pkg": "gen"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "name": "tc10-s06-pre-nh",
+  "at": "2026-10-15T08:24:44.603Z",
+  "checks": [
+    {
+      "id": "T-04: the Vitals panel shows the dictated 37.9 C",
+      "ok": true,
+      "detail": "Temp 37.9 C"
+    },
+    {
+      "id": "T-04: the panel temperature is not mislabelled or converted (/°F|100\\.2/)",
+      "ok": true,
+      "detail": "Temp 37.9 C"
+    },
+    {
+      "id": "T-04: the bare weight 72 gets no unit on the panel",
+      "ok": true,
+      "detail": "Weight 72"
+    },
+    {
+      "id": "T-04: the note input carries the number unconverted (/Temp 37\\.9 C/)",
+      "ok": true,
+      "detail": "VITALS (recorded today): Temp 37.9 C, Wt 72"
+    },
+    {
+      "id": "T-04: the note input gives the bare weight no unit",
+      "ok": true,
+      "detail": "Wt 72"
+    },
+    {
+      "id": "D2 (recorded): a bare 37.9 C gets a unit label in the note input",
+      "ok": false,
+      "detail": "VITALS (recorded today): Temp 37.9 C, Wt 72",
+      "recordOnly": true
+    },
+    {
+      "id": "T-05: the Vitals panel shows the dictated 101.2",
+      "ok": true,
+      "detail": "Temp 101.2"
+    },
+    {
+      "id": "T-05: the panel temperature is not mislabelled or converted (/°C|38\\.4/)",
+      "ok": true,
+      "detail": "Temp 101.2"
+    },
+    {
+      "id": "T-05: the note input carries the number unconverted (/Temp 101\\.2°F/)",
+      "ok": true,
+      "detail": "VITALS (recorded today): Temp 101.2°F"
+    },
+    {
+      "id": "D2 (recorded): a bare 101.2 gets a unit label in the note input",
+      "ok": true,
+      "detail": "VITALS (recorded today): Temp 101.2°F",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T-04": {
+      "dictation": "Temperature 37.9 C, BP 140/82, sats 96% on room air, Wt 72.",
+      "panel": "Temp\n37.9 C",
+      "noteInputVitals": "VITALS (recorded today): Temp 37.9 C, Wt 72"
+    },
+    "T-05": {
+      "dictation": "Temp 101.2 this morning, sounds chesty, HR 96.",
+      "panel": "Temp\n101.2",
+      "noteInputVitals": "VITALS (recorded today): Temp 101.2°F"
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 618
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 3785
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 5151
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 8372
+      }
+    ]
+  }
+}

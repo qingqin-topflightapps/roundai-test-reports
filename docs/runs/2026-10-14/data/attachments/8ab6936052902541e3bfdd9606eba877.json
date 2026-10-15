@@ -1,0 +1,32 @@
+{
+  "name": "tc22-s23-b43-snf-minus24h",
+  "at": "2026-10-15T08:27:32.166Z",
+  "checks": [
+    {
+      "id": "doneAt within ±5 min of server time",
+      "ok": false,
+      "detail": "doneAt 2026-10-14T08:27:12.129Z vs server 2026-10-15T08:27:12.669Z (-1440 min)"
+    },
+    {
+      "id": "after the lifecycle run 'follow up BMP' is still under Finished Tasks (record-only: Nursing Home completed-task retention is TC-22 Q12)",
+      "ok": false,
+      "detail": "stored: task removed; Task Export Finished Tasks section absent",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "access": {
+      "signedOutByClock": false,
+      "uiSignIn": null
+    },
+    "deviceNow": "2026-10-14T08:27:12.043Z",
+    "doneAt": {
+      "doneAt": "2026-10-14T08:27:12.129Z",
+      "serverNow": "2026-10-15T08:27:12.669Z",
+      "offMinutes": -1440
+    },
+    "afterLifecycle": {
+      "bmp": null
+    }
+  }
+}

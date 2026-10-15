@@ -1,0 +1,98 @@
+{
+  "name": "oat06-s15-srv",
+  "at": "2026-10-15T09:23:35.403Z",
+  "checks": [
+    {
+      "id": "a confirmation showed after each send",
+      "ok": true,
+      "detail": "Hospital true, Nursing Home true (Settings opened from the Nursing Home list: true; box empty again: true)"
+    },
+    {
+      "id": "exactly two feedback rows since T0: rating 2 with the comment, rating 5 with no comment key",
+      "ok": true,
+      "detail": "[{\"rating\":5},{\"comment\":\"QA OAT-06 feedback: dictation is slow on hospital Wi-Fi.\",\"rating\":2}]"
+    },
+    {
+      "id": "independent of the other surveys: no baseline, handoff_followup or task_reminder row, and no Not now on record",
+      "ok": true,
+      "detail": "rows since T0: feedback, feedback; baseline {\"answeredAt\":null,\"dismissedAt\":[]}"
+    },
+    {
+      "id": "rows carry the day and only rating / comment keys (named for a reader)",
+      "ok": true,
+      "detail": "[{\"day\":\"2026-10-15\",\"keys\":[\"rating\"]},{\"day\":\"2026-10-15\",\"keys\":[\"comment\",\"rating\"]}]",
+      "recordOnly": true
+    },
+    {
+      "id": "recorded: a Settings send is on record as the day's feedback (status.feedback.answeredAt), so the 4 PM card stays away for the rest of that day",
+      "ok": true,
+      "detail": "feedback.answeredAt 1792056213720.579",
+      "recordOnly": true
+    },
+    {
+      "id": "recorded: the baseline card was on the Hospital list and stays due (the feedback sends did not touch it)",
+      "ok": true,
+      "detail": "baseline card shown true",
+      "recordOnly": true
+    },
+    {
+      "id": "no model call was attempted on this path",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "rows since T0": [
+      {
+        "_creationTime": 1792056213720.579,
+        "answers": {
+          "rating": 5
+        },
+        "day": "2026-10-15",
+        "survey": "feedback"
+      },
+      {
+        "_creationTime": 1792056213420.905,
+        "answers": {
+          "comment": "QA OAT-06 feedback: dictation is slow on hospital Wi-Fi.",
+          "rating": 2
+        },
+        "day": "2026-10-15",
+        "survey": "feedback"
+      }
+    ],
+    "status": {
+      "before": {
+        "baseline": {
+          "answeredAt": null,
+          "dismissedAt": []
+        },
+        "feedback": {
+          "answeredAt": null,
+          "dismissedAt": []
+        },
+        "taskReminder": {
+          "answeredAt": null,
+          "dismissedAt": []
+        },
+        "taskReminderFrom": null
+      },
+      "after": {
+        "baseline": {
+          "answeredAt": null,
+          "dismissedAt": []
+        },
+        "feedback": {
+          "answeredAt": 1792056213720.579,
+          "dismissedAt": []
+        },
+        "taskReminder": {
+          "answeredAt": null,
+          "dismissedAt": []
+        },
+        "taskReminderFrom": null
+      }
+    },
+    "Settings text (Feedback section)": "Feedback How is Round Companion working for you? Your answers go to the pilot team. Please don't include patient details. 1 2 3 4 5 Send feedback Account Signed in as e2e-fresh-bc6ac99a-5ee@roundai.test Sign outSign out everywhere Sessions end after 12 hours w"
+  }
+}

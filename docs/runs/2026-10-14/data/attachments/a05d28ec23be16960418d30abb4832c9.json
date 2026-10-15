@@ -1,0 +1,90 @@
+{
+  "case": "TC-10-S01",
+  "title": "Hospital: typed pre-round summary with labs, an overnight event and a plan topic fills the panels, tracker and tasks",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "cp1-hosp-preround-saved.md",
+      "verdict": "Fail",
+      "url": "/rounding/js76r0bw5zvnkqe2pkt28zmhv58gbxcz",
+      "problems": [
+        "scope not found: from \"heading \"Hospital Course\"\" to \"heading \"Previous Notes\"\"",
+        "scope not found: from \"heading \"Hospital Course\"\" to \"heading \"Previous Notes\"\""
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp2-hosp-encounter-tasks.md",
+      "verdict": "Fail",
+      "url": "/rounding/js76r0bw5zvnkqe2pkt28zmhv58gbxcz",
+      "problems": [
+        "scope not found: from \"heading \"Tasks\"\" to \"heading \"Note Format\"\"",
+        "scope not found: from \"heading \"Tasks\"\" to \"heading \"Note Format\"\""
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp3-hosp-med-tracker.md",
+      "verdict": "Fail",
+      "url": "/rounding/js76r0bw5zvnkqe2pkt28zmhv58gbxcz",
+      "problems": [
+        "scope not found: from \"heading \"Medication Tracker\"\"",
+        "scope not found: from \"heading \"Medication Tracker\"\"",
+        "scope not found: from \"heading \"Medication Tracker\"\"",
+        "scope not found: from \"heading \"Medication Tracker\"\""
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "panel order and Background one-liner wording vs prototype p72 (S25)"
+  ],
+  "agent": {
+    "turns": 28,
+    "costUsd": 0.21267980000000003,
+    "durationMs": 80810,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "P01",
+  "covers": [
+    "TC-10/S01"
+  ],
+  "evidenceDir": "generateddev/20261015predev/p01",
+  "caseFile": "cases/generated-dev/2026-10-15-pre-dev/P01.json",
+  "foreignBefore": {
+    "hospitalPatient": 4,
+    "snfResident": 4
+  }
+}

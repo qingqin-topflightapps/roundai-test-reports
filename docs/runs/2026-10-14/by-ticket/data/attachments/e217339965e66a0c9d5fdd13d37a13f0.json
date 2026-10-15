@@ -1,0 +1,21 @@
+{
+  "TC-14/S02": {
+    "status": "failed",
+    "ranAt": "2026-10-15T10:03:57.432Z",
+    "title": "Nursing Home: Encounter tab, step-2 dictation, Save & Extract, Generate, Post-Round (live AI)",
+    "detail": "Dataset gen-journeys on dev (live Haiku 4.5), through the app's UI, run twice (v2 with numeric task ids is the verdict; see TC-14/S01). FAILED on U2: 'INR came back 2.4, therapeutic' did not close 'Recheck INR' (both runs). Passed: 'PT evaluation' left open, one pharmacy task added, Generate opened Post-Round with the note (U10), the note keeps metoprolol / 2.4 / 124/72 / 100 feet / warfarin, documents the restart as done (U8), no dysuria finding (U7), no placeholder (U6), no stock normal (U5), no signature / date line / 'yesterday' (U9), Generate left the tasks unchanged (U3), metoprolol off Held after the visit (recorded after Generate in Nursing Home, Q13). Recorded: the note says 'Vital signs: not dictated today.' and then 'Blood pressure 124/72 noted at time of metoprolol restart.' — the Nursing Home note request has no bedside-vitals block (snfNoteObjectiveSlots ignores the dictation), so #100's 'not dictated today' rule fires although a BP was dictated (candidate).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S02-s02-cp1.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S02-s02-cp2-note.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S02.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S02-s02-cp1.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S02-s02-cp2-note.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S02.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "A dictated result ('INR came back 2.4') does not close 'Recheck INR'; the note claims no vitals were dictated although a blood pressure was.",
+    "pkg": "gen"
+  }
+}

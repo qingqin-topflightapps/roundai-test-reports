@@ -1,0 +1,348 @@
+{
+  "S01": {
+    "preselected": {
+      "value": "soap",
+      "label": "SOAP progress"
+    },
+    "picked": {
+      "value": "soap",
+      "label": "SOAP progress"
+    },
+    "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN10: \"Patient is a [age]-year-old with community-acquired pneumonia who presented this admission and is now on day 3 of hospitalization.\"\nN11: \"Cough is improving and the patient has remained afebrile overnight.\"\nN12: \"White blood cell count is trending down from 14 to 11, suggesting clinical improvement on current antibiotic therapy.\"\nN13: \"Will continue inpatient management with IV antibiotics and plan transition to oral therapy if afebrile status persists.\"\nN15: \"1. Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia; transition to oral cefpodoxime tomorrow if patient remains afebrile.\"\nDATA — Minimal\nTest result reviewed\nN8: \"White blood cell count 11 (down from 14).\"\nN12: \"White blood cell count is trending down from 14 to 11, suggesting clinical improvement on current antibiotic therapy.\"\nRISK — Moderate\nPrescription drug management\nN15: \"1. Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia; transition to oral cefpodoxime tomorrow if patient remains afebrile.\"",
+    "noteExcerpt": "AI-Generated Note\n\n5:52 PM · Oct 15\n\nSUBJECTIVE\n\nThe patient reports cough improving. No fever overnight.\n\nOBJECTIVE\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTESTING RESULTS\n\nWhite blood cell count 11 (down from 14).\n\nASSESSMENT\n\nPatient is a [age]-year-old with community-acquired pneumonia who presented this admission and is now on day 3 of hospitalization. Cough is improving and the patient has remained afebrile overnight. White blood cell count is trending down from 14 to 11, suggesting clinical improvement on current antibiotic therapy. Will continue inpatient management with IV antibiotics and plan transition to oral therapy if afebrile status persists.\n\nPLAN\n\n1. Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia; transition to oral cefpodoxime tomorrow if patient remains afebrile.\n\n2. Hypertension — lisinopril held due to low blood pressure; continue to hold and reassess.\n\nEdit Note\nCopy to EMR",
+    "labelled": true,
+    "code": "99231",
+    "level": "Low Complexity",
+    "inFamily": true,
+    "oneCode": true,
+    "levelOk": true,
+    "quotesOk": true,
+    "badQuotes": [],
+    "problemRiskQuoted": true,
+    "reasoning": [],
+    "consultLine": null,
+    "stored": {
+      "template": "soap",
+      "frozen": "soap",
+      "family": "hospital-subsequent",
+      "code": "99231",
+      "billedForNote": true,
+      "status": null,
+      "stamp": "2026-10-15T08:52:58.873Z"
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:53:07.482Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3191,
+        "providerMs": 3109,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S02": {
+    "preselected": {
+      "value": "snf-progress",
+      "label": "SNF follow-up"
+    },
+    "picked": {
+      "value": "snf-progress",
+      "label": "SNF follow-up"
+    },
+    "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99309\nLEVEL: Moderate Complexity\nPROBLEMS — Moderate\nAcute, complicated injury\nN10: \"1. Status post left hip open reduction internal fixation — resident walking 50 feet with walker in physical therapy.\"\nN19: \"1. Status post left hip ORIF — resident demonstrating functional progress with ambulation of 50 feet using walker.\"\nN20: \"Pain well controlled on acetaminophen 650 mg every 6 hours.\"\nN21: \"Continue current analgesic regimen and advance physical therapy as tolerated.\"\nStable, acute illness\nN4: \"Constipation noted since Monday.\"\nN13: \"2. Constipation — onset since Monday.\"\nN22: \"2. Constipation — senna 8.6 mg at bedtime started today.\"\nN23: \"Monitor bowel function and adjust as needed.\"\nStable chronic illness\nN15: \"3. Venous thromboembolism prophylaxis — continue enoxaparin 40 mg daily.\"\nN24: \"3. VTE prophylaxis — continue enoxaparin 40 mg daily.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nLow risk of morbidity from additional diagnostic testing or treatment\nN12: \"Continue current pain management and physical therapy participation.\"\nLow risk of morbidity from additional diagnostic testing or treatment\nN14: \"Starting senna 8.6 mg at bedtime.\"\nN22: \"2. Constipation — senna 8.6 mg at bedtime started today.\"\nPrescription drug management\nN15: \"3. Venous thromboembolism prophylaxis — continue enoxaparin 40 mg daily.\"\nN24: \"3. VTE prophylaxis — continue enoxaparin 40 mg daily.\"",
+    "noteExcerpt": "AI-Generated Note\n\n5:53 PM · Oct 15\n\nInterval Changes Since Last Visit\n\nResident has been ambulating with walker in physical therapy, tolerating activity. Left hip pain controlled on current acetaminophen regimen. Constipation noted since Monday.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\n1. Status post left hip open reduction internal fixation — resident walking 50 feet with walker in physical therapy. Left hip pain controlled on scheduled acetaminophen 650 mg every 6 hours. Continue current pain management and physical therapy participation.\n\n2. Constipation — onset since Monday. Starting senna 8.6 mg at bedtime.\n\n3. Venous thromboembolism prophylaxis — continue enoxaparin 40 mg daily.\n\nMedication Changes\n\nSenna 8.6 mg at bedtime — initiated today for constipation.\n\nAssessment and Plan\n\n1. Status post left hip ORIF — resident demonstrating functional progress with ambulation of 50 feet using walker. Pain well controlled on acetaminophen 650 mg every 6 hours. Continue current analgesic regimen and advance physical therapy as tolerated.\n\n2. Constipation — senna 8.6 mg at bedtime started today",
+    "labelled": true,
+    "code": "99309",
+    "level": "Moderate Complexity",
+    "inFamily": true,
+    "oneCode": true,
+    "levelOk": true,
+    "quotesOk": true,
+    "badQuotes": [],
+    "problemRiskQuoted": true,
+    "reasoning": [],
+    "consultLine": null,
+    "stored": {
+      "template": "snf-progress",
+      "frozen": "snf-progress",
+      "family": "snf-subsequent",
+      "code": "99309",
+      "billedForNote": true,
+      "status": null,
+      "stamp": "2026-10-15T08:53:18.532Z"
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:53:34.696Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 11252,
+        "providerMs": 11159,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S05 h-step4": {
+    "preselected": {
+      "value": "hp",
+      "label": "H&P"
+    },
+    "picked": {
+      "value": "soap",
+      "label": "SOAP progress"
+    },
+    "afterGenerate": {
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN10: \"Patient is a [age]-year-old with community-acquired pneumonia who presented on admission and is now on day 3 of hospitalization.\"\nN11: \"The clinical course has been favorable, with improving cough and resolution of fever overnight.\"\nN12: \"White blood cell count has trended down from 14 to 11, supporting clinical improvement on current antibiotic therapy.\"\nN16: \"1. Continue intravenous ceftriaxone and azithromycin; switch to oral cefpodoxime tomorrow if afebrile.\"\nStable chronic illness\nN13: \"Blood pressure remains soft, prompting continued hold of home lisinopril.\"\nN17: \"2. Hold lisinopril for soft blood pressure; reassess when blood pressure improves.\"\nDATA — Minimal\nTest result reviewed\nN8: \"White blood cell count 11 (down from 14).\"\nRISK — Moderate\nPrescription drug management\nN16: \"1. Continue intravenous ceftriaxone and azithromycin; switch to oral cefpodoxime tomorrow if afebrile.\"\nPrescription drug management\nN17: \"2. Hold lisinopril for soft blood pressure; reassess when blood pressure improves.\"",
+      "noteExcerpt": "AI-Generated Note\n\n5:53 PM · Oct 15\n\nSUBJECTIVE\n\nThe patient reports cough improving. No fever overnight.\n\nOBJECTIVE\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTESTING RESULTS\n\nWhite blood cell count 11 (down from 14).\n\nASSESSMENT\n\nPatient is a [age]-year-old with community-acquired pneumonia who presented on admission and is now on day 3 of hospitalization. The clinical course has been favorable, with improving cough and resolution of fever overnight. White blood cell count has trended down from 14 to 11, supporting clinical improvement on current antibiotic therapy. Blood pressure remains soft, prompting continued hold of home lisinopril. The patient will transition to oral therapy tomorrow if afebrile status persists.\n\nPLAN\n\n1. Continue intravenous ceftriaxone and azithromycin; switch to oral cefpodoxime tomorrow if afebrile.\n\n2. Hold lisinopril for soft blood pressure; reassess when blood pressure improves.\n\nEdit Note\nCopy to EMR",
+      "labelled": true,
+      "code": "99231",
+      "level": "Low Complexity",
+      "inFamily": true,
+      "oneCode": true,
+      "levelOk": true,
+      "quotesOk": true,
+      "badQuotes": [],
+      "problemRiskQuoted": true,
+      "reasoning": [],
+      "consultLine": null,
+      "stored": {
+        "template": "soap",
+        "frozen": "soap",
+        "family": "hospital-subsequent",
+        "code": "99231",
+        "billedForNote": true,
+        "status": null,
+        "stamp": "2026-10-15T08:53:41.891Z"
+      }
+    },
+    "afterBadgeConsult": {
+      "sameCard": true,
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN10: \"Patient is a [age]-year-old with community-acquired pneumonia who presented on admission and is now on day 3 of hospitalization.\"\nN11: \"The clinical course has been favorable, with improving cough and resolution of fever overnight.\"\nN12: \"White blood cell count has trended down from 14 to 11, supporting clinical improvement on current antibiotic therapy.\"\nN16: \"1. Continue intravenous ceftriaxone and azithromycin; switch to oral cefpodoxime tomorrow if afebrile.\"\nStable chronic illness\nN13: \"Blood pressure remains soft, prompting continued hold of home lisinopril.\"\nN17: \"2. Hold lisinopril for soft blood pressure; reassess when blood pressure improves.\"\nDATA — Minimal\nTest result reviewed\nN8: \"White blood cell count 11 (down from 14).\"\nRISK — Moderate\nPrescription drug management\nN16: \"1. Continue intravenous ceftriaxone and azithromycin; switch to oral cefpodoxime tomorrow if afebrile.\"\nPrescription drug management\nN17: \"2. Hold lisinopril for soft blood pressure; reassess when blood pressure improves.\"",
+      "billingRowsSoFar": 1
+    },
+    "regenerate": {
+      "picked": {
+        "value": "hp",
+        "label": "H&P"
+      },
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99221\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN2: \"Community-acquired pneumonia, day 3.\"\nN4: \"Patient is a [age]-year-old patient with community-acquired pneumonia admitted on October 13, now on day 3 of hospitalization.\"\nN5: \"The patient presented with pneumonia and has been treated with intravenous ceftriaxone and azithromycin.\"\nN6: \"Cough is improving and fever has resolved.\"\nN7: \"White blood cell count has trended down from 14 to 11.\"\nN8: \"The patient reports no fever overnight.\"\nN9: \"Plan is to transition to oral cefpodoxime tomorrow if the patient remains afebrile.\"\nN30: \"The clinical picture is consistent with community-acquired pneumonia responding to intravenous antibiotic therapy, with improving cough, resolution of fever, and declining leukocytosis.\"\nN32: \"Overall management direction is to continue inpatient IV antibiotic therapy with planned transition to oral therapy tomorrow if afebrile status is maintained.\"\nN34: \"1. Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia; transition to oral cefpodoxime tomorrow if patient remains afebrile.\"\nStable, acute illness\nN15: \"Lisinopril — held Oct 15 for soft blood pressure\"\nN31: \"The patient remains hemodynamically stable but with soft blood pressure, prompting continuation of lisinopril hold.\"\nN35: \"2. Lisinopril held for soft blood pressure; reassess when blood pressure improves.\"\nDATA — Minimal\nTest result reviewed\nN7: \"White blood cell count has trended down from 14 to 11.\"\nN27: \"White blood cell count 11 (down from 14 on admission).\"\nRISK — Moderate\nPrescription drug management\nN34: \"1. Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia; transition to oral cefpodoxime tomorrow if patient remains afebrile.\"\nPrescription drug management\nN35: \"2. Lisinopril held for soft blood pressure; reassess when blood pressure improves.\"",
+      "noteExcerpt": "AI-Generated Note\n\n5:54 PM · Oct 15\n\nChief Complaint\n\nCommunity-acquired pneumonia, day 3.\n\nHistory of Present Illness\n\nPatient is a [age]-year-old patient with community-acquired pneumonia admitted on October 13, now on day 3 of hospitalization. The patient presented with pneumonia and has been treated with intravenous ceftriaxone and azithromycin. Cough is improving and fever has resolved. White blood cell count has trended down from 14 to 11. The patient reports no fever overnight. Plan is to transition to oral cefpodoxime tomorrow if the patient remains afebrile.\n\nPast Medical History\n\nNot provided\n\nMedications\n\nCeftriaxone — IV, active\n\nAzithromycin — IV, active\n\nLisinopril — held Oct 15 for soft blood pressure\n\nAllergies\n\nNot provided\n\nSocial History\n\nNot provided\n\nFamily History\n\nNot provided\n\nReview of Systems\n\nNot documented in today's dictation.\n\nPhysical Examination\n\nNot documented in today's dictation.\n\nTesting Results\n\nWhite blood cell count 11 (down from 14 on admission).\n\nAssessment\n\nPatient is a [age]-year-old patient with community-acquired pneumonia who presented on October 13 and is now on day 3 of hospitalization. The clinical picture is consistent with communit",
+      "labelled": true,
+      "code": "99221",
+      "level": "Low Complexity",
+      "inFamily": true,
+      "oneCode": true,
+      "levelOk": true,
+      "quotesOk": true,
+      "badQuotes": [],
+      "problemRiskQuoted": true,
+      "reasoning": [],
+      "consultLine": null,
+      "stored": {
+        "template": "hp",
+        "frozen": "hp",
+        "family": "hospital-initial",
+        "code": "99221",
+        "billedForNote": true,
+        "status": null,
+        "stamp": "2026-10-15T08:54:04.104Z"
+      }
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:54:14.492Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3405,
+        "providerMs": 3109,
+        "fellBackFrom": null,
+        "error": null
+      },
+      {
+        "at": "2026-10-15T08:53:50.776Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3621,
+        "providerMs": 3547,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S05 h-consult": {
+    "preselected": {
+      "value": "consult",
+      "label": "Consult note"
+    },
+    "picked": {
+      "value": "consult",
+      "label": "Consult note"
+    },
+    "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99222\nLEVEL: Moderate Complexity\nMedicare doesn't pay consult codes; for a commercial payer that still does, the matching consult code is 99254.\nPROBLEMS — Moderate\nAcute illness with systemic symptoms\nN4: \"Evaluation of atrial fibrillation with rapid ventricular response.\"\nN6: \"The patient presented with atrial fibrillation and a rapid ventricular response, with heart rate documented in the 130s this morning.\"\nN21: \"Heart rate in the 130s this morning.\"\nN25: \"The patient presents with atrial fibrillation and rapid ventricular response.\"\nN26: \"The documented heart rate of 130s this morning reflects inadequate rate control.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nPrescription drug management\nN29: \"1. Start metoprolol tartrate 25 mg twice daily for rate control of atrial fibrillation.\"\nPrescription drug management\nN30: \"2. Start apixaban 5 mg twice daily for anticoagulation in atrial fibrillation.\"\nLow risk of morbidity from additional diagnostic testing or treatment\nN32: \"4. Recheck electrocardiogram to assess response to therapy.\"",
+    "noteExcerpt": "AI-Generated Note\n\n5:54 PM · Oct 15\n\nCONSULTING SERVICE AND REQUESTING PROVIDER\n\nCardiology consulting for Hospitalist.\n\nREASON FOR CONSULTATION\n\nEvaluation of atrial fibrillation with rapid ventricular response.\n\nHISTORY OF PRESENT ILLNESS\n\nThe patient presented with atrial fibrillation and a rapid ventricular response, with heart rate documented in the 130s this morning. Cardiology was consulted for management recommendations.\n\nPAST MEDICAL HISTORY\n\nNot provided.\n\nMEDICATIONS\n\nNot provided.\n\nALLERGIES\n\nNot provided.\n\nSOCIAL HISTORY\n\nNot provided.\n\nFAMILY HISTORY\n\nNot provided.\n\nREVIEW OF SYSTEMS\n\nNot documented in the dictation.\n\nPHYSICAL EXAMINATION\n\nHeart rate in the 130s this morning.\n\nTESTING RESULTS\n\nNot provided.\n\nASSESSMENT\n\nThe patient presents with atrial fibrillation and rapid ventricular response. The documented heart rate of 130s this morning reflects inadequate rate control. Initiation of beta-blocker therapy and anticoagulation are indicated to manage both the rate and thromboembolic risk associated with atrial fibrillation.\n\nRECOMMENDATIONS\n\n1. Start metoprolol tartrate 25 mg twice daily for rate control of atrial fibrillation.\n\n2. Start apixaban 5 mg twice daily f",
+    "labelled": true,
+    "code": "99222",
+    "level": "Moderate Complexity",
+    "inFamily": true,
+    "oneCode": true,
+    "levelOk": true,
+    "quotesOk": true,
+    "badQuotes": [],
+    "problemRiskQuoted": true,
+    "reasoning": [],
+    "consultLine": "Medicare doesn't pay consult codes; for a commercial payer that still does, the matching consult code is 99254.",
+    "stored": {
+      "template": "consult",
+      "frozen": "consult",
+      "family": "hospital-initial",
+      "code": "99222",
+      "billedForNote": true,
+      "status": null,
+      "stamp": "2026-10-15T08:54:25.443Z"
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:54:34.559Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3240,
+        "providerMs": 3168,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S05 n-step4": {
+    "preselected": {
+      "value": "snf-admission",
+      "label": "SNF admission"
+    },
+    "picked": {
+      "value": "snf-progress",
+      "label": "SNF follow-up"
+    },
+    "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99309\nLEVEL: Moderate Complexity\nPROBLEMS — Moderate\nStable chronic illness\nN8: \"Left Hip Pain\"\nN9: \"Left hip pain controlled on scheduled acetaminophen 650 mg every 6 hours.\"\nN16: \"Left Hip Pain — pain is controlled on current acetaminophen dosing.\"\nN17: \"Continue scheduled acetaminophen 650 mg every 6 hours and monitor for adequate pain control.\"\nAcute, uncomplicated illness or injury\nN10: \"Constipation\"\nN11: \"Constipation onset since Monday.\"\nN18: \"Constipation — new onset since Monday.\"\nN19: \"Initiate senna 8.6 mg at bedtime to address constipation and monitor bowel function.\"\nStable chronic illness\nN13: \"Venous Thromboembolism Prophylaxis\"\nN14: \"Continue enoxaparin 40 mg daily.\"\nN20: \"Venous Thromboembolism Prophylaxis — continue enoxaparin 40 mg daily as prescribed.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nLow risk of morbidity from additional diagnostic testing or treatment\nN17: \"Continue scheduled acetaminophen 650 mg every 6 hours and monitor for adequate pain control.\"\nLow risk of morbidity from additional diagnostic testing or treatment\nN19: \"Initiate senna 8.6 mg at bedtime to address constipation and monitor bowel function.\"\nPrescription drug management\nN20: \"Venous Thromboembolism Prophylaxis — continue enoxaparin 40 mg daily as prescribed.\"",
+    "noteExcerpt": "AI-Generated Note\n\n5:54 PM · Oct 15\n\nInterval Changes Since Last Visit\n\nNot documented.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nResident walking 50 feet with a walker in physical therapy.\n\nActive Medical Problems\n\nLeft Hip Pain\n\nLeft hip pain controlled on scheduled acetaminophen 650 mg every 6 hours.\n\nConstipation\n\nConstipation onset since Monday. Starting senna 8.6 mg at bedtime.\n\nVenous Thromboembolism Prophylaxis\n\nContinue enoxaparin 40 mg daily.\n\nAssessment and Plan\n\nLeft Hip Pain — pain is controlled on current acetaminophen dosing. Continue scheduled acetaminophen 650 mg every 6 hours and monitor for adequate pain control.\n\nConstipation — new onset since Monday. Initiate senna 8.6 mg at bedtime to address constipation and monitor bowel function.\n\nVenous Thromboembolism Prophylaxis — continue enoxaparin 40 mg daily as prescribed.\n\nEdit Note\nCopy to EMR",
+    "labelled": true,
+    "code": "99309",
+    "level": "Moderate Complexity",
+    "inFamily": true,
+    "oneCode": true,
+    "levelOk": true,
+    "quotesOk": true,
+    "badQuotes": [],
+    "problemRiskQuoted": true,
+    "reasoning": [],
+    "consultLine": null,
+    "stored": {
+      "template": "snf-progress",
+      "frozen": "snf-progress",
+      "family": "snf-subsequent",
+      "code": "99309",
+      "billedForNote": true,
+      "status": null,
+      "stamp": "2026-10-15T08:54:45.114Z"
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:54:53.311Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4284,
+        "providerMs": 4088,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S07 h-no-time": {
+    "picked": {
+      "value": "discharge",
+      "label": "Discharge summary"
+    },
+    "before": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: none yet — select the time on discharge\nLEVEL: —\nTime on discharge:\n≤ 30 min\n> 30 min",
+    "noteHasTime": false,
+    "noteExcerpt": "AI-Generated Note\n\n5:54 PM · Oct 15\n\nDISCHARGE SUMMARY\n\nADMISSION DATE: Not provided\n\nPRINCIPAL DIAGNOSIS: Community-acquired pneumonia\n\nREASON FOR ADMISSION: Not provided\n\nHOSPITAL COURSE: The patient was admitted with community-acquired pneumonia. During the hospitalization, the pneumonia resolved with treatment.\n\nDISCHARGE CONDITION: Stable per physician assessment\n\nDISCHARGE MEDICATIONS\n\nCefpodoxime 200 mg twice daily — to complete 2 additional days\n\nFOLLOW-UP INSTRUCTIONS\n\n1. Follow up with primary care in one week.\n\nRETURN PRECAUTIONS: Not provided\n\nEdit Note\nCopy to EMR",
+    "prompt": true,
+    "afterTap": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99239\nLEVEL: —\nTime on discharge: > 30 min — time selected by the physician",
+    "afterReload": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99239\nLEVEL: —\nTime on discharge: > 30 min — time selected by the physician",
+    "stored": {
+      "family": "hospital-discharge",
+      "code": "99239",
+      "time": "physician"
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:55:06.028Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 1864,
+        "providerMs": 1778,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S07 h-time": {
+    "picked": {
+      "value": "discharge",
+      "label": "Discharge summary"
+    },
+    "before": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: none yet — select the time on discharge\nLEVEL: —\nTime on discharge:\n≤ 30 min\n> 30 min",
+    "noteHasTime": false,
+    "noteExcerpt": "AI-Generated Note\n\n5:55 PM · Oct 15\n\nDISCHARGE SUMMARY\n\nADMISSION DATE: Not provided\n\nPRINCIPAL DIAGNOSIS: Community-acquired pneumonia\n\nREASON FOR ADMISSION: Community-acquired pneumonia\n\nHOSPITAL COURSE: Not provided\n\nDISCHARGE CONDITION: Pneumonia resolved\n\nDISCHARGE MEDICATIONS\n\nCefpodoxime 200 mg twice daily — to complete 2 additional days\n\nFOLLOW-UP INSTRUCTIONS\n\n1. Follow up with primary care in one week.\n\nRETURN PRECAUTIONS: Not provided\n\nEdit Note\nCopy to EMR",
+    "stored": {
+      "family": "hospital-discharge",
+      "code": null,
+      "time": "not_documented"
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:55:29.491Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2793,
+        "providerMs": 2708,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S07 h-over30": {
+    "picked": {
+      "value": "discharge",
+      "label": "Discharge summary"
+    },
+    "before": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: none yet — select the time on discharge\nLEVEL: —\nTime on discharge:\n≤ 30 min\n> 30 min",
+    "noteHasTime": false,
+    "noteExcerpt": "AI-Generated Note\n\n5:55 PM · Oct 15\n\nDISCHARGE SUMMARY\n\nADMISSION DATE\n\nNot provided\n\nPRINCIPAL DIAGNOSIS\n\nCommunity-acquired pneumonia\n\nREASON FOR ADMISSION\n\nNot provided\n\nHOSPITAL COURSE\n\nThe patient was hospitalized for community-acquired pneumonia. During the admission, the pneumonia resolved. The patient tolerated treatment and demonstrated clinical improvement.\n\nDISCHARGE CONDITION\n\nStable per physician assessment\n\nDISCHARGE MEDICATIONS\n\nCefpodoxime 200 mg twice daily — to complete 2 additional days\n\nFOLLOW-UP INSTRUCTIONS\n\n1. Follow up with primary care in one week.\n\nRETURN PRECAUTIONS\n\nNot provided\n\nEdit Note\nCopy to EMR",
+    "stored": {
+      "family": "hospital-discharge",
+      "code": null,
+      "time": "not_documented"
+    },
+    "diag": [
+      {
+        "at": "2026-10-15T08:55:46.848Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2051,
+        "providerMs": 1970,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  }
+}

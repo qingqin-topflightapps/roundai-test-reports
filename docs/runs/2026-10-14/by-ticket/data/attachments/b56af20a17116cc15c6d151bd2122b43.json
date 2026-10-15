@@ -1,0 +1,48 @@
+{
+  "name": "tc18-s20-ui",
+  "at": "2026-10-15T09:18:32.649Z",
+  "checks": [
+    {
+      "id": "hospital: the billing area says it failed and offers a retry (a button), no code, no spinner",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | Couldn't generate billing suggestion — tap to retry"
+    },
+    {
+      "id": "hospital: the note is still shown next to the billing error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "hospital: the retry queues a new attempt for the same note and the card shows its stored suggestion",
+      "ok": true,
+      "detail": "{\"attempt\":2,\"family\":\"hospital-subsequent\",\"card\":\"BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)\"}"
+    },
+    {
+      "id": "snf: the billing area says it failed and offers a retry (a button), no code, no spinner",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | Couldn't generate billing suggestion — tap to retry"
+    },
+    {
+      "id": "snf: the note is still shown next to the billing error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "snf: the retry queues a new attempt for the same note and the card shows its stored suggestion",
+      "ok": true,
+      "detail": "{\"attempt\":2,\"family\":\"snf-subsequent\",\"card\":\"BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)\"}"
+    },
+    {
+      "id": "automatic retries before the error (5 s, then 30 s; 3 attempts) cannot be produced without a failing model call: Tim's unit test 'retries are automatic, bounded, and reject stale completions' (e2e/unit/billing-persistence.unit.ts) is the evidence",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "no AI action left the browser",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {}
+}

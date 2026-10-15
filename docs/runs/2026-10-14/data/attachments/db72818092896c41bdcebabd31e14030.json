@@ -1,0 +1,54 @@
+{
+  "name": "oat06-s13-srv-r6",
+  "at": "2026-10-15T09:22:20.887Z",
+  "checks": [
+    {
+      "id": "R6 (recorded, our boundary): account 4 is offered the baseline before its first patient although account 3 tapped Not now on this browser (the survey is per physician)",
+      "ok": true,
+      "detail": "account 4 card: Hospital true, Nursing Home true; account 3's Not now is on the server (1 dismissal); survey keys in localStorage: []",
+      "recordOnly": true
+    },
+    {
+      "id": "R6 (recorded): account 3's Not now holds on a second device the same day (kept on the server, not in the browser)",
+      "ok": true,
+      "detail": "second device: {\"baseline\":false,\"task\":false,\"feedback\":true,\"statusArrived\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "one row per account: neither shared-browser account answered, so neither has a baseline row",
+      "ok": true,
+      "detail": "account 3: 0, account 4: 0"
+    }
+  ],
+  "data": {
+    "R6": {
+      "account3CardShown": true,
+      "account3Status": {
+        "answeredAt": null,
+        "dismissedAt": [
+          1792056134820.469
+        ]
+      },
+      "surveyKeysInLocalStorage": [],
+      "account3SecondDevice": {
+        "baseline": false,
+        "task": false,
+        "feedback": true,
+        "statusArrived": true
+      },
+      "account4Hospital": {
+        "baseline": true,
+        "task": false,
+        "feedback": false,
+        "statusArrived": true
+      },
+      "account4NursingHome": {
+        "baseline": true,
+        "task": false,
+        "feedback": false,
+        "statusArrived": true
+      }
+    },
+    "aiCalls": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "TC-22/S09": {
+    "status": "failed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:13:18.736Z",
+    "title": "Counts and length, app half: 0 / 1 / 12 open tasks handled in both contexts; a Hospital pre-round longer than 1,200 characters loses the tasks dictated after it",
+    "detail": "Local stack on main 43c38a4f; every model call the page makes is answered in the page by ext-support.ts (an ai/* call it is not told about is failed, never forwarded) and the tripwire showed no model call. The task extractor is a rule-based stand-in that can only find what the app sends it (args.content / args.openTasks), so the app's own request, cut, merge and storage are what is judged, not the model. Spec ext-tc22-s09-s10-length.spec.ts. C0/C1/C12 in both contexts (16/16 judged per context): every open task is sent (0, 1, 12), the answered ones close, the other ten stay open, nothing added or duplicated, the header counts the open tasks. L1 fails, 1/3 (deterministic): a 1,266-character pre-round note whose three tasks start at character 1,214 — the harvest request carries only the first 1,200 characters (usePreRoundProcess.ts: input.trim().substring(0, 1200)), so no extractor can see the tasks; after Save Note the list shows 0 pending tasks. The model half of C0/C1/C12 is the dev entry.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s09-b43-l1-hospital.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s09-b43-l1-hospital-after-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s09-b43-counts-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s09-b43-counts-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s09-b43-counts-rounding-c12-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s09-b43-counts-snf-c12-after.png"
+    ],
+    "method": "PW",
+    "productIssue": "Hospital: in a pre-round note longer than 1,200 characters, follow-ups dictated at the end ('Follow up BMP. PT eval. Recheck weight in two weeks.') never become tasks — the app sends only the first 1,200 characters to the task harvest; nothing tells the physician.",
+    "pkg": "ext"
+  }
+}

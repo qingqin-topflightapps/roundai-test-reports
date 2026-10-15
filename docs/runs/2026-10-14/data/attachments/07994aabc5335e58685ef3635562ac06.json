@@ -1,0 +1,18 @@
+{
+  "TC-10/S06": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:24:34.573Z",
+    "title": "Bare temperatures through Save Note (local half: what the app does with the extracted number)",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-tc10-s06-temp.spec.ts: the matrix's T-01…T-05 dictations (and T-04's bare weight), the summary call answered with the dictated number unchanged, then Generate pressed once per chart with the note call answered as a failure (no model, nothing stored) to read the note input. Judged 23/23: the Vitals panel shows the number as dictated (38.4, 35.2, 40.1, '37.9 C', 101.2) — never labelled °F or converted for a Celsius-range value, 101.2 never converted to °C; the bare weight 72 gets no unit on the panel or in the note input; the note input carries each number unconverted, labelled by range (38.4°C, 35.2°C, 40.1°C, 101.2°F; '37.9 C' as dictated) per src/domain/vitals.ts fmtTemp (PR #48). Recorded (D2, decision pending with Preston): the app itself adds the °C / °F label to a bare number in the note input. Left (AI content, dev only): whether a live model keeps the dictated number in parsePreRoundNotes — the lane-B 'preround-ai' runner the matrix names is not built (devPending).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s06-pre-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s06-pre-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s06-pre-hosp-T-01-panel.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s06-pre-nh-T-05-panel.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

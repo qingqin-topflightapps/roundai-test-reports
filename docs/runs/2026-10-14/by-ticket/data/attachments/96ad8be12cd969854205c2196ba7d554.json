@@ -1,0 +1,75 @@
+{
+  "name": "oat03-s27-snf",
+  "at": "2026-10-15T08:53:46.507Z",
+  "checks": [
+    {
+      "id": "B's Post-Round right after opening it shows nothing of A's dictation",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Bea EX1C\n\nMRN-66Q7ZX · Cedar Wing · Room 23\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nP"
+    },
+    {
+      "id": "B's Post-Round 45 s later shows nothing of A's dictation or note",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Bea EX1C\n\nMRN-66Q7ZX · Cedar Wing · Room 23\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nP"
+    },
+    {
+      "id": "B's Encounter tab holds its own line and nothing of A",
+      "ok": true,
+      "detail": "QA OAT-03 B own visit line: knee swelling down, walking with a walker."
+    },
+    {
+      "id": "backend: B's note is empty and its encounter text is exactly its own line",
+      "ok": true,
+      "detail": "{\"note\":null,\"enc\":\"QA OAT-03 B own visit line: knee swelling down, walking with a walker.\"}"
+    },
+    {
+      "id": "A's Encounter tab still holds A's dictation",
+      "ok": true,
+      "detail": "QA OAT-03 step 5 visit: no falls, sleeping well, continue plan."
+    },
+    {
+      "id": "backend: A's encounter text equals the typed text",
+      "ok": true,
+      "detail": "QA OAT-03 step 5 visit: no falls, sleeping well, continue plan."
+    },
+    {
+      "id": "A has the note, an explicit failure, or no note yet (never B's)",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA OAT-03 call 1 mocked note (no model was called). Today: QA OAT-03 step 5 visit: no falls, sleeping well, continue plan.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":fa"
+    }
+  ],
+  "data": {
+    "a-when-b-opened": {
+      "note": false,
+      "status": null,
+      "generateAnswered": "in flight"
+    },
+    "b-backend": {
+      "before": {
+        "note": null,
+        "enc": "QA OAT-03 B own visit line: knee swelling down, walking with a walker."
+      },
+      "after": {
+        "note": null,
+        "enc": "QA OAT-03 B own visit line: knee swelling down, walking with a walker.",
+        "noteGeneratedAt": null
+      }
+    },
+    "a-backend": {
+      "note": "ASSESSMENT AND PLAN\nQA OAT-03 call 1 mocked note (no model was called). Today: QA OAT-03 step 5 visit: no falls, sleeping well, continue plan.",
+      "enc": "QA OAT-03 step 5 visit: no falls, sleeping well, continue plan.",
+      "status": "note-ready",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA OAT-03 call 1 mocked note (no model was called). Today: QA OAT-03 step 5 visit: no falls, sleeping well, continue plan.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      }
+    }
+  }
+}

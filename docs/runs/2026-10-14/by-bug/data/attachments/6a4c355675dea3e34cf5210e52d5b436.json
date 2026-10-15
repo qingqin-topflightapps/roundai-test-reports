@@ -1,0 +1,35 @@
+{
+  "S05": {
+    "status": "broken",
+    "message": "title not in Tim's suite on this commit (cases/e2e-titles.tsv): a failed suggestion stays visible and retries on tap",
+    "tests": [
+      "chart.spec.ts [chromium] — a structured-summary failure keeps the reviewed note and a visible retry — expected",
+      "connection-banner.spec.ts [chromium] — the app shows a no-network banner while offline and removes it when back online — expected",
+      "encounter-workflow.spec.ts [chromium] — a generation failure keeps the saved dictation in the encounter — expected",
+      "session-draft.spec.ts [chromium] — dictation written after the session ended is restored after signing back in — expected"
+    ],
+    "at": 1792053813419
+  },
+  "S23": {
+    "status": "passed",
+    "tests": [
+      "api/provider-fallback.spec.ts [api] — PF-03-01 primary answers — expected",
+      "api/provider-fallback.spec.ts [api] — PF-03-01 primary answers (twin): a Haiku throttle is retried on Haiku once, then answered by Mistral — expected",
+      "api/provider-fallback.spec.ts [api] — PF-03-01 primary answers (twin): the second Haiku try can answer — expected",
+      "api/provider-fallback.spec.ts [api] — PF-03-02 a request Haiku refuses goes straight to Mistral, with no second Haiku try — expected",
+      "api/provider-fallback.spec.ts [api] — PF-03-02 (twin): a deployment failure is thrown at once — no retry, no fallback — expected",
+      "api/provider-fallback.spec.ts [api] — PF-03-02 an unclassified error is not temporary: Mistral at once — expected",
+      "api/provider-fallback.spec.ts [api] — PF-03-04 both fail — expected"
+    ],
+    "at": 1791949040669
+  },
+  "S26": {
+    "status": "passed",
+    "tests": [
+      "api/session-security.spec.ts [api] — signing in names the session in the token, and the session lasts 12 hours idle — expected",
+      "api/session-security.spec.ts [api] — a session idle for 12 hours is refused — expected",
+      "api/session-security.spec.ts [api] — an open tab fetching Convex tokens does not keep the session alive; use does — expected"
+    ],
+    "at": 1791949040669
+  }
+}

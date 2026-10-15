@@ -1,0 +1,189 @@
+{
+  "name": "tc14-s27",
+  "at": "2026-10-15T08:57:00.361Z",
+  "checks": [
+    {
+      "id": "hospital: the correct browser keeps the earlier values off the today's line and dated (S18 plumbing)",
+      "ok": true,
+      "detail": "{\"vitals\":\"VITALS: None recorded — NO vitals were recorded TODAY for this patient. If ANY vital sign (blood pressure, heart rate, temperature, oxygen saturation, respiratory rate, weight) was dictated anywhere in today's pre-round or encounter text below, report THOSE values in the note rather than "
+    },
+    {
+      "id": "hospital (U17): a browser a day ahead sends the same VITALS / LABS / EARLIER lines and note date and shows the same panel labels as the correct one",
+      "ok": true,
+      "detail": "identical"
+    },
+    {
+      "id": "hospital (Q20): a browser a day ahead in Pacific/Honolulu sends the same as the correct one",
+      "ok": false,
+      "detail": "panelLabels: [\"Oct 14\",\"Oct 14\",\"Oct 14\",\"Oct 14\",\"Oct 14\",\"Oct 14\"] ≠ [\"Oct 13\",\"Oct 13\",\"Oct 13\",\"Oct 13\",\"Oct 13\",\"Oct 13\"] | dateLabel: \"October 15, 2026\" ≠ \"October 14, 2026\" | earlierVitals: \"EARLIER VITALS — recorded on a PREVIOUS day, NOT today. Never report them as today's values or as exam findings; mentio ≠ \"EARLIER VITALS — recorded on a PREVIOUS day, NOT today. Never report them as today's values or as exam findings; mentio | earlierLabs: \"EARLIER LABS — recorded on a PREVIOUS day, NOT today. Never report them as today's values; mention one only with its da ≠ \"EARLIER LABS — recorded on a PREVIOUS day, NOT today. Never report them as today's values; mention one only with its da",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital (known B18): the note time the ahead browser stored is the server's, not the device's",
+      "ok": false,
+      "detail": "{\"noteGeneratedAt\":\"2026-10-16T08:56:46.039Z\",\"transcriptDate\":\"Fri Oct 16 2026\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: the correct browser keeps the earlier values off the today's line and dated (S18 plumbing)",
+      "ok": true,
+      "detail": "{\"vitals\":\"VITALS (recorded today): None recorded today\",\"earlier\":\"EARLIER VITALS — recorded at a PREVIOUS visit or day, NOT today. Never report them as today's values or as exam findings; mention one only with its date (e.g. \\\"HR 88 on Oct 4\\\"), such as for a trend: BP 122/68 mmHg (Oct 1), HR 74 b"
+    },
+    {
+      "id": "snf (U17): a browser a day ahead sends the same VITALS / LABS / EARLIER lines and note date and shows the same panel labels as the correct one",
+      "ok": true,
+      "detail": "identical"
+    },
+    {
+      "id": "snf (Q20): a browser a day ahead in Pacific/Honolulu sends the same as the correct one",
+      "ok": false,
+      "detail": "panelLabels: [\"Oct 1\",\"Oct 1\",\"Oct 1\"] ≠ [\"Sep 30\",\"Sep 30\",\"Sep 30\"] | dateLabel: \"October 15, 2026\" ≠ \"October 14, 2026\" | earlierVitals: \"EARLIER VITALS — recorded at a PREVIOUS visit or day, NOT today. Never report them as today's values or as exam finding ≠ \"EARLIER VITALS — recorded at a PREVIOUS visit or day, NOT today. Never report them as today's values or as exam finding",
+      "recordOnly": true
+    },
+    {
+      "id": "snf (known B18): the note time the ahead browser stored is the server's, not the device's",
+      "ok": false,
+      "detail": "{\"noteGeneratedAt\":\"2026-10-16T08:56:49.568Z\",\"transcriptDate\":null}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "contexts": {
+      "correct": {
+        "access": {
+          "signedOutByClock": false,
+          "uiSignIn": null
+        },
+        "browser": {
+          "tz": "Asia/Tokyo",
+          "now": "Thu Oct 15 2026 17:56:36 GMT+0900 (Japan Standard Time)"
+        },
+        "hospital": {
+          "panelLabels": [
+            "Oct 14",
+            "Oct 14",
+            "Oct 14",
+            "Oct 14",
+            "Oct 14",
+            "Oct 14"
+          ],
+          "dateLabel": "October 15, 2026",
+          "vitalsLine": "VITALS: None recorded — NO vitals were recorded TODAY for this patient. If ANY vital sign (blood pressure, heart rate, temperature, oxygen saturation, respiratory rate, weight) was dictated anywhere in today's pre-round or encounter text below, report THOSE values in the note rather than writing 'not provided' or leaving the vitals blank. If none was, the vital-signs line reads \"Vital signs: not dictated today\"; never fill it from an earlier day.",
+          "labsLine": "LABS (recorded today): None recorded — NO labs were recorded TODAY. If ANY laboratory value was dictated in today's pre-round or encounter text below, report THOSE values rather than writing 'not provided'.",
+          "earlierVitals": "EARLIER VITALS — recorded on a PREVIOUS day, NOT today. Never report them as today's values or as exam findings; mention one only with its date (e.g. \"HR 88 on Oct 4\"), such as for a trend: BP 132/80 mmHg (Oct 14), HR 88 bpm (Oct 14), Temp 37.4 °C (Oct 14), SpO2 95% RA (Oct 14)",
+          "earlierLabs": "EARLIER LABS — recorded on a PREVIOUS day, NOT today. Never report them as today's values; mention one only with its date (e.g. \"Hgb 9.4 on Oct 4\"), such as for a trend: Cr: 1.4 (↑ from 1.1) (Oct 14); K: 3.8 (Oct 14)",
+          "stored": {
+            "noteGeneratedAt": "2026-10-15T08:56:38.017Z",
+            "transcriptDate": "Thu Oct 15 2026"
+          }
+        },
+        "snf": {
+          "panelLabels": [
+            "Oct 1",
+            "Oct 1",
+            "Oct 1"
+          ],
+          "dateLabel": "October 15, 2026",
+          "vitalsLine": "VITALS (recorded today): None recorded today",
+          "labsLine": "LABS (recorded today): None recorded today",
+          "earlierVitals": "EARLIER VITALS — recorded at a PREVIOUS visit or day, NOT today. Never report them as today's values or as exam findings; mention one only with its date (e.g. \"HR 88 on Oct 4\"), such as for a trend: BP 122/68 mmHg (Oct 1), HR 74 bpm (Oct 1), Wt 58.1 kg (Oct 1)",
+          "earlierLabs": "",
+          "stored": {
+            "noteGeneratedAt": "2026-10-15T08:56:41.647Z",
+            "transcriptDate": null
+          }
+        }
+      },
+      "ahead": {
+        "access": {
+          "signedOutByClock": true,
+          "uiSignIn": "reached-app"
+        },
+        "browser": {
+          "tz": "Asia/Tokyo",
+          "now": "Fri Oct 16 2026 17:56:44 GMT+0900 (Japan Standard Time)"
+        },
+        "hospital": {
+          "panelLabels": [
+            "Oct 14",
+            "Oct 14",
+            "Oct 14",
+            "Oct 14",
+            "Oct 14",
+            "Oct 14"
+          ],
+          "dateLabel": "October 15, 2026",
+          "vitalsLine": "VITALS: None recorded — NO vitals were recorded TODAY for this patient. If ANY vital sign (blood pressure, heart rate, temperature, oxygen saturation, respiratory rate, weight) was dictated anywhere in today's pre-round or encounter text below, report THOSE values in the note rather than writing 'not provided' or leaving the vitals blank. If none was, the vital-signs line reads \"Vital signs: not dictated today\"; never fill it from an earlier day.",
+          "labsLine": "LABS (recorded today): None recorded — NO labs were recorded TODAY. If ANY laboratory value was dictated in today's pre-round or encounter text below, report THOSE values rather than writing 'not provided'.",
+          "earlierVitals": "EARLIER VITALS — recorded on a PREVIOUS day, NOT today. Never report them as today's values or as exam findings; mention one only with its date (e.g. \"HR 88 on Oct 4\"), such as for a trend: BP 132/80 mmHg (Oct 14), HR 88 bpm (Oct 14), Temp 37.4 °C (Oct 14), SpO2 95% RA (Oct 14)",
+          "earlierLabs": "EARLIER LABS — recorded on a PREVIOUS day, NOT today. Never report them as today's values; mention one only with its date (e.g. \"Hgb 9.4 on Oct 4\"), such as for a trend: Cr: 1.4 (↑ from 1.1) (Oct 14); K: 3.8 (Oct 14)",
+          "stored": {
+            "noteGeneratedAt": "2026-10-16T08:56:46.039Z",
+            "transcriptDate": "Fri Oct 16 2026"
+          }
+        },
+        "snf": {
+          "panelLabels": [
+            "Oct 1",
+            "Oct 1",
+            "Oct 1"
+          ],
+          "dateLabel": "October 15, 2026",
+          "vitalsLine": "VITALS (recorded today): None recorded today",
+          "labsLine": "LABS (recorded today): None recorded today",
+          "earlierVitals": "EARLIER VITALS — recorded at a PREVIOUS visit or day, NOT today. Never report them as today's values or as exam findings; mention one only with its date (e.g. \"HR 88 on Oct 4\"), such as for a trend: BP 122/68 mmHg (Oct 1), HR 74 bpm (Oct 1), Wt 58.1 kg (Oct 1)",
+          "earlierLabs": "",
+          "stored": {
+            "noteGeneratedAt": "2026-10-16T08:56:49.568Z",
+            "transcriptDate": null
+          }
+        }
+      },
+      "ahead-honolulu": {
+        "access": {
+          "signedOutByClock": true,
+          "uiSignIn": "reached-app"
+        },
+        "browser": {
+          "tz": "Pacific/Honolulu",
+          "now": "Thu Oct 15 2026 22:56:52 GMT-1000 (Hawaii-Aleutian Standard Time)"
+        },
+        "hospital": {
+          "panelLabels": [
+            "Oct 13",
+            "Oct 13",
+            "Oct 13",
+            "Oct 13",
+            "Oct 13",
+            "Oct 13"
+          ],
+          "dateLabel": "October 14, 2026",
+          "vitalsLine": "VITALS: None recorded — NO vitals were recorded TODAY for this patient. If ANY vital sign (blood pressure, heart rate, temperature, oxygen saturation, respiratory rate, weight) was dictated anywhere in today's pre-round or encounter text below, report THOSE values in the note rather than writing 'not provided' or leaving the vitals blank. If none was, the vital-signs line reads \"Vital signs: not dictated today\"; never fill it from an earlier day.",
+          "labsLine": "LABS (recorded today): None recorded — NO labs were recorded TODAY. If ANY laboratory value was dictated in today's pre-round or encounter text below, report THOSE values rather than writing 'not provided'.",
+          "earlierVitals": "EARLIER VITALS — recorded on a PREVIOUS day, NOT today. Never report them as today's values or as exam findings; mention one only with its date (e.g. \"HR 88 on Oct 4\"), such as for a trend: BP 132/80 mmHg (Oct 13), HR 88 bpm (Oct 13), Temp 37.4 °C (Oct 13), SpO2 95% RA (Oct 13)",
+          "earlierLabs": "EARLIER LABS — recorded on a PREVIOUS day, NOT today. Never report them as today's values; mention one only with its date (e.g. \"Hgb 9.4 on Oct 4\"), such as for a trend: Cr: 1.4 (↑ from 1.1) (Oct 13); K: 3.8 (Oct 13)",
+          "stored": {
+            "noteGeneratedAt": "2026-10-16T08:56:54.238Z",
+            "transcriptDate": "Thu Oct 15 2026"
+          }
+        },
+        "snf": {
+          "panelLabels": [
+            "Sep 30",
+            "Sep 30",
+            "Sep 30"
+          ],
+          "dateLabel": "October 14, 2026",
+          "vitalsLine": "VITALS (recorded today): None recorded today",
+          "labsLine": "LABS (recorded today): None recorded today",
+          "earlierVitals": "EARLIER VITALS — recorded at a PREVIOUS visit or day, NOT today. Never report them as today's values or as exam findings; mention one only with its date (e.g. \"HR 88 on Oct 4\"), such as for a trend: BP 122/68 mmHg (Sep 30), HR 74 bpm (Sep 30), Wt 58.1 kg (Sep 30)",
+          "earlierLabs": "",
+          "stored": {
+            "noteGeneratedAt": "2026-10-16T08:56:57.850Z",
+            "transcriptDate": null
+          }
+        }
+      }
+    }
+  }
+}

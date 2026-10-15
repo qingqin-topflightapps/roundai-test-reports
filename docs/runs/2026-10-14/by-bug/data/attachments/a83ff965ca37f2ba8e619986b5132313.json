@@ -1,0 +1,65 @@
+{
+  "name": "tc10-s05-pre-nh",
+  "at": "2026-10-15T08:14:12.076Z",
+  "checks": [
+    {
+      "id": "case oracle: every distinctive segment is in the reopened editor",
+      "ok": true,
+      "detail": "all present"
+    },
+    {
+      "id": "AC 5: the reopened editor shows exactly what was typed (byte for byte)",
+      "ok": true,
+      "detail": "identical"
+    },
+    {
+      "id": "AC 5: the stored pre-round text (preRoundNotes and rawPreRoundNotes) is exactly what was typed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "AC 5: the model's cleaned copy was not stored",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Q9 (recorded): a multi-line note with a blank line and indentation is identical on reopen",
+      "ok": true,
+      "detail": "\"QA-S05 line one: ate 50%.\\nline two -> walk 40 ft ??\\n\\n- bullet: wt 61.2\\n  indented: dtr J'Nae\"",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "cp": {
+      "typed": "Res. ate ~50% bkfst, refused PT x1 ('too tired'). BM x0 since Sat -> senna 8.6mg qhs. Wt 61.2 (was 63.0 on 10/01). SpO2 94% RA. dtr Maria wants care conf Thurs. hold Aricept?? discuss w/ NP.",
+      "reopened": "Res. ate ~50% bkfst, refused PT x1 ('too tired'). BM x0 since Sat -> senna 8.6mg qhs. Wt 61.2 (was 63.0 on 10/01). SpO2 94% RA. dtr Maria wants care conf Thurs. hold Aricept?? discuss w/ NP.",
+      "stored": {
+        "preRoundNotes": "Res. ate ~50% bkfst, refused PT x1 ('too tired'). BM x0 since Sat -> senna 8.6mg qhs. Wt 61.2 (was 63.0 on 10/01). SpO2 94% RA. dtr Maria wants care conf Thurs. hold Aricept?? discuss w/ NP.",
+        "rawPreRoundNotes": "Res. ate ~50% bkfst, refused PT x1 ('too tired'). BM x0 since Sat -> senna 8.6mg qhs. Wt 61.2 (was 63.0 on 10/01). SpO2 94% RA. dtr Maria wants care conf Thurs. hold Aricept?? discuss w/ NP."
+      },
+      "cleanedByModel": "Resident ate about 50% of breakfast and refused physical therapy once because she was too tired. No bowel movement since Saturday; start senna 8.6 mg at bedtime. Weight 61.2 kg (was 63.0 kg on October 1). Oxygen saturation 94% on room air. Daughter Maria requests a care conference on Thursday. Consider holding donepezil; discuss with the nurse practitioner."
+    },
+    "multiline": {
+      "typed": "QA-S05 line one: ate 50%.\nline two -> walk 40 ft ??\n\n- bullet: wt 61.2\n  indented: dtr J'Nae",
+      "reopened": "QA-S05 line one: ate 50%.\nline two -> walk 40 ft ??\n\n- bullet: wt 61.2\n  indented: dtr J'Nae",
+      "stored": "QA-S05 line one: ate 50%.\nline two -> walk 40 ft ??\n\n- bullet: wt 61.2\n  indented: dtr J'Nae"
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 680
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 3447
+      }
+    ]
+  }
+}

@@ -1,0 +1,477 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--project=chromium",
+      "--project=api",
+      "--workers=1",
+      "--reporter=json",
+      "--output=tools/qa-agent/runs/2026-10-14-local/matrix/TC-10-artifacts",
+      "-g",
+      "entry opens a fullscreen editor with a separate manual-points channel|Important Points is nested in the editor and add/delete persist|typed notes survive closing the editor|on-device dictation is reviewable and saved|a structured-summary failure keeps the reviewed note and a visible retry|G04 a dictated new dose takes over the row name; the old dose survives in the note|G54 brand on file, generic returned: one row|a drug the dictation never names is not added \\(prior-note echo\\)",
+      "chart\\.spec\\.ts$",
+      "important-points\\.spec\\.ts$",
+      "api/medication-preround-merge\\.spec\\.ts$",
+      "api/medication-golden-set\\.spec\\.ts$"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/playwright.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/TC-10-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/api\\/.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/TC-10-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [
+          "/.*\\.anon\\.spec\\.ts/",
+          "/api\\/.*\\.spec\\.ts/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/TC-10-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "anonymous",
+        "name": "anonymous",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.anon\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev:vite",
+      "url": "http://localhost:6473",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "api/medication-golden-set.spec.ts",
+      "file": "api/medication-golden-set.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "p7.2 guard against Run-6 extractor slips",
+          "file": "api/medication-golden-set.spec.ts",
+          "line": 50,
+          "column": 6,
+          "specs": [
+            {
+              "title": "a drug the dictation never names is not added (prior-note echo)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "api",
+                  "projectName": "api",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 38,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:43:08.634Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c8d5451e6c8e3ebf901d-07466da5ef225c23b864",
+              "file": "api/medication-golden-set.spec.ts",
+              "line": 102,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "api/medication-preround-merge.spec.ts",
+      "file": "api/medication-preround-merge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "G04 a dictated new dose takes over the row name; the old dose survives in the note",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T08:43:08.708Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06e7e2317b253be9c8c7-9a680ac487d2e1d8c094",
+          "file": "api/medication-preround-merge.spec.ts",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "G54 brand on file, generic returned: one row",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T08:43:08.717Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06e7e2317b253be9c8c7-0d55b04eda5564b24a82",
+          "file": "api/medication-preround-merge.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "a drug the dictation never names is not added (prior-note echo)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T08:43:08.726Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06e7e2317b253be9c8c7-92d3a812b6d666181db6",
+          "file": "api/medication-preround-merge.spec.ts",
+          "line": 105,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "chart.spec.ts",
+      "file": "chart.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "the pre-round notepad",
+          "file": "chart.spec.ts",
+          "line": 65,
+          "column": 6,
+          "specs": [
+            {
+              "title": "entry opens a fullscreen editor with a separate manual-points channel",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1334,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:43:09.042Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4e13f84de61167324c85-178ca7d3baa09d06a723",
+              "file": "chart.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "typed notes survive closing the editor",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2165,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:43:10.660Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4e13f84de61167324c85-d3b4e0caa7fdbe80ef90",
+              "file": "chart.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "on-device dictation is reviewable and saved",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1062,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:43:12.833Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4e13f84de61167324c85-7deaab69d7f49dac0b0e",
+              "file": "chart.spec.ts",
+              "line": 150,
+              "column": 3
+            },
+            {
+              "title": "a structured-summary failure keeps the reviewed note and a visible retry",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1452,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:43:13.901Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "4e13f84de61167324c85-0cca152e581a4c4222fc",
+              "file": "chart.spec.ts",
+              "line": 404,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "important-points.spec.ts",
+      "file": "important-points.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Important Points is nested in the editor and add/delete persist",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T08:43:15.363Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6e50244b67d00a6f93a5-fa9628b9409391d46342",
+          "file": "important-points.spec.ts",
+          "line": 15,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T08:43:08.143Z",
+    "duration": 8713.435,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

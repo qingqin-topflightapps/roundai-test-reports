@@ -1,0 +1,17 @@
+{
+  "TC-14/S13": {
+    "status": "failed",
+    "ranAt": "2026-10-15T09:52:26.550Z",
+    "title": "AI Check 2: the physician's initial doubt survives a later confirmation (5 Hospital + 5 Nursing Home)",
+    "detail": "Dataset gen-notes-b on dev (43c38a4f, live Haiku 4.5), each fixture through the app's UI; checks as in the matrix (re-scored offline with the corrected section reader: same result). 7/10 keep the doubt and the confirmation — below the 9/10 of 3.2: FAILED. Failing notes: H-09 (dictated 'I was worried the confusion could be a new stroke … MRI unremarkable … delirium') → 'MRI of the brain obtained this morning was unremarkable, excluding acute stroke.' (the worry is gone; only the exclusion remains); N-07 (dictated 'I wasn't sure if the hip pain was the hardware or the muscle') → 'Pain attributed to muscular etiology rather than hardware-related complication.' (the alternative is named but not as a doubt); N-09 (dictated 'I was worried about aspiration … swallow study confirmed') → 'Cough after meals noted. Swallow study performed, confirming aspiration with thin liquids.' (no doubt at all). H-09 and N-07 are Q9 (how much of the doubt must survive): under a reading that accepts a named alternative they would pass and the count would be 9/10; N-09 fails either way. Provisional: substring pre-screen until Preston grades against EVALUATION_FRAMEWORK.md (TFA-94229 AC 2, Q19).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-b/evidence/TC-14-S13.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-b.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "Some notes drop the physician's stated doubt once the dictation confirms the diagnosis (e.g. 'I was worried about aspiration' becomes only 'swallow study confirming aspiration').",
+    "pkg": "gen"
+  }
+}

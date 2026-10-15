@@ -1,0 +1,81 @@
+{
+  "case": "TC-10-S30",
+  "title": "AI Check through the real Save Note, both modes: undictated panels stay empty, and today's note says vitals were not dictated",
+  "needs": [
+    "seed",
+    "generate",
+    "max-turns",
+    "oracle-regex",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "cp1-hosp-ai-check-panels.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72dwvj602z4kn734hacsy5h98gay46",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp2-hosp-ai-check-note.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72dwvj602z4kn734hacsy5h98gay46",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.7: the 'Not dictated' line names the vitals (depends on the note layout)) pass: /vital[^\\n]{0,80}not dictated/i matches \"Vital signs: not dictated\""
+      ]
+    },
+    {
+      "file": "cp3-snf-ai-check-panels.md",
+      "verdict": "Pass",
+      "url": "/snf/jx783fb7amvm6snm4xjmewjdn98ga1az",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp4-snf-ai-check-note.md",
+      "verdict": "Pass",
+      "url": "/snf/jx783fb7amvm6snm4xjmewjdn98ga1az",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.7: the 'Not dictated' line names the vitals (depends on the note layout)) pass: /vital[^\\n]{0,80}not dictated/i matches \"Vital signs: not dictated\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 52,
+    "costUsd": 0.38741140000000013,
+    "durationMs": 194126,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": true,
+  "unit": "P30",
+  "covers": [
+    "TC-10/S30"
+  ],
+  "evidenceDir": "generateddev/20261015predev/p30",
+  "caseFile": "cases/generated-dev/2026-10-15-pre-dev/P30.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

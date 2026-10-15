@@ -1,0 +1,86 @@
+{
+  "name": "tc10-s26-pre-hosp-r3",
+  "at": "2026-10-15T08:22:05.855Z",
+  "checks": [
+    {
+      "id": "R3 (Q15, recorded): a failed task extraction is shown to the physician",
+      "ok": true,
+      "detail": "[\"The note was saved, but its follow-up tasks couldn’t be extracted.\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "R3 (Q15, recorded): the next Save Note recovers the tasks, a third makes no duplicates",
+      "ok": true,
+      "detail": "[\"Follow up blood cultures\",\"Repeat CBC in the morning\"] → [\"Follow up blood cultures\",\"Repeat CBC in the morning\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "R3": {
+      "alertsAfterFailedExtraction": [
+        "The note was saved, but its follow-up tasks couldn’t be extracted."
+      ],
+      "tasksAfterFailedExtraction": [],
+      "tasksAfterSecondSave": [
+        "Follow up blood cultures",
+        "Repeat CBC in the morning"
+      ],
+      "tasksAfterThirdSave": [
+        "Follow up blood cultures",
+        "Repeat CBC in the morning"
+      ]
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 863
+      },
+      {
+        "udfPath": "ai/parsing:classifyAdmissionReason",
+        "answered": "ok",
+        "atMs": 872
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "fail",
+        "atMs": 947
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 4182
+      },
+      {
+        "udfPath": "ai/parsing:classifyAdmissionReason",
+        "answered": "ok",
+        "atMs": 4187
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 4235
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 8374
+      },
+      {
+        "udfPath": "ai/parsing:classifyAdmissionReason",
+        "answered": "ok",
+        "atMs": 8380
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 8429
+      }
+    ]
+  }
+}

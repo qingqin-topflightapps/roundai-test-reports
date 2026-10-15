@@ -1,0 +1,50 @@
+{
+  "name": "tc10-s26-pre-hosp-r2",
+  "at": "2026-10-15T08:21:51.940Z",
+  "checks": [
+    {
+      "id": "R2 (U6 'yesterday's panels are never silently reused'): yesterday's one-liner / study are not shown under a plain success with no notice naming them",
+      "ok": false,
+      "detail": "success='✓ Note saved. Auto-updated: vitals, labs, hospital course'; one-liner shown=true; study shown=true; notice=false; stamps={\"lastUpdatedAt\":\"2026-10-15T08:21:50.039Z\",\"radiologyUpdatedAt\":\"2026-10-14T08:21:49.363Z\"}"
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "R2": {
+      "okMsg": "✓ Note saved. Auto-updated: vitals, labs, hospital course",
+      "oneLinerShown": true,
+      "studyShown": true,
+      "noticeNamingThem": false,
+      "updatedLines": [
+        "Saved 5:21 PM · Oct 15",
+        "Updated 5:21 PM · Oct 15"
+      ],
+      "stamps": {
+        "lastUpdatedAt": "2026-10-15T08:21:50.039Z",
+        "radiologyUpdatedAt": "2026-10-14T08:21:49.363Z"
+      },
+      "stored": {
+        "reason": "Admitted with community-acquired pneumonia, improving on IV antibiotics.",
+        "radiology": [
+          "Chest X-ray: right lower lobe infiltrate"
+        ]
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 680
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 751
+      }
+    ]
+  }
+}

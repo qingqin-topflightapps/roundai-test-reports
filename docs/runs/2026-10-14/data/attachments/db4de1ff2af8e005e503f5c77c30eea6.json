@@ -1,0 +1,17 @@
+{
+  "OAT-06/S25": {
+    "status": "record-only",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-14T18:02:13.428Z",
+    "title": "Android emulator and iOS simulator on the local stack: events fire from the native app, and a wrong-date device files them",
+    "detail": "Our own addition (10-15 review), recorded only. The events part is carried over from the Android run on e02167f (dvc package, 2026-10-14T18:02Z), because the code that fires and files these events did not change between e02167f and 43c38a4f: git diff e02167f 43c38a4f leaves src/routes/rounding/Patient.tsx (the pre-round open), src/features/rounding/patient/usePostRoundTasks.ts (task taps), useMarkEncounterComplete.ts (the completion), convex/usage.ts and src/domain/localDay.ts unchanged; src/data/usage.ts only gained the survey-card hooks and convex/lib/usage.ts a doc comment. What that run recorded (Hospital chart): the Android debug app bundled for the local stack, on the emulator set one day behind in Pacific/Honolulu, fired pre_round_summary_opened, task_completed, task_deleted and note_marked_complete like the desktop, but every phone row carried the phone's day (2026-10-13) and landed in a separate pilotDailyRounding row (the device-day behaviour of B18, judged in S10). Not run on 43c38a4f: the survey cards and the handoff follow-up inside the native app (U5, U10), which need a new Android debug build of 43c38a4f bundled for the local stack and the emulator booted (it was not running, and building and booting it would take the shared machine for a record-only check); the iOS half was never runnable here (simulator taps need a permission prompt). The cards are the same web code inside the WebView; the native risk #86 does bring is an app build from before #86 (S13 R8).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat06-s25.json",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat06-s25-phone-after-actions.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat06-s25-desktop-after-actions.png"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

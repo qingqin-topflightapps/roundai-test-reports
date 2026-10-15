@@ -1,0 +1,168 @@
+{
+  "name": "oat06-s22-srv-code-read",
+  "at": "2026-10-15T09:43:38.933Z",
+  "checks": [
+    {
+      "id": "T1 / TFA-94514 AC 9: a hand-off doc for Vikram is in the repo (how to reach the analytics tables, what each field means)",
+      "ok": false,
+      "detail": "docs/ at 43c38a4f: docs/billing-acceptance-review.md, docs/billing-topology.md, docs/mobile-e2e.md; docs/pilot-analytics.md removed by 43c38a4f chore(docs): drop the docs folder; what it said lives in the code; no markdown file at 43c38a4f names pilotDailyRounding / pilotUsageEvents / patientActivityEvents / surveyResponses (0)"
+    },
+    {
+      "id": "TFA-94609 AC 6 / U12: answer keys and values are named for a reader (no raw indices, no q1/q2 keys)",
+      "ok": true,
+      "detail": "baseline keys patientsPerDay / preRoundMinutesPerPatientBefore / noteMinutesPerPatientBefore / patientListMethodBefore / writtenHandoffFrequencyBefore / comments; values like under_5, 5_to_10, phone_notes, most_days; handoff moreLikelyToSendHandoff yes / no / not_sure; feedback rating 1-5 + comment; task reminder dismissedTaskRemindersBecause mostly_did_it / mixed / mostly_noise + comments"
+    },
+    {
+      "id": "② (recorded): aiCallLog's fields are described only by schema comments (parseStatus ok/repaired/failed, durationMs vs providerMs, fellBackFrom); httpStatus, promptChars, responseChars and error have no description anywhere",
+      "ok": true,
+      "detail": "21 schema lines",
+      "recordOnly": true
+    },
+    {
+      "id": "③ TFA-94514 AC 1 / U2 (B24): a Nursing Home screen removes a resident (and so logs patient_removed with nursing_home)",
+      "ok": false,
+      "detail": "the hook exists (apps/web/src/data/snf.ts:36:    remove: useMutation(api.snf.remove),), but its only screen user takes add: apps/web/src/data/snf.ts:32:export function useSnfActions() {; apps/web/src/routes/snf/AddResident.tsx:26:  const { add } = useSnfActions();; no remove call under src/routes/snf or src/features/snf"
+    },
+    {
+      "id": "④ TFA-94514 AC 2 / U9a: an end-of-pilot task-reminder survey exists and stores its answer (fixed by #86; stored rows seen in S14 C)",
+      "ok": true,
+      "detail": "apps/web/convex/surveys.ts:26:  v.literal(\"baseline\"),; apps/web/convex/surveys.ts:27:  v.literal(\"handoff_followup\"),; apps/web/convex/surveys.ts:28:  v.literal(\"feedback\"),; apps/web/convex/surveys.ts:29:  v.literal(\"task_reminder\"), | apps/web/src/components/TaskReminderSurveyCard.tsx:19:export function TaskReminderSurveyCard() {; apps/web/src/components/TaskReminderSurveyCard.tsx:30:      await dismiss({ survey: \"task_reminder\" });; apps/web/src/components/TaskReminderSurveyCard.tsx:41:        survey: \"task_reminder\", | apps/web/src/components/PilotSurveyCards.tsx:3:import { TaskReminderSurveyCard } from \"@/components/TaskReminderSurveyCard\";; apps/web/src/components/PilotSurveyCards.tsx:20:    return <TaskReminderSurveyCard />;"
+    },
+    {
+      "id": "recorded: the task-reminder survey only appears after the pilot team runs surveys:_setTaskReminderSurveyFrom with the deploy key; the command is written only in a code comment",
+      "ok": true,
+      "detail": "apps/web/convex/surveys.ts:187://   npx convex run surveys:_setTaskReminderSurveyFrom '{\"from\":\"2026-11-03\"}'; apps/web/convex/surveys.ts:188:export const _setTaskReminderSurveyFrom = internalMutation({",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "doc": {
+      "head": "43c38a4f",
+      "docsAtNew": [
+        "docs/billing-acceptance-review.md",
+        "docs/billing-topology.md",
+        "docs/mobile-e2e.md"
+      ],
+      "docsAtOld": [
+        "docs/2026-09-28-dictation-decision-inventory.md",
+        "docs/2026-09-29-encounter-type-live-report.md",
+        "docs/2026-09-29-provider-fallback-report.md",
+        "docs/mobile-e2e.md",
+        "docs/pilot-analytics.md"
+      ],
+      "dropCommit": "43c38a4f chore(docs): drop the docs folder; what it said lives in the code",
+      "markdownNamingTheAnalyticsTables": [],
+      "oldDocFirstLines": "# Pilot analytics — how to read the usage data /  / What the app records about how it is used during the pilot (TFA-94514), where / it lives, and how to read it without engineering help. Everything here is read / in the **Convex dashboard → Data** tab: pick the table, then use the filter bar / (`userId`, `event`, `day`) to narrow it. Each table's columns are named for a"
+    },
+    "field names": {
+      "surveyFields": [
+        "apps/web/convex/surveys.ts:47:export const surveyResponseFields = {",
+        "apps/web/convex/surveys.ts:56:export const surveyDismissalFields = {",
+        "apps/web/convex/surveys.ts:62:// taskReminderSurveyFrom: the first day the end-of-pilot task-reminder survey",
+        "apps/web/convex/surveys.ts:64:export const pilotSettingsFields = {",
+        "apps/web/convex/surveys.ts:65:  key: v.literal(\"taskReminderSurveyFrom\"),",
+        "apps/web/convex/surveys.ts:174:      .withIndex(\"by_key\", (q) => q.eq(\"key\", \"taskReminderSurveyFrom\"))",
+        "apps/web/convex/surveys.ts:197:      .withIndex(\"by_key\", (q) => q.eq(\"key\", \"taskReminderSurveyFrom\"))",
+        "apps/web/convex/surveys.ts:204:        key: \"taskReminderSurveyFrom\",",
+        "apps/web/convex/surveys.ts:218:      ...surveyResponseFields,"
+      ],
+      "answerKeys": {
+        "baseline": [
+          "apps/web/src/components/BaselineSurveyCard.tsx:75:  const [patientsPerDay, setPatientsPerDay] = useState(\"\");",
+          "apps/web/src/components/BaselineSurveyCard.tsx:95:    /^\\d+$/.test(patientsPerDay.trim()) &&",
+          "apps/web/src/components/BaselineSurveyCard.tsx:109:          patientsPerDay: Number(patientsPerDay.trim()),",
+          "apps/web/src/components/BaselineSurveyCard.tsx:110:          preRoundMinutesPerPatientBefore: preRound,",
+          "apps/web/src/components/BaselineSurveyCard.tsx:111:          noteMinutesPerPatientBefore: note,",
+          "apps/web/src/components/BaselineSurveyCard.tsx:112:          patientListMethodBefore: listMethod,",
+          "apps/web/src/components/BaselineSurveyCard.tsx:113:          writtenHandoffFrequencyBefore: handoffs,",
+          "apps/web/src/components/BaselineSurveyCard.tsx:114:          ...(comments.trim() ? { comments: comments.trim() } : {}),",
+          "apps/web/src/components/BaselineSurveyCard.tsx:202:                  value={patientsPerDay}"
+        ],
+        "baselineValues": [
+          "apps/web/src/components/BaselineSurveyCard.tsx:15:  { value: \"under_5\", label: \"Under 5 min\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:16:  { value: \"5_to_10\", label: \"5–10 min\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:17:  { value: \"10_to_15\", label: \"10–15 min\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:18:  { value: \"15_to_20\", label: \"15–20 min\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:19:  { value: \"over_20\", label: \"Over 20 min\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:22:  { value: \"paper\", label: \"Paper list\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:23:  { value: \"emr\", label: \"EMR list\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:24:  { value: \"phone_notes\", label: \"Notes on my phone\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:25:  { value: \"other\", label: \"Other\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:28:  { value: \"never\", label: \"Never\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:29:  { value: \"sometimes\", label: \"Sometimes\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:30:  { value: \"most_days\", label: \"Most days\" },",
+          "apps/web/src/components/BaselineSurveyCard.tsx:31:  { value: \"every_day\", label: \"Every day\" },"
+        ],
+        "handoffFollowUp": [
+          "apps/web/src/features/handoff/HandoffFollowUpPrompt.tsx:20:  const answer = async (moreLikelyToSendHandoff: \"yes\" | \"no\" | \"not_sure\") => {",
+          "apps/web/src/features/handoff/HandoffFollowUpPrompt.tsx:27:        answers: { moreLikelyToSendHandoff },"
+        ],
+        "feedback": [
+          "apps/web/src/components/FeedbackForm.tsx:11:  const [rating, setRating] = useState<number | null>(null);",
+          "apps/web/src/components/FeedbackForm.tsx:25:          rating,",
+          "apps/web/src/components/FeedbackForm.tsx:26:          ...(comment.trim() ? { comment: comment.trim() } : {}),"
+        ],
+        "taskReminder": [
+          "apps/web/src/components/TaskReminderSurveyCard.tsx:14:  { value: \"mostly_did_it\", label: \"Mostly did it\" },",
+          "apps/web/src/components/TaskReminderSurveyCard.tsx:15:  { value: \"mixed\", label: \"Mixed\" },",
+          "apps/web/src/components/TaskReminderSurveyCard.tsx:16:  { value: \"mostly_noise\", label: \"Mostly dismissed as noise\" },",
+          "apps/web/src/components/TaskReminderSurveyCard.tsx:44:          dismissedTaskRemindersBecause: reason,"
+        ]
+      }
+    },
+    "aiCallLog (schema comments are the only description left)": [
+      "apps/web/convex/schema.ts:231:    userId: v.string(),",
+      "apps/web/convex/schema.ts:232:    fn: v.string(),",
+      "apps/web/convex/schema.ts:233:    model: v.string(),",
+      "apps/web/convex/schema.ts:234:    ok: v.boolean(),",
+      "apps/web/convex/schema.ts:235:    httpStatus: v.optional(v.number()),",
+      "apps/web/convex/schema.ts:236:    // \"ok\" | \"repaired\" | \"failed\" — did the JSON parse, and did the repair",
+      "apps/web/convex/schema.ts:237:    // path have to run?",
+      "apps/web/convex/schema.ts:238:    parseStatus: v.optional(v.string()),",
+      "apps/web/convex/schema.ts:239:    // The whole call, and the part of it spent waiting on the AI vendor —",
+      "apps/web/convex/schema.ts:240:    // retries and a fallback add up, parallel calls overlap — so a slow run",
+      "apps/web/convex/schema.ts:241:    // can be traced to the service or to the app (TFA-94514, item 7). Vikram",
+      "apps/web/convex/schema.ts:242:    // reads these in the dashboard; the ai_disclosure audit rows carry the",
+      "apps/web/convex/schema.ts:243:    // same two numbers as duration_ms / provider_ms and are kept six years.",
+      "apps/web/convex/schema.ts:244:    durationMs: v.number(),",
+      "apps/web/convex/schema.ts:245:    providerMs: v.optional(v.number()),",
+      "apps/web/convex/schema.ts:246:    promptChars: v.optional(v.number()),",
+      "apps/web/convex/schema.ts:247:    responseChars: v.optional(v.number()),",
+      "apps/web/convex/schema.ts:248:    error: v.optional(v.string()),",
+      "apps/web/convex/schema.ts:249:    // Set when a Bedrock primary failed and the fallback answered: the",
+      "apps/web/convex/schema.ts:250:    // primary's model id. `model` then names the fallback.",
+      "apps/web/convex/schema.ts:251:    fellBackFrom: v.optional(v.string()),"
+    ],
+    "Nursing Home removal": {
+      "nhRemoveCallers": [],
+      "snfHook": [
+        "apps/web/src/data/snf.ts:36:    remove: useMutation(api.snf.remove),"
+      ],
+      "useSnfActions": [
+        "apps/web/src/data/snf.ts:32:export function useSnfActions() {",
+        "apps/web/src/routes/snf/AddResident.tsx:26:  const { add } = useSnfActions();"
+      ]
+    },
+    "end-of-pilot survey": {
+      "validator": [
+        "apps/web/convex/surveys.ts:26:  v.literal(\"baseline\"),",
+        "apps/web/convex/surveys.ts:27:  v.literal(\"handoff_followup\"),",
+        "apps/web/convex/surveys.ts:28:  v.literal(\"feedback\"),",
+        "apps/web/convex/surveys.ts:29:  v.literal(\"task_reminder\"),"
+      ],
+      "card": [
+        "apps/web/src/components/TaskReminderSurveyCard.tsx:19:export function TaskReminderSurveyCard() {",
+        "apps/web/src/components/TaskReminderSurveyCard.tsx:30:      await dismiss({ survey: \"task_reminder\" });",
+        "apps/web/src/components/TaskReminderSurveyCard.tsx:41:        survey: \"task_reminder\","
+      ],
+      "mounted": [
+        "apps/web/src/components/PilotSurveyCards.tsx:3:import { TaskReminderSurveyCard } from \"@/components/TaskReminderSurveyCard\";",
+        "apps/web/src/components/PilotSurveyCards.tsx:20:    return <TaskReminderSurveyCard />;"
+      ]
+    },
+    "pilot-end switch": [
+      "apps/web/convex/surveys.ts:187://   npx convex run surveys:_setTaskReminderSurveyFrom '{\"from\":\"2026-11-03\"}'",
+      "apps/web/convex/surveys.ts:188:export const _setTaskReminderSurveyFrom = internalMutation({"
+    ]
+  }
+}

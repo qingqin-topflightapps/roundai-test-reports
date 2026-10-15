@@ -1,0 +1,16 @@
+{
+  "TC-03/S18": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:37:00Z",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "title": "Status sort after the server-side day roll and the 18 h note window; same order on a wrong-date device",
+    "detail": "Dev, aged in real time: the 8 \"QA DS1-s18\" rows seeded on 10-14 at 23:01 JST were checked on 10-15 at 17:37 JST (after the Hospital day roll, the Nursing Home 12 h pre-round window and the 18 h note window). 6/6 judged cells hold: on a right-clock browser, Hospital Aged-Note, Fresh-Pending and Aged-Pre show Not Yet Prepped and Fresh-Pre shows Pre-Rounded; Nursing Home Today's Visits shows Pending for the three and Pre-Rounded for Fresh-Pre; the status sort order is Aged-Note, Fresh-Pending, Aged-Pre, then Fresh-Pre in both. A browser one day slow showed the same labels and order (known-gap cell held). Recorded: the moment each row turned Pending is not observable (Q14); a +2-day browser is signed out by its own clock (B33). The rows were deleted after the check; no other row changed. Dev was on build 43c38a4f at check time (the rows were seeded on e02167f).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/s18-check/evidence/TC-03-S18.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/s18-check/cleanup.json"
+    ],
+    "method": "TIME",
+    "pkg": "s18"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "case": "TC-22-S01",
+  "title": "Hospital, UAT steps 1–3 in the app: pre-round tasks, Save & Extract closes two, third open, conditional task, no retraction task",
+  "needs": [
+    "seed",
+    "oracle-count",
+    "oracle-order",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s01-h-after-preround.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7b0mgtmve1y5b9mq1d378nxh8gajxp",
+      "problems": [
+        "missing \"3 pending tasks\" (in from \"pending task\")",
+        "/complete task: [^\"\\n]*weigh/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "backend h-at-1 tasks has 2 items, expected 3",
+        "backend h-at-1 tasks[done=false] has 2 items, expected 3"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Hospital pre-round processing) pass: backend diag-1 [fn=parsing.parsePreRoundNotes].model exists",
+        "(3.9: model of the pre-round task harvest; durationMs / providerMs in backend/diag-1.json (3.5)) pass: backend diag-1 [fn=parsing.extractTasks].model exists"
+      ],
+      "notes": [
+        "the guard refused a Dictate press before this save (2026-10-15T08:22:30.166Z); the agent was told to type instead"
+      ]
+    },
+    {
+      "file": "s01-h-after-extract.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7b0mgtmve1y5b9mq1d378nxh8gajxp",
+      "problems": [
+        "/complete task: [^\"\\n]*weigh/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "/complete task: [^\"\\n]*((clear|diet)[^\"\\n]*pain|pain[^\"\\n]*(clear|diet))/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "no match for /complete task: [^\"\\n]*((clear|diet)[^\"\\n]*(\\b4\\b|four)|(\\b4\\b|four)[^\"\\n]*(clear|diet))/i (in from \"pending task\")",
+        "/complete task: (?![^\"\\n]*(bmp|metabolic|chem))/i matches 0 times, expected exactly 2 (in from \"pending task\")",
+        "/(complete|reopen) task: [^\"\\n]*weigh/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "backend h-at-2 tasks has 2 items, expected 4"
+      ],
+      "known": [
+        "missing \"2 pending tasks\" (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "/reopen task: [^\"\\n]*(bmp|metabolic|chem)/i matches 0 times, expected exactly 1 (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend h-at-2 tasks[done=true] has 1 item, expected 2 — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call) pass: backend diag-2 [fn=parsing.extractTasks].model exists"
+      ],
+      "notes": [
+        "the guard refused a Dictate press before this save (2026-10-15T08:22:30.166Z); the agent was told to type instead"
+      ]
+    },
+    {
+      "file": "s01-h-task-export.md",
+      "verdict": "Fail",
+      "url": "/rounding/tasks",
+      "problems": [
+        "order: missing \"weigh\"",
+        "no match for /clear|diet/i (in from \"Pending Tasks\" to \"Finished Tasks\")"
+      ],
+      "known": [
+        "no match for /(bmp|metabolic|chem)/i (in from \"Finished Tasks\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "should not match /(bmp|metabolic|chem)/i (found \"BMP\") (in from \"Pending Tasks\" to \"Finished Tasks\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "/\\b(visit|day)\\s*\\d+/i matches 0 times, expected at least 2 (in from \"Finished Tasks\") — known: TFA-92585 AC 8 — the visit on a closed task (doneVisit) is in open PR #106, not on main; Hospital label format is Q11"
+      ],
+      "recorded": [],
+      "notes": [
+        "the guard refused a Dictate press before this save (2026-10-15T08:22:30.166Z); the agent was told to type instead"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.8: doneAt is stamped on the device; S22/S23 judge it) pass: backend h-after tasks[done=true].doneAt exists"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "3.5: time from the Save Note tap to the three tasks: read backend/diag-1.json (parsing.parsePreRoundNotes and parsing.extractTasks rows: _creationTime, durationMs, providerMs); over 30 s is flagged for review, not Fail",
+    "Q11 / TFA-92585 AC 8: on s01-h-task-export.png the visit/day label sits on the BMP row and on the PT row (the regex only counts labels under Finished Tasks)"
+  ],
+  "agent": {
+    "turns": 44,
+    "costUsd": 0.3059702000000001,
+    "durationMs": 130161,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

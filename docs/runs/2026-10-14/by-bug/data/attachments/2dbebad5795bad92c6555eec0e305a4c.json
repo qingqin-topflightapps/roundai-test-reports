@@ -1,0 +1,16 @@
+{
+  "TC-14/S17": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:34:34.193Z",
+    "title": "Nursing Home notes: no signature or date line and no 'yesterday', targeted fixtures plus every Nursing Home note",
+    "detail": "Dataset gen-notes-a on dev (live Haiku 4.5), through the app's UI: N-18 (previous note 14 days ago; keeps 'two weeks') and N-19 (a fall seen the day before, named in the background) have no 'yesterday', no 'electronically signed' / 'signed by' / 'signature' / '[Physician' / 'dictated by', no 'Date / Signed / Physician …:' line and no signature rule: 2/2. N-20 (the physician dictated 'she fell yesterday evening') recorded only (Q6): the note keeps 'yesterday'. The same S17 list was applied to every other Nursing Home note of this package: 0 hits in 32 judged notes.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-a/evidence/TC-14-S17.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-a.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

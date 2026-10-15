@@ -1,0 +1,104 @@
+{
+  "name": "oat06-s21-srv",
+  "at": "2026-10-15T09:24:10.697Z",
+  "checks": [
+    {
+      "id": "R2 Hospital (recorded): a double tap on Complete task: task_completed rows and whether the task ends done",
+      "ok": false,
+      "detail": "{\"taskCompleted\":1,\"taskDone\":false}",
+      "recordOnly": true
+    },
+    {
+      "id": "R4 Hospital (recorded): a double tap on Mark Encounter Complete writes one note_marked_complete",
+      "ok": true,
+      "detail": "{\"noteMarkedComplete\":1,\"status\":\"post-rounded\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "R2 Nursing Home (recorded): a double tap on the task's complete control: task_completed rows and whether the task ends done",
+      "ok": false,
+      "detail": "{\"taskCompleted\":2,\"taskDone\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "R4 Nursing Home (recorded): a double tap on Mark Visit Complete writes one note_marked_complete",
+      "ok": true,
+      "detail": "{\"noteMarkedComplete\":1,\"status\":\"complete\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "R3 rounding (recorded): a double-click on Send gives one handoff, one handoff_sent row and one follow-up question",
+      "ok": true,
+      "detail": "{\"handoffsAdded\":1,\"followUpDialogs\":1,\"questionOnScreen\":1,\"handoffSentRows\":1,\"surveyRows\":[]}",
+      "recordOnly": true
+    },
+    {
+      "id": "R3 snf (recorded): a double-click on Send gives one handoff, one handoff_sent row and one follow-up question",
+      "ok": true,
+      "detail": "{\"handoffsAdded\":1,\"followUpDialogs\":1,\"questionOnScreen\":1,\"handoffSentRows\":1,\"surveyRows\":[]}",
+      "recordOnly": true
+    },
+    {
+      "id": "rollup (recorded): per care setting, after the double taps",
+      "ok": true,
+      "detail": "{\"hospital\":{\"tasksCompleted\":2,\"notesCompleted\":1,\"handoffsSent\":1},\"nursing_home\":{\"tasksCompleted\":2,\"notesCompleted\":1,\"handoffsSent\":1}}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "S21": {
+      "r2Hospital": {
+        "taskCompleted": 1,
+        "taskDone": false
+      },
+      "r2HospitalSingleTapAfter": {
+        "taskCompletedSinceTheDoubleTap": 2
+      },
+      "r4Hospital": {
+        "noteMarkedComplete": 1,
+        "status": "post-rounded"
+      },
+      "r2NursingHome": {
+        "taskCompleted": 2,
+        "taskDone": true
+      },
+      "r4NursingHome": {
+        "noteMarkedComplete": 1,
+        "status": "complete"
+      },
+      "r3-rounding": {
+        "handoffsAdded": 1,
+        "followUpDialogs": 1,
+        "questionOnScreen": 1,
+        "handoffSentRows": 1,
+        "surveyRows": []
+      },
+      "r3-snf": {
+        "handoffsAdded": 1,
+        "followUpDialogs": 1,
+        "questionOnScreen": 1,
+        "handoffSentRows": 1,
+        "surveyRows": []
+      },
+      "rollupDelta": {
+        "hospital": {
+          "tasksCompleted": 2,
+          "notesCompleted": 1,
+          "handoffsSent": 1
+        },
+        "nursing_home": {
+          "tasksCompleted": 2,
+          "notesCompleted": 1,
+          "handoffsSent": 1
+        }
+      },
+      "dialogs": [
+        ""
+      ],
+      "aiCalls": [
+        "ai/assist:generateHandoff -> ok",
+        "ai/assist:generateHandoff -> ok"
+      ]
+    }
+  }
+}

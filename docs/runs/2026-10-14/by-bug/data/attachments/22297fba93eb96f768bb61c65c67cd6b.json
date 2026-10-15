@@ -1,0 +1,363 @@
+{
+  "ref": "TC-03/S18",
+  "title": "TC-03/S18 status sort after the server day roll and the 18 h note window; the same order on a wrong-date device",
+  "dataset": "s18",
+  "target": "dev",
+  "at": "2026-10-15T08:37:54.720Z",
+  "cells": [
+    {
+      "name": "rows and stamps at the check (Q14: the moment each turned Pending is not observable here)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "serverNow": "2026-10-15T08:37:11.638Z",
+        "rows": {
+          "hAgedNote": {
+            "status": "pending",
+            "notesProcessedAt": "2026-10-14T14:01:14.140Z",
+            "noteGeneratedAt": "2026-10-14T14:01:24.743Z",
+            "noteChars": 0,
+            "preRoundChars": 0
+          },
+          "hFreshPending": {
+            "status": "pending",
+            "notesProcessedAt": null,
+            "noteGeneratedAt": null,
+            "noteChars": 0,
+            "preRoundChars": 0
+          },
+          "hAgedPre": {
+            "status": "pending",
+            "notesProcessedAt": "2026-10-14T14:01:01.940Z",
+            "noteGeneratedAt": null,
+            "noteChars": 0,
+            "preRoundChars": 0
+          },
+          "hFreshPre": {
+            "status": "pending",
+            "notesProcessedAt": null,
+            "noteGeneratedAt": null,
+            "noteChars": 0,
+            "preRoundChars": 0
+          },
+          "nAgedNote": {
+            "status": "pending",
+            "notesProcessedAt": "2026-10-14T14:01:56.672Z",
+            "noteGeneratedAt": "2026-10-14T14:02:05.456Z",
+            "noteChars": 0,
+            "preRoundChars": 0
+          },
+          "nFreshPending": {
+            "status": "pending",
+            "notesProcessedAt": null,
+            "noteGeneratedAt": null,
+            "noteChars": 0,
+            "preRoundChars": 0
+          },
+          "nAgedPre": {
+            "status": "pending",
+            "notesProcessedAt": "2026-10-14T14:01:45.921Z",
+            "noteGeneratedAt": null,
+            "noteChars": 0,
+            "preRoundChars": 0
+          },
+          "nFreshPre": {
+            "status": "pending",
+            "notesProcessedAt": null,
+            "noteGeneratedAt": null,
+            "noteChars": 0,
+            "preRoundChars": 0
+          }
+        }
+      },
+      "ref": "Q14"
+    },
+    {
+      "name": "hosp Fresh-Pre: today's pre-round processed (status pre-rounded) — setup",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "status": "pre-rounded",
+        "notesProcessedAt": "2026-10-15T08:37:16.911Z"
+      }
+    },
+    {
+      "name": "snf Fresh-Pre: today's pre-round processed (status pre-rounded) — setup",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "status": "pre-rounded",
+        "notesProcessedAt": "2026-10-15T08:37:24.990Z"
+      }
+    },
+    {
+      "name": "right clock: Hospital: Aged-Note, Fresh-Pending and Aged-Pre show 'Not Yet Prepped' (U2 / U7)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "labels": [
+          {
+            "name": "QA DS1-s18 Hosp Aged-Note",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pending",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Aged-Pre",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "right clock: Hospital: Fresh-Pre shows 'Pre-Rounded'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "labels": [
+          {
+            "name": "QA DS1-s18 Hosp Aged-Note",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pending",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Aged-Pre",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "right clock: Hospital: status sort order Aged-Note (2), Fresh-Pending (3), Aged-Pre (4), then Fresh-Pre (1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "QA DS1-s18 Hosp Aged-Note",
+          "QA DS1-s18 Hosp Fresh-Pending",
+          "QA DS1-s18 Hosp Aged-Pre",
+          "QA DS1-s18 Hosp Fresh-Pre"
+        ],
+        "want": [
+          "QA DS1-s18 Hosp Aged-Note",
+          "QA DS1-s18 Hosp Fresh-Pending",
+          "QA DS1-s18 Hosp Aged-Pre",
+          "QA DS1-s18 Hosp Fresh-Pre"
+        ]
+      }
+    },
+    {
+      "name": "right clock: Nursing Home Today's Visits: Aged-Note, Fresh-Pending and Aged-Pre show 'Pending' (U2 / U7)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "labels": [
+          {
+            "name": "QA DS1-s18 Res Aged-Note",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pending",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Aged-Pre",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "right clock: Nursing Home Today's Visits: Fresh-Pre shows 'Pre-Rounded'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "labels": [
+          {
+            "name": "QA DS1-s18 Res Aged-Note",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pending",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Aged-Pre",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "right clock: Nursing Home Today's Visits: status sort order Aged-Note (2), Fresh-Pending (3), Aged-Pre (4), then Fresh-Pre (1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "got": [
+          "QA DS1-s18 Res Aged-Note",
+          "QA DS1-s18 Res Fresh-Pending",
+          "QA DS1-s18 Res Aged-Pre",
+          "QA DS1-s18 Res Fresh-Pre"
+        ],
+        "want": [
+          "QA DS1-s18 Res Aged-Note",
+          "QA DS1-s18 Res Fresh-Pending",
+          "QA DS1-s18 Res Aged-Pre",
+          "QA DS1-s18 Res Fresh-Pre"
+        ]
+      }
+    },
+    {
+      "name": "device clock −1 day, Hospital: identical labels and order to the right-clock browser (3.8; a difference is the known TFA-92584)",
+      "kind": "known",
+      "ok": true,
+      "detail": {
+        "right": [
+          {
+            "name": "QA DS1-s18 Hosp Aged-Note",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pending",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Aged-Pre",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ],
+        "wrongDevice": [
+          {
+            "name": "QA DS1-s18 Hosp Aged-Note",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pending",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Aged-Pre",
+            "label": "Not Yet Prepped"
+          },
+          {
+            "name": "QA DS1-s18 Hosp Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ]
+      },
+      "ref": "TFA-92584"
+    },
+    {
+      "name": "device clock −1 day, Nursing Home: identical labels and order to the right-clock browser (3.8; a difference is the known TFA-92584)",
+      "kind": "known",
+      "ok": true,
+      "detail": {
+        "right": [
+          {
+            "name": "QA DS1-s18 Res Aged-Note",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pending",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Aged-Pre",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ],
+        "wrongDevice": [
+          {
+            "name": "QA DS1-s18 Res Aged-Note",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pending",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Aged-Pre",
+            "label": "Pending"
+          },
+          {
+            "name": "QA DS1-s18 Res Fresh-Pre",
+            "label": "Pre-Rounded"
+          }
+        ]
+      },
+      "ref": "TFA-92584"
+    },
+    {
+      "name": "wrong-clock browser: calls answered in the page and never sent",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "refused": [
+          "rounding:applyLifecycle",
+          "snf:applyLifecycle"
+        ]
+      }
+    },
+    {
+      "name": "device clock +2 days (the matrix's example): what it shows (TFA-92584; never signed in again on dev)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "shown": "sign-in form (signed out by the device clock)",
+        "refused": []
+      },
+      "ref": "TFA-92584"
+    },
+    {
+      "name": "target",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "onDev": true
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-03-S18-hosp-status-sort.png",
+    "evidence/TC-03-S18-nh-status-sort.png",
+    "evidence/TC-03-S18-hosp-status-sort-device-minus1d.png",
+    "evidence/TC-03-S18-nh-status-sort-device-minus1d.png",
+    "evidence/TC-03-S18-device-plus2d.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-03-S18-hosp-status-sort.png": 0,
+    "evidence/TC-03-S18-nh-status-sort.png": 0,
+    "evidence/TC-03-S18-hosp-status-sort-device-minus1d.png": 0,
+    "evidence/TC-03-S18-nh-status-sort-device-minus1d.png": 0,
+    "evidence/TC-03-S18-device-plus2d.png": 0
+  }
+}

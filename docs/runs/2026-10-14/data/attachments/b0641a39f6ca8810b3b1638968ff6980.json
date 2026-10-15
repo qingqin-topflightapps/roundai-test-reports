@@ -1,0 +1,19 @@
+{
+  "TC-18/S03": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:47:40Z",
+    "title": "Template -> family for all 8 pilot templates (badge matching the template)",
+    "detail": "Dev 43c38a4f (deployed 2026-10-14 21:30Z), live model, run 17:46-18:17 JST under runs/.dev.lock and the dev-session run lock; only rows named 'QA TC18-BIL …' were created and all were deleted (59 cell rows at the end of D1, 8 more in the cleanup: 0 remaining, 0 changes to other rows). Each cell's note saved as a chart with its template and badge (rounding:add / snf:add; on 43c38a4f this save enqueues the server billing job, which calls the live model): H&P 99221 Low, SOAP 99231 Low, Consult 99222 Moderate (+ consult equivalent 99254, Q1), Discharge 99239 (40 min documented, LEVEL —), SNF admission 99304 Low, SNF follow-up 99308 Low, SNF consult 99305 Moderate (kind; no stock template yet, TFA-92599), SNF discharge 99316 (35 min). Cell checks 8/8 (codeIn, levelMatchesCode, quotesInNote, noReasoning, minQuotes / asksForTime false + noLevelWords). The 8 cards read on the dev page equal the stored suggestions and carry the label.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d1-cells.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d1-s03-pages.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s03-c1-hp.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s03-c4-discharge.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s03-c8-snf-discharge.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

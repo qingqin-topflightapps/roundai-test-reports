@@ -1,0 +1,18 @@
+{
+  "TC-18/S23": {
+    "status": "record-only",
+    "ranAt": "2026-10-15T09:18:37Z",
+    "title": "Billing card states and the custom-template form pass axe (WCAG 2 A/AA)",
+    "detail": "Our own addition (no UAT item or ticket asks for WCAG): recorded. axe on the card: result card (Hospital and Nursing Home) 1 serious color-contrast violation each, the grey '(none)' text under an empty element (text-slate-400; same pattern as A4); error / retry state 0; discharge prompt 0; Create Note Template form 0 (both contexts). The retry control is a named button, the two time choices are buttons '≤ 30 min' / '> 30 min' in a group 'Time on discharge', the Note Type field is labelled and required, every card state is an aria-live=polite region.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s23-ui.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s23-ui-h-result.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s23-ui-h-discharge.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s23-ui-hospital-template-form.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

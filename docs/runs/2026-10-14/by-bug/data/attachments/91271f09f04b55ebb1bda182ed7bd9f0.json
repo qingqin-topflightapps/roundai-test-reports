@@ -1,0 +1,57 @@
+{
+  "name": "tc10-s29-pre-a-hosp",
+  "at": "2026-10-15T08:30:10.812Z",
+  "checks": [
+    {
+      "id": "(a) the Pre-Round tab says the processing was interrupted and to tap Save Note",
+      "ok": true,
+      "detail": "[\"The reviewed note is saved, but structured processing was interrupted. Tap Save Note to continue.\"]"
+    },
+    {
+      "id": "(a) the typed text is kept",
+      "ok": true,
+      "detail": "Pre-round review for today. 72-year-old man admitted with co"
+    },
+    {
+      "id": "(a) Generate Note & Finish is disabled",
+      "ok": true,
+      "detail": "{\"enabled\":false,\"reason\":\"Today's pre-round is still being processed. Wait for the panels, then generate.\"}"
+    },
+    {
+      "id": "(a) recorded: the Encounter tab's reason agrees with the Pre-Round tab (tap Save Note, not wait)",
+      "ok": false,
+      "detail": "Today's pre-round is still being processed. Wait for the panels, then generate.",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "a": {
+      "preRoundTabMessages": [
+        "The reviewed note is saved, but structured processing was interrupted. Tap Save Note to continue."
+      ],
+      "encounter": {
+        "enabled": false,
+        "reason": "Today's pre-round is still being processed. Wait for the panels, then generate."
+      },
+      "server": {
+        "preRoundNotes": "Pre-round review for today. 72-year-old man admitted with community-acquired pneumonia. This morning BP 124/72, HR 98, O2 93% on 2 L. Labs: WBC 15.1 up from 12.4. On Ceftriaxone 1 g IV daily, day 2.",
+        "rawPreRoundNotes": "Pre-round review for today. 72-year-old man admitted with community-acquired pneumonia. This morning BP 124/72, HR 98, O2 93% on 2 L. Labs: WBC 15.1 up from 12.4. On Ceftriaxone 1 g IV daily, day 2.",
+        "preRoundProcessing": true,
+        "preRoundError": null,
+        "vitals": null
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok (dropped: page socket closed)",
+        "atMs": 2348
+      }
+    ]
+  }
+}

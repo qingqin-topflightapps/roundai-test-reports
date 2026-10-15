@@ -1,0 +1,66 @@
+{
+  "name": "tc14-s03",
+  "at": "2026-10-15T08:57:05.394Z",
+  "checks": [
+    {
+      "id": "hospital (Q10): Begin Encounter is offered on the Pre-Round tab of a chart with no pre-round note",
+      "ok": false,
+      "detail": "not offered (the tab strip is the way in)",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital: the Encounter tab (cold chart) shows the patient's encounter view: dictation box, Save & Extract, Generate",
+      "ok": true,
+      "detail": "{\"box\":true,\"saveExtract\":true,\"generate\":true,\"noteFormat\":true,\"beginEncounter\":false}"
+    },
+    {
+      "id": "hospital: after Save Note the Pre-Round tab offers Begin Encounter",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "hospital: Begin Encounter opens the patient's encounter view: dictation box, Save & Extract, Generate",
+      "ok": true,
+      "detail": "{\"box\":true,\"saveExtract\":true,\"generate\":true,\"noteFormat\":true,\"beginEncounter\":false}"
+    },
+    {
+      "id": "hospital (U1): both paths reach the same place (same controls)",
+      "ok": true,
+      "detail": "{\"tab\":[true,true,true,true],\"begin\":[true,true,true,true]}"
+    },
+    {
+      "id": "snf (Q10): Begin Encounter is offered on the Pre-Round tab of a chart with no pre-round note",
+      "ok": false,
+      "detail": "not offered (the tab strip is the way in)",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: the Encounter tab (cold chart) shows the patient's encounter view: dictation box, Save & Extract, Generate",
+      "ok": true,
+      "detail": "{\"box\":true,\"saveExtract\":true,\"generate\":true,\"noteFormat\":true,\"beginEncounter\":false}"
+    },
+    {
+      "id": "snf: after Save Note the Pre-Round tab offers Begin Encounter",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "snf: Begin Encounter opens the patient's encounter view: dictation box, Save & Extract, Generate",
+      "ok": true,
+      "detail": "{\"box\":true,\"saveExtract\":true,\"generate\":true,\"noteFormat\":true,\"beginEncounter\":false}"
+    },
+    {
+      "id": "snf (U1): both paths reach the same place (same controls)",
+      "ok": true,
+      "detail": "{\"tab\":[true,true,true,true],\"begin\":[true,true,true,true]}"
+    }
+  ],
+  "data": {
+    "hospital-preround-saved": {
+      "preRoundNotes": "Overnight afebrile. Plan: continue antibiotics."
+    },
+    "snf-preround-saved": {
+      "preRoundNotes": null
+    }
+  }
+}

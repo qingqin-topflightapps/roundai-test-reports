@@ -1,0 +1,25 @@
+{
+  "TC-14/S01": {
+    "status": "failed",
+    "ranAt": "2026-10-15T10:03:24.324Z",
+    "title": "Hospital: Begin Encounter, step-2 dictation, Save & Extract, Generate, Post-Round (live AI)",
+    "detail": "Dataset gen-journeys on dev (43c38a4f, live Haiku 4.5), every step through the app's UI: pre-round Save Note, Begin Encounter (offered: U1 passed), the step-2 dictation, Save & Extract, Generate Note & Finish. Run twice: v1 with the matrix seed, v2 with numeric task ids (the matrix seeds' ids 't-ua' / 't-pt' can never be closed: ai/parsing:extractTasks returns completed_task_ids as numbers only — convex/ai/schemas.ts TASK_EXTRACTION_OUTPUT, convex/ai/parsing.ts — while the app's own tasks use String(Date.now()); v2 is the verdict, both runs agree on the note). FAILED on two requirements: U2 — 'Urinalysis came back negative, no nitrites' did not close 'Follow up urinalysis' (both runs); U8 — the note's plan reads 'Restart metoprolol tartrate 25 mg PO BID' although the restart was dictated as done this morning (both runs; the tracker row is right: resumed · Oct 15). Passed: 'PT evaluation' left open, exactly one chest X-ray task, metoprolol off Held with today's change, Generate opened Post-Round with the AI-Generated Note (U10), the note keeps metoprolol / urinalysis / 128/76 / crackles / the X-ray plan, no dysuria finding (U7), no placeholder (U6), no stock normal (U5), Generate left the tasks as Save & Extract did (U3). Recorded: no dysuria task (Q3); 'no past medical history documented in the available records' (3.4 narration). Rows prefixed, removed by the dataset cleanup (0 left, 0 other rows changed).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S01-s01-cp1.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S01-s01-cp2-note.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S01-s01-cp3-tasks.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S01-s01-cp4-meds.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys/evidence/TC-14-S01.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S01-s01-cp1.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S01-s01-cp2-note.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S01-s01-cp3-tasks.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S01-s01-cp4-meds.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-journeys.prev/evidence/TC-14-S01.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "A dictated result ('urinalysis came back negative') does not close its follow-up task, and a medication the physician already restarted appears in the plan as 'Restart metoprolol …'.",
+    "pkg": "gen"
+  }
+}

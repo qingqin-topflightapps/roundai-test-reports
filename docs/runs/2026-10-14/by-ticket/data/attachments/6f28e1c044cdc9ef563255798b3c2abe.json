@@ -1,0 +1,26 @@
+{
+  "OAT-03/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:53:46.507Z",
+    "title": "Generate on patient A, open patient B at once: A's dictation stays on A and nothing of A lands on B (both contexts)",
+    "detail": "PW, local stack, both modes (generateNote mocked, answered 8 s after it is asked, so A's note lands while B is open). A: dictation typed, Generate, then the app's back arrow and the list to B at once (no reload); B has its own encounter line. B's Post-Round right after opening and 45 s later and B's Encounter tab show nothing of A; B's stored note is empty and its encounter text is exactly its own line; back on A the Encounter tab holds A's dictation, the stored text equals it, and A's Post-Round shows A's own note. Judged 7/7 per mode. Every Generate used a 'procedure-other' custom note template because on 43c38a4f saving a generated note queues a server billing job (billing/persistence.ts enqueueBilling → ai/billing.ts run) that no socket mock can answer and that would reach Bedrock on this stack; the template only changes the (mocked) model's instruction text. Tripwire: no model call at all during the run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-hosp-cp1-b-postround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-hosp-cp2-b-postround-45s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-hosp-cp3-b-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-hosp-cp4-a-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-hosp-cp5-a-postround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-snf-cp1-b-postround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-snf-cp2-b-postround-45s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-snf-cp3-b-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-snf-cp4-a-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-snf-cp5-a-postround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s27-snf.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

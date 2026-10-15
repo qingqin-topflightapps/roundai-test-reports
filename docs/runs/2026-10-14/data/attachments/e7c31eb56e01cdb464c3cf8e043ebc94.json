@@ -1,0 +1,86 @@
+{
+  "name": "tc18-s26-pipeline",
+  "at": "2026-10-15T08:29:17.544Z",
+  "checks": [
+    {
+      "id": "(a) the stated code 99223 never shows; the card shows 99233 / High Complexity, in family, level agrees",
+      "ok": true,
+      "detail": "99233 / High Complexity"
+    },
+    {
+      "id": "(b) the stated code 99310 never shows; the card shows 99306 / High Complexity, in family, level agrees",
+      "ok": true,
+      "detail": "99306 / High Complexity"
+    },
+    {
+      "id": "(c) the stated code 99232 never shows; the card shows 99231 / Low Complexity, in family, level agrees",
+      "ok": true,
+      "detail": "99231 / Low Complexity"
+    },
+    {
+      "id": "(d) the stated code 99233 never shows; the card shows 99232 / Moderate Complexity, in family, level agrees",
+      "ok": true,
+      "detail": "99232 / Moderate Complexity"
+    },
+    {
+      "id": "malformed answer (plain text CODE / LEVEL) fails closed: 'Billing model returned an invalid suggestion' (the job retries, then the error card)",
+      "ok": true,
+      "detail": "Billing model returned an invalid suggestion"
+    },
+    {
+      "id": "malformed answer (an unknown problem category) fails closed: 'Billing model returned an invalid suggestion' (the job retries, then the error card)",
+      "ok": true,
+      "detail": "Billing model returned an invalid suggestion"
+    },
+    {
+      "id": "malformed answer (a missing section) fails closed: 'Billing model returned an invalid suggestion' (the job retries, then the error card)",
+      "ok": true,
+      "detail": "Billing model returned an invalid suggestion"
+    },
+    {
+      "id": "malformed answer (evidence not a list) fails closed: 'Billing model returned an invalid suggestion' (the job retries, then the error card)",
+      "ok": true,
+      "detail": "Billing model returned an invalid suggestion"
+    }
+  ],
+  "data": {
+    "outputs": [
+      {
+        "from": "S26",
+        "cell": "a",
+        "answer": "{\"code\":\"99223\",\"level\":\"High\",\"problems\":[{\"category\":\"threat_to_life_or_bodily_function\",\"addressed\":\"evaluated_or_treated_today\",\"evidence\":[2]}],\"data\":[],\"risk\":[{\"category\":\"hospitalization_or_escalation_decision\",\"decided_by\":\"this_physician\",\"evidence\":[3]}]}",
+        "code": "99233",
+        "level": "High Complexity",
+        "card": "Billing Suggestion · Physician Verify Before Submitting\nCODE: 99233\nLEVEL: High Complexity\nPROBLEMS — High\nAcute or chronic illness or injury that poses a threat to life or bodily function\nN2: \"ASSESSMENT AND PLAN: Community-acquired pneumonia, improving.\"\nDATA — Minimal\n(none)\nRISK — High\nDecision regarding hospitalization or escalation of hospital-level care\nN3: \"Continue ceftriaxone 1 g IV daily and azithromycin 500 mg daily, day 3 of 5.\"",
+        "family": "hospital-subsequent"
+      },
+      {
+        "from": "S26",
+        "cell": "b",
+        "answer": "{\"code\":\"99310\",\"level\":\"High\",\"problems\":[{\"category\":\"threat_to_life_or_bodily_function\",\"addressed\":\"evaluated_or_treated_today\",\"evidence\":[1]}],\"data\":[],\"risk\":[{\"category\":\"hospitalization_or_escalation_decision\",\"decided_by\":\"this_physician\",\"evidence\":[2]}]}",
+        "code": "99306",
+        "level": "High Complexity",
+        "card": "Billing Suggestion · Physician Verify Before Submitting\nCODE: 99306\nLEVEL: High Complexity\nPROBLEMS — High\nAcute or chronic illness or injury that poses a threat to life or bodily function\nN1: \"ADMISSION: 84-year-old woman admitted to the facility after left hip ORIF for rehab.\"\nDATA — Minimal\n(none)\nRISK — High\nDecision regarding hospitalization or escalation of hospital-level care\nN2: \"Start PT and OT twice daily.\"",
+        "family": "snf-initial"
+      },
+      {
+        "from": "S26",
+        "cell": "c",
+        "answer": "{\"code\":\"99232\",\"level\":\"Low\",\"problems\":[{\"category\":\"stable_chronic\",\"addressed\":\"evaluated_or_treated_today\",\"evidence\":[2]}],\"data\":[],\"risk\":[{\"category\":\"low_risk\",\"decided_by\":\"this_physician\",\"evidence\":[3]}]}",
+        "code": "99231",
+        "level": "Low Complexity",
+        "card": "Billing Suggestion · Physician Verify Before Submitting\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nStable chronic illness\nN2: \"ASSESSMENT AND PLAN: Community-acquired pneumonia, improving.\"\nDATA — Minimal\n(none)\nRISK — Low\nLow risk of morbidity from additional diagnostic testing or treatment\nN3: \"Continue ceftriaxone 1 g IV daily and azithromycin 500 mg daily, day 3 of 5.\"",
+        "family": "hospital-subsequent"
+      },
+      {
+        "from": "S26",
+        "cell": "d",
+        "answer": "{\"code\":\"99233\",\"level\":\"High\",\"problems\":[{\"category\":\"acute_with_systemic_symptoms\",\"addressed\":\"evaluated_or_treated_today\",\"evidence\":[2]}],\"data\":[],\"risk\":[{\"category\":\"prescription_drug_management\",\"decided_by\":\"this_physician\",\"evidence\":[3]}]}",
+        "code": "99232",
+        "level": "Moderate Complexity",
+        "card": "Billing Suggestion · Physician Verify Before Submitting\nCODE: 99232\nLEVEL: Moderate Complexity\nPROBLEMS — Moderate\nAcute illness with systemic symptoms\nN2: \"ASSESSMENT AND PLAN: Community-acquired pneumonia, improving.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nPrescription drug management\nN3: \"Continue ceftriaxone 1 g IV daily and azithromycin 500 mg daily, day 3 of 5.\"",
+        "family": "hospital-subsequent"
+      }
+    ]
+  }
+}

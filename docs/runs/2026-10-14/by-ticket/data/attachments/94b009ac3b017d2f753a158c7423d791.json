@@ -1,0 +1,18 @@
+{
+  "TC-14/S06": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:25:31.884Z",
+    "title": "Save & Extract pressed 0, 1 or 2 times, with or without new dictation, then Generate: Generate never extracts and nothing is added twice",
+    "detail": "PW, local stack, both modes, model mocked at the socket (this judges the app's wiring and de-duplication; the model's matching is S05 on dev). R1 one Save & Extract (closes BMP and PT eval, adds the diet / potassium / urine-culture tasks) then Generate: tasks identical after Generate, no extractTasks call after the press. R2 new dictation ('Repeat lactate at noon') and Regenerate without Save & Extract: nothing added, closed or re-opened, no extractTasks call. R3 two Save & Extract presses in a row, the second answered with the SAME new task and the SAME metoprolol event (worst case): one lactate / clears / potassium / urine-culture / weight task each, and (Hospital) one metoprolol event although three extractions reported it; Regenerate then leaves the list as it was. R4 second patient, Generate with no Save & Extract: 'Follow up lactate' and the list stay as seeded, no extractTasks call. Judged 13/13 (Hospital) and 12/12 (Nursing Home). Recorded (Q15): dictation added after the last Save & Extract ('Repeat lactate at noon', 'Repeat CBC tomorrow') never becomes a task, since Generate does not extract; (Q13) Nursing Home Save & Extract records no medication event. Every Generate used a 'procedure-other' custom note template because on 43c38a4f saving a generated note queues a server billing job (billing/persistence.ts enqueueBilling → ai/billing.ts run) that no socket mock can answer and that would reach Bedrock on this stack; the template only changes the (mocked) model's instruction text. Tripwire: no model call at all during the run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s06-hosp-r4-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s06-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s06-snf-r4-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s06-snf.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

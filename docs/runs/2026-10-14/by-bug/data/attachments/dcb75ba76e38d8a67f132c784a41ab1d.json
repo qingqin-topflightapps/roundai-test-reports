@@ -1,0 +1,16 @@
+{
+  "TC-14/S18": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:58:42.429Z",
+    "title": "Earlier-day vitals and labs never appear as today's; no vitals today is said; values on each side of midnight (5 Hospital + 5 Nursing Home)",
+    "detail": "Dataset gen-notes-c on dev (43c38a4f, live Haiku 4.5), each fixture through the app's UI with its vitals / labs stored with the moment they were recorded (vitalsRecordedAt / recordedAt, as 43c38a4f writes them) and the midnight fixtures run in a browser in their zone (H-28 / N-30 America/New_York 23:45 the day before; H-29 / N-31 Asia/Tokyo 00:15 today). 9/10 by the literal checks, 10/10 with the oracle's tags: in every note an earlier-day value is absent or carries its date, notes with no vitals today say so in the vitals / objective part ('Vital signs: not dictated today'), today's values are written as today's, H-19's bedside 118/70 is kept. N-22's only hit is the dictated trend baseline ('Sodium has improved to 133 from prior level of 128'; the dictation itself said 'up from 128'), which the oracle tags Q7. Passes under 3.2's 9/10 either way (threshold Q2). The local half (what the app sends the model) passed 20/20 (runs/2026-10-14-local/newspec-c/results.gen.json TC-14/S18). Re-scored offline with the corrected section reader (rescore-gen-notes-c.json); the run-time cell agreed.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-c/evidence/TC-14-S18.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-c.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

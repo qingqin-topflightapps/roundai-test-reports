@@ -1,0 +1,41 @@
+{
+  "name": "tc10-s27-pre-b-background-fails",
+  "at": "2026-10-15T08:39:59.457Z",
+  "checks": [
+    {
+      "id": "(b) recorded (Q14): the action reports the failed part to the client (throws or flags it)",
+      "ok": false,
+      "detail": "{\"threw\":false,\"background\":\"\",\"radiology\":[\"Chest X-ray: right lower lobe infiltrate unchanged\"]}; 6 attempts; diagnostics ok=true",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "b": {
+      "outcome": {
+        "threw": false,
+        "background": "",
+        "radiology": [
+          "Chest X-ray: right lower lobe infiltrate unchanged"
+        ]
+      },
+      "durationMs": 4504,
+      "attemptsOfFailingCall": [
+        "anthropic@0ms",
+        "anthropic@1001ms",
+        "mistral-large-3-675b-instruct@1001ms",
+        "anthropic@3503ms",
+        "anthropic@4504ms",
+        "mistral-large-3-675b-instruct@4504ms"
+      ],
+      "diagnostics": {
+        "userId": "physician-1",
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4504,
+        "providerMs": 0,
+        "promptChars": 658
+      }
+    }
+  }
+}

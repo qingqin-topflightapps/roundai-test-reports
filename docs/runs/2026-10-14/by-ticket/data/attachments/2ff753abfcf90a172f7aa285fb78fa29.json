@@ -1,0 +1,109 @@
+{
+  "name": "tc14-s08-hosp",
+  "at": "2026-10-15T08:15:25.455Z",
+  "checks": [
+    {
+      "id": "failure: an explicit message says the dictation is saved and the note could not be generated",
+      "ok": true,
+      "detail": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "failure wording is the UAT's 'Note not generated' (Q18 / D7)",
+      "ok": false,
+      "detail": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "failure: the dictation stays in the box",
+      "ok": true,
+      "detail": "QA S08 dyspnea improved and lungs are clear, blood pressure 122 over 70, continue oral diuretic and check BMP tomorrow."
+    },
+    {
+      "id": "failure: the dictation is in the database and no note was saved",
+      "ok": true,
+      "detail": "{\"enc\":\"QA S08 dyspnea improved and lungs are clear, blood pressure \",\"note\":null}"
+    },
+    {
+      "id": "failure: Generate Note & Finish is offered again",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "failure: the chart stays on the Encounter tab (Post-Round is not opened with nothing in it)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "retry: Generate moves to Post-Round with the AI-Generated Note view and the generated text",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"SUBJECTIVE\\n\\nQA S08 mocked note EDXM: dyspnea improved.\\n\\nASSESSMENT AND PLAN\\n\\nContinue the current plan.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "the dictated source reaches the note model (the generateNote request carries the dictation)",
+      "ok": true,
+      "detail": "calls 2"
+    },
+    {
+      "id": "Generate makes no task-extraction call (U3 support)",
+      "ok": true,
+      "detail": "extractTasks calls during Generate: 0",
+      "recordOnly": true
+    },
+    {
+      "id": "retry: the note, its time, the template and status note-ready are saved",
+      "ok": true,
+      "detail": "{\"note\":true,\"at\":\"2026-10-15T08:15:24.237Z\",\"tpl\":true,\"status\":\"note-ready\"}"
+    },
+    {
+      "id": "reload: Post-Round still shows the note",
+      "ok": true,
+      "detail": "SUBJECTIVE\n\nQA S08 mocked note EDXM: dyspnea improved.\n\nASSESSMENT AND PLAN\n\nContinue the current plan."
+    },
+    {
+      "id": "reload: the Encounter tab still holds the dictation",
+      "ok": true,
+      "detail": "QA S08 dyspnea improved and lungs are clear, blood pressure 122 over 70, continue oral diuretic and check BMP tomorrow."
+    }
+  ],
+  "data": {
+    "backend-after-failure": {
+      "encounterNotes": "QA S08 dyspnea improved and lungs are clear, blood pressure 122 over 70, continue oral diuretic and check BMP tomorrow.",
+      "note": null,
+      "status": "seen"
+    },
+    "generateNote-args-2": {
+      "patientContextHead": "PATIENT: QA Hosp S08 Vale EDXM, 71yo, CHF exacerbation\n\nSTRUCTURED DATA:\nVITALS (taken at the bedside during today's encounter): QA S08 dyspnea improved and lungs are clear, blood pressure 122 over 70, continue oral diuretic and check BMP tomorrow. QA S08 dyspnea improved and lungs are clear, blood pressure 122 over 70, continue oral diuretic and check BMP tomorrow. — NO vitals were recorded TODAY",
+      "dateLabel": "October 15, 2026"
+    },
+    "backend-after-generate": {
+      "note": "SUBJECTIVE\nQA S08 mocked note EDXM: dyspnea improved.\n\nASSESSMENT AND PLAN\nContinue the current plan.",
+      "noteGeneratedAt": "2026-10-15T08:15:24.237Z",
+      "noteTemplate": "js714f3wp2dg2anejazhyz1mj98gbpj3",
+      "status": "note-ready",
+      "encounterNotes": "QA S08 dyspnea improved and lungs are clear, blood pressure 122 over 70, continue oral diuretic and check BMP tomorrow.",
+      "billingStatus": null
+    },
+    "no-billing-job": {
+      "billingStatus": null,
+      "billingJob": null
+    },
+    "calls": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok"
+      }
+    ]
+  }
+}

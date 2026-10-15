@@ -1,0 +1,16 @@
+{
+  "OAT-06/S08": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:40:51.900Z",
+    "title": "Existing chromium specs: a handoff sent with its follow-up, the two rounding timestamps, feedback from Settings, the baseline offered, answered once, and Not now",
+    "detail": "Lane A on 43c38a4f (scripts/spec-matrix.mjs, runs/2026-10-14-local/matrix/OAT-06.results.json + OAT-06.laneA.json, run 2026-10-15 18:40 JST inside the lock and tripwire); every specTitle still exists in cases/e2e-titles.tsv for 43c38a4f, none renamed. All 5 titles passed (project chromium): 'a handoff is sent to a colleague inside the app and recorded' (handoff-send.spec.ts: handoff_sent with patientCount >= 2, the follow-up dialog, a handoff_followup 'yes' row), 'opening a chart and marking its encounter complete leave the two timestamps', 'feedback sent from Settings is recorded with its rating' (now also asserts surveys.status feedback.answeredAt), 'is offered once on the list screen and recorded when answered' and 'Not now hides the card, and it stays hidden across a reload' (pilot-analytics.spec.ts; on 43c38a4f Not now is a server row, surveyDismissals). Tim's two new TFA-94609 browser tests and his api / unit tests are counted under S14. Note for the main session: Tim's handoff-send test is not mocked; on the local stack it summarised the shared demo account's sheet with the live model (8 assist.generateHandoff calls, Haiku, 18:40:19-18:40:44 JST; the tripwire lists them and allows them, only Generate is forbidden).",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/OAT-06.results.json",
+      "runs/2026-10-14-local/matrix/OAT-06.laneA.json"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

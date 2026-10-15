@@ -1,0 +1,19 @@
+{
+  "EFS/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:39:37.618Z",
+    "title": "Stale content after a failure, both contexts (U3b judged; the Note-tab half U4b is TFA-92595, todo)",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-efs-s27-stale.spec.ts. Charts P (Hospital) / Q (Nursing Home) carry yesterday's panels 20 h old (stamped per value as 43c38a4f writes them) and yesterday's note as the previous note (previousNotes only: a seeded current note with noteGeneratedAt would start the server billing job, a live model call). The first summary call fails at the socket; every note generation is answered as a failure at the socket. Judged (U3b, TFA-92588 AC 8 second sentence) 7/7 per mode: while today's summary has failed yesterday's BP and creatinine (albumin) show under 'Oct 14', never 'Today'; after the retry today's values read 'Today' and yesterday's are gone; the typed pre-round is kept; no note is stored by the failed Generate. Recorded (U4b, TFA-92595 in progress — todo): after the failed Generate the Note tab shows the empty card 'No note generated yet. Complete the Encounter tab first.', not an explicit 'not generated' failure (the error is shown on the Encounter tab only), on both the chart with history and the plain chart; yesterday's note never sits in the current-note slot.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s27-pre-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s27-pre-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s27-pre-h-h1-failed-panels.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s27-pre-n-n1-failed-panels.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s27-pre-h-h3-notetab-prior.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

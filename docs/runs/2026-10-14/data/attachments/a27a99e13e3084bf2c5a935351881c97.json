@@ -1,0 +1,17 @@
+{
+  "TC-14/S19": {
+    "status": "failed",
+    "ranAt": "2026-10-15T10:01:06.491Z",
+    "title": "Undictated sections read 'Not dictated' and nothing is supplied (no diagnosis, unit, plan item or narration), one fixture per template plus instruction-like lines",
+    "detail": "Dataset gen-notes-c on dev (live Haiku 4.5), through the app's UI; checks per the oracle: 'Not provided' in Hospital notes is reported with Q1, 'not specified in dictation' / 'dose not specified' with Q16, and dictated facts that disappear are T4 (TFA-94229, in progress: todo, recorded). Judged U5 (TFA-92592 AC 5): 9/11 notes supply nothing — FAILED (below 9/10 of 3.2; Q2 would only make it stricter). H-27 (SOAP; dictated temp 38.4, rusty sputum, crackles, 'Weight 70') supplies a diagnosis: 'The patient is a 77-year-old with a presentation consistent with pneumonia.'; N-27 (SNF follow-up; dictated 'Weight 52', 'Temp 37.9') writes 'Weight 52 kg.' (a guessed unit on a bare weight, 3.4) and adds 'Speech therapy to continue assessment and recommendations for safe swallowing…' (not dictated). Recorded: H-21 / H-23 / H-24 write 'Not provided' instead of 'Not dictated' (Q1, Hospital templates); N-28 'Aspirin — dose not specified in dictation.' (Q16); H-24 drops the dictated discharge weight 70.2 kg (T4, todo); '°C' added to bare temperatures (recorded). Re-scored offline with the corrected section reader (rescore-gen-notes-c.json).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-c/evidence/TC-14-S19.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-c.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "The note adds things nobody dictated: a diagnosis ('presentation consistent with pneumonia'), a unit on a bare weight ('52 kg'), a therapy recommendation; a dictated discharge weight can go missing.",
+    "pkg": "gen"
+  }
+}

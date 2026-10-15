@@ -1,0 +1,20 @@
+{
+  "TC-14/S26": {
+    "status": "failed",
+    "ranAt": "2026-10-15T08:35:20.911Z",
+    "title": "Generate, leave for another chart at once and come straight back: a generating state while the call runs, then the note (dev, real backend)",
+    "detail": "Dataset gen-ac15 on dev (live Haiku). Hospital: back on the chart 3.7 s after the press while the note was still being written: Post-Round showed 'No note generated yet. Complete the Encounter tab first.' and the spinning 'Finalizing Encounter Data…' button, no generating state (FAILED); the note then appeared without a reload (passed; the page that started it was still alive). Nursing Home: the note (Haiku, 3.2 s) was already there when the physician came back at 4.3 s, so the generating state could not be observed (recorded); the note was on Post-Round (passed). The failure half (cell F) cannot be forced on dev (no fault injection); it is judged locally (failed). Timings recorded: notes.generateNote 4.0 s (Hospital) / 3.2 s (Nursing Home), providerMs within 6 ms of the total.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S26-hospital-early.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S26-hospital-late.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S26-nursing-home-early.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S26-nursing-home-late.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S26.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "Coming back to a chart whose note is still being written shows 'No note generated yet. Complete the Encounter tab first.' instead of a generating state; the physician may press Generate again or think the dictation was lost.",
+    "pkg": "gen"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "TC-18/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:38:30Z",
+    "title": "Leaving right after Generate: the billing is there when the physician comes back without having opened Post-Round",
+    "detail": "Dev 43c38a4f, live model, runs 17:46-18:17, 18:34-18:39 and 18:54-18:55 JST under runs/.dev.lock and the dev-session run lock; only 'QA TC18-BIL …' rows (and one 'QA TC18-BIL SNF discharge' template) were created and all were deleted, 0 remaining, 0 changes to other rows. leave-h / leave-n: Generate Note & Finish, then back to the patient list 0.2 s later (no Post-Round); 60 s later the stored row held the note and a suggestion for it (99231 hospital-subsequent / 99309 snf-subsequent); reopening Post-Round showed that card and made no new billing call (1 billing row before and after). Switch legs: local (passed). Closing the app mid-Generate (TFA-92592 'Generate runs on the server') is not covered here.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-d2b-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-s12-leave-hospital.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-s12-leave-snf.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

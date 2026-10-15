@@ -1,0 +1,263 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--project=chromium",
+      "--workers=1",
+      "--reporter=json",
+      "--output=tools/qa-agent/runs/2026-10-14-local/matrix/TC-22-artifacts",
+      "-g",
+      "Save & Extract saves the notes, closes and adds tasks, and keeps a codeword task verbatim|Save & Extract persists a model-extracted action item|Save & Extract keeps medication updates when task extraction fails",
+      "snf-save-extract\\.spec\\.ts$",
+      "encounter-workflow\\.spec\\.ts$",
+      "medication-detection\\.spec\\.ts$"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/playwright.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/TC-22-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/api\\/.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/TC-22-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [
+          "/.*\\.anon\\.spec\\.ts/",
+          "/api\\/.*\\.spec\\.ts/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/TC-22-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "anonymous",
+        "name": "anonymous",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.anon\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev:vite",
+      "url": "http://localhost:6473",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "encounter-workflow.spec.ts",
+      "file": "encounter-workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "encounter capture and generation",
+          "file": "encounter-workflow.spec.ts",
+          "line": 11,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Save & Extract persists a model-extracted action item",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1470,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T09:40:53.268Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "70dbf9c801769bceccf8-30a91c402831bd00e588",
+              "file": "encounter-workflow.spec.ts",
+              "line": 422,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "medication-detection.spec.ts",
+      "file": "medication-detection.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "automatic medication detection",
+          "file": "medication-detection.spec.ts",
+          "line": 26,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Save & Extract keeps medication updates when task extraction fails",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1147,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T09:40:54.847Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "af2004627b1e24766a61-d5f0cfadf719475e22e2",
+              "file": "medication-detection.spec.ts",
+              "line": 145,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "snf-save-extract.spec.ts",
+      "file": "snf-save-extract.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Save & Extract saves the notes, closes and adds tasks, and keeps a codeword task verbatim",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1191,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:56.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "cc7d1a9b515036c93eab-a387f80becfd77285964",
+          "file": "snf-save-extract.spec.ts",
+          "line": 25,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T09:40:52.964Z",
+    "duration": 4252.3859999999995,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

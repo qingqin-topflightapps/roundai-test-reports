@@ -1,0 +1,16 @@
+{
+  "TC-14/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:31:49.751Z",
+    "title": "AI Check 1: no exam dictated gives 'not examined / not documented', not a normal exam (Hospital, 5 of the 10), plus a one-finding boundary",
+    "detail": "Dataset gen-notes-a on dev (43c38a4f, live Haiku 4.5), each fixture through the app's own UI (prefixed chart, note format picked, dictation typed, Generate Note & Finish, the stored note read and checked, chart removed). Checks re-applied offline to the stored notes with the corrected section reader (gen-notecheck.ts: the run-time reader missed Title-Case headings such as 'Physical Examination' and split on inline 'Vital Signs: …' lines; runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-a.json). Hospital zero-exam fixtures 4/5: H-01, H-02, H-03, H-05 say the exam was not documented and add no normal finding; H-04 (consult, AKI) FAILS — it supplies a diagnosis that was not dictated: 'The clinical picture is most consistent with prerenal azotemia related to volume depletion from decreased oral intake.' (also undictated recommendations such as avoiding contrast). Pooled with S12 (5/5) AI Check 1 is 9/10: passes the 3.2 rule. Provisional: substring pre-screen until Preston grades against EVALUATION_FRAMEWORK.md (TFA-94229 AC 2, Q19). H-26 (one dictated finding, outside the 9/10): passed (crackles kept, no normals added). Recorded: 'Not provided' in Hospital mandatory sections (Q1), H-03 'Cefazolin — dose not specified in dictation' (Q16), H-01 'no past medical history documented in the available records' (3.4 narration, U5 — not in S11's checks), H-05 '40 mg' added to a bare dose (Q23). Timing (3.5, review only): notes.generateNote 2.8–10.2 s across the 19 notes of this dataset, Haiku 4.5 every time, no fallback, providerMs within 10 ms of the total.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-a/evidence/TC-14-S11.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-a.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "case": "TC-22-S05",
+  "title": "AI Check, Nursing Home (5 of the 10): the UAT script on five residents with the three tasks typed by hand",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s05-n01-extract.md",
+      "verdict": "Fail",
+      "url": "/snf/jx70scwtr7htgeptx20vmbk0r58gaskz",
+      "problems": [
+        "backend n01-ext tasks has 3 items, expected 4",
+        "no match for /^(?=[^\\n]*(?:clear|diet))(?=[^\\n]*(?:pain))(?=[^\\n]*(?:\\b4\\b|four))[^\\n]*/im (in from \"pending task\")"
+      ],
+      "known": [
+        "no match for /\\b2 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend n01-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s05-n01-retap.md",
+      "verdict": "Fail",
+      "url": "/snf/jx70scwtr7htgeptx20vmbk0r58gaskz",
+      "problems": [
+        "backend n01-retap tasks has 3 items, expected 4",
+        "no match for /^(?=[^\\n]*(?:clear|diet))(?=[^\\n]*(?:pain))(?=[^\\n]*(?:\\b4\\b|four))[^\\n]*/im (in from \"pending task\")",
+        "/^[^\\n]*(?:clear|diet)/im matches 0 times, expected exactly 1 (in from \"pending task\")"
+      ],
+      "known": [
+        "no match for /\\b2 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(the second call ran (a disabled button is noted in notes.md instead)) pass: backend n01-retap-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s05-n02-extract.md",
+      "verdict": "Fail",
+      "url": "/snf/jx7fdthc4448nc3y1jdz4ekk598gb67f",
+      "problems": [
+        "backend n02-ext tasks[id=1101].done is false, expected true",
+        "backend n02-ext tasks has 4 items, expected 5",
+        "no match for /^(?=[^\\n]*(?:blood pressure|\\bbp\\b|systolic))(?=[^\\n]*(?:100))[^\\n]*/im (in from \"pending task\")"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend n02-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s05-n03-extract.md",
+      "verdict": "Fail",
+      "url": "/snf/jx752j40v8svjv02srcnf7pwpn8gbx9w",
+      "problems": [
+        "no match for /\\b3 pending tasks?\\b/i (in from \"pending task\")",
+        "backend n03-ext tasks[id=1201].done is false, expected true"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend n03-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s05-n04-extract.md",
+      "verdict": "Fail",
+      "url": "/snf/jx73ym7fdnx0wpx1rt0abj10jx8ga57j",
+      "problems": [
+        "no match for /\\b3 pending tasks?\\b/i (in from \"pending task\")",
+        "backend n04-ext tasks has 3 items, expected 5",
+        "no match for /^(?=[^\\n]*(?:furosemide|lasix))(?=[^\\n]*(?:2 ?kg))(?=[^\\n]*(?:\\b40\\b))[^\\n]*/im (in from \"pending task\")",
+        "no match for /^(?=[^\\n]*(?:saturation|\\bsats?\\b|spo2|oxygen|pulse ox|\\bo2\\b))(?=[^\\n]*(?:\\b88\\b))[^\\n]*/im (in from \"pending task\")"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend n04-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s05-n05-extract.md",
+      "verdict": "Pass",
+      "url": "/snf/jx718cecqj6nv102jp7zf9qvdx8gb8zd",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend n05-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "3.2: one checkpoint per fixture (s05-nNN-extract.md); N-01's re-tap checkpoint is reported beside it (Q5 c) and not counted. Count passing fixtures over S04 + S05 (dev runs): ≥ 9/10, every failure quoted from the snapshot and backend/<read>.json.",
+    "Q1/Q2: a missing conditional or monitoring task fails the newTask check whose note names its kind.",
+    "3.9 / 3.5: model, fellBackFrom, durationMs and providerMs of each parsing.extractTasks call from backend/nNN-ext-diag.json (S19's dev half); over 30 s is flagged for review, not Fail."
+  ],
+  "agent": {
+    "turns": 88,
+    "costUsd": 0.7347618000000002,
+    "durationMs": 361962,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

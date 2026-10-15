@@ -1,0 +1,85 @@
+{
+  "case": "TC-22-S11",
+  "title": "Re-save and re-tap: pre-round Save Note and Save & Extract again add nothing and do not reopen closed tasks",
+  "needs": [
+    "seed",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s11-h-a.md",
+      "verdict": "Pass",
+      "url": "/rounding/js71f2e5qb2fzs2cjp3e1gy4g58gakxx",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "notes": [
+        "the guard refused a Dictate press before this save (2026-10-15T10:17:13.430Z); the agent was told to type instead"
+      ]
+    },
+    {
+      "file": "s11-h-b.md",
+      "verdict": "Fail",
+      "url": "/rounding/js71f2e5qb2fzs2cjp3e1gy4g58gakxx",
+      "problems": [
+        "missing \"2 pending tasks\" (in from \"pending task\")",
+        "backend h-at-b tasks has 3 items, expected 4"
+      ],
+      "known": [],
+      "recorded": [
+        "(harvest + two taps; 2 when the second tap was disabled) pass: backend diag-b [fn=parsing.extractTasks] has 3 items"
+      ],
+      "notes": [
+        "the guard refused a Dictate press before this save (2026-10-15T10:17:13.430Z); the agent was told to type instead"
+      ]
+    },
+    {
+      "file": "s11-h-c.md",
+      "verdict": "Fail",
+      "url": "/rounding/js71f2e5qb2fzs2cjp3e1gy4g58gakxx",
+      "problems": [
+        "missing \"2 pending tasks\" (in from \"pending task\")",
+        "backend h-at-c tasks has 3 items, expected 4"
+      ],
+      "known": [],
+      "recorded": [
+        "(the newest AI call is the second harvest, so it ended before this checkpoint (not so when Save Note was disabled for unchanged text)) pass: backend diag-c [0].fn = \"parsing.extractTasks\""
+      ],
+      "notes": [
+        "the guard refused a Dictate press before this save (2026-10-15T10:17:13.430Z); the agent was told to type instead"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 75,
+    "costUsd": 0.441397,
+    "durationMs": 198823,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

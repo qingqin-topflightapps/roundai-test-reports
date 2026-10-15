@@ -1,0 +1,158 @@
+{
+  "ref": "TC-14/S26",
+  "title": "TC-14/S26 dev: Generate, open another chart at once and come straight back — a generating state while the call runs, then the note (both modes)",
+  "dataset": "gen-ac15",
+  "target": "dev",
+  "at": "2026-10-15T08:35:20.911Z",
+  "cells": [
+    {
+      "name": "hospital: timeline",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "earlyMsAfterPress": 3697,
+        "noteStillRunningAtEarly": true,
+        "early": {
+          "note": false,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "generating": false,
+          "failure": false,
+          "finalizing": true
+        },
+        "late": {
+          "note": true,
+          "noNoteYet": false,
+          "completeFirst": false,
+          "generating": false,
+          "failure": false,
+          "finalizing": true
+        },
+        "noteModelCall": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4009,
+            "providerMs": 4005,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "hospital (AC 15 / 3.5): right after returning, while the note is still being written, Post-Round shows a generating state (never only 'Complete the Encounter tab first')",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "note": false,
+        "noNoteYet": true,
+        "completeFirst": true,
+        "generating": false,
+        "failure": false,
+        "finalizing": true
+      }
+    },
+    {
+      "name": "hospital: the note appears on Post-Round once ready although the physician left the chart",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "stored": true,
+        "late": {
+          "note": true,
+          "noNoteYet": false,
+          "completeFirst": false,
+          "generating": false,
+          "failure": false,
+          "finalizing": true
+        }
+      }
+    },
+    {
+      "name": "nursing-home: timeline",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "earlyMsAfterPress": 4258,
+        "noteStillRunningAtEarly": false,
+        "early": {
+          "note": true,
+          "noNoteYet": false,
+          "completeFirst": false,
+          "generating": false,
+          "failure": false,
+          "finalizing": false
+        },
+        "late": {
+          "note": true,
+          "noNoteYet": false,
+          "completeFirst": false,
+          "generating": false,
+          "failure": false,
+          "finalizing": false
+        },
+        "noteModelCall": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3215,
+            "providerMs": 3209,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "nursing-home: the note was already there when the physician came back (the generating state could not be observed)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": true,
+        "noNoteYet": false,
+        "completeFirst": false,
+        "generating": false,
+        "failure": false,
+        "finalizing": false
+      }
+    },
+    {
+      "name": "nursing-home: the note appears on Post-Round once ready although the physician left the chart",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "stored": true,
+        "late": {
+          "note": true,
+          "noNoteYet": false,
+          "completeFirst": false,
+          "generating": false,
+          "failure": false,
+          "finalizing": false
+        }
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-14-S26-hospital-early.png",
+    "evidence/TC-14-S26-hospital-late.png",
+    "evidence/TC-14-S26-nursing-home-early.png",
+    "evidence/TC-14-S26-nursing-home-late.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-14-S26-hospital-early.png": 0,
+    "evidence/TC-14-S26-hospital-late.png": 0,
+    "evidence/TC-14-S26-nursing-home-early.png": 0,
+    "evidence/TC-14-S26-nursing-home-late.png": 0
+  },
+  "error": "Error: TC-14/S26: judged cells that failed"
+}

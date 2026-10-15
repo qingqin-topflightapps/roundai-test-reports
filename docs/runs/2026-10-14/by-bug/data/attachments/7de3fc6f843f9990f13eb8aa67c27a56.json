@@ -1,0 +1,20 @@
+{
+  "TC-22/S13": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:45:10.796Z",
+    "title": "Leave the chart right after tapping Save & Extract, then come back: the dictation is kept",
+    "detail": "Local stack on main 43c38a4f; every model call the page makes is answered in the page by ext-support.ts (an ai/* call it is not told about is failed, never forwarded) and the tripwire showed no model call. Spec ext-tc22-s12-s13-generate-leave.spec.ts, both contexts; the extractor answers 3 s after the request, while the physician is already back on the list (in-app back arrow, no wait). Judged 2/2 per context: after reopening the chart the dictation is in the encounter box and stored on the chart. Recorded (Q9): in both contexts the closure and the diet task still landed after the chart was left; no message was shown on the list.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s13-b43-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s13-b43-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s13-b43-rounding-a-encounter-after-return.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s13-b43-rounding-b-tasks-after-return.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s13-b43-snf-a-encounter-after-return.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s13-b43-snf-b-tasks-after-return.png"
+    ],
+    "method": "PW",
+    "pkg": "ext"
+  }
+}

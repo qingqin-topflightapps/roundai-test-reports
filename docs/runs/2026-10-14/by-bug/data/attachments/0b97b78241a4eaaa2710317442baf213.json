@@ -1,0 +1,18 @@
+{
+  "TC-10/S05": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:14:05.361Z",
+    "title": "Unusual phrasing survives Save Note and a reload word for word, both modes",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-tc10-s05-verbatim.spec.ts. The summary call was answered with a 'cleaned' copy that fixes the spelling (furosamide → Furosemide 40 mg), expands every abbreviation and renames the doctor, so a Save Note that kept the model's copy would show. Both modes: after Save Note, a page reload and reopening the editor, the box equals the typed text byte for byte (the case's own oracle — every distinctive segment present — also holds), and preRoundNotes / rawPreRoundNotes on the server equal the typed text; the cleaned copy was never stored (AC 5). Recorded (Q9): a multi-line note with a blank line, a bullet and indentation is also identical on reopen.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s05-pre-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s05-pre-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s05-pre-hosp-reopened.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s05-pre-nh-reopened.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

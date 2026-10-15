@@ -1,0 +1,75 @@
+{
+  "name": "tc10-s26-pre-hosp-r1",
+  "at": "2026-10-15T08:21:48.600Z",
+  "checks": [
+    {
+      "id": "R1: 'Note saved, but the structured summary couldn't be updated … tap Save Note to retry' shows",
+      "ok": true,
+      "detail": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry."
+    },
+    {
+      "id": "R1: the editor still holds the typed text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "R1: Generate is disabled after the failure, with the 'did not finish processing' reason",
+      "ok": true,
+      "detail": "{\"enabled\":false,\"reason\":\"Today's pre-round did not finish processing, so the panels may be out of date. Tap Save Note to retry before generating.\"}"
+    },
+    {
+      "id": "R1: after the clean second Save, Generate is enabled and no blocking message shows",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"reason\":\"\"}"
+    },
+    {
+      "id": "R1: the clean second Save shows a success message",
+      "ok": true,
+      "detail": "✓ Note saved. Auto-updated: admission reason, vitals, labs, radiology, hospital course"
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "R1": {
+      "msg1": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.",
+      "kept": true,
+      "g1": {
+        "enabled": false,
+        "reason": "Today's pre-round did not finish processing, so the panels may be out of date. Tap Save Note to retry before generating."
+      },
+      "okMsg": "✓ Note saved. Auto-updated: admission reason, vitals, labs, radiology, hospital course",
+      "collapsedStamp": "Saved 5:21 PM · Oct 15",
+      "g2": {
+        "enabled": true,
+        "reason": ""
+      },
+      "preRoundError": null
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "fail",
+        "atMs": 753
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 2434
+      },
+      {
+        "udfPath": "ai/parsing:classifyAdmissionReason",
+        "answered": "ok",
+        "atMs": 2439
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 2489
+      }
+    ]
+  }
+}

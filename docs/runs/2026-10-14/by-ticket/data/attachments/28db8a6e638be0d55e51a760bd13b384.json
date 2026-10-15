@@ -1,0 +1,15 @@
+{
+  "TC-22/S19": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T10:24:23Z",
+    "title": "Save & Extract and Hospital pre-round harvest time: AI call time logged apart from the total, model recorded, no fallback",
+    "detail": "Dev, build 43c38a4f: the 82 AI calls the TC-22 dev units made (S01, S03, S04, S05, S06, S11, S15, S16), read from diagnostics:list right after each step (deduplicated by row id). Every row has the model (us.anthropic.claude-haiku-4-5-20251001-v1:0), durationMs and providerMs and ok=true; fallbacks: 0. parsing.classifyAdmissionReason ×8: 1659–3980 ms (median 1998), fallback 0, without providerMs 0, over 30 s 0; parsing.extractMedicationEvents ×20: 1972–3759 ms (median 2487), fallback 0, without providerMs 0, over 30 s 0; parsing.extractTasks ×46: 1587–4265 ms (median 1970), fallback 0, without providerMs 0, over 30 s 0; parsing.parsePreRoundNotes ×8: 4078–13079 ms (median 4496), fallback 0, without providerMs 0, over 30 s 0. U11/U12 (no ticket gate): pass; nothing over 30 s to flag for review (3.5 target). The time the physician waits from the tap to the message is not measured (needs per-action timestamps); the slowest step is the Hospital pre-round summary before the task harvest (13.1 s once in S01).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s19-b43-dev/calls.json"
+    ],
+    "method": "PERF",
+    "pkg": "ext"
+  }
+}

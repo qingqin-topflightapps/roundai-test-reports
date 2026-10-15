@@ -1,0 +1,34 @@
+{
+  "name": "oat06-s13-srv-old-client",
+  "at": "2026-10-15T09:24:41.055Z",
+  "checks": [
+    {
+      "id": "R8 (recorded): with the baseline answered, the new surveys:status has no baselineDone, so the pre-#86 card's condition does not hide it (it would show again after its 24 h snooze, every day)",
+      "ok": true,
+      "detail": "baseline rows 1; status keys baseline, feedback, taskReminder, taskReminderFrom; old condition: 89:   const status = useSurveyStatus(); | 102:   if (!status || status.baselineDone || hidden) { | 103:     return null;",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "R8": {
+      "baselineRows": 1,
+      "statusKeys": [
+        "baseline",
+        "feedback",
+        "taskReminder",
+        "taskReminderFrom"
+      ],
+      "baselineDone": "(absent)",
+      "oldCondition": [
+        "89:   const status = useSurveyStatus();",
+        "102:   if (!status || status.baselineDone || hidden) {",
+        "103:     return null;"
+      ],
+      "oldStatusValidator": [
+        "92:   returns: v.object({ baselineDone: v.boolean() }),",
+        "101:     return { baselineDone: baseline !== null };"
+      ],
+      "oldCardHides": false
+    }
+  }
+}

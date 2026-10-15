@@ -1,0 +1,18 @@
+{
+  "TC-22/S07": {
+    "status": "failed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:16:10Z",
+    "title": "Statement kind × outcome (29 cells): conditional and monitoring orders add no task — carried from e02167f, code path unchanged, D4 cells re-observed on dev",
+    "detail": "Not re-run cell by cell: the 29-cell table needs a live model, which the local stack no longer may call, and it does not fit an agent unit on dev. Carried from the 2026-10-14 local live-model run on e02167f (runs/2026-10-14-local/aicheck-other/extract-S07, Haiku 4.5: 17 pass, 6 fail, 6 record-only) because the code path did not change: git diff e02167f 43c38a4f is empty for the task prompts (lock hashes 22297cdb176f / 41d4bde85053 / 97468380a0ce), convex/ai/parsing.ts, providers.ts, delegatedTasks.ts, src/domain/tasks.ts, useEncounterTasks.ts and useSaveAndExtract.ts (tc22-s07-b43-codepath.txt). Fails: R3 'Advance diet to clears if pain stays under 4.' adds no task (both contexts), R4H 'Trend the troponin every 6 hours…' and R4N 'Monitor her blood pressure twice daily… call me if over 160' add no task, B4b 'PT saw her, walking with a walker.' alone leaves 'PT eval' open (both contexts). On 43c38a4f the same behaviour shows on dev: the conditional diet order adds no task in S01, S03 and S04 H-01/H-04, the peak-flow monitoring order none in S04 H-05; conditional and monitoring orders that fit the prompt's four categories (furosemide, MRI, oxygen, troponin, white count, potassium) are added. With TFA-92592 AC 3 ready for QA this answers D4: a real failure.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s07-b43-codepath.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s25-b43-prompt-review.txt"
+    ],
+    "method": "CODEREVIEW",
+    "known": true,
+    "productIssue": "Conditional orders outside the prompt's four categories ('advance diet to clears if pain stays under 4') and monitoring orders ('monitor her blood pressure twice daily', 'trend the troponin every 6 hours') dictated alone never become tasks.",
+    "pkg": "ext"
+  }
+}

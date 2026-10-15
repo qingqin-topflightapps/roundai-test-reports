@@ -1,0 +1,18 @@
+{
+  "TC-18/S20": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:18:32Z",
+    "title": "A failed billing call shows an error with retry, and the retry saves the suggestion",
+    "detail": "Local 43c38a4f, model never called: billing on this build is a server job enqueued by the note save, so every local job ran on a note with no sentence (real job, family from the frozen template, no model call) or the chart was seeded with a suggestion the app's own code built from a scripted model answer (no job); proof: no billing ai_disclosure audit row with provider_ms, tripwire clean. A note left without a suggestion (the state a job leaves after its last failed attempt: none stored, not pending) shows 'Couldn't generate billing suggestion — tap to retry' as a button, no code, no spinner, with the note still shown; tapping it queues a new attempt (attempt 2) for the same note and the card then shows the stored suggestion (both contexts, 7/7). The automatic retries before the error (5 s, then 30 s, 3 attempts, then the error; retry re-queues; a stale completion cannot overwrite) cannot be produced without a failing model call: Tim's unit test 'retries are automatic, bounded, and reject stale completions' passes (billing unit tests 230/230). Lane A: the matrix title 'a failed suggestion stays visible and retries on tap' was removed in 68f81eca; no browser test replaces it.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s20-ui.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s20-ui-hospital-error.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s20-ui-snf-after-retry.png",
+      "runs/2026-10-14-local/newspec-c/reports/bil-unit.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

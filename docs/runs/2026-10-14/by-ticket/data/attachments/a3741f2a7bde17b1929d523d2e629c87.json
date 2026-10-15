@@ -1,0 +1,13 @@
+{
+  "TC-10/S08": {
+    "status": "blocked",
+    "ranAt": "2026-10-15T09:00:00.000Z",
+    "title": "AI Check: 10 dictations with no vitals, labs or tests (5 Hospital + 5 Nursing Home), pass at 9/10",
+    "detail": "Not run. It is an AI check of parsePreRoundNotes itself (lane B, runner 'preround-ai'): it needs a live model, so it can only be judged on dev, and the runner the matrix describes (build the app's patient / background context, call ai/parsing:parsePreRoundNotes, apply the exported guards, score 9/10) is not built (matrix runnerGap); no dev unit or dataset exists for it. The same requirement (U9 / AC 7) is judged through the real Save Note on two dictations by TC-10/S30 (local app handling: passed; dev: see results.pre.json in runs/2026-10-14-dev).",
+    "evidence": [],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

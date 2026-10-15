@@ -1,0 +1,54 @@
+{
+  "name": "tc18-s27-yesterday",
+  "at": "2026-10-15T09:18:53.891Z",
+  "checks": [
+    {
+      "id": "yesterday-hospital setup: yesterday's note billed 99231 at now - 19 h",
+      "ok": true,
+      "detail": "99231"
+    },
+    {
+      "id": "yesterday-hospital: before today's Generate no card presents yesterday's 99231 (the note left with its billing after 18 h)",
+      "ok": true,
+      "detail": "{\"card\":null,\"stored\":null,\"previousNotes\":0}"
+    },
+    {
+      "id": "yesterday-hospital: Q16 — the earlier note's billing is not kept with it (no card for the previous note)",
+      "ok": true,
+      "detail": "null",
+      "recordOnly": true
+    },
+    {
+      "id": "yesterday-hospital: after today's Generate the billing is today's note's (billingForNoteAt = today's stamp, frozen from today's note), with no yesterday code or words on the card",
+      "ok": true,
+      "detail": "{\"todayStamp\":\"2026-10-15T09:18:49.601Z\",\"family\":\"hospital-subsequent\",\"card\":\"BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)\"}"
+    },
+    {
+      "id": "yesterday-snf setup: yesterday's note billed 99308 at now - 19 h",
+      "ok": true,
+      "detail": "99308"
+    },
+    {
+      "id": "yesterday-snf: before today's Generate no card presents yesterday's 99308 (the note left with its billing after 18 h)",
+      "ok": true,
+      "detail": "{\"card\":null,\"stored\":null,\"previousNotes\":1}"
+    },
+    {
+      "id": "yesterday-snf: Q16 — the earlier note's billing is not kept with it (no card for the previous note)",
+      "ok": true,
+      "detail": "null",
+      "recordOnly": true
+    },
+    {
+      "id": "yesterday-snf: after today's Generate the billing is today's note's (billingForNoteAt = today's stamp, frozen from today's note), with no yesterday code or words on the card",
+      "ok": true,
+      "detail": "{\"todayStamp\":\"2026-10-15T09:18:53.417Z\",\"family\":\"snf-subsequent\",\"card\":\"BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)\"}"
+    },
+    {
+      "id": "no AI action left the browser",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {}
+}

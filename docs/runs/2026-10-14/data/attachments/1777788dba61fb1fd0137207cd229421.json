@@ -1,0 +1,19 @@
+{
+  "TC-10/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:39:54.939Z",
+    "title": "The summary call under provider faults (in-process, bedrock.invoke stubbed)",
+    "detail": "Re-run on 43c38a4f because convex/lib/phi.ts (the aiAction wrapper) changed. Spec newspec-c/pre-tc10-s27-provider-faults.spec.ts runs the real convex/ai/parsing.ts parsePreRoundNotes handler with a fake ctx: no browser, no backend, no model (every 'model' answer is a string in the spec). Judged: (a) Haiku throttles twice, then Mistral answers — the full result comes back and the call-log row says model Mistral, fellBackFrom Haiku, ok, providerMs ≤ durationMs (T4, 3.9); (d) a provider that times out like the SDK's abort makes the action reject (no hang). Recorded (open questions): (b) the background prompt failing on all 6 attempts (Haiku, Haiku, Mistral × callJson's 2) → the action still succeeds with background '' and diagnostics ok:true, nothing tells the client; (c) the diagnostics prompt failing → radiology [] silently (both Q14; what the physician then sees is TC-10/S26 R2, failed); (d) 62.5 s to the error vs the ~30 s budget (Q10 / D8); (d') a provider call that never settles is still pending after 120 s (only bedrock.invoke's AbortSignal bounds it). Same outcome as the 10-14 run on e02167f.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s27-pre-a-fallback.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s27-pre-b-background-fails.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s27-pre-c-diagnostics-fails.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s27-pre-d-timeouts.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s27-pre-d2-no-timeout.json"
+    ],
+    "method": "API",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

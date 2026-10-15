@@ -1,0 +1,784 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--project=api",
+      "--project=chromium",
+      "--workers=1",
+      "--reporter=json",
+      "--output=tools/qa-agent/runs/2026-10-14-local/matrix/OAT-06-artifacts",
+      "-g",
+      "Hospital add methods and every removal are recorded|Nursing Home manual and resident-list scan adds are distinguished|duplicate prompts record shown and the physician outcome|deleting an account removes its data and identity, keeps the trail, and leaves colleagues untouched|duplicate prompt state rejects impossible or conflicting outcomes|a patient removal reason of account_deleted cannot be claimed by a client|a handoff is sent to a colleague inside the app and recorded|opening a chart and marking its encounter complete leave the two timestamps|feedback sent from Settings is recorded with its rating|is offered once on the list screen and recorded when answered|Not now hides the card, and it stays hidden across a reload|a pre-round open and a completion are recorded once per chart per day and rolled up|a completion with no open that day is counted but not timed|a generated note counts once per chart per day|task completed and task deleted are separate events, one per tap, against the chart|a handoff send writes its usage row in the same transaction, and both handoff events roll up by day|another physician's chart cannot be logged against, and a bad day is refused|the surveys: one baseline per physician, a follow-up tied to the sender's own handoff, feedback any time",
+      "api/patient-activity\\.spec\\.ts$",
+      "api/account-deletion\\.spec\\.ts$",
+      "handoff-send\\.spec\\.ts$",
+      "pilot-analytics\\.spec\\.ts$",
+      "api/usage\\.spec\\.ts$"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/playwright.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/OAT-06-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "api",
+        "name": "api",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/api\\/.*\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/OAT-06-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [
+          "/.*\\.anon\\.spec\\.ts/",
+          "/api\\/.*\\.spec\\.ts/"
+        ],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/matrix/OAT-06-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "anonymous",
+        "name": "anonymous",
+        "testDir": "round-companion-wt-qa/apps/web/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.anon\\.spec\\.ts/"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev:vite",
+      "url": "http://localhost:6473",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "api/account-deletion.spec.ts",
+      "file": "api/account-deletion.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "deleting an account removes its data and identity, keeps the trail, and leaves colleagues untouched",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2003,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:54.449Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "80a3053cb4e609049e91-97748e955de02ca21c1c",
+          "file": "api/account-deletion.spec.ts",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "a patient removal reason of account_deleted cannot be claimed by a client",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:56.468Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "80a3053cb4e609049e91-fd11d1c934778d64c312",
+          "file": "api/account-deletion.spec.ts",
+          "line": 241,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "api/patient-activity.spec.ts",
+      "file": "api/patient-activity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Hospital add methods and every removal are recorded",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 627,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:57.019Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "990dcc6c2ce18fe1250b-bf2db43bdd3aeca4f9ec",
+          "file": "api/patient-activity.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "Nursing Home manual and resident-list scan adds are distinguished",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 453,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:57.651Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "990dcc6c2ce18fe1250b-3ffea8b6c6ea6dd8596c",
+          "file": "api/patient-activity.spec.ts",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "duplicate prompts record shown and the physician outcome",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 398,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:58.109Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "990dcc6c2ce18fe1250b-6a4eec1cb51557640e33",
+          "file": "api/patient-activity.spec.ts",
+          "line": 125,
+          "column": 1
+        },
+        {
+          "title": "duplicate prompt state rejects impossible or conflicting outcomes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 319,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:58.511Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "990dcc6c2ce18fe1250b-0752cfb4216520db6d4c",
+          "file": "api/patient-activity.spec.ts",
+          "line": 193,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "api/usage.spec.ts",
+      "file": "api/usage.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a pre-round open and a completion are recorded once per chart per day and rolled up",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 418,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:58.836Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f79ed6bc025289884983-c09514b02774550255c6",
+          "file": "api/usage.spec.ts",
+          "line": 26,
+          "column": 1
+        },
+        {
+          "title": "a completion with no open that day is counted but not timed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 335,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:59.258Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f79ed6bc025289884983-baa4f6e99f40158d283a",
+          "file": "api/usage.spec.ts",
+          "line": 90,
+          "column": 1
+        },
+        {
+          "title": "another physician's chart cannot be logged against, and a bad day is refused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 644,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:39:59.596Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f79ed6bc025289884983-ddcd9dc78a7f0caadadf",
+          "file": "api/usage.spec.ts",
+          "line": 119,
+          "column": 1
+        },
+        {
+          "title": "a handoff send writes its usage row in the same transaction, and both handoff events roll up by day",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 546,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:00.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f79ed6bc025289884983-ea95b24737d7e7c4511d",
+          "file": "api/usage.spec.ts",
+          "line": 151,
+          "column": 1
+        },
+        {
+          "title": "the surveys: one baseline per physician, a follow-up tied to the sender's own handoff, feedback any time",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 655,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:00.794Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f79ed6bc025289884983-a940a3241dd352954401",
+          "file": "api/usage.spec.ts",
+          "line": 192,
+          "column": 1
+        },
+        {
+          "title": "task completed and task deleted are separate events, one per tap, against the chart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 413,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:01.453Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f79ed6bc025289884983-3add36ac104adb1efc3e",
+          "file": "api/usage.spec.ts",
+          "line": 262,
+          "column": 1
+        },
+        {
+          "title": "a generated note counts once per chart per day",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "api",
+              "projectName": "api",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 366,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:01.870Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f79ed6bc025289884983-ff09e85bb1785ff14a1e",
+          "file": "api/usage.spec.ts",
+          "line": 308,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "handoff-send.spec.ts",
+      "file": "handoff-send.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a handoff is sent to a colleague inside the app and recorded",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 44202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:02.470Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9b9d8c585c8580150e0e-db0af89e1d42f0fc7982",
+          "file": "handoff-send.spec.ts",
+          "line": 16,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "pilot-analytics.spec.ts",
+      "file": "pilot-analytics.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "opening a chart and marking its encounter complete leave the two timestamps",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:49.847Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0dfcbd35e425571d55-3eb3c57d2dfff7df022c",
+          "file": "pilot-analytics.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "feedback sent from Settings is recorded with its rating",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 874,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T09:40:50.991Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c0dfcbd35e425571d55-2c22fccc379c6f4bc0df",
+          "file": "pilot-analytics.spec.ts",
+          "line": 144,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "baseline survey",
+          "file": "pilot-analytics.spec.ts",
+          "line": 31,
+          "column": 6,
+          "specs": [
+            {
+              "title": "is offered once on the list screen and recorded when answered",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1606,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T09:40:46.802Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c0dfcbd35e425571d55-a6f24204a4e54c923514",
+              "file": "pilot-analytics.spec.ts",
+              "line": 34,
+              "column": 3
+            },
+            {
+              "title": "Not now hides the card, and it stays hidden across a reload",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1431,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T09:40:48.413Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c0dfcbd35e425571d55-9c18a1f426f58203b730",
+              "file": "pilot-analytics.spec.ts",
+              "line": 74,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T09:39:54.145Z",
+    "duration": 57744.922,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

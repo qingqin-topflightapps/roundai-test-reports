@@ -1,0 +1,27 @@
+# TC-10/S16 code path, e02167f -> 43c38a4f (git -C round-companion-wt-qa diff --stat e02167f 43c38a4f -- <files>)
+# Files: the live spec, the action, the classifier rule, the prompt library entry and its schema, the provider router
+apps/web/e2e/api/admission-reason.live.spec.ts: unchanged
+apps/web/convex/ai/parsing.ts: unchanged
+apps/web/convex/lib/admissionReason.ts: unchanged
+apps/web/convex/ai/providers: unchanged
+apps/web/src/features/rounding/patient/admissionReasonCheck.ts: unchanged
+apps/web/src/domain/grounding.ts: unchanged
+convex/ai/prompts/library (non-note entries):
+   11 files changed, 303 insertions(+), 64 deletions(-)
+admission-reason prompt / schema lines changed in generated.ts / schemas.ts / prompts.lock.json:
+  (none above = unchanged)
+convex/lib/phi.ts (the aiAction wrapper) changed: a refactor (auditedAiConfig + internalAiAction for billing jobs); the public aiAction still resolves the actor with requireUserId and calls the same handler:
+   apps/web/convex/lib/phi.ts | 26 ++++++++++++++++++++++----
+   1 file changed, 22 insertions(+), 4 deletions(-)
+All 11 changed prompt-library files (every one under note/; none is the admission-reason, pre-round or parsing prompt):
+  apps/web/convex/ai/prompts/library/v1/note/bedside-vitals-block.md
+  apps/web/convex/ai/prompts/library/v1/note/billing-discharge-time.md
+  apps/web/convex/ai/prompts/library/v1/note/billing-system.md
+  apps/web/convex/ai/prompts/library/v1/note/billing.md
+  apps/web/convex/ai/prompts/library/v1/note/cancelled-plans-block.md
+  apps/web/convex/ai/prompts/library/v1/note/earlier-labs-block.md
+  apps/web/convex/ai/prompts/library/v1/note/earlier-vitals-block.md
+  apps/web/convex/ai/prompts/library/v1/note/history-corrections-block.md
+  apps/web/convex/ai/prompts/library/v1/note/patient-context.md
+  apps/web/convex/ai/prompts/library/v1/note/snf-patient-context.md
+  apps/web/convex/ai/prompts/library/v1/note/stated-negatives-block.md

@@ -1,0 +1,18 @@
+{
+  "TC-18/S24": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:18:44Z",
+    "title": "Billing card on phone width and WebKit: code, level and long quotes readable, nothing cut off",
+    "detail": "Local 43c38a4f, model never called: billing on this build is a server job enqueued by the note save, so every local job ran on a note with no sentence (real job, family from the frozen template, no model call) or the chart was seeded with a suggestion the app's own code built from a scripted model answer (no job); proof: no billing ai_disclosure audit row with provider_ms, tripwire clean. Pixel 7 (Chromium 151) and iPhone 15 (WebKit 26.5) with a 55-word quote in both contexts, plus the discharge prompt and the error state: no horizontal page scroll, the card inside the screen, CODE and LEVEL lines on screen, every line including the long quotes wraps inside the card, the retry button inside the screen (16/16). Record only (our own check): the two discharge time buttons are 38 px tall (under 44 px); the retry button is 60 px.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s24-ui.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s24-ui-iphone15-h-result.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s24-ui-pixel7-h-discharge.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s24-ui-iphone15-h-error.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "name": "tc14-s06-hosp",
+  "at": "2026-10-15T08:25:09.617Z",
+  "checks": [
+    {
+      "id": "R1: Save & Extract closed BMP and PT eval and added the three action items",
+      "ok": true,
+      "detail": "[{\"id\":\"t-bmp\",\"text\":\"Follow up BMP\",\"done\":true},{\"id\":\"t-pt\",\"text\":\"PT eval\",\"done\":true},{\"id\":\"t-wt\",\"text\":\"Recheck weight in two weeks\",\"done\":false},{\"id\":\"t-wc\",\"text\":\"Wound care consult\",\"done\":false},{\"id\":\"t-bc\",\"text\":\"Follow up blood cultures\",\"done\":false},{\"id\":\"1792052688650\",\"text\":\"Advance diet to clears if pain stays under 4\",\"done\":false},{\"id\":\"1792052688651\",\"text\":\"Monitor potassium daily\",\"done\":false},{\"id\":\"1792052688652\",\"text\":\"Send urine culture today\",\"done\":false}]"
+    },
+    {
+      "id": "R1: the task list after Generate is exactly what Save & Extract left",
+      "ok": true,
+      "detail": "[{\"id\":\"t-bmp\",\"text\":\"Follow up BMP\",\"done\":true},{\"id\":\"t-pt\",\"text\":\"PT eval\",\"done\":true},{\"id\":\"t-wt\",\"text\":\"Recheck weight in two weeks\",\"done\":false},{\"id\":\"t-wc\",\"text\":\"Wound care consult\",\"done\":false},{\"id\":\"t-bc\",\"text\":\"Follow up blood cultures\",\"done\":false},{\"id\":\"1792052688650\",\"text\":\"Advance diet to clears if pain stays under 4\",\"done\":false},{\"id\":\"1792052688651\",\"text\":\"Monitor potassium daily\",\"done\":false},{\"id\":\"1792052688652\",\"text\":\"Send urine culture today\",\"done\":false}]"
+    },
+    {
+      "id": "R1: no task extraction call after the Generate press",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "R2: Generate adds, closes and re-opens nothing",
+      "ok": true,
+      "detail": "[{\"id\":\"t-bmp\",\"text\":\"Follow up BMP\",\"done\":true},{\"id\":\"t-pt\",\"text\":\"PT eval\",\"done\":true},{\"id\":\"t-wt\",\"text\":\"Recheck weight in two weeks\",\"done\":false},{\"id\":\"t-wc\",\"text\":\"Wound care consult\",\"done\":false},{\"id\":\"t-bc\",\"text\":\"Follow up blood cultures\",\"done\":false},{\"id\":\"1792052688650\",\"text\":\"Advance diet to clears if pain stays under 4\",\"done\":false},{\"id\":\"1792052688651\",\"text\":\"Monitor potassium daily\",\"done\":false},{\"id\":\"1792052688652\",\"text\":\"Send urine culture today\",\"done\":false}]"
+    },
+    {
+      "id": "R2: no task extraction call after the Regenerate press",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "R2 (Q15): the lactate order dictated after the last Save & Extract became a task",
+      "ok": false,
+      "detail": "lactate tasks: 0",
+      "recordOnly": true
+    },
+    {
+      "id": "R3: one task per action item after two presses (lactate, clears, potassium, urine culture each once)",
+      "ok": true,
+      "detail": "[\"Follow up BMP\",\"PT eval\",\"Recheck weight in two weeks\",\"Wound care consult\",\"Follow up blood cultures\",\"Advance diet to clears if pain stays under 4\",\"Monitor potassium daily\",\"Send urine culture today\",\"Repeat lactate at noon\"]"
+    },
+    {
+      "id": "R3: the weight task is still one task",
+      "ok": true,
+      "detail": "[\"Follow up BMP\",\"PT eval\",\"Recheck weight in two weeks\",\"Wound care consult\",\"Follow up blood cultures\",\"Advance diet to clears if pain stays under 4\",\"Monitor potassium daily\",\"Send urine culture today\",\"Repeat lactate at noon\"]"
+    },
+    {
+      "id": "R3: the metoprolol restart is logged once although three extractions reported it",
+      "ok": true,
+      "detail": "{\"events\":1,\"rows\":[{\"changeDate\":\"Wed Oct 14 2026\",\"changeType\":\"held\",\"changedNote\":\"soft BP\",\"id\":\"m-meto\",\"name\":\"Metoprolol tartrate 25 mg PO BID\",\"status\":\"held\",\"updatedAt\":\"2026-10-14T08:24:46.932Z\"}]}"
+    },
+    {
+      "id": "R3: the task list after Regenerate is what the two Save & Extract presses left",
+      "ok": true,
+      "detail": "[{\"id\":\"t-bmp\",\"text\":\"Follow up BMP\",\"done\":true},{\"id\":\"t-pt\",\"text\":\"PT eval\",\"done\":true},{\"id\":\"t-wt\",\"text\":\"Recheck weight in two weeks\",\"done\":false},{\"id\":\"t-wc\",\"text\":\"Wound care consult\",\"done\":false},{\"id\":\"t-bc\",\"text\":\"Follow up blood cultures\",\"done\":false},{\"id\":\"1792052688650\",\"text\":\"Advance diet to clears if pain stays under 4\",\"done\":false},{\"id\":\"1792052688651\",\"text\":\"Monitor potassium daily\",\"done\":false},{\"id\":\"1792052688652\",\"text\":\"Send urine culture today\",\"done\":false},{\"id\":\"1792052697832\",\"text\":\"Repeat lactate at noon\",\"done\":false}]"
+    },
+    {
+      "id": "R3: no task extraction call after the Regenerate press",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "R3 end: still one metoprolol event after the Generate's own medication follow-up",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "R4: Generate leaves 'Follow up lactate' and the list as seeded",
+      "ok": true,
+      "detail": "[{\"id\":\"t-lac\",\"text\":\"Follow up lactate\",\"done\":false}]"
+    },
+    {
+      "id": "R4: no task extraction call after the Generate press",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "R4 (Q15): 'Repeat CBC' became a task",
+      "ok": false,
+      "detail": "CBC tasks: 0",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "r1-se-message": "✓ Tasks updated — 2 completed, 3 added",
+    "r1-generate": {
+      "pressedAt": "2026-10-15T08:24:49.807Z"
+    },
+    "r1": {
+      "afterSaveExtract": [
+        {
+          "id": "t-bmp",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "t-pt",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "t-wt",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "t-wc",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "t-bc",
+          "text": "Follow up blood cultures",
+          "done": false
+        },
+        {
+          "id": "1792052688650",
+          "text": "Advance diet to clears if pain stays under 4",
+          "done": false
+        },
+        {
+          "id": "1792052688651",
+          "text": "Monitor potassium daily",
+          "done": false
+        },
+        {
+          "id": "1792052688652",
+          "text": "Send urine culture today",
+          "done": false
+        }
+      ],
+      "afterGenerate": [
+        {
+          "id": "t-bmp",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "t-pt",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "t-wt",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "t-wc",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "t-bc",
+          "text": "Follow up blood cultures",
+          "done": false
+        },
+        {
+          "id": "1792052688650",
+          "text": "Advance diet to clears if pain stays under 4",
+          "done": false
+        },
+        {
+          "id": "1792052688651",
+          "text": "Monitor potassium daily",
+          "done": false
+        },
+        {
+          "id": "1792052688652",
+          "text": "Send urine culture today",
+          "done": false
+        }
+      ],
+      "extractTasksAfterGenerate": 0
+    },
+    "r2-generate": {
+      "pressedAt": "2026-10-15T08:24:54.022Z"
+    },
+    "r2": {
+      "afterGenerate": [
+        {
+          "id": "t-bmp",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "t-pt",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "t-wt",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "t-wc",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "t-bc",
+          "text": "Follow up blood cultures",
+          "done": false
+        },
+        {
+          "id": "1792052688650",
+          "text": "Advance diet to clears if pain stays under 4",
+          "done": false
+        },
+        {
+          "id": "1792052688651",
+          "text": "Monitor potassium daily",
+          "done": false
+        },
+        {
+          "id": "1792052688652",
+          "text": "Send urine culture today",
+          "done": false
+        }
+      ],
+      "extractTasksAfterGenerate": 0
+    },
+    "r3-se1-message": "✓ Tasks updated — 1 added",
+    "r3-se2-message": "✓ Notes saved — no new tasks or medication changes found",
+    "r3": {
+      "messages": [
+        "✓ Tasks updated — 1 added",
+        "✓ Notes saved — no new tasks or medication changes found"
+      ],
+      "tasks": [
+        {
+          "id": "t-bmp",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "t-pt",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "t-wt",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "t-wc",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "t-bc",
+          "text": "Follow up blood cultures",
+          "done": false
+        },
+        {
+          "id": "1792052688650",
+          "text": "Advance diet to clears if pain stays under 4",
+          "done": false
+        },
+        {
+          "id": "1792052688651",
+          "text": "Monitor potassium daily",
+          "done": false
+        },
+        {
+          "id": "1792052688652",
+          "text": "Send urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792052697832",
+          "text": "Repeat lactate at noon",
+          "done": false
+        }
+      ],
+      "metoprololEvents": [
+        {
+          "event": "Metoprolol restarted this morning",
+          "name": "Metoprolol",
+          "type": "restarted"
+        }
+      ],
+      "metoprololRows": [
+        {
+          "changeDate": "Wed Oct 14 2026",
+          "changeType": "held",
+          "changedNote": "soft BP",
+          "id": "m-meto",
+          "name": "Metoprolol tartrate 25 mg PO BID",
+          "status": "held",
+          "updatedAt": "2026-10-14T08:24:46.932Z"
+        }
+      ]
+    },
+    "r3-generate": {
+      "pressedAt": "2026-10-15T08:25:02.112Z"
+    },
+    "r3-end": {
+      "medicationEvents": [
+        {
+          "event": "Metoprolol restarted this morning",
+          "name": "Metoprolol",
+          "type": "restarted"
+        }
+      ],
+      "medications": [
+        {
+          "id": "m-glar",
+          "name": "Insulin glargine 20 units nightly",
+          "status": "active",
+          "updatedAt": "2026-10-14T08:24:46.932Z"
+        },
+        {
+          "changeDate": "Wed Oct 14 2026",
+          "changeType": "held",
+          "changedNote": "soft BP",
+          "id": "m-meto",
+          "name": "Metoprolol tartrate 25 mg PO BID",
+          "status": "held",
+          "updatedAt": "2026-10-14T08:24:46.932Z"
+        }
+      ]
+    },
+    "r4": {
+      "seeded": [
+        {
+          "id": "t-lac",
+          "text": "Follow up lactate",
+          "done": false
+        }
+      ],
+      "afterGenerate": [
+        {
+          "id": "t-lac",
+          "text": "Follow up lactate",
+          "done": false
+        }
+      ],
+      "extractTasksAfterGenerate": 0
+    },
+    "calls": [
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "at": 1792052688091,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "at": 1792052688092,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "at": 1792052689900,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "at": 1792052689979,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "at": 1792052694091,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "at": 1792052694159,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "at": 1792052694159,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "at": 1792052697275,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "at": 1792052697276,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "at": 1792052700320,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "at": 1792052700321,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "at": 1792052702196,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "at": 1792052702268,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "at": 1792052706790,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "at": 1792052706854,
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "at": 1792052706855,
+        "answered": "ok"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "TC-22/S24": {
+    "status": "failed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:27:33.711Z",
+    "title": "Retention edges: Hospital open tasks on a chart last processed 37 h ago are still shown (no open-task window on main)",
+    "detail": "No model involved. Spec ext-tc22-s24-retention.spec.ts (re-run of the manual-lane spec): back-dated stamps written through rounding:add / snf:add, then applyLifecycle as on page load, against the server clock. Judged 7/8: Hospital completed tasks shown at 15 h and gone at 17 h (both charts), Hospital open tasks at 35 h shown, Nursing Home open tasks at 37 h and after two further visits shown; fails: Hospital open tasks on a chart processed 37 h ago still shown (UAT 3.6 open tasks 36 h) — known B19 (TFA-94699, in progress). Recorded (Q12): Nursing Home completed task at 15 h present, at 17 h gone.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s24-b43.json"
+    ],
+    "method": "PW",
+    "known": true,
+    "productIssue": "Hospital: open tasks on a chart nobody has processed for 37 h are still shown (UAT 3.6 says 36 h).",
+    "pkg": "ext"
+  }
+}

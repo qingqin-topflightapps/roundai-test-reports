@@ -1,0 +1,24 @@
+{
+  "TC-10/S30": {
+    "status": "passed",
+    "ranAt": "2026-10-15T10:16:13.000Z",
+    "title": "AI Check through the live Save Note and Generate, both modes: undictated panels stay empty, the note says vitals were not dictated",
+    "detail": "Dev (<dev address>, build 43c38a4f deployed 2026-10-14 21:30Z), Quinn's dev session of 17:12 JST, agent unit through scripts/dev/run-unit(-plan).sh under runs/.dev.lock, run-id 2026-10-15-pre-dev; rows prefixed 'QA TC-10-Sxx ', deleted after (cleanup.json: 0 remaining, no other row changed, appMode restored). Unit P30 (new plan); Generate allowed on dev. The first attempt (18:55 JST) never ran: the agent stopped on an API error with 0 tokens during the session-limit outage (verdict Blocked, 'checkpoint was never saved'; its 2 seeded rows were deleted) — kept as P30.first-run-api-error.verdict.json. Re-run 19:12 JST: Pass on all 4 checkpoints. Hospital (H-03 cellulitis text) and Nursing Home (N-04 CHF-rehab text): Vitals, Labs and Diagnostic Testing show their empty states; stored vitals {}, labs [], radiology []; no 'afebrile', 'vital signs stable', 'hemodynamically stable' or 'No past medical history' on the tab or in the note; both notes write 'Vital signs: not dictated today' (UAT 3.4 / 3.7); cephalexin, named only as a plan, got no tracker row (the cefazolin row carries it in its change note). Recorded: the Hospital note writes 'Not provided' for Subjective and Testing Results (wording question GK2); the Nursing Home note adds 'Physical and occupational therapy as part of rehabilitation protocol' from the seeded diagnosis, which the dictation never mentions (note content, outside TC-10).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/P30.verdict.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/P30.first-run-api-error.verdict.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/cp1-hosp-ai-check-panels.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/cp2-hosp-ai-check-note.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/cp3-snf-ai-check-panels.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/cp4-snf-ai-check-note.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/backend/hosp-note.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/backend/res-note.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/cleanup.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s30-pre-dev/first-run-cleanup.json"
+    ],
+    "method": "AGENT",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

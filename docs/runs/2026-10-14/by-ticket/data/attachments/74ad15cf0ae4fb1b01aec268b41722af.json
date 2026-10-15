@@ -1,0 +1,65 @@
+{
+  "name": "tc10-s10-pre-hosp",
+  "at": "2026-10-15T08:14:21.903Z",
+  "checks": [
+    {
+      "id": "Q2 row 'nothing today' (recorded): Generate enabled?",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"reason\":\"\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "Q2 row 'typed but not saved' (recorded): Generate disabled with a reason?",
+      "ok": true,
+      "detail": "{\"enabled\":false,\"reason\":\"The pre-round text was edited after it was last processed. Tap Save Note so the panels match, then generate.\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "after a successful Save Note, Generate Note & Finish is enabled",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"reason\":\"\"}"
+    },
+    {
+      "id": "after a successful Save Note, no blocking message shows",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "states": {
+      "none": {
+        "enabled": true,
+        "reason": ""
+      },
+      "unsaved": {
+        "enabled": false,
+        "reason": "The pre-round text was edited after it was last processed. Tap Save Note so the panels match, then generate."
+      },
+      "saved": {
+        "enabled": true,
+        "reason": ""
+      },
+      "server": {
+        "preRoundError": null,
+        "preRoundProcessing": false
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 5188
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 5246
+      }
+    ]
+  }
+}

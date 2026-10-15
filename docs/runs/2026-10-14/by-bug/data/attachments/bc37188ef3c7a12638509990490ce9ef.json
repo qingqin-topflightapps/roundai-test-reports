@@ -1,0 +1,16 @@
+{
+  "TC-14/S16": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:33:52.595Z",
+    "title": "No placeholder token in any generated note: targeted fixtures plus every note from S11 to S19",
+    "detail": "Dataset gen-notes-a on dev (live Haiku 4.5), through the app's UI: H-16 (discharge, a dictated address and phone), H-17 (H&P, 'put today's date on it'), N-16 (SNF admission, address and phone), N-17 (SNF follow-up, 'sign and date') — none carries {ADDRESS}, {PHONE}, {NAME}, [Today's date], [Physician name], [Physician, [Today, [Date, [Insert or [Patient name]: 4/4. Recorded (Q14): H-16 shows the guardrail's '[… withheld]' marker in place of the dictated address / phone. The same placeholder list was applied to every other note of this package: none of the 64 dev notes (S11–S19, S01, S02, both journeys runs) carries a placeholder token.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-a/evidence/TC-14-S16.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-a.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

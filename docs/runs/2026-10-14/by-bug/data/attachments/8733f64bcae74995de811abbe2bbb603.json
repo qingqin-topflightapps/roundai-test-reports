@@ -1,0 +1,75 @@
+{
+  "name": "oat03-s27-hosp",
+  "at": "2026-10-15T08:52:54.998Z",
+  "checks": [
+    {
+      "id": "B's Post-Round right after opening it shows nothing of A's dictation",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Bree V366\n\nRoom 514 · 58y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCellulitis of the left leg\n\nPre"
+    },
+    {
+      "id": "B's Post-Round 45 s later shows nothing of A's dictation or note",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Bree V366\n\nRoom 514 · 58y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCellulitis of the left leg\n\nPre"
+    },
+    {
+      "id": "B's Encounter tab holds its own line and nothing of A",
+      "ok": true,
+      "detail": "QA OAT-03 B own line: leg redness receding, afebrile."
+    },
+    {
+      "id": "backend: B's note is empty and its encounter text is exactly its own line",
+      "ok": true,
+      "detail": "{\"note\":null,\"enc\":\"QA OAT-03 B own line: leg redness receding, afebrile.\"}"
+    },
+    {
+      "id": "A's Encounter tab still holds A's dictation",
+      "ok": true,
+      "detail": "QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin."
+    },
+    {
+      "id": "backend: A's encounter text equals the typed text",
+      "ok": true,
+      "detail": "QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin."
+    },
+    {
+      "id": "A has the note, an explicit failure, or no note yet (never B's)",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA OAT-03 call 1 mocked note (no model was called). Today: QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"fa"
+    }
+  ],
+  "data": {
+    "a-when-b-opened": {
+      "note": false,
+      "status": "seen",
+      "generateAnswered": "in flight"
+    },
+    "b-backend": {
+      "before": {
+        "note": null,
+        "enc": "QA OAT-03 B own line: leg redness receding, afebrile."
+      },
+      "after": {
+        "note": null,
+        "enc": "QA OAT-03 B own line: leg redness receding, afebrile.",
+        "noteGeneratedAt": null
+      }
+    },
+    "a-backend": {
+      "note": "ASSESSMENT AND PLAN\nQA OAT-03 call 1 mocked note (no model was called). Today: QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin.",
+      "enc": "QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin.",
+      "status": "note-ready",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA OAT-03 call 1 mocked note (no model was called). Today: QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "TC-18/S07": {
+    "status": "failed",
+    "ranAt": "2026-10-15T09:35:40Z",
+    "title": "Discharge in the app: no time -> one-tap prompt; a dictated time is kept in the note and coded from it (both contexts)",
+    "detail": "Dev 43c38a4f, live model, runs 17:46-18:17, 18:34-18:39 and 18:54-18:55 JST under runs/.dev.lock and the dev-session run lock; only 'QA TC18-BIL …' rows (and one 'QA TC18-BIL SNF discharge' template) were created and all were deleted, 0 remaining, 0 changes to other rows. Passed (2 legs): h-no-time (stock Discharge summary) and n-no-time (custom SNF Discharge type): before the tap 'CODE: none yet — select the time on discharge' with the two buttons; '> 30 min' -> 99239 / '≤ 30 min' -> 99315, labelled 'time selected by the physician', LEVEL —, still there after a reload. Failed (3 legs): h-time (dictated 'Total discharge time 40 minutes.') and h-over30 (dictated 'Over 30 minutes spent on discharge.'): the generated Discharge summary has no time anywhere (the stock template v1.1 lists Admission Date, Principal Diagnosis, Reason for Admission, Hospital Course, Discharge Condition, Discharge Medications, Follow-up, Return Precautions — no time), so billing, which reads only the final note, stores not_documented and asks for the time instead of 99239. n-time (dictated 'Total discharge time 40 minutes.', custom SNF Discharge template whose instructions ask for the time): the note kept it — 'TIME SPENT ON DISCHARGE / Forty minutes were spent on discharge planning and coordination.' — yet billing stored not_documented and showed the prompt instead of 99316. Follow-up D3 (18:54 JST): the same time sentence saved in six controlled notes — 'Forty minutes…' and '40 minutes…', with and without the 'TIME SPENT ON DISCHARGE' header, SNF and Hospital — was coded 99316 / 99239 every time with that sentence quoted, so the Nursing Home miss is intermittent or specific to that generated note (1 miss in 7 notes stating the time; the app does not store the model's raw answer). The Hospital failure is systematic: the stock Discharge template has no place for the dictated time.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d2-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s07-h-time.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s07-h-over30.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s07-h-no-time.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-d2b-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-s07-n-time.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1834/evidence/tc18-dev-s07-n-no-time.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1854/evidence/tc18-dev-d3-discharge-time.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "A physician who dictates the discharge time does not get the time-based code: in Hospital the Discharge summary drops the dictated '40 minutes' / 'over 30 minutes' (so the note also lacks the time 99239 needs) and the card asks '≤ 30 / > 30 min'; in Nursing Home the note says 'Forty minutes were spent on discharge planning and coordination.' and the card still asks for the time instead of showing 99316.",
+    "pkg": "bil"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "TC-10/S14": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:43:16.866Z",
+    "title": "Existing specs: pre-round medication merge rules (dose takes the row name, brand = generic, no row for an unnamed drug)",
+    "detail": "Lane A on 43c38a4f (scripts/spec-matrix.mjs, Tim's tests by title from cases/e2e-titles.tsv regenerated for 43c38a4f; run under the local lock with the tripwire). api/medication-preround-merge.spec.ts 'G04 a dictated new dose takes over the row name; the old dose survives in the note', 'G54 brand on file, generic returned: one row', 'a drug the dictation never names is not added (prior-note echo)' and the same-titled medication-golden-set test all pass (AC 9, deterministic merge). Not covered by these rules tests, found by TC-10/S28: one 'as needed' drug in a dictated medication-list sentence makes the merge drop every drug of that sentence (new candidate).",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/TC-10.results.json",
+      "runs/2026-10-14-local/matrix/TC-10.laneA.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

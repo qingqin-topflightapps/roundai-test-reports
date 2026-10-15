@@ -1,0 +1,49 @@
+{
+  "name": "tc25-s14-snf",
+  "at": "2026-10-15T08:50:54.664Z",
+  "checks": [
+    {
+      "id": "U8: within 120 s and with no reload the computer shows the note generated on the phone",
+      "ok": false,
+      "detail": "after 120 s the computer shows {\"noNoteYet\":true,\"completeFirst\":true,\"finalizing\":false,\"failure\":false}; stored note: none, status undefined"
+    },
+    {
+      "id": "the dictation typed on the phone is kept on the server",
+      "ok": true,
+      "detail": "QA-SYNC-NEN-2 Hip pain 1/10, walking 50 ft with walker. Plan: continue PT/OT, re"
+    },
+    {
+      "id": "a generation-failure message is shown on the computer (acceptable only if the AI call failed; here it did not fail, it was cut off)",
+      "ok": false,
+      "detail": "no failure message",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "phone": {
+      "closedMsAfterPress": 1221,
+      "generateAnswered": "in flight / dropped"
+    },
+    "computer": {
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "msAfterPhoneClosed": 118783,
+      "documentLoads": 0
+    },
+    "backend": {
+      "note": null,
+      "noteGeneratedAt": null,
+      "encounterNotes": "QA-SYNC-NEN-2 Hip pain 1/10, walking 50 ft with walker. Plan: continue PT/OT, recheck CBC Friday.",
+      "status": null
+    }
+  }
+}

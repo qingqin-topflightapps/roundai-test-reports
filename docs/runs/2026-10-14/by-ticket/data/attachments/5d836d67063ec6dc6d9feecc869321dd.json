@@ -1,0 +1,49 @@
+{
+  "name": "tc25-s14-hosp",
+  "at": "2026-10-15T08:48:48.182Z",
+  "checks": [
+    {
+      "id": "U8: within 120 s and with no reload the computer shows the note generated on the phone",
+      "ok": false,
+      "detail": "after 120 s the computer shows {\"noNoteYet\":true,\"completeFirst\":true,\"finalizing\":true,\"failure\":false}; stored note: none, status seen"
+    },
+    {
+      "id": "the dictation typed on the phone is kept on the server",
+      "ok": true,
+      "detail": "QA-SYNC-EN-2 Afebrile 24 h, crackles clearing at the right base. Plan: switch to"
+    },
+    {
+      "id": "a generation-failure message is shown on the computer (acceptable only if the AI call failed; here it did not fail, it was cut off)",
+      "ok": false,
+      "detail": "no failure message",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "phone": {
+      "closedMsAfterPress": 1202,
+      "generateAnswered": "in flight / dropped"
+    },
+    "computer": {
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": true,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "msAfterPhoneClosed": 118471,
+      "documentLoads": 0
+    },
+    "backend": {
+      "note": null,
+      "noteGeneratedAt": null,
+      "encounterNotes": "QA-SYNC-EN-2 Afebrile 24 h, crackles clearing at the right base. Plan: switch to oral amoxicillin-clavulanate tomorrow if still afebrile.",
+      "status": "seen"
+    }
+  }
+}

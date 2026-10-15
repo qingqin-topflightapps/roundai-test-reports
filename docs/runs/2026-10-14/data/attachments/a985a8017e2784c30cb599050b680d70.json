@@ -1,0 +1,18 @@
+{
+  "TC-18/S09": {
+    "status": "record-only",
+    "ranAt": "2026-10-15T09:18:28Z",
+    "title": "Custom template cannot be saved without a type (todo: U8 is TFA-92599)",
+    "detail": "Todo — U8 belongs only to TFA-92599 (in progress); recorded: in Hospital and Nursing Home Settings -> New, Save with no type keeps the form open with the required message 'Select a note type', no server error, and no template is saved. Through the API (templates:create) a template without a type is still accepted; Generate with it is refused by the client and the server ('Choose a note type for this template in Settings before generating a note', Q10).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s09-ui.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s09-ui-hospital-refused.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s09-ui-snf-refused.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s08-jobs.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

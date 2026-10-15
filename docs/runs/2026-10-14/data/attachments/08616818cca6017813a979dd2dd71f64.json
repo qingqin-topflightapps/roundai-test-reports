@@ -1,0 +1,15 @@
+{
+  "TC-18/S21": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:52:08Z",
+    "title": "Billing call time and model (primary pass); backup pass blocked",
+    "detail": "Dev 43c38a4f (deployed 2026-10-14 21:30Z), live model, run 17:46-18:17 JST under runs/.dev.lock and the dev-session run lock; only rows named 'QA TC18-BIL …' were created and all were deleted (59 cell rows at the end of D1, 8 more in the cleanup: 0 remaining, 0 changes to other rows). Primary pass on all 59 billing calls (S13's ten AI Check 1 fixtures included): every diagnostics row has the model (us.anthropic.claude-haiku-4-5-20251001-v1:0), providerMs and durationMs; AI time 1.6-4.0 s, total 1.7-4.1 s (app overhead 56-251 ms), none over 30 s, no fallback. Backup pass (primary forced to fail) is local-only by design and blocked there (see local results).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d1-cells.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

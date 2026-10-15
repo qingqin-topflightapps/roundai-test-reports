@@ -1,0 +1,26 @@
+{
+  "TC-22/S03": {
+    "status": "failed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:16:52Z",
+    "title": "Nursing Home UAT steps 2–3 on dev (live model): BMP and PT close, the weight stays open, but the conditional diet order adds no task",
+    "detail": "Dev, build 43c38a4f, agent unit T22-S03 (rows 'QA TC-22-S03 …' deleted after, 0 left). Three tasks typed with Add Task, then the UAT bedside text and Save & Extract (one extractTasks call, Haiku 4.5, 4.3 s, promptChars 214). Stored after: 'follow up BMP' done, 'PT eval' done, 'recheck weight in two weeks' open — U2 and U4 pass, no glargine task (U6 pass), nothing duplicated. Fail: no task for 'Advance diet to clears if pain stays under 4' (U5, TFA-92592 AC 3; known as decision D4, now answered by AC 3), so the list shows '1 pending task' and Task Export has no diet task. The oracle printed the count miss under the BMP known-gap label, but BMP did close; the count is wrong only because the diet task is missing. Todo: visit label on the finished rows (TFA-92585 AC 8).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/verdict.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/notes.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/s03-n-after-extract.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/s03-n-task-export.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/s03-n-after-extract.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/s03-n-task-export.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/backend/diag-1.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/backend/n-after.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/backend/n-at-1.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s03-b43-dev/backend/n-before.json"
+    ],
+    "method": "AGENT",
+    "known": true,
+    "productIssue": "Nursing Home: 'Advance diet to clears if pain stays under 4' dictated at the visit never becomes a task; the physician has no reminder of the conditional diet order.",
+    "pkg": "ext"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "TC-10/S10": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:14:21.903Z",
+    "title": "Generate gate by pre-round state, both modes",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-tc10-s10-gate.spec.ts. Judged (both modes): after a successful Save Note, Generate Note & Finish is enabled and no blocking message shows. Recorded (Q2): with nothing typed today Generate is enabled; typed but not saved → disabled with 'The pre-round text was edited after it was last processed. Tap Save Note so the panels match, then generate.' (same as dev U64 on 10-14). Generate was never pressed. Gate code (src/domain/status.ts preRoundPanelsStale) is unchanged since e02167f.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s10-pre-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s10-pre-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s10-pre-hosp-cp3-saved.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s10-pre-nh-cp3-saved.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

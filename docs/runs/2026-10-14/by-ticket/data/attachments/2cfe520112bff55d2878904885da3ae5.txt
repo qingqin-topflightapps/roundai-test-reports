@@ -1,0 +1,16 @@
+# TC-22 S25 on main 43c38a4f: task prompts vs Vikram's p72 prototype (2026-10-15T08:17:00.744871+00:00)
+Library: apps/web/convex/ai/prompts/library/v1/tasks/{system,encounter-review,post-note}.md v1.1 (lock hashes identical to e02167f: tc22-s07-b43-codepath.txt).
+Prototype: handoff-docs/RoundCompanion_PLAYGROUND_p72_HAIKU.html (TFA-92592 / TFA-94229 attachment).
+
+## system.md vs p72 TASK_SYSTEM_PROMPT (line 2433, JS string decoded): identical = True (2477 characters)
+   p72 comment above it (lines 2429-2431): HYBRID WHITELIST DESIGN (Aug 9 — A/B engine winner: 100% sens / 100% dedup vs 92%/50%). Decided with Dr. Vikram: tasks are a memory bridge from bedside to computer — ENCOUNTER content only (pre-round extraction removed: at the computer you just place the order yourself).
+
+## encounter-review.md: prototype sentence present in the library = False (present in p72 = True; p72 line 7273, end of the "Only add NEW tasks…" paragraph)
+    A bare "continue [medication]" is STATUS, not a task — never create a task for it.
+## post-note.md: prototype sentence present in the library = False (present in p72 = True; p72 lines 7690 and 7859, between "Extract only specific physician action items." and "Return ONLY valid JSON")
+    A bare continuation ("continue X", "will continue to follow") is STATUS, not a task — never create a task for continuing an existing therapy.
+
+## Exclusion of monitoring/trending and future conditional orders: in system.md = True; in p72 = True
+## Category enum of TASK_EXTRACTION_OUTPUT (system.md): consult | medication | imaging | labs (a diet order or a weight check has no category)
+
+Reading: system.md is Vikram's own wording, including his exclusion of conditional and monitoring orders, which TFA-92592 AC 3 (ready for QA 2026-10-15) now asks for; AC 13 allows only the approved changes, and none was made to let AC 3 through. encounter-review.md and post-note.md each lost one prototype sentence (a port deviation against AC 13). The p72 comment also records that pre-round task extraction was removed by design ('at the computer you just place the order yourself'), while TFA-92588 AC 10 and UAT TC-22 steps 1 and 4 ask for pre-round tasks.

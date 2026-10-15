@@ -1,0 +1,175 @@
+{
+  "case": "TC-22-S06",
+  "title": "Known gap, phrasing sensitivity: ten ordinary ways of saying the BMP is back each close 'Follow up BMP'",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s06-ph1.md",
+      "verdict": "Fail",
+      "url": "/rounding/js726r4bk59y8840cgf9tac0058gb0bg",
+      "problems": [
+        "\"task: Follow up BMP\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: Recheck weight in two weeks\" occurs 2 times, expected exactly 1 (in from \"pending task\")"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend ph1-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-ph2.md",
+      "verdict": "Fail",
+      "url": "/rounding/js773kqybef2g8ebwd6tg03etd8gb7f7",
+      "problems": [
+        "\"task: Follow up BMP\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: Recheck weight in two weeks\" occurs 2 times, expected exactly 1 (in from \"pending task\")"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend ph2-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-ph3.md",
+      "verdict": "Fail",
+      "url": "/rounding/js725y6vf5n8ccvskk45e2b6gs8gbx6t",
+      "problems": [
+        "\"task: Follow up BMP\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: Recheck weight in two weeks\" occurs 2 times, expected exactly 1 (in from \"pending task\")"
+      ],
+      "known": [
+        "no match for /\\b1 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "\"Reopen task: Follow up BMP\" occurs 0 times, expected exactly 1 (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend ph3-at tasks[id=2001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend ph3-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-ph4.md",
+      "verdict": "Fail",
+      "url": "/rounding/js78mc92pxvhyw6w066tk6k2k18gaysq",
+      "problems": [
+        "\"task: Follow up BMP\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: Recheck weight in two weeks\" occurs 2 times, expected exactly 1 (in from \"pending task\")"
+      ],
+      "known": [
+        "no match for /\\b1 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "\"Reopen task: Follow up BMP\" occurs 0 times, expected exactly 1 (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend ph4-at tasks[id=2001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend ph4-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-ph5.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7c4hjzfgp0tkq3jtnveg9fxx8gbqhm",
+      "problems": [
+        "\"task: Follow up BMP\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: Recheck weight in two weeks\" occurs 2 times, expected exactly 1 (in from \"pending task\")"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend ph5-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-pn1.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7ehdp2mxt8w025j9vy5hdx8s8gaf37",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend pn1-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-pn2.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7c28m7e67m5nkbc3kpwqvtws8gb753",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend pn2-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-pn3.md",
+      "verdict": "Fail (known)",
+      "url": "/snf/jx75kehfq0fsynxjscbs29dfh98gbk9p",
+      "problems": [],
+      "known": [
+        "no match for /\\b1 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend pn3-at tasks[id=2001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend pn3-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-pn4.md",
+      "verdict": "Fail (known)",
+      "url": "/snf/jx72wyp3dr1qesj6ms8wccbzgs8gabft",
+      "problems": [],
+      "known": [
+        "no match for /\\b1 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend pn4-at tasks[id=2001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend pn4-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s06-pn5.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7ak4abkhna8ad87tz4e07e058gavcn",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend pn5-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "3.2: one checkpoint per wording; count the wordings whose checkpoint passes: ≥ 9/10. A checkpoint whose only failures carry the Q7 knownGap is the UAT's own known gap (Fail (known)) and still counts as a failure unless Q7 accepts it.",
+    "3.9: model / fellBackFrom / providerMs per call in backend/<row>-diag.json (record-only)."
+  ],
+  "agent": {
+    "turns": 158,
+    "costUsd": 1.4150974,
+    "durationMs": 438877,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

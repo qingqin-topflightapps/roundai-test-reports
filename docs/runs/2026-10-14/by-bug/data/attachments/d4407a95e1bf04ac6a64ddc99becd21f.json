@@ -1,0 +1,23 @@
+{
+  "OAT-06/S07": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:52:31.134Z",
+    "title": "Send a handoff in both contexts: generated and sent rows on the sender only, the follow-up after every send, its answer stored (Skip stores nothing)",
+    "detail": "Local QA stack only (round-companion-wt-qa at main 43c38a4f, the build dev runs); brand-new @roundai.test accounts; survey, usage and patient-activity rows read with the local admin key; no model call from these specs (the Convex socket answers generateHandoff in the browser and refuses every other ai/* action; tripwire: no Generate). Re-run on 43c38a4f: the handoff screens did not change between e02167f and 43c38a4f (git diff over src/components/HandoffOverlay.tsx, src/features/handoff/*, convex/handoffs.ts and convex/ai/assist.ts is empty); surveys.submit did (a fourth survey kind). A brand-new sender and a brand-new colleague ('Dr. QA Colleague <tag>', its own signed-in context); one Hospital patient and one Nursing Home resident (In Today); generateHandoff answered at the socket. Judged 13/13. Hospital send 1: handoff_generated (hospital, patientCount 1) before handoff_sent (hospital, the sent handoff's id, patientCount 1 = the sheet); the 'Handoff follow-up question' dialog ('Sent — one quick question', 'Did having this make you more likely to send a handoff today?', Yes / No / Not sure, Skip) 110 ms after Send; 'Not sure' stores one handoff_followup row {moreLikelyToSendHandoff: not_sure} with that handoffId. Fires every time (TFA-94609 Spec 2): send 2 from the same sheet (its button now reads 'Sent to <colleague>' and opens the picker again) brings the question again and 'Yes' is stored with the second handoff's id; send 3 from the sheet opened again from the list brings it again and 'No' is stored with the third id. Nursing Home: handoff_generated before handoff_sent (nursing_home, its id, patientCount 1); the question 106 ms after Send; Skip closes it and stores no row (AC 4). Sender's rollup today: handoffsSent +3 hospital / +1 nursing_home, handoffsGenerated +2 / +1 (one per sheet visit). Colleague: the received handoff shows the patient and no question; no handoff_* usage row, no follow-up row, no rollup row. U15: none of the 10 rows holds a name, room or the handoff text. Recorded (Q20): Copy Text shows 'Copied', writes no row and brings no question. Not judged here: U13 (aiCallLog providerMs / model for generateHandoff) needs a live call, i.e. dev, where Send is refused (runner-contract §10.4).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp1-hospital-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp2-hospital-answered.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp3-copied.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp3-hospital-send-2-same-sheet-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp3-hospital-send-3-reopened-sheet-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp4-snf-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp5-snf-skipped.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s07-srv-handoff-cp6-colleague-received.png"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

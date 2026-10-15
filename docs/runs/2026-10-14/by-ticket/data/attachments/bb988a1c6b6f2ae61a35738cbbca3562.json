@@ -1,0 +1,109 @@
+{
+  "name": "tc14-s08-snf",
+  "at": "2026-10-15T08:15:28.468Z",
+  "checks": [
+    {
+      "id": "failure: an explicit message says the dictation is saved and the note could not be generated",
+      "ok": true,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "failure wording is the UAT's 'Note not generated' (Q18 / D7)",
+      "ok": false,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "failure: the dictation stays in the box",
+      "ok": true,
+      "detail": "QA S08 appetite improved, participating in therapy, blood pressure 118 over 66, continue rehabilitation plan."
+    },
+    {
+      "id": "failure: the dictation is in the database and no note was saved",
+      "ok": true,
+      "detail": "{\"enc\":\"QA S08 appetite improved, participating in therapy, blood pr\",\"note\":null}"
+    },
+    {
+      "id": "failure: Generate Note & Finish is offered again",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "failure: the chart stays on the Encounter tab (Post-Round is not opened with nothing in it)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "retry: Generate moves to Post-Round with the AI-Generated Note view and the generated text",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"SUBJECTIVE\\n\\nQA S08 mocked note ODF8: appetite improved.\\n\\nASSESSMENT AND PLAN\\n\\nContinue the current plan.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "the dictated source reaches the note model (the generateNote request carries the dictation)",
+      "ok": true,
+      "detail": "calls 2"
+    },
+    {
+      "id": "Generate makes no task-extraction call (U3 support)",
+      "ok": true,
+      "detail": "extractTasks calls during Generate: 0",
+      "recordOnly": true
+    },
+    {
+      "id": "retry: the note, its time, the template and status note-ready are saved",
+      "ok": true,
+      "detail": "{\"note\":true,\"at\":\"2026-10-15T08:15:27.271Z\",\"tpl\":true,\"status\":\"note-ready\"}"
+    },
+    {
+      "id": "reload: Post-Round still shows the note",
+      "ok": true,
+      "detail": "SUBJECTIVE\n\nQA S08 mocked note ODF8: appetite improved.\n\nASSESSMENT AND PLAN\n\nContinue the current plan."
+    },
+    {
+      "id": "reload: the Encounter tab still holds the dictation",
+      "ok": true,
+      "detail": "QA S08 appetite improved, participating in therapy, blood pressure 118 over 66, continue rehabilitation plan."
+    }
+  ],
+  "data": {
+    "backend-after-failure": {
+      "encounterNotes": "QA S08 appetite improved, participating in therapy, blood pressure 118 over 66, continue rehabilitation plan.",
+      "note": null,
+      "status": null
+    },
+    "generateNote-args-2": {
+      "patientContextHead": "RESIDENT: QA Resident S08 Wren ODF8, Unit QA Wing · Room 8\nDiagnosis: Post-acute rehabilitation\n\nSTRUCTURED DATA:\nVITALS (recorded today): None recorded today\nLABS (recorded today): None recorded today\nMEDICATIONS: See chart\nACTIVE ISSUES TO ASSESS: None\n\nADMISSION SUMMARY / BACKGROUND:\nNone documented\n\nPRE-ROUND NOTES (interval changes and background):\nNone documented\n\nENCOUNTER NOTES — physician",
+      "dateLabel": "October 15, 2026"
+    },
+    "backend-after-generate": {
+      "note": "SUBJECTIVE\nQA S08 mocked note ODF8: appetite improved.\n\nASSESSMENT AND PLAN\nContinue the current plan.",
+      "noteGeneratedAt": "2026-10-15T08:15:27.271Z",
+      "noteTemplate": "js7d3qtdspwwjqda04rq4vwm1h8gag5p",
+      "status": "note-ready",
+      "encounterNotes": "QA S08 appetite improved, participating in therapy, blood pressure 118 over 66, continue rehabilitation plan.",
+      "billingStatus": null
+    },
+    "no-billing-job": {
+      "billingStatus": null,
+      "billingJob": null
+    },
+    "calls": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail"
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok"
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok"
+      }
+    ]
+  }
+}

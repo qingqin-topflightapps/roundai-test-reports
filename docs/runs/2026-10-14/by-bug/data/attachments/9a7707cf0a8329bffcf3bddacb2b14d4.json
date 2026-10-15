@@ -1,0 +1,17 @@
+{
+  "TC-18/S26": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:01:40Z",
+    "title": "A wrong model answer never reaches the card (out-of-family code, mismatched code / level)",
+    "detail": "Local 43c38a4f, model never called: billing on this build is a server job enqueued by the note save, so every local job ran on a note with no sentence (real job, family from the frozen template, no model call) or the chart was seeded with a suggestion the app's own code built from a scripted model answer (no job); proof: no billing ai_disclosure audit row with provider_ms, tripwire clean. On 43c38a4f the model cannot output a code: its answer is categories + sentence numbers and the server computes level and code. Answers that also state a code: (a) SOAP note '99223 / High' -> card 99233 High Complexity; (b) SNF admission '99310 / High' -> 99306 High; (c) '99232 / Low' -> 99231 Low; (d) '99233 / High' with Moderate elements -> 99232 Moderate — the stated code never shows, the shown code and level always agree, in the template's family (pipeline 8/8, on the page 81/81 with S03). Malformed answers (plain-text CODE/LEVEL, unknown category, missing section, evidence not a list) fail closed with 'Billing model returned an invalid suggestion': the job retries, then the error card with retry (S20). Supersedes the old-build S26 result.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s26-pipeline.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s03-s26-cards.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s03-s26-cards-s26-a.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

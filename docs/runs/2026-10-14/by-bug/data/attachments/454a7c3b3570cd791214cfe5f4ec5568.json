@@ -1,0 +1,198 @@
+{
+  "name": "tc22-s27-b43",
+  "at": "2026-10-15T08:21:40.638Z",
+  "checks": [
+    {
+      "id": "premise: four charts, three open tasks each",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "step 1: the request carries A's open tasks only",
+      "ok": true,
+      "detail": "[{\"id\":\"1792045291103\",\"text\":\"follow up BMP\",\"urgent\":false},{\"id\":\"1792045291104\",\"text\":\"PT eval\",\"urgent\":false},{\"id\":\"1792045291105\",\"text\":\"recheck weight in two weeks\",\"urgent\":false}]"
+    },
+    {
+      "id": "step 1, U2: A's BMP and PT done, the diet task added on A, weight open",
+      "ok": true,
+      "detail": "[\"[x] follow up BMP\",\"[x] PT eval\",\"[ ] recheck weight in two weeks\",\"[ ] Advance diet to clears if pain stays under 4\"]"
+    },
+    {
+      "id": "step 1, U4/U3: B, R and R2 deep-equal their seed (ids, text, done, doneAt)",
+      "ok": true,
+      "detail": "{\"B\":[\"[ ] follow up BMP\",\"[ ] PT eval\",\"[ ] recheck weight in two weeks\"],\"R\":[\"[ ] follow up BMP\",\"[ ] PT eval\",\"[ ] recheck weight in two weeks\"],\"R2\":[\"[ ] follow up BMP\",\"[ ] PT eval\",\"[ ] recheck weight in two weeks\"]}"
+    },
+    {
+      "id": "step 1, Hospital Task Export: B's group lists its three tasks and no diet task; A's group the weight and the diet task",
+      "ok": true,
+      "detail": "{\"A\":\"QA TC22-S27 Ana bt1p Room 412 2 recheck weight in two weeks plan Advance diet to clears if pain stays under 4 plan \",\"B\":\"QA TC22-S27 Ben bt1p Room 415 3 follow up BMP plan PT eval plan recheck weight in two weeks plan \"}"
+    },
+    {
+      "id": "step 1, Hospital Task Export: Finished Tasks holds A's BMP and PT, under A's name, and nothing of B",
+      "ok": true,
+      "detail": "FINISHED TASKS 2 follow up BMP QA TC22-S27 Ana bt1p · Room 412 PT eval QA TC22-S27 Ana bt1p · Room 412"
+    },
+    {
+      "id": "step 1, Nursing Home Task Export: R and R2 list their three tasks, nothing finished, no diet task",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI. Pending Tasks 6 tasks across 2 residents · Thu, Oct 15 ⎘ Copy Text QA TC22-S27 Rosa bt1p Unit Cedar Wing · Room 12 3 follow up BMP plan PT eval plan recheck weight in two weeks plan QA TC22-S27 Rhea bt1p Unit Cedar Wing · Room 14 3 follow up BMP plan PT eval plan recheck weight in two weeks plan"
+    },
+    {
+      "id": "step 2: the request carries R's open tasks only",
+      "ok": true,
+      "detail": "[{\"id\":\"1792045291303\",\"text\":\"follow up BMP\",\"urgent\":false},{\"id\":\"1792045291304\",\"text\":\"PT eval\",\"urgent\":false},{\"id\":\"1792045291305\",\"text\":\"recheck weight in two weeks\",\"urgent\":false}]"
+    },
+    {
+      "id": "step 2, U2: R's BMP and PT done, the diet task added on R, weight open",
+      "ok": true,
+      "detail": "[\"[x] follow up BMP\",\"[x] PT eval\",\"[ ] recheck weight in two weeks\",\"[ ] Advance diet to clears if pain stays under 4\"]"
+    },
+    {
+      "id": "step 2, U4/U3: R2 deep-equals its seed; A and B deep-equal step 1",
+      "ok": true,
+      "detail": "{\"A\":[\"[x] follow up BMP\",\"[x] PT eval\",\"[ ] recheck weight in two weeks\",\"[ ] Advance diet to clears if pain stays under 4\"],\"B\":[\"[ ] follow up BMP\",\"[ ] PT eval\",\"[ ] recheck weight in two weeks\"],\"R2\":[\"[ ] follow up BMP\",\"[ ] PT eval\",\"[ ] recheck weight in two weeks\"]}"
+    },
+    {
+      "id": "step 2, Nursing Home Task Export: R2 lists its three tasks, no diet task; R the weight and the diet task; Finished holds R's BMP and PT under R's name only",
+      "ok": true,
+      "detail": "{\"R\":\"QA TC22-S27 Rosa bt1p Unit Cedar Wing · Room 12 2 recheck weight in two weeks plan Advance diet to clears if pain stays under 4 plan \",\"R2\":\"QA TC22-S27 Rhea bt1p Unit Cedar Wing · Room 14 3 follow up BMP plan PT eval plan recheck weight in two weeks plan \",\"finished\":\"FINISHED TASKS 2 follow up BMP QA TC22-S27 Rosa bt1p · Unit Cedar Wing · Room 12 PT eval QA TC22-S27 Rosa bt1p · Unit Cedar Wing · Room 12\"}"
+    },
+    {
+      "id": "step 2, Hospital Task Export unchanged by the step on R",
+      "ok": true,
+      "detail": "FINISHED TASKS 2 follow up BMP QA TC22-S27 Ana bt1p · Room 412 PT eval QA TC22-S27 Ana bt1p · Room 412"
+    },
+    {
+      "id": "no model call left the page unanswered by the script",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "before": {
+      "A": [
+        "[ ] follow up BMP",
+        "[ ] PT eval",
+        "[ ] recheck weight in two weeks"
+      ],
+      "B": [
+        "[ ] follow up BMP",
+        "[ ] PT eval",
+        "[ ] recheck weight in two weeks"
+      ],
+      "R": [
+        "[ ] follow up BMP",
+        "[ ] PT eval",
+        "[ ] recheck weight in two weeks"
+      ],
+      "R2": [
+        "[ ] follow up BMP",
+        "[ ] PT eval",
+        "[ ] recheck weight in two weeks"
+      ]
+    },
+    "step1": {
+      "message": "✓ Tasks updated — 2 completed, 1 added",
+      "sentOpenTasks": [
+        {
+          "id": "1792045291103",
+          "text": "follow up BMP",
+          "urgent": false
+        },
+        {
+          "id": "1792045291104",
+          "text": "PT eval",
+          "urgent": false
+        },
+        {
+          "id": "1792045291105",
+          "text": "recheck weight in two weeks",
+          "urgent": false
+        }
+      ],
+      "stored": {
+        "A": [
+          "[x] follow up BMP",
+          "[x] PT eval",
+          "[ ] recheck weight in two weeks",
+          "[ ] Advance diet to clears if pain stays under 4"
+        ],
+        "B": [
+          "[ ] follow up BMP",
+          "[ ] PT eval",
+          "[ ] recheck weight in two weeks"
+        ],
+        "R": [
+          "[ ] follow up BMP",
+          "[ ] PT eval",
+          "[ ] recheck weight in two weeks"
+        ],
+        "R2": [
+          "[ ] follow up BMP",
+          "[ ] PT eval",
+          "[ ] recheck weight in two weeks"
+        ]
+      }
+    },
+    "hospitalExportAfterA": {
+      "pending": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nPending Tasks\n\n5 tasks across 2 patients · Thu, Oct 15\n\n⎘ Copy Text\nQA TC22-S27 Ana bt1p\nRoom 412\n2\n\nrecheck weight in two weeks\n\nplan\n\nAdvance diet to clears if pain stays under 4\n\nplan\nQA TC22-S27 Ben bt1p\nRoom 415\n3\n\nfollow up BMP\n\nplan\n\nPT eval\n\nplan\n\nrecheck weight in two weeks\n\nplan\n",
+      "finished": "FINISHED TASKS\n2\n\nfollow up BMP\n\nQA TC22-S27 Ana bt1p · Room 412\n\nPT eval\n\nQA TC22-S27 Ana bt1p · Room 412"
+    },
+    "snfExportAfterA": {
+      "pending": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nPending Tasks\n\n6 tasks across 2 residents · Thu, Oct 15\n\n⎘ Copy Text\nQA TC22-S27 Rosa bt1p\nUnit Cedar Wing · Room 12\n3\n\nfollow up BMP\n\nplan\n\nPT eval\n\nplan\n\nrecheck weight in two weeks\n\nplan\nQA TC22-S27 Rhea bt1p\nUnit Cedar Wing · Room 14\n3\n\nfollow up BMP\n\nplan\n\nPT eval\n\nplan\n\nrecheck weight in two weeks\n\nplan",
+      "finished": ""
+    },
+    "step2": {
+      "message": "✓ Tasks updated — 2 completed, 1 added",
+      "sentOpenTasks": [
+        {
+          "id": "1792045291303",
+          "text": "follow up BMP",
+          "urgent": false
+        },
+        {
+          "id": "1792045291304",
+          "text": "PT eval",
+          "urgent": false
+        },
+        {
+          "id": "1792045291305",
+          "text": "recheck weight in two weeks",
+          "urgent": false
+        }
+      ],
+      "stored": {
+        "A": [
+          "[x] follow up BMP",
+          "[x] PT eval",
+          "[ ] recheck weight in two weeks",
+          "[ ] Advance diet to clears if pain stays under 4"
+        ],
+        "B": [
+          "[ ] follow up BMP",
+          "[ ] PT eval",
+          "[ ] recheck weight in two weeks"
+        ],
+        "R": [
+          "[x] follow up BMP",
+          "[x] PT eval",
+          "[ ] recheck weight in two weeks",
+          "[ ] Advance diet to clears if pain stays under 4"
+        ],
+        "R2": [
+          "[ ] follow up BMP",
+          "[ ] PT eval",
+          "[ ] recheck weight in two weeks"
+        ]
+      }
+    },
+    "snfExportAfterR": {
+      "pending": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nPending Tasks\n\n5 tasks across 2 residents · Thu, Oct 15\n\n⎘ Copy Text\nQA TC22-S27 Rosa bt1p\nUnit Cedar Wing · Room 12\n2\n\nrecheck weight in two weeks\n\nplan\n\nAdvance diet to clears if pain stays under 4\n\nplan\nQA TC22-S27 Rhea bt1p\nUnit Cedar Wing · Room 14\n3\n\nfollow up BMP\n\nplan\n\nPT eval\n\nplan\n\nrecheck weight in two weeks\n\nplan\n",
+      "finished": "FINISHED TASKS\n2\n\nfollow up BMP\n\nQA TC22-S27 Rosa bt1p · Unit Cedar Wing · Room 12\n\nPT eval\n\nQA TC22-S27 Rosa bt1p · Unit Cedar Wing · Room 12"
+    },
+    "hospitalExportAfterR": {
+      "pending": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nPending Tasks\n\n5 tasks across 2 patients · Thu, Oct 15\n\n⎘ Copy Text\nQA TC22-S27 Ana bt1p\nRoom 412\n2\n\nrecheck weight in two weeks\n\nplan\n\nAdvance diet to clears if pain stays under 4\n\nplan\nQA TC22-S27 Ben bt1p\nRoom 415\n3\n\nfollow up BMP\n\nplan\n\nPT eval\n\nplan\n\nrecheck weight in two weeks\n\nplan\n",
+      "finished": "FINISHED TASKS\n2\n\nfollow up BMP\n\nQA TC22-S27 Ana bt1p · Room 412\n\nPT eval\n\nQA TC22-S27 Ana bt1p · Room 412"
+    }
+  }
+}

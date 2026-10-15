@@ -1,0 +1,15 @@
+{
+  "TC-10/S04": {
+    "status": "blocked",
+    "ranAt": "2026-10-15T09:00:00.000Z",
+    "title": "Real devices: dictation, a dropped connection mid-dictation, phones with a wrong date / time zone",
+    "detail": "Not run on 43c38a4f. (1) and (2) need a real voice into real phones with the live transcription session and Wi-Fi dropped mid-sentence; (3) needs phones (or the Android rig) on a 43c38a4f debug build — the device lane's 10-14 Android rig ran e02167f, and the clock code changed in 43c38a4f (TFA-92592 'a value's day is read on the corrected clock'), so its record cannot be carried over. The web half of (3) is TC-10/S22 (not in this package; B18). The pre-round handling itself is judged in a browser by S01/S02/S05/S12 (both modes).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc10-s04.json"
+    ],
+    "method": "DEVICE",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

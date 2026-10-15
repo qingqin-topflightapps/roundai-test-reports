@@ -1,0 +1,16 @@
+{
+  "TC-18/S02": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:53:20Z",
+    "title": "Nursing Home follow-up: Generate with SNF follow-up shows one 99307-99310 code with quoted elements",
+    "detail": "Dev 43c38a4f (deployed 2026-10-14 21:30Z), live model, run 17:46-18:17 JST under runs/.dev.lock and the dev-session run lock; only rows named 'QA TC18-BIL …' were created and all were deleted (59 cell rows at the end of D1, 8 more in the cleanup: 0 remaining, 0 changes to other rows). Resident, badge Follow-up, S02 text, SNF follow-up pre-selected, Generate: 'CODE: 99309 / LEVEL: Moderate Complexity', Problems and Risk quoted from the generated note, labelled, one code, no reasoning outside quotes; stored snf-progress, billing for this note. Recorded for Preston: 'Stable chronic illness' was cited for 'VTE prophylaxis — continue enoxaparin'.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d2-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-s02.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

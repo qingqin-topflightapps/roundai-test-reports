@@ -1,0 +1,627 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "qa-agent-tests/visual/visual.config.ts",
+      "--output",
+      "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual",
+      "-g",
+      "TC-10/S23"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/visual.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/visual",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/visual",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pixel7",
+        "name": "pixel7",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/visual",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "iphone15",
+        "name": "iphone15",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/visual",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "tools/qa-agent/runs/2026-10-14-local/newspec-c/reports/pre-visual-tc10-s23.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "preround.spec.ts",
+      "file": "preround.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-10",
+          "file": "preround.spec.ts",
+          "line": 48,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-10/S23 Pre-Round tab, open editor (both modes), summary-failed message and disabled Generate reason",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 17621,
+                      "error": {
+                        "message": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:83:7",
+                        "location": {
+                          "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                          "column": 72,
+                          "line": 488
+                        },
+                        "snippet": "   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:83:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-editor-open axe serious/critical = 0: color-contrast(serious,14×: .mb-1.justify-between.flex > span | .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:87:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-preround-tab axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,17×: .justify-between.mb-1.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:109:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-editor-open axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,17×: .mb-1.justify-between.flex > span | .flex-\\[1_1_0\\] > .mt-1.flex-shrink-0)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:114:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-editor-open editor dialog, notes box, points box, Dictate and Save Note have accessible names: {\"dialog\":\"\",\"notes\":\"Tap 'Dictate' to speak, or type your pre-round observations — vitals, interval changes, plan topics…\",\"points\":\"Dictate or type your bedside checks — one per line, or just talk…\",\"dictate\":\"Dictate\",\"save\":\"Save Note\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:123:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-tab axe serious/critical = 0: color-contrast(serious,20×: .mb-1.justify-between.flex > .text-slate-400 | .flex-shrink-0.font-semibold.text-slate-400)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:143:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-tab the summary error is announced (role=alert / live region): not in a live region: \"The reviewed note is saved, but its structured summary needs another attempt. Tap Save Not\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:145:11"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-editor axe serious/critical = 0: color-contrast(serious,21×: .mb-1.justify-between.flex > .text-slate-400 | .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:149:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-editor the error in the editor is announced (role=alert / live region): not in a live region\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:155:13"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-encounter-generate-blocked axe serious/critical = 0: color-contrast(serious,1×: .disabled\\:cursor-not-allowed.px-2.text-\\[10px\\]:nth-child(2))\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:167:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-failed-tab axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,20×: .justify-between.mb-1.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:143:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-failed-editor axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,20×: .mb-1.justify-between.flex > span | .flex-\\[1_1_0\\] > .mt-1.flex-shrink-0)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:149:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-encounter-generate-blocked axe serious/critical = 0: button-name(critical,1×: .-ml-1)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:167:9"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:43:35.184Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual/preround-TC-10-TC-10-S23-P-866f4-nd-disabled-Generate-reason-desktop/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual/preround-TC-10-TC-10-S23-P-866f4-nd-disabled-Generate-reason-desktop/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                        "column": 72,
+                        "line": 488
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "47f5bc436a62613829da-75eaf7aef0d174e02147",
+              "file": "preround.spec.ts",
+              "line": 49,
+              "column": 3
+            },
+            {
+              "title": "TC-10/S23 Pre-Round tab, open editor (both modes), summary-failed message and disabled Generate reason",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "pixel7",
+                  "projectName": "pixel7",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 17940,
+                      "error": {
+                        "message": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:83:7",
+                        "location": {
+                          "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                          "column": 72,
+                          "line": 488
+                        },
+                        "snippet": "   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:83:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-editor-open axe serious/critical = 0: color-contrast(serious,14×: .mb-1.justify-between.flex > span | .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:87:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-preround-tab axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,17×: .justify-between.mb-1.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:109:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-editor-open axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,16×: .mb-1.justify-between.flex > span | section:nth-child(3) > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:114:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-editor-open editor dialog, notes box, points box, Dictate and Save Note have accessible names: {\"dialog\":\"\",\"notes\":\"Tap 'Dictate' to speak, or type your pre-round observations — vitals, interval changes, plan topics…\",\"points\":\"Dictate or type your bedside checks — one per line, or just talk…\",\"dictate\":\"Dictate\",\"save\":\"Save Note\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:123:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-tab axe serious/critical = 0: color-contrast(serious,20×: .mb-1.justify-between.flex > .text-slate-400 | .flex-shrink-0.font-semibold.text-slate-400)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:143:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-tab the summary error is announced (role=alert / live region): not in a live region: \"The reviewed note is saved, but its structured summary needs another attempt. Tap Save Not\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:145:11"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-editor axe serious/critical = 0: color-contrast(serious,21×: .mb-1.justify-between.flex > .text-slate-400 | .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:149:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-editor the error in the editor is announced (role=alert / live region): not in a live region\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:155:13"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-encounter-generate-blocked axe serious/critical = 0: color-contrast(serious,1×: .disabled\\:cursor-not-allowed.px-2.text-\\[10px\\]:nth-child(2))\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:167:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-failed-tab axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,20×: .justify-between.mb-1.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:143:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-failed-editor axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,20×: .mb-1.justify-between.flex > span | .flex-\\[1_1_0\\] > .mt-1.flex-shrink-0)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:149:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-encounter-generate-blocked axe serious/critical = 0: button-name(critical,1×: .-ml-1)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:167:9"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:43:53.211Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual/preround-TC-10-TC-10-S23-P-866f4-nd-disabled-Generate-reason-pixel7/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual/preround-TC-10-TC-10-S23-P-866f4-nd-disabled-Generate-reason-pixel7/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                        "column": 72,
+                        "line": 488
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "47f5bc436a62613829da-a7a2e561a4d5ffecba19",
+              "file": "preround.spec.ts",
+              "line": 49,
+              "column": 3
+            },
+            {
+              "title": "TC-10/S23 Pre-Round tab, open editor (both modes), summary-failed message and disabled Generate reason",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 180000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "iphone15",
+                  "projectName": "iphone15",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 18804,
+                      "error": {
+                        "message": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:83:7",
+                        "location": {
+                          "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                          "column": 72,
+                          "line": 488
+                        },
+                        "snippet": "   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-preround-tab axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:83:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-editor-open axe serious/critical = 0: color-contrast(serious,13×: .mb-1.justify-between.flex > span | .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:87:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-preround-tab axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,17×: .justify-between.mb-1.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:109:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-editor-open axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,16×: .mb-1.justify-between.flex > span | section:nth-child(3) > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:114:7"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-editor-open editor dialog, notes box, points box, Dictate and Save Note have accessible names: {\"dialog\":\"\",\"notes\":\"Tap 'Dictate' to speak, or type your pre-round observations — vitals, interval changes, plan topics…\",\"points\":\"Dictate or type your bedside checks — one per line, or just talk…\",\"dictate\":\"Dictate\",\"save\":\"Save Note\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:123:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-tab axe serious/critical = 0: color-contrast(serious,20×: .mb-1.justify-between.flex > .text-slate-400 | .flex-shrink-0.font-semibold.text-slate-400)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:143:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-tab the summary error is announced (role=alert / live region): not in a live region: \"The reviewed note is saved, but its structured summary needs another attempt. Tap Save Not\"\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:145:11"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-editor axe serious/critical = 0: color-contrast(serious,21×: .mb-1.justify-between.flex > .text-slate-400 | .flex-\\[1_1_0\\] > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:149:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-failed-editor the error in the editor is announced (role=alert / live region): not in a live region\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:155:13"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 hospital-encounter-generate-blocked axe serious/critical = 0: color-contrast(serious,1×: .disabled\\:cursor-not-allowed.px-2.text-\\[10px\\]:nth-child(2))\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:167:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-failed-tab axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,20×: .justify-between.mb-1.flex > span | .flex-shrink-0.font-semibold)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:143:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-failed-editor axe serious/critical = 0: button-name(critical,1×: .-ml-1); color-contrast(serious,19×: .mb-1.justify-between.flex > span | section:nth-child(3) > .mb-1.justify-between.gap-2 > .mb-0.gap-2.flex > h3)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:149:9"
+                        },
+                        {
+                          "location": {
+                            "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                            "column": 72,
+                            "line": 488
+                          },
+                          "message": "Error: TC-10/S23 nh-encounter-generate-blocked axe serious/critical = 0: button-name(critical,1×: .-ml-1)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at support.ts:488\n\n  486 |     }\n  487 |     this.judged.push({ name, pass, detail, state });\n> 488 |     expect.soft(pass, `${this.ref} ${state ?? \"\"} ${name}: ${detail}`).toBe(true);\n      |                                                                        ^\n  489 |   }\n  490 |   record(name: string, value: unknown, state?: string) {\n  491 |     this.recorded.push({ name, value, state });\n    at Verdict.judge (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:488:72)\n    at judgeAxe (round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts:536:5)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/visual/preround.spec.ts:167:9"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T08:44:11.513Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual/preround-TC-10-TC-10-S23-P-866f4-nd-disabled-Generate-reason-iphone15/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/pre-visual/preround-TC-10-TC-10-S23-P-866f4-nd-disabled-Generate-reason-iphone15/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/visual/support.ts",
+                        "column": 72,
+                        "line": 488
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "47f5bc436a62613829da-b0535fea381b402ea71d",
+              "file": "preround.spec.ts",
+              "line": 49,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T08:43:34.874Z",
+    "duration": 56237.895,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "ref": "TC-14/S16",
+  "title": "TC-14/S16 no placeholder tokens: H-16, H-17, N-16, N-17 (live note model; every other gen note is checked too)",
+  "dataset": "gen-notes-a",
+  "target": "dev",
+  "at": "2026-10-15T09:33:52.595Z",
+  "cells": [
+    {
+      "name": "H-16 (hospital, discharge): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: present ('withheld')",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-16 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "DISCHARGE SUMMARY\n\nADMISSION DATE: Not provided\n\nPRINCIPAL DIAGNOSIS: Community-acquired pneumonia\n\nREASON FOR ADMISSION: Not provided\n\nHOSPITAL COURSE: Not provided\n\nDISCHARGE CONDITION: Stable per physician assessment\n\nDISCHARGE MEDICATIONS:\n\nCefpodoxime — to complete 2 more days\n\nFOLLOW-UP INSTRUCTIONS:\n\n1. Follow up with primary care physician in one week.\n\nRETURN PRECAUTIONS:\n\nReturn to the emergency department or call [phone number withheld] if experiencing worsening respiratory symptoms, fever, chest pain, or other concerning symptoms.\n\nDISPOSITION:\n\nDischarged home to [address withheld] with daughter. Daughter may be reached at [phone number withheld].",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3758,
+            "providerMs": 3753,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "present ('withheld')"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-17 (hospital, hp): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-17 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Chief Complaint\n\nChest pain.\n\nHistory of Present Illness\n\nThe patient is a 66-year-old admitted for evaluation and rule-out of acute coronary syndrome. The physician is admitting him for serial troponins and telemetry monitoring. The specific circumstances of presentation, symptom onset, character, associated symptoms, and prior cardiac history are not documented in today's dictation.\n\nPast Medical History\n\nNot provided.\n\nMedications\n\nNot provided.\n\nAllergies\n\nNot provided.\n\nSocial History\n\nNot provided.\n\nFamily History\n\nNot provided.\n\nReview of Systems\n\nNot documented in today's dictation.\n\nPhysical Examination\n\nNot documented in today's dictation.\n\nTesting Results\n\nNot provided.\n\nAssessment\n\nA 66-year-old patient is admitted with chest pain requiring rule-out of acute coronary syndrome. Serial troponins and continuous telemetry monitoring have been ordered to evaluate for myocardial infarction and arrhythmia. The clinical context, risk factors, and prior cardiac history are not documented in the available records, limiting the ability to further characterize the presentation at this time.\n\nPlan\n\n1. Admit for chest pain rule-out with serial troponins and telemetry monitoring.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4595,
+            "providerMs": 4590,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-16 (nursing-home, snf-admission): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-16 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Reason for SNF Admission\n\nThe resident is admitted to skilled nursing facility for rehabilitation following hospitalization for pneumonia.\n\nMedical History and Active Comorbidities\n\nNot dictated.\n\nCurrent Medications\n\nNot dictated.\n\nAllergies\n\nNot dictated.\n\nFunctional Status at Admission\n\nNot dictated.\n\nRehabilitation Goals\n\nPhysical therapy and occupational therapy evaluation.\n\nAssessment of Active Medical Problems\n\nPneumonia — The resident was hospitalized and is now admitted to skilled nursing facility for continued recovery and rehabilitation. Antibiotic course to be completed during SNF stay.\n\nCare Plan\n\n1. Complete antibiotic course as prescribed.\n2. Physical therapy evaluation and treatment.\n3. Occupational therapy evaluation and treatment.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3018,
+            "providerMs": 3011,
+            "appMs": 7,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-17 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-17 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nNot dictated.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nHypertension — resident doing well; continue current management.\n\nDementia — resident doing well; continue current management.\n\nMedication Changes\n\nNo changes.\n\nAssessment and Plan\n\nHypertension: Resident remains stable on current antihypertensive regimen. Continue home medications as prescribed.\n\nDementia: Resident doing well. Continue current management and monitoring.\n\nPlan\n\n1. Continue current medications as prescribed.\n2. Monthly follow-up visit as scheduled.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2803,
+            "providerMs": 2796,
+            "appMs": 7,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "U6 (TFA-92592 AC 6): 4/4 targeted notes carry no placeholder token",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "failing": []
+      }
+    }
+  ],
+  "shots": []
+}

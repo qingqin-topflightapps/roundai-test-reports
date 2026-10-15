@@ -1,0 +1,17 @@
+{
+  "OAT-06/S14": {
+    "status": "record-only",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "env": "dev",
+    "ranAt": "2026-10-15T08:21:51.346Z",
+    "title": "Dev (43c38a4f): the QA account's survey record and the pilot-end setting, read only",
+    "detail": "Read only on dev (QA_TARGET=dev, inside runs/.dev.lock): surveys:status as the dev QA account, an account-scoped query from the backend-read allow-list (scripts/backend-read.ts ad hoc; no mutation, no screen opened, nothing written; the run's copy of the sign-in, state.json, was deleted right after). The deploy behind dev is 43c38a4f (Deploy Convex 2026-10-14T21:30:04Z). On record for the QA account: baseline answeredAt null and no 'Not now' (dismissedAt []), so the baseline card is due on dev and holds the one card slot (the 4 PM feedback card cannot show for this account until the baseline is answered or put off); feedback and task reminder: nothing on record. taskReminderFrom is null: no pilot-end day is set on dev, so the end-of-pilot task-reminder survey cannot appear there until the pilot team runs surveys:_setTaskReminderSurveyFrom with the deploy key (the trigger itself is judged locally in S14 C). Not judged on dev: the survey rules and copy are the same commit as the local run, and dev has no admin read for the rows (AC 5) and no second account.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/oat06-s14-srv-dev-status/status.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/oat06-s14-srv-dev-status/read.out"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

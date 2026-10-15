@@ -1,0 +1,16 @@
+{
+  "TC-14/S04": {
+    "status": "blocked",
+    "ranAt": "2026-10-15T09:00:57.483Z",
+    "title": "Existing specs: Save & Extract closes and adds tasks and records medication changes, and a later Generate does not send the notes to the medication extractor again",
+    "detail": "Blocked (local live-model guard, coordinator 2026-10-15): lane A on 43c38a4f (spec-matrix S04,S25) ran all four titles and they passed — encounter-workflow 'Save & Extract persists a model-extracted action item', snf-save-extract 'Save & Extract saves the notes, closes and adds tasks, and keeps a codeword task verbatim', medication-detection 'Save & Extract automatically detects and persists medication changes', medication-tracker 'Generate does not send Save & Extract's notes to the extractor again' — but the last title stores a (mocked) note, and on 43c38a4f the server then starts the billing job by itself: the tripwire listed 1 live billing.suggestBilling and 1 live parsing.classifyAdmissionReason call at 18:00:55 JST (the test does not mock the classifier). Per the coordinator's rule a local run that reached the live model is not used as a verdict and is not re-run. The same requirements are covered without any model call by TC-14/S06 (local, passed: no task extraction after Generate, nothing added twice, one medication event per change) and on dev by S01 / S02 / S05.",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/TC-14.results.json",
+      "runs/2026-10-14-local/matrix/TC-14.laneA.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

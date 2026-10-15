@@ -1,0 +1,138 @@
+{
+  "name": "tc10-s06-pre-hosp",
+  "at": "2026-10-15T08:24:34.573Z",
+  "checks": [
+    {
+      "id": "T-01: the Vitals panel shows the dictated 38.4",
+      "ok": true,
+      "detail": "Temperature 38.4"
+    },
+    {
+      "id": "T-01: the panel temperature is not mislabelled or converted (/°F|101\\.1|101/)",
+      "ok": true,
+      "detail": "Temperature 38.4"
+    },
+    {
+      "id": "T-01: the note input carries the number unconverted (/Temp 38\\.4°C/)",
+      "ok": true,
+      "detail": "VITALS (taken at the bedside during today's encounter): Temp 38.4°C"
+    },
+    {
+      "id": "D2 (recorded): a bare 38.4 gets a unit label in the note input",
+      "ok": true,
+      "detail": "VITALS (taken at the bedside during today's encounter): Temp 38.4°C",
+      "recordOnly": true
+    },
+    {
+      "id": "T-02: the Vitals panel shows the dictated 35.2",
+      "ok": true,
+      "detail": "Temperature 35.2"
+    },
+    {
+      "id": "T-02: the panel temperature is not mislabelled or converted (/°F|95\\.4/)",
+      "ok": true,
+      "detail": "Temperature 35.2"
+    },
+    {
+      "id": "T-02: the note input carries the number unconverted (/Temp 35\\.2°C/)",
+      "ok": true,
+      "detail": "VITALS (taken at the bedside during today's encounter): Temp 35.2°C"
+    },
+    {
+      "id": "D2 (recorded): a bare 35.2 gets a unit label in the note input",
+      "ok": true,
+      "detail": "VITALS (taken at the bedside during today's encounter): Temp 35.2°C",
+      "recordOnly": true
+    },
+    {
+      "id": "T-03: the Vitals panel shows the dictated 40.1",
+      "ok": true,
+      "detail": "Temperature 40.1"
+    },
+    {
+      "id": "T-03: the panel temperature is not mislabelled or converted (/°F|104/)",
+      "ok": true,
+      "detail": "Temperature 40.1"
+    },
+    {
+      "id": "T-03: the note input carries the number unconverted (/Temp 40\\.1°C/)",
+      "ok": true,
+      "detail": "VITALS (taken at the bedside during today's encounter): Temp 40.1°C"
+    },
+    {
+      "id": "D2 (recorded): a bare 40.1 gets a unit label in the note input",
+      "ok": true,
+      "detail": "VITALS (taken at the bedside during today's encounter): Temp 40.1°C",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T-01": {
+      "dictation": "Temp 38.4 this morning, BP 126/78, HR 92. Cough improving.",
+      "panel": "Temperature\n38.4",
+      "noteInputVitals": "VITALS (taken at the bedside during today's encounter): Temp 38.4°C"
+    },
+    "T-02": {
+      "dictation": "Temp 35.2 after the cooling blanket came off, HR 58, BP 104/62.",
+      "panel": "Temperature\n35.2",
+      "noteInputVitals": "VITALS (taken at the bedside during today's encounter): Temp 35.2°C"
+    },
+    "T-03": {
+      "dictation": "Tmax 40.1 overnight, now on scheduled acetaminophen. BP 118/70.",
+      "panel": "Temperature\n40.1",
+      "noteInputVitals": "VITALS (taken at the bedside during today's encounter): Temp 40.1°C"
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 674
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 732
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 3898
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 5326
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 5377
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 8487
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 9829
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 9885
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 13009
+      }
+    ]
+  }
+}

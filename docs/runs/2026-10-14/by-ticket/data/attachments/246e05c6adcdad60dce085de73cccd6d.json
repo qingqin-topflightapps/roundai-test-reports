@@ -1,0 +1,15 @@
+{
+  "TC-18/S17": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:51:30Z",
+    "title": "Level edges: a code for a minimal note; code and level agree (live model, provisional)",
+    "detail": "Dev 43c38a4f (deployed 2026-10-14 21:30Z), live model, run 17:46-18:17 JST under runs/.dev.lock and the dev-session run lock; only rows named 'QA TC18-BIL …' were created and all were deleted (59 cell rows at the end of D1, 8 more in the cleanup: 0 remaining, 0 changes to other rows). 6/6 in family with matching level: h1 minimal 99231 Straightforward (code still shown), h2 99231 Low, h3 acute hypoxic respiratory failure + ICU transfer 99233 High, h4 H&P 99221 Low, h5 SNF 99307 Straightforward, h6 SNF stroke sent to the ED 99310 High. Record (Preston, Q13): level order holds (h3 > h2 >= h1, h6 > h5); over S13/S15/S17 the Hospital follow-up codes are 99231 x5 / 99232 x5 / 99233 x1 and SNF follow-up 99307 x2 / 99308 x3 / 99309 x4 / 99310 x1 — no code above 80% (Run 7's '99232 on 19 of 21' does not reproduce).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d1-cells.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

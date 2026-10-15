@@ -1,0 +1,17 @@
+{
+  "TC-14/S15": {
+    "status": "failed",
+    "ranAt": "2026-10-15T09:54:33.858Z",
+    "title": "Bedside checks stay reminders and doses already given are documented as done, not re-ordered (5 Hospital + 5 Nursing Home)",
+    "detail": "Dataset gen-notes-b on dev (live Haiku 4.5), through the app's UI. 6/10 pass: FAILED (below 9/10; Q2 would only make it stricter). AC 8 (a medication already given is documented as done): H-11 'Restart metoprolol tartrate 25 mg PO BID (held since Oct 14 …; restarted this morning …)' and H-15 'Atrial fibrillation — restart apixaban 5 mg PO BID (held for procedure, restarted this morning)' put the restart in the plan as an order; N-12 documents the one-time acetaminophen 650 as given but adds '1. Administer acetaminophen as needed for knee pain.' (an order nobody dictated). Together with TC-14/S01 on dev ('Restart metoprolol tartrate 25 mg PO BID') all 3 Hospital 'restarted … this morning' dictations of this package (S01, H-11, H-15) end with a restart order in the plan; none of the 3 Nursing Home ones (S02, N-11, N-15) do. AC 7 (bedside check stays a reminder): N-15 'Look at the left foot wound again on Friday' → 'Continue monitoring wound healing and glucose trends.' ('wound healing' is on the fixture's finding list; the plan also has 'Reassess left foot wound on Friday'). The other 6 (H-12, H-13, H-14, N-11, N-13, N-14) keep the check a reminder and the given dose done.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-b/evidence/TC-14-S15.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-b.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "A medication the physician already restarted this morning appears in the note's plan as 'Restart metoprolol …' / 'restart apixaban …', and a one-time dose turns into a new PRN order: read as orders they could lead to a double dose.",
+    "pkg": "gen"
+  }
+}

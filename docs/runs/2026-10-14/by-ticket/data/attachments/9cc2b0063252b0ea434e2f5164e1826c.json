@@ -1,0 +1,15 @@
+{
+  "TC-22/S17": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:40:57Z",
+    "title": "Existing specs (mocked model): Save & Extract closes exactly what the extractor returns, keeps a proposed task across a reload, and keeps the notes with a retry message when task extraction fails",
+    "detail": "Lane A on 43c38a4f: node scripts/spec-matrix.mjs cases/TC-22.matrix.json runs/2026-10-14-local S17, under the local lock and the tripwire (no model call). The three titles are unchanged in cases/e2e-titles.tsv for 43c38a4f; chromium, 3/3 passed: 'Save & Extract saves the notes, closes and adds tasks, and keeps a codeword task verbatim' (snf-save-extract.spec.ts), 'Save & Extract persists a model-extracted action item' (encounter-workflow.spec.ts), 'Save & Extract keeps medication updates when task extraction fails' (medication-detection.spec.ts). Evidence for the app's half of U2/U4/U5 in both contexts and the Hospital message of U14; not evidence of what the model extracts (S04/S05).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s17-b43-laneA.json"
+    ],
+    "method": "PW",
+    "pkg": "ext"
+  }
+}

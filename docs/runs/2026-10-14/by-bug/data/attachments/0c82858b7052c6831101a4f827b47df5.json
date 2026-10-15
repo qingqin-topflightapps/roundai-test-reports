@@ -1,0 +1,65 @@
+{
+  "name": "oat03-s15",
+  "at": "2026-10-15T08:52:03.526Z",
+  "checks": [
+    {
+      "id": "cp1 Hospital (reload): Post-Round shows the note, a 'generating' state or an explicit failure",
+      "ok": false,
+      "detail": "{\"noteShown\":false,\"noteText\":\"\",\"noNoteYet\":true,\"completeFirst\":true,\"finalizingSpinner\":true,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "cp1 Hospital: the dictation is kept",
+      "ok": true,
+      "detail": "QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin."
+    },
+    {
+      "id": "cp1 Hospital (B27): the finalize button spins 'Finalizing Encounter Data…' with no note",
+      "ok": false,
+      "detail": "true",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2 Nursing Home (left via the back arrow): Post-Round shows the note, a 'generating' state or an explicit failure",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA OAT-03 call 2 mocked note (no model was called). Today: QA OAT-03 step 5 visit: no falls, sleeping well, continue plan.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    }
+  ],
+  "data": {
+    "cp1": {
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": true,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "backend": {
+        "note": false,
+        "status": "seen",
+        "encounterNotes": "QA OAT-03 step 5: chest pain resolved, troponins flat, continue aspirin."
+      }
+    },
+    "cp2": {
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA OAT-03 call 2 mocked note (no model was called). Today: QA OAT-03 step 5 visit: no falls, sleeping well, continue plan.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "backend": {
+        "note": true,
+        "status": "note-ready",
+        "encounterNotes": "QA OAT-03 step 5 visit: no falls, sleeping well, continue plan."
+      }
+    }
+  }
+}

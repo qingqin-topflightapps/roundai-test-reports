@@ -1,0 +1,19 @@
+{
+  "TC-22/S12": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:44:58.625Z",
+    "title": "Generate after Save & Extract sends nothing to the task extractor and leaves the stored tasks unchanged, both contexts",
+    "detail": "Local stack on main 43c38a4f; every model call the page makes is answered in the page by ext-support.ts (an ai/* call it is not told about is failed, never forwarded) and the tripwire showed no model call. Spec ext-tc22-s12-s13-generate-leave.spec.ts, 5/5 judged per context. Three seeded tasks, Save & Extract with the UAT bedside text (BMP, PT done; weight and the diet task open), then Generate Note & Finish (generateNote answered in the page). From the Generate tap to the end of its follow-ups the page sent generateNote, refreshCourseAndBackground (and in Nursing Home extractMedicationEvents) and no ai/parsing:extractTasks; the stored tasks after Generate deep-equal those before (ids, text, done, doneAt, urgent). Code check: no Generate path calls extractTasks on 43c38a4f (tc22-s07-b43-codepath.txt). Generate used a 'Procedure / other' custom template so the server schedules no billing job (a server-side model call the page cannot answer); the note template has no part in the task list. billingJob and billingStatus stayed null on both charts and the tripwire showed no model call, so the local live-model guard (billing jobs started by a stored note) did not apply to these runs.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s12-b43-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s12-b43-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s12-b43-rounding-after-generate.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s12-b43-snf-after-generate.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s07-b43-codepath.txt"
+    ],
+    "method": "PW",
+    "pkg": "ext"
+  }
+}

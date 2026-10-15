@@ -1,0 +1,15 @@
+{
+  "TC-18/S15": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:50:50Z",
+    "title": "AI Check 2: every element quotes the note or is left out (pre-screen, provisional)",
+    "detail": "Dev 43c38a4f (deployed 2026-10-14 21:30Z), live model, run 17:46-18:17 JST under runs/.dev.lock and the dev-session run lock; only rows named 'QA TC18-BIL …' were created and all were deleted (59 cell rows at the end of D1, 8 more in the cleanup: 0 remaining, 0 changes to other rows). Pre-screen 10/10 (Hospital 5/5, Nursing Home 5/5): every quote is a sentence of the note, no trap word outside quotes (no chart diagnosis such as Sepsis / CHF / Dementia, no 'critically ill' or shock unless the note says so, no historian for 'daughter updated', no discussion for 'cardiology is following'); the trough cells f1 -> 99231 Low and g2 -> 99309 Moderate with no 'intensive monitoring for toxicity' risk. Outside the score (oracleRules 9, in S18): g3 ('Resident more tired today … Check CBC and BMP tomorrow') shows 99307 Straightforward with only a DATA quote. Provisional until Preston grades (S28, TFA-94229 in progress).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d1-cells.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

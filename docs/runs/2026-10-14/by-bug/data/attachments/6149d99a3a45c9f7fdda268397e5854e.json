@@ -1,0 +1,74 @@
+{
+  "name": "tc18-s11-s12-generate",
+  "at": "2026-10-15T09:43:14.556Z",
+  "checks": [
+    {
+      "id": "S11 hospital: Regenerate makes a new note (new stamp) and a fresh suggestion for it (hospital-initial); the first note's suggestion is not kept for it",
+      "ok": true,
+      "detail": "{\"template\":\"soap\",\"frozen\":\"soap\",\"family\":\"hospital-subsequent\",\"code\":null,\"attempt\":1,\"billedForThisNote\":true} -> {\"template\":\"hp\",\"frozen\":\"hp\",\"family\":\"hospital-initial\",\"code\":null,\"attempt\":1,\"billedForThisNote\":true}"
+    },
+    {
+      "id": "S11 snf: Regenerate makes a new note (new stamp) and a fresh suggestion for it (snf-initial); the first note's suggestion is not kept for it",
+      "ok": true,
+      "detail": "{\"template\":\"snf-progress\",\"frozen\":\"snf-progress\",\"family\":\"snf-subsequent\",\"code\":null,\"attempt\":1,\"billedForThisNote\":true} -> {\"template\":\"snf-admission\",\"frozen\":\"snf-admission\",\"family\":\"snf-initial\",\"code\":null,\"attempt\":1,\"billedForThisNote\":true}"
+    },
+    {
+      "id": "S12 switch-h2n: the other chart's card shows its own family (snf-subsequent, 99308) and quotes only its own note",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: 99308 | LEVEL: Low Complexity | PROBLEMS — Low | Stable chronic illness | N2: \"Hip pain controlled on scheduled acetaminophen.\" | DATA — Minimal | (none) | RISK — Moderate | Prescription drug management | N3: \"Constipation since Monday; start senna 8.6 mg at bedtime.\" (opened 476 ms after Generate)"
+    },
+    {
+      "id": "S12 switch-h2n: back on the generated chart, its card is its own (hospital-subsequent) with none of the other note's words; each row's billingForNoteAt is its own stamp",
+      "ok": true,
+      "detail": "{\"family\":\"hospital-subsequent\",\"template\":\"soap\",\"otherWordsOnCard\":[],\"genBilledForOwnNote\":true,\"otherBilledForOwnNote\":true,\"otherSuggestionUnchanged\":true,\"card\":\"BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)\"}"
+    },
+    {
+      "id": "S12 switch-n2h: the other chart's card shows its own family (hospital-subsequent, 99231) and quotes only its own note",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: 99231 | LEVEL: Low Complexity | PROBLEMS — Low | Stable chronic illness | N2: \"ASSESSMENT AND PLAN: Community-acquired pneumonia, improving.\" | DATA — Minimal | (none) | RISK — Moderate | Prescription drug management | N3: \"Continue ceftriaxone 1 g IV daily and azithromycin 500 mg daily, day 3 of 5.\" (opened 352 ms after Generate)"
+    },
+    {
+      "id": "S12 switch-n2h: back on the generated chart, its card is its own (snf-subsequent) with none of the other note's words; each row's billingForNoteAt is its own stamp",
+      "ok": true,
+      "detail": "{\"family\":\"snf-subsequent\",\"template\":\"snf-progress\",\"otherWordsOnCard\":[],\"genBilledForOwnNote\":true,\"otherBilledForOwnNote\":true,\"otherSuggestionUnchanged\":true,\"card\":\"BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)\"}"
+    },
+    {
+      "id": "S12 leave-hospital: after leaving mid-Generate, the stored row holds the note and a billing suggestion for it (no Post-Round opened)",
+      "ok": true,
+      "detail": "{\"note\":\"---\\n***\",\"family\":\"hospital-subsequent\",\"billed\":true}"
+    },
+    {
+      "id": "S12 leave-hospital: coming back shows the card for that note, with no new billing call",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)"
+    },
+    {
+      "id": "S12 leave-hospital: SPA navigation away while the note was still being written; closing the app mid-Generate (TFA-92592 'Generate runs on the server') is not covered here",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "S12 leave-snf: after leaving mid-Generate, the stored row holds the note and a billing suggestion for it (no Post-Round opened)",
+      "ok": true,
+      "detail": "{\"note\":\"---\\n***\",\"family\":\"snf-subsequent\",\"billed\":true}"
+    },
+    {
+      "id": "S12 leave-snf: coming back shows the card for that note, with no new billing call",
+      "ok": true,
+      "detail": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING | CODE: none suggested | LEVEL: — | PROBLEMS | (none) | DATA | (none) | RISK | (none)"
+    },
+    {
+      "id": "S12 leave-snf: SPA navigation away while the note was still being written; closing the app mid-Generate (TFA-92592 'Generate runs on the server') is not covered here",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "no AI action reached the server from the browser",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {}
+}

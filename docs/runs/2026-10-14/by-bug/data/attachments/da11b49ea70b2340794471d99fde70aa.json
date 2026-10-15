@@ -1,0 +1,104 @@
+{
+  "case": "TC-10-S15",
+  "title": "Admission reason does not drift on a same-day re-save: a day-3 complication never becomes the admitted-with reason, and the re-saved value replaces the earlier one",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "cp1-hosp-admission-anchor.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7dshy3d5c3jzq57qtw8dzhf98gb5ed",
+      "problems": [
+        "should not match /^[^•.\\n]*(fever|diarrh|c\\.? ?diff|difficile|clostridi|vancomycin|sepsis)/im (found \"            - paragraph [ref=e261]: 72-year-old woman with …) (in from \"Edit Background Summary\" to \"Course Timeline\")"
+      ],
+      "known": [],
+      "recorded": [
+        "(a same-day trend may legitimately name the earlier value) fail: should not show \"5.6\" (in from \"heading \"Labs\"\" to \"heading \"Diagnostic Testing\"\")"
+      ]
+    },
+    {
+      "file": "cp2-hosp-tasks.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dshy3d5c3jzq57qtw8dzhf98gb5ed",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp3-hosp-tracker.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dshy3d5c3jzq57qtw8dzhf98gb5ed",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(no duplicate tracker row (recorded per the oracle)) fail: scope not found: from \"heading \"Medication Tracker\"\"",
+        "(no duplicate tracker row (recorded per the oracle)) fail: scope not found: from \"heading \"Medication Tracker\"\"",
+        "(no duplicate tracker row (recorded per the oracle)) fail: scope not found: from \"heading \"Medication Tracker\"\""
+      ]
+    },
+    {
+      "file": "cp4-hosp-nodx-admission-anchor.md",
+      "verdict": "Fail",
+      "url": "/rounding/js72g2bw2q2eha71kf13s3ybk18gbf1f",
+      "problems": [
+        "should not match /^[^•.\\n]*(fever|diarrh|c\\.? ?diff|difficile|clostridi|vancomycin|sepsis)/im (found \"            - paragraph [ref=e702]: 72-year-old woman with …) (in from \"Edit Background Summary\" to \"Course Timeline\")"
+      ],
+      "known": [],
+      "recorded": [
+        "(a same-day trend may legitimately name the earlier value) fail: should not show \"5.6\" (in from \"heading \"Labs\"\" to \"heading \"Diagnostic Testing\"\")"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U2: the lab name and the value type (string or number) are the model's choice) pass: backend anchor-after labs[name=Potassium].value = \"4.6\"",
+        "(U2: the lab name and the value type (string or number) are the model's choice) pass: backend nodx-after labs[name=Potassium].value = \"4.6\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Nursing Home admission summary drift (Q6)",
+    "potassium 5.6 no longer shown as the current value; a trend naming it is noted, not failed",
+    "one course line for today; no duplicate task (no count rule for a task list)"
+  ],
+  "agent": {
+    "turns": 52,
+    "costUsd": 0.39360700000000004,
+    "durationMs": 169055,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "P15",
+  "covers": [
+    "TC-10/S15"
+  ],
+  "evidenceDir": "generateddev/20261015predev/p15",
+  "caseFile": "cases/generated-dev/2026-10-15-pre-dev/P15.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

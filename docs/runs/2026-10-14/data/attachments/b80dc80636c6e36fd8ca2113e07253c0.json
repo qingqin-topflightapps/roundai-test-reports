@@ -1,0 +1,30 @@
+{
+  "TC-22/S20": {
+    "status": "record-only",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:46:43Z",
+    "title": "Task toggles named with their task and exposing done / not done; axe on the task screens (accessibility: our own addition)",
+    "detail": "Visual lane (qa-agent-tests/visual/encounter.spec.ts, run on 43c38a4f with its own output folder), desktop, Pixel 7, iPhone 15; no model involved (the lane blocks every action). Same as e02167f (the task list files changed only in billing props): 2/12 per profile. Hospital Post-Round: 'Complete task: …' / 'Reopen task: …' with aria-pressed matching the stored state (pass). Nursing Home Post-Round: the toggles have no name and no state; both Task Export screens: 'Mark task done' / 'Undo — move back to pending' without the task text and without aria-pressed; axe: color-contrast (serious) on every screen, button-name (critical, 5×) on the Nursing Home Post-Round. Accessibility is asked by no UAT item or ticket, so this is recorded as suggestion A1 (known), not judged. T2 (visit label, TFA-92585 ready for pr) is todo.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/desktop.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/iphone15.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/pixel7.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/desktop--hospital-postround-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/desktop--hospital-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/desktop--nh-postround-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/desktop--nh-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/iphone15--hospital-postround-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/iphone15--hospital-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/iphone15--nh-postround-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/iphone15--nh-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/pixel7--hospital-postround-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/pixel7--hospital-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/pixel7--nh-postround-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s20-s21-b43-visual/visual/evidence/TC-22_S20/pixel7--nh-task-export.png"
+    ],
+    "method": "VISUAL",
+    "known": true,
+    "pkg": "ext"
+  }
+}

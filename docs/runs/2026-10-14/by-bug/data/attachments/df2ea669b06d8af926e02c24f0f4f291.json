@@ -1,0 +1,94 @@
+{
+  "case": "TC-10-S30",
+  "title": "AI Check through the real Save Note, both modes: undictated panels stay empty, and today's note says vitals were not dictated",
+  "needs": [
+    "seed",
+    "generate",
+    "max-turns",
+    "oracle-regex",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Blocked",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "cp1-hosp-ai-check-panels.md",
+      "verdict": "Blocked",
+      "url": null,
+      "problems": [
+        "checkpoint was never saved"
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp2-hosp-ai-check-note.md",
+      "verdict": "Blocked",
+      "url": null,
+      "problems": [
+        "checkpoint was never saved"
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp3-snf-ai-check-panels.md",
+      "verdict": "Blocked",
+      "url": null,
+      "problems": [
+        "checkpoint was never saved"
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp4-snf-ai-check-note.md",
+      "verdict": "Blocked",
+      "url": null,
+      "problems": [
+        "checkpoint was never saved"
+      ],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(session)",
+      "verdict": "Blocked",
+      "problems": [
+        "no session log (mcp/session-*/session.md): the forbidden-action audit could not run"
+      ],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 1,
+    "costUsd": 0,
+    "durationMs": 433,
+    "isError": true
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": true,
+  "unit": "P30",
+  "covers": [
+    "TC-10/S30"
+  ],
+  "evidenceDir": "generateddev/20261015predev/p30",
+  "caseFile": "cases/generated-dev/2026-10-15-pre-dev/P30.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

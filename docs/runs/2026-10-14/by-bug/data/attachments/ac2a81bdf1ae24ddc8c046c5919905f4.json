@@ -1,0 +1,476 @@
+{
+  "ref": "TC-14/S17",
+  "title": "TC-14/S17 Nursing Home notes: no signature or date line and no 'yesterday' (N-18, N-19 judged; N-20 recorded) (live note model)",
+  "dataset": "gen-notes-a",
+  "target": "dev",
+  "at": "2026-10-15T09:34:34.193Z",
+  "cells": [
+    {
+      "name": "N-18 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-18 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nWeight has declined from 61.4 kg on October 1 to 60.2 kg today, a loss of 1.2 kg over two weeks. Oral intake has decreased; the resident is now eating approximately half of her meals, compared to eating well at the last visit.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nWeight: 60.2 kg today, down from 61.4 kg two weeks ago.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nWeight loss: The resident has lost 1.2 kg over the past two weeks and is consuming only approximately half of her meals. Nutritional supplementation is being initiated to support intake and address the declining weight trend.\n\nAssessment and Plan\n\nWeight loss — The resident presents with progressive weight loss of 1.2 kg over two weeks and decreased oral intake to approximately half meals. Nutritional support is being implemented.\n\n1. Add nutritional supplement shake twice daily to support caloric intake and address weight loss.\n2. Monitor weight weekly and reassess oral intake.\n3. Continue current medications as previously prescribed.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 10225,
+            "providerMs": 10217,
+            "appMs": 8,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude two weeks|2 weeks",
+            "ok": true,
+            "detail": "found 'two weeks'"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-19 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-19 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nResident ambulating at baseline with walker. No new pain reported. Neuro checks completed overnight with normal results.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nFall without injury (Oct 14): Resident walking at baseline with walker. Neuro checks normal overnight. No acute complications.\n\nMedication Changes\n\nNot dictated.\n\nAssessment and Plan\n\nFall without injury: Resident recovering well from fall without injury sustained on Oct 14. Ambulation at baseline with walker and no new pain. Neuro checks completed with normal results overnight.\n\n1. Discontinue neuro checks.\n2. Continue current care plan and monitor for any new symptoms or falls.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3249,
+            "providerMs": 3244,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-20 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "recordOnly yesterday: present ('yesterday')",
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-20 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nFall occurred yesterday evening without reported injury. Resident ambulating at baseline today.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nFall — resident fell yesterday evening without injury. Ambulating at baseline. Continue fall precautions.\n\nMedication Changes\n\nNot dictated.\n\nAssessment and Plan\n\nFall — resident sustained a fall yesterday evening without apparent injury and is ambulating at baseline today. Will continue fall precautions.\n\n1. Continue fall precautions.\n2. Monitor for any delayed signs of injury.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2793,
+            "providerMs": 2785,
+            "appMs": 8,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "recordOnly yesterday",
+            "ok": null,
+            "detail": "present ('yesterday')"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "U9 (TFA-92592 AC 10): 2/2 notes have no signature / date line and no 'yesterday' (N-18 also keeps 'two weeks')",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "failing": []
+      }
+    },
+    {
+      "name": "N-20 (Q6): the dictated 'yesterday' in the note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "yesterday": true,
+        "note": "Interval Changes Since Last Visit\n\nFall occurred yesterday evening without reported injury. Resident ambulating at baseline today.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nFall — resident fell yesterday evening without injury. Ambulating at baseline. Continue fall precautions.\n\nMedication Changes\n\nNot dictated.\n\nAssessment and Plan\n\nFall — resident sustained a fall yesterday evening without apparent injury and is ambulating at baseline today. Will continue fall precautions.\n\n1. Continue fall precautions.\n2. Monitor for any delayed signs of injury."
+      },
+      "ref": "Q6"
+    }
+  ],
+  "shots": []
+}

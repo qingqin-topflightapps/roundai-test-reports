@@ -1,0 +1,1243 @@
+{
+  "ref": "TC-14/S11",
+  "title": "TC-14/S11 AI Check 1, Hospital: H-01–H-05 with no exam dictated, H-26 with one finding (live note model)",
+  "dataset": "gen-notes-a",
+  "target": "dev",
+  "at": "2026-10-15T09:31:49.751Z",
+  "cells": [
+    {
+      "name": "H-01 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-01 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "SUBJECTIVE\n\nThe patient reports that her cough is better and she slept through the night.\n\nOBJECTIVE\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTESTING RESULTS\n\nWhite blood cell count 11.2 (down from 14.0).\n\nASSESSMENT\n\nPatient is a 68-year-old with no past medical history documented in the available records who presented with community-acquired pneumonia. She was admitted and started on intravenous ceftriaxone and azithromycin. Now on day 3 of antibiotic therapy, she remains afebrile overnight with improving leukocytosis, and her cough has improved. She is tolerating the current regimen well and is being considered for transition to oral therapy pending continued clinical stability.\n\nPLAN\n\n1. Continue intravenous ceftriaxone and azithromycin today; transition to oral cefpodoxime tomorrow if patient remains afebrile.\n\n2. Discuss discharge planning with family; anticipate discharge home this weekend pending continued clinical improvement and tolerance of oral antibiotics.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5085,
+            "providerMs": 5075,
+            "appMs": 10,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude not documented|not examined|not dictated|not performed",
+            "ok": true,
+            "detail": "found 'not documented'"
+          },
+          {
+            "id": "mustNotInclude clear to auscultation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude crackles",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude rhonchi",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude regular rate",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no acute distress",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude alert and oriented",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude non-tender",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no edema",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude well-appearing",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude normal breath sounds",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no murmur",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no wheez",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "sectionSays exam",
+            "ok": true,
+            "detail": "section 'OBJECTIVE', 'Physical examination' says it"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-02 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "sectionSays exam: section 'OBJECTIVE' reads: OBJECTIVE: "
+        ],
+        "recorded": [
+          "recordOnly 40 mg: absent",
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-02 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "SUBJECTIVE\n\nThe patient reports that breathing is easier and he was able to lie flat last night.\n\nOBJECTIVE\n\nVital Signs: not dictated today\n\nPhysical Examination\n\nNot documented in today's dictation\n\nTESTING RESULTS\n\nNot provided\n\nASSESSMENT\n\nPatient is a 79-year-old with a history of congestive heart failure who presented with exacerbation. He has been managed with intravenous diuretics this admission, with net negative fluid balance of 1.6 liters and weight reduction from 84.0 kg to 82.4 kg. Clinically, he demonstrates improvement with resolution of orthopnea — now able to lie flat — and subjective improvement in dyspnea. The plan is to transition from intravenous to oral diuretic therapy and continue close monitoring with daily weights and strict fluid intake and output records. Cardiology will evaluate him today.\n\nPLAN\n\n1. Continue intravenous furosemide 40 twice daily for one more day, then transition to oral diuretic therapy for congestive heart failure exacerbation.\n\n2. Monitor daily weights and maintain strict intake and output records.\n\n3. Cardiology to evaluate today.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5110,
+            "providerMs": 5104,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude not documented|not examined|not dictated|not performed",
+            "ok": true,
+            "detail": "found 'not documented'"
+          },
+          {
+            "id": "mustNotInclude jugular venous",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude JVD",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude bibasilar",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude crackles",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude lungs are clear",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude clear to auscultation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude regular rate",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no acute distress",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude alert and oriented",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no peripheral edema",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no edema",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude pitting",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude spironolactone",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude metolazone",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude ACE inhibitor",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude lisinopril",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude sacubitril",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude potassium chloride",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude echocardiogram",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude fluid restriction",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude low-sodium",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude consider",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude recommend",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "sectionSays exam",
+            "ok": false,
+            "detail": "section 'OBJECTIVE' reads: OBJECTIVE: "
+          },
+          {
+            "id": "recordOnly 40 mg",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-03 (hospital, hp): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "sectionSays exam: no 'exam' section found; headings: "
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-03 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Chief Complaint\n\nLeft lower leg cellulitis.\n\nHistory of Present Illness\n\nThe patient is a 55-year-old who presented with redness and swelling of the left lower leg for three days prior to admission. He was admitted overnight and started on intravenous cefazolin. On examination today, he reports that the leg hurts less than it did last night.\n\nPast Medical History\n\nNot provided.\n\nMedications\n\nCefazolin — dose not specified in dictation.\n\nAllergies\n\nNot provided.\n\nSocial History\n\nNot provided.\n\nFamily History\n\nNot provided.\n\nReview of Systems\n\nNot documented in today's dictation.\n\nPhysical Examination\n\nNot documented in today's dictation.\n\nTesting Results\n\nNot provided.\n\nAssessment\n\nThe patient is a 55-year-old admitted with left lower leg cellulitis, presenting with three days of redness and swelling. He has been started on intravenous cefazolin and reports symptomatic improvement, with decreased pain compared to the prior night. The clinical picture is consistent with cellulitis; deep venous thrombosis must be excluded to guide further management. He will continue antibiotic therapy with close monitoring of the cellulitis borders and clinical response.\n\nPlan\n\n1. Continue intravenous cefazolin for left lower leg cellulitis.\n\n2. Mark the cellulitis borders to assess progression or improvement.\n\n3. Elevate the left lower leg to reduce swelling.\n\n4. Obtain ultrasound of the left lower extremity to rule out deep venous thrombosis.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5426,
+            "providerMs": 5420,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude not documented|not examined|not dictated|not performed",
+            "ok": true,
+            "detail": "found 'not documented'"
+          },
+          {
+            "id": "mustNotInclude warm to touch",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude tender to palpation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude fluctuance",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no crepitus",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude pedal pulses",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude lymphangitic",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude clear to auscultation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude regular rate",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no acute distress",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude alert and oriented",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "sectionSays exam",
+            "ok": false,
+            "detail": "no 'exam' section found; headings: "
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-04 (hospital, consult): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "mustNotInclude prerenal: in: The clinical picture is most consistent with prerenal azotemia related to volume depletion from decreased oral intake.",
+          "sectionSays exam: no 'exam' section found; headings: Laboratory Data | Imaging and Diagnostic Studies"
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-04 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Consulting Service and Requesting Provider\n\nNephrology consultation requested by the primary medical team.\n\nReason for Consultation\n\nEvaluation of acute kidney injury with rising creatinine.\n\nHistory of Present Illness\n\nThe patient is a 72-year-old admitted with acute kidney injury. Creatinine has risen to 2.1 from a baseline of 1.0 on admission. The patient has been eating poorly during the hospitalization. Nephrology was consulted to evaluate the etiology and management of the rising creatinine and to guide fluid and medication management.\n\nPast Medical History\n\nNot provided.\n\nMedications\n\nNot provided.\n\nAllergies\n\nNot provided.\n\nSocial History\n\nNot provided.\n\nFamily History\n\nNot provided.\n\nReview of Systems\n\nNot documented in the dictation.\n\nPhysical Examination\n\nNot documented in the dictation.\n\nTesting Results\n\nLaboratory Data:\nCreatinine 2.1 (elevated from admission baseline of 1.0).\n\nImaging and Diagnostic Studies:\nNot provided.\n\nAssessment\n\nThe patient is a 72-year-old with acute kidney injury presenting with rising creatinine from 1.0 to 2.1 in the setting of poor oral intake. The clinical picture is most consistent with prerenal azotemia related to volume depletion from decreased oral intake. The patient requires aggressive fluid resuscitation, careful medication management to avoid further renal injury, and imaging to exclude structural or obstructive causes. Nephrology recommends holding angiotensin-converting enzyme inhibitors during the acute phase, initiating intravenous fluid repletion, and obtaining renal ultrasound to assess for hydronephrosis or other structural abnormalities. Contrast agents should be avoided given the elevated creatinine and risk of contrast-induced nephropathy.\n\nRecommendations\n\n1. Hold lisinopril until creatinine stabilizes and oral intake improves.\n\n2. Initiate intravenous fluid resuscitation at 75 per hour.\n\n3. Obtain renal ultrasound to evaluate for hydronephrosis, obstruction, or other structural renal pathology.\n\n4. Avoid iodinated contrast agents given elevated creatinine and acute kidney injury.\n\n5. Recheck serum creatinine and electrolytes in 24 hours to assess response to fluid resuscitation.\n\n6. Encourage oral intake as tolerated once the patient is able.\n\nWe will continue to follow. Thank you for allowing us to participate in this patient care.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 7693,
+            "providerMs": 7687,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude not documented|not examined|not dictated|not performed",
+            "ok": true,
+            "detail": "found 'not documented'"
+          },
+          {
+            "id": "mustNotInclude costovertebral",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude CVA tenderness",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude mucous membranes",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude skin turgor",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude clear to auscultation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude regular rate",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no edema",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no acute distress",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude alert and oriented",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude non-tender",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude prerenal",
+            "ok": false,
+            "detail": "in: The clinical picture is most consistent with prerenal azotemia related to volume depletion from decreased oral intake."
+          },
+          {
+            "id": "mustNotInclude pre-renal",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude acute tubular",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude metformin",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude Foley",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude urine electrolytes",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude FENa",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude urine sodium",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude consider",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "sectionSays exam",
+            "ok": false,
+            "detail": "no 'exam' section found; headings: Laboratory Data | Imaging and Diagnostic Studies"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-05 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "recordOnly 40 mg: present ('40 mg')",
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-05 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "SUBJECTIVE\n\nThe patient reports he is less short of breath and walked to the bathroom without stopping.\n\nOBJECTIVE\n\nVital Signs: Oxygen saturation to be weaned to maintain 88 to 92%.\n\nPhysical Examination: Not documented in today's dictation.\n\nTESTING RESULTS\n\nNot provided.\n\nASSESSMENT\n\nPatient is a 66-year-old with a history of COPD who presented with an exacerbation. He is on day 3 of a planned 5-day course of prednisone 40 and nebulizer therapy every 4 hours. Clinical improvement is evident, with decreased dyspnea and improved functional capacity. Oxygen requirements are being titrated to maintain oxygen saturation in the target range of 88 to 92%.\n\nPLAN\n\n1. Continue prednisone 40 mg, day 3 of 5, for COPD exacerbation.\n\n2. Continue nebulizers every 4 hours.\n\n3. Wean supplemental oxygen to maintain oxygen saturation 88 to 92%.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4727,
+            "providerMs": 4721,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude not documented|not examined|not dictated|not performed",
+            "ok": true,
+            "detail": "found 'not documented'"
+          },
+          {
+            "id": "mustNotInclude wheez",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude prolonged expiratory",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude accessory muscle",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude diminished breath",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude clear to auscultation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude regular rate",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no acute distress",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude alert and oriented",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no edema",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no cyanosis",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "sectionSays exam",
+            "ok": true,
+            "detail": "section 'OBJECTIVE', 'Physical Examination' says it"
+          },
+          {
+            "id": "recordOnly 40 mg",
+            "ok": null,
+            "detail": "present ('40 mg')"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-26 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "recordOnly not examined|not documented|not dictated: present ('not dictated')",
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-26 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nThe patient reports that his cough is better.\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical Examination\n\nFaint crackles at the right base.\n\nTesting Results\n\nNot provided.\n\nAssessment\n\nPatient is a 71-year-old with a history of community-acquired pneumonia who presented with cough and was admitted for inpatient management. He received ceftriaxone on day 1 of admission and remained afebrile overnight. On examination today, crackles persist at the right base, though the patient reports symptomatic improvement in his cough. He is clinically stable and tolerating the current antibiotic regimen well. The clinical picture remains consistent with community-acquired pneumonia responding to therapy.\n\nPlan\n\n1. Continue intravenous ceftriaxone; transition to oral antibiotics tomorrow if the patient remains afebrile.",
+        "diag": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4199,
+            "providerMs": 4195,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "mustInclude crackles",
+            "ok": true,
+            "detail": "found 'crackles'"
+          },
+          {
+            "id": "mustNotInclude clear to auscultation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no murmur",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude regular rate",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no edema",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude non-tender",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no acute distress",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude alert and oriented",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no wheez",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude normal breath sounds",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude well-appearing",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "recordOnly not examined|not documented|not dictated",
+            "ok": null,
+            "detail": "present ('not dictated')"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-26 (one dictated finding; a boundary outside the 9/10, Q2): the finding is kept and no other normal is added",
+      "kind": "record",
+      "ok": true,
+      "detail": [],
+      "ref": "Q2"
+    },
+    {
+      "name": "S11 zero-exam fixtures passing (the 9/10 is judged with S12)",
+      "kind": "record",
+      "ok": null,
+      "detail": "2/5"
+    },
+    {
+      "name": "verdict basis",
+      "kind": "record",
+      "ok": null,
+      "detail": "provisional: substring pre-screen (TFA-94229 AC 2 / Q19: Preston grades against EVALUATION_FRAMEWORK.md)"
+    }
+  ],
+  "shots": []
+}

@@ -1,0 +1,22 @@
+{
+  "TC-14/S08": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:15:28.468Z",
+    "title": "Generate opens Post-Round with the note, which survives a reload; a failed generation shows a clear error and keeps the dictation (both modes)",
+    "detail": "PW, local stack, both modes (not via lane A: two of S08's four titles, 'hospital encounter retries … the real note' and 'SNF encounter retries … the real note', forward the second generateNote to the configured model, which the tripwire forbids locally, and every title that saves a note queues a server billing job on 43c38a4f). The same steps with the note mocked at the socket: the first Generate fails → the explicit message ('The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.' / Nursing Home 'The visit dictation is saved, but the note couldn’t be generated. …'), the dictation stays in the box and in the database, no note is saved, the chart stays on the Encounter tab and Generate Note & Finish is offered again; the retry moves to Post-Round with the AI-Generated Note view and the generated text, note / noteGeneratedAt / template / status note-ready are stored, the generateNote request carries the dictation (the dictated source), and after a reload Post-Round still shows the note and the Encounter tab the dictation. Judged 11/11 per mode. Recorded: the wording is not the UAT's 'Note not generated' (Q18 / decision D7); Generate made no task-extraction call. Every Generate used a 'procedure-other' custom note template because on 43c38a4f saving a generated note queues a server billing job (billing/persistence.ts enqueueBilling → ai/billing.ts run) that no socket mock can answer and that would reach Bedrock on this stack; the template only changes the (mocked) model's instruction text. Tripwire: no model call at all during the run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-hosp-1-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-hosp-2-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-hosp-3-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-snf-1-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-snf-2-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-snf-3-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s08-snf.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "TC-22/S26": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:27:47.429Z",
+    "title": "Save & Extract fails, is slow, is retried or is tapped twice: dictation kept, tasks unchanged or applied once, a clear message",
+    "detail": "Local stack on main 43c38a4f; every model call the page makes is answered in the page by ext-support.ts (an ai/* call it is not told about is failed, never forwarded) and the tripwire showed no model call. Spec ext-tc22-s26-fail.spec.ts (copy of tc22-extract-fail.spec.ts with numeric task ids and its own evidence). Hospital 9/9 + 2/2, Nursing Home 9/9 + 2/2: (1) 'Notes saved, but task extraction failed. Tap again to retry.', text kept in the box and stored, tasks unchanged; (2) BMP and PT done once, the diet task once, weight open; (3) a repeat tap changes nothing; (4) two taps 121–123 ms apart → one request, button already disabled; (5) 'Extracting…' in all 35 samples of a 35 s answer, then the result. Recorded only (not in the then): in Nursing Home the failure also raises the global red banner, which is still on screen after the successful retry ('✓ Tasks updated — 2 completed, 1 added' under 'Notes saved, but task extraction failed…'); Hospital clears its message. Same as on e02167f.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s26-b43-rounding-slow.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s26-b43-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s26-b43-snf-slow.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s26-b43-snf.json"
+    ],
+    "method": "PW",
+    "pkg": "ext"
+  }
+}

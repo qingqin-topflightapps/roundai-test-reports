@@ -1,0 +1,16 @@
+{
+  "TC-10/S03": {
+    "status": "blocked",
+    "ranAt": "2026-10-15T08:43:16.865Z",
+    "title": "Existing pre-round notepad specs: fullscreen editor and points channel, typed text autosaves, a (mocked) dictation saved as reviewed — dictation cell blocked (local live-model guard)",
+    "detail": "Lane A on 43c38a4f (scripts/spec-matrix.mjs, Tim's tests by title from cases/e2e-titles.tsv regenerated for 43c38a4f; run under the local lock with the tripwire). 3 of 4 cells pass: chart.spec.ts 'entry opens a fullscreen editor with a separate manual-points channel' (AC 11), 'typed notes survive closing the editor' (AC 4), important-points.spec.ts 'Important Points is nested in the editor and add/delete persist' (U1's points half belongs to TFA-92590, in progress: recorded). The 4th cell, chart.spec.ts 'on-device dictation is reviewable and saved' (AC 3 dictation / AC 5), is blocked (local live-model guard): Tim's test presses Save Note without mocking the summary call, so its one Save Note reached ai/parsing:parsePreRoundNotes on the local stack's model (batch tripwire: 'model call parsing.parsePreRoundNotes +1'; the only model call any of this package's local runs made). Its assertion (the stored text equals the dictated text) held, but under the coordinator's rule it is not counted. The other two lane-A runs of chart.spec's summary-failure test press Save Note once, blocked by their own failFirst, and reach no model.",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/TC-10.results.json",
+      "runs/2026-10-14-local/matrix/TC-10.laneA.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

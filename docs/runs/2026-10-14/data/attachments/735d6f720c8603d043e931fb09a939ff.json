@@ -1,0 +1,90 @@
+{
+  "case": "TC-10-S15",
+  "title": "Admission reason does not drift on a same-day re-save: a day-3 complication never becomes the admitted-with reason, and the re-saved value replaces the earlier one",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "cp1-hosp-admission-anchor.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dshy3d5c3jzq57qtw8dzhf98gb5ed",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(a same-day trend may legitimately name the earlier value) fail: should not show \"5.6\" (in from \"heading \"Labs\"\" to \"heading \"Diagnostic Testing\"\")"
+      ]
+    },
+    {
+      "file": "cp2-hosp-tasks.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dshy3d5c3jzq57qtw8dzhf98gb5ed",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "cp3-hosp-tracker.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7dshy3d5c3jzq57qtw8dzhf98gb5ed",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(no duplicate tracker row (recorded per the oracle)) pass: /^(?![^\\n]*⚡)[^\\n]*(vancomycin)[^\\n]*$/im matches 1 time (in from \"]: Medication Tracker\")",
+        "(no duplicate tracker row (recorded per the oracle)) pass: /^(?![^\\n]*⚡)[^\\n]*(ceftriaxone)[^\\n]*$/im matches 1 time (in from \"]: Medication Tracker\")",
+        "(no duplicate tracker row (recorded per the oracle)) pass: /^(?![^\\n]*⚡)[^\\n]*(azithromycin)[^\\n]*$/im matches 1 time (in from \"]: Medication Tracker\")"
+      ]
+    },
+    {
+      "file": "cp4-hosp-nodx-admission-anchor.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72g2bw2q2eha71kf13s3ybk18gbf1f",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(a same-day trend may legitimately name the earlier value) fail: should not show \"5.6\" (in from \"heading \"Labs\"\" to \"heading \"Diagnostic Testing\"\")"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(U2: the lab name and the value type (string or number) are the model's choice) pass: backend anchor-after labs[name=Potassium].value = \"4.6\"",
+        "(U2: the lab name and the value type (string or number) are the model's choice) pass: backend nodx-after labs[name=Potassium].value = \"4.6\""
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Nursing Home admission summary drift (Q6)",
+    "potassium 5.6 no longer shown as the current value; a trend naming it is noted, not failed",
+    "one course line for today; no duplicate task (no count rule for a task list)"
+  ],
+  "agent": {
+    "turns": 52,
+    "costUsd": 0.39360700000000004,
+    "durationMs": 169055,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

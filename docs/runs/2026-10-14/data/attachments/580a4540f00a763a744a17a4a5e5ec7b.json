@@ -1,0 +1,1089 @@
+{
+  "ref": "TC-14/S05",
+  "title": "TC-14/S05 Save & Extract outcome table on the live model, both modes",
+  "dataset": "gen-journeys",
+  "target": "dev",
+  "at": "2026-10-15T10:04:20.633Z",
+  "cells": [
+    {
+      "name": "Hospital: message, tasks, rows, calls",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "message": "✓ Tasks updated — 3 completed, 2 added, 1 medication change",
+        "tasks": [
+          {
+            "id": "1700000000501",
+            "text": "Follow up BMP",
+            "done": true
+          },
+          {
+            "id": "1700000000502",
+            "text": "PT eval",
+            "done": true
+          },
+          {
+            "id": "1700000000503",
+            "text": "Recheck weight in two weeks",
+            "done": false
+          },
+          {
+            "id": "1700000000504",
+            "text": "Wound care consult",
+            "done": false
+          },
+          {
+            "id": "1700000000505",
+            "text": "Follow up blood cultures",
+            "done": true
+          },
+          {
+            "id": "1792058646188",
+            "text": "Send a urine culture today",
+            "done": false
+          },
+          {
+            "id": "1792058646189",
+            "text": "Check for dysuria this afternoon",
+            "done": false
+          }
+        ],
+        "glargine": {
+          "id": "m-glar",
+          "name": "Insulin glargine 20 units nightly",
+          "status": "active",
+          "updatedAt": "2026-10-14T10:02:28.903Z"
+        },
+        "metoprolol": {
+          "changeDate": "Oct 15",
+          "changeType": "resumed",
+          "changed": true,
+          "changedNote": "Restarted metoprolol this morning",
+          "id": "m-meto",
+          "name": "Metoprolol tartrate 25 mg PO BID",
+          "status": "active",
+          "updatedAt": "2026-10-15T10:04:05.273Z"
+        },
+        "calls": [
+          {
+            "fn": "parsing.extractTasks",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 1859,
+            "providerMs": 1848,
+            "appMs": 11,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.extractMedicationEvents",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2547,
+            "providerMs": 2545,
+            "appMs": 2,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Hospital C1: 'Follow up BMP' closed",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C2: 'PT eval' closed",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C3: 'Wound care consult' (not mentioned) stays open",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C10: 'Follow up blood cultures' (still pending) stays open",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C11: the weight task stays open and is not duplicated",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C4 (T1): the conditional diet order is exactly one new task",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C9 (T1): the monitoring-phrased potassium order is exactly one new task",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C8 (Q4): the urine culture action item is exactly one new task",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C5 (T1): no task for the retraction 'leave glargine at 20'",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital C6: no task for the medication already given (metoprolol)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058646188",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058646189",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Hospital Q3: a dysuria task",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "dysuria": 1
+      },
+      "ref": "Q3"
+    },
+    {
+      "name": "Hospital C5: the glargine row is unchanged",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "id": "m-glar",
+        "name": "Insulin glargine 20 units nightly",
+        "status": "active",
+        "updatedAt": "2026-10-14T10:02:28.903Z"
+      }
+    },
+    {
+      "name": "Hospital C6 (U8): metoprolol taken off Held with today's change",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "changeDate": "Oct 15",
+        "changeType": "resumed",
+        "changed": true,
+        "changedNote": "Restarted metoprolol this morning",
+        "id": "m-meto",
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "updatedAt": "2026-10-15T10:04:05.273Z"
+      }
+    },
+    {
+      "name": "Nursing Home: message, tasks, rows, calls",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "message": "✓ Tasks updated — 3 completed, 2 added",
+        "tasks": [
+          {
+            "id": "1700000000501",
+            "text": "Follow up BMP",
+            "done": true
+          },
+          {
+            "id": "1700000000502",
+            "text": "PT eval",
+            "done": true
+          },
+          {
+            "id": "1700000000503",
+            "text": "Recheck weight in two weeks",
+            "done": false
+          },
+          {
+            "id": "1700000000504",
+            "text": "Wound care consult",
+            "done": false
+          },
+          {
+            "id": "1700000000505",
+            "text": "Follow up blood cultures",
+            "done": true
+          },
+          {
+            "id": "1792058662015",
+            "text": "Send a urine culture today",
+            "done": false
+          },
+          {
+            "id": "1792058662016",
+            "text": "Check for dysuria this afternoon",
+            "done": false
+          }
+        ],
+        "glargine": {
+          "id": "m-glar",
+          "name": "Insulin glargine 20 units nightly",
+          "status": "active",
+          "updatedAt": "2026-10-01T10:02:28.903Z"
+        },
+        "metoprolol": {
+          "changeDate": "Thu Oct 01 2026",
+          "changeType": "held",
+          "changedNote": "soft BP",
+          "id": "m-meto",
+          "name": "Metoprolol tartrate 25 mg PO BID",
+          "status": "held",
+          "updatedAt": "2026-10-01T10:02:28.903Z"
+        },
+        "calls": [
+          {
+            "fn": "parsing.extractTasks",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 1874,
+            "providerMs": 1868,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Nursing Home C1: 'Follow up BMP' closed",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C2: 'PT eval' closed",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C3: 'Wound care consult' (not mentioned) stays open",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C10: 'Follow up blood cultures' (still pending) stays open",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C11: the weight task stays open and is not duplicated",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C4 (T1): the conditional diet order is exactly one new task",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C9 (T1): the monitoring-phrased potassium order is exactly one new task",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C8 (Q4): the urine culture action item is exactly one new task",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C5 (T1): no task for the retraction 'leave glargine at 20'",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home C6: no task for the medication already given (metoprolol)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000501",
+          "text": "Follow up BMP",
+          "done": true
+        },
+        {
+          "id": "1700000000502",
+          "text": "PT eval",
+          "done": true
+        },
+        {
+          "id": "1700000000503",
+          "text": "Recheck weight in two weeks",
+          "done": false
+        },
+        {
+          "id": "1700000000504",
+          "text": "Wound care consult",
+          "done": false
+        },
+        {
+          "id": "1700000000505",
+          "text": "Follow up blood cultures",
+          "done": true
+        },
+        {
+          "id": "1792058662015",
+          "text": "Send a urine culture today",
+          "done": false
+        },
+        {
+          "id": "1792058662016",
+          "text": "Check for dysuria this afternoon",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Nursing Home Q3: a dysuria task",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "dysuria": 1
+      },
+      "ref": "Q3"
+    },
+    {
+      "name": "Nursing Home C5: the glargine row is unchanged",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "id": "m-glar",
+        "name": "Insulin glargine 20 units nightly",
+        "status": "active",
+        "updatedAt": "2026-10-01T10:02:28.903Z"
+      }
+    },
+    {
+      "name": "Nursing Home C6 (Q13): metoprolol after the Nursing Home Save & Extract",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "changeDate": "Thu Oct 01 2026",
+        "changeType": "held",
+        "changedNote": "soft BP",
+        "id": "m-meto",
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "held",
+        "updatedAt": "2026-10-01T10:02:28.903Z"
+      },
+      "ref": "Q13"
+    }
+  ],
+  "shots": [
+    "evidence/TC-14-S05-s05-hosp.png",
+    "evidence/TC-14-S05-s05-snf.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-14-S05-s05-hosp.png": 0,
+    "evidence/TC-14-S05-s05-snf.png": 0
+  },
+  "error": "Error: TC-14/S05: judged cells that failed"
+}

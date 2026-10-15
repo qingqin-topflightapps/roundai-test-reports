@@ -1,0 +1,18 @@
+{
+  "TC-22/S02": {
+    "status": "failed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:12:59.568Z",
+    "title": "Nursing Home pre-round: tasks dictated in the pre-round never reach the task list (no task request at all)",
+    "detail": "Local stack on main 43c38a4f; every model call the page makes is answered in the page by ext-support.ts (an ai/* call it is not told about is failed, never forwarded) and the tripwire showed no model call. The task extractor is a rule-based stand-in that can only find what the app sends it (args.content / args.openTasks), so the app's own request, cut, merge and storage are what is judged, not the model. Spec ext-tc22-s01-s03-uat-flow.spec.ts, judged 2/4. After Save Note on the Nursing Home pre-round with 'Follow up BMP. PT eval. Recheck weight in two weeks.' the page made one model call, ai/parsing:parsePreRoundNotes, and no ai/parsing:extractTasks; Post-Round → tasks says 'No tasks yet.' / '0 pending tasks' and nothing is stored. Because no request is ever sent, no model can change this (useSnfPreRoundProcess.ts has no task call, unchanged since e02167f), so it is judged here, not on dev. Against UAT TC-22 step 4 (repeat steps 1–3 in Nursing Home), TFA-92588 AC 10 ('Pre-round tasks appear in the task list', no context named) and TFA-92592 AC 14. Open question Q3: the p72 prototype comment above TASK_SYSTEM_PROMPT says pre-round task extraction was removed by design ('at the computer you just place the order yourself'), while the Hospital pre-round on main does harvest tasks.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s02-b43-nh-preround.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s02-b43-nh-preround-after-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s25-b43-prompt-review.txt"
+    ],
+    "method": "PW",
+    "productIssue": "Nursing Home: a physician who dictates follow-ups in the pre-round note ('Follow up BMP. PT eval. Recheck weight in two weeks.') gets no tasks at all — the task list stays 'No tasks yet.'; the Hospital pre-round with the same text makes them.",
+    "pkg": "ext"
+  }
+}

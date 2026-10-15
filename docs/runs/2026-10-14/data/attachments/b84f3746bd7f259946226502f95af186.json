@@ -1,0 +1,24 @@
+{
+  "TC-10/S12": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-15T08:21:48.000Z",
+    "title": "Day 2 with a failed summary on file → retry → Generate → today's note (live model, both modes)",
+    "detail": "Dev (<dev address>, build 43c38a4f deployed 2026-10-14 21:30Z), Quinn's dev session of 17:12 JST, agent unit through scripts/dev/run-unit(-plan).sh under runs/.dev.lock, run-id 2026-10-15-pre-dev; rows prefixed 'QA TC-10-Sxx ', deleted after (cleanup.json: 0 remaining, no other row changed, appMode restored). Unit U66 of cases/run-plan-dev.json (the matrix seed as written: yesterday's values without per-value stamps, so they read 'Date unknown' on 43c38a4f). Hospital passes cp1–cp5: today's dictation kept with the retry message, Generate disabled, the retry shows today's 132/80 and creatinine 1.6 and unlocks Generate, and today's note has 132/80 and none of the yesterday-only 38.9 / 91% / lactate 3.1 (it failed this on 10-14 — fixed by #100). Nursing Home fails cp8 and cp10: after the retry the regenerated Admission Summary lists 'Hypertension — BP 148/88 on file, 136/78 this morning', 'Low-grade fever — Temperature 38.2°C, monitor for infection' and 'Hypokalemia concern — Potassium 5.9 on current labs, monitor' (yesterday-only values as current problems; 5.9 is high, not low), and today's note says 'Low-Grade Fever … Temperature 38.2°C documented on file. Monitoring for infection.' (U14 / UAT 3.7). On the panel the yesterday-only temp and potassium read 'Date unknown' (not today's). Mechanism (code read on 43c38a4f): the Nursing Home hook passes no backgroundContext, so convex/ai/parsing.ts gives the background writer the patient context (bgContext = args.backgroundContext || args.patientContext), and that template (pre-round/snf-patient-context.md) lists yesterday's values as 'CURRENT VITALS ON FILE' / 'CURRENT LABS ON FILE' without dates; the Hospital background call gets its own context with no vitals or labs. The note is then built on that background. Known: B05 (Nursing Home half still reproduces; Hospital half fixed).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/U66.verdict.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/cp5-hosp-note.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/cp8-snf-retried-preround.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/cp10-snf-note.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/backend/res-retried.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/backend/res-note.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/backend/hosp-note.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s12-pre-dev/cleanup.json"
+    ],
+    "method": "AGENT",
+    "productIssue": "Nursing Home, day 2 after a failed summary and a successful retry: the Admission Summary shows yesterday's 38.2°C as 'Low-grade fever … monitor for infection' and yesterday's potassium 5.9 as 'Hypokalemia concern … on current labs', and today's generated note carries 'Low-Grade Fever … 38.2°C documented on file' — values nobody measured today presented as current problems.",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

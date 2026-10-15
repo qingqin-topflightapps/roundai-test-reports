@@ -1,0 +1,15 @@
+{
+  "TC-18/S22": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:52:08Z",
+    "title": "The billing call's log row carries the total and the AI provider's time",
+    "detail": "Dev 43c38a4f (deployed 2026-10-14 21:30Z), live model, run 17:46-18:17 JST under runs/.dev.lock and the dev-session run lock; only rows named 'QA TC18-BIL …' were created and all were deleted (59 cell rows at the end of D1, 8 more in the cleanup: 0 remaining, 0 changes to other rows). 59/59 billing.suggestBilling rows in diagnostics:list carry a numeric providerMs and durationMs >= providerMs, with the model. On 43c38a4f the matrix spec title no longer covers billing; Tim's billing-specific test ('background billing records timing and the enqueueing physician without a browser action') needs a live or credential-less backend.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/bil-1746/evidence/tc18-dev-d1-cells.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

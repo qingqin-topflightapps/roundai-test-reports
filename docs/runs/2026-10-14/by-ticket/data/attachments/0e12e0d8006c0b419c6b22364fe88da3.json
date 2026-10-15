@@ -1,0 +1,41 @@
+{
+  "name": "tc10-s27-pre-d-timeouts",
+  "at": "2026-10-15T08:41:06.488Z",
+  "checks": [
+    {
+      "id": "(d) the action rejects rather than hangs (T4, UAT 3.5)",
+      "ok": true,
+      "detail": "rejected=true after 62.5 s"
+    },
+    {
+      "id": "(d) recorded (Q10 / D8): the summary call gives up within ~30 s",
+      "ok": false,
+      "detail": "62.5 s to the error",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "d": {
+      "rejected": true,
+      "error": "Error: [AI request failed (connection/provider): {\"kind\":\"retryable\",\"name\":\"TimeoutError\",\"status\":null}] — could not reach the AI service: connection/provider problem, NOT your dictation. Often a temporary rate limit; wait ~30 seconds and tap Retry.",
+      "durationMs": 62508,
+      "calls": 16,
+      "perCallTimeoutsMs": [
+        20000,
+        9998,
+        9992,
+        9993
+      ],
+      "diagnostics": {
+        "userId": "physician-1",
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": false,
+        "durationMs": 62508,
+        "providerMs": 60006,
+        "promptChars": 658,
+        "error": "rate_limited"
+      }
+    }
+  }
+}

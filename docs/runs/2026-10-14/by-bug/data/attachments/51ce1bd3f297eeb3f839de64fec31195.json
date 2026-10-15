@@ -1,0 +1,104 @@
+{
+  "case": "TC-22-S16",
+  "title": "Look-alike tasks: a BMP result does not close the CBC task, a PT visit does not close the OT task, and a new short-acronym order is not merged away as a duplicate",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s16-w1-h.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7c6fbp29pgms25gs9d9grd3s8gaz14",
+      "problems": [
+        "\"task: Follow up BMP\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: Follow up CBC\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: PT eval\" occurs 2 times, expected exactly 1 (in from \"pending task\")",
+        "\"task: OT eval\" occurs 2 times, expected exactly 1 (in from \"pending task\")"
+      ],
+      "known": [
+        "no match for /\\b2 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "\"Reopen task: Follow up BMP\" occurs 0 times, expected exactly 1 (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend w1h-at tasks[id=7001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend w1h-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s16-w2-h.md",
+      "verdict": "Fail (known)",
+      "url": "/rounding/js79n002j2mxcdfn0h0qk0a59n8gar7q",
+      "problems": [],
+      "known": [
+        "\"Reopen task: Follow up BMP\" occurs 0 times, expected exactly 1 (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend w2h-at tasks[id=8001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(the lane-B row sets no add count; stored total recorded) pass: backend w2h-at tasks has 2 items",
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend w2h-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s16-w1-n.md",
+      "verdict": "Fail (known)",
+      "url": "/snf/jx76x9xvk8g302ye3cn5ekzf818gbt3k",
+      "problems": [],
+      "known": [
+        "no match for /\\b2 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "backend w1n-at tasks[id=7001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend w1n-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s16-w2-n.md",
+      "verdict": "Fail (known)",
+      "url": "/snf/jx7bv0xk36wnsv82k3t6zdrbwh8gbv34",
+      "problems": [],
+      "known": [
+        "backend w2n-at tasks[id=8001].done is false, expected true — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(the lane-B row sets no add count; stored total recorded) pass: backend w2n-at tasks has 2 items",
+        "(3.9: model of the Save & Extract call; fellBackFrom / durationMs / providerMs in the read file) pass: backend w2n-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "W2: on dev a model miss and a merge drop cannot be told apart (no raw new_tasks in diagnostics:list); the local lane-B run quotes them."
+  ],
+  "agent": {
+    "turns": 67,
+    "costUsd": 0.4563882,
+    "durationMs": 229675,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

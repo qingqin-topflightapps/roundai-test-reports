@@ -1,0 +1,208 @@
+{
+  "case": "TC-22-S04",
+  "title": "AI Check, Hospital (5 of the 10): the UAT script on five patients, pre-round harvest → Save & Extract",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s04-h01-preround.md",
+      "verdict": "Fail",
+      "url": "/rounding/js72m1mff5cfqfbk4v1wdvx2n18gbqfw",
+      "problems": [
+        "no match for /\\b3 pending tasks?\\b/i (in from \"pending task\")",
+        "/complete task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "backend h01-pre tasks has 2 items, expected 3",
+        "backend h01-pre tasks[done=false] has 2 items, expected 3"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Hospital pre-round processing) pass: backend h01-pre-diag [fn=parsing.parsePreRoundNotes].model exists",
+        "(3.9: model of the pre-round task harvest; durationMs / providerMs in the read file (3.5, S19)) pass: backend h01-pre-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h01-extract.md",
+      "verdict": "Fail",
+      "url": "/rounding/js72m1mff5cfqfbk4v1wdvx2n18gbqfw",
+      "problems": [
+        "/complete task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "/(?:complete|reopen) task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "no match for /complete task: (?=[^\"\\n]*(?:clear|diet))(?=[^\"\\n]*(?:pain))(?=[^\"\\n]*(?:\\b4\\b|four))[^\"\\n]*/i (in from \"pending task\")",
+        "backend h01-ext tasks has 2 items, expected 4"
+      ],
+      "known": [
+        "no match for /\\b2 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model of the Save & Extract call (S19's dev half)) pass: backend h01-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h01-retap.md",
+      "verdict": "Fail",
+      "url": "/rounding/js72m1mff5cfqfbk4v1wdvx2n18gbqfw",
+      "problems": [
+        "/complete task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "/(?:complete|reopen) task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "no match for /complete task: (?=[^\"\\n]*(?:clear|diet))(?=[^\"\\n]*(?:pain))(?=[^\"\\n]*(?:\\b4\\b|four))[^\"\\n]*/i (in from \"pending task\")",
+        "/(?:complete|reopen) task: [^\"\\n]*(?:clear|diet)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "backend h01-retap tasks has 2 items, expected 4"
+      ],
+      "known": [
+        "no match for /\\b2 pending tasks?\\b/i (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(the second call ran (a disabled button is noted in notes.md instead)) pass: backend h01-retap-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h02-preround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js79e7h3ty8tq8eeq0axkz8j418gat8q",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Hospital pre-round processing) pass: backend h02-pre-diag [fn=parsing.parsePreRoundNotes].model exists",
+        "(3.9: model of the pre-round task harvest; durationMs / providerMs in the read file (3.5, S19)) pass: backend h02-pre-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h02-extract.md",
+      "verdict": "Fail",
+      "url": "/rounding/js79e7h3ty8tq8eeq0axkz8j418gat8q",
+      "problems": [
+        "no match for /\\b3 pending tasks?\\b/i (in from \"pending task\")",
+        "/reopen task: [^\"\\n]*(?:magnesium|\\bmag\\b)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "backend h02-ext tasks[done=true] has 1 item, expected 2"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call (S19's dev half)) pass: backend h02-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h03-preround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7fk6ktf7a19b5hwghpq4hz2s8gaqhm",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Hospital pre-round processing) pass: backend h03-pre-diag [fn=parsing.parsePreRoundNotes].model exists",
+        "(3.9: model of the pre-round task harvest; durationMs / providerMs in the read file (3.5, S19)) pass: backend h03-pre-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h03-extract.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7fk6ktf7a19b5hwghpq4hz2s8gaqhm",
+      "problems": [
+        "no match for /\\b3 pending tasks?\\b/i (in from \"pending task\")",
+        "/reopen task: [^\"\\n]*(?:culture)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "backend h03-ext tasks[done=true] has 1 item, expected 2"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call (S19's dev half)) pass: backend h03-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h04-preround.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7bwc3qzfnsd407p1p15grzk58gapwx",
+      "problems": [
+        "no match for /\\b3 pending tasks?\\b/i (in from \"pending task\")",
+        "/complete task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "backend h04-pre tasks has 2 items, expected 3",
+        "backend h04-pre tasks[done=false] has 2 items, expected 3"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Hospital pre-round processing) pass: backend h04-pre-diag [fn=parsing.parsePreRoundNotes].model exists",
+        "(3.9: model of the pre-round task harvest; durationMs / providerMs in the read file (3.5, S19)) pass: backend h04-pre-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h04-extract.md",
+      "verdict": "Fail",
+      "url": "/rounding/js7bwc3qzfnsd407p1p15grzk58gapwx",
+      "problems": [
+        "no match for /\\b3 pending tasks?\\b/i (in from \"pending task\")",
+        "/reopen task: [^\"\\n]*(?:bmp|basic metabolic|metabolic panel|chem)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "/complete task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "/(?:complete|reopen) task: [^\"\\n]*(?:weigh)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "no match for /complete task: (?=[^\"\\n]*(?:diet))(?=[^\"\\n]*(?:tolerat|breakfast))[^\"\\n]*/i (in from \"pending task\")",
+        "backend h04-ext tasks has 3 items, expected 5",
+        "backend h04-ext tasks[done=true] has 1 item, expected 2"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call (S19's dev half)) pass: backend h04-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h05-preround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js71h35xh30rz6bkd8my0mdaeh8gareh",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Hospital pre-round processing) pass: backend h05-pre-diag [fn=parsing.parsePreRoundNotes].model exists",
+        "(3.9: model of the pre-round task harvest; durationMs / providerMs in the read file (3.5, S19)) pass: backend h05-pre-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "s04-h05-extract.md",
+      "verdict": "Fail",
+      "url": "/rounding/js71h35xh30rz6bkd8my0mdaeh8gareh",
+      "problems": [
+        "/reopen task: [^\"\\n]*(?:sputum)/i matches 0 times, expected exactly 1 (in from \"pending task\")",
+        "no match for /complete task: (?=[^\"\\n]*(?:peak flow|\\bpef))(?=[^\"\\n]*(?:twice|\\bbid\\b|two times|2 times|2x|q ?12))[^\"\\n]*/i (in from \"pending task\")",
+        "backend h05-ext tasks has 4 items, expected 5",
+        "backend h05-ext tasks[done=true] has 1 item, expected 2"
+      ],
+      "known": [],
+      "recorded": [
+        "(3.9: model of the Save & Extract call (S19's dev half)) pass: backend h05-ext-diag [fn=parsing.extractTasks].model exists"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "3.2: a fixture passes when both of its checkpoints pass (s04-hNN-preround.md and s04-hNN-extract.md); H-01's re-tap checkpoint is reported beside it (Q5 c) and not counted. Count passing fixtures over S04 + S05 (dev runs): TC-22 passes at ≥ 9/10, every failure quoted from the snapshot and backend/<read>.json. H-01 failing only on checks with the Q7 knownGap is Fail (known) and still a failure toward 9/10.",
+    "Q1/Q2: a missing conditional or monitoring task fails the newTask check whose note names its kind, so the Q1 answer can be applied without a re-run.",
+    "3.9 / 3.5 (S19's dev half): model, fellBackFrom, durationMs and providerMs of parsing.parsePreRoundNotes and both parsing.extractTasks calls from backend/hNN-pre-diag.json and hNN-ext-diag.json; a call over 30 s is flagged for review, not Fail."
+  ],
+  "agent": {
+    "turns": 154,
+    "costUsd": 1.3521752000000007,
+    "durationMs": 351763,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "43c38a4ff4dfff6a4aacaa248f433cbc0c3256a2",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-14T21:30:04Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

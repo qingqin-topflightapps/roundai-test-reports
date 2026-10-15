@@ -1,0 +1,20 @@
+{
+  "TC-20/S15": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:55:54.609Z",
+    "title": "Tap Generate, leave the chart at once: the note still lands and the dashboard row shows it",
+    "detail": "PW, local stack, both modes (generateNote mocked, answered 8 s after it is asked). Generate, then at once the chart's back arrow, the list's Dashboard button (in-app, no reload), 60 s on the Rounding Dashboard: the note landed while the chart was closed (stored, status note-ready), the patient's row shows 'Note Ready' and the Pending tile reads 0, without the chart being opened; the row then opened the chart, whose Post-Round shows the note written from the dictation ('lungs clear') and no stuck generating state. Judged U6 5/5 per mode. Recorded: Total tile 1 (U4, TFA-92598 in progress: todo); U8 timings need the live model (dev: notes.generateNote 3–8 s in the TC-14/S07 / S26 dev runs). Note: this passes because the page that started the call stays alive in in-app navigation; after a reload or a closed tab the note is lost (TC-14/S07 cells B/D, OAT-03/S15, TC-25/S14). Every Generate used a 'procedure-other' custom note template because on 43c38a4f saving a generated note queues a server billing job (billing/persistence.ts enqueueBilling → ai/billing.ts run) that no socket mock can answer and that would reach Bedrock on this stack; the template only changes the (mocked) model's instruction text. Tripwire: no model call at all during the run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s15-hosp-dashboard-60s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s15-hosp-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s15-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s15-snf-dashboard-60s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s15-snf-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s15-snf.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "TC-14/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:57:00.361Z",
+    "title": "Wrong browser clock and another time zone: the note's 'today' values and dates match a correctly set browser (local half: what the note is given)",
+    "detail": "Local half (the note text is AI; it is written from exactly these inputs). PW, local stack, one physician, charts like H-18 (vitals 26 h ago, labs 27 h ago) and N-21 (vitals 14 days ago). Three browsers: correct (Asia/Tokyo, real clock), ahead (clock +24 h, same zone) and ahead+Honolulu (the case's literal context). Judged U17: the ahead browser sends the same VITALS / LABS / EARLIER lines and the same note date ('October 15, 2026') and shows the same panel labels ('Oct 14', 'Oct 1') as the correct browser, both modes (the app reads 'today' from the server-corrected clock, src/domain/clock.ts) — passed 4/4. Recorded (Q20, whose zone defines 'today'): the Honolulu browser cuts the day in its own zone — note date 'October 14, 2026', labels 'Oct 13' / 'Sep 30' — by design (clock.ts: 'the calendar day is still cut in the device's time zone'). Recorded (known B18, TFA-92584): the stored noteGeneratedAt / transcriptDate come from the device clock (Oct 16 from the ahead browser). Every Generate used a 'procedure-other' custom note template because on 43c38a4f saving a generated note queues a server billing job (billing/persistence.ts enqueueBilling → ai/billing.ts run) that no socket mock can answer and that would reach Bedrock on this stack; the template only changes the (mocked) model's instruction text. Tripwire: no model call at all during the run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s27-ahead-honolulu-hospital-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s27-ahead-honolulu-snf-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s27-ahead-hospital-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s27-ahead-snf-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s27-correct-hospital-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s27-correct-snf-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s27.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

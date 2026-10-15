@@ -1,0 +1,216 @@
+{
+  "name": "tc21-s28",
+  "at": "2026-10-15T09:00:44.473Z",
+  "checks": [
+    {
+      "id": "setup: in most cycles the return checkpoint was taken while the note call was still running",
+      "ok": true,
+      "detail": "10/10 cycles returned while generating"
+    },
+    {
+      "id": "while away / right after returning, Post-Round shows a 'generating' state (10/10 cycles)",
+      "ok": false,
+      "detail": "0/10 cycles showed a generating state; see cycles[].cp3"
+    },
+    {
+      "id": "the note is there on return once the call finishes (10/10 cycles)",
+      "ok": true,
+      "detail": "10/10"
+    }
+  ],
+  "data": {
+    "cycles": [
+      {
+        "cycle": 1,
+        "cp3MsAfterPress": 771,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 2,
+        "cp3MsAfterPress": 762,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 3,
+        "cp3MsAfterPress": 843,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 4,
+        "cp3MsAfterPress": 763,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 5,
+        "cp3MsAfterPress": 766,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 6,
+        "cp3MsAfterPress": 749,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 7,
+        "cp3MsAfterPress": 818,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 8,
+        "cp3MsAfterPress": 750,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 9,
+        "cp3MsAfterPress": 751,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      },
+      {
+        "cycle": 10,
+        "cp3MsAfterPress": 765,
+        "callAtCp3": "in flight",
+        "cp3": {
+          "generating": null,
+          "noNoteYet": true,
+          "completeFirst": true,
+          "noteShown": false
+        },
+        "cp4": {
+          "noteShown": true,
+          "failure": false
+        },
+        "stored": {
+          "note": true,
+          "status": "note-ready"
+        }
+      }
+    ],
+    "timings": "not measurable locally: model calls are mocked at the socket (aiCallLog rows exist only on dev)"
+  }
+}

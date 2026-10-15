@@ -1,0 +1,23 @@
+{
+  "TC-10/S15": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:21:18.000Z",
+    "title": "Admission reason does not drift on a same-day re-save (live summary + live classifier; Hospital, with and without a header diagnosis)",
+    "detail": "Dev (<dev address>, build 43c38a4f deployed 2026-10-14 21:30Z), Quinn's dev session of 17:12 JST, agent unit through scripts/dev/run-unit(-plan).sh under runs/.dev.lock, run-id 2026-10-15-pre-dev; rows prefixed 'QA TC-10-Sxx ', deleted after (cleanup.json: 0 remaining, no other row changed, appMode restored). Unit P15 (new plan). Day-1 note then the day-3 note (new fever 39.1, watery diarrhea, C. diff toxin positive, oral vancomycin, potassium 4.6), same day, on a chart with the header diagnosis and on one created without it. Stored and shown: header still 'Community-acquired pneumonia' (the no-diagnosis chart has none); one-liners '72-year-old woman with COPD and CKD stage 3 admitted with community-acquired pneumonia, now improving on ceftriaxone and azithromycin with new C. difficile infection started on oral vancomycin' and '… admitted with community-acquired pneumonia, now s/p C. difficile infection (toxin positive, day 3) on oral vancomycin …' — the admitted-with clause keeps the intake diagnosis in both (AC 2b); Labs potassium 4.6 (+ 'C. difficile toxin: positive'); one course line for today; tracker one row each for ceftriaxone, azithromycin, vancomycin 125 mg; no tasks (the texts have no plan). The unit's oracle said Fail on cp1 / cp4 only because its regex rejects any complication word before the first period of the one-liner — it hit the 'now … with new C. difficile infection' status clause (and 'C.' itself ends no sentence) — while the case's 'then' asks that the admitted-with clause name the pneumonia, not the complication. Re-judged with the same scripts/oracle.mjs on the same evidence, the regex aimed at the admitted-with clause ('admitted (with|for) [^,.;•]*(fever|diarrh|c. diff|…)') and the 'Medication Tracker' anchor fixed (P15.clausefix.case.json): Pass on all 4 checkpoints and the backend checks. This reading is ours (Quinn may hold the stricter one). Recorded: 's/p C. difficile infection' for an active infection (wording); potassium 5.6 still named as the trend ('down from 5.6').",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/P15.verdict.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/P15.clausefix.verdict.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/P15.clausefix.case.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/cp1-hosp-admission-anchor.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/cp4-hosp-nodx-admission-anchor.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/cp3-hosp-tracker.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/backend/anchor-after.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/backend/nodx-after.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc10-s15-pre-dev/cleanup.json"
+    ],
+    "method": "AGENT",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

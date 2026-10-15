@@ -1,0 +1,16 @@
+{
+  "TC-14/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:33:04.162Z",
+    "title": "AI Check 1: no exam dictated gives 'not examined / not documented', not a normal exam (Nursing Home, 5 of the 10), plus a one-finding boundary",
+    "detail": "Dataset gen-notes-a on dev (live Haiku 4.5), through the app's UI. Checks re-applied offline to the stored notes with the corrected section reader (gen-notecheck.ts: the run-time reader missed Title-Case headings such as 'Physical Examination' and split on inline 'Vital Signs: …' lines; runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-a.json). Nursing Home zero-exam fixtures 5/5: no exam finding or normal was supplied; the snf-progress / snf-admission notes have no exam section and no exam line, so 'says not examined' is recorded under Q21 for all five. Pool with S11: 9/10 (H-04 the one failure) — AI Check 1 passes (provisional, Q19). The run-time cell for the pool read 7/10 because of the section-reader bug above; the stored notes re-scored give 9/10. N-26 (one finding) passed. Recorded: N-05 '… not specified in dictation' (Q16); 'Vital signs: not dictated today' in the notes with no vitals (the #100 rule).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-notes-a/evidence/TC-14-S12.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/rescore-gen-notes-a.json"
+    ],
+    "method": "AICHECK",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

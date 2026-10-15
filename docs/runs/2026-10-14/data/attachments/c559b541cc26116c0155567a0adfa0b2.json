@@ -1,0 +1,38 @@
+{
+  "TC-22/S16": {
+    "status": "failed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T10:24:23Z",
+    "title": "Look-alike tasks on dev: no look-alike closed and the new CBC order kept (pass); 'BMP came back' left BMP open in all four charts (UAT known gap)",
+    "detail": "Dev, build 43c38a4f, agent unit T22-S16 (re-run 19:20–19:24 JST after the first attempt hit the API limit before the agent started; rows 'QA TC-22-S16 …' deleted after). W1 (open 'Follow up BMP', 'Follow up CBC', 'PT eval', 'OT eval'; 'BMP came back, creatinine 1.1. PT saw her, walking with a walker.'), both contexts: PT eval closed, CBC and OT eval left open, nothing added (U4 pass); 'Follow up BMP' not closed. W2 (open 'Follow up BMP'; '…Follow up a CBC tomorrow morning.'), both contexts: the model proposed 'Follow up CBC tomorrow morning' and it was kept (the dedup drop of S16's local run needs the shorter wording 'Follow up CBC'); 'Follow up BMP' not closed. Every failure is the BMP closure on the 'came back' wording: Fail (known), the UAT's phrasing-sensitivity gap (Q7). The oracle's Hospital W1 'occurs 2 times' lines are the 'Delete task: …' button artifact. Haiku 4.5, no fallback.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/verdict.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/notes.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w1-h.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w1-n.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w2-h.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w2-n.md",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w1-h.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w1-n.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w2-h.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/s16-w2-n.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w1h-at.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w1h-before.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w1h-diag.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w1n-at.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w1n-before.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w1n-diag.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w2h-at.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w2h-before.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w2h-diag.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w2n-at.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w2n-before.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/tc22-s16-b43-dev/backend/w2n-diag.json"
+    ],
+    "method": "AICHECK",
+    "known": true,
+    "productIssue": "'BMP came back, creatinine 1.1' left 'Follow up BMP' open in all four charts of this run.",
+    "pkg": "ext"
+  }
+}

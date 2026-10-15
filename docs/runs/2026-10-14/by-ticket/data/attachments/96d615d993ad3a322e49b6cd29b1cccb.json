@@ -1,0 +1,21 @@
+{
+  "OAT-06/S21": {
+    "status": "record-only",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:24:10.697Z",
+    "title": "Impatient use: double taps on task Complete, Mark Encounter / Visit Complete and the handoff Send (R2-R4, recorded)",
+    "detail": "Local QA stack only (round-companion-wt-qa at main 43c38a4f, the build dev runs); brand-new @roundai.test accounts; survey, usage and patient-activity rows read with the local admin key; no model call from these specs (the Convex socket answers generateHandoff in the browser and refuses every other ai/* action; tripwire: no Generate). Our own addition (10-15 review keeps R2 and R4), record only; re-run because 43c38a4f changed both PostRoundTab.tsx (billing props). Seeds: a note-ready Hospital chart and a Nursing Home resident (In Today) with one open task each, with a note but no noteGeneratedAt so no server billing job is queued. R2 Hospital: a double tap on 'Complete task' writes one task_completed but the second tap reopens the task (it ends open); completing it again with one tap writes a second row (tasksCompleted +2 for one task). R2 Nursing Home: a double tap on the task's complete control writes two task_completed rows for one task (it ends done; tasksCompleted +2). R4: a double tap on Mark Encounter Complete / Mark Visit Complete writes one note_marked_complete each (notesCompleted +1 per care setting). R3 (TFA-94609 Spec 2): a double-click on 'Send to <colleague>' gives one handoff, one handoff_sent row and one follow-up question, Hospital and Nursing Home. Same as on e02167f; the suggestion stands: count a completion once per task (debounce the control, or ignore a completion of a task already done) so tasksCompleted is not inflated; the chart itself shows the physician the true state. R1 and R5-R7 not run: R5-R7 need Generate, which on this build also queues a server-side billing job on the saved note (convex/billing/persistence.ts enqueueBilling) that no browser mock can stop, so it stays off the local stack; R1's generateHandoff fault is TFA-94514 territory (S07 covers the sends).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s21-srv.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s21-srv-r2-hospital-after-task-double-tap.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s21-srv-r2-snf-after-task-double-tap.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s21-srv-r3-rounding-after-double-click-send.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s21-srv-r3-snf-after-double-click-send.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s21-srv-r4-hospital-after-complete-double-tap.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s21-srv-r4-snf-after-complete-double-tap.png"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

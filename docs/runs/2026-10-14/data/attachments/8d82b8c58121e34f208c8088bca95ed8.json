@@ -1,0 +1,18 @@
+{
+  "TC-14/S07": {
+    "status": "failed",
+    "ranAt": "2026-10-15T08:34:41.775Z",
+    "title": "Tap Generate, then reload: on return the note is there or an explicit failure shows (dev, real backend and note model)",
+    "detail": "Dataset gen-ac15 on dev (live Haiku). Cell B (Hospital) and B' (Nursing Home): the dictation was typed and autosaved, Generate Note & Finish pressed, the ai/notes:generateNote request seen leaving the page, then the page reloaded. 45 s later, both modes: no note stored (Hospital status 'seen'), Post-Round shows only 'No note generated yet. Complete the Encounter tab first.' (Hospital also the spinning 'Finalizing Encounter Data…' button); the dictation is kept (passed). The diagnostics rows show the note model DID answer on the server meanwhile (notes.generateNote, Haiku 4.5, ok, 7.8 s Hospital / 2.8 s Nursing Home): the note was generated and thrown away because the page that would have saved it was gone. Judged 4/6 (the two AC 15 cells fail). Same result as the local run (cells B/D): TFA-92592 AC 15 is not met on 43c38a4f. Rows: 2 added with the prefix, removed by the dataset cleanup (0 left, 0 other rows changed).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S07-hospital-after-reload.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S07-nursing-home-after-reload.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/gen/gen-ac15/evidence/TC-14-S07.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "On dev, Generate followed by a reload (or the app being closed) loses the note although the model wrote it: Post-Round says 'No note generated yet. Complete the Encounter tab first.'; the physician has to tap Generate again.",
+    "pkg": "gen"
+  }
+}

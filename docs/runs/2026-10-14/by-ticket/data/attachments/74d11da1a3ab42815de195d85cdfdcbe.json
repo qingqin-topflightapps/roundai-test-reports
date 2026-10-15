@@ -1,0 +1,23 @@
+{
+  "TC-10/S29": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-15T09:20:41.098Z",
+    "title": "Interrupted work: Save Note cut off by a reload or by opening the next patient; what stays on the device",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-tc10-s29-interrupt.spec.ts; the summary call held at the socket and answered with A's values only after the interruption. (a) reload during Save Note — Hospital passes: 'The reviewed note is saved, but structured processing was interrupted. Tap Save Note to continue.', text kept, Generate disabled (recorded: the Encounter tab says 'still being processed. Wait for the panels', B27). Nursing Home fails: no message at all on the Pre-Round tab (its Save Note writes no processing flag before the call), text kept (autosaved), Generate disabled with 'The pre-round text was edited after it was last processed…' — which the physician did not do. (b) leaving A for the list (browser Back: the fullscreen editor stays open while saving and covers the header Back button) and opening B during the save — passes both modes: A ends with A's values, B shows none of them (the first run's click on the covered Back button timed out: a test issue, fixed and re-run). (c) device stores — fails: after a successful Save Note the chart's text stays in IndexedDB 'roundcompanion-session-drafts' (also after reopening); sign-out empties the drafts store but a kept recording in 'round-ai-local-audio' survives it (SettingsModal changed in 43c38a4f, this did not). (d) the four unit specs pass (local-audio.unit.ts ×2, live-dictation.unit.ts ×2; reports/pre-unit.json). Known: B27 ((a) Nursing Home), B02 ((c)).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s29-pre-a-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s29-pre-a-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s29-pre-b-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s29-pre-b-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s29-pre-c-stores.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s29-pre-a-nh-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/reports/pre-unit.json"
+    ],
+    "method": "PW",
+    "productIssue": "(a) Nursing Home: a Save Note cut off by a reload leaves no message on the Pre-Round tab, and the Encounter tab says the text was edited after processing, which the physician did not do. (c) The saved pre-round text stays in the browser's draft store after the server has it, and a kept recording stays on the device after sign-out.",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

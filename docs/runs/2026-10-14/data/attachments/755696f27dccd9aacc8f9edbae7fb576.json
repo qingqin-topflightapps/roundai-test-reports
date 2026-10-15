@@ -1,0 +1,17 @@
+{
+  "OAT-06/S15": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:23:35.403Z",
+    "title": "General feedback from Settings in both contexts: stored with rating and comment, independent of the other surveys",
+    "detail": "Local QA stack only (round-companion-wt-qa at main 43c38a4f, the build dev runs); brand-new @roundai.test accounts; survey, usage and patient-activity rows read with the local admin key; no model call from these specs (the Convex socket answers generateHandoff in the browser and refuses every other ai/* action; tripwire: no Generate). Re-run on 43c38a4f because #86 moved the form into FeedbackForm.tsx (shared with the 4 PM card). Settings opened from the Hospital list's bottom nav: Rate 2 + 'QA OAT-06 feedback: dictation is slow on hospital Wi-Fi.' -> Send feedback; Settings closed, Nursing Home toggle, Settings from that list (it shows 'Nursing Home Note Templates'), the box empty again, Rate 5, no comment -> Send feedback. Judged 4/4: 'Thanks — your feedback was sent.' after each send; exactly two surveyResponses rows since T0, survey 'feedback': {rating 2, comment = the typed text} and {rating 5} with no comment key; no baseline, handoff_followup or task_reminder row and no Not now on record (the baseline card on the list was left untouched); no model call. Recorded: both rows carry the day and only rating / comment; a Settings send is on record as the day's feedback (status feedback.answeredAt), so the 4 PM card stays away for the rest of that day; the baseline stays due.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s15-srv.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s15-srv-cp1-hospital-sent.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s15-srv-cp2-snf-sent.png"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "name": "tc17-s27",
+  "at": "2026-10-15T08:56:10.638Z",
+  "checks": [
+    {
+      "id": "cp1-hosp-after-failure (T6, TFA-92595 todo): the Note tab says the note was not generated",
+      "ok": false,
+      "detail": "no failure message on the Note tab",
+      "recordOnly": true
+    },
+    {
+      "id": "cp1-hosp-after-failure (U10 / Q12, TFA-92595 todo): the earlier note is not presented as the new one",
+      "ok": false,
+      "detail": "the seeded earlier note is shown as the current note, unlabelled",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3-snf-after-failure (T6, TFA-92595 todo): the Note tab says the note was not generated",
+      "ok": false,
+      "detail": "no failure message on the Note tab",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3-snf-after-failure (U10 / Q12, TFA-92595 todo): the earlier note is not presented as the new one",
+      "ok": false,
+      "detail": "the seeded earlier note is shown as the current note, unlabelled",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: cp4 was taken while the Regenerate call was still running",
+      "ok": true,
+      "detail": "1131 ms after the press"
+    },
+    {
+      "id": "cp4 (U12): right after returning, Post-Round shows a 'generating' state, not the earlier note as if nothing were running",
+      "ok": false,
+      "detail": "{\"generating\":null,\"noteShownIsEarlier\":true,\"noNoteYet\":false}"
+    },
+    {
+      "id": "cp5 (U12): the new note (metoprolol) appears although the physician left the chart",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\n\nQA TC-17 S27 part 2 mocked note (no model was called). Today: QA-DICT-9 Start metoprolol 12.5 mg PO BID for rate control. Continue ceftriaxone."
+    },
+    {
+      "id": "cp5 (T7, TFA-92595 todo): Tomorrow's Pre-Round Summary heading is under the note",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "cp5 (U10, TFA-92595 todo): none of 'sepsis', 'intubat', 'lungs clear', 'within normal limits' on Post-Round",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "cp1-hosp-after-failure": {
+      "button": "Regenerate Note",
+      "encounterMessage": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "postRound": {
+        "noteShown": true,
+        "noteText": "SUBJECTIVE\n\nCough improving; mild pleuritic pain on deep breath.\n\nOBJECTIVE\n\nT 37.4 °C, BP 128/76, HR 88, SpO2 95% on 2 L.\n\nASSESSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "earlierNoteShownAsCurrent": true,
+      "clipboard": "SUBJECTIVE\nCough improving; mild pleuritic pain on deep breath.\n\nOBJECTIVE\nT 37.4 °C, BP 128/76, HR 88, SpO2 95% on 2 L.\n\nASSESSMENT AND PLAN\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning."
+    },
+    "cp3-snf-after-failure": {
+      "button": "Regenerate Note",
+      "encounterMessage": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "postRound": {
+        "noteShown": true,
+        "noteText": "SNF FOLLOW-UP\n\nSUBJECTIVE\n\nHip pain 3/10, working with PT twice daily.\n\nOBJECTIVE\n\nBP 118/70, HR 72, afebrile. Incision clean and dry.\n\nASSESSMENT\n\n1. Left hip fracture s/p ORIF, progressing with therapy.\n\n2. Constipation, resolved on senna.\n\nPLAN\n\n1. Continue PT/OT twice daily, weight bearing as tolerated.\n\n2. Continue senna 8.6 mg nightly.\n\n3. Family meeting Friday about discharge home.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "earlierNoteShownAsCurrent": true,
+      "clipboard": "SNF FOLLOW-UP\n\nSUBJECTIVE\nHip pain 3/10, working with PT twice daily.\n\nOBJECTIVE\nBP 118/70, HR 72, afebrile. Incision clean and dry.\n\nASSESSMENT\n1. Left hip fracture s/p ORIF, progressing with therapy.\n2. Constipation, resolved on senna.\n\nPLAN\n1. Continue PT/OT twice daily, weight bearing as tolerat"
+    },
+    "cp4": {
+      "msAfterPress": 1131,
+      "callStillHeld": true,
+      "state": {
+        "noteShown": true,
+        "noteText": "SUBJECTIVE\n\nCough improving; mild pleuritic pain on deep breath.\n\nOBJECTIVE\n\nT 37.4 °C, BP 128/76, HR 88, SpO2 95% on 2 L.\n\nASSESSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      }
+    },
+    "cp5": {
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA TC-17 S27 part 2 mocked note (no model was called). Today: QA-DICT-9 Start metoprolol 12.5 mg PO BID for rate control. Continue ceftriaxone.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "storedNote": "ASSESSMENT AND PLAN\nQA TC-17 S27 part 2 mocked note (no model was called). Today: QA-DICT-9 Start metoprolol 12.5 mg PO BID for rate control. Continue ceftriaxone."
+    },
+    "resident-end": {
+      "note": "SNF FOLLOW-UP\n\nSUBJECTIVE\nHip pain 3/10, working with PT twice daily.\n\nOBJECTIVE\nBP 118/70, HR 72, afebrile. Incision cl",
+      "encounterNotes": "QA-DICT-N9 Walking 60 feet with a walker today. Continue PT twice daily.",
+      "status": "note-ready"
+    }
+  }
+}

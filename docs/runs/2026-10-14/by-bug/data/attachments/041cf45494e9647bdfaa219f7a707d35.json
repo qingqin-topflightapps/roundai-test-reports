@@ -1,0 +1,16 @@
+{
+  "TC-10/S16": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:00:00.000Z",
+    "title": "Existing live spec: the admission-reason classifier keeps the intake diagnosis (verdict carried from e02167f; code path unchanged)",
+    "detail": "Not re-run: live specs never run locally on 43c38a4f (BRIEF2), and this one is local-only (it signs in the demo fixture through e2e/support/backend.ts). The 2026-10-14 verdict on e02167f stands because the classifier's code path did not change between e02167f and 43c38a4f (git diff --stat, recorded in tc10-s16-pre-codepath.txt): e2e/api/admission-reason.live.spec.ts, convex/ai/parsing.ts, convex/lib/admissionReason.ts, convex/ai/providers/, admissionReasonCheck.ts and grounding.ts unchanged; the 11 changed prompt-library files are all note/* (none is the admission-reason prompt) and generated.ts / schemas.ts / prompts.lock.json have no admission-reason line changed; convex/lib/phi.ts (the aiAction wrapper) was refactored for the billing jobs, the public aiAction still resolves the actor with requireUserId and runs the same handler. 10-14 result: 12 rows × 2 runs, every verdict as expected (6 kept, 4 drifted, 2 no_clause), 0 WRONG, 0 MISSES. Deterministic support re-run on 43c38a4f: e2e/unit/admission-reason.unit.ts AR-01…AR-08 (see the unit report, pre-unit.json). The classifier's effect through the app on dev is TC-10/S15 (dev).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s16-pre-codepath.txt",
+      "runs/2026-10-14-local/aicheck-other/artifacts/TC-10-S16/results.json"
+    ],
+    "method": "API",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

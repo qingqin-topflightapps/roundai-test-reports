@@ -1,0 +1,16 @@
+{
+  "OAT-06/S09": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:40:51.900Z",
+    "title": "Existing api specs: once per chart per day, a completion with no open, a regenerate, every task tap, handoff rollup, forged usage and survey input refused",
+    "detail": "Lane A on 43c38a4f (scripts/spec-matrix.mjs, runs/2026-10-14-local/matrix/OAT-06.results.json + OAT-06.laneA.json, run 2026-10-15 18:40 JST inside the lock and tripwire); every specTitle still exists in cases/e2e-titles.tsv for 43c38a4f, none renamed. All 7 usage.spec.ts titles passed (project api), including 'the surveys: one baseline per physician, a follow-up tied to the sender's own handoff, feedback any time', which #86 changed to assert surveys.status baseline.answeredAt instead of the removed baselineDone. The day is passed in by the test, so the device-clock question is not exercised here (S10, B18).",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/OAT-06.results.json",
+      "runs/2026-10-14-local/matrix/OAT-06.laneA.json"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

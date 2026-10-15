@@ -1,0 +1,16 @@
+{
+  "OAT-06/S03": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:40:51.899Z",
+    "title": "Existing api specs: add method and context tagging, every removal, duplicate outcomes, impossible outcomes refused, removals kept on account deletion",
+    "detail": "Lane A on 43c38a4f (scripts/spec-matrix.mjs, runs/2026-10-14-local/matrix/OAT-06.results.json + OAT-06.laneA.json, run 2026-10-15 18:40 JST inside the lock and tripwire); every specTitle still exists in cases/e2e-titles.tsv for 43c38a4f, none renamed. All 6 titles passed (project api): 'Hospital add methods and every removal are recorded', 'Nursing Home manual and resident-list scan adds are distinguished', 'duplicate prompts record shown and the physician outcome', 'duplicate prompt state rejects impossible or conflicting outcomes' (patient-activity.spec.ts), 'deleting an account removes its data and identity, keeps the trail, and leaves colleagues untouched' and 'a patient removal reason of account_deleted cannot be claimed by a client' (account-deletion.spec.ts). As the oracle says, these call the mutations directly: they prove the store tags, keeps and guards the rows, not that the screens call them (S01/S02/S04/S05, TFA-94514). Re-run because 43c38a4f changed convex/rounding.ts, snf.ts, lib/lifecycle.ts and schema.ts (billing jobs).",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/OAT-06.results.json",
+      "runs/2026-10-14-local/matrix/OAT-06.laneA.json"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

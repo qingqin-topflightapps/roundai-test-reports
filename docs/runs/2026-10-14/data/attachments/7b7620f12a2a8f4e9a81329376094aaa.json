@@ -1,0 +1,80 @@
+{
+  "name": "tc10-s05-pre-hosp",
+  "at": "2026-10-15T08:14:05.361Z",
+  "checks": [
+    {
+      "id": "case oracle: every distinctive segment is in the reopened editor",
+      "ok": true,
+      "detail": "all present"
+    },
+    {
+      "id": "AC 5: the reopened editor shows exactly what was typed (byte for byte)",
+      "ok": true,
+      "detail": "identical"
+    },
+    {
+      "id": "AC 5: the stored pre-round text (preRoundNotes and rawPreRoundNotes) is exactly what was typed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "AC 5: the model's cleaned copy was not stored",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Q9 (recorded): a multi-line note with a blank line and indentation is identical on reopen",
+      "ok": true,
+      "detail": "\"QA-S05 line one: BP 132/80.\\nline two -> plan ??\\n\\n- bullet: recheck K in AM\\n  indented: Dr. O'Neil-Ruiz\"",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "cp": {
+      "typed": "pt c/o SOB x2d, worse lying flat. ?PNA vs CHF flare -> doubt PNA. Cr 1.4->1.8 (AKI??). K 5.6 hemolyzed? recheck stat. furosamide 40 IV BID, hold lisinopril. Dr. Okonkwo-Bray (cards) to see today. Pt says don't call my son after 9pm. NPO after MN for TEE.",
+      "reopened": "pt c/o SOB x2d, worse lying flat. ?PNA vs CHF flare -> doubt PNA. Cr 1.4->1.8 (AKI??). K 5.6 hemolyzed? recheck stat. furosamide 40 IV BID, hold lisinopril. Dr. Okonkwo-Bray (cards) to see today. Pt says don't call my son after 9pm. NPO after MN for TEE.",
+      "stored": {
+        "preRoundNotes": "pt c/o SOB x2d, worse lying flat. ?PNA vs CHF flare -> doubt PNA. Cr 1.4->1.8 (AKI??). K 5.6 hemolyzed? recheck stat. furosamide 40 IV BID, hold lisinopril. Dr. Okonkwo-Bray (cards) to see today. Pt says don't call my son after 9pm. NPO after MN for TEE.",
+        "rawPreRoundNotes": "pt c/o SOB x2d, worse lying flat. ?PNA vs CHF flare -> doubt PNA. Cr 1.4->1.8 (AKI??). K 5.6 hemolyzed? recheck stat. furosamide 40 IV BID, hold lisinopril. Dr. Okonkwo-Bray (cards) to see today. Pt says don't call my son after 9pm. NPO after MN for TEE."
+      },
+      "cleanedByModel": "Patient complains of shortness of breath for 2 days, worse lying flat. Pneumonia versus CHF exacerbation, pneumonia unlikely. Creatinine rose from 1.4 to 1.8 (acute kidney injury). Potassium 5.6, possibly hemolyzed, recheck. Furosemide 40 mg IV twice daily; hold lisinopril. Dr. Okonkwo (cardiology) to see today. Patient asks that his son not be called after 9 PM. NPO after midnight for TEE."
+    },
+    "multiline": {
+      "typed": "QA-S05 line one: BP 132/80.\nline two -> plan ??\n\n- bullet: recheck K in AM\n  indented: Dr. O'Neil-Ruiz",
+      "reopened": "QA-S05 line one: BP 132/80.\nline two -> plan ??\n\n- bullet: recheck K in AM\n  indented: Dr. O'Neil-Ruiz",
+      "stored": "QA-S05 line one: BP 132/80.\nline two -> plan ??\n\n- bullet: recheck K in AM\n  indented: Dr. O'Neil-Ruiz"
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 720
+      },
+      {
+        "udfPath": "ai/parsing:classifyAdmissionReason",
+        "answered": "ok",
+        "atMs": 726
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 782
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 3474
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 3529
+      }
+    ]
+  }
+}

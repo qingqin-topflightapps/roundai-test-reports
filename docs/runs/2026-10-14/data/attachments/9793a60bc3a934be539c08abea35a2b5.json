@@ -1,0 +1,16 @@
+{
+  "EFS/S05": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:44:30.000Z",
+    "title": "Existing chromium specs: summary, note, offline and session-end failures keep the input and show a message (billing title gone on 43c38a4f)",
+    "detail": "Lane A on 43c38a4f (scripts/spec-matrix.mjs, Tim's tests by title from cases/e2e-titles.tsv regenerated for 43c38a4f; run under the local lock with the tripwire). 4 of the matrix's 5 titles exist and pass: chart.spec.ts 'a structured-summary failure keeps the reviewed note and a visible retry' (state 3, the TFA-92588 part), encounter-workflow.spec.ts 'a generation failure keeps the saved dictation in the encounter', connection-banner.spec.ts 'the app shows a no-network banner while offline and removes it when back online', session-draft.spec.ts 'dictation written after the session ended is restored after signing back in'. spec-matrix reports the scenario 'broken' only because billing-suggestion.spec.ts 'a failed suggestion stays visible and retries on tap' was removed in 43c38a4f, when billing became a server job (TFA-92596, 'use jobs for generation'); there is no renamed equivalent: the BillingCard still renders 'Couldn't generate billing suggestion — tap to retry', but no test drives it, and the nearest coverage is the server retry in e2e/unit/billing-persistence.unit.ts '<setting>: retries are automatic, bounded, and reject stale completions'. Left: U5 (billing failure state) — not TFA-92588's; a local test would need the server billing job to fail, which cannot be injected without a model call.",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/EFS.results.json",
+      "runs/2026-10-14-local/matrix/EFS.laneA.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

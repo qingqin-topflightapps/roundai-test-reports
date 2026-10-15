@@ -1,0 +1,57 @@
+{
+  "name": "tc22-s13-b43-snf",
+  "at": "2026-10-15T08:45:10.796Z",
+  "checks": [
+    {
+      "id": "the dictation is still in the encounter box after coming back",
+      "ok": true,
+      "detail": "BMP came back, creatinine 1.1. Advance diet to clears if pain stays under 4."
+    },
+    {
+      "id": "the dictation is stored on the chart",
+      "ok": true,
+      "detail": "BMP came back, creatinine 1.1. Advance diet to clears if pain stays under 4."
+    },
+    {
+      "id": "Q9 (recorded): the closure and the new task landed although the chart was left",
+      "ok": true,
+      "detail": "stored: [\"[x] follow up BMP\",\"[ ] recheck weight in two weeks\",\"[ ] Advance diet to clears if pain stays under 4\"]; message seen on the list: none",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "request": [
+      {
+        "answered": "ok",
+        "at": -34
+      }
+    ],
+    "afterReturn": {
+      "box": "BMP came back, creatinine 1.1. Advance diet to clears if pain stays under 4.",
+      "storedEncounterNotes": "BMP came back, creatinine 1.1. Advance diet to clears if pain stays under 4.",
+      "tasks": [
+        "[x] follow up BMP",
+        "[ ] recheck weight in two weeks",
+        "[ ] Advance diet to clears if pain stays under 4"
+      ],
+      "messageSeenOnList": null
+    },
+    "postRoundRows": [
+      {
+        "text": "follow up BMP",
+        "done": true,
+        "toggle": null
+      },
+      {
+        "text": "recheck weight in two weeks",
+        "done": false,
+        "toggle": null
+      },
+      {
+        "text": "Advance diet to clears if pain stays under 4",
+        "done": false,
+        "toggle": null
+      }
+    ]
+  }
+}

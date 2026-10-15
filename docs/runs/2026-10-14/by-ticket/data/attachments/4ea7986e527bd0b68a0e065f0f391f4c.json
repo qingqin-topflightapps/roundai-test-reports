@@ -1,0 +1,76 @@
+{
+  "name": "tc18-s10-s11-s20-jobs-n",
+  "at": "2026-10-15T09:01:30.740Z",
+  "checks": [
+    {
+      "id": "Generate: one job for the note, suggestion stored for its stamp",
+      "ok": true,
+      "detail": "{\"attempt\":1,\"failures\":0,\"scheduledId\":\"kc2dgz5dg7q37k3sbfhbfsjqkx8gbb9h\",\"started\":true}"
+    },
+    {
+      "id": "S10: after two edits, a badge change and a repeated save of the same stamp: still attempt 1, the same suggestion, one billing job",
+      "ok": true,
+      "detail": "{\"job\":{\"attempt\":1,\"failures\":0,\"scheduledId\":\"kc2dgz5dg7q37k3sbfhbfsjqkx8gbb9h\",\"started\":true},\"sameSuggestion\":true,\"jobs\":1}"
+    },
+    {
+      "id": "S10: billingSource keeps the generated note, not the edit (billing describes the note as generated, Q5)",
+      "ok": true,
+      "detail": "{\"note\":\"---\\n***\",\"noteGeneratedAt\":\"2026-10-15T09:01:23.465Z\",\"noteTemplate\":\"snf-progress\"}"
+    },
+    {
+      "id": "a retry request while the suggestion exists queues nothing",
+      "ok": true,
+      "detail": "attempt / jobs unchanged"
+    },
+    {
+      "id": "S11: Regenerate (snf-admission) bills the new note: billingForNoteAt = the new stamp, family snf-initial",
+      "ok": true,
+      "detail": "{\"billingForNoteAt\":true,\"family\":\"snf-initial\",\"job\":{\"attempt\":1,\"failures\":0,\"scheduledId\":\"kc29qp95emq1ktf1byge4a8ppd8gbstf\",\"started\":true}}"
+    },
+    {
+      "id": "a retry for the replaced note is refused ('Generate a new note before requesting billing')",
+      "ok": true,
+      "detail": "mutation billing/persistence:retry failed: [Request ID: d843f7994b225f71] Server Error\nUncaught Error: Generate a new note before requesting billing\n    at hand"
+    },
+    {
+      "id": "S20 setup: suggestion cleared, the row is in the state the card shows as the error",
+      "ok": true,
+      "detail": "{\"suggestion\":null,\"status\":null}"
+    },
+    {
+      "id": "S20: the retry queues a fresh attempt for the same note and stores its suggestion",
+      "ok": true,
+      "detail": "{\"job\":{\"attempt\":2,\"failures\":0,\"scheduledId\":\"kc28b5d8x2r8fahv49vep3pn398gaetc\",\"started\":true},\"family\":\"snf-initial\"}"
+    },
+    {
+      "id": "3 billing jobs in all (Generate, Regenerate, retry), none reached an AI vendor",
+      "ok": true,
+      "detail": "3"
+    }
+  ],
+  "data": {
+    "billingRows": [
+      {
+        "fn": "billing.suggestBilling",
+        "ok": true,
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "providerMs": null,
+        "durationMs": 16
+      },
+      {
+        "fn": "billing.suggestBilling",
+        "ok": true,
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "providerMs": null,
+        "durationMs": 18
+      },
+      {
+        "fn": "billing.suggestBilling",
+        "ok": true,
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "providerMs": null,
+        "durationMs": 13
+      }
+    ]
+  }
+}

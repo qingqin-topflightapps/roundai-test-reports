@@ -1,0 +1,19 @@
+{
+  "TC-22/S27": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:21:40.638Z",
+    "title": "Save & Extract on one chart leaves every other chart's matching tasks alone (two charts per context)",
+    "detail": "Local stack on main 43c38a4f; every model call the page makes is answered in the page by ext-support.ts (an ai/* call it is not told about is failed, never forwarded) and the tripwire showed no model call. The task extractor is a rule-based stand-in that can only find what the app sends it (args.content / args.openTasks), so the app's own request, cut, merge and storage are what is judged, not the model. Spec ext-tc22-s27-other-charts.spec.ts, 13/13 judged. Four charts (A, B Hospital; R, R2 Nursing Home) with the same three tasks. Save & Extract on A: the request carries A's open tasks only; A's BMP and PT done and the diet task added on A; B, R, R2 deep-equal their seed (ids, text, done, doneAt); Hospital Task Export groups B's three tasks under B and A's finished rows under A's name only; Nursing Home Task Export unchanged. Then on R: R closes and gets the diet task, R2 deep-equals its seed, A and B unchanged; both Task Exports scoped by name. Whether the live model closes A's tasks is S01/S03's dev half; nothing a model answers can reach another chart, since the request carries only this chart's tasks.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s27-b43.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s27-b43-1-h-export-after-a.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s27-b43-2-n-export-after-a.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s27-b43-3-n-export-after-r.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc22-s27-b43-4-h-export-after-r.png"
+    ],
+    "method": "PW",
+    "pkg": "ext"
+  }
+}

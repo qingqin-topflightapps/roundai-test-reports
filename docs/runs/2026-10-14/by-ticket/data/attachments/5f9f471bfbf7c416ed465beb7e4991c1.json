@@ -1,0 +1,20 @@
+{
+  "EFS/S07": {
+    "status": "passed",
+    "ranAt": "2026-10-15T08:39:12.580Z",
+    "title": "Summary fails, reload, second Save succeeds: dictation intact, Generate locked then unlocked (both contexts)",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-efs-s07-retry.spec.ts (checkpoints h1–h6 / n1–n6 as the matrix's S07). The chart's first ai/parsing:parsePreRoundNotes call fails at the socket, the second returns today's values. Both modes, 15/15 judged each: after the failure and again after a reload the typed text is in the box word for word and on the server, the message has a failure word ('couldn’t' / 'needs another attempt') and the next step ('tap Save Note'), Generate is disabled; after the successful second Save the values show, no failure message remains, Generate is enabled. Generate was never pressed.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-pre-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-pre-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-pre-h-h1-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-pre-n-n1-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-pre-h-h6-unlocked.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-pre-n-n6-unlocked.png"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

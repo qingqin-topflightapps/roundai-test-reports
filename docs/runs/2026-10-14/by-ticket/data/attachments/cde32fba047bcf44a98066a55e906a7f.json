@@ -1,0 +1,76 @@
+{
+  "name": "tc18-s10-s11-s20-jobs-h",
+  "at": "2026-10-15T09:01:22.867Z",
+  "checks": [
+    {
+      "id": "Generate: one job for the note, suggestion stored for its stamp",
+      "ok": true,
+      "detail": "{\"attempt\":1,\"failures\":0,\"scheduledId\":\"kc2adxgf7sysrm86nsr8jrn06x8gabj8\",\"started\":true}"
+    },
+    {
+      "id": "S10: after two edits, a badge change and a repeated save of the same stamp: still attempt 1, the same suggestion, one billing job",
+      "ok": true,
+      "detail": "{\"job\":{\"attempt\":1,\"failures\":0,\"scheduledId\":\"kc2adxgf7sysrm86nsr8jrn06x8gabj8\",\"started\":true},\"sameSuggestion\":true,\"jobs\":1}"
+    },
+    {
+      "id": "S10: billingSource keeps the generated note, not the edit (billing describes the note as generated, Q5)",
+      "ok": true,
+      "detail": "{\"note\":\"---\\n***\",\"noteGeneratedAt\":\"2026-10-15T09:01:15.867Z\",\"noteTemplate\":\"soap\"}"
+    },
+    {
+      "id": "a retry request while the suggestion exists queues nothing",
+      "ok": true,
+      "detail": "attempt / jobs unchanged"
+    },
+    {
+      "id": "S11: Regenerate (hp) bills the new note: billingForNoteAt = the new stamp, family hospital-initial",
+      "ok": true,
+      "detail": "{\"billingForNoteAt\":true,\"family\":\"hospital-initial\",\"job\":{\"attempt\":1,\"failures\":0,\"scheduledId\":\"kc2e3sphdkktkwps3zbp03kds18gbvew\",\"started\":true}}"
+    },
+    {
+      "id": "a retry for the replaced note is refused ('Generate a new note before requesting billing')",
+      "ok": true,
+      "detail": "mutation billing/persistence:retry failed: [Request ID: e53fd3c989e69a83] Server Error\nUncaught Error: Generate a new note before requesting billing\n    at hand"
+    },
+    {
+      "id": "S20 setup: suggestion cleared, the row is in the state the card shows as the error",
+      "ok": true,
+      "detail": "{\"suggestion\":null,\"status\":null}"
+    },
+    {
+      "id": "S20: the retry queues a fresh attempt for the same note and stores its suggestion",
+      "ok": true,
+      "detail": "{\"job\":{\"attempt\":2,\"failures\":0,\"scheduledId\":\"kc2c13zehn8knqf4gj9n15kqa58gbm0h\",\"started\":true},\"family\":\"hospital-initial\"}"
+    },
+    {
+      "id": "3 billing jobs in all (Generate, Regenerate, retry), none reached an AI vendor",
+      "ok": true,
+      "detail": "3"
+    }
+  ],
+  "data": {
+    "billingRows": [
+      {
+        "fn": "billing.suggestBilling",
+        "ok": true,
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "providerMs": null,
+        "durationMs": 15
+      },
+      {
+        "fn": "billing.suggestBilling",
+        "ok": true,
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "providerMs": null,
+        "durationMs": 22
+      },
+      {
+        "fn": "billing.suggestBilling",
+        "ok": true,
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "providerMs": null,
+        "durationMs": 15
+      }
+    ]
+  }
+}

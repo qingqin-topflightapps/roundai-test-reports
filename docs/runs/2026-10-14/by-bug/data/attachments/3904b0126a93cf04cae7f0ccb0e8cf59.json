@@ -1,0 +1,18 @@
+{
+  "TC-18/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-15T09:43:14Z",
+    "title": "Regenerate requests a fresh suggestion for the new note",
+    "detail": "Local 43c38a4f, model never called: billing on this build is a server job enqueued by the note save, so every local job ran on a note with no sentence (real job, family from the frozen template, no model call) or the chart was seeded with a suggestion the app's own code built from a scripted model answer (no job); proof: no billing ai_disclosure audit row with provider_ms, tripwire clean. In the app, both contexts: Generate (SOAP / SNF follow-up) then Regenerate with H&P / SNF admission -> a new note (new stamp) billed in the new template's family, billingForNoteAt and the frozen source both the new stamp, attempt 1 of a new job; the first note's suggestion is not kept for it (11/11 with S12). API: a retry for the replaced note is refused ('Generate a new note before requesting billing'). Q4 recorded: Regenerate counts as a new Generate and re-bills. Lane A: the matrix title 'regenerating a note always requests a fresh suggestion' was removed from Tim's suite in 435295fc; no Tim test regenerates on 43c38a4f (lane A records 'broken: title not in Tim's suite').",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s11-s12-generate.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s10-s11-s20-jobs-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s10-s11-s20-jobs-n.json",
+      "runs/2026-10-14-local/matrix/TC-18.results.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "bil"
+  }
+}

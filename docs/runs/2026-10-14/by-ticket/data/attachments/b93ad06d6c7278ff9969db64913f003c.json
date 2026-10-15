@@ -1,0 +1,19 @@
+{
+  "TC-18/S27": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-15T09:20:19Z",
+    "title": "Day boundaries: yesterday's billing never shown as today's; a wrong-clock browser bills the same family",
+    "detail": "Local 43c38a4f, model never called: billing on this build is a server job enqueued by the note save, so every local job ran on a note with no sentence (real job, family from the frozen template, no model call) or the chart was seeded with a suggestion the app's own code built from a scripted model answer (no job); proof: no billing ai_disclosure audit row with provider_ms, tripwire clean. yesterday-h / yesterday-n (note + billing seeded at server now - 19 h): on open the app's lifecycle clears the note with its billing (Hospital) / archives it without billing (Nursing Home), so no card shows yesterday's 99231 / 99308 (Q16: no card for the previous note); today's Generate is billed for today's note (billingForNoteAt = today's stamp, no yesterday words) — 7/7. clock (browser a day ahead, and Pacific/Honolulu a day behind): the family always follows the template used at Generate (pre-selected and hand-picked, both contexts, 18/18 = G2 passes). Known gap (oracle knownGap TFA-92584 AC 8 = B18): the day-ahead browser shows Follow-up instead of New Admission and pre-selects SOAP / SNF follow-up, so a Generate with the pre-selection bills hospital-subsequent / snf-subsequent where a correct device bills hospital-initial / snf-initial; Honolulu matches the correct device.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s27-yesterday.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc18-s27-clock.json"
+    ],
+    "method": "PW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "productIssue": "A phone whose date is a day ahead shows a New Admission as Follow-up and pre-selects SOAP / SNF follow-up, so the physician who keeps the pre-selection gets the follow-up billing family (known B18 / TFA-92584 AC 8).",
+    "bug": "B18",
+    "pkg": "bil"
+  }
+}

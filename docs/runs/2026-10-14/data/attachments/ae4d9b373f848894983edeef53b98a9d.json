@@ -1,0 +1,117 @@
+{
+  "name": "tc10-s27-pre-a-fallback",
+  "at": "2026-10-15T08:39:54.939Z",
+  "checks": [
+    {
+      "id": "(a) the full result comes back (background and studies from the Mistral answers)",
+      "ok": true,
+      "detail": "{\"background\":\"72-year-old man with COPD and HTN admitted with CAP.\\n• Fever overnight\",\"radiology\":[\"Chest X-ray: right lower lobe infiltrate unchanged\"]}"
+    },
+    {
+      "id": "(a) the call log row names Mistral as the answering model, fell back from Haiku, ok",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"providerMs\":1,\"durationMs\":1005}"
+    },
+    {
+      "id": "(a) the call log row carries the AI's own time (providerMs ≤ durationMs)",
+      "ok": true,
+      "detail": "{\"providerMs\":1,\"durationMs\":1005}"
+    }
+  ],
+  "data": {
+    "a": {
+      "background": "72-year-old man with COPD and HTN admitted with CAP.\n• Fever overnight",
+      "radiology": [
+        "Chest X-ray: right lower lobe infiltrate unchanged"
+      ],
+      "calls": [
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round",
+          "at": 1,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round_background",
+          "at": 1,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round_diagnostics",
+          "at": 1,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round_cleanup",
+          "at": 1,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round",
+          "at": 1003,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "call": "pre_round",
+          "at": 1003,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round_background",
+          "at": 1004,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "call": "pre_round_background",
+          "at": 1004,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round_diagnostics",
+          "at": 1004,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "call": "pre_round_diagnostics",
+          "at": 1005,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "call": "pre_round_cleanup",
+          "at": 1005,
+          "timeoutMs": 20000
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "call": "pre_round_cleanup",
+          "at": 1005,
+          "timeoutMs": 20000
+        }
+      ],
+      "diagnostics": {
+        "userId": "physician-1",
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "mistral.mistral-large-3-675b-instruct",
+        "ok": true,
+        "durationMs": 1005,
+        "providerMs": 1,
+        "promptChars": 658,
+        "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+      },
+      "writes": [
+        "diagnostics:record",
+        "lib/audit:_record"
+      ]
+    }
+  }
+}

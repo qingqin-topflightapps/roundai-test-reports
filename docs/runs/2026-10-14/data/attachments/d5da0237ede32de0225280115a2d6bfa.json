@@ -1,0 +1,15 @@
+{
+  "OAT-06/S23": {
+    "status": "blocked",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T08:21:51.346Z",
+    "title": "Vikram's Convex dashboard on the UAT deployment: the same rows, filtered and read without help",
+    "detail": "Not run by this agent, by design: the case is the pilot team (Vikram, or Tim for him) reading pilotDailyRounding, pilotUsageEvents, patientActivityEvents and surveyResponses in the Convex dashboard of the deployed UAT build with their own dashboard access, and confirming in writing (Q12). The QA agent has no dashboard or admin access on dev; its dev reads are account-scoped queries only (the dev results hold one: the QA account's survey record, nothing written). On 43c38a4f the case also lost the guide it says to follow: #86's last commit (43c38a4f) deleted docs/pilot-analytics.md, and no other file in the repo names the analytics tables (S22), so 'the average worked out from the doc' has no doc. The same rows are checked locally with the admin key: S07 (handoff rows, follow-up answers), S13 / S14 (baseline, 4 PM feedback, task-reminder answers and every Not now), S15 (Settings feedback).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s22-srv-code-read.json"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}

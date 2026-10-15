@@ -1,0 +1,15 @@
+{
+  "TC-14/S24": {
+    "status": "blocked",
+    "ranAt": "2026-10-15T08:30:00Z",
+    "title": "Note prompts match Vikram's original word for word, and Mistral calls carry the same guardrail as Haiku",
+    "detail": "Doc review. T7 (TFA-94422 AC 4): passed — convex/ai/providers/ is unchanged between e02167f and 43c38a4f (git diff is empty), so the earlier code review stands: both models go through the same bedrock.invoke with the same guardrailConfig. T3 (TFA-92592 AC 13): prompt parity of 43c38a4f against RoundCompanion_PLAYGROUND_p72_HAIKU.html (scripts/code-review/parity.mjs, whitespace-normalised): templates soap / hp / consult / discharge identical; note/clinical-quality.md 1.7 differs (201/231 sentences verbatim, 29 new); note/patient-context.md 1.5 differs (209/221, 4 changed, 8 new — up from 2 changed / 3 new on e02167f: the #100 'recorded today' / TODAY'S / EARLIER VALUES lines); note/snf-patient-context.md 1.2 (3/16, 13 new — #100); new blocks earlier-vitals-block.md and earlier-labs-block.md (not in the prototype, #100); history-corrections-block.md (1 changed); snf-progress / snf-admission templates differ. docs/2026-10-03-vikram-prompt-batch.md records the #100 wording as Daniela's decision (A3, 10-05: 'no need to ask Vikram, FYI only'), so it is covered by AC 16; the other differences (e.g. the B6 temperature lines of PR #98, decided by Quinn as FYI, and the earlier clinical-quality / SNF template changes) have no Vikram approval on record and the batch to Vikram has not been sent. Blocked on that record: a person maps each listed difference to an approval.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s24-parity-43c38a4f.json"
+    ],
+    "method": "CODEREVIEW",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "gen"
+  }
+}

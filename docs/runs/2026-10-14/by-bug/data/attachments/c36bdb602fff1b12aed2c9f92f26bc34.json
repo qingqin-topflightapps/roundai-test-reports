@@ -1,0 +1,428 @@
+{
+  "TC-14/S11": {
+    "at": "2026-10-15T09:31:49.751Z",
+    "dataset": "gen-notes-a",
+    "rows": [
+      {
+        "id": "H-01",
+        "mode": "hospital",
+        "template": "soap",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 5085,
+          "providerMs": 5075,
+          "appMs": 10,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "H-02",
+        "mode": "hospital",
+        "template": "soap",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 5110,
+          "providerMs": 5104,
+          "appMs": 6,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "H-03",
+        "mode": "hospital",
+        "template": "hp",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 5426,
+          "providerMs": 5420,
+          "appMs": 6,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "H-04",
+        "mode": "hospital",
+        "template": "consult",
+        "ok": false,
+        "failed": [
+          "mustNotInclude prerenal: in: The clinical picture is most consistent with prerenal azotemia related to volume depletion from decreased oral intake."
+        ],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 7693,
+          "providerMs": 7687,
+          "appMs": 6,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "H-05",
+        "mode": "hospital",
+        "template": "soap",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "recordOnly 40 mg: present ('40 mg')"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 4727,
+          "providerMs": 4721,
+          "appMs": 6,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "H-26",
+        "mode": "hospital",
+        "template": "soap",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "recordOnly not examined|not documented|not dictated: present ('not dictated')"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 4199,
+          "providerMs": 4195,
+          "appMs": 4,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    ]
+  },
+  "TC-14/S12": {
+    "at": "2026-10-15T09:33:04.162Z",
+    "dataset": "gen-notes-a",
+    "rows": [
+      {
+        "id": "N-01",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "sectionSays exam: no exam section and no exam line (recorded, Q21)"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3688,
+          "providerMs": 3682,
+          "appMs": 6,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-02",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "sectionSays exam: no exam section and no exam line (recorded, Q21)"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3295,
+          "providerMs": 3291,
+          "appMs": 4,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-03",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "sectionSays exam: no exam section and no exam line (recorded, Q21)"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3623,
+          "providerMs": 3616,
+          "appMs": 7,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-04",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "sectionSays exam: no exam section and no exam line (recorded, Q21)"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3854,
+          "providerMs": 3847,
+          "appMs": 7,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-05",
+        "mode": "nursing-home",
+        "template": "snf-admission",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "sectionSays exam: no exam section and no exam line (recorded, Q21)"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3605,
+          "providerMs": 3600,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-26",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "recordOnly not examined|not documented|not dictated: present ('not dictated')"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3434,
+          "providerMs": 3429,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    ]
+  },
+  "TC-14/S16": {
+    "at": "2026-10-15T09:33:52.595Z",
+    "dataset": "gen-notes-a",
+    "rows": [
+      {
+        "id": "H-16",
+        "mode": "hospital",
+        "template": "discharge",
+        "ok": true,
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: present ('withheld')"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3758,
+          "providerMs": 3753,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "H-17",
+        "mode": "hospital",
+        "template": "hp",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 4595,
+          "providerMs": 4590,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-16",
+        "mode": "nursing-home",
+        "template": "snf-admission",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3018,
+          "providerMs": 3011,
+          "appMs": 7,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-17",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2803,
+          "providerMs": 2796,
+          "appMs": 7,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    ]
+  },
+  "TC-14/S17": {
+    "at": "2026-10-15T09:34:34.193Z",
+    "dataset": "gen-notes-a",
+    "rows": [
+      {
+        "id": "N-18",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 10225,
+          "providerMs": 10217,
+          "appMs": 8,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-19",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": true,
+        "failed": [],
+        "recorded": [],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3249,
+          "providerMs": 3244,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      },
+      {
+        "id": "N-20",
+        "mode": "nursing-home",
+        "template": "snf-progress",
+        "ok": null,
+        "failed": [],
+        "recorded": [
+          "recordOnly yesterday: present ('yesterday')"
+        ],
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2793,
+          "providerMs": 2785,
+          "appMs": 8,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    ]
+  }
+}

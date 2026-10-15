@@ -1,0 +1,28 @@
+{
+  "OAT-06/S13": {
+    "status": "passed",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "ranAt": "2026-10-15T09:24:41.055Z",
+    "title": "Baseline survey x census x state: no patients yet, first patient added, patients seeded, answered, a shared browser, a second device, an old app build",
+    "detail": "Local QA stack only (round-companion-wt-qa at main 43c38a4f, the build dev runs); brand-new @roundai.test accounts; survey, usage and patient-activity rows read with the local admin key; no model call from these specs (the Convex socket answers generateHandoff in the browser and refuses every other ai/* action; tripwire: no Generate). Re-run on 43c38a4f because #86 moved Not now from one browser-wide localStorage key to the server (surveyDismissals) and added the re-offer rules. Judged 6/6: R1 account 1 (no patients), signed in through the real form and the consent screen, is offered 'Before you start: a 2-minute baseline survey' on the first Hospital list and on the Nursing Home list; R4 after answering (14, '5–10 min', 'Under 5 min', 'EMR list', 'Sometimes', comment) the card is not offered again on either list, also after reloads (status baseline.answeredAt set), and the account has exactly one surveyResponses baseline row {patientsPerDay 14, preRoundMinutesPerPatientBefore 5_to_10, noteMinutesPerPatientBefore under_5, patientListMethodBefore emr, writtenHandoffFrequencyBefore sometimes, comments}; accounts that did not answer (2, 3, 4) have no baseline row. Recorded only: R2 (Q2) the card is still offered after the first patient is added; R5 (Q2) an account whose patients were seeded before its first sign-in is offered the card on both lists. R6 (our boundary): account 3 taps Not now and signs out, account 4 signs in on the same browser and IS offered the baseline on both lists (no survey key in localStorage any more: the old shared-browser suggestion is fixed by #86), and account 3's Not now holds on a second device the same day. R7 (the days after Not now) is S14 A. R8 (our boundary): with the baseline answered, surveys:status no longer has baselineDone, and the pre-#86 card hides itself only on status.baselineDone (e02167f BaselineSurveyCard.tsx:102), so an app build from before #86 (store build 10, which talks to dev) would show the baseline again to physicians who answered it, every day after its 24 h snooze (candidate, not judged here: no store build was run). The 4 PM feedback card appeared after the answer because the run was after 16:00 (S14 B).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r1-r4.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r1-r4-cp1-empty-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r1-r4-cp2-empty-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r1-r4-cp3-first-patient.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r1-r4-cp4-answered-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r1-r4-cp5-answered-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r5.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r5-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r5-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r6.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r6-account3-not-now.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r6-account3-second-device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-r6-account4-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-srv-old-client.json"
+    ],
+    "method": "PW",
+    "pkg": "srv"
+  }
+}
