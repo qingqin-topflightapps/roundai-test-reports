@@ -1,0 +1,16 @@
+{
+  "OAT-01/S23": {
+    "ref": "OAT-01/S23",
+    "method": "DOC",
+    "status": "failed",
+    "known": true,
+    "detail": "Fetched signed out on 2026-10-15 01:10 JST: https://roundcompanion.com/privacy.html → 200, the Privacy Policy (T11, TFA-94700 AC 3: passes); terms.html → 200 but the page says \"Final version coming soon. Version: draft 0.1.\"; baa.html → 200 with the same placeholder (U7 step 7). The oracle: a placeholder is \"Fail (known: Vikram's documents pending, Daniela 2026-10-05)\" unless Q16 says a placeholder passes at UAT time. T13 (TFA-92570 AC 3, ready for QA): package.json has no biometric or secure-storage plugin and ios/App/App/Info.plist has no NSFaceIDUsageDescription on main e02167f: Fail (known; TFA-94513 owns the work, to send back or move: Quinn / Daniela).",
+    "scope": "Public pages fetched read-only without a session; code read of main e02167f.",
+    "productIssue": "Terms of Use and BAA links open placeholder pages (\"Final version coming soon, draft 0.1\"); the app has no Face ID / secure storage (TFA-92570 AC 3).",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/oat01-s23/privacy.html",
+      "runs/2026-10-14-local/code-review/oat01-s23/terms.html",
+      "runs/2026-10-14-local/code-review/oat01-s23/baa.html"
+    ]
+  }
+}

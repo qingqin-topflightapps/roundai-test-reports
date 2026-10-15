@@ -1,0 +1,51 @@
+{
+  "state": "qd-pad",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-pad.png",
+  "findings": [
+    {
+      "check": "tap",
+      "detail": "button \"Close quick dictation\" is 40×40 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Close quick dictation\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"415 · QA TC04 Sloan IGOJ Link\" is 333×37 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"415 · QA TC04 Sloan IGOJ Link\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Dictate\" is 87×28 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Dictate\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Assign to patient\" is 147×30 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Assign to patient\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Delete compartment\" is 22×22 (< 24 px, WCAG 2.5.8)",
+      "severity": "medium",
+      "target": "button \"Delete compartment\""
+    }
+  ],
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 1,
+      "targets": [
+        ".bg-slate-50.py-1\\.5.px-3"
+      ],
+      "nodes": [
+        "\"Matches on your list\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)"
+      ]
+    }
+  ],
+  "url": "/rounding"
+}

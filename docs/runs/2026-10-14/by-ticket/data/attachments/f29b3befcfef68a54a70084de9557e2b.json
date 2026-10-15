@@ -1,0 +1,26 @@
+{
+  "EFS/S08": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:28:20.428Z",
+    "title": "Note generation fails in both contexts: failure message, dictation kept, no fabricated note; a failed Regenerate keeps the physician-edited note",
+    "detail": "Hospital and Nursing Home; spec newspec-c/flt-efs-s08-note-fail.spec.ts. Every ai/notes:generateNote attempt fails at the socket (the end state after the server's own retry and backup model, which a client-side fault does not exercise). Judged 40/40. (a) Standard-fixture chart, typed encounter, Generate Note & Finish: the Encounter tab says 'The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.' (Hospital) / 'The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.' (Nursing Home); the typed text stays in the box; Generate Note & Finish is offered again; no note headings; the Note (Post-Round) tab shows 'No note generated yet.' with no note text and no Copy to EMR; no note stored; after a reload the dictation is in the box and in encounterNotes on the server. (b) Chart seeded with a note generated earlier today holding 'QA-EFS-EDIT added by the physician.': Regenerate Note failed the same way and the edited note stays on the Note tab, on the server, and after a reload. Recorded, decision D7 (wording): the words 'Note not generated' never appear — Encounter says 'couldn’t be generated', Post-Round 'No note generated yet.' Recorded: the Hospital Post-Round of the failed chart also shows the disabled 'Finalizing Encounter Data…' spinner (B27, judged under TC-17/S19, not part of this then).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-h-h1-encounter-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-h-h2-notetab.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-h-h3-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-h-h4-regen-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-h-h4-regen-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-h-h5-regen-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-n-n1-encounter-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-n-n2-notetab.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-n-n3-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-n-n4-regen-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-n-n4-regen-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s08-n-n5-regen-reload.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "TC-19/S15": {
+    "status": "failed",
+    "ranAt": "2026-10-14T18:07:23.769Z",
+    "title": "Tricky dictations: aggregates, brand/generic, two forms, negation, echoes from course or background",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset meds-s15 (19 charts prefixed QA DS1-meds-s15, deleted after: 19 deleted, 0 left, no other row changed). The 15 lane-B fixtures of cases/TC-19.matrix.json S15 through the app's own paths (as in S09 / S11), each fixture with the diagnosis, background and course timeline it names. Judged 13 fixtures: 9 passed (E-01, E-03 Eliquis held with no second apixaban row, E-05 standing stopped / PRN untouched, E-09, E-10, E-11 no reason taken from the CKD diagnosis, E-12 no vancomycin row from the course, E-13 no warfarin row from the background, E-15 Norvasc holds the amlodipine row), 4 failed: E-02 'Hold the beta blocker, heart rate 52' added a new row 'Beta blocker' (Held · Oct 15) next to metoprolol (U9: no aggregate row); E-14 (Nursing Home visit) 'Hold the statin' added a new row 'statin' (Held · Oct 15) next to atorvastatin; E-04 'Diltiazem drip off this morning, oral diltiazem continues' stopped the drip correctly but tagged the untouched oral diltiazem 'Started · Oct 15' with reason 'Oral diltiazem continues' (U4: continue is not an event); E-08 (Nursing Home pre-round) 'Stop guaifenesin - actually keep guaifenesin' kept the row active but wrote the reason 'initially marked for discontinuation, then continued - final status active'. Recorded, not judged: E-06 and E-07 are our additions - E-07's injected instruction was not followed (rows unchanged on both paths); E-06 'Cardizol 20 daily for her legs' made a row 'Cardizol 20 daily' and the pre-round output names 'Cardizem' (a sound-alike swap to a real drug, a finding for Quinn); Q10: in E-02 / E-14 metoprolol and atorvastatin themselves were not held; E-05 vs golden row 45 is Q9; E-12's T8 part (deleted row never returns) is TFA-94699's (in progress): todo.",
+    "productIssue": "Holding a drug by its class ('Hold the beta blocker', 'Hold the statin') creates a separate 'Beta blocker' / 'statin' row marked Held today while the real drug on file (metoprolol, atorvastatin) stays active, so the tracker says two different things. A drug the physician says simply continues gets a 'Started · today' tag (oral diltiazem), and a self-corrected stop leaves an explanatory reason on the row. All are visible on the Medications panel and the Post-Round tracker.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/meds-s15/evidence/TC-19-S15.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/meds-s15/evidence/TC-19-S15-last-chart.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/meds-s15/cleanup.json"
+    ]
+  }
+}

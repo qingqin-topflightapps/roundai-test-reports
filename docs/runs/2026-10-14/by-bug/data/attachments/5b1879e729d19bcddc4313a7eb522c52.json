@@ -1,0 +1,312 @@
+{
+  "name": "oat06-s02",
+  "at": "2026-10-14T16:43:54.324Z",
+  "checks": [
+    {
+      "id": "checkpoint s02-cp1-added.md (Nursing Home list right after the first add)",
+      "ok": true,
+      "detail": "url /snf (want /snf); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s02-cp2-duplicate-kept.md (Nursing Home list after answering Cancel to the duplicate question)",
+      "ok": true,
+      "detail": "url /snf (want /snf); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s02-cp3-complete.md (the seeded resident's Post-Round tab right after Mark Visit Complete)",
+      "ok": true,
+      "detail": "url /snf/m57bj9fj2tnjjfffjegxmddn298g8d7s; missing []; present but must not be []"
+    },
+    {
+      "id": "U1 patient_added since T0 = 1, nursing_home, addMethod manual",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996225096.4006,\"userId\":\"jd71dh6kgsss14w8gmc0eqz8z98g8v6v\",\"event\":\"patient_added\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\"}]"
+    },
+    {
+      "id": "U3 duplicate_prompt_shown = 1 and duplicate_prompt_accepted = 1 sharing one promptId (nursing_home, manual); rejected = 0",
+      "ok": true,
+      "detail": "shown [{\"_creationTime\":1791996226777.042,\"userId\":\"jd71dh6kgsss14w8gmc0eqz8z98g8v6v\",\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\",\"promptId\":\"5ea384ce-61a0-4d1e-89cc-cda3f2aae084\"}]; accepted [{\"_creationTime\":1791996226812.313,\"userId\":\"jd71dh6kgsss14w8gmc0eqz8z98g8v6v\",\"event\":\"duplicate_prompt_accepted\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\",\"promptId\":\"5ea384ce-61a0-4d1e-89cc-cda3f2aae084\"}]; rejected 0"
+    },
+    {
+      "id": "Q5 (record-only): Cancel at the duplicate question is logged as 'accepted'",
+      "ok": true,
+      "detail": "accepted 1, rejected 0",
+      "recordOnly": true
+    },
+    {
+      "id": "U3 the Cancel kept one resident named QA Resident OAT06 Manual",
+      "ok": true,
+      "detail": "residents with that name after Cancel: 1"
+    },
+    {
+      "id": "no patient_removed row (nothing was removed in this walk)",
+      "ok": true,
+      "detail": "patient_removed 0"
+    },
+    {
+      "id": "U6 pre_round_summary_opened = 1 for the resident (nursing_home)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996229741.56,\"_id\":\"kh7cpt657xehhmdyhwctf287yn8g8km2\",\"careSetting\":\"nursing_home\",\"day\":\"2026-10-15\",\"event\":\"pre_round_summary_opened\",\"patientId\":\"m57bj9fj2tnjjfffjegxmddn298g8d7s\",\"userId\":\"jd71dh6kgsss14w8gmc0eqz8z98g8v6v\"}]"
+    },
+    {
+      "id": "U6 note_marked_complete = 1 for the resident, minutesFromPreRoundOpened a number >= 0 (nursing_home)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996230999.808,\"_id\":\"kh7bbky6rg2yjntg4x6p8bejen8g8bnd\",\"careSetting\":\"nursing_home\",\"day\":\"2026-10-15\",\"event\":\"note_marked_complete\",\"minutesFromPreRoundOpened\":0,\"patientId\":\"m57bj9fj2tnjjfffjegxmddn298g8d7s\",\"userId\":\"jd71dh6kgsss14w8gmc0eqz8z98g8v6v\"}]"
+    },
+    {
+      "id": "U8 task_completed = 1 and task_deleted = 1 against the resident (nursing_home)",
+      "ok": true,
+      "detail": "task_completed [{\"_creationTime\":1791996230826.663,\"_id\":\"kh78kh1f0vq2mwb0eqn06d35wn8g92pz\",\"careSetting\":\"nursing_home\",\"day\":\"2026-10-15\",\"event\":\"task_completed\",\"patientId\":\"m57bj9fj2tnjjfffjegxmddn298g8d7s\",\"userId\":\"jd71dh6kgsss14w8gmc0eqz8z98g8v6v\"}]; task_deleted [{\"_creationTime\":1791996230920.919,\"_id\":\"kh791g4rkzckeenwqyhce4dcg98g8cvk\",\"careSetting\":\"nursing_home\",\"day\":\"2026-10-15\",\"event\":\"task_deleted\",\"patientId\":\"m57bj9fj2tnjjfffjegxmddn298g8d7s\",\"userId\":\"jd71dh6kgsss14w8gmc0eqz8z98g8v6v\"}]"
+    },
+    {
+      "id": "every usage row since T0 is one of those four, nursing_home, with the resident's id",
+      "ok": true,
+      "detail": "pre_round_summary_opened:nursing_home:resident, task_completed:nursing_home:resident, task_deleted:nursing_home:resident, note_marked_complete:nursing_home:resident"
+    },
+    {
+      "id": "U6/U8 today's nursing_home rollup: preRoundSummariesOpened, notesCompleted, encountersTimed, tasksCompleted, tasksDeleted each +1",
+      "ok": true,
+      "detail": "preRoundSummariesOpened +1, notesCompleted +1, encountersTimed +1, tasksCompleted +1, tasksDeleted +1"
+    },
+    {
+      "id": "the hospital rollup row is unchanged",
+      "ok": true,
+      "detail": "hospital row before absent, after absent; deltas {\"preRoundSummariesOpened\":0,\"notesCompleted\":0,\"encountersTimed\":0,\"minutesPreRoundToComplete\":0,\"notesGenerated\":0,\"handoffsGenerated\":0,\"handoffsSent\":0,\"tasksCompleted\":0,\"tasksDeleted\":0}"
+    },
+    {
+      "id": "U15 no row read holds a name, unit / room, MRN, diagnosis, task or note text",
+      "ok": true,
+      "detail": "none of the resident strings in any row"
+    },
+    {
+      "id": "no model call was attempted on this path",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T0": {
+      "serverNow": 1791996224209,
+      "day": "2026-10-15",
+      "seededResidentId": "m57bj9fj2tnjjfffjegxmddn298g8d7s",
+      "activityRows": 1,
+      "usageRows": 0,
+      "daily": []
+    },
+    "checkpoint s02-cp1-added.md": {
+      "when": "Nursing Home list right after the first add",
+      "url": "http://localhost:6473/snf",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s02-s02-cp1-added.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nNursing Home\n\n0/2 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQR\n\nQA Resident Walk Seeded\n\nLong-Term Care · Rm 20 · QA060220\n\nPost-acute rehabilitation\n\nNote Ready\nFollow-up\n2 tasks\nQR\n\nQA Resident OAT06 Manual\n\nLong-Term Care · Rm 21 · SNF-274777\n\nPending\nFollow-up\nTask Export\nResidents\nHandoff\nDashboard\nSettings"
+    },
+    "step2 duplicate rows": [
+      {
+        "_creationTime": 1791996226777.042,
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v",
+        "event": "duplicate_prompt_shown",
+        "careSetting": "nursing_home",
+        "addMethod": "manual",
+        "promptId": "5ea384ce-61a0-4d1e-89cc-cda3f2aae084"
+      },
+      {
+        "_creationTime": 1791996226812.313,
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v",
+        "event": "duplicate_prompt_accepted",
+        "careSetting": "nursing_home",
+        "addMethod": "manual",
+        "promptId": "5ea384ce-61a0-4d1e-89cc-cda3f2aae084"
+      }
+    ],
+    "step2 url after Cancel": "http://localhost:6473/snf/add",
+    "checkpoint s02-cp2-duplicate-kept.md": {
+      "when": "Nursing Home list after answering Cancel to the duplicate question",
+      "url": "http://localhost:6473/snf",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s02-s02-cp2-duplicate-kept.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nNursing Home\n\n0/2 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQR\n\nQA Resident Walk Seeded\n\nLong-Term Care · Rm 20 · QA060220\n\nPost-acute rehabilitation\n\nNote Ready\nFollow-up\n2 tasks\nQR\n\nQA Resident OAT06 Manual\n\nLong-Term Care · Rm 21 · SNF-274777\n\nPending\nFollow-up\nTask Export\nResidents\nHandoff\nDashboard\nSettings"
+    },
+    "residents named QA Resident OAT06 Manual after Cancel": 1,
+    "step3 pre-round open row landed (ms)": {
+      "reached": true,
+      "waitedMs": 920
+    },
+    "step4 stored tasks": {
+      "afterComplete": {
+        "chart": {
+          "status": "note-ready",
+          "tasks": [
+            {
+              "id": "qa-s02-1",
+              "text": "QA task one: weigh weekly",
+              "done": true
+            },
+            {
+              "id": "qa-s02-2",
+              "text": "QA task two: PT re-eval",
+              "done": false
+            }
+          ]
+        },
+        "ok": true
+      },
+      "afterDelete": {
+        "chart": {
+          "status": "note-ready",
+          "tasks": [
+            {
+              "id": "qa-s02-1",
+              "text": "QA task one: weigh weekly",
+              "done": true
+            }
+          ]
+        },
+        "ok": true
+      }
+    },
+    "step5 stored status": "complete",
+    "checkpoint s02-cp3-complete.md": {
+      "when": "the seeded resident's Post-Round tab right after Mark Visit Complete",
+      "url": "http://localhost:6473/snf/m57bj9fj2tnjjfffjegxmddn298g8d7s",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s02-s02-cp3-complete.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Walk Seeded\n\nQA060220 · Long-Term Care · Rm 20\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n0 PENDING TASKS\nAdd Task\n\nQA task one: weigh weekly\n\nVisit Complete"
+    },
+    "activity rows since T0": [
+      {
+        "_creationTime": 1791996225096.4006,
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v",
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "_creationTime": 1791996226777.042,
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v",
+        "event": "duplicate_prompt_shown",
+        "careSetting": "nursing_home",
+        "addMethod": "manual",
+        "promptId": "5ea384ce-61a0-4d1e-89cc-cda3f2aae084"
+      },
+      {
+        "_creationTime": 1791996226812.313,
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v",
+        "event": "duplicate_prompt_accepted",
+        "careSetting": "nursing_home",
+        "addMethod": "manual",
+        "promptId": "5ea384ce-61a0-4d1e-89cc-cda3f2aae084"
+      }
+    ],
+    "usage rows since T0": [
+      {
+        "_creationTime": 1791996229741.56,
+        "_id": "kh7cpt657xehhmdyhwctf287yn8g8km2",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "pre_round_summary_opened",
+        "patientId": "m57bj9fj2tnjjfffjegxmddn298g8d7s",
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v"
+      },
+      {
+        "_creationTime": 1791996230826.663,
+        "_id": "kh78kh1f0vq2mwb0eqn06d35wn8g92pz",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "m57bj9fj2tnjjfffjegxmddn298g8d7s",
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v"
+      },
+      {
+        "_creationTime": 1791996230920.919,
+        "_id": "kh791g4rkzckeenwqyhce4dcg98g8cvk",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "m57bj9fj2tnjjfffjegxmddn298g8d7s",
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v"
+      },
+      {
+        "_creationTime": 1791996230999.808,
+        "_id": "kh7bbky6rg2yjntg4x6p8bejen8g8bnd",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "note_marked_complete",
+        "minutesFromPreRoundOpened": 0,
+        "patientId": "m57bj9fj2tnjjfffjegxmddn298g8d7s",
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v"
+      }
+    ],
+    "daily nursing_home before / after / delta": {
+      "delta": {
+        "preRoundSummariesOpened": 1,
+        "notesCompleted": 1,
+        "encountersTimed": 1,
+        "minutesPreRoundToComplete": 0,
+        "notesGenerated": 0,
+        "handoffsGenerated": 0,
+        "handoffsSent": 0,
+        "tasksCompleted": 1,
+        "tasksDeleted": 1
+      },
+      "after": {
+        "_creationTime": 1791996229741.5603,
+        "_id": "kd73js7bx9tney01kf9dqag1p18g967j",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "encountersTimed": 1,
+        "handoffsGenerated": 0,
+        "handoffsSent": 0,
+        "minutesPreRoundToComplete": 0,
+        "notesCompleted": 1,
+        "notesGenerated": 0,
+        "preRoundSummariesOpened": 1,
+        "tasksCompleted": 1,
+        "tasksDeleted": 1,
+        "updatedAt": "2026-10-14T16:43:50.999Z",
+        "userId": "jd71dh6kgsss14w8gmc0eqz8z98g8v6v"
+      },
+      "before": null
+    },
+    "daily hospital before / after / delta": {
+      "delta": {
+        "preRoundSummariesOpened": 0,
+        "notesCompleted": 0,
+        "encountersTimed": 0,
+        "minutesPreRoundToComplete": 0,
+        "notesGenerated": 0,
+        "handoffsGenerated": 0,
+        "handoffsSent": 0,
+        "tasksCompleted": 0,
+        "tasksDeleted": 0
+      },
+      "after": null,
+      "before": null
+    },
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "QA Resident OAT06 Manual is already in the resident panel.\n\nAdd as a separate resident anyway?",
+        "answer": "dismiss",
+        "expected": true
+      }
+    ],
+    "ai calls attempted (all refused at the socket)": [],
+    "stored resident at the end": {
+      "status": "complete",
+      "tasks": [
+        {
+          "id": "qa-s02-1",
+          "text": "QA task one: weigh weekly",
+          "done": true
+        }
+      ]
+    },
+    "cleanup": {
+      "hospital": 0,
+      "nursingHome": 2
+    }
+  }
+}

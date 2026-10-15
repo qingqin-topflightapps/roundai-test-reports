@@ -1,0 +1,61 @@
+{
+  "state": "nh-add",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-add.png",
+  "findings": [
+    {
+      "check": "tap",
+      "detail": "button \"Back\" is 30×30 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Back\""
+    },
+    {
+      "check": "tap",
+      "detail": "input \"\" is 352×38 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "input \"\""
+    },
+    {
+      "check": "tap",
+      "detail": "input \"\" is 352×38 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "input \"\""
+    },
+    {
+      "check": "tap",
+      "detail": "input \"\" is 352×38 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "input \"\""
+    },
+    {
+      "check": "tap",
+      "detail": "input \"\" is 352×38 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "input \"\""
+    },
+    {
+      "check": "tap",
+      "detail": "select \"New Admission Follow-Up Consult\" is 352×37 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "select \"New Admission Follow-Up Consult\""
+    }
+  ],
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 3,
+      "targets": [
+        ".space-y-1:nth-child(4) > .text-slate-400",
+        ".leading-relaxed",
+        ".inline-flex"
+      ],
+      "nodes": [
+        "\"Auto-generated if left blank\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"Admission summary, course, vitals, labs, and medications can\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"<button class=\"inline-flex items-ce...\" type=\"submit\">\" 3.66:1 (#ffffff on #009689, 10.5pt (14px); needs 4.5:1)"
+      ]
+    }
+  ],
+  "url": "/snf/add"
+}

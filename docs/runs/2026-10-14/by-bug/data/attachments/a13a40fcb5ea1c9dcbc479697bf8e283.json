@@ -1,0 +1,132 @@
+{
+  "name": "tc01-s07-a",
+  "at": "2026-10-14T17:21:46.617Z",
+  "checks": [
+    {
+      "id": "setup: before midnight H1 New Admission, H2 Consult, H3 Follow-up, N1 New Admission, N3 Consult",
+      "ok": true,
+      "detail": "{\"hosp\":{\"QA Hosp Ana Rivera IH80\":{\"badge\":\"New Admission\",\"dayOrVisit\":null},\"QA Hosp Ben Rivera IH80\":{\"badge\":\"Consult\",\"dayOrVisit\":null},\"QA Hosp Cara Okafor IH80\":{\"badge\":\"Follow-up\",\"dayOrVisit\":null}},\"snf\":{\"QA Resident Nell IH80\":{\"badge\":\"New Admission\",\"dayOrVisit\":null},\"QA Resident Otto IH80\":{\"badge\":\"Consult\",\"dayOrVisit\":null}},\"device\":\"Wed Oct 14 2026 23:58:03 GMT+0900 (Japan Standard Time)\"}"
+    },
+    {
+      "id": "right after midnight (00:00:30), before the lifecycle repeat, the cards already read Follow-up",
+      "ok": true,
+      "detail": "{\"H1\":\"Follow-up\",\"H2\":\"Follow-up\",\"N1\":\"Follow-up\",\"N3\":\"Follow-up\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "(a) without a reload or a tap the badges roll by the next lifecycle run: H1, H2, N1, N3 Follow-up; H3 stays Follow-up",
+      "ok": true,
+      "detail": "{\"hosp\":{\"QA Hosp Ana Rivera IH80\":{\"badge\":\"Follow-up\",\"dayOrVisit\":null},\"QA Hosp Ben Rivera IH80\":{\"badge\":\"Follow-up\",\"dayOrVisit\":null},\"QA Hosp Cara Okafor IH80\":{\"badge\":\"Follow-up\",\"dayOrVisit\":null}},\"snf\":{\"QA Resident Nell IH80\":{\"badge\":\"Follow-up\",\"dayOrVisit\":null},\"QA Resident Otto IH80\":{\"badge\":\"Follow-up\",\"dayOrVisit\":null}}}"
+    },
+    {
+      "id": "(a) known B23: the Hospital card shows a hospital day (H1 Day 4, H2 Day 7)",
+      "ok": false,
+      "detail": "{\"H1\":null,\"H2\":null}"
+    },
+    {
+      "id": "(a) known B23: the Nursing Home card shows a visit number",
+      "ok": false,
+      "detail": "{\"N1\":null,\"N3\":null}"
+    }
+  ],
+  "data": {
+    "days": {
+      "serverNow": "2026-10-14T17:21:39.631Z",
+      "day1": "2026-10-14",
+      "day2": "2026-10-15",
+      "serverUtcDay": "2026-10-14"
+    },
+    "h3-day1": {
+      "encType": "follow-up",
+      "encTypeDay": "2026-10-14"
+    },
+    "before-midnight": {
+      "hosp": {
+        "QA Hosp Ana Rivera IH80": {
+          "badge": "New Admission",
+          "dayOrVisit": null
+        },
+        "QA Hosp Ben Rivera IH80": {
+          "badge": "Consult",
+          "dayOrVisit": null
+        },
+        "QA Hosp Cara Okafor IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        }
+      },
+      "snf": {
+        "QA Resident Nell IH80": {
+          "badge": "New Admission",
+          "dayOrVisit": null
+        },
+        "QA Resident Otto IH80": {
+          "badge": "Consult",
+          "dayOrVisit": null
+        }
+      },
+      "device": "Wed Oct 14 2026 23:58:03 GMT+0900 (Japan Standard Time)"
+    },
+    "00:00:30": {
+      "hosp": {
+        "QA Hosp Ana Rivera IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        },
+        "QA Hosp Ben Rivera IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        },
+        "QA Hosp Cara Okafor IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        }
+      },
+      "snf": {
+        "QA Resident Nell IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        },
+        "QA Resident Otto IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        }
+      },
+      "device": "Thu Oct 15 2026 00:00:35 GMT+0900 (Japan Standard Time)"
+    },
+    "00:10:40": {
+      "hosp": {
+        "QA Hosp Ana Rivera IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        },
+        "QA Hosp Ben Rivera IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        },
+        "QA Hosp Cara Okafor IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        }
+      },
+      "snf": {
+        "QA Resident Nell IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        },
+        "QA Resident Otto IH80": {
+          "badge": "Follow-up",
+          "dayOrVisit": null
+        }
+      },
+      "device": "Thu Oct 15 2026 00:10:45 GMT+0900 (Japan Standard Time)",
+      "stored": {
+        "H1": "new",
+        "H2": "consult",
+        "H3": "follow-up",
+        "N1": "follow-up",
+        "N3": "follow-up"
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "case": "TC-15-S05",
+  "title": "Preset 'current diagnosis' (Nursing Home; Hospital variant)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s05-n-diagnosis.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7b13jxyp1hz00q19f7kghf918g87d9",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s05-h-diagnosis.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7bdghyhbcxajgfyyne1qpd8n8g9w9s",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 29,
+    "costUsd": 0.2129108,
+    "durationMs": 116767,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U86",
+  "covers": [
+    "TC-15/S05"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u86",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U86.json",
+  "foreignBefore": {
+    "hospitalPatient": 4,
+    "snfResident": 4
+  }
+}

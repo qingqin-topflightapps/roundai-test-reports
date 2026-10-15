@@ -1,0 +1,16 @@
+{
+  "TC-04/S22": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T18:04:58.063Z",
+    "title": "Time from Link tap to text on the chart, and the pad load with 25 boxes",
+    "detail": "Our own addition, record-only (no UAT or ticket target, Q11). PW, local stack (numbers do not stand for dev): Patel in room 415 and 25 boxes 'QA box 01…25' seeded with quickDictation:create; three runs, each opening the pad, typing 'Bed 415, stable. run N' into a box, tapping the suggested '415 · QA Hosp Patel' Link, then opening Patel's Encounter tab (the tap->chart time includes closing the pad and opening the chart). run 1: pad 130 ms, tap->placed 118 ms, tap->server 178 ms, tap->text on Patel's Encounter tab 337 ms; run 2: pad 158 ms, tap->placed 140 ms, tap->server 234 ms, tap->text on Patel's Encounter tab 443 ms; run 3: pad 157 ms, tap->placed 128 ms, tap->server 197 ms, tap->text on Patel's Encounter tab 362 ms. Each run's text reached Patel's chart exactly once; no model action was called.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s22.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s22-run1-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s22-run2-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s22-run3-encounter.png"
+    ],
+    "method": "PW",
+    "pkg": "clk"
+  }
+}

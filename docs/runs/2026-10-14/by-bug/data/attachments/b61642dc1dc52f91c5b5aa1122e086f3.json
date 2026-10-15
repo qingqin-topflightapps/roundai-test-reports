@@ -1,0 +1,170 @@
+{
+  "name": "efs-s08-h",
+  "at": "2026-10-14T16:28:09.960Z",
+  "checks": [
+    {
+      "id": "h1: the words 'Note not generated' (decision D7, wording recorded only)",
+      "ok": false,
+      "detail": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "h1: a failure message about the note",
+      "ok": true,
+      "detail": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "h1: the typed dictation is still in the box",
+      "ok": true,
+      "detail": "QA-EFS-08 Lungs clear, ambulating in hall. Plan: repeat BMP tomorrow."
+    },
+    {
+      "id": "h1: Generate Note & Finish is offered again",
+      "ok": true,
+      "detail": "Generate Note & Finish"
+    },
+    {
+      "id": "h1: a failure word (U11)",
+      "ok": true,
+      "detail": "couldn"
+    },
+    {
+      "id": "h1: a next step (U11)",
+      "ok": true,
+      "detail": "tap generate"
+    },
+    {
+      "id": "h1: no fabricated note headings (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "h2: the right chart (page header)",
+      "ok": true,
+      "detail": "QA EFS-08 Hosp Fail tmqz"
+    },
+    {
+      "id": "h2: no fabricated note headings (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "h2: nothing to copy (no Copy to EMR) (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "h2: no note stored from the failed generation (U12)",
+      "ok": true,
+      "detail": "(empty)"
+    },
+    {
+      "id": "h2: no spinner left on the Note tab (endless 'Finalizing…' is B27, judged under TC-17/S19)",
+      "ok": false,
+      "detail": "Finalizing Encounter Data…",
+      "recordOnly": true
+    },
+    {
+      "id": "h3: the dictation survives a reload (U4a / U13)",
+      "ok": true,
+      "detail": "QA-EFS-08 Lungs clear, ambulating in hall. Plan: repeat BMP tomorrow."
+    },
+    {
+      "id": "h3: the dictation is stored on the server (U4a)",
+      "ok": true,
+      "detail": "QA-EFS-08 Lungs clear, ambulating in hall. Plan: repeat BMP tomorrow."
+    },
+    {
+      "id": "h4: setup: the chart offered Regenerate Note and the regenerate failed",
+      "ok": true,
+      "detail": "Regenerate Note → The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "h4: the right chart (page header)",
+      "ok": true,
+      "detail": "QA EFS-08 Hosp Edited tmqz"
+    },
+    {
+      "id": "h4: the physician's edited note is still on the Note tab (U13)",
+      "ok": true,
+      "detail": "QA-EFS-EDIT shown"
+    },
+    {
+      "id": "h4: the edited note is still the stored note (U13)",
+      "ok": true,
+      "detail": "Subjective:\n\nWalking with assistance.\n\nAssessment and Plan:\n\nQA-EFS-EDIT added by the physician."
+    },
+    {
+      "id": "h5: after a reload the edited note is still there (U13)",
+      "ok": true,
+      "detail": "QA-EFS-EDIT shown"
+    },
+    {
+      "id": "h: after the run the physician's edit is still stored",
+      "ok": true,
+      "detail": "Subjective:\n\nWalking with assistance.\n\nAssessment and Plan:\n\nQA-EFS-EDIT added by the physician."
+    },
+    {
+      "id": "setup: one generateNote attempt per chart, each answered with a failure at the socket",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/notes:generateNote\",\"answered\":\"fail\",\"atMs\":2144,\"conn\":1},{\"udfPath\":\"ai/notes:generateNote\",\"answered\":\"fail\",\"atMs\":6247,\"conn\":3},{\"udfPath\":\"ai/notes:suggestBilling\",\"answered\":\"ok\",\"atMs\":6370,\"conn\":3}]"
+    },
+    {
+      "id": "setup: no unscripted AI call",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "h1": {
+      "message": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "tapToMessageMs": 117,
+      "box": "QA-EFS-08 Lungs clear, ambulating in hall. Plan: repeat BMP tomorrow.",
+      "literalNoteNotGenerated": false,
+      "headingsSeen": []
+    },
+    "h2": {
+      "postRound": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-08 Hosp Fail tmqz\n\nRoom 4B-12 · 72y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…\n",
+      "spinners": [
+        "Finalizing Encounter Data…"
+      ],
+      "server": {
+        "note": null,
+        "status": "seen"
+      }
+    },
+    "h3": {
+      "box": "QA-EFS-08 Lungs clear, ambulating in hall. Plan: repeat BMP tomorrow.",
+      "serverEncounterNotes": "QA-EFS-08 Lungs clear, ambulating in hall. Plan: repeat BMP tomorrow."
+    },
+    "h4": {
+      "buttonLabel": "Regenerate Note",
+      "message": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "server": {
+        "note": "Subjective:\n\nWalking with assistance.\n\nAssessment and Plan:\n\nQA-EFS-EDIT added by the physician.",
+        "status": "note-ready",
+        "noteGeneratedAt": "2026-10-14T16:07:59.927Z"
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 2144,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 6247,
+        "conn": 3
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "ok",
+        "atMs": 6370,
+        "conn": 3
+      }
+    ]
+  }
+}

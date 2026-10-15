@@ -1,0 +1,26 @@
+{
+  "TC-24/S28": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-14T16:27:49.656Z",
+    "title": "In-page delete confirmation and 'deleted' message: accessible and fit on phone/WebKit",
+    "detail": "Known failure B24 (TFA-92579 AC 7-8, ready for QA), recorded on desktop Chromium, Pixel 7 Chromium and iPhone 15 WebKit. Tapping the Hospital card's trash icon opens the browser's native confirm() - 'Remove <name> from the rounding list? This will delete all notes, vitals, and encounter data for this patient.' - not an in-page dialog, so the focus / Escape-as-Cancel / layout checks of an in-page confirmation have nothing to run on (a native dialog cannot be screenshotted; its type and text are in the evidence). Cancel keeps the patient (list and server); OK deletes only that patient (server row gone, the neighbour stays). No 'deleted' message appears: no text and no status / alert / aria-live region within 4 s of OK on any profile (2 judged cells x 3 profiles failed). axe on the screen after the delete: color-contrast only. The Nursing Home list has no delete control at all (B24). Android half not run (emulator / device).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-after-cancel.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-after-cancel.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-after-cancel.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-after-delete.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-after-delete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-after-delete.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-after-delete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-after-delete.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-after-delete.png"
+    ],
+    "method": "PW",
+    "productIssue": "Deleting a Hospital patient uses the browser's native confirm box instead of the app's own confirmation, and after OK the patient just disappears from the list with no 'deleted' message, on desktop and on phones; Nursing Home residents cannot be deleted at all (B24).",
+    "pkg": "vis"
+  }
+}

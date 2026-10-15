@@ -1,0 +1,131 @@
+{
+  "state": "after-delete",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-after-delete.png",
+  "findings": [
+    {
+      "check": "tap",
+      "detail": "button \"Hospital\" is 86×28 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Hospital\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Nursing Home\" is 118×28 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Nursing Home\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Handoff\" is 77×28 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Handoff\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Inbox\" is 36×36 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Inbox\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Open quick dictation\" is 36×36 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Open quick dictation\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"\" is 36×36 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"\" is 36×36 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"\""
+    },
+    {
+      "check": "tap",
+      "detail": "input \"Search patients\" is 303×20 (< 24 px, passes the WCAG 2.5.8 spacing exception)",
+      "severity": "low",
+      "target": "input \"Search patients\""
+    },
+    {
+      "check": "tap",
+      "detail": "select \"Sort patients\" is 182×27 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "select \"Sort patients\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Dashboard\" is 79×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Dashboard\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Remove QA TC24 Vis B6ZP Bravo from the rounding list\" is 28×28 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Remove QA TC24 Vis B6ZP Bravo from the rounding list\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Task Export\" is 352×34 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Task Export\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Patients\" is 48×39 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Patients\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Dashboard\" is 63×39 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Dashboard\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Settings\" is 48×39 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Settings\""
+    }
+  ],
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 5,
+      "targets": [
+        ".mb-0\\.5",
+        ".hover\\:bg-teal-700",
+        ".text-\\[10px\\]",
+        ".px-2\\.5.py-0\\.5.text-slate-500",
+        ".text-teal-600 > .font-semibold"
+      ],
+      "nodes": [
+        "\"Thursday, October 15, 2026\" 2.63:1 (#90a1b9 on #ffffff, 9.0pt (12px); needs 4.5:1)",
+        "\"<button class=\"inline-flex items-ce...\">\" 3.66:1 (#ffffff on #009689, 9.0pt (12px); needs 4.5:1)",
+        "\"New today\" 2.42:1 (#ffffff on #00bba7, 7.5pt (10px); needs 4.5:1)",
+        "\"Not Yet Prepped\" 4.34:1 (#62748e on #f1f5f9, 9.0pt (12px); needs 4.5:1)",
+        "\"Patients\" 3.66:1 (#009689 on #ffffff, 9.0pt (12px); needs 4.5:1)"
+      ]
+    },
+    {
+      "id": "nested-interactive",
+      "impact": "serious",
+      "help": "Interactive controls must not be nested",
+      "count": 1,
+      "targets": [
+        ".text-left"
+      ],
+      "nodes": [
+        "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for Q\" <div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for QA TC24 Vis B6ZP Bravo\" class=\"w-full text-left p-4 cursor-po"
+      ]
+    }
+  ],
+  "url": "/rounding"
+}

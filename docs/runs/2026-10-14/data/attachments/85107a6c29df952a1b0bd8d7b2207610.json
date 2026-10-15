@@ -1,0 +1,119 @@
+{
+  "name": "oat03-s16-h",
+  "at": "2026-10-14T17:32:32.558Z",
+  "checks": [
+    {
+      "id": "h cp1: the right chart",
+      "ok": true,
+      "detail": "QA OAT03-S16 Hosp ynx5"
+    },
+    {
+      "id": "h cp1: no 'Generating Note…' 45 s after the tap (no endless spinner)",
+      "ok": true,
+      "detail": "no spinner"
+    },
+    {
+      "id": "h cp1: the note arrived after reconnect, or an explicit failure",
+      "ok": true,
+      "detail": "couldn’t be generated"
+    },
+    {
+      "id": "h cp2: the dictation is kept on screen (U3)",
+      "ok": true,
+      "detail": "QA OAT-03 in-flight drop: wound clean, no erythema, continue dressing changes."
+    },
+    {
+      "id": "h cp2: the stored dictation is the typed text (U3)",
+      "ok": true,
+      "detail": "QA OAT-03 in-flight drop: wound clean, no erythema, continue dressing changes."
+    },
+    {
+      "id": "h cp2: after the failure Generate is offered again",
+      "ok": true,
+      "detail": "Generate Note & Finish enabled=true"
+    },
+    {
+      "id": "h backend: the note is empty or holds the dictated content (no half note)",
+      "ok": true,
+      "detail": "(empty)"
+    },
+    {
+      "id": "h backend: the chart is finished only if a note is stored",
+      "ok": true,
+      "detail": "status seen, note empty"
+    },
+    {
+      "id": "setup: generateNote reached the socket once before the cut and its answer was dropped with the socket",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/notes:generateNote\",\"answered\":\"held\",\"atMs\":1710,\"conn\":1}]"
+    },
+    {
+      "id": "setup: no unscripted AI call",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "timeline": {
+      "offlineAtMs": 1006,
+      "onlineAtMs": 21003,
+      "cp1AtMs": 45018,
+      "busyAtCut": "Generating Note…",
+      "duringOutage": {
+        "busyLabel": "Generating Note…",
+        "banner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+        "spinners": [
+          "Generating Note…"
+        ]
+      }
+    },
+    "h-after-45s": {
+      "screen": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA OAT03-S16 Hosp ynx5\n\nRoom 707 · 57y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nWound check after appendectomy\n\nPre-Round\nEncounter\nPost-Round\n\nTap the mic to capture the encounter\n\nTap to toggle\nHold to talk\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nTASKS\n0 pending\nDictate\nAdd\n\nNo pending tasks — tap Add or Dictate to create one.\n\nNOTE FORMAT\nH&P\nSOAP progress\nConsult note\nDischarge summary\n\nStandard Subjective · Objective · Assessment · Plan\n\nThe encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.\n\nGenerate Note & Finish\n[field] QA OAT-03 in-flight drop: wound clean, no erythema, continue dressing changes.",
+      "spinners": []
+    },
+    "h-encounter": {
+      "box": "QA OAT-03 in-flight drop: wound clean, no erythema, continue dressing changes.",
+      "failure": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "generateButton": "Generate Note & Finish",
+      "enabled": true
+    },
+    "h-after": {
+      "note": "",
+      "status": "seen",
+      "noteGeneratedAt": null
+    },
+    "socket": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "held",
+        "atMs": 1710,
+        "conn": 1
+      }
+    ],
+    "socketEvents": [
+      "299 conn 1 open",
+      "2621 conn 1 cut",
+      "3456 conn 2 refused (offline)",
+      "4830 conn 3 refused (offline)",
+      "10484 conn 4 refused (offline)",
+      "19766 conn 5 refused (offline)",
+      "22617 restore",
+      "22621 conn 6 open"
+    ],
+    "pageLog": [
+      "2621 log WebSocket closed with code 1006: QA offline",
+      "2621 log Attempting reconnect in 831ms",
+      "3455 log WebSocket closed with code 1006: QA offline",
+      "3455 log Attempting reconnect in 1373ms",
+      "4830 log WebSocket closed with code 1006: QA offline",
+      "4830 log Attempting reconnect in 5651ms",
+      "10483 log WebSocket closed with code 1006: QA offline",
+      "10483 log Attempting reconnect in 9280ms",
+      "19765 log WebSocket closed with code 1006: QA offline",
+      "19765 log Attempting reconnect in 11833ms",
+      "22617 log Network recovery detected, reconnecting immediately",
+      "22625 log WebSocket reconnected at t=22.6s after disconnect due to QA offline",
+      "22625 log Network recovery reconnect saved ~9s of waiting"
+    ]
+  }
+}

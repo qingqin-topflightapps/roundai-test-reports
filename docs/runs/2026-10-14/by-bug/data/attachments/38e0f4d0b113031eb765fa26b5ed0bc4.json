@@ -1,0 +1,54 @@
+{
+  "name": "oat06-s13-r1-r4",
+  "at": "2026-10-14T17:41:32.779Z",
+  "checks": [
+    {
+      "id": "R1: the baseline survey is offered on the Hospital list before any patient (first list screen after sign-in)",
+      "ok": true,
+      "detail": "card on the Hospital list: true"
+    },
+    {
+      "id": "R1: the baseline survey is offered on the Nursing Home list before any patient",
+      "ok": true,
+      "detail": "card on the Nursing Home list: true"
+    },
+    {
+      "id": "R2 (recorded, Q2): the card after the first patient was added",
+      "ok": true,
+      "detail": "{\"shown\":true,\"baselineDone\":false}",
+      "recordOnly": true
+    },
+    {
+      "id": "R4: after the answer the card is not offered again on the Hospital or Nursing Home list, also after a reload",
+      "ok": true,
+      "detail": "Hospital after reload: {\"shown\":false,\"baselineDone\":true}; Nursing Home: {\"shown\":false,\"baselineDone\":true}; Nursing Home after reload: {\"shown\":false,\"baselineDone\":true}"
+    },
+    {
+      "id": "R4: exactly one baseline row, keys named for a reader, holding the answers given (14, 5_to_10, under_5, emr, sometimes, comment)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791999679609.677,\"answers\":{\"comments\":\"QA OAT-06 baseline comment.\",\"noteMinutesPerPatientBefore\":\"under_5\",\"patientListMethodBefore\":\"emr\",\"patientsPerDay\":14,\"preRoundMinutesPerPatientBefore\":\"5_to_10\",\"writtenHandoffFrequencyBefore\":\"sometimes\"},\"day\":\"2026-10-15\",\"survey\":\"baseline\"}]"
+    }
+  ],
+  "data": {
+    "R4 rows": [
+      {
+        "_creationTime": 1791999679609.677,
+        "answers": {
+          "comments": "QA OAT-06 baseline comment.",
+          "noteMinutesPerPatientBefore": "under_5",
+          "patientListMethodBefore": "emr",
+          "patientsPerDay": 14,
+          "preRoundMinutesPerPatientBefore": "5_to_10",
+          "writtenHandoffFrequencyBefore": "sometimes"
+        },
+        "day": "2026-10-15",
+        "survey": "baseline"
+      }
+    ],
+    "aiCalls": [],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 0
+    }
+  }
+}

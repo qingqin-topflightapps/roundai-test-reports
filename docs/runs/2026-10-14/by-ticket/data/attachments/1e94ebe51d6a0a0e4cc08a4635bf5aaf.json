@@ -1,0 +1,18 @@
+{
+  "OAT-06/S05": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:43:55.159Z",
+    "title": "Duplicate prompt on manual add: context x choice -> one shown and one outcome row per prompt",
+    "detail": "Local QA stack only (main e02167f), a brand-new @roundai.test physician per test, synthetic charts deleted after the reads. No model: every ai/* action is refused at the Convex socket and none was sent; tripwire clean for the final run (16:43:28Z mark, 'no model call'). Rows are read with the local admin key (patientActivity / usage / surveys _recentForActor, usage:_dailyForActor) before and after the steps; reading them through Vikram's dashboard on the UAT deployment is S23 / Q12. Seeded 'QA Hosp OAT06 Dup' (66, 4B-62, Pneumonia) and 'QA Resident OAT06 Dup'. R1 Hospital re-add -> Cancel, R2 Hospital re-add -> OK, R3 Nursing Home re-add -> Cancel, R4 Nursing Home re-add -> OK, all through the real forms; rows read before and after each step, so every row is attributed to its prompt. Judged 19/19: 4 checkpoints (each the list, not the form); one confirm per re-add (4); each prompt has exactly one duplicate_prompt_shown and exactly one outcome row with its promptId, the right careSetting and addMethod manual; 4 distinct promptIds; no prompt with both outcomes; patient_added only on R2 (hospital, manual) and R4 (nursing_home, manual); 10 rows since T0 and nothing else; rounding:list and snf:list each hold 2 charts with the name; no name, room, unit, MRN or diagnosis in any row. Record-only (Q5): Cancel is logged as 'accepted' and OK as 'rejected' in both contexts; a prompt closed without a choice is not reachable with a native confirm. Scan rows are S04 (not this package).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s05.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r1.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r2.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r3.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r4.png",
+      "runs/2026-10-14-local/newspec-c/reports/an1-oat06-s05-duplicates.json"
+    ],
+    "method": "PW",
+    "pkg": "an1"
+  }
+}

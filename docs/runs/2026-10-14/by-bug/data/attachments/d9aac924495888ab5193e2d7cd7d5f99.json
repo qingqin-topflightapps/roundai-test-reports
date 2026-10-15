@@ -1,0 +1,20 @@
+{
+  "OAT-03/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:38:20.937Z",
+    "title": "Typing through a 2 s blip and a 20 s outage, then back online: offline notice, text kept, saved to the server (clock cell = B18, recorded)",
+    "detail": "Spec newspec-c/flt-oat03-s12-offline-typing.spec.ts; network cut = setOffline plus the Convex socket closed and reconnects refused; no AI call. Hospital: line 1 typed during a 2 s blip, line 2 during a 20 s outage; Nursing Home: one line during a 20 s outage. Judged 16/16: during each 20 s outage the no-network banner shows and the typed text stays; after reconnect, before any reload, rounding:get encounterNotes is exactly 'QA OAT-03 blip line. QA OAT-03 outage line.' and snf:get holds the Nursing Home text; after a reload the box shows it and the banner is gone; a second fresh browser context shows the same text and a second server read matches. Recorded: no message during the 2 s blip (our addition; the banner needs two failed 3 s checks); line 1 reached the server after the blip. Clock cell (known B18, recorded only): a browser whose clock is one day ahead was signed out by its own clock (12 h session) and got back in through the sign-in form; typing ' QA OAT-03 clock line.' offline and reconnecting left the three lines in order in the server's encounter, but encounterEditedAt was written from the device clock (2026-10-15T17:38Z while the server time was 2026-10-14T17:37Z) — the B18 pattern.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-clock.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-clock-clock-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-h-hosp-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-h-hosp-outage.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-n-snf-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s12-n-snf-offline.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

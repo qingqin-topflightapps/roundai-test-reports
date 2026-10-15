@@ -1,0 +1,15 @@
+{
+  "TC-11/S02": {
+    "status": "passed",
+    "ranAt": "2026-10-14T18:09:18.881Z",
+    "title": "Nursing Home: three same-day visits for one resident, each entry from its own note (live AI)",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset course-nh (QA DS1-course-nh rows, 2 deleted after, no other row changed). Three visits in a row on one resident with no course: Pre-Round Save Note, then Encounter and Generate Note & Finish / Regenerate Note with each visit's own text; after each the Pre-Round tab was opened in the app (no reload) and the Visit Timeline read once it no longer showed 'Encounter done' (settled each time within 30 s). Judged 30/30 cells held: 'Visit 1 – Oct 15:' exactly once and dated the run day (the server clock in the browser's zone, Asia/Tokyo); each visit's line carries a fact said only at that visit (80 feet / walker / 2/10; neuro checks / precautions; 4/10 / as needed at night); no placeholder, sign-off or 'Encounter done'; no pre-round sentence copied in. Same-as check: the Visit 1 line stored after visit 1 is still in the course byte for byte after visits 2 and 3 (U5, not overwritten); no 'Visit N ·' number on two lines; a note exists. Recorded (Q1 / Q5, not judged): 'Visit 2 – Oct 15' and 'Visit 3 – Oct 15' each once, in order under Visit 1, and Visit 1 still on the cards after visit 3. Timing (S19 / U11, review only): per visit generateNote 4.4-6.3 s, refreshCourseAndBackground 3.2-3.6 s, all on us.anthropic.claude-haiku-4-5 with providerMs logged; none over 30 s.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S02.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S02-after-visit1.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S02-after-visit2.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S02-after-visit3.png"
+    ]
+  }
+}

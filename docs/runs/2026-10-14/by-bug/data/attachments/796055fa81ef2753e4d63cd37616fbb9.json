@@ -1,0 +1,146 @@
+{
+  "name": "efs-s09-n",
+  "at": "2026-10-14T16:32:01.806Z",
+  "checks": [
+    {
+      "id": "n1: the note stays on screen (U5)",
+      "ok": true,
+      "detail": "note shown"
+    },
+    {
+      "id": "n1: the billing area says the suggestion failed (U5)",
+      "ok": true,
+      "detail": "Couldn't generate billing suggestion — tap to retry"
+    },
+    {
+      "id": "n1: how to retry (U5 / U11)",
+      "ok": true,
+      "detail": "retry"
+    },
+    {
+      "id": "n1: no billing code without a suggestion (U5 / U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "n1: the stored note is untouched (U5)",
+      "ok": true,
+      "detail": "QA-EFS-09 The resident is participating in therapy. Heart failure and hypertensi"
+    },
+    {
+      "id": "n1: no code was stored for the failed suggestion (U12)",
+      "ok": true,
+      "detail": "(none)"
+    },
+    {
+      "id": "n1: tapping retry asks again and shows the same error",
+      "ok": true,
+      "detail": "suggestBilling calls 1 → 2",
+      "recordOnly": true
+    },
+    {
+      "id": "n2: the new note is on the Post-Round tab (U5)",
+      "ok": true,
+      "detail": "150 feet"
+    },
+    {
+      "id": "n2: the billing area shows the error (U5)",
+      "ok": true,
+      "detail": "Couldn't generate billing suggestion — tap to retry"
+    },
+    {
+      "id": "n2: with a retry (U5 / U11)",
+      "ok": true,
+      "detail": "retry"
+    },
+    {
+      "id": "n2: no billing code, and not the earlier note's code (U5 / U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "n2: the billing failure does not fail the generation (U5)",
+      "ok": true,
+      "detail": "no note failure message"
+    },
+    {
+      "id": "n2: the new note was stored (U5)",
+      "ok": true,
+      "detail": "QA-EFS-09B Walked 150 feet with a rolling walker. Continue therapy."
+    },
+    {
+      "id": "n2: the earlier note's code is still stored, tied to the earlier note (not shown)",
+      "ok": true,
+      "detail": "billingSuggestion=CODE: 99309 billingForNoteAt=2026-10-14T15:51:57.677Z noteGeneratedAt=2026-10-14T16:32:00.927Z",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: Generate was answered once with the mocked note; every billing call failed at the socket",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/notes:suggestBilling\",\"answered\":\"fail\",\"atMs\":508,\"conn\":1},{\"udfPath\":\"ai/notes:suggestBilling\",\"answered\":\"fail\",\"atMs\":1239,\"conn\":1},{\"udfPath\":\"ai/notes:generateNote\",\"answered\":\"ok\",\"atMs\":3179,\"conn\":2},{\"udfPath\":\"ai/parsing:extractMedicationEvents\",\"answered\":\"ok\",\"atMs\":3186,\"conn\":2},{\"udfPath\":\"ai/notes:refreshCourseAndBackground\",\"answered\":\"ok\",\"atMs\":3186,\"conn\":2},{\"udfPath\":\"ai/notes:suggestBilling\",\"answered\":\"fail\",\"atMs\":3340,\"conn\":2}]"
+    },
+    {
+      "id": "setup: no unscripted AI call",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "n1": {
+      "billingError": "Couldn't generate billing suggestion — tap to retry",
+      "codeOnScreen": null,
+      "server": {
+        "billingSuggestion": null
+      }
+    },
+    "n2": {
+      "button": "Regenerate Note",
+      "billingError": "Couldn't generate billing suggestion — tap to retry",
+      "codeOnScreen": null,
+      "server": {
+        "note": "QA-EFS-09B Walked 150 feet with a rolling walker. Continue therapy.",
+        "billingSuggestion": "CODE: 99309",
+        "billingForNoteAt": "2026-10-14T15:51:57.677Z",
+        "noteGeneratedAt": "2026-10-14T16:32:00.927Z"
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "fail",
+        "atMs": 508,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "fail",
+        "atMs": 1239,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "atMs": 3179,
+        "conn": 2
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok",
+        "atMs": 3186,
+        "conn": 2
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok",
+        "atMs": 3186,
+        "conn": 2
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "fail",
+        "atMs": 3340,
+        "conn": 2
+      }
+    ]
+  }
+}

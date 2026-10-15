@@ -1,0 +1,18 @@
+{
+  "EFS/S10": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:43:06.543Z",
+    "title": "Ask AI fails after an answered first question: explicit error, no answer, no earlier answer left, question kept (both contexts)",
+    "detail": "Hospital (Ask opened from Pre-Round) and Nursing Home (from Encounter); spec newspec-c/flt-efs-s10-ask-fail.spec.ts. ai/assist:askChart answered at the socket: the first question 'What is the diagnosis?' with 'QA-EFS-10-A1 fixed first answer.', the second typed question 'QA-EFS-10 which labs came back today?' fails. Judged 18/18. After the failure the sheet says 'The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.'; the second question is still in the box; the first answer is gone; no 'Patient Record' answer block; no lab word (WBC, creatinine, Hgb, potassium, mg/dL, mmol) anywhere on screen; not left on 'Searching…'.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s10-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s10-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s10-h-h1-answered.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s10-h-h2-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s10-n-n1-answered.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s10-n-n2-failed.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

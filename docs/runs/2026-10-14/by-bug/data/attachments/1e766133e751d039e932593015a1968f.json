@@ -1,0 +1,241 @@
+{
+  "name": "oat06-s07-handoff",
+  "at": "2026-10-14T16:48:33.084Z",
+  "checks": [
+    {
+      "id": "Hospital: the follow-up question shows right after the send, with Yes / No / Not sure (U5)",
+      "ok": true,
+      "detail": "shown 108 ms after Send; text: SENT — ONE QUICK QUESTION Did having this make you more likely to send a handoff today? Yes No Not sure Skip"
+    },
+    {
+      "id": "Hospital: after answering, the question is gone",
+      "ok": true,
+      "detail": "question text not on screen"
+    },
+    {
+      "id": "Hospital: handoff_generated (hospital, patientCount >= 1) is written before the send",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996498189.872,\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"handoff_generated\",\"patientCount\":1}]"
+    },
+    {
+      "id": "Hospital: exactly one handoff_sent (hospital) with the handoffId of the sent handoff and patientCount = sheet size (1)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996499068.2795,\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"handoff_sent\",\"handoffId\":\"jn7b25sqra8s1zcnxeg4zzaz318g9yqn\",\"patientCount\":1}]"
+    },
+    {
+      "id": "Hospital: one handoff_followup row with moreLikelyToSendHandoff 'not_sure' and the send's handoffId",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996499213.964,\"answers\":{\"moreLikelyToSendHandoff\":\"not_sure\"},\"day\":\"2026-10-15\",\"handoffId\":\"jn7b25sqra8s1zcnxeg4zzaz318g9yqn\",\"survey\":\"handoff_followup\"}]"
+    },
+    {
+      "id": "Copy Text (Q20, recorded): the button shows Copied; usage/survey rows written and whether the prompt appeared",
+      "ok": true,
+      "detail": "Copied shown: true; prompt after Copy: false; usage rows: 0; survey rows: 0",
+      "recordOnly": true
+    },
+    {
+      "id": "Nursing Home: the follow-up question shows right after the send (U5)",
+      "ok": true,
+      "detail": "shown 209 ms after Send"
+    },
+    {
+      "id": "Nursing Home: handoff_generated (nursing_home, patientCount >= 1) before the send",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996504441.676,\"careSetting\":\"nursing_home\",\"day\":\"2026-10-15\",\"event\":\"handoff_generated\",\"patientCount\":1}]"
+    },
+    {
+      "id": "Nursing Home: exactly one handoff_sent (nursing_home) with the sent handoff's id and patientCount 1",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996504467.9944,\"careSetting\":\"nursing_home\",\"day\":\"2026-10-15\",\"event\":\"handoff_sent\",\"handoffId\":\"jn784933xh9dcxjkmpsqc4pjzs8g9kqe\",\"patientCount\":1}]"
+    },
+    {
+      "id": "Nursing Home: Skip stores no survey row",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "Rollup (U7): handoffsGenerated +1 and handoffsSent +1 in each care setting for the sender's day",
+      "ok": true,
+      "detail": "{\"hospital\":{\"handoffsGenerated\":1,\"handoffsSent\":1},\"nursing_home\":{\"handoffsGenerated\":1,\"handoffsSent\":1}}"
+    },
+    {
+      "id": "Colleague: the received handoff shows the patient and no follow-up prompt",
+      "ok": true,
+      "detail": "patient on sheet: true; prompt dialog: false"
+    },
+    {
+      "id": "Colleague (per physician): no handoff_sent / handoff_generated / handoff_followup row and no rollup change",
+      "ok": true,
+      "detail": "usage 0, surveys 0, daily rows 0"
+    },
+    {
+      "id": "U15: no usage / survey row holds a patient name, room or handoff text",
+      "ok": true,
+      "detail": "5 rows checked"
+    }
+  ],
+  "data": {
+    "T0": {
+      "day": "2026-10-15",
+      "senderDaily": [],
+      "colleagueDaily": []
+    },
+    "Hospital rows": {
+      "usage": [
+        {
+          "_creationTime": 1791996498189.872,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "handoff_generated",
+          "patientCount": 1
+        },
+        {
+          "_creationTime": 1791996499068.2795,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "handoff_sent",
+          "handoffId": "jn7b25sqra8s1zcnxeg4zzaz318g9yqn",
+          "patientCount": 1
+        }
+      ],
+      "surveys": [
+        {
+          "_creationTime": 1791996499213.964,
+          "answers": {
+            "moreLikelyToSendHandoff": "not_sure"
+          },
+          "day": "2026-10-15",
+          "handoffId": "jn7b25sqra8s1zcnxeg4zzaz318g9yqn",
+          "survey": "handoff_followup"
+        }
+      ],
+      "sent": [
+        {
+          "_id": "jn7b25sqra8s1zcnxeg4zzaz318g9yqn",
+          "counterpartName": "Dr. QA Colleague XQM0",
+          "patientCount": 1,
+          "readAt": null,
+          "sentAt": "2026-10-14T16:48:19.068Z",
+          "title": "Patient Handoff — Oct 15, 2026 — 1 patient",
+          "variant": "rounding"
+        }
+      ]
+    },
+    "Copy Text (Q20)": {
+      "copiedShown": true,
+      "promptAfterCopy": false,
+      "usageRows": [],
+      "surveyRows": []
+    },
+    "Nursing Home rows": {
+      "usage": [
+        {
+          "_creationTime": 1791996504441.676,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "event": "handoff_generated",
+          "patientCount": 1
+        },
+        {
+          "_creationTime": 1791996504467.9944,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "event": "handoff_sent",
+          "handoffId": "jn784933xh9dcxjkmpsqc4pjzs8g9kqe",
+          "patientCount": 1
+        }
+      ],
+      "surveys": [],
+      "sent": [
+        {
+          "_id": "jn784933xh9dcxjkmpsqc4pjzs8g9kqe",
+          "counterpartName": "Dr. QA Colleague XQM0",
+          "patientCount": 1,
+          "readAt": null,
+          "sentAt": "2026-10-14T16:48:24.467Z",
+          "title": "Nursing Home Handoff — Oct 15, 2026 — 1 resident",
+          "variant": "snf"
+        },
+        {
+          "_id": "jn7b25sqra8s1zcnxeg4zzaz318g9yqn",
+          "counterpartName": "Dr. QA Colleague XQM0",
+          "patientCount": 1,
+          "readAt": null,
+          "sentAt": "2026-10-14T16:48:19.068Z",
+          "title": "Patient Handoff — Oct 15, 2026 — 1 patient",
+          "variant": "rounding"
+        }
+      ]
+    },
+    "sender rollup": {
+      "day": "2026-10-15",
+      "after": [
+        {
+          "_creationTime": 1791996498189.8723,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 1,
+          "handoffsSent": 1,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 0,
+          "preRoundSummariesOpened": 0,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T16:48:19.068Z"
+        },
+        {
+          "_creationTime": 1791996504441.6763,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 1,
+          "handoffsSent": 1,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 0,
+          "preRoundSummariesOpened": 0,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T16:48:24.467Z"
+        }
+      ],
+      "deltas": {
+        "hospital": {
+          "handoffsGenerated": 1,
+          "handoffsSent": 1
+        },
+        "nursing_home": {
+          "handoffsGenerated": 1,
+          "handoffsSent": 1
+        }
+      }
+    },
+    "colleague rows": {
+      "usage": [],
+      "surveys": [],
+      "dailyBefore": [],
+      "dailyAfter": []
+    },
+    "U13": {
+      "aiCalls": [
+        "ai/assist:generateHandoff -> ok",
+        "ai/assist:generateHandoff -> ok"
+      ],
+      "colleagueAiCalls": [],
+      "serverHandoffRows": 0,
+      "note": "generateHandoff was answered in the browser (no model): aiCallLog has no row to judge providerMs / model on"
+    },
+    "cleanup": {
+      "sender": {
+        "hospital": 1,
+        "nursingHome": 1
+      },
+      "colleague": {
+        "hospital": 0,
+        "nursingHome": 0
+      }
+    }
+  }
+}

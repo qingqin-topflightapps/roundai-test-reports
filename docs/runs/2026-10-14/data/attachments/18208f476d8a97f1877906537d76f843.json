@@ -1,0 +1,22 @@
+{
+  "TC-04/S08": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:25:06.329Z",
+    "title": "Quick Dictation room chips and suggestion edges (recorded); another physician's patients and boxes and Nursing Home residents never appear, nothing is assigned (judged)",
+    "detail": "PW, local stack, two fresh @roundai.test physicians. Physician 1: Patel 415A, Rivera 415B, Ames 1415, Bell 4150, Quinlan 112, Diaz 4B-12, nobody in 630, Nursing Home resident Moss in room 415; physician 2: 'QA Hosp Other' in room 415 and a box 'Bed 415, PHI canary 7Q.'. Judged (isolation half) 7/7: no pad state, suggestion or picker row ever showed physician 2's patient or box or the Nursing Home resident (the picker searched '415' lists only physician 1's Hospital patients); physician 1's quickDictation:list has no canary row; nothing was assigned by any phrasing (no 'Re-assign'; Patel's and Quinlan's Encounter tabs and every stored chart hold none of the texts); physician 2's box untouched. Recorded only (our edges, Q2/Q3): 'Bed 415A' -> chip Rm 415A, suggests Patel only; 'Bed 415' -> chip Rm 415 (follows the text) but suggests 415A Patel, 415B Rivera, 1415 Ames and 4150 Bell (substring match; our Q3 reading wants only room 415's beds); 'Bed 630' -> Rm 630, no suggestion, Assign to patient offered; 'moved … to room 415A overnight' (mid-sentence) -> Rm 415A + Patel; 'Bed four fifteen A' (spoken) -> no chip; '12 hours post-op…' -> chip Rm 12 and suggestions 112 Quinlan and 4B-12 Diaz; '80 yo…' -> chip Rm 80, no suggestion.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp1-415a.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp2-415.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp3-picker-415.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp4-630.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp5-midsentence.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp6-spoken.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp7-clinical-numbers.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp8-patel-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s08-cp9-quinlan-encounter.png"
+    ],
+    "method": "PW",
+    "pkg": "clk"
+  }
+}

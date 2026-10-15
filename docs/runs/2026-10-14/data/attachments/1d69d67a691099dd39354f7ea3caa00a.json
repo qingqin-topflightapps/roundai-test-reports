@@ -1,0 +1,33 @@
+{
+  "TC-04/S23": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T17:08:13.087Z",
+    "title": "axe scan of the Quick Dictation pad, the room chip with its suggestion, and the open picker",
+    "detail": "Our own addition: record-only, findings are suggestions. newspec-c/vis-tc04-s23-s24-quick-dictation-visual.spec.ts on desktop Chromium 1280x800, Pixel 7 Chromium and iPhone 15 WebKit (fresh account, 25 synthetic patients, one in room 415; Dictate never tapped, every ai/* action refused in the browser, tripwire clean). Typing 'Bed 415, stable.' showed the chip 'Rm 415' and 'Matches on your list' with '415 · QA TC04 Sloan … Link'. axe-core (WCAG 2 A/AA) on three states - qd-pad, qd-picker (Assign to patient open) and qd-error (a failed assign, the quickDictation:assign mutation failed at the socket): the only serious/critical violation is color-contrast (pad: 1-2 nodes, the 'Matches on your list' header and the footer hint; picker: 10-14 nodes, the grey '— diagnosis' text in each row; A4). Accessible names on all profiles: dialog 'Quick dictation' (aria-labelledby, as known), Dictate, Assign to patient, Link (named by its row text '415 · <name> Link'), Delete compartment, Close quick dictation, New compartment, Close picker. Not met (suggestions): the dictation box and the picker search are named only by their placeholder; the picker sheet has no dialog role of its own (focus does move to its search). The error is announced: the pad's own line '⚠ Couldn't assign the compartment — try again.' is a plain div, but the app's global banner 'The dictation couldn't be added to the patient's chart. Check your connection and try again.' is role=alert.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-error.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-error.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-pad.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-pad.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-picker.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-picker.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-error.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-error.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-pad.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-pad.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-picker.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-picker.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-error.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-error.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-pad.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-pad.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-picker.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-picker.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15.json"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "qa-agent.config.ts",
+      "qa-agent-tests/newspec-c/an1-oat06-s26-pending-choices.spec.ts",
+      "--reporter=list,json",
+      "--output=tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/an1-oat06-s26-pending-choices",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/an1-oat06-s26-pending-choices",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "qa-agent",
+        "name": "qa-agent",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "newspec-c/an1-oat06-s26-pending-choices.spec.ts",
+      "file": "newspec-c/an1-oat06-s26-pending-choices.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "OAT-06 S26: Mark Encounter Complete with pending tasks — Delete Pending Tasks & Complete / Keep Tasks & Mark Complete / Cancel: which rows each writes",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "qa-agent",
+              "projectName": "qa-agent",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 22124,
+                  "error": {
+                    "message": "Error: D1 task_deleted = 2 against chart 1 (oracle: judged against AC 2 'task deleted' is logged; whether the bulk delete should count is Q6): task_deleted 0, task_completed 0; chart 1 tasks stored after the choice: []\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: D1 task_deleted = 2 against chart 1 (oracle: judged against AC 2 'task deleted' is logged; whether the bulk delete should count is Q6): task_deleted 0, task_completed 0; chart 1 tasks stored after the choice: []\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at Evidence.check (round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts:95:41)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/an1-oat06-s26-pending-choices.spec.ts:143:8",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts",
+                      "column": 41,
+                      "line": 95
+                    },
+                    "snippet": "   at newspec-c/support.ts:95\n\n  93 |   check(id: string, ok: boolean, detail: string) {\n  94 |     this.checks.push({ id, ok, detail });\n> 95 |     expect.soft(ok, `${id}: ${detail}`).toBe(true);\n     |                                         ^\n  96 |   }\n  97 |   // Logged only (open UAT question); never decides the test.\n  98 |   note(id: string, ok: boolean, detail: string) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts",
+                        "column": 41,
+                        "line": 95
+                      },
+                      "message": "Error: D1 task_deleted = 2 against chart 1 (oracle: judged against AC 2 'task deleted' is logged; whether the bulk delete should count is Q6): task_deleted 0, task_completed 0; chart 1 tasks stored after the choice: []\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at newspec-c/support.ts:95\n\n  93 |   check(id: string, ok: boolean, detail: string) {\n  94 |     this.checks.push({ id, ok, detail });\n> 95 |     expect.soft(ok, `${id}: ${detail}`).toBe(true);\n     |                                         ^\n  96 |   }\n  97 |   // Logged only (open UAT question); never decides the test.\n  98 |   note(id: string, ok: boolean, detail: string) {\n    at Evidence.check (round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts:95:41)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/an1-oat06-s26-pending-choices.spec.ts:143:8"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T16:45:11.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/an1-oat06-s26-pending-choices/newspec-c-an1-oat06-s26-pe-6edb8-ncel-which-rows-each-writes-qa-agent/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/an1-oat06-s26-pending-choices/newspec-c-an1-oat06-s26-pe-6edb8-ncel-which-rows-each-writes-qa-agent/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/an1-oat06-s26-pending-choices/newspec-c-an1-oat06-s26-pe-6edb8-ncel-which-rows-each-writes-qa-agent/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts",
+                    "column": 41,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0b085a60f70be7af2077-74414c2351df89296701",
+          "file": "newspec-c/an1-oat06-s26-pending-choices.spec.ts",
+          "line": 49,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T16:45:11.529Z",
+    "duration": 22595.221999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

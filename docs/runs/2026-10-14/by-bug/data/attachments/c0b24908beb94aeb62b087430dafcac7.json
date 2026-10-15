@@ -1,0 +1,17 @@
+{
+  "TC-11/S08": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:22:44.709Z",
+    "title": "Correct, +1-day and other-time-zone browsers show the same course cards; a Nursing Home note finished a day ahead is filed under the server's day; all three sign in",
+    "detail": "PW on the local stack at 01:22 JST (JST date Oct 15, New York date Oct 14, server UTC date Oct 14). The Hospital ledger was seeded 'Oct 13: Admitted with volume overload' / 'Oct 14: Diuresis started' / 'Oct 15: Breathing easier' (day0 = the server instant cut in the host time zone, the build's reading; whose day it should be is Q4). correct (real clock, Asia/Tokyo) and ahead1d (clock +1 day) both show exactly the Oct 14 and Oct 15 cards, not Oct 13, and ahead1d already did on the first render. From ahead1d a Nursing Home note was finished (generateNote and refreshCourseAndBackground answered by the socket mock): the Visit Timeline reads 'Visit 1 – Oct 15: …' (the server's day, not Oct 16), stored as one line 'Visit 1 · Oct 15: …', and 'Encounter done' is gone. Sign-in: correct and otherTz opened with their stored sessions; ahead1d's stored session was dropped by its own clock (known B33) and signing in again through the form reached the app. Judged 8/8. Recorded for Q4, not judged: the America/New_York browser cuts the day in its own zone and shows different cards ('Oct 13: Admitted with volume overload', 'Oct 14: Diuresis started'), hiding the JST-today line.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s08.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s08-correct-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s08-ahead1d-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s08-othertz-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s08-ahead1d-snf.png"
+    ],
+    "method": "PW",
+    "pkg": "clk"
+  }
+}

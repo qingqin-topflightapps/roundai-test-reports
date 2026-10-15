@@ -1,0 +1,14 @@
+{
+  "TC-11/S26": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T18:13:41.552Z",
+    "title": "A pre-round that was never finished, then a visit after a skipped day (live AI)",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset course-hosp. Our addition (review TFA-92589), so record only. Hospital row with 'Oct 14: Pre-rounded. ⏳ Encounter pending.' and Nursing Home row with 'Visit 1 · Oct 13: Pre-rounded.' (nothing on Oct 14) were added by the spec; today's visit was then done in each (Pre-Round Save Note, Encounter, Generate Note & Finish). Hospital: exactly one 'Oct 15:' line, carrying the encounter (IV furosemide, 0.8 kg overnight), no 'Encounter done'; yesterday's never-finished line shows as a bare 'Oct 14:' card (its markers stripped, Q12). Nursing Home: exactly one line dated Oct 15 ('Visit 2 – Oct 15: ... 50 feet with walker, left hip pain 3/10'), no line for the skipped Oct 14 (U2), no 'Encounter done'; the old 'Visit 1 – Oct 13: Pre-rounded.' line stays and the new one is numbered Visit 2 (Q12). All judged-style checks held; the empty 'Oct 14:' card on the Hospital chart is the only thing a person may want to look at (Q12).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S26.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S26-s26-hospital.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S26-s26-snf.png"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "TC-13/S21": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:11:30.976Z",
+    "title": "Prior-note photo read 10 times: time, model, values as printed",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset photo10. The S03 synthetic note (a typed progress note with creatinine 1.1, BNP 1250, EF 30%, rendered by render-media.mjs) was read 10 times through Pre-Round > Previous Notes > Photograph on a seeded Hospital chart; the box was cleared between reads and nothing was saved (previousNotes stayed empty). Each call left one vision.scanPriorNote row: model gemini-3.6-flash, durationMs 1683-4190 ms (median 2001), providerMs on all 10; none over 30 s. All 10 read texts kept 'creatinine 1.1', 'BNP 1250' and 'EF 30%' as printed. 31/31 judged cells held (T4 model and values, U13b). The other half of T4 (the prototype's instruction text word for word) cannot be seen from the app.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/photo10/evidence/TC-13-S21.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/photo10/evidence/TC-13-S21-first-read.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/photo10/evidence/TC-13-S21-after-10-reads.png"
+    ]
+  }
+}

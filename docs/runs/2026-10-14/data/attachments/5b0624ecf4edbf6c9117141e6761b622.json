@@ -1,0 +1,14 @@
+{
+  "OAT-05/S05": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:15:25.143Z",
+    "title": "Browser never calls an AI vendor or sends a provider key, during Ask AI and a photo scan (both contexts)",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset oat05-net (rows prefixed QA DS1-oat05-net, 2 deleted after, no other row changed). The whole run was captured in the browser context: every request URL, header and body, every response body (24, including the served JavaScript) and every WebSocket frame (67 sent, 82 received); only hosts and masked pattern hits were kept. Steps reached: Hospital chart tabs with a typed Encounter line, Hospital Ask AI (first preset, answered), Hospital census scan (read, closed, nothing added), Nursing Home chart tabs, Nursing Home Ask AI (answered), Nursing Home census scan (read, closed). The only host requested was the dev web origin (24 requests; the Convex WebSocket is on the dev deployment); no request or WebSocket to Bedrock, Vertex / Generative Language, OpenAI, Deepgram or SES; none of the matrix's forbidden patterns in anything the browser sent; no key-shaped value (sk-, AKIA/ASIA, AIza, private key block, service-account address) in anything the server sent back; not even a bare header name. The four AI calls went out as Convex actions (ai/assist:askChart x2, ai/vision:scanCensusSheet x2) and their log rows name the server-side models (askChart us.anthropic.claude-haiku-4-5, scan gemini-3.6-flash). Judged: U1a (TFA-94700), 5/5 cells held. Left out: the Hospital Handoff step (Quinn 2026-10-15: on the shared dev account it would generate for every patient), so the handoff traffic is still unchecked. T3 (server-side with the guardrail) is TFA-92568's (in progress): todo; the guardrail is not visible from the browser.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/oat05-net/evidence/OAT-05-S05.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/oat05-net/evidence/OAT-05-S05-h-ask.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/oat05-net/evidence/OAT-05-S05-n-ask.png"
+    ]
+  }
+}

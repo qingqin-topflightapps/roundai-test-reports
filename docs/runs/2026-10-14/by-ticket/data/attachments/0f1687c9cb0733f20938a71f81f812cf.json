@@ -1,0 +1,314 @@
+{
+  "name": "oat06-s01",
+  "at": "2026-10-14T16:43:43.523Z",
+  "checks": [
+    {
+      "id": "checkpoint s01-cp1-added.md (Hospital list right after the first add)",
+      "ok": true,
+      "detail": "url /rounding (want /rounding); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s01-cp2-duplicate-kept.md (Hospital list after answering Cancel to the duplicate question)",
+      "ok": true,
+      "detail": "url /rounding (want /rounding); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s01-cp3-complete.md (the seeded patient's Post-Round tab right after Mark Encounter Complete)",
+      "ok": true,
+      "detail": "url /rounding/kx7bks671v2fz6mpw961azn80x8g85y2; missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s01-cp4-removed.md (Hospital list after removing QA Hosp OAT06 Manual)",
+      "ok": true,
+      "detail": "url /rounding (want /rounding); missing []; present but must not be []"
+    },
+    {
+      "id": "U1 patient_added since T0 = 1, hospital, addMethod manual",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996211995.2988,\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\",\"event\":\"patient_added\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\"}]"
+    },
+    {
+      "id": "U3 duplicate_prompt_shown = 1 and duplicate_prompt_accepted = 1 sharing one promptId (hospital, manual); rejected = 0",
+      "ok": true,
+      "detail": "shown [{\"_creationTime\":1791996214909.345,\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\",\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\",\"promptId\":\"04da8cca-c8fd-4687-9e50-0bf9f4393d6b\"}]; accepted [{\"_creationTime\":1791996214941.536,\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\",\"event\":\"duplicate_prompt_accepted\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\",\"promptId\":\"04da8cca-c8fd-4687-9e50-0bf9f4393d6b\"}]; rejected 0"
+    },
+    {
+      "id": "Q5 (record-only): Cancel at the duplicate question is logged as 'accepted' (keep the existing chart)",
+      "ok": true,
+      "detail": "accepted 1, rejected 0",
+      "recordOnly": true
+    },
+    {
+      "id": "U3 the Cancel kept one chart named QA Hosp OAT06 Manual (no second chart)",
+      "ok": true,
+      "detail": "charts with that name after Cancel: 1"
+    },
+    {
+      "id": "U2 patient_removed since T0 = 1, hospital, removalReason manual",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996220228.2803,\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\",\"event\":\"patient_removed\",\"careSetting\":\"hospital\",\"removalReason\":\"manual\"}]"
+    },
+    {
+      "id": "U6 pre_round_summary_opened = 1 for the chart (hospital)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996217873.615,\"_id\":\"kh72aget6na6wdaxqmj9bva4ss8g8z86\",\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"pre_round_summary_opened\",\"patientId\":\"kx7bks671v2fz6mpw961azn80x8g85y2\",\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\"}]"
+    },
+    {
+      "id": "U6 note_marked_complete = 1 for the chart, minutesFromPreRoundOpened a number >= 0",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996219471.495,\"_id\":\"kh75k9yqc4twc29hv7jp1b395h8g82xm\",\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"note_marked_complete\",\"minutesFromPreRoundOpened\":0,\"patientId\":\"kx7bks671v2fz6mpw961azn80x8g85y2\",\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\"}]"
+    },
+    {
+      "id": "U8 task_completed = 1 and task_deleted = 1, both against the chart (hospital)",
+      "ok": true,
+      "detail": "task_completed [{\"_creationTime\":1791996218985.059,\"_id\":\"kh77r10v7jpgttm4p6wevfq01d8g9f9p\",\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"task_completed\",\"patientId\":\"kx7bks671v2fz6mpw961azn80x8g85y2\",\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\"}]; task_deleted [{\"_creationTime\":1791996219087.022,\"_id\":\"kh70ne4rc6rna9dj1ha3pj27n98g9ax8\",\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"task_deleted\",\"patientId\":\"kx7bks671v2fz6mpw961azn80x8g85y2\",\"userId\":\"jd72r6tdgn2r8bfbks587zzfb98g9rsg\"}]"
+    },
+    {
+      "id": "every usage row since T0 is one of those four and carries the chart's id",
+      "ok": true,
+      "detail": "pre_round_summary_opened:chart, task_completed:chart, task_deleted:chart, note_marked_complete:chart"
+    },
+    {
+      "id": "U6/U8 today's hospital rollup: preRoundSummariesOpened, notesCompleted, encountersTimed, tasksCompleted, tasksDeleted each +1",
+      "ok": true,
+      "detail": "preRoundSummariesOpened +1, notesCompleted +1, encountersTimed +1, tasksCompleted +1, tasksDeleted +1"
+    },
+    {
+      "id": "U15 no row read holds a name, room, MRN, diagnosis, task or note text",
+      "ok": true,
+      "detail": "none of the patient strings in any row"
+    },
+    {
+      "id": "removal asked once (TFA-92579 / TC-24, not this case)",
+      "ok": true,
+      "detail": "confirm: QA Hosp OAT06 Manual (Room 4B-61) is already on your rounding list — same name and room. -> dismiss | confirm: Remove QA Hosp OAT06 Manual from the rounding list? -> accept",
+      "recordOnly": true
+    },
+    {
+      "id": "no model call was attempted on this path",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T0": {
+      "serverNow": 1791996209842,
+      "day": "2026-10-15",
+      "seededChartId": "kx7bks671v2fz6mpw961azn80x8g85y2",
+      "activityRows": 1,
+      "usageRows": 0,
+      "daily": []
+    },
+    "checkpoint s01-cp1-added.md": {
+      "when": "Hospital list right after the first add",
+      "url": "http://localhost:6473/rounding",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp1-added.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/2\nHandoff\n\n2 patients remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQH\nQA Hosp Walk Seeded\nNEW TODAY\n\nRoom 4B-60 · 74y · QA060174\n\nCommunity-acquired pneumonia\n\nNote Ready\nFollow-up\n2 tasks\nQH\nQA Hosp OAT06 Manual\nNEW TODAY\n\nRoom 4B-61 · 70y · MRN-657662\n\nCellulitis, left leg\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings"
+    },
+    "step2 duplicate rows": [
+      {
+        "_creationTime": 1791996214909.345,
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg",
+        "event": "duplicate_prompt_shown",
+        "careSetting": "hospital",
+        "addMethod": "manual",
+        "promptId": "04da8cca-c8fd-4687-9e50-0bf9f4393d6b"
+      },
+      {
+        "_creationTime": 1791996214941.536,
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg",
+        "event": "duplicate_prompt_accepted",
+        "careSetting": "hospital",
+        "addMethod": "manual",
+        "promptId": "04da8cca-c8fd-4687-9e50-0bf9f4393d6b"
+      }
+    ],
+    "step2 url after Cancel": "http://localhost:6473/rounding/add",
+    "checkpoint s01-cp2-duplicate-kept.md": {
+      "when": "Hospital list after answering Cancel to the duplicate question",
+      "url": "http://localhost:6473/rounding",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp2-duplicate-kept.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/2\nHandoff\n\n2 patients remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQH\nQA Hosp Walk Seeded\nNEW TODAY\n\nRoom 4B-60 · 74y · QA060174\n\nCommunity-acquired pneumonia\n\nNote Ready\nFollow-up\n2 tasks\nQH\nQA Hosp OAT06 Manual\nNEW TODAY\n\nRoom 4B-61 · 70y · MRN-657662\n\nCellulitis, left leg\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings"
+    },
+    "charts named QA Hosp OAT06 Manual after Cancel": 1,
+    "step3 pre-round open row landed (ms)": {
+      "reached": true,
+      "waitedMs": 931
+    },
+    "step4 stored tasks": {
+      "afterComplete": {
+        "chart": {
+          "status": "note-ready",
+          "tasks": [
+            {
+              "id": "qa-s01-1",
+              "text": "QA task one: recheck BMP tomorrow",
+              "done": true
+            },
+            {
+              "id": "qa-s01-2",
+              "text": "QA task two: call PT about mobility",
+              "done": false
+            }
+          ]
+        },
+        "ok": true
+      },
+      "afterDelete": {
+        "chart": {
+          "status": "note-ready",
+          "tasks": [
+            {
+              "id": "qa-s01-1",
+              "text": "QA task one: recheck BMP tomorrow",
+              "done": true
+            }
+          ]
+        },
+        "ok": true
+      }
+    },
+    "step5 stored status": "post-rounded",
+    "checkpoint s01-cp3-complete.md": {
+      "when": "the seeded patient's Post-Round tab right after Mark Encounter Complete",
+      "url": "http://localhost:6473/rounding/kx7bks671v2fz6mpw961azn80x8g85y2",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp3-complete.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Walk Seeded\n\nRoom 4B-60 · 74y · QA060174\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n0 PENDING TASKS\nAdd Task\n\nQA task one: recheck BMP tomorrow\n\nplan\n\nEncounter Complete"
+    },
+    "checkpoint s01-cp4-removed.md": {
+      "when": "Hospital list after removing QA Hosp OAT06 Manual",
+      "url": "http://localhost:6473/rounding",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp4-removed.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\n\nThursday, October 15, 2026\n\nMorning Rounds\n1/1\nHandoff\n\n0 patients remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQH\nQA Hosp Walk Seeded\nNEW TODAY\n\nRoom 4B-60 · 74y · QA060174\n\nCommunity-acquired pneumonia\n\nComplete\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings"
+    },
+    "activity rows since T0": [
+      {
+        "_creationTime": 1791996211995.2988,
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg",
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "_creationTime": 1791996214909.345,
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg",
+        "event": "duplicate_prompt_shown",
+        "careSetting": "hospital",
+        "addMethod": "manual",
+        "promptId": "04da8cca-c8fd-4687-9e50-0bf9f4393d6b"
+      },
+      {
+        "_creationTime": 1791996214941.536,
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg",
+        "event": "duplicate_prompt_accepted",
+        "careSetting": "hospital",
+        "addMethod": "manual",
+        "promptId": "04da8cca-c8fd-4687-9e50-0bf9f4393d6b"
+      },
+      {
+        "_creationTime": 1791996220228.2803,
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg",
+        "event": "patient_removed",
+        "careSetting": "hospital",
+        "removalReason": "manual"
+      }
+    ],
+    "usage rows since T0": [
+      {
+        "_creationTime": 1791996217873.615,
+        "_id": "kh72aget6na6wdaxqmj9bva4ss8g8z86",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "pre_round_summary_opened",
+        "patientId": "kx7bks671v2fz6mpw961azn80x8g85y2",
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg"
+      },
+      {
+        "_creationTime": 1791996218985.059,
+        "_id": "kh77r10v7jpgttm4p6wevfq01d8g9f9p",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx7bks671v2fz6mpw961azn80x8g85y2",
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg"
+      },
+      {
+        "_creationTime": 1791996219087.022,
+        "_id": "kh70ne4rc6rna9dj1ha3pj27n98g9ax8",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx7bks671v2fz6mpw961azn80x8g85y2",
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg"
+      },
+      {
+        "_creationTime": 1791996219471.495,
+        "_id": "kh75k9yqc4twc29hv7jp1b395h8g82xm",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "note_marked_complete",
+        "minutesFromPreRoundOpened": 0,
+        "patientId": "kx7bks671v2fz6mpw961azn80x8g85y2",
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg"
+      }
+    ],
+    "daily hospital before / after / delta": {
+      "delta": {
+        "preRoundSummariesOpened": 1,
+        "notesCompleted": 1,
+        "encountersTimed": 1,
+        "minutesPreRoundToComplete": 0,
+        "notesGenerated": 0,
+        "handoffsGenerated": 0,
+        "handoffsSent": 0,
+        "tasksCompleted": 1,
+        "tasksDeleted": 1
+      },
+      "after": {
+        "_creationTime": 1791996217873.6152,
+        "_id": "kd74p4ad4zczs6999cnf9dj3cs8g8v87",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "encountersTimed": 1,
+        "handoffsGenerated": 0,
+        "handoffsSent": 0,
+        "minutesPreRoundToComplete": 0,
+        "notesCompleted": 1,
+        "notesGenerated": 0,
+        "preRoundSummariesOpened": 1,
+        "tasksCompleted": 1,
+        "tasksDeleted": 1,
+        "updatedAt": "2026-10-14T16:43:39.471Z",
+        "userId": "jd72r6tdgn2r8bfbks587zzfb98g9rsg"
+      },
+      "before": null
+    },
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "QA Hosp OAT06 Manual (Room 4B-61) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+        "answer": "dismiss",
+        "expected": true
+      },
+      {
+        "type": "confirm",
+        "message": "Remove QA Hosp OAT06 Manual from the rounding list?\n\nThis will delete all notes, vitals, and encounter data for this patient.",
+        "answer": "accept",
+        "expected": true
+      }
+    ],
+    "ai calls attempted (all refused at the socket)": [],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 0
+    }
+  }
+}

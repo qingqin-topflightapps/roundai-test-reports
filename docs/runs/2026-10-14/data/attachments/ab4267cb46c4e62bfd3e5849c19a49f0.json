@@ -1,0 +1,488 @@
+{
+  "name": "tc24-s09",
+  "at": "2026-10-14T16:45:05.217Z",
+  "checks": [
+    {
+      "id": "checkpoint s09-h-tasks.md (Hospital Post-Round after the five taps, task list visible)",
+      "ok": true,
+      "detail": "url /rounding/kx710ebtztkb9fah5ht8nkyg1h8g8g71; missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s09-n-tasks.md (Nursing Home Post-Round after the two taps, task list visible)",
+      "ok": true,
+      "detail": "url /snf/m577gsm3xkn540tax69sbnhcr18g9vf5 (want /snf/…); missing []; present but must not be []"
+    },
+    {
+      "id": "completed tasks are stored as done (not deleted): Recheck BMP in AM, Order echo, Check telemetry, Weekly weight Monday",
+      "ok": true,
+      "detail": "{\"hospital\":[{\"id\":\"qa-s09-h-1\",\"text\":\"Recheck BMP in AM\",\"done\":true},{\"id\":\"qa-s09-h-3\",\"text\":\"Order echo\",\"done\":true},{\"id\":\"qa-s09-h-5\",\"text\":\"Check telemetry\",\"done\":true}],\"nursingHome\":[{\"id\":\"qa-s09-r-1\",\"text\":\"Weekly weight Monday\",\"done\":true}]}"
+    },
+    {
+      "id": "deleted tasks are gone: PT eval before discharge, Call case management, Podiatry referral",
+      "ok": true,
+      "detail": "{\"hospital\":[\"Recheck BMP in AM\",\"Order echo\",\"Check telemetry\"],\"nursingHome\":[\"Weekly weight Monday\"]}"
+    },
+    {
+      "id": "the Hospital Post-Round list shows the three completed tasks as done",
+      "ok": true,
+      "detail": "[true,true,true]"
+    },
+    {
+      "id": "Encounter: complete 'Recheck BMP in AM': exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "Encounter: delete 'PT eval before discharge': exactly one task_deleted row and none of the other kind",
+      "ok": true,
+      "detail": "completed 0, deleted 1; chart changed: true"
+    },
+    {
+      "id": "Post-Round: complete 'Order echo': exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "Post-Round: delete 'Call case management': exactly one task_deleted row and none of the other kind",
+      "ok": true,
+      "detail": "completed 0, deleted 1; chart changed: true"
+    },
+    {
+      "id": "Tasks overlay: complete 'Check telemetry': exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "NH Post-Round: complete 'Weekly weight Monday': exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "NH Post-Round: delete 'Podiatry referral': exactly one task_deleted row and none of the other kind",
+      "ok": true,
+      "detail": "completed 0, deleted 1; chart changed: true"
+    },
+    {
+      "id": "exactly 3 task_completed (one from the overlay) and 2 task_deleted against the Hospital chart, 1 + 1 against the resident, each with its care setting",
+      "ok": true,
+      "detail": "hospital 3 completed / 2 deleted; resident 1 completed / 1 deleted; rows task_completed/hospital, task_deleted/hospital, task_completed/hospital, task_deleted/hospital, task_completed/hospital, task_completed/nursing_home, task_deleted/nursing_home"
+    },
+    {
+      "id": "the overlay Complete added exactly one task_completed for the Hospital chart",
+      "ok": true,
+      "detail": "[{\"event\":\"task_completed\",\"careSetting\":\"hospital\",\"patientId\":\"kx710ebtztkb9fah5ht8nkyg1h8g8g71\"}]"
+    },
+    {
+      "id": "the day rollup's tasksCompleted / tasksDeleted match (hospital +3 / +2, nursing_home +1 / +1)",
+      "ok": true,
+      "detail": "hospital +3 / +2; nursing_home +1 / +1"
+    },
+    {
+      "id": "no row carries task text or a patient name",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "task deletes asked for no confirmation (TC-24 'each delete asks once': TFA-94699 in progress, record-only)",
+      "ok": true,
+      "detail": "0 dialog(s)",
+      "recordOnly": true
+    },
+    {
+      "id": "no model call was attempted on this path",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T0": {
+      "serverNow": 1791996284551,
+      "day": "2026-10-15",
+      "hospitalChartId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+      "residentId": "m577gsm3xkn540tax69sbnhcr18g9vf5",
+      "usageRows": 0,
+      "daily": []
+    },
+    "tap Encounter: complete 'Recheck BMP in AM'": {
+      "label": "Encounter: complete 'Recheck BMP in AM'",
+      "surface": "Hospital Encounter tab",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71"
+        }
+      ]
+    },
+    "tap Encounter: delete 'PT eval before discharge'": {
+      "label": "Encounter: delete 'PT eval before discharge'",
+      "surface": "Hospital Encounter tab",
+      "tap": "delete",
+      "judged": true,
+      "completed": 0,
+      "deleted": 1,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_deleted",
+          "careSetting": "hospital",
+          "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71"
+        }
+      ]
+    },
+    "tap Post-Round: complete 'Order echo'": {
+      "label": "Post-Round: complete 'Order echo'",
+      "surface": "Hospital Post-Round",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71"
+        }
+      ]
+    },
+    "tap Post-Round: delete 'Call case management'": {
+      "label": "Post-Round: delete 'Call case management'",
+      "surface": "Hospital Post-Round",
+      "tap": "delete",
+      "judged": true,
+      "completed": 0,
+      "deleted": 1,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_deleted",
+          "careSetting": "hospital",
+          "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71"
+        }
+      ]
+    },
+    "tap Tasks overlay: complete 'Check telemetry'": {
+      "label": "Tasks overlay: complete 'Check telemetry'",
+      "surface": "/rounding/tasks",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71"
+        }
+      ]
+    },
+    "checkpoint s09-h-tasks.md": {
+      "when": "Hospital Post-Round after the five taps, task list visible",
+      "url": "http://localhost:6473/rounding/kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc24-s09-s09-h-tasks.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp TC24 S09\n\nRoom 4B-64 · 77y · QA240964\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCOPD exacerbation\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n0 PENDING TASKS\nAdd Task\n\nRecheck BMP in AM\n\nplan\n\nOrder echo\n\nplan\n\nCheck telemetry\n\nplan\n\nFinalizing Encounter Data…"
+    },
+    "Hospital Post-Round shows the three completed tasks as done (their button reads Reopen)": [
+      true,
+      true,
+      true
+    ],
+    "tap NH Post-Round: complete 'Weekly weight Monday'": {
+      "label": "NH Post-Round: complete 'Weekly weight Monday'",
+      "surface": "Nursing Home Post-Round",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "nursing_home",
+          "patientId": "m577gsm3xkn540tax69sbnhcr18g9vf5"
+        }
+      ]
+    },
+    "tap NH Post-Round: delete 'Podiatry referral'": {
+      "label": "NH Post-Round: delete 'Podiatry referral'",
+      "surface": "Nursing Home Post-Round",
+      "tap": "delete",
+      "judged": true,
+      "completed": 0,
+      "deleted": 1,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_deleted",
+          "careSetting": "nursing_home",
+          "patientId": "m577gsm3xkn540tax69sbnhcr18g9vf5"
+        }
+      ]
+    },
+    "checkpoint s09-n-tasks.md": {
+      "when": "Nursing Home Post-Round after the two taps, task list visible",
+      "url": "http://localhost:6473/snf/m577gsm3xkn540tax69sbnhcr18g9vf5",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc24-s09-s09-n-tasks.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident TC24 S09\n\nQA240909 · QA Unit 9\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n0 PENDING TASKS\nAdd Task\n\nWeekly weight Monday\n\nMark Visit Complete"
+    },
+    "task rows since T0": [
+      {
+        "_creationTime": 1791996286361.358,
+        "_id": "kh75eac1544n5wfg29tgvjxdr18g8wce",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996288322.535,
+        "_id": "kh7f0rxt5npsazshzz57tmz4r18g8t0v",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996289998.075,
+        "_id": "kh70dy5hb0fkgwh4wjw6ry07p98g8v58",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996291907.798,
+        "_id": "kh71h9wh5gxn2cd38wxrrjj2tn8g92hs",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996294089.127,
+        "_id": "kh78rjfjhsjtrbrb18ncpn94gx8g9qn4",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996298492.783,
+        "_id": "kh7b1q3tne2r6tj4ww074hyepn8g9j8e",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "m577gsm3xkn540tax69sbnhcr18g9vf5",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996300125.828,
+        "_id": "kh7533qc12dfmazpyd1v8d57998g9nqb",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "m577gsm3xkn540tax69sbnhcr18g9vf5",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      }
+    ],
+    "all usage rows since T0": [
+      {
+        "_creationTime": 1791996285191.814,
+        "_id": "kh7cj8gqstpf65ktm3zytmt3h98g9tm9",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "pre_round_summary_opened",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996286361.358,
+        "_id": "kh75eac1544n5wfg29tgvjxdr18g8wce",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996288322.535,
+        "_id": "kh7f0rxt5npsazshzz57tmz4r18g8t0v",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996289998.075,
+        "_id": "kh70dy5hb0fkgwh4wjw6ry07p98g8v58",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996291907.798,
+        "_id": "kh71h9wh5gxn2cd38wxrrjj2tn8g92hs",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996294089.127,
+        "_id": "kh78rjfjhsjtrbrb18ncpn94gx8g9qn4",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx710ebtztkb9fah5ht8nkyg1h8g8g71",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996297343.959,
+        "_id": "kh7fmhx4qszswfdnckdrtzvacn8g82vd",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "pre_round_summary_opened",
+        "patientId": "m577gsm3xkn540tax69sbnhcr18g9vf5",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996298492.783,
+        "_id": "kh7b1q3tne2r6tj4ww074hyepn8g9j8e",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "m577gsm3xkn540tax69sbnhcr18g9vf5",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      },
+      {
+        "_creationTime": 1791996300125.828,
+        "_id": "kh7533qc12dfmazpyd1v8d57998g9nqb",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "m577gsm3xkn540tax69sbnhcr18g9vf5",
+        "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+      }
+    ],
+    "daily deltas": {
+      "hospital": {
+        "delta": {
+          "preRoundSummariesOpened": 1,
+          "notesCompleted": 0,
+          "encountersTimed": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesGenerated": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "tasksCompleted": 3,
+          "tasksDeleted": 2
+        },
+        "after": {
+          "_creationTime": 1791996285191.8142,
+          "_id": "kd7eptnbjwp07rb3tg72xy4ar18g96kh",
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 0,
+          "preRoundSummariesOpened": 1,
+          "tasksCompleted": 3,
+          "tasksDeleted": 2,
+          "updatedAt": "2026-10-14T16:44:54.089Z",
+          "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+        },
+        "before": null
+      },
+      "nursing_home": {
+        "delta": {
+          "preRoundSummariesOpened": 1,
+          "notesCompleted": 0,
+          "encountersTimed": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesGenerated": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "tasksCompleted": 1,
+          "tasksDeleted": 1
+        },
+        "after": {
+          "_creationTime": 1791996297343.9592,
+          "_id": "kd7ctkxe0mwhx4a559t9aff3zn8g92nb",
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 0,
+          "preRoundSummariesOpened": 1,
+          "tasksCompleted": 1,
+          "tasksDeleted": 1,
+          "updatedAt": "2026-10-14T16:45:00.125Z",
+          "userId": "jd72mgnvrgsktfbg9fx7mnfg3x8g8rfv"
+        },
+        "before": null
+      }
+    },
+    "dialogs": [],
+    "stored tasks at the end": {
+      "hospital": {
+        "tasks": [
+          {
+            "id": "qa-s09-h-1",
+            "text": "Recheck BMP in AM",
+            "done": true
+          },
+          {
+            "id": "qa-s09-h-3",
+            "text": "Order echo",
+            "done": true
+          },
+          {
+            "id": "qa-s09-h-5",
+            "text": "Check telemetry",
+            "done": true
+          }
+        ]
+      },
+      "nursingHome": {
+        "tasks": [
+          {
+            "id": "qa-s09-r-1",
+            "text": "Weekly weight Monday",
+            "done": true
+          }
+        ]
+      }
+    },
+    "ai calls attempted (all refused at the socket)": [],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 1
+    }
+  }
+}

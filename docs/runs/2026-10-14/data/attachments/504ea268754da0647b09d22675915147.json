@@ -1,0 +1,126 @@
+{
+  "name": "tc09-s16",
+  "at": "2026-10-14T16:20:51.816Z",
+  "checks": [
+    {
+      "id": "cp s16-before: A's Today's Visits lists the resident, no 'In Today ✓'",
+      "ok": true,
+      "detail": "QA Resident S16 4OBK"
+    },
+    {
+      "id": "B kept its stored session with its clock 2 days ahead (known B33 when not)",
+      "ok": false,
+      "detail": "stored session dropped by B's clock; sign-in through the form: reached-app",
+      "recordOnly": true
+    },
+    {
+      "id": "B (clock D+2, Pacific/Kiritimati) can sign in and use the app (UAT 3.8)",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}"
+    },
+    {
+      "id": "cp s16-after-unmark: A drops the resident from Today's Visits without a reload",
+      "ok": true,
+      "detail": "gone after 204 ms; A lists: (none)"
+    },
+    {
+      "id": "cp s16-after-mark: A shows the resident again without a reload, no 'In Today ✓'",
+      "ok": true,
+      "detail": "back after 194 ms; A lists: QA Resident S16 4OBK"
+    },
+    {
+      "id": "A was never reloaded during the un-mark / re-mark",
+      "ok": true,
+      "detail": "document loads on A: 0"
+    },
+    {
+      "id": "cp s16-a-dash: A's Nursing Home dashboard Total 1 / Pending 1 / In Progress 0 / Complete 0",
+      "ok": true,
+      "detail": "{\"Total\":\"1\",\"Pending\":\"1\",\"In Progress\":\"0\",\"Complete\":\"0\"}"
+    },
+    {
+      "id": "cp s16-b-today: B's Today's Visits lists the resident, no 'In Today ✓', no Hospital patient",
+      "ok": true,
+      "detail": "QA Resident S16 4OBK"
+    },
+    {
+      "id": "cp s16-b-all: B's All Residents lists the resident with 'In Today ✓', no Hospital patient",
+      "ok": true,
+      "detail": "{\"QA Resident S16 4OBK\":\"In Today ✓\"}"
+    },
+    {
+      "id": "cp s16-b-dash: B's Nursing Home dashboard Total 1 / Pending 1 / In Progress 0 / Complete 0",
+      "ok": true,
+      "detail": "{\"Total\":\"1\",\"Pending\":\"1\",\"In Progress\":\"0\",\"Complete\":\"0\"}"
+    },
+    {
+      "id": "A and B: same Today's Visits",
+      "ok": true,
+      "detail": "A QA Resident S16 4OBK | B QA Resident S16 4OBK"
+    },
+    {
+      "id": "A and B: same All Residents with the same toggle states",
+      "ok": true,
+      "detail": "A {\"QA Resident S16 4OBK\":\"In Today ✓\"} | B {\"QA Resident S16 4OBK\":\"In Today ✓\"}"
+    },
+    {
+      "id": "A and B: same dashboard numbers",
+      "ok": true,
+      "detail": "A {\"Total\":\"1\",\"Pending\":\"1\",\"In Progress\":\"0\",\"Complete\":\"0\"} | B {\"Total\":\"1\",\"Pending\":\"1\",\"In Progress\":\"0\",\"Complete\":\"0\"}"
+    }
+  ],
+  "data": {
+    "serverNow": "2026-10-14T16:20:44.706Z",
+    "A-before": {
+      "names": [
+        "QA Resident S16 4OBK"
+      ]
+    },
+    "B-clock": {
+      "now": "Sat Oct 17 2026 06:20:47 GMT+1400 (Line Islands Time)",
+      "tz": "Pacific/Kiritimati",
+      "access": {
+        "signedOutByClock": true,
+        "uiSignIn": "reached-app"
+      }
+    },
+    "A-after-unmark": {
+      "names": [],
+      "msAfterTap": 204,
+      "emptyState": true
+    },
+    "A-after-mark": {
+      "names": [
+        "QA Resident S16 4OBK"
+      ],
+      "msAfterTap": 194
+    },
+    "end": {
+      "aToday": [
+        "QA Resident S16 4OBK"
+      ],
+      "aAll": {
+        "QA Resident S16 4OBK": "In Today ✓"
+      },
+      "aDash": {
+        "Total": "1",
+        "Pending": "1",
+        "In Progress": "0",
+        "Complete": "0"
+      },
+      "bToday": [
+        "QA Resident S16 4OBK"
+      ],
+      "bAll": {
+        "QA Resident S16 4OBK": "In Today ✓"
+      },
+      "bDash": {
+        "Total": "1",
+        "Pending": "1",
+        "In Progress": "0",
+        "Complete": "0"
+      },
+      "server": true
+    }
+  }
+}

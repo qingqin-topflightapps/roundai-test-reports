@@ -1,0 +1,92 @@
+{
+  "name": "oat03-s12-h",
+  "at": "2026-10-14T17:36:55.517Z",
+  "checks": [
+    {
+      "id": "blip: a 2 s blip shows a no-network message (not stated anywhere; the banner needs two failed 3 s checks)",
+      "ok": false,
+      "detail": "no message during the 2 s blip",
+      "recordOnly": true
+    },
+    {
+      "id": "blip: line 1 reached the server after the blip",
+      "ok": true,
+      "detail": "QA OAT-03 blip line.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp1: a clear 'no network' message during the 20 s outage (U9)",
+      "ok": true,
+      "detail": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then."
+    },
+    {
+      "id": "cp1: the typed text stays on screen during the outage (U13)",
+      "ok": true,
+      "detail": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    {
+      "id": "after reconnect, before the reload: rounding:get encounterNotes is both lines (U9)",
+      "ok": true,
+      "detail": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    {
+      "id": "cp2: after the reload both lines are in the box",
+      "ok": true,
+      "detail": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    {
+      "id": "cp2: no 'no network' after reconnect",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "a second fresh browser context shows both lines (not a local draft)",
+      "ok": true,
+      "detail": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    {
+      "id": "server read again after the reload: both lines",
+      "ok": true,
+      "detail": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    {
+      "id": "setup: no AI call",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "blip": {
+      "offlineMs": 2008,
+      "bannerShown": false
+    },
+    "cp1-hosp-outage": {
+      "offlineMs": 20006,
+      "banner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+      "box": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    "cp2-hosp-after": {
+      "box": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    "second-context": {
+      "box": "QA OAT-03 blip line. QA OAT-03 outage line.",
+      "server": "QA OAT-03 blip line. QA OAT-03 outage line."
+    },
+    "socketEvents": [
+      "325 conn 1 open",
+      "6592 conn 1 cut",
+      "7105 conn 2 refused (offline)",
+      "8118 conn 3 refused (offline)",
+      "8599 restore",
+      "8607 conn 4 open",
+      "11872 conn 4 cut",
+      "12381 conn 5 refused (offline)",
+      "14644 conn 6 refused (offline)",
+      "18595 conn 7 refused (offline)",
+      "30075 conn 8 refused (offline)",
+      "31877 restore",
+      "31881 conn 9 open",
+      "33976 conn 10 open"
+    ]
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "name": "oat06-s20",
+  "at": "2026-10-14T16:48:49.089Z",
+  "checks": [
+    {
+      "id": "T2 todo (Q18): the Hospital add still goes through while the duplicate-prompt log fails",
+      "ok": false,
+      "detail": "charts named QA Hosp OAT06 Fail NPQZ: 1; landed: error; message: Could not save the duplicate check — [CONVEX M(patientActivity:logDuplicatePrompt)] QA injected failure before write Called by client; the form still holds the name: true",
+      "recordOnly": true
+    },
+    {
+      "id": "T2 todo: the task tap and Mark Encounter Complete go through while usage:record fails, with no analytics message",
+      "ok": true,
+      "detail": "status post-rounded; task done true; messages: none",
+      "recordOnly": true
+    },
+    {
+      "id": "T2 todo (Q18): the Nursing Home add still goes through while the duplicate-prompt log fails",
+      "ok": false,
+      "detail": "residents named QA Resident OAT06 Fail NPQZ: 1; landed: error; message: The resident couldn’t be added. Check your connection and try again.; the form still holds the name: true",
+      "recordOnly": true
+    },
+    {
+      "id": "recorded: the completion and task tap made while usage:record failed are not in the analytics (no retry)",
+      "ok": true,
+      "detail": "usage rows written while failing: []; refused writes: patientActivity:logDuplicatePrompt, usage:record, usage:record, usage:record, patientActivity:logDuplicatePrompt",
+      "recordOnly": true
+    },
+    {
+      "id": "after recovery (U3): a Hospital add-anyway logs duplicate_prompt_shown + duplicate_prompt_rejected (manual, hospital) and patient_added",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996520220.987,\"addMethod\":\"manual\",\"careSetting\":\"hospital\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"08018d7f-db3a-4ec5-9699-5c51096b880e\"},{\"_creationTime\":1791996520249.874,\"addMethod\":\"manual\",\"careSetting\":\"hospital\",\"event\":\"duplicate_prompt_rejected\",\"promptId\":\"08018d7f-db3a-4ec5-9699-5c51096b880e\"},{\"_creationTime\":1791996520272.3938,\"addMethod\":\"manual\",\"careSetting\":\"hospital\",\"event\":\"patient_added\"}]"
+    },
+    {
+      "id": "after recovery (U3): a Nursing Home add-anyway logs shown + rejected (manual, nursing_home) and patient_added",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996523660.676,\"addMethod\":\"manual\",\"careSetting\":\"nursing_home\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"19c2094e-37ae-4ab3-b84f-b128538282b5\"},{\"_creationTime\":1791996523683.512,\"addMethod\":\"manual\",\"careSetting\":\"nursing_home\",\"event\":\"duplicate_prompt_rejected\",\"promptId\":\"19c2094e-37ae-4ab3-b84f-b128538282b5\"},{\"_creationTime\":1791996523704.1826,\"addMethod\":\"manual\",\"careSetting\":\"nursing_home\",\"event\":\"patient_added\"}]"
+    },
+    {
+      "id": "after recovery (U6 / U8): a later chart logs pre_round_summary_opened, task_completed and note_marked_complete (hospital)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996526759.187,\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"pre_round_summary_opened\",\"patientId\":\"kx73eg6etpjqq915dtfk0tpndn8g8bmq\"},{\"_creationTime\":1791996526815.412,\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"task_completed\",\"patientId\":\"kx73eg6etpjqq915dtfk0tpndn8g8bmq\"},{\"_creationTime\":1791996526866.563,\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"note_marked_complete\",\"minutesFromPreRoundOpened\":0,\"patientId\":\"kx73eg6etpjqq915dtfk0tpndn8g8bmq\"}]"
+    }
+  ],
+  "data": {
+    "cp1 Hospital re-add while the write fails": {
+      "landed": "error",
+      "url": "http://localhost:6473/rounding/add",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI. Add Patient Add to today's rounding list SMART DICTATION Dictate all Say it in one breath — “Margaret Chen, 72, room 4B-12, CHF exacerbation, day 3” — and the fields below fill in. Anything you have already typed is left alone. PATIENT Full Name* Dictate Age* Room* MRN Auto-generated if left blank ENCOUNTER Diagnosis* Dictate Encounter Type New Admission Follow-Up Consult Hospital Day Admit Date Defaults from hospital day Specialty General Internal Medicine Hospital Medicine Cardiology Pulmonology Nephrology N",
+      "alerts": [
+        "Could not save the duplicate check — [CONVEX M(patientActivity:logDuplicatePrompt)] QA injected failure before write Called by client"
+      ],
+      "formStillHolds": "QA Hosp OAT06 Fail NPQZ",
+      "charts": 1,
+      "dialogs": [
+        {
+          "type": "confirm",
+          "message": "QA Hosp OAT06 Fail NPQZ (Room 4B-63) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+          "answer": "accept",
+          "expected": true,
+          "at": 1791996514569
+        }
+      ]
+    },
+    "cp2 task tap + completion while the write fails": {
+      "status": "post-rounded",
+      "tasks": [
+        {
+          "category": "plan",
+          "createdAt": "2026-10-14T15:48:33.692Z",
+          "done": true,
+          "doneAt": "2026-10-14T16:48:36.416Z",
+          "id": "s20aNPQZ-1",
+          "text": "QA S20 task: recheck potassium NPQZ",
+          "urgent": false
+        }
+      ],
+      "alerts": [],
+      "encounterComplete": true
+    },
+    "cp3 Nursing Home re-add while the write fails": {
+      "landed": "error",
+      "url": "http://localhost:6473/snf/add",
+      "alerts": [
+        "The resident couldn’t be added. Check your connection and try again."
+      ],
+      "formStillHolds": "QA Resident OAT06 Fail NPQZ",
+      "residents": 1,
+      "dialogs": [
+        {
+          "type": "confirm",
+          "message": "QA Hosp OAT06 Fail NPQZ (Room 4B-63) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+          "answer": "accept",
+          "expected": true,
+          "at": 1791996514569
+        },
+        {
+          "type": "confirm",
+          "message": "QA Resident OAT06 Fail NPQZ is already in the resident panel.\n\nAdd as a separate resident anyway?",
+          "answer": "accept",
+          "expected": true,
+          "at": 1791996518434
+        }
+      ]
+    },
+    "rows written while failing": {
+      "activity": [],
+      "usage": [],
+      "failedWrites": [
+        "patientActivity:logDuplicatePrompt",
+        "usage:record",
+        "usage:record",
+        "usage:record",
+        "patientActivity:logDuplicatePrompt"
+      ]
+    },
+    "after recovery": {
+      "hospitalAdd": "list",
+      "nursingHomeAdd": "list",
+      "hospitalRows": [
+        {
+          "_creationTime": 1791996520220.987,
+          "addMethod": "manual",
+          "careSetting": "hospital",
+          "event": "duplicate_prompt_shown",
+          "promptId": "08018d7f-db3a-4ec5-9699-5c51096b880e"
+        },
+        {
+          "_creationTime": 1791996520249.874,
+          "addMethod": "manual",
+          "careSetting": "hospital",
+          "event": "duplicate_prompt_rejected",
+          "promptId": "08018d7f-db3a-4ec5-9699-5c51096b880e"
+        },
+        {
+          "_creationTime": 1791996520272.3938,
+          "addMethod": "manual",
+          "careSetting": "hospital",
+          "event": "patient_added"
+        }
+      ],
+      "nursingHomeRows": [
+        {
+          "_creationTime": 1791996523660.676,
+          "addMethod": "manual",
+          "careSetting": "nursing_home",
+          "event": "duplicate_prompt_shown",
+          "promptId": "19c2094e-37ae-4ab3-b84f-b128538282b5"
+        },
+        {
+          "_creationTime": 1791996523683.512,
+          "addMethod": "manual",
+          "careSetting": "nursing_home",
+          "event": "duplicate_prompt_rejected",
+          "promptId": "19c2094e-37ae-4ab3-b84f-b128538282b5"
+        },
+        {
+          "_creationTime": 1791996523704.1826,
+          "addMethod": "manual",
+          "careSetting": "nursing_home",
+          "event": "patient_added"
+        }
+      ],
+      "usage": [
+        {
+          "_creationTime": 1791996526759.187,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "pre_round_summary_opened",
+          "patientId": "kx73eg6etpjqq915dtfk0tpndn8g8bmq"
+        },
+        {
+          "_creationTime": 1791996526815.412,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "task_completed",
+          "patientId": "kx73eg6etpjqq915dtfk0tpndn8g8bmq"
+        },
+        {
+          "_creationTime": 1791996526866.563,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "note_marked_complete",
+          "minutesFromPreRoundOpened": 0,
+          "patientId": "kx73eg6etpjqq915dtfk0tpndn8g8bmq"
+        }
+      ],
+      "charts": 2,
+      "residents": 2,
+      "dialogs": [
+        {
+          "type": "confirm",
+          "message": "QA Hosp OAT06 Fail NPQZ (Room 4B-63) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+          "answer": "accept",
+          "expected": true,
+          "at": 1791996514569
+        },
+        {
+          "type": "confirm",
+          "message": "QA Resident OAT06 Fail NPQZ is already in the resident panel.\n\nAdd as a separate resident anyway?",
+          "answer": "accept",
+          "expected": true,
+          "at": 1791996518434
+        },
+        {
+          "type": "confirm",
+          "message": "QA Hosp OAT06 Fail NPQZ (Room 4B-63) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+          "answer": "accept",
+          "expected": true,
+          "at": 1791996520185
+        },
+        {
+          "type": "confirm",
+          "message": "QA Resident OAT06 Fail NPQZ is already in the resident panel.\n\nAdd as a separate resident anyway?",
+          "answer": "accept",
+          "expected": true,
+          "at": 1791996523656
+        }
+      ]
+    },
+    "aiCalls": [],
+    "cleanup": {
+      "hospital": 3,
+      "nursingHome": 2
+    }
+  }
+}

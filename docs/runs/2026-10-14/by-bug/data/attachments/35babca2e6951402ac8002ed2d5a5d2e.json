@@ -1,0 +1,20 @@
+{
+  "TC-09/S16": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:20:51.816Z",
+    "title": "Another device of the same physician (clock D+2, Pacific/Kiritimati) un-marks and re-marks In Today; the first device follows without a reload",
+    "detail": "PW on the local stack, one fresh physician with one In Today resident and one Hospital patient. Device A: real clock, Asia/Tokyo, left on Today's Visits. Device B: a second signed-in context of the same physician with timezoneId Pacific/Kiritimati and its clock at server time + 2 days (Sat Oct 17 06:20 local). B un-marked the resident on All Residents: A dropped it about 0.2 s later without a reload (0 document loads on A) and showed 'No residents on today's visit list.'; B marked it again: A listed it again about 0.2 s later. End state: both Today's Visits list the resident with no 'In Today ✓'; both All Residents show it with 'In Today ✓' and no Hospital patient; both Nursing Home dashboards read Total 1 / Pending 1 / In Progress 0 / Complete 0; the server row is inTodaysSession true. Judged 12/12 (the oracle's seven checkpoints plus A/B equality, no reload, B can use the app). Recorded only: B's stored session was dropped as expired by its own clock (known B33); signing in again through the form reached the app.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16-a-before.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16-a-after-unmark.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16-a-after-mark.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16-a-dash.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16-b-today.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16-b-all.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s16-b-dash.png"
+    ],
+    "method": "PW",
+    "pkg": "clk"
+  }
+}

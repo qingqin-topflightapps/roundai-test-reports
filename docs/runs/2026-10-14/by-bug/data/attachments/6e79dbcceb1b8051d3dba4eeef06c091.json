@@ -1,0 +1,128 @@
+{
+  "name": "tc11-s08",
+  "at": "2026-10-14T16:22:44.709Z",
+  "checks": [
+    {
+      "id": "correct: signed in with its stored session and opened the chart",
+      "ok": true,
+      "detail": "Thu Oct 15 2026 01:22:05 GMT+0900 (Japan Standard Time)"
+    },
+    {
+      "id": "correct: Hospital cards are Oct 14 and Oct 15, not Oct 13",
+      "ok": true,
+      "detail": "[\"Oct 14: Diuresis started\",\"Oct 15: Breathing easier\"]"
+    },
+    {
+      "id": "ahead1d kept its stored session (known B33 when not)",
+      "ok": false,
+      "detail": "stored session dropped by the device clock; sign-in through the form: reached-app",
+      "recordOnly": true
+    },
+    {
+      "id": "ahead1d: sign-in works (UAT 3.8: a wrong clock shows the same state)",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}"
+    },
+    {
+      "id": "ahead1d: Hospital cards are Oct 14 and Oct 15 (same as the correct browser)",
+      "ok": true,
+      "detail": "ahead [\"Oct 14: Diuresis started\",\"Oct 15: Breathing easier\"] | correct [\"Oct 14: Diuresis started\",\"Oct 15: Breathing easier\"]"
+    },
+    {
+      "id": "ahead1d: the cards were already right on the first render (before any re-render)",
+      "ok": true,
+      "detail": "[\"Oct 14: Diuresis started\",\"Oct 15: Breathing easier\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "otherTz: sign-in works",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":false,\"uiSignIn\":null}"
+    },
+    {
+      "id": "otherTz (America/New_York, correct clock): same Hospital cards as the correct browser (Q4, record only)",
+      "ok": false,
+      "detail": "New York day Oct 14; otherTz [\"Oct 13: Admitted with volume overload\",\"Oct 14: Diuresis started\"] | correct [\"Oct 14: Diuresis started\",\"Oct 15: Breathing easier\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "ahead1d NH: the finished visit is 'Visit 1 – Oct 15' (server day), not Oct 16",
+      "ok": true,
+      "detail": "Visit 1 – Oct 15: Participating in therapy; appetite improved"
+    },
+    {
+      "id": "ahead1d NH: stored as one line 'Visit 1 · <day0>: <entry>'",
+      "ok": true,
+      "detail": "\"Visit 1 · Oct 15: Participating in therapy; appetite improved\""
+    },
+    {
+      "id": "ahead1d NH: 'Encounter done' is gone once the entry is back",
+      "ok": true,
+      "detail": "Visit 1 – Oct 15: Participating in therapy; appetite improved"
+    }
+  ],
+  "data": {
+    "days": {
+      "serverNow": "2026-10-14T16:22:01.737Z",
+      "hostTz": "Asia/Tokyo",
+      "d0": "Oct 15",
+      "dm1": "Oct 14",
+      "dm2": "Oct 13",
+      "dp1": "Oct 16",
+      "utcDay": "Oct 14",
+      "newYorkDay": "Oct 14"
+    },
+    "correct": {
+      "atOpen": [
+        "Oct 14: Diuresis started",
+        "Oct 15: Breathing easier"
+      ],
+      "settled": [
+        "Oct 14: Diuresis started",
+        "Oct 15: Breathing easier"
+      ],
+      "clock": {
+        "now": "Thu Oct 15 2026 01:22:05 GMT+0900 (Japan Standard Time)",
+        "tz": "Asia/Tokyo"
+      },
+      "url": "http://localhost:6473/rounding/<id>"
+    },
+    "ahead1d": {
+      "atOpen": [
+        "Oct 14: Diuresis started",
+        "Oct 15: Breathing easier"
+      ],
+      "settled": [
+        "Oct 14: Diuresis started",
+        "Oct 15: Breathing easier"
+      ],
+      "clock": {
+        "now": "Fri Oct 16 2026 01:22:39 GMT+0900 (Japan Standard Time)",
+        "tz": "Asia/Tokyo"
+      },
+      "url": "http://localhost:6473/rounding/<id>"
+    },
+    "otherTz": {
+      "atOpen": [
+        "Oct 13: Admitted with volume overload",
+        "Oct 14: Diuresis started"
+      ],
+      "settled": [
+        "Oct 13: Admitted with volume overload",
+        "Oct 14: Diuresis started"
+      ],
+      "clock": {
+        "now": "Wed Oct 14 2026 12:22:43 GMT-0400 (Eastern Daylight Time)",
+        "tz": "America/New_York"
+      },
+      "url": "http://localhost:6473/rounding/<id>"
+    },
+    "ahead1d-snf": {
+      "cards": [
+        "Visit 1 – Oct 15: Participating in therapy; appetite improved"
+      ],
+      "storedCourse": "Visit 1 · Oct 15: Participating in therapy; appetite improved",
+      "deviceNow": "Fri Oct 16 2026 01:22:44 GMT+0900 (Japan Standard Time)"
+    }
+  }
+}

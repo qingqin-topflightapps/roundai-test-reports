@@ -1,0 +1,18 @@
+{
+  "OAT-06/S01": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:43:29.079Z",
+    "title": "Hospital walk: manual add, duplicate kept, chart opened, encounter completed, task completed and deleted, patient removed: every analytics row lands",
+    "detail": "Local QA stack only (main e02167f), a brand-new @roundai.test physician per test, synthetic charts deleted after the reads. No model: every ai/* action is refused at the Convex socket and none was sent; tripwire clean for the final run (16:43:28Z mark, 'no model call'). Rows are read with the local admin key (patientActivity / usage / surveys _recentForActor, usage:_dailyForActor) before and after the steps; reading them through Vikram's dashboard on the UAT deployment is S23 / Q12. Seeded one note-ready Hospital chart (finished note, billing code pre-computed) with two open tasks, then on the real screens: Add New Patient 'QA Hosp OAT06 Manual' (70, 4B-61, 'Cellulitis, left leg'); the same patient again -> native confirm 'already on your rounding list - same name and room' answered Cancel; opened the seeded chart on Pre-Round; Post-Round > Tasks: Complete task 1, Delete task 2; Mark Encounter Complete (no pending task, so no question); back on the list removed the added patient (one confirm, OK). Judged 15/15: 4 checkpoints (list after the add; list, not the form, after Cancel; 'Encounter Complete' without the Mark button; list without the removed patient) and 11 row checks since T0: patient_added hospital/manual = 1; duplicate_prompt_shown = 1 + duplicate_prompt_accepted = 1 with the same promptId (hospital, manual), rejected = 0, still one chart with the name; patient_removed hospital/removalReason manual = 1; pre_round_summary_opened = 1, note_marked_complete = 1 (minutesFromPreRoundOpened 0, numeric), task_completed = 1, task_deleted = 1, all with the chart's id and no other usage row; today's hospital pilotDailyRounding preRoundSummariesOpened, notesCompleted, encountersTimed, tasksCompleted, tasksDeleted each +1; no name, room, MRN, diagnosis, task or note text in any row of the account. Record-only: Cancel is logged as 'accepted' (meaning is Q5); the removal asked once (TC-24 / TFA-92579 rule, not this case). The add form was left by URL, not by its header Back button, which submits the form (known B08) and would have added rows.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s01.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp1-added.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp2-duplicate-kept.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp3-complete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s01-s01-cp4-removed.png",
+      "runs/2026-10-14-local/newspec-c/reports/an1-oat06-s01-s02-walk.json"
+    ],
+    "method": "PW",
+    "pkg": "an1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "EFS/S07": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:22:59.220Z",
+    "title": "Summary fails live, reload, a second Save succeeds: dictation intact, Generate locked then unlocked (both contexts)",
+    "detail": "Local stack (main e02167f, the dev build), Hospital and Nursing Home, fresh @roundai.test physician, standard fixture; spec newspec-c/flt-efs-s07-summary-retry.spec.ts. ai/parsing:parsePreRoundNotes answered in the browser at the Convex socket: the chart's first call fails, the second returns today's values (no model call; tripwire and aiCallLog clean). Judged 30/30. h1/n1: after the failed Save Note the typed text is in the editor word for word with 'Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.' h2/n2: Generate Note & Finish disabled with 'Today's pre-round did not finish processing, so the panels may be out of date. Tap Save Note to retry before generating.' h3/n3 after a reload: the text is intact in the editor and on the server, the tab and editor say 'The reviewed note is saved, but its structured summary needs another attempt. Tap Save Note to retry.' h4/n4: Generate still disabled. h5/n5 after the second Save: no failure message; today's values on the tab and on the server (Hospital BP 118/72 in Vitals and creatinine 1.3 in Labs, preRoundError null; Nursing Home BP 124/70 in Vitals and '75%' in the Visit Timeline). h6/n6: Generate enabled. Recorded only: the values sit in panels as well as in the note preview (Hospital 3 occurrences each, Nursing Home 2); Nursing Home shows no success line after the second Save (the decision already logged under TC-10/S26, not part of this then).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h-h1-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h-h2-locked.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h-h3-reload-editor.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h-h3-reload-tab.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h-h4-reload-locked.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h-h5-saved-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-h-h6-unlocked.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n-n1-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n-n2-locked.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n-n3-reload-editor.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n-n3-reload-tab.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n-n4-reload-locked.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n-n5-saved-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s07-n-n6-unlocked.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "ref": "TC-11/S10",
+  "title": "TC-11/S10 Nursing Home visit lifecycle: Generate, Regenerate, reload, revisit, Back/Forward (live AI)",
+  "dataset": "course-nh",
+  "target": "dev",
+  "at": "2026-10-14T18:10:36.894Z",
+  "cells": [
+    {
+      "name": "cp-regen cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ],
+        "settled": true
+      }
+    },
+    {
+      "name": "cp-regen: 'Visit 1 –' exactly once on the Visit Timeline",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "times": 1,
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: a fact said only at this visit's encounter (80 feet | walker | 2/10)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: no 'Visit 2 –'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: a card matches /^Visit 1 – (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \\d{1,2}:/",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: dated the run day ('Visit 1 – Oct 15:')",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-reload cards and stored course",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ],
+        "settled": true,
+        "course": "Visit 1 · Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+      }
+    },
+    {
+      "name": "cp-reload: 'Visit 1 –' exactly once on the Visit Timeline",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "times": 1,
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-reload: a fact said only at this visit's encounter (80 feet | walker | 2/10)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-reload: no 'Visit 2 –'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-reload: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-reload: a card matches /^Visit 1 – (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \\d{1,2}:/",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT"
+        ]
+      }
+    },
+    {
+      "name": "cp-revisit-done cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ],
+        "settled": true
+      }
+    },
+    {
+      "name": "cp-revisit-done: 'Visit 1 –' exactly once on the Visit Timeline",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "times": 1,
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      }
+    },
+    {
+      "name": "cp-revisit-done: a fact said only at this visit's encounter (neuro | range of motion | precaution)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      }
+    },
+    {
+      "name": "cp-revisit-done: no 'Visit 3 –'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      }
+    },
+    {
+      "name": "cp-revisit-done: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      }
+    },
+    {
+      "name": "cp-revisit-done: 'Visit 2 – <Mon D>:' (Q1)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      },
+      "ref": "Q1"
+    },
+    {
+      "name": "cp-revisit-done: 'Visit 2 –' once, under Visit 1 (Q1)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      },
+      "ref": "Q1"
+    },
+    {
+      "name": "cp-back-forward cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ],
+        "settled": true,
+        "url": "<dev address>/snf/jx704vtvw8fzjnhtf295mg0g758g8z8s"
+      }
+    },
+    {
+      "name": "cp-back-forward: 'Visit 1 –' exactly once",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      }
+    },
+    {
+      "name": "cp-back-forward: the same cards as cp-revisit-done (sameCardsAs)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ],
+        "after": [
+          "Visit 1 – Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+          "Visit 2 – Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+        ]
+      }
+    },
+    {
+      "name": "after the run: the Visit 1 line read at the reload is still in the stored course, byte for byte (U5)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "v1AtReload": "Visit 1 · Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT",
+        "course": "Visit 1 · Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT\nVisit 2 · Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+      }
+    },
+    {
+      "name": "after the run: no 'Visit N · ' number on two stored lines (T3: re-completing never adds an entry)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "duplicates": [],
+        "course": "Visit 1 · Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT\nVisit 2 · Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+      }
+    },
+    {
+      "name": "after the run: no stored line still reads 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "course": "Visit 1 · Oct 15: 86-year-old female progressing in post-acute rehab after left hip fracture; ambulation 80 feet with walker, pain 2/10 on acetaminophen, continuing twice-daily PT/OT\nVisit 2 · Oct 15: 86-year-old female with left hip fracture in post-acute rehab progressing with twice-daily PT; fall today without injury or head strike; neuro checks ordered q4h × 24 hours, fall precautions initiated"
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-11-S10-cp-regen.png",
+    "evidence/TC-11-S10-cp-reload.png",
+    "evidence/TC-11-S10-cp-revisit-done.png",
+    "evidence/TC-11-S10-cp-back-forward.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-11-S10-cp-regen.png": 0,
+    "evidence/TC-11-S10-cp-reload.png": 0,
+    "evidence/TC-11-S10-cp-revisit-done.png": 0,
+    "evidence/TC-11-S10-cp-back-forward.png": 0
+  }
+}

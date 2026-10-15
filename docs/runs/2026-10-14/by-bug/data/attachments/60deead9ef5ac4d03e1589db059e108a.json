@@ -1,0 +1,20 @@
+{
+  "OAT-03/S16": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:33:21.204Z",
+    "title": "The connection drops for ~20 s while Generate is in flight: clear failure, dictation kept, no endless spinner, no half note (both contexts)",
+    "detail": "Hospital and Nursing Home; spec newspec-c/flt-oat03-s16-inflight-drop.spec.ts. Generate Note & Finish on a typed dictation; ai/notes:generateNote reached the socket and was held there (the request 'at the server'); 1 s after the tap the browser went offline (setOffline plus the Convex socket closed, reconnects refused) and came back 20 s later; the held answer was dropped with the socket. Judged 20/20. 45 s after the tap: no 'Generating Note…'; the explicit failure 'The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.' (Hospital) / 'The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.' (Nursing Home), shown when the client reconnected (the Convex client fails an in-flight action on reconnect); the dictation in the box and stored exactly; Generate Note & Finish offered again; no note stored (no half note) and the chart not marked finished (Hospital 'seen'). Recorded: during the outage the button stays on 'Generating Note…' under the no-network banner.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-h-after-45s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-h-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-h-offline.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-n-after-45s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-n-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s16-n-offline.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

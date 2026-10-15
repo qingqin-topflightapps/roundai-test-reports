@@ -1,0 +1,13 @@
+{
+  "TC-09/S22": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:10:45.428Z",
+    "title": "Supervisor-list scan time and which AI read it (10 scans, Nursing Home)",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset photo10. The S04 supervisor-list image is not on disk, so a synthetic Nursing Home census photo (4 QA-prefixed rows) stood in; it was scanned 10 times (10 copies, a fresh sheet each time) from the Nursing Home list and the sheet closed without adding, so Today's Visits was never replaced. Each call left one vision.scanCensusSheet row: model gemini-3.6-flash, durationMs 1816-3001 ms (median 1978), providerMs on all 10; none over 30 s. 20/20 judged cells held (U9, T2). Vertex itself is not proven (admin read, as in TC-02/S19). Every scan showed 'No residents found' (known B01, recorded only). The In Today toggle is not timed (no target, Q9).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/photo10/evidence/TC-09-S22.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/photo10/evidence/TC-09-S22-nh-after-10-scans.png"
+    ]
+  }
+}

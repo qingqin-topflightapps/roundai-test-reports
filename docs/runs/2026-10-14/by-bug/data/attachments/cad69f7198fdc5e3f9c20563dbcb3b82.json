@@ -1,0 +1,79 @@
+{
+  "name": "tc24-s30",
+  "at": "2026-10-14T17:26:24.906Z",
+  "checks": [
+    {
+      "id": "B stops showing the patient's name and diagnosis within 10 s, without a reload",
+      "ok": true,
+      "detail": "91 ms; landing: Patient not found. + Back to rounds",
+      "recordOnly": true
+    },
+    {
+      "id": "B shows a clear message or the list, not a blank screen (TFA-94745 AC 2)",
+      "ok": true,
+      "detail": "Patient not found. + Back to rounds",
+      "recordOnly": true
+    },
+    {
+      "id": "B's Save Note ends in an explicit error or is not offered",
+      "ok": true,
+      "detail": "Save Note not on screen (the chart was replaced)",
+      "recordOnly": true
+    },
+    {
+      "id": "nothing is written back: rounding:get(id) stays null and no chart with the name or B's text appears (a write-back would be a bug)",
+      "ok": true,
+      "detail": "get null; rows 0; A list shows name false"
+    },
+    {
+      "id": "Q6(c), recorded: B's session-draft store holds no row for the deleted chart",
+      "ok": false,
+      "detail": "kx7dv4geg1hhx4vqtmcch9evqs8g9fay:preRoundNotes = \"Overnight afebrile, HR 76, plan to recheck BMP.\"",
+      "recordOnly": true
+    },
+    {
+      "id": "after B's reload nothing is re-created either",
+      "ok": true,
+      "detail": "null"
+    }
+  ],
+  "data": {
+    "B-after-delete": {
+      "msAfterDelete": 91,
+      "landing": "Patient not found. + Back to rounds",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n\nPatient not found.\n\nBack to rounds",
+      "dialogsOnA": [
+        "Remove QA Hosp S30 ATGV from the rounding list? This will delete all notes, vitals, and encounter data for this patient."
+      ]
+    },
+    "B-save-note": {
+      "offered": false,
+      "outcome": "Save Note not on screen (the chart was replaced)"
+    },
+    "server": {
+      "getById": null,
+      "rowsWithNameOrText": [],
+      "aListShowsName": false
+    },
+    "B-drafts-for-deleted-chart": [
+      {
+        "key": "<user>:kx7dv4geg1hhx4vqtmcch9evqs8g9fay:preRoundNotes",
+        "text": "Overnight afebrile, HR 76, plan to recheck BMP.",
+        "savedAt": "2026-10-14T17:26:17.479Z"
+      }
+    ],
+    "B-updates-sent": [
+      {
+        "at": 84,
+        "keys": [
+          "preRoundEditedAt",
+          "preRoundNotes"
+        ]
+      }
+    ],
+    "B-after-reload": {
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n\nPatient not found.\n\nBack to rounds",
+      "pageErrors": []
+    }
+  }
+}

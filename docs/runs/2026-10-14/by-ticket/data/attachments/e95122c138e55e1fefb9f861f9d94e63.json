@@ -1,0 +1,611 @@
+{
+  "ref": "TC-11/S02",
+  "title": "TC-11/S02 Nursing Home: three same-day visits for one resident, each entry from its own note, Visit 1 never overwritten (live AI)",
+  "dataset": "course-nh",
+  "target": "dev",
+  "at": "2026-10-14T18:09:18.881Z",
+  "cells": [
+    {
+      "name": "run day as the ledger labels it",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "day0": "Oct 15",
+        "timeZone": "Asia/Tokyo"
+      }
+    },
+    {
+      "name": "visit 1: Visit Timeline cards and stored course",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ],
+        "settledWithin30s": true,
+        "course": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+      }
+    },
+    {
+      "name": "visit 1: the stored course has a 'Visit 1 · ' line",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "course": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+      }
+    },
+    {
+      "name": "visit 1: 'Visit 1 –' exactly once on the Visit Timeline",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "times": 1,
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: a fact said only at this visit's encounter (80 feet | walker | 2/10)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: no 'Visit 2 –'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: no '[Physician'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: no '[Today'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: no 'Electronically signed'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: no 'Working with PT twice daily; pain controlled'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: a card matches /^Visit 1 – (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \\d{1,2}:/",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ]
+      }
+    },
+    {
+      "name": "visit 1: the line is dated the run day ('Visit 1 – Oct 15:', U1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10"
+        ],
+        "day0": "Oct 15"
+      }
+    },
+    {
+      "name": "visit 2: Visit Timeline cards and stored course",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ],
+        "settledWithin30s": true,
+        "course": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10\nVisit 2 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+      }
+    },
+    {
+      "name": "visit 2: 'Visit 1 –' exactly once on the Visit Timeline",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "times": 1,
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: a fact said only at this visit's encounter (neuro | range of motion | precaution)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: no 'Visit 3 –'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: no '[Physician'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: no '[Today'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: no 'Electronically signed'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: no 'Nursing called: fall after lunch'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      }
+    },
+    {
+      "name": "visit 2: 'Visit 2 – <Mon D>:' (Q1)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily"
+        ]
+      },
+      "ref": "Q1"
+    },
+    {
+      "name": "visit 2: 'Visit 2 –' once (Q1)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "times": 1
+      },
+      "ref": "Q1"
+    },
+    {
+      "name": "visit 3: Visit Timeline cards and stored course",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ],
+        "settledWithin30s": true,
+        "course": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10\nVisit 2 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily\nVisit 3 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+      }
+    },
+    {
+      "name": "visit 3: a fact said only at this visit's encounter (4/10 | as needed | night)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      }
+    },
+    {
+      "name": "visit 3: no 'Visit 4 –'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      }
+    },
+    {
+      "name": "visit 3: no '[Physician'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      }
+    },
+    {
+      "name": "visit 3: no '[Today'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      }
+    },
+    {
+      "name": "visit 3: no 'Electronically signed'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      }
+    },
+    {
+      "name": "visit 3: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      }
+    },
+    {
+      "name": "visit 3: no 'Evening check: asking for pain medicine'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      }
+    },
+    {
+      "name": "visit 3: Visit 2 and Visit 3 labels as 'Visit N – <Mon D>:' (Q1)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      },
+      "ref": "Q1"
+    },
+    {
+      "name": "visit 3: order Visit 1, Visit 2, Visit 3 (Q1)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      },
+      "ref": "Q1"
+    },
+    {
+      "name": "visit 3: Visit 1 still on the cards (Q5)",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+          "Visit 2 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily",
+          "Visit 3 – Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+        ]
+      },
+      "ref": "Q5"
+    },
+    {
+      "name": "after the run: the Visit 1 line stored after visit 1 is still in the course, byte for byte (U5: not overwritten)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "visit1Line": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10",
+        "course": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10\nVisit 2 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily\nVisit 3 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+      }
+    },
+    {
+      "name": "after the run: no 'Visit N · ' number on two stored lines",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "duplicates": [],
+        "course": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10\nVisit 2 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily\nVisit 3 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+      }
+    },
+    {
+      "name": "after the run: no stored line still reads 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "course": "Visit 1 · Oct 15: 86-year-old female in post-acute rehab post-left hip fracture progressing with PT/OT twice daily; ambulated 80 feet with walker; pain well controlled on acetaminophen 2/10\nVisit 2 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab; fell after lunch without injury; neuro checks ordered q4h × 24 hours; PT continues twice daily\nVisit 3 · Oct 15: 86-year-old female post-left hip fracture repair in post-acute rehab progressing with PT twice daily; fell after lunch without injury; pain 4/10, managed with acetaminophen"
+      }
+    },
+    {
+      "name": "after the run: the chart has a generated note (noteGeneratedAt)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "noteGeneratedAt": "2026-10-14T18:09:02.707Z"
+      }
+    },
+    {
+      "name": "timing per visit (S19 / U11, 3.5: review only)",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        {
+          "visit": 1,
+          "calls": [
+            {
+              "fn": "notes.generateNote",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4620,
+              "providerMs": 4614,
+              "appMs": 6,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "parsing.extractMedicationEvents",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 2581,
+              "providerMs": 2577,
+              "appMs": 4,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "notes.refreshCourseAndBackground",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 3229,
+              "providerMs": 3226,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "notes.suggestBilling",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4224,
+              "providerMs": 4220,
+              "appMs": 4,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "visit": 2,
+          "calls": [
+            {
+              "fn": "notes.generateNote",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 6264,
+              "providerMs": 6258,
+              "appMs": 6,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "parsing.extractMedicationEvents",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 3266,
+              "providerMs": 3263,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "notes.refreshCourseAndBackground",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 3601,
+              "providerMs": 3599,
+              "appMs": 2,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "notes.suggestBilling",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4826,
+              "providerMs": 4823,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "visit": 3,
+          "calls": [
+            {
+              "fn": "notes.generateNote",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4432,
+              "providerMs": 4426,
+              "appMs": 6,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "parsing.extractMedicationEvents",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 2292,
+              "providerMs": 2289,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "notes.refreshCourseAndBackground",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 3575,
+              "providerMs": 3573,
+              "appMs": 2,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            },
+            {
+              "fn": "notes.suggestBilling",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4262,
+              "providerMs": 4259,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        }
+      ],
+      "ref": "S19"
+    }
+  ],
+  "shots": [
+    "evidence/TC-11-S02-after-visit1.png",
+    "evidence/TC-11-S02-after-visit2.png",
+    "evidence/TC-11-S02-after-visit3.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-11-S02-after-visit1.png": 0,
+    "evidence/TC-11-S02-after-visit2.png": 0,
+    "evidence/TC-11-S02-after-visit3.png": 0
+  }
+}

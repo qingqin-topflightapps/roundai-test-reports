@@ -1,0 +1,60 @@
+{
+  "case": "TC-15-S06",
+  "title": "Preset 'symptoms mentioned' reads the encounter transcript (Hospital; NH variant)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s06-h-symptoms.md",
+      "verdict": "Pass",
+      "url": "/rounding/js775k7vvtrfz57e80633e8mf58g8h51",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s06-n-symptoms.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7946e0s802wbcyezncr788td8g9395",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 29,
+    "costUsd": 0.1958748,
+    "durationMs": 129875,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U87",
+  "covers": [
+    "TC-15/S06"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u87",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U87.json",
+  "foreignBefore": {
+    "hospitalPatient": 4,
+    "snfResident": 4
+  }
+}

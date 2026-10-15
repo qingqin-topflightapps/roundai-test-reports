@@ -1,0 +1,17 @@
+{
+  "TC-11/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-14T18:12:14.278Z",
+    "title": "Hospital lifecycle: pre-round, Generate, Regenerate, pre-round re-save, reload (live AI)",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset course-hosp (QA DS1-course-hosp rows: 1 seeded + 6 added by the spec, all 7 deleted after, no other row changed). One Hospital patient with no course: Pre-Round Save Note, Generate Note & Finish, Regenerate Note on the same page, Save Note again with the afternoon update appended, then a fresh page load; the Course Timeline cards read on the Pre-Round tab at each step. Judged 19/19 cells held: exactly one dated card at every checkpoint and it is today's ('Oct 15:', U1 / T3); after Generate and after Regenerate it carries an encounter-only fact (furosemide), no 'Encounter done', placeholder, sign-off or copied pre-round sentence, and differs from the pre-round card (T2, the 'differsFrom' check the agent oracle lacks); noteGeneratedAt set; the stored course is one line. Recorded (Q9, not judged): the pre-round re-save replaced the finished-note entry ('79-year-old male ... improved crackles; continue furosemide with renal monitoring') with a pre-round one ('... Hypokalemia corrected with oral potassium replacement. Renal function stable') and the stored line now ends 'stable.. ⏳ Encounter pending.' although the note exists (the card strips the marker). Timing (S19 / U11, review only): generateNote about 5.3 s on us.anthropic.claude-haiku-4-5 with providerMs; none over 30 s.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S11.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S11-cp-preround.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S11-cp-generated.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S11-cp-regen.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S11-cp-resave.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S11-cp-reload.png"
+    ]
+  }
+}

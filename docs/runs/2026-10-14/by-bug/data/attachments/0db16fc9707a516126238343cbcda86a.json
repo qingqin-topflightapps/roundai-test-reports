@@ -1,0 +1,21 @@
+{
+  "TC-24/S23": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T16:27:49.656Z",
+    "title": "Phone width, WebKit and the Android app: the card's trash icon can be tapped without hitting the card",
+    "detail": "Our own addition: record-only, findings are suggestions. Web half done (desktop, Pixel 7 Chromium, iPhone 15 WebKit), Android half blocked (device). The Hospital card's trash icon is 28x28 CSS px on all three profiles (>= 24 px WCAG 2.5.8; < 44 pt Apple HIG, suggestion), it is the topmost element at its centre (not covered), and a touch tap on it (Pixel 7, iPhone 15) or a click (desktop) opens the delete confirmation without opening the chart (URL stays /rounding). It is not a separate target, though: it is nested inside the card's role=button 'Open chart for …' element and fully inside its tap area (axe nested-interactive; suggestion A3, as in TC-01/S22). The Nursing Home list's delete control is recorded: there is none on Today's Visits or All Residents cards (B24 / Q7). Not run: the Android debug app on the emulator.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-after-cancel.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-after-cancel.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-after-cancel.png"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

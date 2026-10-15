@@ -1,0 +1,214 @@
+{
+  "name": "tc06-s10",
+  "at": "2026-10-14T17:26:14.718Z",
+  "checks": [
+    {
+      "id": "setup: device A before midnight: P1 / R1 New Admission, P3 / R3 New Admission (future day)",
+      "ok": true,
+      "detail": "{\"hosp\":{\"QA Hosp S10 P1 9PHE\":\"New Admission\",\"QA Hosp S10 P2 9PHE\":\"Follow-up\",\"QA Hosp S10 P3 9PHE\":\"New Admission\"},\"snf\":{\"QA Resident S10 R1 9PHE\":\"New Admission\",\"QA Resident S10 R2 9PHE\":\"Follow-up\",\"QA Resident S10 R3 9PHE\":\"New Admission\"},\"device\":\"Wed Oct 14 2026 23:59:07 GMT+0900 (Japan Standard Time)\",\"stored\":{\"P1\":\"new@2026-10-14\",\"P2\":\"-@-\",\"P3\":\"new@2026-10-16\",\"R1\":\"new@2026-10-14\",\"R2\":\"-@-\",\"R3\":\"new@2026-10-16\"}}"
+    },
+    {
+      "id": "00:00:30, lists open, no reload, before the lifecycle repeat: P1 / R1 already read Follow-up",
+      "ok": true,
+      "detail": "{\"P1\":\"Follow-up\",\"R1\":\"Follow-up\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "open lists update without a reload: P1 / R1 (23:59 New Admission) read Follow-up after midnight",
+      "ok": true,
+      "detail": "{\"hosp\":{\"QA Hosp S10 P1 9PHE\":\"Follow-up\",\"QA Hosp S10 P2 9PHE\":\"Consult\",\"QA Hosp S10 P3 9PHE\":\"New Admission\"},\"snf\":{\"QA Resident S10 R1 9PHE\":\"Follow-up\",\"QA Resident S10 R2 9PHE\":\"Consult\",\"QA Resident S10 R3 9PHE\":\"New Admission\"}}",
+      "recordOnly": true
+    },
+    {
+      "id": "00:01 Consult on P2 / R2 stays Consult the same day",
+      "ok": true,
+      "detail": "{\"P2\":\"Consult\",\"R2\":\"Consult\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "the 23:59 status's roll is stored (follow-up on the server)",
+      "ok": true,
+      "detail": "{\"P1\":\"follow-up@2026-10-15\",\"P2\":\"consult@2026-10-15\",\"P3\":\"new@2026-10-16\",\"R1\":\"follow-up@2026-10-15\",\"R2\":\"consult@2026-10-15\",\"R3\":\"new@2026-10-16\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "every device agrees (A with its lists open, B on the real clock)",
+      "ok": true,
+      "detail": "A {\"QA Hosp S10 P1 9PHE\":\"Follow-up\",\"QA Hosp S10 P2 9PHE\":\"Consult\",\"QA Hosp S10 P3 9PHE\":\"New Admission\",\"QA Resident S10 R1 9PHE\":\"Follow-up\",\"QA Resident S10 R2 9PHE\":\"Consult\",\"QA Resident S10 R3 9PHE\":\"New Admission\"} | B {\"QA Hosp S10 P1 9PHE\":\"Follow-up\",\"QA Hosp S10 P2 9PHE\":\"Consult\",\"QA Hosp S10 P3 9PHE\":\"New Admission\",\"QA Resident S10 R1 9PHE\":\"Follow-up\",\"QA Resident S10 R2 9PHE\":\"Consult\",\"QA Resident S10 R3 9PHE\":\"New Admission\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "next midnight: the 00:01 Consult (P2 / R2) rolls to Follow-up",
+      "ok": true,
+      "detail": "{\"P2\":\"Follow-up\",\"R2\":\"Follow-up\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "next midnight: the future-stamped P3 / R3 read Follow-up (known B18 / AC 8 when they still read New Admission)",
+      "ok": false,
+      "detail": "{\"P3\":\"New Admission\",\"R3\":\"New Admission\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "a day after that, the future-stamped P3 / R3 finally read Follow-up",
+      "ok": true,
+      "detail": "{\"P3\":\"Follow-up\",\"R3\":\"Follow-up\"}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "days": {
+      "serverNow": "2026-10-14T17:25:41.170Z",
+      "hostTz": "Asia/Tokyo",
+      "day1": "2026-10-14",
+      "day2": "2026-10-15",
+      "day3": "2026-10-16",
+      "serverUtcDay": "2026-10-14",
+      "note": "the device's local midnight is 00:00 JST; server UTC midnight is 09:00 JST (Q1)"
+    },
+    "23:59": {
+      "p1Set": {
+        "device": "Wed Oct 14 2026 23:59:00 GMT+0900 (Japan Standard Time)",
+        "stored": "new@2026-10-14"
+      },
+      "r1Set": {
+        "device": "Wed Oct 14 2026 23:59:00 GMT+0900 (Japan Standard Time)",
+        "stored": "new@2026-10-14"
+      }
+    },
+    "A-before-midnight": {
+      "hosp": {
+        "QA Hosp S10 P1 9PHE": "New Admission",
+        "QA Hosp S10 P2 9PHE": "Follow-up",
+        "QA Hosp S10 P3 9PHE": "New Admission"
+      },
+      "snf": {
+        "QA Resident S10 R1 9PHE": "New Admission",
+        "QA Resident S10 R2 9PHE": "Follow-up",
+        "QA Resident S10 R3 9PHE": "New Admission"
+      },
+      "device": "Wed Oct 14 2026 23:59:07 GMT+0900 (Japan Standard Time)",
+      "stored": {
+        "P1": "new@2026-10-14",
+        "P2": "-@-",
+        "P3": "new@2026-10-16",
+        "R1": "new@2026-10-14",
+        "R2": "-@-",
+        "R3": "new@2026-10-16"
+      }
+    },
+    "A-00:00:30": {
+      "hosp": {
+        "QA Hosp S10 P1 9PHE": "Follow-up",
+        "QA Hosp S10 P2 9PHE": "Follow-up",
+        "QA Hosp S10 P3 9PHE": "New Admission"
+      },
+      "snf": {
+        "QA Resident S10 R1 9PHE": "Follow-up",
+        "QA Resident S10 R2 9PHE": "Follow-up",
+        "QA Resident S10 R3 9PHE": "New Admission"
+      },
+      "device": "Thu Oct 15 2026 00:00:38 GMT+0900 (Japan Standard Time)",
+      "stored": {
+        "P1": "new@2026-10-14",
+        "P2": "-@-",
+        "P3": "new@2026-10-16",
+        "R1": "new@2026-10-14",
+        "R2": "-@-",
+        "R3": "new@2026-10-16"
+      }
+    },
+    "00:01": {
+      "p2Set": {
+        "device": "Thu Oct 15 2026 00:01:14 GMT+0900 (Japan Standard Time)",
+        "stored": "consult@2026-10-15"
+      },
+      "r2Set": {
+        "device": "Thu Oct 15 2026 00:01:15 GMT+0900 (Japan Standard Time)",
+        "stored": "consult@2026-10-15"
+      }
+    },
+    "A-after-lifecycle-repeat": {
+      "hosp": {
+        "QA Hosp S10 P1 9PHE": "Follow-up",
+        "QA Hosp S10 P2 9PHE": "Consult",
+        "QA Hosp S10 P3 9PHE": "New Admission"
+      },
+      "snf": {
+        "QA Resident S10 R1 9PHE": "Follow-up",
+        "QA Resident S10 R2 9PHE": "Consult",
+        "QA Resident S10 R3 9PHE": "New Admission"
+      },
+      "device": "Thu Oct 15 2026 00:11:16 GMT+0900 (Japan Standard Time)",
+      "stored": {
+        "P1": "follow-up@2026-10-15",
+        "P2": "consult@2026-10-15",
+        "P3": "new@2026-10-16",
+        "R1": "follow-up@2026-10-15",
+        "R2": "consult@2026-10-15",
+        "R3": "new@2026-10-16"
+      }
+    },
+    "B-real-clock": {
+      "hosp": {
+        "QA Hosp S10 P1 9PHE": "Follow-up",
+        "QA Hosp S10 P2 9PHE": "Consult",
+        "QA Hosp S10 P3 9PHE": "New Admission"
+      },
+      "snf": {
+        "QA Resident S10 R1 9PHE": "Follow-up",
+        "QA Resident S10 R2 9PHE": "Consult",
+        "QA Resident S10 R3 9PHE": "New Admission"
+      },
+      "device": "Thu Oct 15 2026 02:26:00 GMT+0900 (Japan Standard Time)",
+      "stored": {
+        "P1": "follow-up@2026-10-15",
+        "P2": "consult@2026-10-15",
+        "P3": "new@2026-10-16",
+        "R1": "follow-up@2026-10-15",
+        "R2": "consult@2026-10-15",
+        "R3": "new@2026-10-16"
+      }
+    },
+    "next-midnight": {
+      "hosp": {
+        "QA Hosp S10 P1 9PHE": "Follow-up",
+        "QA Hosp S10 P2 9PHE": "Follow-up",
+        "QA Hosp S10 P3 9PHE": "New Admission"
+      },
+      "snf": {
+        "QA Resident S10 R1 9PHE": "Follow-up",
+        "QA Resident S10 R2 9PHE": "Follow-up",
+        "QA Resident S10 R3 9PHE": "New Admission"
+      },
+      "stored": {
+        "P1": "follow-up@2026-10-14",
+        "P2": "follow-up@2026-10-15",
+        "P3": "new@2026-10-15",
+        "R1": "follow-up@2026-10-14",
+        "R2": "follow-up@2026-10-15",
+        "R3": "new@2026-10-15"
+      }
+    },
+    "a-day-later": {
+      "hosp": {
+        "QA Hosp S10 P1 9PHE": "Follow-up",
+        "QA Hosp S10 P2 9PHE": "Follow-up",
+        "QA Hosp S10 P3 9PHE": "Follow-up"
+      },
+      "snf": {
+        "QA Resident S10 R1 9PHE": "Follow-up",
+        "QA Resident S10 R2 9PHE": "Follow-up",
+        "QA Resident S10 R3 9PHE": "Follow-up"
+      },
+      "stored": {
+        "P1": "follow-up@2026-10-14",
+        "P2": "follow-up@2026-10-15",
+        "P3": "follow-up@2026-10-15",
+        "R1": "follow-up@2026-10-14",
+        "R2": "follow-up@2026-10-15",
+        "R3": "follow-up@2026-10-15"
+      }
+    }
+  }
+}

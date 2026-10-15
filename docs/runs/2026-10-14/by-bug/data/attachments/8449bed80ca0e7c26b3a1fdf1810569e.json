@@ -1,0 +1,167 @@
+{
+  "name": "oat06-s04-nursing-home",
+  "at": "2026-10-14T16:48:16.289Z",
+  "checks": [
+    {
+      "id": "R4: 2 patient_added rows, scan_census, nursing_home (the matched resident is not counted as an add)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996486219.1155,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"event\":\"patient_added\"},{\"_creationTime\":1791996486219.1162,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"event\":\"patient_added\"}]"
+    },
+    {
+      "id": "R4: one scan_census_completed with createdCount 2, linkedCount 1 (nursing_home)",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996486219.1165,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"createdCount\":2,\"event\":\"scan_census_completed\",\"linkedCount\":1,\"requestId\":\"89275b2b-38ea-4b86-a155-68c3035865ee\",\"selectedCount\":3}]"
+    },
+    {
+      "id": "R4: one shown + one accepted (same promptId), careSetting nursing_home, addMethod scan_census; no rejected",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996484203.307,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"0f193a9f-4767-4feb-b08d-d159aeb565e7\"},{\"_creationTime\":1791996486191.289,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"event\":\"duplicate_prompt_accepted\",\"promptId\":\"0f193a9f-4767-4feb-b08d-d159aeb565e7\"}]"
+    },
+    {
+      "id": "R4: one resident with the matched name (no copy made)",
+      "ok": true,
+      "detail": "residents named QA Resident OAT06 Scan 7MZT: 1"
+    },
+    {
+      "id": "R5: one shown + one rejected (same promptId), nursing_home, scan_census; no accepted",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996488453.872,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"18b3314d-5ae7-4bde-8069-95e4f530c6cf\"},{\"_creationTime\":1791996488509.931,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"event\":\"duplicate_prompt_rejected\",\"promptId\":\"18b3314d-5ae7-4bde-8069-95e4f530c6cf\"}]"
+    },
+    {
+      "id": "R5: patient_added +1 (scan_census, nursing_home) and two residents with the name",
+      "ok": true,
+      "detail": "patient_added rows: 1; residents named QA Resident OAT06 Scan 7MZT: 2"
+    },
+    {
+      "id": "R5 (recorded): its scan_census_completed row",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996488534.3877,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"createdCount\":1,\"event\":\"scan_census_completed\",\"linkedCount\":0,\"requestId\":\"40a18d90-1373-41d1-b2ae-96e45fe3f130\",\"selectedCount\":1}]",
+      "recordOnly": true
+    },
+    {
+      "id": "R6 (recorded, Q5): 'Decide later' then closing the sheet writes shown only, adds nothing",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996490767.794,\"addMethod\":\"scan_census\",\"careSetting\":\"nursing_home\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"04c98a9b-6aa1-4347-af0d-bb2f26ffbdf1\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "U15: no patientActivity row holds a name or unit from the photos",
+      "ok": true,
+      "detail": "10 rows checked"
+    }
+  ],
+  "data": {
+    "R4": {
+      "summary": "0 already in All Residents · 2 new · 1 to review",
+      "rows": [
+        {
+          "_creationTime": 1791996484203.307,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "duplicate_prompt_shown",
+          "promptId": "0f193a9f-4767-4feb-b08d-d159aeb565e7"
+        },
+        {
+          "_creationTime": 1791996486191.289,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "duplicate_prompt_accepted",
+          "promptId": "0f193a9f-4767-4feb-b08d-d159aeb565e7"
+        },
+        {
+          "_creationTime": 1791996486219.1155,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "patient_added"
+        },
+        {
+          "_creationTime": 1791996486219.1162,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "patient_added"
+        },
+        {
+          "_creationTime": 1791996486219.1165,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "createdCount": 2,
+          "event": "scan_census_completed",
+          "linkedCount": 1,
+          "requestId": "89275b2b-38ea-4b86-a155-68c3035865ee",
+          "selectedCount": 3
+        }
+      ],
+      "names": [
+        "QA Resident OAT06 Scan 7MZT (today)",
+        "QA Scan Dana (today)",
+        "QA Scan Ellis (today)"
+      ]
+    },
+    "R5": {
+      "rows": [
+        {
+          "_creationTime": 1791996488453.872,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "duplicate_prompt_shown",
+          "promptId": "18b3314d-5ae7-4bde-8069-95e4f530c6cf"
+        },
+        {
+          "_creationTime": 1791996488509.931,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "duplicate_prompt_rejected",
+          "promptId": "18b3314d-5ae7-4bde-8069-95e4f530c6cf"
+        },
+        {
+          "_creationTime": 1791996488534.3875,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "patient_added"
+        },
+        {
+          "_creationTime": 1791996488534.3877,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "createdCount": 1,
+          "event": "scan_census_completed",
+          "linkedCount": 0,
+          "requestId": "40a18d90-1373-41d1-b2ae-96e45fe3f130",
+          "selectedCount": 1
+        }
+      ],
+      "names": [
+        "QA Resident OAT06 Scan 7MZT",
+        "QA Scan Dana",
+        "QA Scan Ellis",
+        "QA Resident OAT06 Scan 7MZT (today)"
+      ]
+    },
+    "R6": {
+      "rows": [
+        {
+          "_creationTime": 1791996490767.794,
+          "addMethod": "scan_census",
+          "careSetting": "nursing_home",
+          "event": "duplicate_prompt_shown",
+          "promptId": "04c98a9b-6aa1-4347-af0d-bb2f26ffbdf1"
+        }
+      ],
+      "sheetStillOpenAfterDecideLater": true,
+      "residents": 2
+    },
+    "U13": {
+      "scanCalls": 3,
+      "aiCalls": [
+        "ai/vision:scanCensusSheet -> ok",
+        "ai/vision:scanCensusSheet -> ok",
+        "ai/vision:scanCensusSheet -> ok"
+      ],
+      "serverVisionRows": 0
+    },
+    "cleanup": {
+      "hospital": 0,
+      "nursingHome": 4
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "ref": "TC-11/S26",
+  "title": "TC-11/S26 a pre-round that was never finished, then a visit after a skipped day, both contexts (record only: our addition)",
+  "dataset": "course-hosp",
+  "target": "dev",
+  "at": "2026-10-14T18:13:41.552Z",
+  "cells": [
+    {
+      "name": "seeded ledgers",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "hospital": "Oct 14: Pre-rounded. ⏳ Encounter pending.",
+        "nursingHome": "Visit 1 · Oct 13: Pre-rounded.",
+        "timeZone": "Asia/Tokyo"
+      }
+    },
+    {
+      "name": "Hospital: 'Oct 15:' exactly once on the cards [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 14:",
+          "Oct 15: 81-year-old male with acute on chronic heart failure responding to diuretics with 0.8 kg weight loss overnight and improved respiratory symptoms on 2 L oxygen; continue IV furosemide and monitor fluid status"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Hospital: an encounter fact (crackles | furosemide | breathing easier) [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 14:",
+          "Oct 15: 81-year-old male with acute on chronic heart failure responding to diuretics with 0.8 kg weight loss overnight and improved respiratory symptoms on 2 L oxygen; continue IV furosemide and monitor fluid status"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Hospital: no 'Encounter done' [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 14:",
+          "Oct 15: 81-year-old male with acute on chronic heart failure responding to diuretics with 0.8 kg weight loss overnight and improved respiratory symptoms on 2 L oxygen; continue IV furosemide and monitor fluid status"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Hospital: yesterday's never-finished card as shown (Q12; markers stripped it may read just 'Oct 14:')",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "shown": true,
+        "cards": [
+          "Oct 14:",
+          "Oct 15: 81-year-old male with acute on chronic heart failure responding to diuretics with 0.8 kg weight loss overnight and improved respiratory symptoms on 2 L oxygen; continue IV furosemide and monitor fluid status"
+        ]
+      },
+      "ref": "Q12"
+    },
+    {
+      "name": "Hospital stored course: exactly one line labelled 'Oct 15:' [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "course": "Oct 14: Pre-rounded. ⏳ Encounter pending.\nOct 15: 81-year-old male with acute on chronic heart failure responding to diuretics with 0.8 kg weight loss overnight and improved respiratory symptoms on 2 L oxygen; continue IV furosemide and monitor fluid status"
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Hospital stored course: the 'Oct 14:' line as stored (Q12)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "course": "Oct 14: Pre-rounded. ⏳ Encounter pending.\nOct 15: 81-year-old male with acute on chronic heart failure responding to diuretics with 0.8 kg weight loss overnight and improved respiratory symptoms on 2 L oxygen; continue IV furosemide and monitor fluid status"
+      },
+      "ref": "Q12"
+    },
+    {
+      "name": "Nursing Home: '– Oct 15' exactly once on the cards [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 13: Pre-rounded.",
+          "Visit 2 – Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Nursing Home: an encounter fact (50 feet | 3/10 | walker) [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 13: Pre-rounded.",
+          "Visit 2 – Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Nursing Home: no line dated yesterday ('– Oct 14'): the skipped day stays absent (U2) [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 13: Pre-rounded.",
+          "Visit 2 – Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Nursing Home: no 'Encounter done' [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 13: Pre-rounded.",
+          "Visit 2 – Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Nursing Home: 'Visit 2 – Oct 15' and the old 'Visit 1 – Oct 13: Pre-rounded' line (Q12)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "visit2": true,
+        "oldLine": true,
+        "cards": [
+          "Visit 1 – Oct 13: Pre-rounded.",
+          "Visit 2 – Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+        ]
+      },
+      "ref": "Q12"
+    },
+    {
+      "name": "Nursing Home stored course: exactly one line dated '· Oct 15:' [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "course": "Visit 1 · Oct 13: Pre-rounded.\nVisit 2 · Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Nursing Home stored course: no line dated '· Oct 14:' [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "course": "Visit 1 · Oct 13: Pre-rounded.\nVisit 2 · Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "Nursing Home stored course: 'Visit 2 · ' present (Q12)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "present": true,
+        "course": "Visit 1 · Oct 13: Pre-rounded.\nVisit 2 · Oct 15: 85-year-old female post-acute rehab day, ambulating 50 feet with walker, left hip pain 3/10, tolerating diet, continuing physical therapy"
+      },
+      "ref": "Q12"
+    },
+    {
+      "name": "the run stayed on one local day",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "day0": "Oct 15"
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-11-S26-s26-hospital.png",
+    "evidence/TC-11-S26-s26-snf.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-11-S26-s26-hospital.png": 0,
+    "evidence/TC-11-S26-s26-snf.png": 0
+  }
+}

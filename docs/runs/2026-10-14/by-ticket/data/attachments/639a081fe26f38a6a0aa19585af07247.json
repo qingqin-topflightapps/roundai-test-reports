@@ -1,0 +1,303 @@
+{
+  "name": "oat06-s05",
+  "at": "2026-10-14T16:44:14.974Z",
+  "checks": [
+    {
+      "id": "checkpoint s05-r1.md (Hospital list after Cancel)",
+      "ok": true,
+      "detail": "url /rounding (want /rounding); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s05-r2.md (Hospital list after OK)",
+      "ok": true,
+      "detail": "url /rounding (want /rounding); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s05-r3.md (Nursing Home list after Cancel)",
+      "ok": true,
+      "detail": "url /snf (want /snf); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s05-r4.md (Nursing Home list after OK)",
+      "ok": true,
+      "detail": "url /snf (want /snf); missing []; present but must not be []"
+    },
+    {
+      "id": "the duplicate question was asked once per re-add (4 confirm() dialogs)",
+      "ok": true,
+      "detail": "QA Hosp OAT06 Dup (Room 4B-62) is already on your rounding list — same name and room. -> dismiss | QA Hosp OAT06 Dup (Room 4B-62) is already on your rounding list — same name and room. -> accept | QA Resident OAT06 Dup is already in the resident panel. -> dismiss | QA Resident OAT06 Dup is already in the resident panel. -> accept"
+    },
+    {
+      "id": "R1 (hospital, Cancel): exactly one duplicate_prompt_shown and exactly one outcome row with its promptId, hospital, addMethod manual",
+      "ok": true,
+      "detail": "shown [{\"_creationTime\":1791996238088.286,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\",\"promptId\":\"b9d6e6a7-da81-47d2-b81b-95bb7a5dc8ba\"}]; outcome [{\"_creationTime\":1791996238111.797,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_accepted\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\",\"promptId\":\"b9d6e6a7-da81-47d2-b81b-95bb7a5dc8ba\"}]"
+    },
+    {
+      "id": "R1: patient_added none",
+      "ok": true,
+      "detail": "patient_added rows: []"
+    },
+    {
+      "id": "R2 (hospital, OK): exactly one duplicate_prompt_shown and exactly one outcome row with its promptId, hospital, addMethod manual",
+      "ok": true,
+      "detail": "shown [{\"_creationTime\":1791996242987.61,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\",\"promptId\":\"84ea3286-d7fa-432b-a6ad-46742fd3aa78\"}]; outcome [{\"_creationTime\":1791996243017.355,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_rejected\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\",\"promptId\":\"84ea3286-d7fa-432b-a6ad-46742fd3aa78\"}]"
+    },
+    {
+      "id": "R2: patient_added +1 (hospital, manual)",
+      "ok": true,
+      "detail": "patient_added rows: [{\"_creationTime\":1791996243037.5027,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"patient_added\",\"careSetting\":\"hospital\",\"addMethod\":\"manual\"}]"
+    },
+    {
+      "id": "R3 (nursing_home, Cancel): exactly one duplicate_prompt_shown and exactly one outcome row with its promptId, nursing_home, addMethod manual",
+      "ok": true,
+      "detail": "shown [{\"_creationTime\":1791996247604.091,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\",\"promptId\":\"2e434b8b-0020-4043-9493-ffb9dd52a55c\"}]; outcome [{\"_creationTime\":1791996247634.059,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_accepted\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\",\"promptId\":\"2e434b8b-0020-4043-9493-ffb9dd52a55c\"}]"
+    },
+    {
+      "id": "R3: patient_added none",
+      "ok": true,
+      "detail": "patient_added rows: []"
+    },
+    {
+      "id": "R4 (nursing_home, OK): exactly one duplicate_prompt_shown and exactly one outcome row with its promptId, nursing_home, addMethod manual",
+      "ok": true,
+      "detail": "shown [{\"_creationTime\":1791996251883.864,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\",\"promptId\":\"70916a35-bbfd-46b9-b017-831ee3ec477d\"}]; outcome [{\"_creationTime\":1791996251911.325,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"duplicate_prompt_rejected\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\",\"promptId\":\"70916a35-bbfd-46b9-b017-831ee3ec477d\"}]"
+    },
+    {
+      "id": "R4: patient_added +1 (nursing_home, manual)",
+      "ok": true,
+      "detail": "patient_added rows: [{\"_creationTime\":1791996251931.2957,\"userId\":\"jd79g5xn6p2v442474fn1vrdex8g8xa5\",\"event\":\"patient_added\",\"careSetting\":\"nursing_home\",\"addMethod\":\"manual\"}]"
+    },
+    {
+      "id": "4 prompts, 4 distinct promptIds",
+      "ok": true,
+      "detail": "b9d6e6a7-da81-47d2-b81b-95bb7a5dc8ba, 84ea3286-d7fa-432b-a6ad-46742fd3aa78, 2e434b8b-0020-4043-9493-ffb9dd52a55c, 70916a35-bbfd-46b9-b017-831ee3ec477d"
+    },
+    {
+      "id": "no prompt has both an accepted and a rejected row",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "since T0 in total: 4 shown, 4 outcome rows, 2 patient_added (manual), nothing else",
+      "ok": true,
+      "detail": "patient_added/nursing_home, duplicate_prompt_rejected/nursing_home, duplicate_prompt_shown/nursing_home, duplicate_prompt_accepted/nursing_home, duplicate_prompt_shown/nursing_home, patient_added/hospital, duplicate_prompt_rejected/hospital, duplicate_prompt_shown/hospital, duplicate_prompt_accepted/hospital, duplicate_prompt_shown/hospital"
+    },
+    {
+      "id": "Q5 (record-only): which outcome each choice is logged as",
+      "ok": true,
+      "detail": "R1 hospital Cancel -> accepted; R2 hospital OK -> rejected; R3 nursing_home Cancel -> accepted; R4 nursing_home OK -> rejected",
+      "recordOnly": true
+    },
+    {
+      "id": "rounding:list has 2 charts named QA Hosp OAT06 Dup; snf:list has 2 residents named QA Resident OAT06 Dup",
+      "ok": true,
+      "detail": "hospital 2, nursing home 2"
+    },
+    {
+      "id": "U15 no row holds the names, room, unit, MRN or diagnosis",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "no model call was attempted on this path",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T0": {
+      "serverNow": 1791996236015,
+      "day": "2026-10-15",
+      "hospitalChartId": "kx7bf847f1r23mxk7qf4ahvvz18g9jaf",
+      "residentId": "m57dhcx80wpq1epcht61htfz158g9h42",
+      "activityRows": 2
+    },
+    "R1 rows": {
+      "reached": true,
+      "rows": [
+        {
+          "_creationTime": 1791996238088.286,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_shown",
+          "careSetting": "hospital",
+          "addMethod": "manual",
+          "promptId": "b9d6e6a7-da81-47d2-b81b-95bb7a5dc8ba"
+        },
+        {
+          "_creationTime": 1791996238111.797,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_accepted",
+          "careSetting": "hospital",
+          "addMethod": "manual",
+          "promptId": "b9d6e6a7-da81-47d2-b81b-95bb7a5dc8ba"
+        }
+      ],
+      "dialog": {
+        "type": "confirm",
+        "message": "QA Hosp OAT06 Dup (Room 4B-62) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+        "answer": "dismiss",
+        "expected": true
+      }
+    },
+    "R1 url after Cancel": "http://localhost:6473/rounding/add",
+    "checkpoint s05-r1.md": {
+      "when": "Hospital list after Cancel",
+      "url": "http://localhost:6473/rounding",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r1.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/1\nHandoff\n\n1 patient remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQH\nQA Hosp OAT06 Dup\nNEW TODAY\n\nRoom 4B-62 · 66y · QA060562\n\nPneumonia\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings"
+    },
+    "R2 rows": {
+      "reached": true,
+      "rows": [
+        {
+          "_creationTime": 1791996242987.61,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_shown",
+          "careSetting": "hospital",
+          "addMethod": "manual",
+          "promptId": "84ea3286-d7fa-432b-a6ad-46742fd3aa78"
+        },
+        {
+          "_creationTime": 1791996243017.355,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_rejected",
+          "careSetting": "hospital",
+          "addMethod": "manual",
+          "promptId": "84ea3286-d7fa-432b-a6ad-46742fd3aa78"
+        },
+        {
+          "_creationTime": 1791996243037.5027,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "patient_added",
+          "careSetting": "hospital",
+          "addMethod": "manual"
+        }
+      ],
+      "dialog": {
+        "type": "confirm",
+        "message": "QA Hosp OAT06 Dup (Room 4B-62) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+        "answer": "accept",
+        "expected": true
+      }
+    },
+    "checkpoint s05-r2.md": {
+      "when": "Hospital list after OK",
+      "url": "http://localhost:6473/rounding",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r2.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/2\nHandoff\n\n2 patients remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQH\nQA Hosp OAT06 Dup\nNEW TODAY\n\nRoom 4B-62 · 66y · QA060562\n\nPneumonia\n\nNot Yet Prepped\nFollow-up\nQH\nQA Hosp OAT06 Dup\nNEW TODAY\n\nRoom 4B-62 · 66y · MRN-333493\n\nPneumonia\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings"
+    },
+    "R3 rows": {
+      "reached": true,
+      "rows": [
+        {
+          "_creationTime": 1791996247604.091,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_shown",
+          "careSetting": "nursing_home",
+          "addMethod": "manual",
+          "promptId": "2e434b8b-0020-4043-9493-ffb9dd52a55c"
+        },
+        {
+          "_creationTime": 1791996247634.059,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_accepted",
+          "careSetting": "nursing_home",
+          "addMethod": "manual",
+          "promptId": "2e434b8b-0020-4043-9493-ffb9dd52a55c"
+        }
+      ],
+      "dialog": {
+        "type": "confirm",
+        "message": "QA Resident OAT06 Dup is already in the resident panel.\n\nAdd as a separate resident anyway?",
+        "answer": "dismiss",
+        "expected": true
+      }
+    },
+    "R3 url after Cancel": "http://localhost:6473/snf/add",
+    "checkpoint s05-r3.md": {
+      "when": "Nursing Home list after Cancel",
+      "url": "http://localhost:6473/snf",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r3.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nNursing Home\n\n0/1 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQR\n\nQA Resident OAT06 Dup\n\nQA Unit 5 · QA060505\n\nHip fracture rehabilitation\n\nPending\nFollow-up\nTask Export\nResidents\nHandoff\nDashboard\nSettings"
+    },
+    "R4 rows": {
+      "reached": true,
+      "rows": [
+        {
+          "_creationTime": 1791996251883.864,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_shown",
+          "careSetting": "nursing_home",
+          "addMethod": "manual",
+          "promptId": "70916a35-bbfd-46b9-b017-831ee3ec477d"
+        },
+        {
+          "_creationTime": 1791996251911.325,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "duplicate_prompt_rejected",
+          "careSetting": "nursing_home",
+          "addMethod": "manual",
+          "promptId": "70916a35-bbfd-46b9-b017-831ee3ec477d"
+        },
+        {
+          "_creationTime": 1791996251931.2957,
+          "userId": "jd79g5xn6p2v442474fn1vrdex8g8xa5",
+          "event": "patient_added",
+          "careSetting": "nursing_home",
+          "addMethod": "manual"
+        }
+      ],
+      "dialog": {
+        "type": "confirm",
+        "message": "QA Resident OAT06 Dup is already in the resident panel.\n\nAdd as a separate resident anyway?",
+        "answer": "accept",
+        "expected": true
+      }
+    },
+    "checkpoint s05-r4.md": {
+      "when": "Nursing Home list after OK",
+      "url": "http://localhost:6473/snf",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s05-s05-r4.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot can measure what changes.\n\nStart survey\nNot now\nNursing Home\n\n0/2 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQR\n\nQA Resident OAT06 Dup\n\nSNF-764073\n\nPending\nFollow-up\nQR\n\nQA Resident OAT06 Dup\n\nQA Unit 5 · QA060505\n\nHip fracture rehabilitation\n\nPending\nFollow-up\nTask Export\nResidents\nHandoff\nDashboard\nSettings"
+    },
+    "dialogs": [
+      {
+        "type": "confirm",
+        "message": "QA Hosp OAT06 Dup (Room 4B-62) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+        "answer": "dismiss",
+        "expected": true
+      },
+      {
+        "type": "confirm",
+        "message": "QA Hosp OAT06 Dup (Room 4B-62) is already on your rounding list — same name and room.\n\nAdd as a separate patient anyway?",
+        "answer": "accept",
+        "expected": true
+      },
+      {
+        "type": "confirm",
+        "message": "QA Resident OAT06 Dup is already in the resident panel.\n\nAdd as a separate resident anyway?",
+        "answer": "dismiss",
+        "expected": true
+      },
+      {
+        "type": "confirm",
+        "message": "QA Resident OAT06 Dup is already in the resident panel.\n\nAdd as a separate resident anyway?",
+        "answer": "accept",
+        "expected": true
+      }
+    ],
+    "ai calls attempted (all refused at the socket)": [],
+    "cleanup": {
+      "hospital": 2,
+      "nursingHome": 2
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "EFS/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:45:38.328Z",
+    "title": "Photo with no patients and an unreadable file, both contexts: explicit message, nobody added",
+    "detail": "14/14 judged cells passed; the corrupt-file leg (our addition) is record-only, 9/9 notes as expected (newspec-c/vis-efs-s11-photo-empty-unreadable.spec.ts, desktop Chromium, one fixture patient + one resident). Media made in the run: a cafeteria-menu JPEG (Tomato soup, Grilled cheese, ...) and 2 KB of random bytes named efs-corrupt.jpg. No model: ai/vision:scanCensusSheet was answered in the browser the way the server ends for each photo - the menu as a successful read with zero rows, the random bytes as a failed read (a provider rejects non-image bytes). Hospital menu: 'No patients found in the image. Try a clearer photo.', Nursing Home menu: 'No residents found. Try a clearer photo.'; no row or Add button offered, no menu text on screen. Corrupt file, both contexts: 'The photo couldn't be read. Check your connection and try again, or retake the photo.'; no raw provider error or 'undefined' on screen, no row offered. After closing each sheet the lists still hold only the fixture patient / resident, and the server holds exactly 1 patient and 1 resident. Recorded: the client sends any picked file to the server unchecked (the 2 KB random file went out as a 2,732-character base64 image in both contexts); what the real vision provider answers for such bytes is not exercised (no live model); both 'no patients / residents found' messages are plain text, not live regions. B01 (real reads on dev always say 'no patients found') is not touched by this scenario: the photo really has nobody on it.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp1-hosp-menu.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp2-hosp-corrupt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp3-hosp-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp4-nh-menu.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp5-nh-corrupt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp6-nh-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-media",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-photo-empty-unreadable.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-media/efs-corrupt.jpg",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s11-media/efs-menu.jpg"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

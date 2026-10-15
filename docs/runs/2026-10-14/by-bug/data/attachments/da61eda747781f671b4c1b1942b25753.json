@@ -1,0 +1,44 @@
+{
+  "state": "nh-chart-preround",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-desktop-nh-chart-preround.png",
+  "findings": [],
+  "axe": [
+    {
+      "id": "button-name",
+      "impact": "critical",
+      "help": "Buttons must have discernible text",
+      "count": 1,
+      "targets": [
+        ".-ml-1"
+      ],
+      "nodes": [
+        "\"<button class=\"-ml-1 mt-0.5 p-1 text-slate-700 hover:text-sl\" <button class=\"-ml-1 mt-0.5 p-1 text-slate-700 hover:text-slate-900\">"
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 16,
+      "targets": [
+        ".flex-shrink-0.font-semibold",
+        "section:nth-child(3) > .justify-between.mb-1.gap-2 > .mb-0.gap-2.flex > h3",
+        ".border-amber-100 > .border-dashed.border-slate-200.py-4 > p",
+        "section:nth-child(4) > .justify-between.mb-1.gap-2 > .mb-0.gap-2.flex > h3",
+        "section:nth-child(4) > .divide-y.divide-slate-50.shadow-sm",
+        "section:nth-child(5) > .justify-between.mb-1.gap-2 > .mb-0.gap-2.flex > h3"
+      ],
+      "nodes": [
+        "\"Edit\" 2.63:1 (#90a1b9 on #ffffff, 9.0pt (12px); needs 4.5:1)",
+        "\"Nursing Home Course\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"No visit entries yet.\" 2.53:1 (#90a1b9 on #fffbeb, 9.0pt (12px); needs 4.5:1)",
+        "\"Vitals\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"No vitals recorded yet.\" 2.63:1 (#90a1b9 on #ffffff, 9.0pt (12px); needs 4.5:1)",
+        "\"Labs\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"No labs recorded yet.\" 2.63:1 (#90a1b9 on #ffffff, 9.0pt (12px); needs 4.5:1)",
+        "\"Medications\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)"
+      ]
+    }
+  ],
+  "url": "/snf/m5737psweq6xb08k9pwnbkr1hs8g9wga"
+}

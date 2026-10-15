@@ -1,0 +1,20 @@
+{
+  "TC-01/S07": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-14T17:21:55.663Z",
+    "title": "The day / visit number and the badge roll across the day boundary and never freeze",
+    "detail": "PW, local stack, census H1 New Admission (admitted 2 days ago), H2 Consult (added 5 days ago, Hospital Day 1), H3 New Admission then Follow-up by hand, N1 New Admission, N3 Consult, all set on Oct 14. (a) A browser whose clock read Oct 14 23:58 JST had the Hospital and Nursing Home lists open; its clock ran past midnight and past the 10-minute lifecycle repeat with no reload or tap: every badge rolled (H1, H2, N1, N3 Follow-up; H3 stayed Follow-up) - already at 00:00:35 on screen, and N1 / N3 were stored follow-up by 00:10 (the background Hospital tab had not stored H1 / H2 yet when read; the cards were right). (b) Statuses stored with yesterday's day, app opened fresh on the real clock: all five badges read Follow-up and the roll is stored on the server. Badge roll judged: passed in (a) and (b). Fails as known B23: no card shows a hospital day or visit number at all (expected H1 Day 4, H2 Day 7, Nursing Home visit numbers per Q3), so there is no number to advance.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc01-s07-a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc01-s07-b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc01-s07-a-hospital-before.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc01-s07-a-hospital-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc01-s07-a-snf-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc01-s07-b-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc01-s07-b-snf.png"
+    ],
+    "method": "PW",
+    "pkg": "clk"
+  }
+}

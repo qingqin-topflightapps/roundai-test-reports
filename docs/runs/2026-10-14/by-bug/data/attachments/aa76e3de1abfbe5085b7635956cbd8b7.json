@@ -1,0 +1,62 @@
+{
+  "case": "TC-15-S02",
+  "title": "Preset 'current medications' shows a held drug as held (Hospital; NH variant)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-anyof",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s02-h-meds.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74ds0wh906nwvbbkbw26e13h8g9ywh",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s02-n-meds.md",
+      "verdict": "Pass",
+      "url": "/snf/jx76gfp0ps271av46ja8071emx8g8mk9",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Which drug the word 'held' sits next to is read from the quoted answers (S02 oracle); S07 asks it as a direct question"
+  ],
+  "agent": {
+    "turns": 28,
+    "costUsd": 0.19486,
+    "durationMs": 125343,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U83",
+  "covers": [
+    "TC-15/S02"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u83",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U83.json",
+  "foreignBefore": {
+    "hospitalPatient": 4,
+    "snfResident": 4
+  }
+}

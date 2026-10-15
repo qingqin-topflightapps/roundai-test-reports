@@ -1,0 +1,38 @@
+{
+  "TC-06/S22": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T16:27:14.705Z",
+    "title": "Badge control on phone widths and WebKit: tappable, not covered or clipped",
+    "detail": "Our own addition: record-only, findings are suggestions. Same run as S21 (Pixel 7 Chromium 412 px, iPhone 15 WebKit 393 px, plus desktop). The transparent status select was measured directly (the visual lane skips opacity-0 elements): it fills its outer <label> exactly, 88x20 CSS px, on all four chart screens and all three profiles. 20 px is below the 24 px of WCAG 2.5.8 but passes its spacing exception (the nearest other target is 99 px from the control's centre on the Hospital chart, 33 px on the Nursing Home chart); it is below the ideal 44 pt (suggestion). The topmost element at the badge's centre is the select itself (a tap reaches it, nothing covers it); the badge text 'Follow-up ▾' is not clipped and the badge sits inside the screen on both phones; no covered / overflow / truncated finding of medium or high severity on any of the six screens. The add forms' Encounter Type control is visible without sideways scroll on both phones (page width = viewport); on Pixel 7 it is 37 px tall, on iPhone 15 WebKit 22 px tall (< 24 px, WebKit's native select height), and the Note Format picker is also 22 px tall on WebKit (41 px on Chromium) - suggestions for a real-device look.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-hospital-add.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-hospital-add.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-hospital-chart-encounter.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-hospital-chart-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-hospital-chart-preround.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-hospital-chart-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-add.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-add.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-chart-encounter.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-chart-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-chart-preround.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-chart-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-hospital-add.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-hospital-add.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-hospital-chart-encounter.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-hospital-chart-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-hospital-chart-preround.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-hospital-chart-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-nh-add.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-nh-add.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-nh-chart-encounter.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-nh-chart-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-nh-chart-preround.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15-nh-chart-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-iphone15.json"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

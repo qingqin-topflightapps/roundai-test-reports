@@ -1,0 +1,16 @@
+{
+  "TC-11/S10": {
+    "status": "passed",
+    "ranAt": "2026-10-14T18:10:36.894Z",
+    "title": "Nursing Home visit lifecycle with Regenerate, reload and Back/Forward (live AI)",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset course-nh. One resident with no course: Pre-Round Save Note, Generate Note & Finish, Regenerate Note on the same page, a real browser reload, the revisit (Save Note with new text, then the generate button, which read Regenerate Note), then browser Back and Forward. Judged 20/20 cells held: after Regenerate and after the reload there is still exactly one 'Visit 1 – Oct 15:' line with the visit's facts and no 'Visit 2' (T3: re-completing never adds an entry), no 'Encounter done'; after the revisit 'Visit 1' is still once and the revisit's facts (neuro checks, fall precautions) are on a new line, no 'Visit 3'; after Back/Forward the cards are exactly the cards before (the same-as check the agent oracle could not make). The Visit 1 line read at the reload is still in the stored course byte for byte after the revisit (U5); no visit number on two stored lines; no stored 'Encounter done'. Recorded (Q1): 'Visit 2 – Oct 15' once, under Visit 1.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S10.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S10-cp-regen.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S10-cp-reload.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S10-cp-revisit-done.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-nh/evidence/TC-11-S10-cp-back-forward.png"
+    ]
+  }
+}

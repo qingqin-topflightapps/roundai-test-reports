@@ -1,0 +1,21 @@
+{
+  "TC-06/S05": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:46:37.834Z",
+    "title": "Scan in both contexts: every scanned patient is Follow-up, even 'NEW ADMIT' / 'Consult' rows",
+    "detail": "12/12 judged cells passed (newspec-c/vis-tc06-s05-s17-scan-status.spec.ts, desktop Chromium, fresh account). ai/vision:scanCensusSheet was answered in the browser with exact rows (no model, the image never reached the server); the status words ride in fields of their own (status: 'NEW ADMIT' / 'Consult' / 'New admit' plus encType 'new' / 'consult'), which no model output schema has, so the test proves the app never takes a status from scanned rows. Hospital: QA Scan Alvarez, Bennett ('NEW ADMIT') and Chen ('Consult') were added with 'Follow-up' on their cards, encType follow-up on the server, and 'Follow-up' selected in Bennett's and Chen's chart header (Admission status select). Nursing Home: QA Scan Dorsey and Ellis ('New admit') were added to Today's Visits with 'Follow-up', show on All Residents with 'In Today ✓' and 'Follow-up', are follow-up and in today's session on the server, and Ellis's chart shows Follow-up. Neither list showed New Admission or Consult on any card. Patients deleted afterwards. Caveat: real OCR is not exercised (dev reads are blocked by B01).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-hospital-chart-bennett.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-hospital-chart-chen.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-hospital-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-nh-all.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-nh-chart-ellis.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-nh-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-nh-today.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s05-scan-follow-up.json"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

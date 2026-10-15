@@ -1,0 +1,118 @@
+{
+  "name": "tc15-s25-h",
+  "at": "2026-10-14T16:43:24.530Z",
+  "checks": [
+    {
+      "id": "cp1 (Pre-Round, failed call): the typed question is kept",
+      "ok": true,
+      "detail": "What is the latest potassium?"
+    },
+    {
+      "id": "cp1: the 'couldn’t be reached … tap Ask AI again' copy",
+      "ok": true,
+      "detail": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    {
+      "id": "cp1: no 'Patient Record'",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1: no 'Searching'",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1: no 'WBC'",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1: no 'mmol'",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1: no 'mEq'",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp3 (Encounter, empty reply, our addition: recorded): the typed question is kept",
+      "ok": true,
+      "detail": "What is the latest potassium?",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3: the 'returned no answer' copy",
+      "ok": true,
+      "detail": "The assistant returned no answer for this question. Try asking it another way.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3: no 'Patient Record'",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3: no 'Searching'",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3: no 'WBC'",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3: no 'mmol'",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3: no 'mEq'",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: askChart answered fail, then an empty reply, at the socket; no unscripted AI call",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"fail\",\"atMs\":604,\"conn\":1},{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"ok\",\"atMs\":1149,\"conn\":1}]"
+    }
+  ],
+  "data": {
+    "cp1": {
+      "tab": "Pre-Round",
+      "kind": "fail",
+      "message": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.",
+      "box": "What is the latest potassium?",
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nThe chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    "cp3": {
+      "tab": "Encounter",
+      "kind": "empty",
+      "message": "The assistant returned no answer for this question. Try asking it another way.",
+      "box": "What is the latest potassium?",
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nThe assistant returned no answer for this question. Try asking it another way."
+    },
+    "socket": [
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "fail",
+        "atMs": 604,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "ok",
+        "atMs": 1149,
+        "conn": 1
+      }
+    ]
+  }
+}

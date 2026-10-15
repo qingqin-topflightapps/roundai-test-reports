@@ -1,0 +1,102 @@
+{
+  "name": "tc06-s12-hospital",
+  "at": "2026-10-14T17:22:06.201Z",
+  "checks": [
+    {
+      "id": "setup: day-1 changes were stored with day 1",
+      "ok": true,
+      "detail": "{\"aHand\":{\"encType\":\"follow-up\",\"encTypeDay\":\"2026-10-14\",\"deviceNow\":\"Wed Oct 14 2026 22:59:00 GMT+0900 (Japan Standard Time)\"},\"bHand\":{\"encType\":\"consult\",\"encTypeDay\":\"2026-10-14\",\"deviceNow\":\"Wed Oct 14 2026 23:00:06 GMT+0900 (Japan Standard Time)\"}}"
+    },
+    {
+      "id": "day 2: A (changed by hand to Follow-up on day 1) shows Follow-up",
+      "ok": true,
+      "detail": "Follow-up / follow-up@2026-10-14"
+    },
+    {
+      "id": "day 2: C (set New Admission today) shows New Admission",
+      "ok": true,
+      "detail": "New Admission / new@2026-10-15"
+    },
+    {
+      "id": "day 2: B (New Admission, then Consult by hand at 23:00 on day 1) - Q2: restart-the-clock reading = Follow-up, exempt reading = Consult",
+      "ok": true,
+      "detail": "Follow-up / follow-up@2026-10-15",
+      "recordOnly": true
+    },
+    {
+      "id": "day 3: C reads Follow-up (rolled the next calendar day)",
+      "ok": true,
+      "detail": "Follow-up / follow-up@2026-10-15"
+    },
+    {
+      "id": "day 3: A still Follow-up",
+      "ok": true,
+      "detail": "Follow-up"
+    },
+    {
+      "id": "day 3: B (Q2)",
+      "ok": true,
+      "detail": "Follow-up / follow-up@2026-10-15",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "days": {
+      "serverNow": "2026-10-14T17:21:57.118Z",
+      "day1": "2026-10-14",
+      "day2": "2026-10-15",
+      "serverUtcDay": "2026-10-14"
+    },
+    "day1": {
+      "aNew": {
+        "encType": "new",
+        "encTypeDay": "2026-10-14",
+        "deviceNow": "Wed Oct 14 2026 22:59:00 GMT+0900 (Japan Standard Time)"
+      },
+      "aHand": {
+        "encType": "follow-up",
+        "encTypeDay": "2026-10-14",
+        "deviceNow": "Wed Oct 14 2026 22:59:00 GMT+0900 (Japan Standard Time)"
+      },
+      "bNew": {
+        "encType": "new",
+        "encTypeDay": "2026-10-14",
+        "deviceNow": "Wed Oct 14 2026 22:59:01 GMT+0900 (Japan Standard Time)"
+      },
+      "bHand": {
+        "encType": "consult",
+        "encTypeDay": "2026-10-14",
+        "deviceNow": "Wed Oct 14 2026 23:00:06 GMT+0900 (Japan Standard Time)"
+      }
+    },
+    "day2": {
+      "cNew": {
+        "encType": "new",
+        "encTypeDay": "2026-10-15",
+        "deviceNow": "Thu Oct 15 2026 02:22:00 GMT+0900 (Japan Standard Time)"
+      },
+      "list": {
+        "QA Hosp S12 A 5C1S": "Follow-up",
+        "QA Hosp S12 B 5C1S": "Follow-up",
+        "QA Hosp S12 C 5C1S": "New Admission"
+      },
+      "stored": {
+        "A": "follow-up@2026-10-14",
+        "B": "follow-up@2026-10-15",
+        "C": "new@2026-10-15"
+      }
+    },
+    "day3": {
+      "list": {
+        "QA Hosp S12 A 5C1S": "Follow-up",
+        "QA Hosp S12 B 5C1S": "Follow-up",
+        "QA Hosp S12 C 5C1S": "Follow-up"
+      },
+      "stored": {
+        "A": "follow-up@2026-10-14",
+        "B": "follow-up@2026-10-15",
+        "C": "follow-up@2026-10-15"
+      }
+    }
+  }
+}

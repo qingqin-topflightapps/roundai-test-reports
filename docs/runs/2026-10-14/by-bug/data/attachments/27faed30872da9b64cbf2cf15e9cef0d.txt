@@ -1,0 +1,20 @@
+# TFA-94745 AC 8 / UAT EFS T3: one screenshot of each of the 10 states
+
+Desktop width, main e02167f on the local QA stack (synthetic data), taken by the visual check of EFS/S22 on 2026-10-14.
+Phone widths (iPhone 15 WebKit, Pixel 7) of the same screens are in runs/2026-10-14-local/visual/evidence/EFS_S22/.
+Offline and session-ended are the same screen in both contexts.
+
+| # | State | Hospital | Nursing Home |
+|---|---|---|---|
+| 01 | Empty patient list | hospital/01-empty-list.png | nursing-home/01-empty-list.png (Today's Visits) |
+| 02 | Patient with no notes yet | hospital/02-no-note-yet.png | nursing-home/02-no-note-yet.png |
+| 03 | Pre-round summary failed | hospital/03-summary-failed.png | nursing-home/03-summary-failed.png |
+| 04 | Note generation failed | hospital/04-note-generation-failed.png | nursing-home/04-note-generation-failed.png |
+| 05 | Billing suggestion failed | hospital/05-billing-failed.png | nursing-home/05-billing-failed.png |
+| 06 | Ask AI failed | hospital/06-ask-ai-failed.png | nursing-home/06-ask-ai-failed.png |
+| 07 | Photo / scan failed | hospital/07-photo-scan-failed.png | nursing-home/07-photo-scan-failed.png |
+| 08 | Microphone blocked | hospital/08-microphone-blocked.png | nursing-home/08-microphone-blocked.png |
+| 09 | Offline | hospital/09-offline.png | nursing-home/09-offline.png |
+| 10 | Session ended | hospital/10-session-ended.png | nursing-home/10-session-ended.png |
+
+Known issues visible in these screens: B27 (wording / guidance), D7 ('Note not generated' wording).

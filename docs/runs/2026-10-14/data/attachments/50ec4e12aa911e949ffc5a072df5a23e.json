@@ -1,0 +1,27 @@
+{
+  "OAT-06/S13": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:42:09.519Z",
+    "title": "Baseline survey on five new accounts: shown at the right time, exactly one row per account",
+    "detail": "Local Playwright spec newspec-c/an2-oat06-s13-baseline.spec.ts, 4 tests, five brand-new @roundai.test accounts signed in through the real sign-in form (accounts 1-4) or a stored session (account 5). Judged 7/7: R1 account 1 (no patients), after sign-in and the consent screen, is offered 'Before you start: a 2-minute baseline survey' on the first Hospital list screen and on the Nursing Home list; R4 after answering (14, '5–10 min', 'Under 5 min', 'EMR list', 'Sometimes', comment) the card is not offered again on either list, also after reloads (surveys:status baselineDone true), and the account has exactly one surveyResponses baseline row with reader-named keys holding those answers (patientsPerDay 14, preRoundMinutesPerPatientBefore 5_to_10, noteMinutesPerPatientBefore under_5, patientListMethodBefore emr, writtenHandoffFrequencyBefore sometimes, comments); accounts 2-5, which never answered, have no baseline row. Recorded only: R2 (Q2) the card is still offered after the first patient is added; R5 (Q2) an account whose patients were seeded before its first sign-in is offered the card on both lists. R6 (our own boundary): account 3 taps Not now and signs out; account 4 then signs in on the same browser and is NOT offered the baseline on either list, because the snooze is one browser-wide localStorage key (rc.baselineSurvey.notNowUntil) that survives sign-out; suggestion: key the snooze by physician. R7 (Q1; TFA-94609 Spec 1 is todo): with the device clock replayed from 8 days back, Not now on day 1, then one open per day for a week (two on day 2): the card came back on every later day (8 of 9 opens), never twice on the same day, and never stopped while unanswered.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r1-r4-cp1-empty-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r1-r4-cp2-empty-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r1-r4-cp3-first-patient.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r1-r4-cp4-answered-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r1-r4-cp5-answered-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r1-r4.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r5-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r5-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r5.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r6-account3-not-now.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r6-account4-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r6.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r7-day1-after-not-now.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r7-day8.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s13-r7.json"
+    ],
+    "method": "PW",
+    "pkg": "an2"
+  }
+}

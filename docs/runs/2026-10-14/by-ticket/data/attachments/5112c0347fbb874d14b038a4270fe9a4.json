@@ -1,0 +1,33 @@
+{
+  "TC-01/S23": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T16:27:49.656Z",
+    "title": "Cards on phone width (Pixel 7 Chromium, iPhone 15 WebKit) and the Android app",
+    "detail": "Our own addition: record-only. Web half done, Android-app half blocked (device). Fresh run (newspec-c/vis-tc24-s23-s28-lists-delete.spec.ts) on desktop, Pixel 7 Chromium and iPhone 15 WebKit with two Hospital patients and two residents; it agrees with the existing TC-01/S22 visual evidence (runs/2026-10-14-local/visual/evidence/TC-01_S22). Hospital cards (name, NEW TODAY, 'Room 4B-11 · 72y', diagnosis, 'Not Yet Prepped' + 'Follow-up' badges) and Nursing Home cards on Today's Visits and All Residents (name, unit, DOB, diagnosis, 'Pending' + 'Follow-up', 'In Today ✓'): no truncated or overflowing text and nothing covered on any profile, except low-severity 'under the fixed bottom nav' findings on iPhone 15 for card lines below the fold (scrolling clears them). The hospital day and the Nursing Home visit number are not on the cards at all (known B23, judged in TC-01/S03/S05/S06, not here). The trash icon is 28x28 CSS px (>= 24 px, < 44 pt) and on top at its centre, but it sits inside the card's own role=button open-chart area (nested-interactive, suggestion A3). Not run: the Android app on the emulator (android-lane.ts).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-hospital-list.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-hospital-list.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-hospital-list.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-list.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-nh-list.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-nh-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-nh-list.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-nh-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-all-residents.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-all-residents.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-nh-all-residents.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15-nh-all-residents.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-nh-all-residents.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-nh-all-residents.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15.json"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

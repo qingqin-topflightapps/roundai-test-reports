@@ -1,0 +1,27 @@
+{
+  "TC-04/S24": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T17:08:13.087Z",
+    "title": "Quick Dictation pad and picker on phone width (Pixel 7) and WebKit (iPhone 15)",
+    "detail": "Our own addition: record-only, findings are suggestions. Same run as S23. The pad is full screen on all three profiles (1280x800, 412x839, 393x659); the box, chip, suggestion, Link, Assign to patient, Dictate, Delete compartment, Close and New compartment are visible and the topmost element at their centre. Phone tap sizes: Link 352/333x37, Assign 147x30, Dictate 87x28, Close 40x40 px (>= 24 px, < 44 pt), New compartment 46 px tall; Delete compartment 22x22 px is under 24 px but passes the WCAG 2.5.8 spacing exception (nearest other target 38 px from its centre). The picker (26 rows, 1012 px of content in a 562 px / 418 px sheet) scrolls: by wheel on desktop and Pixel 7; on iPhone 15 WebKit the emulated wheel did not move it and a scrollBy did (worth a look on a real iPhone). No sideways scroll and nothing covered on the pad or the picker. Finding (suggestion): with the failed-assign error, on Pixel 7 and iPhone 15 the global red error banner sits over the pad's header - the 'Quick dictation' title and its Close button - and over the pad's own error line until the banner is dismissed (not on desktop).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-error.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-error.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-pad.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-pad.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-picker.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7-qd-picker.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-error.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-error.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-pad.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-pad.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-picker.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15-qd-picker.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-iphone15.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop.json"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

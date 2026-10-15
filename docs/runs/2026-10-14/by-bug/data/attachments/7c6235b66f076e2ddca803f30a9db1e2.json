@@ -1,0 +1,16 @@
+{
+  "TC-24/S09": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:44:43.865Z",
+    "title": "Complete and Delete are separate taps and separate events on every task surface, including the Tasks overlay, in both modes",
+    "detail": "Local QA stack only (main e02167f), a brand-new @roundai.test physician per test, synthetic charts deleted after the reads. No model: every ai/* action is refused at the Convex socket and none was sent; tripwire clean for the final run (16:43:28Z mark, 'no model call'). Rows are read with the local admin key (patientActivity / usage / surveys _recentForActor, usage:_dailyForActor) before and after the steps; reading them through Vikram's dashboard on the UAT deployment is S23 / Q12. Seeded a Hospital chart with the five testData tasks and a resident with 'Weekly weight Monday' and 'Podiatry referral'. Encounter tab: Complete 'Recheck BMP in AM', Delete 'PT eval before discharge'; Post-Round: Complete 'Order echo', Delete 'Call case management'; Task Export overlay from the Hospital list: Complete 'Check telemetry'; Nursing Home Post-Round: Complete 'Weekly weight Monday', Delete 'Podiatry referral'. Judged 17/17: both checkpoints (Hospital Post-Round lists the three completed tasks as done, each with a Reopen button, and not the two deleted ones; Nursing Home Post-Round shows 'Weekly weight Monday', not 'Podiatry referral'); stored chart: completed tasks done, deleted ones gone; each of the 7 taps wrote exactly one row of its kind; exactly 3 task_completed (one from the overlay) and 2 task_deleted against the Hospital chart (hospital), 1 + 1 against the resident (nursing_home); the overlay Complete added exactly one task_completed for the Hospital chart; rollup hospital +3 / +2, nursing_home +1 / +1; no task text or name in any row. Record-only: deletes asked no confirmation (TC-24's 'asks once' rule is TFA-94699, in progress: todo).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s09.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s09-s09-h-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s09-s09-n-tasks.png",
+      "runs/2026-10-14-local/newspec-c/reports/an1-oat06-s11-tc24-s09-tasks.json"
+    ],
+    "method": "PW",
+    "pkg": "an1"
+  }
+}

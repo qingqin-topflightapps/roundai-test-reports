@@ -1,0 +1,16 @@
+{
+  "TC-11/S18": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T18:12:40.268Z",
+    "title": "Hospital day window on sparse and messy ledgers: only yesterday's and today's lines",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset course-hosp. Our addition (review TFA-92589), so record only. Four Hospital rows added by the spec with ledgers labelled from the server clock in the browser's zone (Oct 15 = today): HA 'Oct 12' + 'Oct 15'; HB only 'Oct 13'; HC only 'Oct 14'; HD an undated line, 'Oct 10', 'Oct 14', 'Oct 15' and 'Oct 12' typed beneath today's. On the Pre-Round tab: HA shows only 'Oct 15: Breathing easier' (no Oct 12 card, no filler for yesterday); HB shows no card; HC shows only 'Oct 14: Diuresis started'; HD shows 'Oct 14: Diuresis continuing' then 'Oct 15: Breathing easier on 2 L', and the Oct 10 / Oct 12 lines are hidden. All six window checks held, so no finding: the window is yesterday-and-today (U3), not 'the last N lines'. Q6: the undated line 'Admitted with CHF exacerbation' is shown above them (recorded).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S18.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S18-s18-ha.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S18-s18-hb.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S18-s18-hc.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/course-hosp/evidence/TC-11-S18-s18-hd.png"
+    ]
+  }
+}

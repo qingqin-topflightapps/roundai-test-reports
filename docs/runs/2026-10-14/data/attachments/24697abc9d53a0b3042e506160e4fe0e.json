@@ -1,0 +1,77 @@
+{
+  "name": "efs-s10-h",
+  "at": "2026-10-14T16:43:04.925Z",
+  "checks": [
+    {
+      "id": "h1: the mock answers the first question (setup)",
+      "ok": true,
+      "detail": "QA-EFS-10-A1 fixed first answer."
+    },
+    {
+      "id": "h2: the second question is still in the box (U13)",
+      "ok": true,
+      "detail": "QA-EFS-10 which labs came back today?"
+    },
+    {
+      "id": "h2: an explicit error: a failure word (U6 / U11)",
+      "ok": true,
+      "detail": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    {
+      "id": "h2: a next step (U11)",
+      "ok": true,
+      "detail": "tap ask ai again"
+    },
+    {
+      "id": "h2: the first answer is not left under the new question (U6 / U12)",
+      "ok": true,
+      "detail": "gone"
+    },
+    {
+      "id": "h2: no answer block (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "h2: no lab value presented (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "h2: not left on 'Searching…' (U11)",
+      "ok": true,
+      "detail": "settled"
+    },
+    {
+      "id": "setup: two askChart calls, answered ok then fail at the socket; no unscripted AI call",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"ok\",\"atMs\":750,\"conn\":1},{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"fail\",\"atMs\":873,\"conn\":1}]"
+    }
+  ],
+  "data": {
+    "h1": {
+      "answer": "QA-EFS-10-A1 fixed first answer.",
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nPATIENT RECORD\n\nQA-EFS-10-A1 fixed first answer."
+    },
+    "h2": {
+      "message": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.",
+      "box": "QA-EFS-10 which labs came back today?",
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nThe chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.",
+      "labWordsOnScreen": []
+    },
+    "socket": [
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "ok",
+        "atMs": 750,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "fail",
+        "atMs": 873,
+        "conn": 1
+      }
+    ]
+  }
+}

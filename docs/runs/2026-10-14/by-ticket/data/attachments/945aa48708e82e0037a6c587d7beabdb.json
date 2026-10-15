@@ -1,0 +1,123 @@
+{
+  "state": "nh-chart-preround",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-nh-chart-preround.png",
+  "findings": [
+    {
+      "check": "tap",
+      "detail": "button \"\" is 30×30 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Pre-Round\" is 105×42 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Pre-Round\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Encounter\" is 105×42 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Encounter\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Post-Round\" is 105×42 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Post-Round\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Edit Visit Timeline\" is 44×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Edit Visit Timeline\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Edit Admission Summary\" is 44×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Edit Admission Summary\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Edit\" is 44×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Edit\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Edit\" is 44×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Edit\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Edit\" is 44×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Edit\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Edit\" is 44×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Edit\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Paste\" is 71×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Paste\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Photograph\" is 110×26 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Photograph\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Add Point\" is 96×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Add Point\""
+    }
+  ],
+  "axe": [
+    {
+      "id": "button-name",
+      "impact": "critical",
+      "help": "Buttons must have discernible text",
+      "count": 1,
+      "targets": [
+        ".-ml-1"
+      ],
+      "nodes": [
+        "\"<button class=\"-ml-1 mt-0.5 p-1 text-slate-700 hover:text-sl\" <button class=\"-ml-1 mt-0.5 p-1 text-slate-700 hover:text-slate-900\">"
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 16,
+      "targets": [
+        ".flex-shrink-0.font-semibold",
+        "section:nth-child(3) > .justify-between.mb-1.gap-2 > .mb-0.gap-2.flex > h3",
+        ".border-amber-100 > .border-dashed.border-slate-200.py-4 > p",
+        "section:nth-child(4) > .justify-between.mb-1.gap-2 > .mb-0.gap-2.flex > h3",
+        "section:nth-child(4) > .divide-y.divide-slate-50.shadow-sm",
+        "section:nth-child(5) > .justify-between.mb-1.gap-2 > .mb-0.gap-2.flex > h3"
+      ],
+      "nodes": [
+        "\"Edit\" 2.63:1 (#90a1b9 on #ffffff, 9.0pt (12px); needs 4.5:1)",
+        "\"Nursing Home Course\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"No visit entries yet.\" 2.53:1 (#90a1b9 on #fffbeb, 9.0pt (12px); needs 4.5:1)",
+        "\"Vitals\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"No vitals recorded yet.\" 2.63:1 (#90a1b9 on #ffffff, 9.0pt (12px); needs 4.5:1)",
+        "\"Labs\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)",
+        "\"No labs recorded yet.\" 2.63:1 (#90a1b9 on #ffffff, 9.0pt (12px); needs 4.5:1)",
+        "\"Medications\" 2.51:1 (#90a1b9 on #f8fafc, 9.0pt (12px); needs 4.5:1)"
+      ]
+    }
+  ],
+  "url": "/snf/m5761cftxkrc0r561cp8kgfhh98g9v9c"
+}

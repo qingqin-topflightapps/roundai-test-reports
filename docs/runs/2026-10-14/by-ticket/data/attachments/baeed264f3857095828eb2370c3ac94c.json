@@ -1,0 +1,168 @@
+{
+  "name": "efs-s08-n",
+  "at": "2026-10-14T16:28:20.428Z",
+  "checks": [
+    {
+      "id": "n1: the words 'Note not generated' (decision D7, wording recorded only)",
+      "ok": false,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "n1: a failure message about the note",
+      "ok": true,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "n1: the typed dictation is still in the box",
+      "ok": true,
+      "detail": "QA-EFS-08 Ate well, no falls overnight. Continue PT twice daily."
+    },
+    {
+      "id": "n1: Generate Note & Finish is offered again",
+      "ok": true,
+      "detail": "Generate Note & Finish"
+    },
+    {
+      "id": "n1: a failure word (U11)",
+      "ok": true,
+      "detail": "couldn"
+    },
+    {
+      "id": "n1: a next step (U11)",
+      "ok": true,
+      "detail": "tap generate"
+    },
+    {
+      "id": "n1: no fabricated note headings (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "n2: the right chart (page header)",
+      "ok": true,
+      "detail": "QA EFS-08 Resident Fail tlol"
+    },
+    {
+      "id": "n2: no fabricated note headings (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "n2: nothing to copy (no Copy to EMR) (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "n2: no note stored from the failed generation (U12)",
+      "ok": true,
+      "detail": "(empty)"
+    },
+    {
+      "id": "n2: no spinner left on the Note tab (endless 'Finalizing…' is B27, judged under TC-17/S19)",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "n3: the dictation survives a reload (U4a / U13)",
+      "ok": true,
+      "detail": "QA-EFS-08 Ate well, no falls overnight. Continue PT twice daily."
+    },
+    {
+      "id": "n3: the dictation is stored on the server (U4a)",
+      "ok": true,
+      "detail": "QA-EFS-08 Ate well, no falls overnight. Continue PT twice daily."
+    },
+    {
+      "id": "n4: setup: the chart offered Regenerate Note and the regenerate failed",
+      "ok": true,
+      "detail": "Regenerate Note → The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "n4: the right chart (page header)",
+      "ok": true,
+      "detail": "QA EFS-08 Resident Edited tlol"
+    },
+    {
+      "id": "n4: the physician's edited note is still on the Note tab (U13)",
+      "ok": true,
+      "detail": "QA-EFS-EDIT shown"
+    },
+    {
+      "id": "n4: the edited note is still the stored note (U13)",
+      "ok": true,
+      "detail": "The resident is participating in therapy. QA-EFS-EDIT added by the physician."
+    },
+    {
+      "id": "n5: after a reload the edited note is still there (U13)",
+      "ok": true,
+      "detail": "QA-EFS-EDIT shown"
+    },
+    {
+      "id": "n: after the run the physician's edit is still stored",
+      "ok": true,
+      "detail": "The resident is participating in therapy. QA-EFS-EDIT added by the physician."
+    },
+    {
+      "id": "setup: one generateNote attempt per chart, each answered with a failure at the socket",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/notes:generateNote\",\"answered\":\"fail\",\"atMs\":2048,\"conn\":1},{\"udfPath\":\"ai/notes:generateNote\",\"answered\":\"fail\",\"atMs\":6108,\"conn\":3},{\"udfPath\":\"ai/notes:suggestBilling\",\"answered\":\"ok\",\"atMs\":6211,\"conn\":3}]"
+    },
+    {
+      "id": "setup: no unscripted AI call",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "n1": {
+      "message": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "tapToMessageMs": 70,
+      "box": "QA-EFS-08 Ate well, no falls overnight. Continue PT twice daily.",
+      "literalNoteNotGenerated": false,
+      "headingsSeen": []
+    },
+    "n2": {
+      "postRound": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-08 Resident Fail tlol\n\nMRN-HT3D90 · Cedar Wing · Room 21\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete\n",
+      "spinners": [],
+      "server": {
+        "note": null,
+        "status": null
+      }
+    },
+    "n3": {
+      "box": "QA-EFS-08 Ate well, no falls overnight. Continue PT twice daily.",
+      "serverEncounterNotes": "QA-EFS-08 Ate well, no falls overnight. Continue PT twice daily."
+    },
+    "n4": {
+      "buttonLabel": "Regenerate Note",
+      "message": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "server": {
+        "note": "The resident is participating in therapy. QA-EFS-EDIT added by the physician.",
+        "status": "note-ready",
+        "noteGeneratedAt": "2026-10-14T16:08:10.635Z"
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 2048,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "atMs": 6108,
+        "conn": 3
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "ok",
+        "atMs": 6211,
+        "conn": 3
+      }
+    ]
+  }
+}

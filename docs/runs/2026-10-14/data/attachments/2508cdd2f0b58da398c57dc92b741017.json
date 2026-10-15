@@ -1,0 +1,17 @@
+{
+  "EFS/S19": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:02:50.471Z",
+    "title": "A raw server error never reaches the screen and no browser dialog opens (summary, Ask AI, billing)",
+    "detail": "Hospital then Nursing Home on one physician; spec newspec-c/flt-efs-s19-raw-error.spec.ts. ai/parsing:parsePreRoundNotes, ai/assist:askChart and ai/notes:suggestBilling fail at the socket with 'Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad7731]'. Judged 16/16. cp1 Hospital Save Note: the typed line and 'Note saved, but the structured summary couldn’t be updated…' (also checked on the tab after closing the editor); cp2 Hospital Ask and cp3 Nursing Home Ask: 'Ask About This Patient', the question still in the box, 'The chart assistant couldn’t be reached…'; cp4 Nursing Home Post-Round: the seeded note, the billing card 'Couldn't generate billing suggestion — tap to retry', no code. None of 'QA-RAW-7731', 'Uncaught', 'ConvexError', 'Server Error', 'at handler', 'Request ID' on any screen; no browser dialog during the run. Recorded: the raw text appears only in the browser console (7 lines). Scope: the three calls this case names; the raw errors of the photo scan and dictation recovery are B17.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s19.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s19-cp1-hosp-summary.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s19-cp2-hosp-ask.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s19-cp3-nh-ask.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s19-cp4-nh-billing.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

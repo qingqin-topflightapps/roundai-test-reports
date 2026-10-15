@@ -1,0 +1,60 @@
+{
+  "case": "TC-15-S01",
+  "title": "Preset 'today's labs' on a patient with labs (Hospital; NH variant)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s01-h-labs.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7e31awz09cstmff38as0k1ds8g93vj",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s01-n-labs.md",
+      "verdict": "Pass",
+      "url": "/snf/jx71q4m510ex3ddcnegw0hjzrh8g8e1r",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 29,
+    "costUsd": 0.20648180000000005,
+    "durationMs": 128528,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U82",
+  "covers": [
+    "TC-15/S01"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u82",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U82.json",
+  "foreignBefore": {
+    "hospitalPatient": 4,
+    "snfResident": 4
+  }
+}

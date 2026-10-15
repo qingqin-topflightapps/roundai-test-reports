@@ -1,0 +1,98 @@
+{
+  "name": "oat06-s21",
+  "at": "2026-10-14T17:02:42.868Z",
+  "checks": [
+    {
+      "id": "R2 Hospital (recorded): a double tap on Complete task writes one task_completed and leaves the task done",
+      "ok": false,
+      "detail": "task_completed rows: 1; task done: false; control now: 'Complete task: QA tap task: recheck Mg 9AKK'",
+      "recordOnly": true
+    },
+    {
+      "id": "R4 Hospital (recorded): a double tap on Mark Encounter Complete writes one note_marked_complete",
+      "ok": true,
+      "detail": "note_marked_complete rows: 1; status post-rounded; pending-tasks prompt: false",
+      "recordOnly": true
+    },
+    {
+      "id": "R2 Nursing Home (recorded): a double tap on the task's complete control writes one task_completed and leaves the task done",
+      "ok": false,
+      "detail": "task_completed rows: 2; task done: true",
+      "recordOnly": true
+    },
+    {
+      "id": "R4 Nursing Home (recorded): a double tap on Mark Visit Complete writes one note_marked_complete",
+      "ok": true,
+      "detail": "note_marked_complete rows: 1; status complete",
+      "recordOnly": true
+    },
+    {
+      "id": "rollup (recorded): tasksCompleted / notesCompleted per care setting for the two double-tapped charts",
+      "ok": true,
+      "detail": "{\"hospital\":{\"tasksCompleted\":2,\"notesCompleted\":1},\"nursing_home\":{\"tasksCompleted\":2,\"notesCompleted\":1}}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "S21": {
+      "hospitalTaskDoubleTap": {
+        "taskCompletedRows": 1,
+        "taskDone": false,
+        "controlNow": "Complete task: QA tap task: recheck Mg 9AKK"
+      },
+      "hospitalTaskSingleTapAfter": {
+        "why": "the task was open again after the double tap; completed with one tap so R4 starts from no pending task",
+        "taskCompletedRowsForThisTaskInAll": 2
+      },
+      "hospitalCompleteDoubleTap": {
+        "noteMarkedCompleteRows": 1,
+        "status": "post-rounded",
+        "pendingTasksPromptShown": false,
+        "rows": [
+          {
+            "_creationTime": 1791997349786.008,
+            "careSetting": "hospital",
+            "day": "2026-10-15",
+            "event": "note_marked_complete",
+            "minutesFromPreRoundOpened": 0,
+            "patientId": "kx7b3q927cd2hdc077k26ss78n8g9edm"
+          }
+        ]
+      },
+      "nursingHomeTaskDoubleTap": {
+        "taskCompletedRows": 2,
+        "taskDone": true
+      },
+      "nursingHomeCompleteDoubleTap": {
+        "noteMarkedCompleteRows": 1,
+        "status": "complete",
+        "rows": [
+          {
+            "_creationTime": 1791997358111.916,
+            "careSetting": "nursing_home",
+            "day": "2026-10-15",
+            "event": "note_marked_complete",
+            "minutesFromPreRoundOpened": 0,
+            "patientId": "m574fvhebnmt0sknvx4xk4c4rs8g9h7e"
+          }
+        ]
+      },
+      "rollupDelta": {
+        "hospital": {
+          "tasksCompleted": 2,
+          "notesCompleted": 1
+        },
+        "nursing_home": {
+          "tasksCompleted": 2,
+          "notesCompleted": 1
+        }
+      },
+      "dialogs": [],
+      "aiCalls": []
+    },
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 1
+    }
+  }
+}

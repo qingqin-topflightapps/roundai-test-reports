@@ -1,0 +1,17 @@
+{
+  "OAT-06/S02": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:43:43.559Z",
+    "title": "Nursing Home walk: manual add, duplicate kept, chart opened, visit completed, task completed and deleted: every analytics row lands",
+    "detail": "Local QA stack only (main e02167f), a brand-new @roundai.test physician per test, synthetic charts deleted after the reads. No model: every ai/* action is refused at the Convex socket and none was sent; tripwire clean for the final run (16:43:28Z mark, 'no model call'). Rows are read with the local admin key (patientActivity / usage / surveys _recentForActor, usage:_dailyForActor) before and after the steps; reading them through Vikram's dashboard on the UAT deployment is S23 / Q12. Seeded one resident (In Today, finished note with billing pre-computed, two open tasks). Switched from the Hospital list with the Nursing Home toggle; header '+' (no accessible name, A1) -> Add Resident 'QA Resident OAT06 Manual', Unit / Room 'Long-Term Care · Rm 21'; the same name again (no MRN, no date of birth) -> confirm 'already in the resident panel' -> Cancel; opened the seeded resident on Pre-Round; Post-Round > Tasks: task 1's first (unlabelled) button = complete, task 2's trash = delete; Mark Visit Complete. Judged 15/15: 3 checkpoints and 12 row checks since T0: patient_added nursing_home/manual = 1; shown + accepted with the same promptId (nursing_home, manual), rejected = 0, one resident with the name, no patient_removed; pre_round_summary_opened, note_marked_complete (minutes 0), task_completed, task_deleted = 1 each, all nursing_home with the resident's id and no other usage row; nursing_home rollup +1 on preRoundSummariesOpened, notesCompleted, encountersTimed, tasksCompleted, tasksDeleted; hospital rollup row absent before and after (unchanged); no name, unit / room, MRN, diagnosis, task or note text in any row. Record-only: Cancel -> 'accepted' (Q5). Not part of this case: removing a resident (no Nursing Home screen can; known B24, S22 / Q4).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s02.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s02-s02-cp1-added.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s02-s02-cp2-duplicate-kept.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s02-s02-cp3-complete.png",
+      "runs/2026-10-14-local/newspec-c/reports/an1-oat06-s01-s02-walk.json"
+    ],
+    "method": "PW",
+    "pkg": "an1"
+  }
+}

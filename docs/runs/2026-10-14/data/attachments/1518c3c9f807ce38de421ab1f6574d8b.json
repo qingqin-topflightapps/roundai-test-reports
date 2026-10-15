@@ -1,0 +1,189 @@
+{
+  "name": "tc04-s08",
+  "at": "2026-10-14T17:25:06.329Z",
+  "checks": [
+    {
+      "id": "seed check: physician 1's quickDictation:list holds no 'PHI canary 7Q' row",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "cp1 (Q3): 'Bed 415A' chip 'Rm 415A' and suggests Patel only",
+      "ok": true,
+      "detail": "{\"chips\":[\"Rm 415A\"],\"suggestions\":[\"415A · QA Hosp Patel PC0Y\"]}",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2 (Q3): 'Bed 415' chip 'Rm 415' (the chip follows the text) and suggests no 1415 / 4150",
+      "ok": false,
+      "detail": "{\"chips\":[\"Rm 415\"],\"suggestions\":[\"415A · QA Hosp Patel PC0Y\",\"415B · QA Hosp Rivera PC0Y\",\"1415 · QA Hosp Ames PC0Y\",\"4150 · QA Hosp Bell PC0Y\"]}",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2 (Q3): both beds of room 415 (415A, 415B) offered",
+      "ok": true,
+      "detail": "[\"415A · QA Hosp Patel PC0Y\",\"415B · QA Hosp Rivera PC0Y\",\"1415 · QA Hosp Ames PC0Y\",\"4150 · QA Hosp Bell PC0Y\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2: 'Bed 415' never suggests the Nursing Home resident in room 415 or the other physician's patient in room 415",
+      "ok": true,
+      "detail": "[\"415A · QA Hosp Patel PC0Y\",\"415B · QA Hosp Rivera PC0Y\",\"1415 · QA Hosp Ames PC0Y\",\"4150 · QA Hosp Bell PC0Y\"]"
+    },
+    {
+      "id": "cp3: the picker searched '415' lists this physician's Hospital patients (415A Patel, 415B Rivera) and no Nursing Home resident, no other physician's patient or box",
+      "ok": true,
+      "detail": "[\"415A · QA Hosp Patel PC0Y — Community-acquired pneumonia\",\"415B · QA Hosp Rivera PC0Y — Community-acquired pneumonia\",\"1415 · QA Hosp Ames PC0Y — Community-acquired pneumonia\",\"4150 · QA Hosp Bell PC0Y — Community-acquired pneumonia\"]"
+    },
+    {
+      "id": "cp4: 'Bed 630' shows 'Rm 630', no suggestion, still offers Assign to patient",
+      "ok": true,
+      "detail": "{\"chips\":[\"Rm 630\"],\"suggestions\":[]}",
+      "recordOnly": true
+    },
+    {
+      "id": "cp5 (Q2): a room mid-sentence",
+      "ok": true,
+      "detail": "{\"chips\":[\"Rm 415A\"],\"suggestions\":[\"415A · QA Hosp Patel PC0Y\"]}",
+      "recordOnly": true
+    },
+    {
+      "id": "cp6 (Q2): a spoken room number",
+      "ok": true,
+      "detail": "{\"chips\":[],\"suggestions\":[]}",
+      "recordOnly": true
+    },
+    {
+      "id": "cp7 (Q2): compartments that start with a clinical number ('12 hours…', '80 yo…')",
+      "ok": true,
+      "detail": "[{\"text\":\"12 hours post-op, drain output 30 mL.\",\"chips\":[\"Rm 12\"],\"suggestions\":[\"112 · QA Hosp Quinlan PC0Y\",\"4B-12 · QA Hosp Diaz PC0Y\"]},{\"text\":\"80 yo, oriented x3, eating well.\",\"chips\":[\"Rm 80\"],\"suggestions\":[]}]",
+      "recordOnly": true
+    },
+    {
+      "id": "cp1-cp7: no pad state shows another physician's patient or box, or a Nursing Home resident",
+      "ok": true,
+      "detail": "{\"cp1-415a\":[],\"cp2-415\":[],\"cp3-picker-415\":[],\"cp4-630\":[],\"cp5-midsentence\":[],\"cp6-spoken\":[],\"cp7-clinical-numbers\":[]}"
+    },
+    {
+      "id": "cp1-cp7: nothing was assigned by any phrasing (no 'Re-assign', no ✓ chip)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp8 / cp9: Patel's and Quinlan's Encounter tabs and every chart on the server hold none of the typed texts (nothing auto-assigned)",
+      "ok": true,
+      "detail": "{\"onPatel\":[],\"onQuinlan\":[],\"withText\":[]}"
+    },
+    {
+      "id": "physician 2's compartments are untouched and hold none of physician 1's texts",
+      "ok": true,
+      "detail": "[\"Bed 415, PHI canary 7Q.\"]"
+    }
+  ],
+  "data": {
+    "steps": {
+      "cp1-415a": {
+        "text": "Bed 415A, pain controlled, ambulating.",
+        "chips": [
+          "Rm 415A"
+        ],
+        "suggestions": [
+          "415A · QA Hosp Patel PC0Y"
+        ],
+        "matchesHeader": true,
+        "leaks": [],
+        "reassign": false
+      },
+      "cp2-415": {
+        "text": "Bed 415, family meeting this afternoon.",
+        "chips": [
+          "Rm 415"
+        ],
+        "suggestions": [
+          "415A · QA Hosp Patel PC0Y",
+          "415B · QA Hosp Rivera PC0Y",
+          "1415 · QA Hosp Ames PC0Y",
+          "4150 · QA Hosp Bell PC0Y"
+        ],
+        "matchesHeader": true,
+        "leaks": [],
+        "reassign": false
+      },
+      "cp3-picker-415": {
+        "rows": [
+          "415A · QA Hosp Patel PC0Y — Community-acquired pneumonia",
+          "415B · QA Hosp Rivera PC0Y — Community-acquired pneumonia",
+          "1415 · QA Hosp Ames PC0Y — Community-acquired pneumonia",
+          "4150 · QA Hosp Bell PC0Y — Community-acquired pneumonia"
+        ],
+        "leaks": []
+      },
+      "cp4-630": {
+        "text": "Bed 630, awaiting transfer from the ICU.",
+        "chips": [
+          "Rm 630"
+        ],
+        "suggestions": [],
+        "matchesHeader": false,
+        "leaks": [],
+        "reassign": false
+      },
+      "cp5-midsentence": {
+        "text": "Seen with family, moved from the ICU to room 415A overnight.",
+        "chips": [
+          "Rm 415A"
+        ],
+        "suggestions": [
+          "415A · QA Hosp Patel PC0Y"
+        ],
+        "matchesHeader": true,
+        "leaks": [],
+        "reassign": false
+      },
+      "cp6-spoken": {
+        "text": "Bed four fifteen A, stable.",
+        "chips": [],
+        "suggestions": [],
+        "matchesHeader": false,
+        "leaks": [],
+        "reassign": false
+      },
+      "cp7-clinical-numbers": {
+        "compartments": [
+          {
+            "text": "Bed four fifteen A, stable.",
+            "chips": [],
+            "suggestions": []
+          },
+          {
+            "text": "12 hours post-op, drain output 30 mL.",
+            "chips": [
+              "Rm 12"
+            ],
+            "suggestions": [
+              "112 · QA Hosp Quinlan PC0Y",
+              "4B-12 · QA Hosp Diaz PC0Y"
+            ]
+          },
+          {
+            "text": "80 yo, oriented x3, eating well.",
+            "chips": [
+              "Rm 80"
+            ],
+            "suggestions": []
+          }
+        ],
+        "leaks": [],
+        "reassign": false
+      },
+      "cp8-cp9": {
+        "onPatel": [],
+        "onQuinlan": [],
+        "serverPatientsWithQdText": []
+      },
+      "physician2-drafts": [
+        "Bed 415, PHI canary 7Q."
+      ]
+    }
+  }
+}

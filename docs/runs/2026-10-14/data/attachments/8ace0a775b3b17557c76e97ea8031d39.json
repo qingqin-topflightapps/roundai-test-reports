@@ -1,0 +1,404 @@
+{
+  "name": "tc04-s23-s24-desktop",
+  "at": "2026-10-14T17:07:56.164Z",
+  "checks": [
+    {
+      "id": "S23 dialog named 'Quick dictation'",
+      "ok": true,
+      "detail": "Quick dictation",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 dictate has an accessible name",
+      "ok": true,
+      "detail": "Dictate",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 assign has an accessible name",
+      "ok": true,
+      "detail": "Assign to patient",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 link has an accessible name",
+      "ok": true,
+      "detail": "415 · QA TC04 Sloan FCQH Link",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 deleteCompartment has an accessible name",
+      "ok": true,
+      "detail": "Delete compartment",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 close has an accessible name",
+      "ok": true,
+      "detail": "Close quick dictation",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 newCompartment has an accessible name",
+      "ok": true,
+      "detail": "New compartment",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 the dictation box has a name other than its placeholder",
+      "ok": false,
+      "detail": "only the placeholder: \"Dictate or type — start with the bed or room number…\"",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 qd-pad: axe serious/critical = 0",
+      "ok": false,
+      "detail": "color-contrast(serious,2×: .bg-slate-50.py-1\\.5.px-3 | .text-center.px-4.text-slate-400)",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 pad is full screen",
+      "ok": true,
+      "detail": "dialog 1280×800 on a 1280×800 viewport",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 box visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 1222×68",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 chip visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 61×24",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 suggestion visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 1220×28",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 link visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 1220×37",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 assign visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 147×30",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 dictate visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 87×28",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 deleteCompartment visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 22×22",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 close visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 40×40",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 newCompartment visible and on top",
+      "ok": true,
+      "detail": "visible and on top; 1248×46",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 no sideways scroll on the pad",
+      "ok": true,
+      "detail": "scrollWidth 1280 on 1280",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 nothing covered on the pad",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 the picker sheet is announced as its own dialog (role on the sheet)",
+      "ok": false,
+      "detail": "no role on the sheet (it sits inside the pad's dialog)",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 picker search has a name other than its placeholder",
+      "ok": false,
+      "detail": "only the placeholder: \"Search room or name…\"",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 Close picker has an accessible name",
+      "ok": true,
+      "detail": "Close picker",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 qd-picker: axe serious/critical = 0",
+      "ok": false,
+      "detail": "color-contrast(serious,13×: .py-2\\.5.hover\\:bg-slate-50.disabled\\:opacity-50:nth-child(1) > .text-slate-700.text-sm > .text-slate-400 | .py-2\\.5.hover\\:bg-slate-50.disabled\\:opacity-50:nth-child(2) > .text-slate-700.text-sm > .text-slate-400)",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 the picker sheet scrolls (content taller than the sheet, and it moves)",
+      "ok": true,
+      "detail": "scrollHeight 1012 > clientHeight 531; scrollTop after = 400 (wheel)",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 no sideways scroll with the picker open",
+      "ok": true,
+      "detail": "scrollWidth 1280 on 1280",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 nothing covered in the picker",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 the failed-assign message in the pad is announced (live region)",
+      "ok": false,
+      "detail": "the pad's message has no role=alert/status or aria-live",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 a failed-assign message is announced somewhere (pad or the global banner)",
+      "ok": true,
+      "detail": "pad: none; global banner: role=alert",
+      "recordOnly": true
+    },
+    {
+      "id": "S23 qd-error: axe serious/critical = 0",
+      "ok": false,
+      "detail": "color-contrast(serious,2×: .bg-slate-50.py-1\\.5.text-slate-400 | .text-center.px-4.text-slate-400)",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 nothing covered with the error showing",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "S24 the pad's Close button is not covered while the error shows",
+      "ok": true,
+      "detail": "visible and on top",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "profile": {
+      "name": "desktop",
+      "engine": "chromium 151.0.7922.34",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    "accessibleNames.pad": {
+      "dialog": "Quick dictation",
+      "dictate": "Dictate",
+      "assign": "Assign to patient",
+      "link": "415 · QA TC04 Sloan FCQH Link",
+      "deleteCompartment": "Delete compartment",
+      "close": "Close quick dictation",
+      "newCompartment": "New compartment",
+      "boxWithoutPlaceholder": "",
+      "boxPlaceholder": "Dictate or type — start with the bed or room number…"
+    },
+    "axe.qd-pad (all)": "color-contrast(serious,2×: .bg-slate-50.py-1\\.5.px-3 | .text-center.px-4.text-slate-400)",
+    "layout.pad": {
+      "box": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 1222,
+        "h": 68,
+        "x": 29,
+        "y": 199,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 43,
+        "nearestOther": "button \"415 · QA TC04 Sloan FCQH\nLink\""
+      },
+      "chip": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 61,
+        "h": 24,
+        "x": 29,
+        "y": 92,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 49,
+        "nearestOther": "button \"415 · QA TC04 Sloan FCQH\nLink\""
+      },
+      "suggestion": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 1220,
+        "h": 28,
+        "x": 30,
+        "y": 125,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 14,
+        "nearestOther": "button \"415 · QA TC04 Sloan FCQH\nLink\""
+      },
+      "link": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 1220,
+        "h": 37,
+        "x": 30,
+        "y": 153,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 28,
+        "nearestOther": "textarea \"\""
+      },
+      "assign": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 147,
+        "h": 30,
+        "x": 124,
+        "y": 290,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 38,
+        "nearestOther": "textarea \"\""
+      },
+      "dictate": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 87,
+        "h": 28,
+        "x": 29,
+        "y": 291,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 38,
+        "nearestOther": "textarea \"\""
+      },
+      "deleteCompartment": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 22,
+        "h": 22,
+        "x": 1229,
+        "y": 294,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 38,
+        "nearestOther": "textarea \"\""
+      },
+      "close": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 40,
+        "h": 40,
+        "x": 1224,
+        "y": 14,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 119,
+        "nearestOther": "button \"415 · QA TC04 Sloan FCQH\nLink\""
+      },
+      "newCompartment": {
+        "ok": true,
+        "detail": "visible and on top",
+        "w": 1248,
+        "h": 46,
+        "x": 16,
+        "y": 345,
+        "vw": 1280,
+        "vh": 800,
+        "nearestOtherTargetPx": 101,
+        "nearestOther": "textarea \"\""
+      }
+    },
+    "findings.qd-pad": [],
+    "accessibleNames.picker": {
+      "searchWithoutPlaceholder": "",
+      "searchPlaceholder": "Search room or name…",
+      "closePicker": "Close picker",
+      "sheetRole": null,
+      "focusedOnOpen": true
+    },
+    "axe.qd-picker (all)": "color-contrast(serious,13×: .py-2\\.5.hover\\:bg-slate-50.disabled\\:opacity-50:nth-child(1) > .text-slate-700.text-sm > .text-slate-400 | .py-2\\.5.hover\\:bg-slate-50.disabled\\:opacity-50:nth-child(2) > .text-slate-700.text-sm > .text-slate-400)",
+    "picker.scroll": {
+      "sh": 1012,
+      "ch": 531,
+      "top": 0,
+      "afterTop": 400,
+      "scrolledBy": "wheel",
+      "rows": 26
+    },
+    "findings.qd-picker": [],
+    "layout.picker.close": {
+      "ok": true,
+      "detail": "visible and on top",
+      "w": 30,
+      "h": 30,
+      "x": 1234,
+      "y": 172,
+      "vw": 1280,
+      "vh": 800
+    },
+    "failedAssign": {
+      "padMessage": "⚠ Couldn't assign the compartment — try again.",
+      "padMessageLiveRegion": null,
+      "globalBanner": "The dictation couldn’t be added to the patient’s chart. Check your connection and try again.",
+      "globalBannerLiveRegion": "role=alert",
+      "assignCalls": [
+        "fail"
+      ]
+    },
+    "findings.qd-error": [],
+    "captures": [
+      {
+        "state": "qd-pad",
+        "screenshot": "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-pad.png",
+        "axe": "color-contrast(serious,2×: .bg-slate-50.py-1\\.5.px-3 | .text-center.px-4.text-slate-400)",
+        "findings": 0
+      },
+      {
+        "state": "qd-picker",
+        "screenshot": "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-picker.png",
+        "axe": "color-contrast(serious,13×: .py-2\\.5.hover\\:bg-slate-50.disabled\\:opacity-50:nth-child(1) > .text-slate-700.text-sm > .text-slate-400 | .py-2\\.5.hover\\:bg-slate-50.disabled\\:opacity-50:nth-child(2) > .text-slate-700.text-sm > .text-slate-400)",
+        "findings": 0
+      },
+      {
+        "state": "qd-error",
+        "screenshot": "runs/2026-10-14-local/newspec-c/evidence/tc04-s23-s24-desktop-qd-error.png",
+        "axe": "color-contrast(serious,2×: .bg-slate-50.py-1\\.5.text-slate-400 | .text-center.px-4.text-slate-400)",
+        "findings": 0
+      }
+    ],
+    "aiCalls": [],
+    "padAfterFailure": [
+      {
+        "_creationTime": 1791997671698.676,
+        "_id": "kn72hqtxpbyf0tavyrd374h2ds8g8tt0",
+        "order": 0,
+        "text": "Bed 415, stable.",
+        "userId": "jd79q5h0trmxee00ve5e024zn58g8agr"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "TC-15/S25": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:43:26.747Z",
+    "title": "Ask AI fails or returns nothing, both contexts: explicit message, no answer, question kept, not stuck in 'Searching'",
+    "detail": "Spec newspec-c/flt-tc15-s25-ask-fail.spec.ts. ai/assist:askChart fails at the socket (cp1 Hospital Pre-Round, cp2 Nursing Home Encounter), then returns an empty string (cp3 Hospital Encounter, cp4 Nursing Home Pre-Round). Judged 16/16 (the failed-call checkpoints): 'The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.', 'What is the latest potassium?' still in the box, no 'Patient Record' answer block, not on 'Searching…', no WBC / mmol / mEq. Recorded (our addition, the empty reply): 'The assistant returned no answer for this question. Try asking it another way.', question kept, nothing else shown. Cross-reference: when the network itself is down (EFS/S14) the same Ask stays on 'Searching…' until the connection returns; that is judged under EFS/S14.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s25-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s25-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s25-h-cp1-fail.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s25-h-cp3-empty.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s25-n-cp2-fail.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s25-n-cp4-empty.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

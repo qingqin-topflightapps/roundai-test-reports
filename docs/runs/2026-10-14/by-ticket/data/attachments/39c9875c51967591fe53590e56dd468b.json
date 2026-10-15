@@ -1,0 +1,24 @@
+{
+  "EFS/S17": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-14T16:46:30.989Z",
+    "title": "Web: microphone blocked and no microphone - every Dictate box explains how to enable it, typed text kept",
+    "detail": "The oracle's cells all pass - 40/40 judged (newspec-c/vis-efs-s17-mic-blocked.spec.ts, desktop Chromium, two runs: getUserMedia rejected with NotAllowedError 'Permission denied', and with NotFoundError 'Requested device not found' / no capture device). In all four boxes - Hospital pre-round editor, Hospital Encounter box, Ask AI sheet, Nursing Home visit box - one Dictate tap after typing 'QA-EFS-17 typed before dictate.' shows 'Microphone access is blocked. Allow the microphone for this site (tap the lock icon in the address bar), or on iPhone/Android open Settings › Round Companion, then tap Dictate again.', the typed line stays in the box, no crash, no raw browser error. Failed only on the known B27 contradiction: in the Hospital pre-round editor the yellow 'Dictation done — review before saving' nudge shows together with the red microphone message in both runs, although nothing was dictated (UAT state 8 guidance). Record-only: with no microphone at all the wording still says 'blocked' / 'Allow the microphone' (Q6, suggestion); the pre-round editor's message is a plain div (Encounter and Nursing Home use role=alert, Ask AI the global role=alert banner). No recording, no model: the browser's own speech recognition was hidden so the app took the cloud engine physicians use (the account keeps its on-device marker), and ai/transcribe:prepareSession was held in the browser (4 calls per run, all 'hold', none reached the server); tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-mic-permission-denied-cp1-hosp-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-mic-permission-denied-cp2-hosp-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-mic-permission-denied-cp3-ask.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-mic-permission-denied-cp4-nh-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-mic-permission-denied.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-no-capture-device-cp1-hosp-preround.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-no-capture-device-cp2-hosp-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-no-capture-device-cp3-ask.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-no-capture-device-cp4-nh-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-no-capture-device.json"
+    ],
+    "method": "PW",
+    "productIssue": "With the microphone blocked (or missing), tapping Dictate in the Hospital pre-round editor shows 'Dictation done — review before saving' next to 'Microphone access is blocked…', telling the physician to review a dictation that never happened (B27).",
+    "pkg": "vis"
+  }
+}

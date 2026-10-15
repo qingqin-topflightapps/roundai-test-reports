@@ -1,0 +1,22 @@
+{
+  "OAT-06/S04": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:48:16.289Z",
+    "title": "Scan add and its duplicate prompt through the real scan screens, both contexts: the rows written",
+    "detail": "Local Playwright spec newspec-c/an2-oat06-s04-scan.spec.ts (2 tests, each a brand-new @roundai.test physician). ai/vision:scanCensusSheet is answered at the Convex socket with the rows the matrix's photos list (Hospital: QA Scan Avery / Brook / Cole plus the existing chart's name and room; Nursing Home: QA Scan Dana / Ellis plus the existing resident's name); the photo itself is a neutral fixture image, so OCR quality (TFA-92580 AC 2/AC 6, B01) is not judged. Rows read from patientActivityEvents with the local admin key. Judged 14/14: R1 Hospital: 3 patient_added (addMethod scan_census, careSetting hospital); exactly one duplicate_prompt_shown and one duplicate_prompt_accepted with the same promptId (scan_census, hospital); no rejected row; still one chart with the fixture name. R2: one shown + one rejected (same promptId, scan_census, hospital), patient_added +1, two charts with the fixture name. R4 Nursing Home: 2 patient_added (scan_census, nursing_home); one scan_census_completed with createdCount 2, linkedCount 1 (selectedCount 3); one shown + one accepted (nursing_home, scan_census); the matched resident is not counted as an add and no copy is made. R5: one shown + one rejected (nursing_home, scan_census), patient_added +1, two residents with the name. U15: no row holds a scanned name, room or unit (19 rows checked). Recorded only (Q5): closing the Hospital scan sheet (X) before confirming shows no prompt and writes nothing; the Hospital prompt has no close or 'decide later' control, so leaving it without a choice (here a reload) writes duplicate_prompt_shown only; Nursing Home 'Decide later' then closing the sheet writes shown only and adds nothing. Recorded: a Hospital scan writes no scan_census_completed row (only Nursing Home does); R5's scan_census_completed has createdCount 1, linkedCount 0. Part left: U13 for the vision call (aiCallLog providerMs > 0 and <= durationMs, model, ai_disclosure provider_ms) needs a live scanCensusSheet call; locally the call is answered in the browser, so no aiCallLog row exists (verified: 0 vision rows for the account), and on dev it is blocked by B01.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-hospital-r1-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-hospital-r1-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-hospital-r2-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-hospital-r3b-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-hospital.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-nursing-home-r4-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-nursing-home-r4-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-nursing-home-r5-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-nursing-home-r6-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s04-nursing-home.json"
+    ],
+    "method": "PW",
+    "pkg": "an2"
+  }
+}

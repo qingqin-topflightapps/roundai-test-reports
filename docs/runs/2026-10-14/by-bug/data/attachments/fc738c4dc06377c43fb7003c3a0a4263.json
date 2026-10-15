@@ -1,0 +1,385 @@
+{
+  "ref": "TC-11/S11",
+  "title": "TC-11/S11 Hospital lifecycle: pre-round, Generate, Regenerate, pre-round re-save, reload — one card for today at every step (live AI)",
+  "dataset": "course-hosp",
+  "target": "dev",
+  "at": "2026-10-14T18:12:14.278Z",
+  "cells": [
+    {
+      "name": "cp-preround cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Oct 15: Acute on chronic heart failure responding to diuresis overnight with weight loss of 1.2 kg; creatinine 1.3. Continue diuresis"
+        ]
+      }
+    },
+    {
+      "name": "cp-preround: exactly one dated card, and it is today's ('Oct 15:') (U1 / T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Acute on chronic heart failure responding to diuresis overnight with weight loss of 1.2 kg; creatinine 1.3. Continue diuresis"
+        ]
+      }
+    },
+    {
+      "name": "cp-generated cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring"
+        ],
+        "settled": true
+      }
+    },
+    {
+      "name": "cp-generated: exactly one dated card, and it is today's ('Oct 15:') (U1 / T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-generated: an encounter-only fact (furosemide | BMP | edema)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-generated: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-generated: no '[Physician'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-generated: no 'Electronically signed'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-generated: no 'Overnight no events. Weight down 1.2 kg'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-generated: today's card differs from cp-preround's (T2, differsFrom)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "now": "Oct 15: 79-year-old male with acute on chronic heart failure responding to diuresis with 1.2 kg overnight weight loss and improved crackles; continue IV furosemide with renal monitoring",
+        "preround": "Oct 15: Acute on chronic heart failure responding to diuresis overnight with weight loss of 1.2 kg; creatinine 1.3. Continue diuresis"
+      }
+    },
+    {
+      "name": "cp-regen cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+        ],
+        "settled": true
+      }
+    },
+    {
+      "name": "cp-regen: exactly one dated card, and it is today's ('Oct 15:') (U1 / T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: an encounter-only fact (furosemide | BMP | edema)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: no 'Encounter done'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: no '[Physician'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: no 'Electronically signed'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: no 'Overnight no events. Weight down 1.2 kg'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+        ]
+      }
+    },
+    {
+      "name": "cp-regen: today's card differs from cp-preround's (T2, differsFrom)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "now": "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring",
+        "preround": "Oct 15: Acute on chronic heart failure responding to diuresis overnight with weight loss of 1.2 kg; creatinine 1.3. Continue diuresis"
+      }
+    },
+    {
+      "name": "cp-resave cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Oct 15: Acute on chronic heart failure responding to IV diuresis with continued weight loss. Hypokalemia corrected with oral potassium replacement. Renal function stable"
+        ]
+      }
+    },
+    {
+      "name": "cp-resave: exactly one dated card, and it is today's ('Oct 15:') (U1 / T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Acute on chronic heart failure responding to IV diuresis with continued weight loss. Hypokalemia corrected with oral potassium replacement. Renal function stable"
+        ]
+      }
+    },
+    {
+      "name": "cp-resave: today's card is the same as cp-regen's (Q9: may the re-save replace the finished-note text?)",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "resave": "Oct 15: Acute on chronic heart failure responding to IV diuresis with continued weight loss. Hypokalemia corrected with oral potassium replacement. Renal function stable",
+        "regen": "Oct 15: 79-year-old male with acute on chronic heart failure responding to IV diuresis with 1.2 kg overnight weight loss and improved crackles; continue furosemide with renal monitoring"
+      },
+      "ref": "Q9"
+    },
+    {
+      "name": "cp-reload cards",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Oct 15: Acute on chronic heart failure responding to IV diuresis with continued weight loss. Hypokalemia corrected with oral potassium replacement. Renal function stable"
+        ]
+      }
+    },
+    {
+      "name": "cp-reload: exactly one dated card, and it is today's ('Oct 15:') (U1 / T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Acute on chronic heart failure responding to IV diuresis with continued weight loss. Hypokalemia corrected with oral potassium replacement. Renal function stable"
+        ]
+      }
+    },
+    {
+      "name": "after the run: noteGeneratedAt is set",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "noteGeneratedAt": "2026-10-14T18:11:35.875Z"
+      }
+    },
+    {
+      "name": "after the run: the stored course is exactly one line (the chart had no course)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "course": "Oct 15: Acute on chronic heart failure responding to IV diuresis with continued weight loss. Hypokalemia corrected with oral potassium replacement. Renal function stable.. ⏳ Encounter pending."
+      }
+    },
+    {
+      "name": "timing (S19 / U11, 3.5: review only)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "generate": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5250,
+            "providerMs": 5241,
+            "appMs": 9,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.extractMedicationEvents",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2224,
+            "providerMs": 2222,
+            "appMs": 2,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "notes.refreshCourseAndBackground",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2980,
+            "providerMs": 2975,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.classifyAdmissionReason",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2531,
+            "providerMs": 2526,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ],
+        "regenerate": [
+          {
+            "fn": "notes.suggestBilling",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4157,
+            "providerMs": 4152,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 6080,
+            "providerMs": 6075,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "notes.refreshCourseAndBackground",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4541,
+            "providerMs": 4540,
+            "appMs": 1,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.classifyAdmissionReason",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 1437,
+            "providerMs": 1434,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      },
+      "ref": "S19"
+    },
+    {
+      "name": "the run stayed on one local day",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "day0": "Oct 15"
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-11-S11-cp-preround.png",
+    "evidence/TC-11-S11-cp-generated.png",
+    "evidence/TC-11-S11-cp-regen.png",
+    "evidence/TC-11-S11-cp-resave.png",
+    "evidence/TC-11-S11-cp-reload.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-11-S11-cp-preround.png": 0,
+    "evidence/TC-11-S11-cp-generated.png": 0,
+    "evidence/TC-11-S11-cp-regen.png": 0,
+    "evidence/TC-11-S11-cp-resave.png": 0,
+    "evidence/TC-11-S11-cp-reload.png": 0
+  }
+}

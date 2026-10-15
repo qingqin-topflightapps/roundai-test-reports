@@ -1,0 +1,152 @@
+{
+  "name": "oat06-s10-r3-r4",
+  "at": "2026-10-14T17:41:11.481Z",
+  "checks": [
+    {
+      "id": "R3 (UAT 3.8): every row written from the device in another zone with a wrong date carries context 1's day and lands in the same pilotDailyRounding row",
+      "ok": false,
+      "detail": "context 1 day 2026-10-15 (Asia/Tokyo); context 2 device day 2026-10-18 (Pacific/Kiritimati, clock +3 days); rows: [\"pre_round_summary_opened@2026-10-18\",\"note_marked_complete@2026-10-18\"]"
+    },
+    {
+      "id": "R4 (UAT 3.8): an encounter opened before the device's midnight and completed after it is one timed encounter (minutesFromPreRoundOpened set, counted in encountersTimed on one day)",
+      "ok": false,
+      "detail": "open filed under [\"2026-10-14\"], completion under 2026-10-15; minutesFromPreRoundOpened: absent"
+    }
+  ],
+  "data": {
+    "R3": {
+      "context1": {
+        "day": "2026-10-15",
+        "zone": "Asia/Tokyo"
+      },
+      "asSpecified": {
+        "signedOutByClock": true,
+        "uiSignIn": "reached-app"
+      },
+      "asSpecifiedUsable": true,
+      "deviceDay": "2026-10-18",
+      "deviceNow": "Sun Oct 18 2026 07:41:05 GMT+1400 (Line Islands Time)",
+      "serverWait": 1012,
+      "rows": [
+        {
+          "_creationTime": 1791999635574.337,
+          "careSetting": "hospital",
+          "day": "2026-10-18",
+          "event": "pre_round_summary_opened",
+          "patientId": "kx707ekc03qyw962m6qss2hnvx8g9e24"
+        },
+        {
+          "_creationTime": 1791999665910.238,
+          "careSetting": "hospital",
+          "day": "2026-10-18",
+          "event": "note_marked_complete",
+          "minutesFromPreRoundOpened": 1,
+          "patientId": "kx707ekc03qyw962m6qss2hnvx8g9e24"
+        }
+      ],
+      "dayRows": [
+        {
+          "day": "2026-10-15",
+          "rows": []
+        },
+        {
+          "day": "2026-10-18",
+          "rows": [
+            {
+              "_creationTime": 1791999635574.3372,
+              "careSetting": "hospital",
+              "day": "2026-10-18",
+              "encountersTimed": 1,
+              "handoffsGenerated": 0,
+              "handoffsSent": 0,
+              "minutesPreRoundToComplete": 1,
+              "notesCompleted": 1,
+              "notesGenerated": 0,
+              "preRoundSummariesOpened": 1,
+              "tasksCompleted": 0,
+              "tasksDeleted": 0,
+              "updatedAt": "2026-10-14T17:41:05.910Z"
+            }
+          ]
+        }
+      ],
+      "chartStatus": "post-rounded"
+    },
+    "R4": {
+      "deviceStart": "Wed Oct 14 2026 23:58:00 GMT+0900 (Japan Standard Time)",
+      "open": {
+        "signedOutByClock": false,
+        "uiSignIn": null
+      },
+      "dayAtOpen": "2026-10-14",
+      "dayAtComplete": "2026-10-15",
+      "deviceAtComplete": "Thu Oct 15 2026 00:02:01 GMT+0900 (Japan Standard Time)",
+      "serverWait": 1411,
+      "rows": [
+        {
+          "_creationTime": 1791999668360.005,
+          "careSetting": "hospital",
+          "day": "2026-10-14",
+          "event": "pre_round_summary_opened",
+          "patientId": "kx76tbm2pmvcn0v4gfcbeftk6d8g9mgk"
+        },
+        {
+          "_creationTime": 1791999669259.274,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "note_marked_complete",
+          "patientId": "kx76tbm2pmvcn0v4gfcbeftk6d8g9mgk"
+        }
+      ],
+      "dayRows": [
+        {
+          "day": "2026-10-14",
+          "rows": [
+            {
+              "_creationTime": 1791999668360.0051,
+              "careSetting": "hospital",
+              "day": "2026-10-14",
+              "encountersTimed": 0,
+              "handoffsGenerated": 0,
+              "handoffsSent": 0,
+              "minutesPreRoundToComplete": 0,
+              "notesCompleted": 0,
+              "notesGenerated": 0,
+              "preRoundSummariesOpened": 1,
+              "tasksCompleted": 0,
+              "tasksDeleted": 0,
+              "updatedAt": "2026-10-14T17:41:08.360Z"
+            }
+          ]
+        },
+        {
+          "day": "2026-10-15",
+          "rows": [
+            {
+              "_creationTime": 1791999669259.2742,
+              "careSetting": "hospital",
+              "day": "2026-10-15",
+              "encountersTimed": 0,
+              "handoffsGenerated": 0,
+              "handoffsSent": 0,
+              "minutesPreRoundToComplete": 0,
+              "notesCompleted": 1,
+              "notesGenerated": 0,
+              "preRoundSummariesOpened": 0,
+              "tasksCompleted": 0,
+              "tasksDeleted": 0,
+              "updatedAt": "2026-10-14T17:41:09.259Z"
+            }
+          ]
+        }
+      ],
+      "chartStatus": "post-rounded",
+      "serverNow": "2026-10-14T17:41:11.253Z",
+      "serverDayUtc": "2026-10-14"
+    },
+    "cleanup": {
+      "hospital": 2,
+      "nursingHome": 0
+    }
+  }
+}

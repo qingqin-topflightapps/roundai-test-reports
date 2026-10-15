@@ -1,0 +1,177 @@
+{
+  "name": "oat03-s06",
+  "at": "2026-10-14T16:43:22.250Z",
+  "checks": [
+    {
+      "id": "hosp ask: the patient is on screen (the right chart)",
+      "ok": true,
+      "detail": "QA OAT03-S06 Hosp ikh1"
+    },
+    {
+      "id": "hosp ask: the typed question is still in the box (U13)",
+      "ok": true,
+      "detail": "List the OAT-03 lab results from this morning."
+    },
+    {
+      "id": "hosp ask: an explicit error saying there is no answer / what to do (U1, U2)",
+      "ok": true,
+      "detail": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    {
+      "id": "hosp ask: no lab value presented as an answer (U3)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "hosp ask: not left on 'Searching…'",
+      "ok": true,
+      "detail": "settled"
+    },
+    {
+      "id": "hosp handoff (TODO, TFA-92586 not ready): the sheet names the patient and says the AI handoff couldn’t be generated",
+      "ok": true,
+      "detail": "The AI handoff for QA OAT03-S06 Hosp ikh1 couldn’t be generated. A chart-based summary is shown instead.",
+      "recordOnly": true
+    },
+    {
+      "id": "snf ask: the patient is on screen (the right chart)",
+      "ok": true,
+      "detail": "QA OAT03-S06 Resident ikh1"
+    },
+    {
+      "id": "snf ask: the typed question is still in the box (U13)",
+      "ok": true,
+      "detail": "List the OAT-03 lab results from this morning."
+    },
+    {
+      "id": "snf ask: an explicit error saying there is no answer / what to do (U1, U2)",
+      "ok": true,
+      "detail": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    {
+      "id": "snf ask: no lab value presented as an answer (U3)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "snf ask: not left on 'Searching…'",
+      "ok": true,
+      "detail": "settled"
+    },
+    {
+      "id": "snf handoff (TODO, TFA-92586 not ready): the sheet names the patient and says the AI handoff couldn’t be generated",
+      "ok": true,
+      "detail": "The AI handoff for QA OAT03-S06 Resident ikh1 couldn’t be generated. A chart-based summary is shown instead.",
+      "recordOnly": true
+    },
+    {
+      "id": "snf pre-round: the resident is on screen",
+      "ok": true,
+      "detail": "QA OAT03-S06 Resident ikh1"
+    },
+    {
+      "id": "snf pre-round: the typed text is kept (U13)",
+      "ok": true,
+      "detail": "QA OAT-03 NH pre-round: eating better, no falls overnight."
+    },
+    {
+      "id": "snf pre-round: an error with a retry (U1, U2)",
+      "ok": true,
+      "detail": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry."
+    },
+    {
+      "id": "snf pre-round: Generate is not offered as if the summary had worked (state 3)",
+      "ok": true,
+      "detail": "Today's pre-round did not finish processing, so the panels may be out of date. Tap Save Note to retry before generating."
+    },
+    {
+      "id": "backend: snf:get preRoundNotes equals the typed text",
+      "ok": true,
+      "detail": "QA OAT-03 NH pre-round: eating better, no falls overnight."
+    },
+    {
+      "id": "backend: no ok row for assist.askChart / assist.generateHandoff / parsing.parsePreRoundNotes in the run window",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "backend (TODO part, TFA-92586): no handoff sent",
+      "ok": true,
+      "detail": "0 sent handoff(s)",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: every scripted call failed at the socket; no unscripted AI call",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"fail\",\"atMs\":596,\"conn\":1},{\"udfPath\":\"ai/assist:generateHandoff\",\"answered\":\"fail\",\"atMs\":959,\"conn\":2},{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"fail\",\"atMs\":7341,\"conn\":3},{\"udfPath\":\"ai/assist:generateHandoff\",\"answered\":\"fail\",\"atMs\":7675,\"conn\":4},{\"udfPath\":\"ai/parsing:parsePreRoundNotes\",\"answered\":\"fail\",\"atMs\":14141,\"conn\":5}]"
+    }
+  ],
+  "data": {
+    "hosp-ask-failed": {
+      "message": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.",
+      "box": "List the OAT-03 lab results from this morning.",
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nThe chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    "hosp-handoff-todo": {
+      "screen": "The AI handoff for QA OAT03-S06 Hosp ikh1 couldn’t be generated. A chart-based summary is shown instead.\nThis preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHandoff Summary\n\n1 patient · Thu, Oct 15\n\nSend to…\n⎘ Copy Text\n1\n\nQA OAT03-S06 Hosp ikh1\n\nRoom 5C-03 · 66y · Cellulitis of the left leg\n\nNot Yet Prepped\n\n66yo admitted for Cellulitis of the left leg.\n",
+      "spinners": [],
+      "saysCouldntBeGenerated": true,
+      "saysChartBasedSummary": true
+    },
+    "snf-ask-failed": {
+      "message": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.",
+      "box": "List the OAT-03 lab results from this morning.",
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nThe chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    "snf-handoff-todo": {
+      "screen": "The AI handoff for QA OAT03-S06 Resident ikh1 couldn’t be generated. A chart-based summary is shown instead.\nThis preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHandoff Summary\n\n1 resident · Thu, Oct 15\n\nSend to…\n⎘ Copy Text\n1\n\nQA OAT03-S06 Resident ikh1\n\nUnit Maple Wing · Room 7 · Rehab after hip fracture\n\nPending\n\n81yo — Rehab after hip fracture\n",
+      "spinners": [],
+      "saysCouldntBeGenerated": true,
+      "saysChartBasedSummary": true
+    },
+    "snf-preround-failed": {
+      "message": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.",
+      "box": "QA OAT-03 NH pre-round: eating better, no falls overnight."
+    },
+    "snf-encounter-after-failure": {
+      "generateDisabled": true,
+      "reason": "Today's pre-round did not finish processing, so the panels may be out of date. Tap Save Note to retry before generating."
+    },
+    "backend": {
+      "diagnosticsRowsInWindow": 0,
+      "okRows": []
+    },
+    "socket": [
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "fail",
+        "atMs": 596,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/assist:generateHandoff",
+        "answered": "fail",
+        "atMs": 959,
+        "conn": 2
+      },
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "fail",
+        "atMs": 7341,
+        "conn": 3
+      },
+      {
+        "udfPath": "ai/assist:generateHandoff",
+        "answered": "fail",
+        "atMs": 7675,
+        "conn": 4
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "fail",
+        "atMs": 14141,
+        "conn": 5
+      }
+    ]
+  }
+}

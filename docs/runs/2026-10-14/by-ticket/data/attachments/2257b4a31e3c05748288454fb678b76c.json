@@ -1,0 +1,603 @@
+{
+  "name": "oat06-s11",
+  "at": "2026-10-14T16:44:43.840Z",
+  "checks": [
+    {
+      "id": "checkpoint s11-cp1-hospital-tasks.md (Hospital Post-Round after the task taps)",
+      "ok": true,
+      "detail": "url /rounding/kx74spw85kbb5ehehg1kjk92r58g91fa; missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s11-cp2-encounter-tasks.md (Hospital Encounter tab after completing E and deleting F)",
+      "ok": true,
+      "detail": "url /rounding/kx74spw85kbb5ehehg1kjk92r58g91fa; missing []; present but must not be []"
+    },
+    {
+      "id": "/rounding/tasks offers a delete control (record-only)",
+      "ok": false,
+      "detail": "0 delete / remove control(s) on the screen; buttons: ⎘ Copy Text | FINISHED TASKS\n2",
+      "recordOnly": true
+    },
+    {
+      "id": "checkpoint s11-cp3-rounding-tasks.md (Hospital task list for all patients after completing QA task G)",
+      "ok": true,
+      "detail": "url /rounding/tasks (want /rounding/tasks); missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s11-cp4-snf-tasks.md (Nursing Home Tasks screen after completing QA task D)",
+      "ok": true,
+      "detail": "url /snf/tasks (want /snf/tasks); missing []; present but must not be []"
+    },
+    {
+      "id": "A complete (Hospital Post-Round): exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "B complete (Hospital Post-Round): exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "C delete (Hospital Post-Round): exactly one task_deleted row and none of the other kind",
+      "ok": true,
+      "detail": "completed 0, deleted 1; chart changed: true"
+    },
+    {
+      "id": "E complete (Hospital Encounter tab): exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "F delete (Hospital Encounter tab): exactly one task_deleted row and none of the other kind",
+      "ok": true,
+      "detail": "completed 0, deleted 1; chart changed: true"
+    },
+    {
+      "id": "G complete (/rounding/tasks): exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "D complete (/snf/tasks): exactly one task_completed row and none of the other kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0; chart changed: true"
+    },
+    {
+      "id": "A reopen (Hospital Post-Round): no row of the wrong kind",
+      "ok": true,
+      "detail": "completed 0, deleted 0"
+    },
+    {
+      "id": "Q6 (record-only) A reopen: rows written",
+      "ok": true,
+      "detail": "completed 0, deleted 0 (\"every tap counts\" expects none)",
+      "recordOnly": true
+    },
+    {
+      "id": "A complete again (Hospital Post-Round): no row of the wrong kind",
+      "ok": true,
+      "detail": "completed 1, deleted 0"
+    },
+    {
+      "id": "Q6 (record-only) A complete again: rows written",
+      "ok": true,
+      "detail": "completed 1, deleted 0 (\"every tap counts\" expects one)",
+      "recordOnly": true
+    },
+    {
+      "id": "B delete after complete (Hospital Post-Round): no row of the wrong kind",
+      "ok": true,
+      "detail": "completed 0, deleted 1"
+    },
+    {
+      "id": "Q6 (record-only) B delete after complete: rows written",
+      "ok": true,
+      "detail": "completed 0, deleted 1 (\"every tap counts\" expects one)",
+      "recordOnly": true
+    },
+    {
+      "id": "every task row is against the right chart with its surface's care setting (hospital for Post-Round, Encounter and /rounding/tasks; nursing_home for /snf/tasks)",
+      "ok": true,
+      "detail": "task_completed/hospital/hospital chart, task_completed/hospital/hospital chart, task_completed/hospital/hospital chart, task_deleted/hospital/hospital chart, task_deleted/hospital/hospital chart, task_completed/hospital/hospital chart, task_deleted/hospital/hospital chart, task_completed/hospital/hospital chart, task_completed/nursing_home/resident"
+    },
+    {
+      "id": "the rollup tasksCompleted / tasksDeleted move by the row counts, per care setting",
+      "ok": true,
+      "detail": "hospital rows 5/3 vs rollup +5/+3; nursing_home rows 1/0 vs rollup +1/+0"
+    },
+    {
+      "id": "Q6 (record-only) totals against 'every tap counts': hospital task_completed 5, task_deleted 3; nursing_home task_completed 1",
+      "ok": true,
+      "detail": "hospital 5 completed / 3 deleted; nursing_home 1 completed / 0 deleted",
+      "recordOnly": true
+    },
+    {
+      "id": "U15 no row holds task text or a patient name",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "task deletes asked for no confirmation (TC-24 rule, TFA-94699 in progress: record-only)",
+      "ok": true,
+      "detail": "0 dialog(s)",
+      "recordOnly": true
+    },
+    {
+      "id": "no model call was attempted on this path",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T0": {
+      "serverNow": 1791996256577,
+      "day": "2026-10-15",
+      "hospitalChartId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+      "residentId": "m57724cmxvf0hweef3g0enrwrn8g9127",
+      "usageRows": 0,
+      "daily": []
+    },
+    "tap A complete": {
+      "label": "A complete",
+      "surface": "Hospital Post-Round",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "tap A reopen": {
+      "label": "A reopen",
+      "surface": "Hospital Post-Round",
+      "tap": "reopen",
+      "judged": false,
+      "completed": 0,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": []
+    },
+    "tap A complete again": {
+      "label": "A complete again",
+      "surface": "Hospital Post-Round",
+      "tap": "complete",
+      "judged": false,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "tap B complete": {
+      "label": "B complete",
+      "surface": "Hospital Post-Round",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "tap B delete after complete": {
+      "label": "B delete after complete",
+      "surface": "Hospital Post-Round",
+      "tap": "delete",
+      "judged": false,
+      "completed": 0,
+      "deleted": 1,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_deleted",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "tap C delete": {
+      "label": "C delete",
+      "surface": "Hospital Post-Round",
+      "tap": "delete",
+      "judged": true,
+      "completed": 0,
+      "deleted": 1,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_deleted",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "checkpoint s11-cp1-hospital-tasks.md": {
+      "when": "Hospital Post-Round after the task taps",
+      "url": "http://localhost:6473/rounding/kx74spw85kbb5ehehg1kjk92r58g91fa",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp1-hospital-tasks.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp OAT06 Tasks\n\nRoom 4B-63 · 81y · QA061163\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCHF exacerbation\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n3 PENDING TASKS\nAdd Task\n\nQA task A: repeat CBC\n\nplan\n\nQA task E: recheck K\n\nplan\n\nQA task F: call family\n\nplan\n\nQA task G: order echo\n\nplan\n\nFinalizing Encounter Data…"
+    },
+    "tap E complete": {
+      "label": "E complete",
+      "surface": "Hospital Encounter tab",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "tap F delete": {
+      "label": "F delete",
+      "surface": "Hospital Encounter tab",
+      "tap": "delete",
+      "judged": true,
+      "completed": 0,
+      "deleted": 1,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_deleted",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "checkpoint s11-cp2-encounter-tasks.md": {
+      "when": "Hospital Encounter tab after completing E and deleting F",
+      "url": "http://localhost:6473/rounding/kx74spw85kbb5ehehg1kjk92r58g91fa",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp2-encounter-tasks.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp OAT06 Tasks\n\nRoom 4B-63 · 81y · QA061163\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCHF exacerbation\n\nPre-Round\nEncounter\nPost-Round\n\nTap the mic to capture the encounter\n\nTap to toggle\nHold to talk\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nTASKS\n1 pending\nDictate\nAdd\nQA task G: order echo\nNOTE FORMAT\nH&P\nSOAP progress\nConsult note\nDischarge summary\n\nStandard Subjective · Objective · Assessment · Plan\n\nGenerate Note & Finish"
+    },
+    "tap G complete": {
+      "label": "G complete",
+      "surface": "/rounding/tasks",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "hospital",
+          "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa"
+        }
+      ]
+    },
+    "checkpoint s11-cp3-rounding-tasks.md": {
+      "when": "Hospital task list for all patients after completing QA task G",
+      "url": "http://localhost:6473/rounding/tasks",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp3-rounding-tasks.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nPending Tasks\n\n0 tasks across 0 patients · Thu, Oct 15\n\n⎘ Copy Text\n\nAll tasks complete!\n\nNothing pending across any patient.\n\nFINISHED TASKS\n3"
+    },
+    "tap D complete": {
+      "label": "D complete",
+      "surface": "/snf/tasks",
+      "tap": "complete",
+      "judged": true,
+      "completed": 1,
+      "deleted": 0,
+      "storedOk": true,
+      "rows": [
+        {
+          "event": "task_completed",
+          "careSetting": "nursing_home",
+          "patientId": "m57724cmxvf0hweef3g0enrwrn8g9127"
+        }
+      ]
+    },
+    "checkpoint s11-cp4-snf-tasks.md": {
+      "when": "Nursing Home Tasks screen after completing QA task D",
+      "url": "http://localhost:6473/snf/tasks",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp4-snf-tasks.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nPending Tasks\n\n0 tasks across 0 residents · Thu, Oct 15\n\n⎘ Copy Text\n\nAll tasks complete!\n\nNothing pending across any resident.\n\nFINISHED TASKS\n1"
+    },
+    "task rows since T0": [
+      {
+        "_creationTime": 1791996258363.009,
+        "_id": "kh7dybfwa13d4302kkwre5cqks8g88w7",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996263826.735,
+        "_id": "kh71k01aqxmxbknt9y3xdyk4gn8g85nj",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996265784.107,
+        "_id": "kh7bfh97g4s2ssdqeda18cz7wn8g8dxs",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996267436.486,
+        "_id": "kh7c3s3yfzt2mh8wa16ctce7qh8g8z92",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996269363.543,
+        "_id": "kh77b7hj36rtmfbhftyjdmb7z98g8efj",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996271505.689,
+        "_id": "kh7e5sknw9za2mqwd09vwfntqn8g9edq",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996273098.2,
+        "_id": "kh749twb8dn7cv1w3v181tcdjx8g8cfm",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996275742.263,
+        "_id": "kh71gykk4cg5aa5rmxwkbh7vb58g8aa2",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996278655.043,
+        "_id": "kh722dt9kwr3hmttr88b6fqahs8g8kvg",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "m57724cmxvf0hweef3g0enrwrn8g9127",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      }
+    ],
+    "all usage rows since T0": [
+      {
+        "_creationTime": 1791996257170.886,
+        "_id": "kh73y29j0wj18ww0zxt2f8sbzn8g8m64",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "pre_round_summary_opened",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996258363.009,
+        "_id": "kh7dybfwa13d4302kkwre5cqks8g88w7",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996263826.735,
+        "_id": "kh71k01aqxmxbknt9y3xdyk4gn8g85nj",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996265784.107,
+        "_id": "kh7bfh97g4s2ssdqeda18cz7wn8g8dxs",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996267436.486,
+        "_id": "kh7c3s3yfzt2mh8wa16ctce7qh8g8z92",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996269363.543,
+        "_id": "kh77b7hj36rtmfbhftyjdmb7z98g8efj",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996271505.689,
+        "_id": "kh7e5sknw9za2mqwd09vwfntqn8g9edq",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996273098.2,
+        "_id": "kh749twb8dn7cv1w3v181tcdjx8g8cfm",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_deleted",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996275742.263,
+        "_id": "kh71gykk4cg5aa5rmxwkbh7vb58g8aa2",
+        "careSetting": "hospital",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "kx74spw85kbb5ehehg1kjk92r58g91fa",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      },
+      {
+        "_creationTime": 1791996278655.043,
+        "_id": "kh722dt9kwr3hmttr88b6fqahs8g8kvg",
+        "careSetting": "nursing_home",
+        "day": "2026-10-15",
+        "event": "task_completed",
+        "patientId": "m57724cmxvf0hweef3g0enrwrn8g9127",
+        "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+      }
+    ],
+    "daily deltas": {
+      "hospital": {
+        "delta": {
+          "preRoundSummariesOpened": 1,
+          "notesCompleted": 0,
+          "encountersTimed": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesGenerated": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "tasksCompleted": 5,
+          "tasksDeleted": 3
+        },
+        "after": {
+          "_creationTime": 1791996257170.8862,
+          "_id": "kd760j7h9d983dmxtggrym3gs98g8nm2",
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 0,
+          "preRoundSummariesOpened": 1,
+          "tasksCompleted": 5,
+          "tasksDeleted": 3,
+          "updatedAt": "2026-10-14T16:44:35.742Z",
+          "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+        },
+        "before": null
+      },
+      "nursing_home": {
+        "delta": {
+          "preRoundSummariesOpened": 0,
+          "notesCompleted": 0,
+          "encountersTimed": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesGenerated": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "tasksCompleted": 1,
+          "tasksDeleted": 0
+        },
+        "after": {
+          "_creationTime": 1791996278655.0432,
+          "_id": "kd74s27tb06rmdf8t66y0gkex18g9vnq",
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 0,
+          "preRoundSummariesOpened": 0,
+          "tasksCompleted": 1,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T16:44:38.655Z",
+          "userId": "jd77gzqd7130g9tf06mde2vmen8g92eq"
+        },
+        "before": null
+      }
+    },
+    "dialogs": [],
+    "stored at the end": {
+      "hospital": {
+        "tasks": [
+          {
+            "id": "qa-s11-h-1",
+            "text": "QA task A: repeat CBC",
+            "done": true
+          },
+          {
+            "id": "qa-s11-h-4",
+            "text": "QA task E: recheck K",
+            "done": true
+          },
+          {
+            "id": "qa-s11-h-6",
+            "text": "QA task G: order echo",
+            "done": true
+          }
+        ]
+      },
+      "nursingHome": {
+        "tasks": [
+          {
+            "id": "qa-s11-r-1",
+            "text": "QA task D: weigh weekly",
+            "done": true
+          }
+        ]
+      }
+    },
+    "ai calls attempted (all refused at the socket)": [],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 1
+    }
+  }
+}

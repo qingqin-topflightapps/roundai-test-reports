@@ -1,0 +1,201 @@
+{
+  "ref": "OAT-05/S05",
+  "title": "OAT-05/S05 the browser never calls an AI vendor or sends a provider key, including during Ask AI and a photo scan (both contexts)",
+  "dataset": "oat05-net",
+  "target": "dev",
+  "at": "2026-10-14T17:15:25.143Z",
+  "cells": [
+    {
+      "name": "step reached: Hospital chart: Pre-Round, Encounter (typed line), Post-Round",
+      "kind": "record",
+      "ok": null,
+      "detail": "done"
+    },
+    {
+      "name": "step reached: Hospital Ask AI (first preset)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "answered": true,
+        "text": "answer shown"
+      }
+    },
+    {
+      "name": "step reached: Hospital census scan (closed, nothing added)",
+      "kind": "record",
+      "ok": null,
+      "detail": "error: No patients found in the image. Try a clearer photo."
+    },
+    {
+      "name": "Hospital Handoff: not run",
+      "kind": "record",
+      "ok": null,
+      "detail": "Quinn 2026-10-15: the handoff generates on open for every patient on the shared dev account; left out of this run",
+      "ref": "OAT-05/S05 handoff part"
+    },
+    {
+      "name": "step reached: Nursing Home chart: Pre-Round, Encounter, Post-Round",
+      "kind": "record",
+      "ok": null,
+      "detail": "done"
+    },
+    {
+      "name": "step reached: Nursing Home Ask AI (first preset)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "answered": true,
+        "text": "answer shown"
+      }
+    },
+    {
+      "name": "step reached: Nursing Home census scan (closed, nothing added)",
+      "kind": "record",
+      "ok": null,
+      "detail": "error: No residents found. Try a clearer photo."
+    },
+    {
+      "name": "hosts the browser contacted (request counts)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "<dev address>": 24
+      }
+    },
+    {
+      "name": "capture counts",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "requests": 24,
+        "responsesScanned": 24,
+        "framesSent": 67,
+        "framesReceived": 82,
+        "websockets": 4
+      }
+    },
+    {
+      "name": "AI actions the page sent over the Convex WebSocket (T3 is gated on TFA-92568: server-side routing seen here, the guardrail is not observable from the browser)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "actions": [
+          "Hospital Ask AI (first preset): ai/assist:askChart",
+          "Hospital census scan (closed, nothing added): ai/vision:scanCensusSheet",
+          "Nursing Home Ask AI (first preset): ai/assist:askChart",
+          "Nursing Home census scan (closed, nothing added): ai/vision:scanCensusSheet"
+        ],
+        "diagnostics": [
+          {
+            "fn": "assist.askChart",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4513,
+            "providerMs": 4493,
+            "appMs": 20,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "vision.scanCensusSheet",
+            "model": "gemini-3.6-flash",
+            "ok": true,
+            "durationMs": 1913,
+            "providerMs": 1910,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "assist.askChart",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3972,
+            "providerMs": 3969,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "vision.scanCensusSheet",
+            "model": "gemini-3.6-flash",
+            "ok": true,
+            "durationMs": 2209,
+            "providerMs": 2208,
+            "appMs": 1,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      },
+      "ref": "TFA-92568 (T3)"
+    },
+    {
+      "name": "both Ask AI calls produced an answer or a visible error (the AI step really ran)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "hospital": {
+          "answered": true,
+          "text": "answer shown"
+        },
+        "nursingHome": {
+          "answered": true,
+          "text": "answer shown"
+        }
+      }
+    },
+    {
+      "name": "capture really ran: requests and WebSocket frames were seen",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "requests": 24,
+        "responsesScanned": 24,
+        "framesSent": 67,
+        "framesReceived": 82,
+        "websockets": 4
+      }
+    },
+    {
+      "name": "no request to an AI vendor or SES host (bedrock-runtime, bedrock., aiplatform.googleapis.com, generativelanguage.googleapis.com, api.openai.com, api.deepgram.com, email.us-east-1.amazonaws.com) (U1a)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "nothing the browser sent (URL, headers, body, WebSocket frames) carries a forbidden pattern (U1a)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "nothing the server sent back (response bodies, WebSocket frames) carries a key-shaped value (U1a)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "header names (not keys) in what the server sent back: for a person to look at",
+      "kind": "record",
+      "ok": null,
+      "detail": []
+    }
+  ],
+  "shots": [
+    "evidence/OAT-05-S05-h-ask.png",
+    "evidence/OAT-05-S05-n-ask.png"
+  ],
+  "maskedElements": {
+    "evidence/OAT-05-S05-h-ask.png": 0,
+    "evidence/OAT-05-S05-n-ask.png": 0
+  }
+}

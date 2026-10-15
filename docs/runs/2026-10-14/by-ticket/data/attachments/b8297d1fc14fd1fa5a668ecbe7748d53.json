@@ -1,0 +1,120 @@
+{
+  "name": "oat03-s16-n",
+  "at": "2026-10-14T17:33:21.204Z",
+  "checks": [
+    {
+      "id": "n cp1: the right chart",
+      "ok": true,
+      "detail": "QA OAT03-S16 Resident od2o"
+    },
+    {
+      "id": "n cp1: no 'Generating Note…' 45 s after the tap (no endless spinner)",
+      "ok": true,
+      "detail": "no spinner"
+    },
+    {
+      "id": "n cp1: the note arrived after reconnect, or an explicit failure",
+      "ok": true,
+      "detail": "couldn’t be generated"
+    },
+    {
+      "id": "n cp2: the dictation is kept on screen (U3)",
+      "ok": true,
+      "detail": "QA OAT-03 NH in-flight drop: skin tear on left forearm healing, continue dressing changes."
+    },
+    {
+      "id": "n cp2: the stored dictation is the typed text (U3)",
+      "ok": true,
+      "detail": "QA OAT-03 NH in-flight drop: skin tear on left forearm healing, continue dressing changes."
+    },
+    {
+      "id": "n cp2: after the failure Generate is offered again",
+      "ok": true,
+      "detail": "Generate Note & Finish enabled=true"
+    },
+    {
+      "id": "n backend: the note is empty or holds the dictated content (no half note)",
+      "ok": true,
+      "detail": "(empty)"
+    },
+    {
+      "id": "n backend: the chart is finished only if a note is stored",
+      "ok": true,
+      "detail": "status undefined, note empty"
+    },
+    {
+      "id": "setup: generateNote reached the socket once before the cut and its answer was dropped with the socket",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/notes:generateNote\",\"answered\":\"held\",\"atMs\":1668,\"conn\":1}]"
+    },
+    {
+      "id": "setup: no unscripted AI call",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "timeline": {
+      "offlineAtMs": 1006,
+      "onlineAtMs": 21004,
+      "cp1AtMs": 45049,
+      "busyAtCut": "Generating Note…",
+      "duringOutage": {
+        "busyLabel": "Generating Note…",
+        "banner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+        "spinners": [
+          "Generating Note…"
+        ]
+      }
+    },
+    "n-after-45s": {
+      "screen": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA OAT03-S16 Resident od2o\n\nMRN-S405NI · Oak Wing · Room 3\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nNOTE FORMAT\nSNF admission\nSNF follow-up\n\nSkilled nursing facility progress note — 99307–99310\n\nThe visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.\n\nGenerate Note & Finish\n[field] QA OAT-03 NH in-flight drop: skin tear on left forearm healing, continue dressing changes.",
+      "spinners": []
+    },
+    "n-encounter": {
+      "box": "QA OAT-03 NH in-flight drop: skin tear on left forearm healing, continue dressing changes.",
+      "failure": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "generateButton": "Generate Note & Finish",
+      "enabled": true
+    },
+    "n-after": {
+      "note": "",
+      "status": null,
+      "noteGeneratedAt": null
+    },
+    "socket": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "held",
+        "atMs": 1668,
+        "conn": 1
+      }
+    ],
+    "socketEvents": [
+      "298 conn 1 open",
+      "2644 conn 1 cut",
+      "3869 conn 2 refused (offline)",
+      "5209 conn 3 refused (offline)",
+      "8740 conn 4 refused (offline)",
+      "18919 conn 5 refused (offline)",
+      "22641 restore",
+      "22644 conn 6 open"
+    ],
+    "pageLog": [
+      "2645 log WebSocket closed with code 1006: QA offline",
+      "2645 log Attempting reconnect in 1221ms",
+      "3869 log WebSocket closed with code 1006: QA offline",
+      "3869 log Attempting reconnect in 1337ms",
+      "5209 log WebSocket closed with code 1006: QA offline",
+      "5209 log Attempting reconnect in 3528ms",
+      "8740 log WebSocket closed with code 1006: QA offline",
+      "8740 log Attempting reconnect in 10176ms",
+      "18919 log WebSocket closed with code 1006: QA offline",
+      "18919 log Attempting reconnect in 18130ms",
+      "22643 log Network recovery detected, reconnecting immediately",
+      "22648 log WebSocket reconnected at t=22.6s after disconnect due to QA offline",
+      "22648 log Network recovery reconnect saved ~14s of waiting",
+      "22649 warning [snf] note generation failed"
+    ]
+  }
+}

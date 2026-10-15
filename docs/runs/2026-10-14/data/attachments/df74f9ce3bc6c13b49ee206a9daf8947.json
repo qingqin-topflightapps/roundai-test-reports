@@ -1,0 +1,209 @@
+{
+  "name": "tc06-s17-rescan-keeps-status",
+  "at": "2026-10-14T16:46:51.272Z",
+  "checks": [
+    {
+      "id": "Hospital re-scan: the existing patient is put to the physician as a possible duplicate",
+      "ok": true,
+      "detail": "asked"
+    },
+    {
+      "id": "Hospital list: the existing patient still shows Consult",
+      "ok": true,
+      "detail": "QT QA TC06 Rescan Hosp 6KET NEW TODAY Room 612 · 70y · 612612 Pneumonia Not Yet Prepped Consult"
+    },
+    {
+      "id": "Hospital list: QA Scan Rivera ('NEW ADMIT') shows Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Rivera 6KET NEW TODAY Room 613 · 64y · 613613 Sepsis Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "Hospital server: the existing patient is one row, still consult (same day stamp)",
+      "ok": true,
+      "detail": "[[\"consult\",\"2026-10-15\"]]"
+    },
+    {
+      "id": "Hospital server: QA Scan Rivera is follow-up",
+      "ok": true,
+      "detail": "[\"follow-up\"]"
+    },
+    {
+      "id": "Hospital chart: QA Scan Rivera Admission status = Follow-up",
+      "ok": true,
+      "detail": "follow-up / Follow-up"
+    },
+    {
+      "id": "Hospital chart: the existing patient Admission status = Consult",
+      "ok": true,
+      "detail": "consult / Consult"
+    },
+    {
+      "id": "Nursing Home sheet: the existing resident is recognised (✓ In panel, 1 already in All Residents)",
+      "ok": true,
+      "detail": "1 already in All Residents · 1 new · 0 to review",
+      "recordOnly": true
+    },
+    {
+      "id": "Nursing Home All Residents: the existing resident still shows New Admission",
+      "ok": true,
+      "detail": "QT QA TC06 Rescan Resident 6KET Cedar 61 · DOB 1939-05-06 · SNF-616161 In Today ✓ Pending New Admission"
+    },
+    {
+      "id": "Nursing Home All Residents: QA Scan Okafor ('New admit') shows Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Okafor 6KET Cedar 62 · DOB 1944-09-10 · SNF-626262 In Today ✓ Pending Follow-up"
+    },
+    {
+      "id": "Nursing Home server: the existing resident is one row, still new (same day stamp)",
+      "ok": true,
+      "detail": "[[\"new\",\"2026-10-15\"]]"
+    },
+    {
+      "id": "Nursing Home server: QA Scan Okafor is follow-up",
+      "ok": true,
+      "detail": "[\"follow-up\"]"
+    },
+    {
+      "id": "Nursing Home chart: the existing resident Admission status = New Admission",
+      "ok": true,
+      "detail": "new / New Admission"
+    },
+    {
+      "id": "Nursing Home chart: QA Scan Okafor Admission status = Follow-up",
+      "ok": true,
+      "detail": "follow-up / Follow-up"
+    }
+  ],
+  "data": {
+    "mockedRows": {
+      "hospital": [
+        {
+          "name": "QA TC06 Rescan Hosp 6KET",
+          "room": "612",
+          "age": 70,
+          "diagnosis": "Pneumonia",
+          "mrn": "612612",
+          "status": "Follow-up",
+          "encType": "follow-up"
+        },
+        {
+          "room": "613",
+          "name": "QA Scan Rivera 6KET",
+          "age": 64,
+          "diagnosis": "Sepsis",
+          "mrn": "613613",
+          "status": "NEW ADMIT",
+          "encType": "new"
+        }
+      ],
+      "nursingHome": [
+        {
+          "name": "QA TC06 Rescan Resident 6KET",
+          "dob": "1939-05-06",
+          "unit": "Cedar 61",
+          "mrn": "SNF-616161",
+          "status": "Follow-up",
+          "encType": "follow-up"
+        },
+        {
+          "name": "QA Scan Okafor 6KET",
+          "dob": "1944-09-10",
+          "unit": "Cedar 62",
+          "mrn": "SNF-626262",
+          "status": "New admit",
+          "encType": "new"
+        }
+      ]
+    },
+    "hospitalBefore": {
+      "encType": "consult",
+      "encTypeDay": "2026-10-15"
+    },
+    "hospitalDuplicateQuestion": {
+      "asked": true,
+      "prompt": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nPossible duplicate\n\nA patient with this name is already on your list. You decide — the app won't drop anyone on its own.\n\nQA TC06 Rescan Hosp 6KET · 70y\nSame name and MRN\nAlready on your list: QA TC06 Rescan Hosp 6KET · Room 612\nSame patient (don't add)\nDifferent — add anyway\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/2\nHandoff\n\n2 patients remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQT\nQA TC06 Rescan Hosp 6KET\nNEW TODAY\n\nRoom 612 · 70y · 612612\n\nPneumonia\n\nNot Yet Prepped\nConsult\nQS\nQA Scan Rivera 6KET\nNEW TODAY\n\nRoom 613 · 64y · 613613\n\nSepsis\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings"
+    },
+    "hospitalCards": {
+      "existing": "QT QA TC06 Rescan Hosp 6KET NEW TODAY Room 612 · 70y · 612612 Pneumonia Not Yet Prepped Consult",
+      "rivera": "QS QA Scan Rivera 6KET NEW TODAY Room 613 · 64y · 613613 Sepsis Not Yet Prepped Follow-up"
+    },
+    "hospitalServer": {
+      "existing": [
+        {
+          "encType": "consult",
+          "encTypeDay": "2026-10-15"
+        }
+      ],
+      "rivera": {
+        "encType": "follow-up"
+      },
+      "total": 2
+    },
+    "hospitalCharts": {
+      "rivera": {
+        "value": "follow-up",
+        "label": "Follow-up"
+      },
+      "existing": {
+        "value": "consult",
+        "label": "Consult"
+      }
+    },
+    "nhBefore": {
+      "encType": "new",
+      "encTypeDay": "2026-10-15"
+    },
+    "nhSheet": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nScan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n2 residents found — tap to include\n\n1 already in All Residents · 1 new · 0 to review\n\nQA TC06 Rescan Resident 6KET\n✓ In panel\n\nCedar 61 · SNF-616161\n\nQA Scan Okafor 6KET\n＋ New\n\nCedar 62 · SNF-626262\n\nAdd 2 to Today's Visits\nNursing Home\n\n0/1 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQT\n\nQA TC06 Rescan Resident 6KET\n\nCedar 61 · DOB 1939-05-06 · SNF-616161\n\nPending\nNew Admission\nTask Export\nResidents\nHandoff\nDashboard\nSettings",
+    "nhReviewAsked": false,
+    "nhCards": {
+      "existing": "QT QA TC06 Rescan Resident 6KET Cedar 61 · DOB 1939-05-06 · SNF-616161 In Today ✓ Pending New Admission",
+      "okafor": "QS QA Scan Okafor 6KET Cedar 62 · DOB 1944-09-10 · SNF-626262 In Today ✓ Pending Follow-up"
+    },
+    "nhServer": {
+      "existing": [
+        {
+          "encType": "new",
+          "encTypeDay": "2026-10-15",
+          "inTodaysSession": true
+        }
+      ],
+      "okafor": {
+        "encType": "follow-up",
+        "inTodaysSession": true
+      }
+    },
+    "nhCharts": {
+      "existing": {
+        "value": "new",
+        "label": "New Admission"
+      },
+      "okafor": {
+        "value": "follow-up",
+        "label": "Follow-up"
+      }
+    },
+    "scanCalls": [
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996400375,
+        "answered": "ok",
+        "args": {
+          "imageBase64": "<110444 chars>",
+          "mode": "rounding"
+        }
+      },
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996404558,
+        "answered": "ok",
+        "args": {
+          "imageBase64": "<89952 chars>",
+          "mode": "snf"
+        }
+      }
+    ],
+    "aiCallsRefused": []
+  }
+}

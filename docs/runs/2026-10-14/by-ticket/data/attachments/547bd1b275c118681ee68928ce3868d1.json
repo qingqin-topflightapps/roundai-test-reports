@@ -1,0 +1,15 @@
+{
+  "TC-19/S11": {
+    "status": "failed",
+    "ranAt": "2026-10-14T18:00:10.609Z",
+    "title": "Encounter/visit path edges: 0/1/15 rows, two changes, each Nursing Home step class, rows dated on earlier days",
+    "method": "PW",
+    "detail": "Dev, build e02167f, dataset meds-s11 (22 charts prefixed QA DS1-meds-s11, deleted after: 22 deleted, 0 left, no other row changed). The 15 lane-B fixtures of cases/TC-19.matrix.json S11, each on its own chart per path (Hospital encounter = Save & Extract; Nursing Home encounter = the visit extraction of Generate Note & Finish, Q8; 'both' = also a Pre-Round Save Note chart); rows read back and judged per fixture. Judged 13 fixtures: 10 passed (B-1-hold, B-2, N-stop, N-given, N-start, D-1, D-2, R-1, R-2, R-4), 3 failed. B-1-dose: the pre-round path renamed the row 'Furosemide 20 milligrams IV twice daily' with 40 kept in the reason (pass), but the Hospital encounter path left the name 'Furosemide 40 mg IV BID' (only the tag 'Changed · Oct 15' and a reason) - the missing rename on the event merge the matrix expected (known B06). N-dose (Nursing Home visit): 'Amlodipine up to 10 daily' left the row named 'Amlodipine 5 mg daily' (B06 again) and tagged it 'Started · Oct 15' instead of Changed. R-3 (pre-round path): a stopped row 'Vancomycin 1.25 g IV q12h' (Stopped · Oct 11, AKI) mentioned only in passing ('Vancomycin level was high before we stopped it') became status held, tag 'Held · Oct 15', reason 'level was high before discontinuation'; the encounter path and the Nursing Home twin R-4 left it unchanged. Recorded, not judged: B-0 and B-15 (our additions) both held; D-1's date is the save date Oct 15, not the dictated yesterday (Q2); R-2 kept 'poor intake' (Q13).",
+    "productIssue": "A medication the physician had already stopped (Vancomycin, Stopped · Oct 11) turns into 'Held · today' when the pre-round note only mentions it in passing ('level was high before we stopped it'). Separately, a dose change dictated at the visit ('Furosemide down to 20', 'Amlodipine up to 10') leaves the old dose in the row name (known B06), and on the Nursing Home visit the amlodipine increase is tagged 'Started' instead of 'Changed'.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/meds-s11/evidence/TC-19-S11.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/meds-s11/evidence/TC-19-S11-last-chart.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/meds-s11/cleanup.json"
+    ]
+  }
+}

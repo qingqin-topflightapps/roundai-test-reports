@@ -1,0 +1,93 @@
+{
+  "state": "hospital-chart-encounter",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc06-s21-s22-pixel7-hospital-chart-encounter.png",
+  "findings": [
+    {
+      "check": "tap",
+      "detail": "button \"Back to patient list\" is 30×30 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Back to patient list\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Pre-Round\" is 105×42 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Pre-Round\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Encounter\" is 105×42 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Encounter\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Post-Round\" is 105×42 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Post-Round\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Tap to toggle\" is 82×19 (< 24 px, passes the WCAG 2.5.8 spacing exception)",
+      "severity": "low",
+      "target": "button \"Tap to toggle\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Hold to talk\" is 74×19 (< 24 px, passes the WCAG 2.5.8 spacing exception)",
+      "severity": "low",
+      "target": "button \"Hold to talk\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Full screen\" is 100×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Full screen\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Dictate\" is 102×40 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Dictate\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Save & Extract\" is 208×40 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Save & Extract\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Dictate\" is 82×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Dictate\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Add\" is 62×24 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Add\""
+    },
+    {
+      "check": "tap",
+      "detail": "select \"Note Format\" is 352×41 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "select \"Note Format\""
+    }
+  ],
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 1,
+      "targets": [
+        ".disabled\\:cursor-not-allowed.px-2.text-\\[10px\\]:nth-child(2)"
+      ],
+      "nodes": [
+        "\"Hold to talk\" 4.34:1 (#62748e on #f1f5f9, 7.5pt (10px); needs 4.5:1)"
+      ]
+    }
+  ],
+  "url": "/rounding/kx79erp0n65s996yyzzgzvgppn8g80w3"
+}

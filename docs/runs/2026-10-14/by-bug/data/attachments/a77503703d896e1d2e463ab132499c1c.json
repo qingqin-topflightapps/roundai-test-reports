@@ -1,0 +1,220 @@
+{
+  "name": "efs-s11-photo-empty-unreadable",
+  "at": "2026-10-14T16:45:38.328Z",
+  "checks": [
+    {
+      "id": "cp1-hosp-menu: says no patients were found",
+      "ok": true,
+      "detail": "No patients found in the image. Try a clearer photo."
+    },
+    {
+      "id": "cp1-hosp-menu: says what to do (clearer photo / retake / try again)",
+      "ok": true,
+      "detail": "No patients found in the image. Try a clearer photo."
+    },
+    {
+      "id": "cp1-hosp-menu: no menu item offered as a row",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1-hosp-menu: no row offered for import",
+      "ok": true,
+      "detail": "no Add button"
+    },
+    {
+      "id": "cp2-hosp-corrupt: says the photo couldn't be read",
+      "ok": true,
+      "detail": "The photo couldn’t be read. Check your connection and try again, or retake the photo.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2-hosp-corrupt: says what to do (clearer photo / retake / try again)",
+      "ok": true,
+      "detail": "The photo couldn’t be read. Check your connection and try again, or retake the photo.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2-hosp-corrupt: no 'undefined', no raw provider error on screen",
+      "ok": true,
+      "detail": "checked the page text",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2-hosp-corrupt: no row offered for import",
+      "ok": true,
+      "detail": "no Add button",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3-hosp-list: the list still holds the fixture patient",
+      "ok": true,
+      "detail": "QA EFS11 Hosp 2AB1"
+    },
+    {
+      "id": "cp3-hosp-list: no menu item on the list",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4-nh-menu: says no residents were found",
+      "ok": true,
+      "detail": "No residents found. Try a clearer photo."
+    },
+    {
+      "id": "cp4-nh-menu: says what to do (clearer photo / retake / try again)",
+      "ok": true,
+      "detail": "No residents found. Try a clearer photo."
+    },
+    {
+      "id": "cp4-nh-menu: no menu item offered as a row",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4-nh-menu: no row offered for import",
+      "ok": true,
+      "detail": "no Add button"
+    },
+    {
+      "id": "cp5-nh-corrupt: says the photo couldn't be read",
+      "ok": true,
+      "detail": "The photo couldn’t be read. Check your connection and try again, or retake the photo.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp5-nh-corrupt: says what to do (clearer photo / retake / try again)",
+      "ok": true,
+      "detail": "The photo couldn’t be read. Check your connection and try again, or retake the photo.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp5-nh-corrupt: no 'undefined', no raw provider error on screen",
+      "ok": true,
+      "detail": "checked the page text",
+      "recordOnly": true
+    },
+    {
+      "id": "cp5-nh-corrupt: no row offered for import",
+      "ok": true,
+      "detail": "no Add button",
+      "recordOnly": true
+    },
+    {
+      "id": "cp6-nh-list: the list still holds the fixture resident",
+      "ok": true,
+      "detail": "QA EFS11 Resident 2AB1"
+    },
+    {
+      "id": "cp6-nh-list: no menu item on the list",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "backend: exactly 1 Hospital patient (the fixture)",
+      "ok": true,
+      "detail": "[\"QA EFS11 Hosp 2AB1\"]"
+    },
+    {
+      "id": "backend: exactly 1 resident (the fixture)",
+      "ok": true,
+      "detail": "[\"QA EFS11 Resident 2AB1\"]"
+    },
+    {
+      "id": "the corrupt file is sent to the server unchecked (no client-side image check)",
+      "ok": true,
+      "detail": "4 scan calls answered in the browser: rounding <38884 chars> → ok; rounding <2732 chars> → fail; snf <38884 chars> → ok; snf <2732 chars> → fail",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "media": {
+      "menu": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-media/efs-menu.jpg",
+      "corrupt": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-media/efs-corrupt.jpg",
+      "corruptBytes": 2048
+    },
+    "hospital.menu.liveRegion": null,
+    "checkpoint.cp1-hosp-menu": {
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nScan Patient List\nPhoto your census sheet — AI reads all patients\n✕\nRetake photo\nNo patients found in the image. Try a clearer photo.\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/1\nHandoff\n\n1 patient remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQE\nQA EFS11 Hosp 2AB1\nNEW TODAY\n\nRoom 8B-11 · 70y\n\nPneumonia\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings",
+      "screenshot": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp1-hosp-menu.png",
+      "aria": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Hospital\"\n- button \"Nursing Home\"\n- text: Scan Patient List Photo your census sheet — AI reads all patients\n- button \"Close\": ✕\n- img \"Scanned census sheet\"\n- button \"Retake photo\"\n- text: No patients found in the image. Try a clearer photo.\n- paragraph: Thursday, October 15, 2026\n- heading \"Morning Rounds\" [level=1]\n- text: 0/1\n- button \"Handoff\"\n- button \"Inbox\"\n- button \"Open quick dictation\"\n- button \"Scan patient list from photo\"\n- button \"Add patient\"\n- paragraph: 1 patient remaining\n- textbox \"Search patients\":\n  - /placeholder: Search by name, room, MRN, or diagnosis…\n- text: My Patients\n- combobox \"Sort patients\":\n  - 'option \"Sort: Room number\" [selected]'\n  - 'option \"Sort: Name A–Z\"'\n  - 'option \"Sort: Status (to-do first)\"'\n- button \"Dashboard\"\n- button \"Open chart for QA EFS11 Hosp 2AB1\":\n  - text: QE QA EFS11 Hosp 2AB1 New today\n  - paragraph: Room 8B-11 · 70y\n  - button \"Remove QA EFS11 Hosp 2AB1 from the rounding list\"\n  - paragraph: Pneumonia\n  - text: Not Yet Prepped Follow-up\n- button \"Add New Patient\"\n- button \"Task Export\"\n- button \"Patients\"\n- button \"Dashboard\"\n- button \"Settings\""
+    },
+    "checkpoint.cp2-hosp-corrupt": {
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nScan Patient List\nPhoto your census sheet — AI reads all patients\n✕\nRetake photo\nThe photo couldn’t be read. Check your connection and try again, or retake the photo.\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/1\nHandoff\n\n1 patient remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQE\nQA EFS11 Hosp 2AB1\nNEW TODAY\n\nRoom 8B-11 · 70y\n\nPneumonia\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings",
+      "screenshot": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp2-hosp-corrupt.png",
+      "aria": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Hospital\"\n- button \"Nursing Home\"\n- text: Scan Patient List Photo your census sheet — AI reads all patients\n- button \"Close\": ✕\n- img \"Scanned census sheet\"\n- button \"Retake photo\"\n- text: The photo couldn’t be read. Check your connection and try again, or retake the photo.\n- paragraph: Thursday, October 15, 2026\n- heading \"Morning Rounds\" [level=1]\n- text: 0/1\n- button \"Handoff\"\n- button \"Inbox\"\n- button \"Open quick dictation\"\n- button \"Scan patient list from photo\"\n- button \"Add patient\"\n- paragraph: 1 patient remaining\n- textbox \"Search patients\":\n  - /placeholder: Search by name, room, MRN, or diagnosis…\n- text: My Patients\n- combobox \"Sort patients\":\n  - 'option \"Sort: Room number\" [selected]'\n  - 'option \"Sort: Name A–Z\"'\n  - 'option \"Sort: Status (to-do first)\"'\n- button \"Dashboard\"\n- button \"Open chart for QA EFS11 Hosp 2AB1\":\n  - text: QE QA EFS11 Hosp 2AB1 New today\n  - paragraph: Room 8B-11 · 70y\n  - button \"Remove QA EFS11 Hosp 2AB1 from the rounding list\"\n  - paragraph: Pneumonia\n  - text: Not Yet Prepped Follow-up\n- button \"Add New Patient\"\n- button \"Task Export\"\n- button \"Patients\"\n- button \"Dashboard\"\n- button \"Settings\""
+    },
+    "checkpoint.cp3-hosp-list": {
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/1\nHandoff\n\n1 patient remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\nQE\nQA EFS11 Hosp 2AB1\nNEW TODAY\n\nRoom 8B-11 · 70y\n\nPneumonia\n\nNot Yet Prepped\nFollow-up\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings",
+      "screenshot": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp3-hosp-list.png",
+      "aria": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Hospital\"\n- button \"Nursing Home\"\n- paragraph: Thursday, October 15, 2026\n- heading \"Morning Rounds\" [level=1]\n- text: 0/1\n- button \"Handoff\"\n- button \"Inbox\"\n- button \"Open quick dictation\"\n- button \"Scan patient list from photo\"\n- button \"Add patient\"\n- paragraph: 1 patient remaining\n- textbox \"Search patients\":\n  - /placeholder: Search by name, room, MRN, or diagnosis…\n- text: My Patients\n- combobox \"Sort patients\":\n  - 'option \"Sort: Room number\" [selected]'\n  - 'option \"Sort: Name A–Z\"'\n  - 'option \"Sort: Status (to-do first)\"'\n- button \"Dashboard\"\n- button \"Open chart for QA EFS11 Hosp 2AB1\":\n  - text: QE QA EFS11 Hosp 2AB1 New today\n  - paragraph: Room 8B-11 · 70y\n  - button \"Remove QA EFS11 Hosp 2AB1 from the rounding list\"\n  - paragraph: Pneumonia\n  - text: Not Yet Prepped Follow-up\n- button \"Add New Patient\"\n- button \"Task Export\"\n- button \"Patients\"\n- button \"Dashboard\"\n- button \"Settings\""
+    },
+    "nh.menu.liveRegion": null,
+    "checkpoint.cp4-nh-menu": {
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nScan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\nTake Photo or Choose Image\n\nNo residents found. Try a clearer photo.\n\nNursing Home\n\n0/1 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQE\n\nQA EFS11 Resident 2AB1\n\nCedar 11 · DOB 1940-01-11\n\nPending\nFollow-up\nTask Export\nResidents\nHandoff\nDashboard\nSettings",
+      "screenshot": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp4-nh-menu.png",
+      "aria": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Hospital\"\n- button \"Nursing Home\"\n- heading \"Scan Resident List\" [level=3]\n- paragraph: Photo the nursing director's list — replaces today's visits\n- button\n- button \"Take Photo or Choose Image\"\n- paragraph: No residents found. Try a clearer photo.\n- heading \"Nursing Home\" [level=1]\n- paragraph: 0/1 residents seen today\n- button \"Inbox\"\n- button\n- button \"Scan resident list\"\n- button\n- button \"Today's Visits\"\n- button \"All Residents\"\n- textbox \"Search patients\":\n  - /placeholder: Search by name, room, MRN, or diagnosis…\n- combobox \"Sort patients\":\n  - 'option \"Sort: Room number\" [selected]'\n  - 'option \"Sort: Name A–Z\"'\n  - 'option \"Sort: Status (to-do first)\"'\n- button \"Open chart for QA EFS11 Resident 2AB1\":\n  - text: QE\n  - paragraph: QA EFS11 Resident 2AB1\n  - paragraph: Cedar 11 · DOB 1940-01-11\n  - text: Pending Follow-up\n- button \"Task Export\"\n- button \"Residents\"\n- button \"Handoff\"\n- button \"Dashboard\"\n- button \"Settings\""
+    },
+    "checkpoint.cp5-nh-corrupt": {
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nScan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\nTake Photo or Choose Image\n\nThe photo couldn’t be read. Check your connection and try again, or retake the photo.\n\nNursing Home\n\n0/1 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQE\n\nQA EFS11 Resident 2AB1\n\nCedar 11 · DOB 1940-01-11\n\nPending\nFollow-up\nTask Export\nResidents\nHandoff\nDashboard\nSettings",
+      "screenshot": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp5-nh-corrupt.png",
+      "aria": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Hospital\"\n- button \"Nursing Home\"\n- heading \"Scan Resident List\" [level=3]\n- paragraph: Photo the nursing director's list — replaces today's visits\n- button\n- button \"Take Photo or Choose Image\"\n- paragraph: The photo couldn’t be read. Check your connection and try again, or retake the photo.\n- heading \"Nursing Home\" [level=1]\n- paragraph: 0/1 residents seen today\n- button \"Inbox\"\n- button\n- button \"Scan resident list\"\n- button\n- button \"Today's Visits\"\n- button \"All Residents\"\n- textbox \"Search patients\":\n  - /placeholder: Search by name, room, MRN, or diagnosis…\n- combobox \"Sort patients\":\n  - 'option \"Sort: Room number\" [selected]'\n  - 'option \"Sort: Name A–Z\"'\n  - 'option \"Sort: Status (to-do first)\"'\n- button \"Open chart for QA EFS11 Resident 2AB1\":\n  - text: QE\n  - paragraph: QA EFS11 Resident 2AB1\n  - paragraph: Cedar 11 · DOB 1940-01-11\n  - text: Pending Follow-up\n- button \"Task Export\"\n- button \"Residents\"\n- button \"Handoff\"\n- button \"Dashboard\"\n- button \"Settings\""
+    },
+    "checkpoint.cp6-nh-list": {
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nNursing Home\n\n0/1 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nQE\n\nQA EFS11 Resident 2AB1\n\nCedar 11 · DOB 1940-01-11\n\nPending\nFollow-up\nTask Export\nResidents\nHandoff\nDashboard\nSettings",
+      "screenshot": "runs/2026-10-14-local/newspec-c/evidence/efs-s11-cp6-nh-list.png",
+      "aria": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Hospital\"\n- button \"Nursing Home\"\n- heading \"Nursing Home\" [level=1]\n- paragraph: 0/1 residents seen today\n- button \"Inbox\"\n- button\n- button \"Scan resident list\"\n- button\n- button \"Today's Visits\"\n- button \"All Residents\"\n- textbox \"Search patients\":\n  - /placeholder: Search by name, room, MRN, or diagnosis…\n- combobox \"Sort patients\":\n  - 'option \"Sort: Room number\" [selected]'\n  - 'option \"Sort: Name A–Z\"'\n  - 'option \"Sort: Status (to-do first)\"'\n- button \"Open chart for QA EFS11 Resident 2AB1\":\n  - text: QE\n  - paragraph: QA EFS11 Resident 2AB1\n  - paragraph: Cedar 11 · DOB 1940-01-11\n  - text: Pending Follow-up\n- button \"Task Export\"\n- button \"Residents\"\n- button \"Handoff\"\n- button \"Dashboard\"\n- button \"Settings\""
+    },
+    "backend": {
+      "hospital": [
+        "QA EFS11 Hosp 2AB1"
+      ],
+      "nursingHome": [
+        "QA EFS11 Resident 2AB1"
+      ]
+    },
+    "scanCalls": [
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996337393,
+        "answered": "ok",
+        "args": {
+          "imageBase64": "<38884 chars>",
+          "mode": "rounding"
+        }
+      },
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996337508,
+        "answered": "fail",
+        "args": {
+          "imageBase64": "<2732 chars>",
+          "mode": "rounding"
+        }
+      },
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996338025,
+        "answered": "ok",
+        "args": {
+          "imageBase64": "<38884 chars>",
+          "mode": "snf"
+        }
+      },
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996338124,
+        "answered": "fail",
+        "args": {
+          "imageBase64": "<2732 chars>",
+          "mode": "snf"
+        }
+      }
+    ],
+    "aiCallsRefused": []
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "name": "tc06-s05-scan-follow-up",
+  "at": "2026-10-14T16:46:37.834Z",
+  "checks": [
+    {
+      "id": "Hospital list: QA Scan Alvarez card badge is Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Alvarez 5DSE NEW TODAY Room 701 · 66y · 710701 Pneumonia Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "Hospital list: QA Scan Bennett ('NEW ADMIT') card badge is Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Bennett 5DSE NEW TODAY Room 702 · 79y · 710702 CHF Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "Hospital list: QA Scan Chen ('Consult') card badge is Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Chen 5DSE NEW TODAY Room 703 · 58y · 710703 Cellulitis Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "Hospital server: 3 rows, each encType follow-up (or none)",
+      "ok": true,
+      "detail": "[[\"QA Scan Alvarez 5DSE\",\"follow-up\"],[\"QA Scan Bennett 5DSE\",\"follow-up\"],[\"QA Scan Chen 5DSE\",\"follow-up\"]]"
+    },
+    {
+      "id": "Hospital chart: QA Scan Bennett ('NEW ADMIT') Admission status = Follow-up",
+      "ok": true,
+      "detail": "follow-up / Follow-up"
+    },
+    {
+      "id": "Hospital chart: QA Scan Chen ('Consult') Admission status = Follow-up",
+      "ok": true,
+      "detail": "follow-up / Follow-up"
+    },
+    {
+      "id": "Nursing Home Today's Visits: QA Scan Dorsey shows, badge Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Dorsey 5DSE Cedar 71 · DOB 1939-01-04 · SNF-710771 Pending Follow-up"
+    },
+    {
+      "id": "Nursing Home All Residents: QA Scan Dorsey shows with In Today ✓, badge Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Dorsey 5DSE Cedar 71 · DOB 1939-01-04 · SNF-710771 In Today ✓ Pending Follow-up"
+    },
+    {
+      "id": "Nursing Home Today's Visits: QA Scan Ellis ('New admit') shows, badge Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Ellis 5DSE Cedar 72 · DOB 1942-06-08 · SNF-710772 Pending Follow-up"
+    },
+    {
+      "id": "Nursing Home All Residents: QA Scan Ellis shows with In Today ✓, badge Follow-up",
+      "ok": true,
+      "detail": "QS QA Scan Ellis 5DSE Cedar 72 · DOB 1942-06-08 · SNF-710772 In Today ✓ Pending Follow-up"
+    },
+    {
+      "id": "Nursing Home server: 2 rows, each encType follow-up (or none), in today's session",
+      "ok": true,
+      "detail": "[[\"QA Scan Dorsey 5DSE\",\"follow-up\",true],[\"QA Scan Ellis 5DSE\",\"follow-up\",true]]"
+    },
+    {
+      "id": "Nursing Home chart: QA Scan Ellis ('New admit') Admission status = Follow-up",
+      "ok": true,
+      "detail": "follow-up / Follow-up"
+    }
+  ],
+  "data": {
+    "mockedRows": {
+      "hospital": [
+        {
+          "room": "701",
+          "name": "QA Scan Alvarez 5DSE",
+          "age": 66,
+          "diagnosis": "Pneumonia",
+          "mrn": "710701"
+        },
+        {
+          "room": "702",
+          "name": "QA Scan Bennett 5DSE",
+          "age": 79,
+          "diagnosis": "CHF",
+          "mrn": "710702",
+          "status": "NEW ADMIT",
+          "encType": "new"
+        },
+        {
+          "room": "703",
+          "name": "QA Scan Chen 5DSE",
+          "age": 58,
+          "diagnosis": "Cellulitis",
+          "mrn": "710703",
+          "status": "Consult",
+          "encType": "consult"
+        }
+      ],
+      "nursingHome": [
+        {
+          "name": "QA Scan Dorsey 5DSE",
+          "dob": "1939-01-04",
+          "unit": "Cedar 71",
+          "mrn": "SNF-710771"
+        },
+        {
+          "name": "QA Scan Ellis 5DSE",
+          "dob": "1942-06-08",
+          "unit": "Cedar 72",
+          "mrn": "SNF-710772",
+          "status": "New admit",
+          "encType": "new"
+        }
+      ]
+    },
+    "hospitalSheet": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nScan Patient List\nPhoto your census sheet — AI reads all patients\n✕\n3 patients found\nDeselect all\nQA Scan Alvarez 5DSE\nRoom 701 · Pneumonia\n66y · MRN 710701\nQA Scan Bennett 5DSE\nRoom 702 · CHF\n79y · MRN 710702\nQA Scan Chen 5DSE\nRoom 703 · Cellulitis\n58y · MRN 710703\nAdd 3 Patients to My Rounding List\n\nThursday, October 15, 2026\n\nMorning Rounds\n0/0\nHandoff\n\n0 patients remaining\n\nMY PATIENTS\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\nDashboard\n\nNo patients on your list yet.\n\nTap + to add one, or the camera to scan your census.\n\nAdd New Patient\nTask Export\nPatients\nDashboard\nSettings",
+    "hospitalCards": {
+      "QA Scan Alvarez 5DSE": "QS QA Scan Alvarez 5DSE NEW TODAY Room 701 · 66y · 710701 Pneumonia Not Yet Prepped Follow-up",
+      "QA Scan Bennett 5DSE": "QS QA Scan Bennett 5DSE NEW TODAY Room 702 · 79y · 710702 CHF Not Yet Prepped Follow-up",
+      "QA Scan Chen 5DSE": "QS QA Scan Chen 5DSE NEW TODAY Room 703 · 58y · 710703 Cellulitis Not Yet Prepped Follow-up"
+    },
+    "hospitalServerRows": [
+      {
+        "name": "QA Scan Alvarez 5DSE",
+        "encType": "follow-up",
+        "encTypeDay": null,
+        "status": "pending"
+      },
+      {
+        "name": "QA Scan Bennett 5DSE",
+        "encType": "follow-up",
+        "encTypeDay": null,
+        "status": "pending"
+      },
+      {
+        "name": "QA Scan Chen 5DSE",
+        "encType": "follow-up",
+        "encTypeDay": null,
+        "status": "pending"
+      }
+    ],
+    "hospitalChart.QA Scan Bennett 5DSE": {
+      "value": "follow-up",
+      "label": "Follow-up"
+    },
+    "hospitalChart.QA Scan Chen 5DSE": {
+      "value": "follow-up",
+      "label": "Follow-up"
+    },
+    "nhSheet": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nScan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n2 residents found — tap to include\n\n0 already in All Residents · 2 new · 0 to review\n\nQA Scan Dorsey 5DSE\n＋ New\n\nCedar 71 · SNF-710771\n\nQA Scan Ellis 5DSE\n＋ New\n\nCedar 72 · SNF-710772\n\nAdd 2 to Today's Visits\nNursing Home\n\n0/0 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\n\nNo residents on today's visit list.\n\nScan the nursing director's list, or switch to All Residents and tap \"+ Today\".\n\nTask Export\nResidents\nHandoff\nDashboard\nSettings",
+    "nhCards": {
+      "today": {
+        "QA Scan Dorsey 5DSE": "QS QA Scan Dorsey 5DSE Cedar 71 · DOB 1939-01-04 · SNF-710771 Pending Follow-up",
+        "QA Scan Ellis 5DSE": "QS QA Scan Ellis 5DSE Cedar 72 · DOB 1942-06-08 · SNF-710772 Pending Follow-up"
+      },
+      "todayViewHasInTodayToggle": 0,
+      "all": {
+        "QA Scan Dorsey 5DSE": "QS QA Scan Dorsey 5DSE Cedar 71 · DOB 1939-01-04 · SNF-710771 In Today ✓ Pending Follow-up",
+        "QA Scan Ellis 5DSE": "QS QA Scan Ellis 5DSE Cedar 72 · DOB 1942-06-08 · SNF-710772 In Today ✓ Pending Follow-up"
+      }
+    },
+    "nhServerRows": [
+      {
+        "name": "QA Scan Dorsey 5DSE",
+        "encType": "follow-up",
+        "encTypeDay": null,
+        "inTodaysSession": true
+      },
+      {
+        "name": "QA Scan Ellis 5DSE",
+        "encType": "follow-up",
+        "encTypeDay": null,
+        "inTodaysSession": true
+      }
+    ],
+    "nhChart.ellis": {
+      "value": "follow-up",
+      "label": "Follow-up"
+    },
+    "scanCalls": [
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996393660,
+        "answered": "ok",
+        "args": {
+          "imageBase64": "<110444 chars>",
+          "mode": "rounding"
+        }
+      },
+      {
+        "type": "Action",
+        "udfPath": "ai/vision:scanCensusSheet",
+        "at": 1791996395843,
+        "answered": "ok",
+        "args": {
+          "imageBase64": "<89952 chars>",
+          "mode": "snf"
+        }
+      }
+    ],
+    "aiCallsRefused": []
+  }
+}

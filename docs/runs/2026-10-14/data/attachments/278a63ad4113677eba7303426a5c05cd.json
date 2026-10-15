@@ -1,0 +1,60 @@
+{
+  "case": "TC-15-S03",
+  "title": "Preset 'pre-round note contents' (Nursing Home; Hospital variant)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s03-n-preround.md",
+      "verdict": "Pass",
+      "url": "/snf/jx7512y2debvjreszpnsmnjha98g81sd",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s03-h-preround.md",
+      "verdict": "Pass",
+      "url": "/rounding/js76qx3fsza82kaxemzj5gj1058g9bxh",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 30,
+    "costUsd": 0.2260018,
+    "durationMs": 132913,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U84",
+  "covers": [
+    "TC-15/S03"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u84",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U84.json",
+  "foreignBefore": {
+    "hospitalPatient": 4,
+    "snfResident": 4
+  }
+}

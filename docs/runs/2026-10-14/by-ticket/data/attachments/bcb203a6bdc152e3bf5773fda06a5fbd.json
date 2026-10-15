@@ -1,0 +1,18 @@
+{
+  "OAT-06/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:44:15.718Z",
+    "title": "Task states on every task surface: Complete -> Reopen -> Complete, Complete then Delete, Delete; each tap its own kind of event",
+    "detail": "Local QA stack only (main e02167f), a brand-new @roundai.test physician per test, synthetic charts deleted after the reads. No model: every ai/* action is refused at the Convex socket and none was sent; tripwire clean for the final run (16:43:28Z mark, 'no model call'). Rows are read with the local admin key (patientActivity / usage / surveys _recentForActor, usage:_dailyForActor) before and after the steps; reading them through Vikram's dashboard on the UAT deployment is S23 / Q12. Seeded a Hospital chart with tasks A, B, C, E, F, G and a resident (In Today) with task D. Every tap measured on its own (rows read before the tap and again once the chart showed the change). Hospital Post-Round: A Complete, Reopen, Complete; B Complete then Delete; C Delete. Hospital Encounter tab: E Complete, F Delete. /rounding/tasks (Task Export): G 'Mark task done'. /snf/tasks: D. Judged 18/18: 4 checkpoints; each single tap (A's first Complete, B Complete, C Delete, E, F, G, D) wrote exactly one row of its kind and none of the other; the Reopen, the second Complete and the Delete-after-Complete wrote no row of the wrong kind; every task row carries the right chart id and care setting (hospital for Post-Round, the Encounter tab and /rounding/tasks; nursing_home for /snf/tasks); the rollup tasksCompleted / tasksDeleted moved by exactly the row counts (hospital +5 / +3, nursing_home +1 / +0); no task text or name in any row. Record-only (Q6): Reopen writes no row, Complete after Reopen writes a second task_completed, Delete after Complete writes a task_deleted, so totals are hospital 5 completed / 3 deleted and nursing_home 1, as 'every tap counts' predicts. /rounding/tasks offers no delete control (0 found; the same TasksOverlay renders /snf/tasks). Task deletes asked for no confirmation: TC-24's 'asks once' rule belongs to TFA-94699 (in progress), todo, recorded only.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s11.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp1-hospital-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp2-encounter-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp3-rounding-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s11-s11-cp4-snf-tasks.png",
+      "runs/2026-10-14-local/newspec-c/reports/an1-oat06-s11-tc24-s09-tasks.json"
+    ],
+    "method": "PW",
+    "pkg": "an1"
+  }
+}

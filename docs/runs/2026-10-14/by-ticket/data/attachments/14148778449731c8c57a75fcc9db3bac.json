@@ -1,0 +1,22 @@
+{
+  "TC-06/S17": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:46:51.272Z",
+    "title": "Re-scan keeps the status the physician set by hand; a 'NEW ADMIT' row still lands as Follow-up",
+    "detail": "13/13 judged cells passed (same spec, desktop Chromium, scan rows mocked in the browser, no model). Hospital: the physician set the patient to Consult in the chart's Admission status control (server encType consult, day 2026-10-15); a re-scanned census with that patient (same name, room 612, MRN; the sheet itself saying 'Follow-up') plus QA Scan Rivera ('NEW ADMIT') asked 'Same patient (don't add)?' for the existing patient (answered same) and added Rivera: the patient is still one row, Consult on the card, the server (same day stamp) and in the chart; Rivera is Follow-up on the card, server and chart. Nursing Home: the resident was set to New Admission by hand; a re-scanned list with the resident (same name, DOB, MRN, unit; sheet says 'Follow-up') plus QA Scan Okafor ('New admit') showed '1 already in All Residents · 1 new · 0 to review'; after 'Add 2 to Today's Visits' the resident is still one row and New Admission on All Residents, server and chart; Okafor is Follow-up everywhere. Records deleted afterwards.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-hospital-chart-existing.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-hospital-chart-rivera.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-hospital-duplicate-question.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-hospital-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-hospital-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-nh-all.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-nh-chart-existing.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-nh-chart-okafor.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-nh-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s17-rescan-keeps-status.json"
+    ],
+    "method": "PW",
+    "pkg": "vis"
+  }
+}

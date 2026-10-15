@@ -1,0 +1,71 @@
+{
+  "name": "oat03-s12-n",
+  "at": "2026-10-14T17:37:28.456Z",
+  "checks": [
+    {
+      "id": "cp3: a clear 'no network' message during the 20 s outage (U9)",
+      "ok": true,
+      "detail": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then."
+    },
+    {
+      "id": "cp3: the typed text stays on screen (U13)",
+      "ok": true,
+      "detail": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    {
+      "id": "after reconnect, before the reload: snf:get encounterNotes is the typed text (U9)",
+      "ok": true,
+      "detail": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    {
+      "id": "cp4: after the reload the text is in the box",
+      "ok": true,
+      "detail": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    {
+      "id": "cp4: no 'no network' after reconnect",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "a second fresh browser context shows the text (not a local draft)",
+      "ok": true,
+      "detail": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    {
+      "id": "server read again after the reload: the typed text",
+      "ok": true,
+      "detail": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    {
+      "id": "setup: no AI call",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "cp3-snf-offline": {
+      "offlineMs": 20015,
+      "banner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+      "box": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    "cp4-snf-after": {
+      "box": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    "second-context": {
+      "box": "QA OAT-03 offline visit: eating well, no falls.",
+      "server": "QA OAT-03 offline visit: eating well, no falls."
+    },
+    "socketEvents": [
+      "304 conn 1 open",
+      "6497 conn 1 cut",
+      "7249 conn 2 refused (offline)",
+      "8410 conn 3 refused (offline)",
+      "12578 conn 4 refused (offline)",
+      "17008 conn 5 refused (offline)",
+      "26505 restore",
+      "26522 conn 6 open",
+      "28058 conn 7 open"
+    ]
+  }
+}

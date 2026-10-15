@@ -1,0 +1,143 @@
+{
+  "case": "U88",
+  "title": "AI Check: 'today's labs' on charts with no labs (5 Hospital + 5 Nursing Home, the 10-item pool)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s09-ha-labs.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7bd4m0rwme5x0jg1wv9tst6x8g9rem",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S09"
+    },
+    {
+      "file": "s09-hb-labs.md",
+      "verdict": "Pass",
+      "url": "/rounding/js7efwx2tjpbem6dq2ax6yb65h8g8d1d",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(premise: labs omitted (lane-B H-b); [] would do as well) pass: backend hB labs is missing"
+      ],
+      "scenario": "TC-15/S09"
+    },
+    {
+      "file": "s09-hc-labs.md",
+      "verdict": "Pass",
+      "url": "/rounding/js758bd6mdxh4yy89f3e0fp6rx8g93x3",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S09"
+    },
+    {
+      "file": "s09-hd-labs.md",
+      "verdict": "Pass",
+      "url": "/rounding/js77fstdtd9310hn06fxb882k98g98ks",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S09"
+    },
+    {
+      "file": "s09-he-labs.md",
+      "verdict": "Pass",
+      "url": "/rounding/js74221ap8nq0dy8n3pp84891s8g86fp",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(premise: labs omitted (lane-B H-e); [] would do as well) pass: backend hE labs is missing"
+      ],
+      "scenario": "TC-15/S09"
+    },
+    {
+      "file": "s10-na-labs.md",
+      "verdict": "Pass",
+      "url": "/snf/jx71s6dsdnexfz4aq03jf538wd8g9513",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S10"
+    },
+    {
+      "file": "s10-nb-labs.md",
+      "verdict": "Pass",
+      "url": "/snf/jx74v8rt04krm8wj8avyms70e18g8gpv",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S10"
+    },
+    {
+      "file": "s10-nc-labs.md",
+      "verdict": "Pass",
+      "url": "/snf/jx775kzj1eqkvyc2ya68swkd118g8m6f",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S10"
+    },
+    {
+      "file": "s10-nd-labs.md",
+      "verdict": "Pass",
+      "url": "/snf/jx76amsbsx1f26ymat8889vwp18g9jzc",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S10"
+    },
+    {
+      "file": "s10-ne-labs.md",
+      "verdict": "Pass",
+      "url": "/snf/jx74vz1bdn19ptt6gn1d2ztm1d8g87rp",
+      "problems": [],
+      "known": [],
+      "recorded": [],
+      "scenario": "TC-15/S10"
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "[TC-15/S09] U7 pool (3.2): each checkpoint is one of the 10 scenarios with S10; count the Pass checkpoints of both cases (≥9/10) and quote every failing answer from its checkpoint file. Until T4 is graded (EVALUATION_FRAMEWORK.md, Preston) this is the pre-screen.",
+    "[TC-15/S10] U7 pool (3.2): count these five checkpoints with S09's five (≥9/10) and quote every failing answer from its checkpoint file."
+  ],
+  "agent": {
+    "turns": 149,
+    "costUsd": 1.337015,
+    "durationMs": 662883,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U88",
+  "covers": [
+    "TC-15/S09",
+    "TC-15/S10"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u88",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U88.json",
+  "foreignBefore": {
+    "hospitalPatient": 4,
+    "snfResident": 4
+  }
+}

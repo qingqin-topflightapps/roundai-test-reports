@@ -1,0 +1,77 @@
+{
+  "name": "tc24-s17-an2",
+  "at": "2026-10-14T16:48:57.902Z",
+  "checks": [
+    {
+      "id": "(1a) a double tap on 'Delete task: Recheck BMP in AM' writes one task_deleted (one intended action)",
+      "ok": false,
+      "detail": "task_deleted rows: 2; confirmations: 0",
+      "recordOnly": true
+    },
+    {
+      "id": "(1a) only the tapped task is gone; the task that slid into its place stays (data loss check)",
+      "ok": false,
+      "detail": "tasks left: [\"Call daughter re: goals of care\",\"Repeat CBC\",\"Repeat CBC\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "(1b) one delete of the second 'Repeat CBC' writes one more task_deleted; 'Repeat CBC' stays once",
+      "ok": true,
+      "detail": "task_deleted rows for this tap: 1; tasks left: [\"Call daughter re: goals of care\",\"Repeat CBC\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "two task_deleted events for the chart in all, one per deleted task (TC-24 S17 then (1))",
+      "ok": false,
+      "detail": "task_deleted rows in all: 3",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "after the double tap": {
+      "taskDeletedRows": [
+        {
+          "_creationTime": 1791996531036.608,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "task_deleted",
+          "patientId": "kx7c4n75bkmrjpa135v8yay6bd8g83se"
+        },
+        {
+          "_creationTime": 1791996531123.818,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "task_deleted",
+          "patientId": "kx7c4n75bkmrjpa135v8yay6bd8g83se"
+        }
+      ],
+      "tasksLeft": [
+        "Call daughter re: goals of care",
+        "Repeat CBC",
+        "Repeat CBC"
+      ],
+      "dialogs": []
+    },
+    "after the single delete": {
+      "taskDeletedRows": [
+        {
+          "_creationTime": 1791996535743.298,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "task_deleted",
+          "patientId": "kx7c4n75bkmrjpa135v8yay6bd8g83se"
+        }
+      ],
+      "tasksLeft": [
+        "Call daughter re: goals of care",
+        "Repeat CBC"
+      ],
+      "repeatCbcButtonsBefore": 2
+    },
+    "aiCalls": [],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 0
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "state": "hospital-list",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-hospital-list.png",
+  "findings": [],
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 4,
+      "targets": [
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.p-4.cursor-pointer > .items-start.mb-2.justify-between > .gap-2\\.5.flex.items-center > div:nth-child(2) > .flex-wrap.gap-1\\.5.flex > .text-\\[10px\\].bg-teal-500.px-1\\.5",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.p-4.cursor-pointer > .justify-between.flex.items-center > .flex-wrap.gap-1\\.5.flex > .px-2\\.5.text-slate-500.py-0\\.5",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.p-4.cursor-pointer > .items-start.mb-2.justify-between > .gap-2\\.5.flex.items-center > div:nth-child(2) > .flex-wrap.gap-1\\.5.flex > .text-\\[10px\\].bg-teal-500.px-1\\.5",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.p-4.cursor-pointer > .justify-between.flex.items-center > .flex-wrap.gap-1\\.5.flex > .px-2\\.5.text-slate-500.py-0\\.5"
+      ],
+      "nodes": [
+        "\"New today\" 2.42:1 (#ffffff on #00bba7, 7.5pt (10px); needs 4.5:1)",
+        "\"Not Yet Prepped\" 4.34:1 (#62748e on #f1f5f9, 9.0pt (12px); needs 4.5:1)",
+        "\"New today\" 2.42:1 (#ffffff on #00bba7, 7.5pt (10px); needs 4.5:1)",
+        "\"Not Yet Prepped\" 4.34:1 (#62748e on #f1f5f9, 9.0pt (12px); needs 4.5:1)"
+      ]
+    },
+    {
+      "id": "nested-interactive",
+      "impact": "serious",
+      "help": "Interactive controls must not be nested",
+      "count": 2,
+      "targets": [
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.p-4.cursor-pointer",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.p-4.cursor-pointer"
+      ],
+      "nodes": [
+        "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for Q\" <div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for QA TC24 Vis AK1F Alpha\" class=\"w-full text-left p-4 cursor-po",
+        "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for Q\" <div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for QA TC24 Vis AK1F Bravo\" class=\"w-full text-left p-4 cursor-po"
+      ]
+    }
+  ],
+  "url": "/rounding"
+}

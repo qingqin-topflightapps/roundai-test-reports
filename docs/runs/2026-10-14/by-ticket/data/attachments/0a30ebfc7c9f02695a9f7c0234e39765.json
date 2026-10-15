@@ -1,0 +1,39 @@
+{
+  "EFS/S21": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-14T18:08:42.613Z",
+    "title": "Never left waiting with nothing: busy at once, then the failure; the 20 s cap; runs c/d recorded (Q16)",
+    "detail": "Both contexts; specs newspec-c/flt-efs-s21-busy.spec.ts, flt-efs-s21-cd.spec.ts, flt-efs-s21-save-timing.spec.ts. Server timing measured first, in-process and with no model: the real askChart / parsePreRoundNotes / generateNote handlers run with a fake ctx whose bedrock.invoke stand-in hangs until each attempt's own timeout, as the SDK abort does (the method of newspec-b TC-10/S27). The 20 s cap (recorded): the first attempt is capped at 20 s and the fallback gets the rest of the 30 s budget (about 10 s, or 20 s when Haiku failed fast). Both models hanging: Ask AI gives up after 30.0 s; the pre-round summary after 62.5 s (its four sub-calls go through the 30 s sequence twice). Those times were then replayed in the browser at the socket. Judged 32/34. Pass: Ask AI shows 'Searching…' at once and, 30.5 s after the tap, 'The chart assistant couldn’t be reached… tap Ask AI again' with the question kept and no spinner (Hospital and Nursing Home); Save Note shows 'Saving & Updating…' at once and ends on 'Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.' with the typed text kept. Fail (both contexts): 60 s after tapping Save Note the button still reads 'Saving & Updating…'; the failure arrives 62.8 s after the tap, past the then's 'never a spinner still running after 60 s'. The 62.5 s figure is the one TC-10/S27 (d) recorded and the 2026-10-15 review attached to D8 (worst-case AI wait); times over 30 s are a flag for Vikram (3.5), not judged. Superseded: the Save Note half of efs-s21-h / efs-s21-n held the call 30 s (an assumed server time, settled at 30.4 s); the measured 62.5 s runs (efs-s21-save-h / -n) carry the verdict. Runs c and d (Q16, recorded only; Nursing Home, SNF admission template, a 640-word typed encounter): Haiku throttled twice in the first second; c: Mistral answered at 19 s inside its 20 s cap, the server returned the note after 20.0 s and Post-Round showed it (Copy to EMR) 20.4 s after the tap; d: Mistral's 21 s answer was cut off by its 20 s cap, the server failed after 21.0 s and the Encounter tab showed 'The visit dictation is saved, but the note couldn’t be generated…' 21.4 s after the tap, no note stored ('Note not generated' wording: D7). aiCallLog rows from the in-process runs (durationMs / providerMs): askChart 30006 / 30003 ms, parsePreRoundNotes 62518 / 60012 ms (error class rate_limited).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-cap.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-run-c-server.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-run-c-ui.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-run-d-server.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-run-d-ui.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-h-h1-ask-busy.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-h-h2-ask-settled.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-h-h3-save-busy.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-h-h4-save-settled.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-n-n1-ask-busy.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-n-n2-ask-settled.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-n-n3-save-busy.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-n-n4-save-settled.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-run-c-ui-outcome.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-run-d-ui-outcome.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-h-h3-save-busy.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-h-h4-save-60s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-h-h4-save-settled.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-n-n3-save-busy.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-n-n4-save-60s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-n-n4-save-settled.png"
+    ],
+    "method": "PW",
+    "productIssue": "When both AI models are unresponsive, a physician who taps Save Note on the pre-round watches 'Saving & Updating…' for about 63 s before the failure message (Ask AI fails at 30 s); the case allows no spinner past 60 s.",
+    "pkg": "flt"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "oat03-s12-clock",
+  "at": "2026-10-14T17:38:20.937Z",
+  "checks": [
+    {
+      "id": "clock cell: the chart opens on a browser one day ahead",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "clock cell (B18): the box held the earlier lines when the browser opened the chart",
+      "ok": true,
+      "detail": "QA OAT-03 blip line. QA OAT-03 outage line.",
+      "recordOnly": true
+    },
+    {
+      "id": "clock cell (B18): the server's encounter holds the three lines in order after reconnect",
+      "ok": true,
+      "detail": "QA OAT-03 blip line. QA OAT-03 outage line. QA OAT-03 clock line.",
+      "recordOnly": true
+    },
+    {
+      "id": "clock cell (B18): no 'no network' after reconnect",
+      "ok": true,
+      "detail": "none",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no AI call",
+      "ok": true,
+      "detail": "[]",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "access": {
+      "signedOutByClock": true,
+      "uiSignIn": "reached-app"
+    },
+    "clock": {
+      "browserNow": "Fri Oct 16 2026 02:38:20 GMT+0900 (Japan Standard Time)",
+      "serverNow": "2026-10-14T17:37:29.094Z",
+      "boxBefore": "QA OAT-03 blip line. QA OAT-03 outage line.",
+      "offlineBanner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+      "box": "QA OAT-03 blip line. QA OAT-03 outage line. QA OAT-03 clock line.",
+      "server": {
+        "encounterNotes": "QA OAT-03 blip line. QA OAT-03 outage line. QA OAT-03 clock line.",
+        "encounterEditedAt": 1792085887526,
+        "transcriptHistory": null
+      }
+    },
+    "socketEvents": [
+      "720 conn 1 open",
+      "31057 conn 2 open",
+      "37365 conn 1 cut",
+      "37366 conn 2 cut",
+      "38662 conn 3 refused (offline)",
+      "39997 conn 4 refused (offline)",
+      "42472 conn 5 refused (offline)",
+      "45625 restore",
+      "45629 conn 6 open"
+    ]
+  }
+}

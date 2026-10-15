@@ -1,0 +1,142 @@
+{
+  "name": "efs-s19",
+  "at": "2026-10-14T17:02:50.471Z",
+  "checks": [
+    {
+      "id": "cp1: the typed line is on screen (anchor)",
+      "ok": true,
+      "detail": "QA-EFS-19 BP 120/70."
+    },
+    {
+      "id": "cp1: a failure word",
+      "ok": true,
+      "detail": "couldn"
+    },
+    {
+      "id": "cp1: none of the raw error text on screen (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1 (tab after closing the editor): none of the raw error text on screen (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp2: the Ask sheet with the question still in the box (anchor, U13)",
+      "ok": true,
+      "detail": "What is the plan today?"
+    },
+    {
+      "id": "cp2: a failure word",
+      "ok": true,
+      "detail": "couldn"
+    },
+    {
+      "id": "cp2: none of the raw error text on screen (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp3: the Ask sheet with the question still in the box (anchor, U13)",
+      "ok": true,
+      "detail": "What is the plan today?"
+    },
+    {
+      "id": "cp3: a failure word",
+      "ok": true,
+      "detail": "couldn"
+    },
+    {
+      "id": "cp3: none of the raw error text on screen (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4: the seeded note and the billing area (anchor)",
+      "ok": true,
+      "detail": "note shown"
+    },
+    {
+      "id": "cp4: a failure word",
+      "ok": true,
+      "detail": "Couldn't generate billing suggestion — tap to retry"
+    },
+    {
+      "id": "cp4: no billing code",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4: none of the raw error text on screen (U12)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "no browser dialog opened during the run",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "the raw text reaches the console only (developer log, not the screen)",
+      "ok": true,
+      "detail": "7 console line(s)",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: the three calls were answered with the raw error at the socket; no unscripted AI call",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/parsing:parsePreRoundNotes\",\"answered\":\"fail\",\"atMs\":875,\"conn\":1},{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"fail\",\"atMs\":2735,\"conn\":1},{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"fail\",\"atMs\":3406,\"conn\":2},{\"udfPath\":\"ai/notes:suggestBilling\",\"answered\":\"fail\",\"atMs\":3592,\"conn\":2}]"
+    }
+  ],
+  "data": {
+    "cp1-hosp-summary": {
+      "screen": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-19 Hosp 3cbk\n\nRoom 4B-12 · 72y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nPRE-ROUND NOTES\nPre-round notes\nIMPORTANT POINTS\n0\nAdd Point\n\nNo important points yet — add one from today's pre-round notes.\n\nNote saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.\n✓ Reviewed note saved.\nDictate\nSave Note\nPREVIOUS NOTES\n0/3\nPaste\nPhotograph\n\nExplicitly paste or photograph a prior note, then review and save it. AI extracts its background, labs, imaging, and key issues and uses only explicitly imported notes as today's template.\n\nNo previous notes added yet.\n\nVITALS\nEdit\nNo vitals recorded yet.\nLABS\nEdit\nNo labs recorded yet.\nDIAGNOSTIC TESTING\n0\nEdit\n\nNo testing results yet.\n\nMEDICATIONS\n0\nEdit\n\nNo medications recorded yet.\n[field] QA-EFS-19 BP 120/70."
+    },
+    "cp2-hosp-ask": {
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nThe chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    "cp3-nh-ask": {
+      "sheet": "Ask About This Patient\nDictate\nAsk AI →\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?\nThe chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    "cp4-nh-billing": {
+      "billing": "Couldn't generate billing suggestion — tap to retry"
+    },
+    "dialogs": [],
+    "consoleLinesWithRawText": [
+      "error: [CONVEX A(ai/parsing:parsePreRoundNotes)] Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad7731]",
+      "error: [CONVEX A(ai/assist:askChart)] Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad7731]",
+      "warning: [ask] chart assistant unreachable Error: [CONVEX A(ai/assist:askChart)] Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad77",
+      "error: [CONVEX A(ai/assist:askChart)] Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad7731]",
+      "warning: [ask] chart assistant unreachable Error: [CONVEX A(ai/assist:askChart)] Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad77",
+      "error: [CONVEX A(ai/notes:suggestBilling)] Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad7731]",
+      "error: [billing] suggestion failed Error: [CONVEX A(ai/notes:suggestBilling)] Uncaught ConvexError: QA-RAW-7731 at handler (convex/ai/notes.ts:42) [Request ID: 0bad773"
+    ],
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "fail",
+        "atMs": 875,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "fail",
+        "atMs": 2735,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "fail",
+        "atMs": 3406,
+        "conn": 2
+      },
+      {
+        "udfPath": "ai/notes:suggestBilling",
+        "answered": "fail",
+        "atMs": 3592,
+        "conn": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "name": "oat06-s10-r1-r2",
+  "at": "2026-10-14T17:40:33.131Z",
+  "checks": [
+    {
+      "id": "R1: hospital preRoundSummariesOpened +2 (A and B; one per chart opened)",
+      "ok": true,
+      "detail": "{\"preRoundSummariesOpened\":2,\"notesCompleted\":1,\"encountersTimed\":1,\"minutesPreRoundToComplete\":2,\"notesGenerated\":1}"
+    },
+    {
+      "id": "R1: A timed: note_marked_complete with minutesFromPreRoundOpened >= 2; notesCompleted +1, encountersTimed +1, minutesPreRoundToComplete + A's minutes",
+      "ok": true,
+      "detail": "A: [{\"_creationTime\":1791999631328.342,\"careSetting\":\"hospital\",\"day\":\"2026-10-15\",\"event\":\"note_marked_complete\",\"minutesFromPreRoundOpened\":2,\"patientId\":\"kx72qvrk8gxxcytb70n8r0py0n8g8qaq\"}]; delta {\"preRoundSummariesOpened\":2,\"notesCompleted\":1,\"encountersTimed\":1,\"minutesPreRoundToComplete\":2,\"notesGenerated\":1}"
+    },
+    {
+      "id": "R1: notesGenerated >= 1 for B (hospital)",
+      "ok": true,
+      "detail": "delta 1; B note_generated rows 1"
+    },
+    {
+      "id": "R1 (readable average): minutesPreRoundToComplete / encountersTimed on the day's hospital row",
+      "ok": true,
+      "detail": "2 / 1 = 2 min",
+      "recordOnly": true
+    },
+    {
+      "id": "Q16 (recorded): pre_round_summary_opened rows for A after two opens",
+      "ok": true,
+      "detail": "1 row(s)",
+      "recordOnly": true
+    },
+    {
+      "id": "Q16 (recorded): notesGenerated after B's Generate + Regenerate (+1 = regenerate not counted)",
+      "ok": true,
+      "detail": "hospital notesGenerated after Generate: 1, after Regenerate: 1; B rows: 1",
+      "recordOnly": true
+    },
+    {
+      "id": "R2: nursing_home notesGenerated +1 and a note_generated row against the resident after visit 1",
+      "ok": true,
+      "detail": "delta after visit 1: {\"preRoundSummariesOpened\":1,\"notesCompleted\":0,\"encountersTimed\":0,\"minutesPreRoundToComplete\":0,\"notesGenerated\":1}"
+    },
+    {
+      "id": "Q17 (recorded): nursing_home notesGenerated after the second same-day visit (+1 = second visit not counted)",
+      "ok": true,
+      "detail": "after visit 1: 1, after visit 2: 1; second-visit button 'Regenerate Note'",
+      "recordOnly": true
+    },
+    {
+      "id": "R2 (recorded): nursing_home preRoundSummariesOpened / notesCompleted",
+      "ok": true,
+      "detail": "{\"preRoundSummariesOpened\":1,\"notesCompleted\":0,\"encountersTimed\":0,\"minutesPreRoundToComplete\":0,\"notesGenerated\":1}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "T0": {
+      "day1": "2026-10-15",
+      "deviceZone": "Asia/Tokyo",
+      "daily": []
+    },
+    "B": {
+      "noteGeneratedRows": [
+        {
+          "_creationTime": 1791999511081.129,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "note_generated",
+          "patientId": "kx7c0y9crgn4xtx9a485qmkpxx8g8tnz"
+        }
+      ],
+      "hospitalAfterGenerate": [
+        {
+          "_creationTime": 1791999504917.7942,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 2,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:38:31.081Z"
+        }
+      ],
+      "hospitalAfterRegenerate": [
+        {
+          "_creationTime": 1791999504917.7942,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 2,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:38:31.081Z"
+        }
+      ],
+      "generateSeen": true
+    },
+    "R2": {
+      "visit1Row": true,
+      "nursingHomeAfterVisit1": [
+        {
+          "_creationTime": 1791999504917.7942,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 2,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:38:31.081Z"
+        },
+        {
+          "_creationTime": 1791999516187.4412,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 1,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:38:38.236Z"
+        }
+      ],
+      "secondVisitPreRoundSaved": true,
+      "secondVisitButton": "Regenerate Note",
+      "nursingHomeAfterVisit2": [
+        {
+          "_creationTime": 1791999504917.7942,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 2,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:38:31.081Z"
+        },
+        {
+          "_creationTime": 1791999516187.4412,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 1,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:38:38.236Z"
+        }
+      ],
+      "course": "Visit 1 · Oct 15: Encounter done\nVisit 2 · Oct 15: Encounter done"
+    },
+    "R1": {
+      "rows": [
+        {
+          "_creationTime": 1791999504917.794,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "pre_round_summary_opened",
+          "patientId": "kx72qvrk8gxxcytb70n8r0py0n8g8qaq"
+        },
+        {
+          "_creationTime": 1791999509393.3,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "pre_round_summary_opened",
+          "patientId": "kx7c0y9crgn4xtx9a485qmkpxx8g8tnz"
+        },
+        {
+          "_creationTime": 1791999511081.129,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "note_generated",
+          "patientId": "kx7c0y9crgn4xtx9a485qmkpxx8g8tnz"
+        },
+        {
+          "_creationTime": 1791999516187.441,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "event": "pre_round_summary_opened",
+          "patientId": "m570gnkx90h85ma9s99bw2ssqh8g9zv8"
+        },
+        {
+          "_creationTime": 1791999518236.049,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "event": "note_generated",
+          "patientId": "m570gnkx90h85ma9s99bw2ssqh8g9zv8"
+        },
+        {
+          "_creationTime": 1791999631328.342,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "event": "note_marked_complete",
+          "minutesFromPreRoundOpened": 2,
+          "patientId": "kx72qvrk8gxxcytb70n8r0py0n8g8qaq"
+        }
+      ],
+      "hospitalDelta": {
+        "preRoundSummariesOpened": 2,
+        "notesCompleted": 1,
+        "encountersTimed": 1,
+        "minutesPreRoundToComplete": 2,
+        "notesGenerated": 1
+      },
+      "nursingHomeDelta": {
+        "preRoundSummariesOpened": 1,
+        "notesCompleted": 0,
+        "encountersTimed": 0,
+        "minutesPreRoundToComplete": 0,
+        "notesGenerated": 1
+      },
+      "dayRows": [
+        {
+          "_creationTime": 1791999504917.7942,
+          "careSetting": "hospital",
+          "day": "2026-10-15",
+          "encountersTimed": 1,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 2,
+          "notesCompleted": 1,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 2,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:40:31.328Z"
+        },
+        {
+          "_creationTime": 1791999516187.4412,
+          "careSetting": "nursing_home",
+          "day": "2026-10-15",
+          "encountersTimed": 0,
+          "handoffsGenerated": 0,
+          "handoffsSent": 0,
+          "minutesPreRoundToComplete": 0,
+          "notesCompleted": 0,
+          "notesGenerated": 1,
+          "preRoundSummariesOpened": 1,
+          "tasksCompleted": 0,
+          "tasksDeleted": 0,
+          "updatedAt": "2026-10-14T17:38:38.236Z"
+        }
+      ]
+    },
+    "U13": {
+      "aiCalls": [
+        "ai/notes:generateNote -> ok",
+        "ai/notes:refreshCourseAndBackground -> ok",
+        "ai/parsing:extractMedicationEvents -> ok",
+        "ai/notes:suggestBilling -> ok",
+        "ai/notes:generateNote -> ok",
+        "ai/notes:refreshCourseAndBackground -> ok",
+        "ai/notes:suggestBilling -> ok",
+        "ai/notes:generateNote -> ok",
+        "ai/parsing:extractMedicationEvents -> ok",
+        "ai/notes:refreshCourseAndBackground -> ok",
+        "ai/notes:suggestBilling -> ok",
+        "ai/parsing:parsePreRoundNotes -> ok",
+        "ai/notes:generateNote -> ok",
+        "ai/parsing:extractMedicationEvents -> ok",
+        "ai/notes:refreshCourseAndBackground -> ok",
+        "ai/notes:suggestBilling -> ok"
+      ],
+      "note": "generateNote / suggestBilling answered in the browser; the review cites dev U43/U44/U68 for providerMs and model"
+    },
+    "cleanup": {
+      "hospital": 2,
+      "nursingHome": 1
+    }
+  }
+}

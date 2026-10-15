@@ -1,0 +1,19 @@
+{
+  "OAT-03/S06": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:43:22.250Z",
+    "title": "Ask AI and the Nursing Home pre-round summary fail on every try: clear error, nothing invented, input kept (handoff part todo)",
+    "detail": "One physician with a Hospital patient and a Nursing Home resident, no labs on either; spec newspec-c/flt-oat03-s06-fail-every-try.spec.ts. ai/assist:askChart, ai/assist:generateHandoff and ai/parsing:parsePreRoundNotes fail at the socket on every attempt. Judged 17/17. (a) Ask AI with the typed question 'List the OAT-03 lab results from this morning.', both contexts: 'The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.', the question kept, the chart's name on screen, no lab value and no answer block, not left on 'Searching…'. (c) Nursing Home Pre-Round Save Note: the typed text kept, 'Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.', and the Encounter tab keeps Generate disabled ('did not finish processing'); snf:get preRoundNotes equals the typed text; no ok aiCallLog row for the three functions in the run window (every call was refused in the browser). (b) Handoff = TODO (TFA-92586 ready for pr, PR #104 not on main), recorded only: with generateHandoff failing, /rounding/handoff and /snf/handoff each show 'The AI handoff for <name> couldn’t be generated. A chart-based summary is shown instead.' with a chart-based summary; Send was never tapped and no handoff was sent (Q17 / Q13 stay open).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s06.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s06-hosp-ask-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s06-hosp-handoff-todo.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s06-snf-ask-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s06-snf-encounter-after-failure.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s06-snf-handoff-todo.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s06-snf-preround-failed.png"
+    ],
+    "method": "PW",
+    "pkg": "flt"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "TC-06/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:22:15.498Z",
+    "title": "Step 5: a status changed by hand before the day roll is not changed by the roll (Hospital and Nursing Home)",
+    "detail": "PW, local stack, Hospital and Nursing Home. Day 1 on a browser whose clock read Oct 14 22:59-23:00 JST, through the chart header's status control: A New Admission then Follow-up by hand; B New Admission at 22:59 then Consult by hand at 23:00 (both stored with 2026-10-14). Day 2 on the real clock: C set New Admission (new@2026-10-15), list opened (the lifecycle ran): A Follow-up, C New Admission. Day 3 for C (its stored day moved back one day), list opened: C Follow-up, A still Follow-up. Judged cells A and C pass in both contexts (5/5 each, incl. the day-1 setup). B recorded for Q2: it read Follow-up on day 2 (stored follow-up@2026-10-15), i.e. the build restarts the clock on every hand change and does not exempt a hand-set Consult.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s12-hospital.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s12-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s12-hospital-day2-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s12-hospital-day3-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s12-snf-day2-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s12-snf-day3-list.png"
+    ],
+    "method": "PW",
+    "pkg": "clk"
+  }
+}

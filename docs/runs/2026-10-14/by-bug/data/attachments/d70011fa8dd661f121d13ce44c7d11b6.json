@@ -1,0 +1,170 @@
+{
+  "name": "oat06-s04-hospital",
+  "at": "2026-10-14T16:48:02.672Z",
+  "checks": [
+    {
+      "id": "R1: 3 patient_added rows, each addMethod scan_census, careSetting hospital",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996466853.9475,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"patient_added\"},{\"_creationTime\":1791996466853.9482,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"patient_added\"},{\"_creationTime\":1791996466853.949,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"patient_added\"}]"
+    },
+    {
+      "id": "R1: exactly one duplicate_prompt_shown and one duplicate_prompt_accepted (same promptId), addMethod scan_census, careSetting hospital",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996466935.574,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"236d1f08-fc84-43ac-9627-b70fd55b43c8\"},{\"_creationTime\":1791996469011.058,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"duplicate_prompt_accepted\",\"promptId\":\"236d1f08-fc84-43ac-9627-b70fd55b43c8\"}]"
+    },
+    {
+      "id": "R1: no other outcome row (no rejected)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "R1: no extra chart for the kept patient (one chart with the fixture name)",
+      "ok": true,
+      "detail": "charts named QA Hosp OAT06 Scan V2NN: 1"
+    },
+    {
+      "id": "R1 (recorded): a hospital scan writes no scan_census_completed row (only Nursing Home does)",
+      "ok": true,
+      "detail": "scan_census_completed rows: 0",
+      "recordOnly": true
+    },
+    {
+      "id": "R2: one shown + one rejected (same promptId), scan_census, hospital; no accepted",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996470854.472,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"e20895a7-f720-4fd0-82c7-4b5d1629f104\"},{\"_creationTime\":1791996470909.183,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"duplicate_prompt_rejected\",\"promptId\":\"e20895a7-f720-4fd0-82c7-4b5d1629f104\"}]"
+    },
+    {
+      "id": "R2: patient_added +1 (scan_census, hospital) and two charts with the fixture name",
+      "ok": true,
+      "detail": "patient_added rows: 1; charts named QA Hosp OAT06 Scan V2NN: 2"
+    },
+    {
+      "id": "R3a (recorded, Q5): closing the scan sheet before confirming shows no prompt and writes no row",
+      "ok": true,
+      "detail": "[]",
+      "recordOnly": true
+    },
+    {
+      "id": "R3b (recorded, Q5): a prompt left without a choice writes shown only (no outcome row), adds nothing",
+      "ok": true,
+      "detail": "[{\"_creationTime\":1791996476706.116,\"addMethod\":\"scan_census\",\"careSetting\":\"hospital\",\"event\":\"duplicate_prompt_shown\",\"promptId\":\"6fcc5795-97ed-4ab0-a569-35e74e3ff033\"}]; prompt controls: [Same patient (don't add) | Different — add anyway]; prompt after reload: false",
+      "recordOnly": true
+    },
+    {
+      "id": "U15: no patientActivity row holds a name or room from the photos",
+      "ok": true,
+      "detail": "9 rows checked"
+    }
+  ],
+  "data": {
+    "R1": {
+      "rows": [
+        {
+          "_creationTime": 1791996466853.9475,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "patient_added"
+        },
+        {
+          "_creationTime": 1791996466853.9482,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "patient_added"
+        },
+        {
+          "_creationTime": 1791996466853.949,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "patient_added"
+        },
+        {
+          "_creationTime": 1791996466935.574,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "duplicate_prompt_shown",
+          "promptId": "236d1f08-fc84-43ac-9627-b70fd55b43c8"
+        },
+        {
+          "_creationTime": 1791996469011.058,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "duplicate_prompt_accepted",
+          "promptId": "236d1f08-fc84-43ac-9627-b70fd55b43c8"
+        }
+      ],
+      "shownBeforeChoice": true,
+      "names": [
+        "QA Hosp OAT06 Scan V2NN",
+        "QA Scan Avery",
+        "QA Scan Brook",
+        "QA Scan Cole"
+      ]
+    },
+    "R2": {
+      "rows": [
+        {
+          "_creationTime": 1791996470854.472,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "duplicate_prompt_shown",
+          "promptId": "e20895a7-f720-4fd0-82c7-4b5d1629f104"
+        },
+        {
+          "_creationTime": 1791996470909.183,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "duplicate_prompt_rejected",
+          "promptId": "e20895a7-f720-4fd0-82c7-4b5d1629f104"
+        },
+        {
+          "_creationTime": 1791996470930.9585,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "patient_added"
+        }
+      ],
+      "names": [
+        "QA Hosp OAT06 Scan V2NN",
+        "QA Scan Avery",
+        "QA Scan Brook",
+        "QA Scan Cole",
+        "QA Hosp OAT06 Scan V2NN"
+      ]
+    },
+    "R3a sheet closed before confirm": {
+      "rows": []
+    },
+    "R3b prompt left without a choice": {
+      "rows": [
+        {
+          "_creationTime": 1791996476706.116,
+          "addMethod": "scan_census",
+          "careSetting": "hospital",
+          "event": "duplicate_prompt_shown",
+          "promptId": "6fcc5795-97ed-4ab0-a569-35e74e3ff033"
+        }
+      ],
+      "promptControls": [
+        "Same patient (don't add)",
+        "Different — add anyway"
+      ],
+      "promptAfterReload": false,
+      "charts": 2
+    },
+    "U13": {
+      "scanCalls": 4,
+      "aiCalls": [
+        "ai/vision:scanCensusSheet -> ok",
+        "ai/vision:scanCensusSheet -> ok",
+        "ai/vision:scanCensusSheet -> ok",
+        "ai/vision:scanCensusSheet -> ok"
+      ],
+      "serverVisionRows": 0,
+      "note": "the vision call was answered in the browser (no model), so aiCallLog has no vision row to judge providerMs / model on"
+    },
+    "cleanup": {
+      "hospital": 5,
+      "nursingHome": 0
+    }
+  }
+}

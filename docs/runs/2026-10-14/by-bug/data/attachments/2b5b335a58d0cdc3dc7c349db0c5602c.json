@@ -1,0 +1,18 @@
+{
+  "OAT-06/S20": {
+    "status": "passed",
+    "ranAt": "2026-10-14T16:48:49.089Z",
+    "title": "An analytics write fails: add, completion and task tap in both contexts; later events log normally",
+    "detail": "Local Playwright spec newspec-c/an2-oat06-s20-analytics-fail.spec.ts: patientActivity:logDuplicatePrompt and usage:record are refused at the Convex socket for every call while a switch is on (stronger than failFirstMutationRequest, which fails only the first), then the switch is turned off. Judged for TFA-94514 (U3 / U6 / U8), 3/3: once the writes work again a Hospital add-anyway logs duplicate_prompt_shown + duplicate_prompt_rejected (manual, hospital, same promptId) and patient_added; a Nursing Home add-anyway logs the same with nursing_home; a later chart logs pre_round_summary_opened, task_completed and note_marked_complete. Todo, recorded not judged (T2 'silent and backend-only' is TFA-92580, rejected by QA): while the duplicate-prompt log fails, the Hospital re-add of 'QA Hosp OAT06 Fail' (same name and room, OK on the browser's confirm) is refused: the form keeps every typed value and shows 'Could not save the duplicate check — [CONVEX M(patientActivity:logDuplicatePrompt)] …' (the raw server text, the B17 pattern); the Nursing Home re-add is refused with 'The resident couldn't be added. Check your connection and try again.' and keeps the name. The task tap and Mark Encounter Complete go through with no message while usage:record fails, but those two analytics rows are lost (no retry). The refused adds go to Daniela under Q18.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s20-cp1-hospital-add-while-failing.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s20-cp2-complete-while-failing.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s20-cp3-nh-add-while-failing.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s20-cp4-nh-add-after-recovery.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s20-cp5-later-chart-complete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s20.json"
+    ],
+    "method": "PW",
+    "pkg": "an2"
+  }
+}

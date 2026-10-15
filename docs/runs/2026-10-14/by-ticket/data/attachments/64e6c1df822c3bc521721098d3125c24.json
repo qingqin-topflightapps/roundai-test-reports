@@ -1,0 +1,54 @@
+{
+  "case": "TC-15-S04",
+  "title": "Preset 'urgent pending tasks' with one flagged task (Hospital; NH variant)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s04-h-tasks.md",
+      "verdict": "Pass",
+      "url": "/rounding/js77qmnzx6eva429q8s6pj5wh58g9fcw",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q2: whether the unflagged open task is listed) pass: \"chest X-ray\" present (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ]
+    },
+    {
+      "file": "s04-n-tasks.md",
+      "verdict": "Pass",
+      "url": "/snf/jx71zs02hewe47e1m4taee41d58g9r6z",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(Q2: whether the unflagged open task is listed) pass: \"advance directive\" present (in from \"Patient Record\" to \"Ask About Pre-Round Info or Labs\")"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [],
+  "agent": {
+    "turns": 29,
+    "costUsd": 0.18958519999999998,
+    "durationMs": 180087,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "e02167fe44b6ee06ab3bbab9daa8bfba5ee0be7c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-12T18:24:27Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

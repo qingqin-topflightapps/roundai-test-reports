@@ -1,0 +1,78 @@
+{
+  "name": "oat06-s13-r7",
+  "at": "2026-10-14T17:42:09.519Z",
+  "checks": [
+    {
+      "id": "R7 (recorded, Q1): after Not now the card comes back the next day, at most once a day (TFA-94609 Spec 1 says 2-3 more times that week, then it stops; UAT / TFA-94514 AC 4 say once)",
+      "ok": true,
+      "detail": "shown on: day 1; day 2 (+26 h), open 1; day 3 (+52 h); day 4 (+78 h); day 5 (+104 h); day 6 (+130 h); day 7 (+156 h); day 8 (+182 h) (8 of 9 opens); day 2 second open shown: false",
+      "recordOnly": true
+    },
+    {
+      "id": "one row per account: declining every day writes no baseline row",
+      "ok": true,
+      "detail": "0 row(s)"
+    }
+  ],
+  "data": {
+    "R7": {
+      "start": "2026-10-06T17:41:58.491Z",
+      "log": [
+        {
+          "step": "day 1",
+          "device": "Wed Oct 07 2026 02:41:59 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        },
+        {
+          "step": "day 2 (+26 h), open 1",
+          "device": "Thu Oct 08 2026 04:41:58 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        },
+        {
+          "step": "day 2 (+28 h), open 2",
+          "device": "Thu Oct 08 2026 06:42:06 GMT+0900 (Japan Standard Time)",
+          "shown": false,
+          "tappedNotNow": false
+        },
+        {
+          "step": "day 3 (+52 h)",
+          "device": "Fri Oct 09 2026 06:41:58 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        },
+        {
+          "step": "day 4 (+78 h)",
+          "device": "Sat Oct 10 2026 08:41:58 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        },
+        {
+          "step": "day 5 (+104 h)",
+          "device": "Sun Oct 11 2026 10:41:58 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        },
+        {
+          "step": "day 6 (+130 h)",
+          "device": "Mon Oct 12 2026 12:41:58 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        },
+        {
+          "step": "day 7 (+156 h)",
+          "device": "Tue Oct 13 2026 14:41:58 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        },
+        {
+          "step": "day 8 (+182 h)",
+          "device": "Wed Oct 14 2026 16:41:58 GMT+0900 (Japan Standard Time)",
+          "shown": true,
+          "tappedNotNow": true
+        }
+      ]
+    }
+  }
+}

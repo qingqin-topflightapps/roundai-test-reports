@@ -1,0 +1,146 @@
+{
+  "ref": "TC-11/S18",
+  "title": "TC-11/S18 Hospital day window on sparse and messy ledgers: only yesterday's and today's lines (record only: our addition)",
+  "dataset": "course-hosp",
+  "target": "dev",
+  "at": "2026-10-14T18:12:40.268Z",
+  "cells": [
+    {
+      "name": "ledgers as stored (labels from the server clock in the page's time zone)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "timeZone": "Asia/Tokyo",
+        "ledgers": {
+          "HA": [
+            "Oct 12: Started IV diuresis",
+            "Oct 15: Breathing easier"
+          ],
+          "HB": [
+            "Oct 13: Admitted with pneumonia"
+          ],
+          "HC": [
+            "Oct 14: Diuresis started"
+          ],
+          "HD": [
+            "Admitted with CHF exacerbation",
+            "Oct 10: Started IV diuresis",
+            "Oct 14: Diuresis continuing, net negative 1.2 L",
+            "Oct 15: Breathing easier on 2 L",
+            "Oct 12: Echo EF 35%"
+          ]
+        }
+      }
+    },
+    {
+      "name": "HA: today's card 'Oct 15: Breathing easier' [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Breathing easier"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "HA: no 'Oct 12' card and no filler card for yesterday ('Oct 14:') [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Breathing easier"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "HB: no cards ('Oct 13', 'Oct 14:', 'Oct 15:' all absent) [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": []
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "HC: just yesterday's card 'Oct 14: Diuresis started', nothing for today [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 14: Diuresis started"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "HD: yesterday's then today's card ('Oct 14: Diuresis continuing' before 'Oct 15: Breathing easier') [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Admitted with CHF exacerbation",
+          "Oct 14: Diuresis continuing, net negative 1.2 L",
+          "Oct 15: Breathing easier on 2 L"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "HD: the Oct 10 and Oct 12 lines are not on the cards [our addition: record only]",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Admitted with CHF exacerbation",
+          "Oct 14: Diuresis continuing, net negative 1.2 L",
+          "Oct 15: Breathing easier on 2 L"
+        ]
+      },
+      "ref": "TFA-92589 review: our addition"
+    },
+    {
+      "name": "HD: the undated line 'Admitted with CHF exacerbation' on the cards? (Q6)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "shown": true,
+        "cards": [
+          "Admitted with CHF exacerbation",
+          "Oct 14: Diuresis continuing, net negative 1.2 L",
+          "Oct 15: Breathing easier on 2 L"
+        ]
+      },
+      "ref": "Q6"
+    },
+    {
+      "name": "HB: an empty-state message is not judged",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": []
+      }
+    },
+    {
+      "name": "the run stayed on one local day",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "day0": "Oct 15"
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-11-S18-s18-ha.png",
+    "evidence/TC-11-S18-s18-hb.png",
+    "evidence/TC-11-S18-s18-hc.png",
+    "evidence/TC-11-S18-s18-hd.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-11-S18-s18-ha.png": 0,
+    "evidence/TC-11-S18-s18-hb.png": 0,
+    "evidence/TC-11-S18-s18-hc.png": 0,
+    "evidence/TC-11-S18-s18-hd.png": 0
+  }
+}
