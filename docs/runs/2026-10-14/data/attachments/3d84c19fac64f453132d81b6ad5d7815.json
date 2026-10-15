@@ -1,0 +1,176 @@
+{
+  "name": "dvc-efs-s18-camera",
+  "at": "2026-10-14T17:54:14.379Z",
+  "checks": [
+    {
+      "id": "camera denied, hospital-scan: no crash (T4)",
+      "ok": true,
+      "detail": "{\"a\":{\"systemPrompt\":true,\"appLines\":[],\"foreground\":\"topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}\",\"alive\":true},\"b\":{\"systemPrompt\":true,\"appLines\":[],\"foreground\":\"topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}\",\""
+    },
+    {
+      "id": "camera denied, hospital-scan: the app shows a clear message about the denied camera (EFS/S18 then (2))",
+      "ok": false,
+      "detail": "{\"first\":[],\"second\":[]}"
+    },
+    {
+      "id": "camera denied, snf-scan: no crash (T4)",
+      "ok": true,
+      "detail": "{\"a\":{\"systemPrompt\":false,\"appLines\":[],\"foreground\":\"topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}\",\"alive\":true},\"b\":{\"systemPrompt\":false,\"appLines\":[],\"foreground\":\"topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}\""
+    },
+    {
+      "id": "camera denied, snf-scan: the app shows a clear message about the denied camera (EFS/S18 then (2))",
+      "ok": false,
+      "detail": "{\"first\":[],\"second\":[]}"
+    },
+    {
+      "id": "camera denied, hospital-previous-notes: no crash (T4)",
+      "ok": true,
+      "detail": "{\"a\":{\"systemPrompt\":false,\"appLines\":[],\"foreground\":\"topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}\",\"alive\":true},\"b\":{\"systemPrompt\":false,\"appLines\":[],\"foreground\":\"topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}\""
+    },
+    {
+      "id": "camera denied, hospital-previous-notes: the app shows a clear message about the denied camera (EFS/S18 then (2))",
+      "ok": false,
+      "detail": "{\"first\":[],\"second\":[]}"
+    },
+    {
+      "id": "camera granted, hospital-scan: the camera opens (TFA-92570 AC 3; TC-09/S25, TC-13/S24 'the camera opens')",
+      "ok": false,
+      "detail": "topResumedActivity=ActivityRecord{252028722 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t43}"
+    },
+    {
+      "id": "camera granted, hospital-scan: Back returns to the app (no crash)",
+      "ok": true,
+      "detail": "{\"pidAlive\":true,\"resumed\":true}"
+    },
+    {
+      "id": "camera granted, snf-scan: the camera opens (TFA-92570 AC 3; TC-09/S25, TC-13/S24 'the camera opens')",
+      "ok": false,
+      "detail": "topResumedActivity=ActivityRecord{234429610 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t43}"
+    },
+    {
+      "id": "camera granted, snf-scan: Back returns to the app (no crash)",
+      "ok": true,
+      "detail": "{\"pidAlive\":true,\"resumed\":true}"
+    },
+    {
+      "id": "camera granted, hospital-previous-notes: the camera opens (TFA-92570 AC 3; TC-09/S25, TC-13/S24 'the camera opens')",
+      "ok": false,
+      "detail": "topResumedActivity=ActivityRecord{248716567 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t43}"
+    },
+    {
+      "id": "camera granted, hospital-previous-notes: Back returns to the app (no crash)",
+      "ok": true,
+      "detail": "{\"pidAlive\":true,\"resumed\":true}"
+    }
+  ],
+  "data": {
+    "cameraBefore": {
+      "granted": false,
+      "flags": "USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED"
+    },
+    "cameraDenied": {
+      "hospital-scan-1": {
+        "systemPrompt": true,
+        "appLines": [],
+        "foreground": "topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}",
+        "alive": true
+      },
+      "hospital-scan-2": {
+        "systemPrompt": true,
+        "appLines": [],
+        "foreground": "topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}",
+        "alive": true
+      },
+      "snf-scan-1": {
+        "systemPrompt": false,
+        "appLines": [],
+        "foreground": "topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}",
+        "alive": true
+      },
+      "snf-scan-2": {
+        "systemPrompt": false,
+        "appLines": [],
+        "foreground": "topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}",
+        "alive": true
+      },
+      "hospital-previous-notes-1": {
+        "systemPrompt": false,
+        "appLines": [],
+        "foreground": "topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}",
+        "alive": true
+      },
+      "hospital-previous-notes-2": {
+        "systemPrompt": false,
+        "appLines": [],
+        "foreground": "topResumedActivity=ActivityRecord{59549756 u0 com.roundcompanion.app/.MainActivity t43}",
+        "alive": true
+      }
+    },
+    "systemPrompts": {
+      "hospital-scan-1": {
+        "prompt": [
+          "Allow Round Companion to take pictures and record video?",
+          "While using the app",
+          "Only this time",
+          "Don’t allow"
+        ],
+        "answered": "Don’t allow"
+      },
+      "hospital-scan-2": {
+        "prompt": [
+          "Allow Round Companion to take pictures and record video?",
+          "While using the app",
+          "Only this time",
+          "Don’t allow"
+        ],
+        "answered": "Don’t allow"
+      },
+      "snf-scan-1": {
+        "prompt": null
+      },
+      "snf-scan-2": {
+        "prompt": null
+      },
+      "hospital-previous-notes-1": {
+        "prompt": null
+      },
+      "hospital-previous-notes-2": {
+        "prompt": null
+      }
+    },
+    "cameraAfterDenials": {
+      "granted": false,
+      "flags": "USER_SET|USER_FIXED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED"
+    },
+    "cameraGranted": {
+      "hospital-scan": {
+        "foreground": "topResumedActivity=ActivityRecord{252028722 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t43}",
+        "camera": false,
+        "photoPicker": true,
+        "back": {
+          "pidAlive": true,
+          "resumed": true
+        }
+      },
+      "snf-scan": {
+        "foreground": "topResumedActivity=ActivityRecord{234429610 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t43}",
+        "camera": false,
+        "photoPicker": true,
+        "back": {
+          "pidAlive": true,
+          "resumed": true
+        }
+      },
+      "hospital-previous-notes": {
+        "foreground": "topResumedActivity=ActivityRecord{248716567 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t43}",
+        "camera": false,
+        "photoPicker": true,
+        "back": {
+          "pidAlive": true,
+          "resumed": true
+        }
+      }
+    },
+    "packageQueries": "queriesIntents=[Intent { act=android.speech.RecognitionService }]\n    scannedAsStoppedSystemApp=false\n    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]\n    timeStamp=2026-10-15 01:19:00\n    lastUpdateTime=2026-10-15 01:19:00\n--\nQueries:\n  system apps queryable: false\n  queries via forceQueryable:\n  queries via package name:"
+  }
+}

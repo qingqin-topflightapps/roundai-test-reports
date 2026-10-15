@@ -1,0 +1,145 @@
+{
+  "name": "dvc-tc25-s22-snf",
+  "at": "2026-10-14T16:34:01.487Z",
+  "checks": [
+    {
+      "id": "U1 (gated TFA-94513/94704): computer still signed in after the phone's own sign-in",
+      "ok": true,
+      "detail": "list shown",
+      "recordOnly": true
+    },
+    {
+      "id": "T3: the app signs in through its own email-code form (own session, 200)",
+      "ok": true,
+      "detail": "sign-in POST 200"
+    },
+    {
+      "id": "T3: a patient added in the app is stored like a web add",
+      "ok": true,
+      "detail": "stored m57bw9cjypks9v8nvt5ky5v0fd8g91b8"
+    },
+    {
+      "id": "U2 (gated): the computer shows the phone's add without a refresh",
+      "ok": true,
+      "detail": "after 309 ms, 0 navigations",
+      "recordOnly": true
+    },
+    {
+      "id": "U3 (gated): the computer's pre-round save shows on the phone without a refresh (text)",
+      "ok": true,
+      "detail": "text after 3 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "U3 panels (gated Q5): the panel values Save Note filled show on the phone",
+      "ok": true,
+      "detail": "BP 132/80 after 309 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "T3: the pre-round note saved on the computer opens in the app's chart",
+      "ok": true,
+      "detail": "text 3 ms, panel 309 ms"
+    },
+    {
+      "id": "T3: Generate in the app stores the note like the web (scripted model answer)",
+      "ok": true,
+      "detail": "stored note: QA dvc mocked visit note. Hip pain 2/10, incision clean and dry. Plan: continue "
+    },
+    {
+      "id": "T3: the app shows the generated note",
+      "ok": true,
+      "detail": "after 450 ms"
+    },
+    {
+      "id": "U4 (gated): the phone's note shows on the computer's Post-Round without a refresh",
+      "ok": true,
+      "detail": "after 3 ms, 0 navigations",
+      "recordOnly": true
+    },
+    {
+      "id": "U5/U6 Nursing Home delete (known B24 / Q3): no resident delete control on main",
+      "ok": true,
+      "detail": "no delete control (same as the web)",
+      "recordOnly": true
+    },
+    {
+      "id": "the app never showed the sign-in gate or the crash screen on the observing checkpoints",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "data": {
+    "phoneSignIn": {
+      "signInStatus": 200,
+      "consentShown": false
+    },
+    "step2": {
+      "phoneShowsAdd": 772,
+      "computerShowsAfterMs": 309,
+      "stored": true,
+      "computerNavigations": 0
+    },
+    "step3": {
+      "phoneShowsTextMs": 3,
+      "phoneShowsPanelBpMs": 309,
+      "computerParseCalls": 1,
+      "status": "pre-rounded",
+      "phoneNavigations": 3
+    },
+    "step4": {
+      "generateCalls": 1,
+      "phoneSocket": [
+        "ai/notes:generateNote:ok",
+        "ai/parsing:extractMedicationEvents:ok",
+        "ai/notes:refreshCourseAndBackground:ok"
+      ],
+      "phoneShowsNoteMs": 450,
+      "computerShowsNoteMs": 3,
+      "computerNavigations": 0,
+      "storedNote": "QA dvc mocked visit note. Hip pain 2/10, incision clean and dry. Plan: continue PT/OT, recheck CBC Friday.",
+      "status": "note-ready"
+    },
+    "snfDeleteControlsOnComputer": 0,
+    "step5": {
+      "deleteControl": false,
+      "dialogs": [],
+      "phoneDropsCardMs": null,
+      "phoneNavigations": [
+        "2026-10-14T16:33:22.078Z https://localhost/snf/add",
+        "2026-10-14T16:33:24.056Z https://localhost/snf",
+        "2026-10-14T16:33:25.631Z https://localhost/snf/m573qxv0r22rr09jh601k7hv758g83k6",
+        "2026-10-14T16:34:00.184Z https://localhost/snf"
+      ]
+    },
+    "phoneSocketAll": [
+      "Mutation time:now passed",
+      "Mutation snf:applyLifecycle passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation snf:add passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logChartAccess passed",
+      "Mutation usage:record passed",
+      "Mutation snf:update passed",
+      "Mutation snf:update passed",
+      "Mutation snf:update passed",
+      "Mutation snf:update passed",
+      "Action ai/notes:generateNote ok",
+      "Mutation snf:update passed",
+      "Mutation usage:record passed",
+      "Mutation snf:update passed",
+      "Action ai/parsing:extractMedicationEvents ok",
+      "Action ai/notes:refreshCourseAndBackground ok",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed"
+    ],
+    "computerSocketAi": [
+      "ai/parsing:parsePreRoundNotes:ok",
+      "ai/notes:suggestBilling:ok"
+    ],
+    "phoneUrl": "https://localhost/snf"
+  }
+}

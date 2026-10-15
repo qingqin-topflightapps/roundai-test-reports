@@ -1,0 +1,28 @@
+{
+  "name": "dvc-tc25-s22-probe-stale-preround",
+  "at": "2026-10-14T17:54:57.253Z",
+  "checks": [
+    {
+      "id": "the app's open chart shows the computer's saved pre-round note before the physician types (no stale empty box)",
+      "ok": false,
+      "detail": "{\"phoneCard\":\"📝 Tap to add today's pre-round notes Edit\",\"editorValueOnOpen\":\"\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "the computer's saved pre-round text survives the phone typing into its box",
+      "ok": false,
+      "detail": "{\"before\":\"QA-SYNC-PR-COMP Computer's pre-round: afebrile, BP 124/78, continue ceftriaxone.\",\"after\":\"QA-SYNC-PR-PHONE Phone adds: patient asked for discharge planning.\"}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "stale": {
+      "storedBefore": "QA-SYNC-PR-COMP Computer's pre-round: afebrile, BP 124/78, continue ceftriaxone.",
+      "phoneCardWhileStale": "📝 Tap to add today's pre-round notes Edit",
+      "editorValueOnOpen": "",
+      "storedAfterPhoneTyped": "QA-SYNC-PR-PHONE Phone adds: patient asked for discharge planning.",
+      "rawAfter": "QA-SYNC-PR-COMP Computer's pre-round: afebrile, BP 124/78, continue ceftriaxone.",
+      "computerCardAfter": "📝 QA-SYNC-PR-PHONE Phone adds: patient asked for discharge pla… Edit"
+    }
+  }
+}

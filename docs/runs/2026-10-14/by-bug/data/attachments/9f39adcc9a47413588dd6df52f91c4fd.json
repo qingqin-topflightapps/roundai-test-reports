@@ -1,0 +1,25 @@
+{
+  "TC-03/S24": {
+    "status": "passed",
+    "ranAt": "2026-10-14T17:45:06.328Z",
+    "title": "Android build on the local stack: native sort picker, on-screen keyboard, search vs the web",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Judged 22/22 on Android against the desktop web on the same account and S19 data: searches typed with the on-screen keyboard after a real tap (o'brien, jones, 410, 41; d'angelo, 41 in Today's Visits) list exactly what the web lists; with the keyboard up the first result stays visible above it; Android's native picker lists the three orders and each order equals the web's (both contexts); a search typed and the picker opened over it gives the web's filtered, sorted list and keeps the search. Recorded only: '41' also lists Novak through MRN-4100 on both (Q7); 'José' via CDP finds José Núñez; the curly-apostrophe searches O’Brien / D’Angelo (what iOS smart punctuation types) find nothing on the app or the web (Q8). With the keyboard up only about one result card shows above the bottom navigation bar (record). iOS half not run: the simulator cannot be tapped here without a permission prompt (no idb / Maestro / WebDriverAgent installed; the simulator-control and computer-use tools ask first), and the only booted simulator runs someone else's dev-pointed build (b8fb762), which was left alone. A separate prompt-free smoke on a new simulator (dvc-tc24-s24-ios-*) showed the iOS build on the local stack opening and listing patients.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-hospital-native-sort-picker.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-hospital-picker-over-search.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-hospital-search-41.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-hospital-search-410.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-hospital-search-and-sort.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-hospital-search-jones.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-hospital-search-o_brien.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-snf-native-sort-picker.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-snf-picker-over-search.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-snf-search-41.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-snf-search-and-sort.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24-snf-search-d_angelo.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc03-s24.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

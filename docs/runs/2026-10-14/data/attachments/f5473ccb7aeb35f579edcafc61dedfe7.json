@@ -1,0 +1,25 @@
+{
+  "TC-25/S24b": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-14T17:46:10.421Z",
+    "title": "Phone on the wrong date or another time zone shows the same state as the computer",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Two phases, each with a patient set to New Admission on the server's yesterday and a note generated on the phone (scripted model answer): (a) phone one day ahead (JST), (b) phone at the real time in Pacific/Honolulu. Same on both devices: the badge rolled to Follow-up once, the pre-selected note format (SOAP progress) and the course timeline lines (server-clock label, TFA-92589). Different (6 of 12 checks fail): (a) the phone's card lacks 'NEW TODAY'; the note's generated-at stamp is written with the phone's clock, so the phone AND the computer show the note as '2:45 AM · Oct 16' on Oct 15; stored transcriptDate 'Fri Oct 16 2026' vs the server's Oct 15. (b) note screen dates Oct 14 (phone) vs Oct 15 (computer); transcriptDate 'Wed Oct 14 2026'. Known: TFA-92584 AC 8 / B18 (day roll and transcriptDate follow the device clock); the note-time instance is the same class. Hospital day / visit number are not shown on main (B23).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-plus1d-01-phone-list.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-plus1d-02-phone-chart.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-plus1d-03-phone-post-round.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-plus1d-04-computer-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-plus1d-05-phone-timeline.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-utc-10-01-phone-list.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-utc-10-02-phone-chart.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-utc-10-03-phone-post-round.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-utc-10-04-computer-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b-utc-10-05-phone-timeline.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc25-s24b.json"
+    ],
+    "method": "PW",
+    "productIssue": "With a phone whose clock is a day ahead, a note generated on it is shown as tomorrow's on every device ('2:45 AM · Oct 16' on Oct 15) and its transcript is filed under tomorrow; the phone's list also drops the 'New today' tag (known B18 / TFA-92584 AC 8).",
+    "pkg": "dvc"
+  }
+}

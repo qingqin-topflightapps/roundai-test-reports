@@ -1,0 +1,11 @@
+{
+  "OAT-05/S13": {
+    "status": "blocked",
+    "ranAt": "2026-10-15T05:19:53.290Z",
+    "title": "Real phone dictation: traffic shows an ephemeral token only, never a key, and no device speech service",
+    "detail": "Not run: it needs a phone dictating through the live session behind a recording HTTPS proxy and a packet capture; on the local stack a live dictation would ask OpenAI for a realtime client secret, which the brief forbids, and the emulator has no microphone. Our addition (review: record-only is enough). Recorded from the APK built here: its web bundle names only 127.0.0.1:4510/4511 and api.openai.com/v1/realtime/calls, and a scan for key patterns (sk-, AKIA, AIza, xox) found none. Also recorded: test accounts carry the on-device test marker through the shared fixture, and with it the Android app dictates with Android's on-device recogniser (seen as a 'No match' error on the silent emulator) - a test-only path; a physician account (no marker) uses the cloud engine.",
+    "evidence": [],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

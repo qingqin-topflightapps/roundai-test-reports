@@ -1,0 +1,28 @@
+{
+  "TC-01/S24": {
+    "status": "record-only",
+    "known": true,
+    "ranAt": "2026-10-14T18:09:23.353Z",
+    "title": "Real phone on the local stack: card tap, delete pop-up and toast, and a wrong device clock",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Our addition (10-15 review): recorded only; the failures seen are known. Card tap opens the chart. Delete on a throwaway Hospital patient: the confirmation is Android's system dialog (CANCEL / OK, not the app's own pop-up), CANCEL keeps the patient, OK removes it, and no 'deleted' message shows - known B24 (TFA-92579 AC 7 / AC 8). Nursing Home cards have no delete control (B24). Deleting a task asks nothing (recorded for TC-24/S24 / U8). Phone one day ahead, then one day ahead in UTC-10, reopened and compared with the web on the same account: the phone drops 'NEW TODAY' on every card, and a patient set to New Admission today and a resident set to Consult today read Follow-up on the phone but New Admission / Consult on the web - known B18 / TFA-92584 AC 8 (TFA-92579 AC 3/4 for 'New today'). Hospital day / visit number are not on the cards (B23).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-01-list.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-02-card-tap-chart.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-03-task-delete.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-04-delete-popup-cancel.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-04-delete-popup-ok.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-05-after-cancel.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-05-after-ok.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-06-snf-list.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-07-web-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-07-web-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-08-phone-plus1d-hospital.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-08-phone-plus1d-snf.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-08-phone-plus1d-utc-10-hospital.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24-08-phone-plus1d-utc-10-snf.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc01-s24.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

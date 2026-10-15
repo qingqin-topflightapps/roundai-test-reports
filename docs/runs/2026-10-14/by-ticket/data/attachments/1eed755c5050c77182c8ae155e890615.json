@@ -1,0 +1,224 @@
+{
+  "name": "dvc-tc06-s23",
+  "at": "2026-10-14T17:21:35.505Z",
+  "checks": [
+    {
+      "id": "hospital: the native picker offers the three states",
+      "ok": true,
+      "detail": "options: New Admission | Follow-up | Consult"
+    },
+    {
+      "id": "hospital: Consult picked on the phone is kept after background and after reopening",
+      "ok": true,
+      "detail": "{\"afterPick\":\"consult\",\"afterBackground\":\"consult\",\"afterReopen\":\"consult\",\"stored\":{\"encType\":\"consult\",\"encTypeDay\":\"2026-10-15\"}}"
+    },
+    {
+      "id": "snf: the native picker offers the three states",
+      "ok": true,
+      "detail": "options: New Admission | Follow-up | Consult"
+    },
+    {
+      "id": "snf: Consult picked on the phone is kept after background and after reopening",
+      "ok": true,
+      "detail": "{\"afterPick\":\"consult\",\"afterBackground\":\"consult\",\"afterReopen\":\"consult\",\"stored\":{\"encType\":\"consult\",\"encTypeDay\":\"2026-10-15\"}}"
+    },
+    {
+      "id": "camera opens from the scan control (photo of a printed census needs a physical phone)",
+      "ok": false,
+      "detail": "{\"hospital\":{\"foreground\":\"topResumedActivity=ActivityRecord{208535473 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t32}\",\"screenText\":[\"Drag handle\",\"Photos\",\"Albums\",\"More\",\"No photos yet\",\"Start capturing photos and videos\"]},\"hospitalAppBack\":{\"pidAlive\":true,\"resumed\":true},\"snf\":{\"foreground\":\"topResumedActivity=ActivityRecord{45150145 u0 com.google",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital: with the phone a day behind, phone and web show the same badge (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone New Admission, web Follow-up"
+    },
+    {
+      "id": "hospital: same Note Format pre-selection on phone and web (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone 'H&P', web 'SOAP progress'"
+    },
+    {
+      "id": "hospital: what the phone set still reads New Admission on the web device (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "web reads Follow-up; stored after the web opened it: {\"encType\":\"follow-up\",\"encTypeDay\":\"2026-10-15\"}"
+    },
+    {
+      "id": "snf: with the phone a day behind, phone and web show the same badge (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone New Admission, web Follow-up"
+    },
+    {
+      "id": "snf: same Note Format pre-selection on phone and web (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone 'SNF admission', web 'SNF follow-up'"
+    },
+    {
+      "id": "snf: what the phone set still reads New Admission on the web device (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "web reads Follow-up; stored after the web opened it: {\"encType\":\"follow-up\",\"encTypeDay\":\"2026-10-15\"}"
+    },
+    {
+      "id": "no clock set: Android always keeps a time (automatic date off keeps the last value), so this cell cannot be set up",
+      "ok": true,
+      "detail": "not possible on Android",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "signIn": {
+      "asked": true,
+      "signInStatus": 200,
+      "consentShown": false,
+      "outcome": "reached-app"
+    },
+    "hospitalPickerOptions": [
+      "New Admission",
+      "Follow-up",
+      "Consult"
+    ],
+    "snfPickerOptions": [
+      "New Admission",
+      "Follow-up",
+      "Consult"
+    ],
+    "pickerAndPersistence": {
+      "hospital": {
+        "afterPick": "consult",
+        "afterBackground": "consult",
+        "afterReopen": "consult",
+        "stored": {
+          "encType": "consult",
+          "encTypeDay": "2026-10-15"
+        }
+      },
+      "snf": {
+        "afterPick": "consult",
+        "afterBackground": "consult",
+        "afterReopen": "consult",
+        "stored": {
+          "encType": "consult",
+          "encTypeDay": "2026-10-15"
+        }
+      }
+    },
+    "camera": {
+      "hospital": {
+        "foreground": "topResumedActivity=ActivityRecord{208535473 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t32}",
+        "screenText": [
+          "Drag handle",
+          "Photos",
+          "Albums",
+          "More",
+          "No photos yet",
+          "Start capturing photos and videos"
+        ]
+      },
+      "hospitalAppBack": {
+        "pidAlive": true,
+        "resumed": true
+      },
+      "snf": {
+        "foreground": "topResumedActivity=ActivityRecord{45150145 u0 com.google.android.photopicker/com.android.photopicker.PhotopickerGetContentActivity t32}",
+        "screenText": [
+          "Drag handle",
+          "Photos",
+          "Albums",
+          "More",
+          "No photos yet",
+          "Start capturing photos and videos"
+        ]
+      },
+      "snfAppBack": {
+        "pidAlive": true,
+        "resumed": true
+      }
+    },
+    "phoneClock": {
+      "date": "Wed Oct 14 02:21:05 JST 2026",
+      "epochMs": 1791912065000,
+      "timeZone": "Asia/Tokyo",
+      "autoTime": "0"
+    },
+    "signInAfterClock": {
+      "asked": false
+    },
+    "clock": {
+      "serverNow": "2026-10-14T17:21:05.741Z",
+      "phone": {
+        "hospital": {
+          "badge": "new",
+          "noteFormat": {
+            "selected": "H&P",
+            "options": [
+              "H&P",
+              "SOAP progress",
+              "Consult note",
+              "Discharge summary"
+            ]
+          },
+          "header": "QA Hosp Badge lo8t Room QA6-1 · 70y · — New Admission ▾ New Admission Follow-up Consult"
+        },
+        "hospitalCard": "QH QA Hosp Badge lo8t Room QA6-1 · 70y QA pneumonia Not Yet Prepped New Admission",
+        "snf": {
+          "badge": "new",
+          "noteFormat": {
+            "selected": "SNF admission",
+            "options": [
+              "SNF admission",
+              "SNF follow-up"
+            ]
+          },
+          "header": "QA Resident Badge lo8t MRN-ENT5C7 · QA Wing · Rm 6 Nursing Home New Admission ▾ New Admission Follow-up Consult"
+        },
+        "snfCard": "QR QA Resident Badge lo8t QA Wing · Rm 6 · MRN-ENT5C7 QA rehab Pending New Admission"
+      },
+      "web": {
+        "hospital": {
+          "badge": "follow-up",
+          "noteFormat": {
+            "selected": "SOAP progress",
+            "options": [
+              "H&P",
+              "SOAP progress",
+              "Consult note",
+              "Discharge summary"
+            ]
+          },
+          "card": "QH QA Hosp Badge lo8t NEW TODAY Room QA6-1 · 70y QA pneumonia Not Yet Prepped Follow-up"
+        },
+        "snf": {
+          "badge": "follow-up",
+          "noteFormat": {
+            "selected": "SNF follow-up",
+            "options": [
+              "SNF admission",
+              "SNF follow-up"
+            ]
+          },
+          "card": "QR QA Resident Badge lo8t QA Wing · Rm 6 · MRN-ENT5C7 QA rehab Pending Follow-up"
+        }
+      },
+      "storedAfterPhone": {
+        "hospital": {
+          "encType": "new",
+          "encTypeDay": "2026-10-14"
+        },
+        "snf": {
+          "encType": "new",
+          "encTypeDay": "2026-10-14"
+        }
+      },
+      "storedAfterWeb": {
+        "hospital": {
+          "encType": "follow-up",
+          "encTypeDay": "2026-10-15"
+        },
+        "snf": {
+          "encType": "follow-up",
+          "encTypeDay": "2026-10-15"
+        }
+      }
+    }
+  }
+}

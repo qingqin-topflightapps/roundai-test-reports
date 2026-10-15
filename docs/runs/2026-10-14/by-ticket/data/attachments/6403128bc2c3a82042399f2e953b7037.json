@@ -1,0 +1,136 @@
+{
+  "name": "dvc-tc01-s24",
+  "at": "2026-10-14T18:09:23.352Z",
+  "checks": [
+    {
+      "id": "card tap opens the chart (as S01/S02)",
+      "ok": true,
+      "detail": "chart opened",
+      "recordOnly": true
+    },
+    {
+      "id": "delete pop-up looks like the app, not a system alert (TFA-92579 AC 7; known B24)",
+      "ok": false,
+      "detail": "{\"CANCEL\":{\"dialogText\":[\"Remove QA Hosp Card Throwaway 5std from the rounding list?&#10;&#10;This will delete all notes, vitals, and encounter data for this patient.\",\"CANCEL\",\"OK\"],\"nativeDialog\":true,\"cardStill\":true,\"toast\":[]},\"OK\":{\"dialogText\":[\"Remove QA Hosp Card Throwaway 5std from the rou",
+      "recordOnly": true
+    },
+    {
+      "id": "Cancel keeps the patient, OK removes it",
+      "ok": true,
+      "detail": "{\"CANCEL\":{\"dialogText\":[\"Remove QA Hosp Card Throwaway 5std from the rounding list?&#10;&#10;This will delete all notes, vitals, and encounter data for this patient.\",\"CANCEL\",\"OK\"],\"nativeDialog\":true,\"cardStill\":true,\"toast\":[]},\"OK\":{\"dialogText\":[\"Remove QA Hosp Card Throwaway 5std from the rou",
+      "recordOnly": true
+    },
+    {
+      "id": "a 'deleted' message shows after OK (TFA-92579 AC 8; known B24)",
+      "ok": false,
+      "detail": "[]",
+      "recordOnly": true
+    },
+    {
+      "id": "plus1d hospital: phone cards equal the web's ('New today', badge; known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone {\"QA Hosp Card Ash 5std\":\"QH QA Hosp Card Ash 5std Room QA1-2 · 76y QA CHF Not Yet Prepped Follow-up 1 task\",\"QA Hosp Card Birch 5std\":\"QH QA Hosp Card Birch 5std Room QA1-3 · 64y QA pneumonia Pre-Rounded Follow-up\"} | web {\"QA Hosp Card Ash 5std\":\"QH QA Hosp Card Ash 5std NEW TODAY Room QA1-2 · 76y QA CHF Not Yet Prepped Follow-up 1 task\",\"QA Hosp Card Birch 5std\":\"QH QA Hosp Card Birch 5std NEW TODAY Room QA1-3 · 64y QA pneumonia Pre-Rounded New Admission\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "plus1d snf: phone cards equal the web's ('New today', badge; known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone {\"QA Resident Card Cole 5std\":\"QR QA Resident Card Cole 5std QA Wing · Rm 1 · MRN-OJUBFG QA rehab Pending Follow-up\"} | web {\"QA Resident Card Cole 5std\":\"QR QA Resident Card Cole 5std QA Wing · Rm 1 · MRN-OJUBFG QA rehab Pending Consult\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "plus1d-utc-10 hospital: phone cards equal the web's ('New today', badge; known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone {\"QA Hosp Card Ash 5std\":\"QH QA Hosp Card Ash 5std Room QA1-2 · 76y QA CHF Not Yet Prepped Follow-up 1 task\",\"QA Hosp Card Birch 5std\":\"QH QA Hosp Card Birch 5std Room QA1-3 · 64y QA pneumonia Pre-Rounded Follow-up\"} | web {\"QA Hosp Card Ash 5std\":\"QH QA Hosp Card Ash 5std NEW TODAY Room QA1-2 · 76y QA CHF Not Yet Prepped Follow-up 1 task\",\"QA Hosp Card Birch 5std\":\"QH QA Hosp Card Birch 5std NEW TODAY Room QA1-3 · 64y QA pneumonia Pre-Rounded New Admission\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "plus1d-utc-10 snf: phone cards equal the web's ('New today', badge; known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone {\"QA Resident Card Cole 5std\":\"QR QA Resident Card Cole 5std QA Wing · Rm 1 · MRN-OJUBFG QA rehab Pending Follow-up\"} | web {\"QA Resident Card Cole 5std\":\"QR QA Resident Card Cole 5std QA Wing · Rm 1 · MRN-OJUBFG QA rehab Pending Consult\"}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "taskDelete": {
+      "dialogs": [],
+      "nativeButtonsSeen": [],
+      "taskGone": true
+    },
+    "deletePopup": {
+      "CANCEL": {
+        "dialogText": [
+          "Remove QA Hosp Card Throwaway 5std from the rounding list?&#10;&#10;This will delete all notes, vitals, and encounter data for this patient.",
+          "CANCEL",
+          "OK"
+        ],
+        "nativeDialog": true,
+        "cardStill": true,
+        "toast": []
+      },
+      "OK": {
+        "dialogText": [
+          "Remove QA Hosp Card Throwaway 5std from the rounding list?&#10;&#10;This will delete all notes, vitals, and encounter data for this patient.",
+          "CANCEL",
+          "OK"
+        ],
+        "nativeDialog": true,
+        "cardStill": false,
+        "toast": []
+      }
+    },
+    "snfDeleteControls": 0,
+    "cards": {
+      "web": {
+        "hospital": {
+          "QA Hosp Card Ash 5std": "QH QA Hosp Card Ash 5std NEW TODAY Room QA1-2 · 76y QA CHF Not Yet Prepped Follow-up 1 task",
+          "QA Hosp Card Birch 5std": "QH QA Hosp Card Birch 5std NEW TODAY Room QA1-3 · 64y QA pneumonia Pre-Rounded New Admission"
+        },
+        "snf": {
+          "QA Resident Card Cole 5std": "QR QA Resident Card Cole 5std QA Wing · Rm 1 · MRN-OJUBFG QA rehab Pending Consult"
+        }
+      },
+      "phones": {
+        "plus1d": {
+          "clock": {
+            "date": "Fri Oct 16 03:09:14 JST 2026",
+            "epochMs": 1792087754000,
+            "timeZone": "Asia/Tokyo",
+            "autoTime": "0"
+          },
+          "signIn": {
+            "asked": true,
+            "signInStatus": 200,
+            "consentShown": false,
+            "outcome": "reached-app"
+          },
+          "hospital": {
+            "QA Hosp Card Ash 5std": "QH QA Hosp Card Ash 5std Room QA1-2 · 76y QA CHF Not Yet Prepped Follow-up 1 task",
+            "QA Hosp Card Birch 5std": "QH QA Hosp Card Birch 5std Room QA1-3 · 64y QA pneumonia Pre-Rounded Follow-up"
+          },
+          "snf": {
+            "QA Resident Card Cole 5std": "QR QA Resident Card Cole 5std QA Wing · Rm 1 · MRN-OJUBFG QA rehab Pending Follow-up"
+          }
+        },
+        "plus1d-utc-10": {
+          "clock": {
+            "date": "Thu Oct 15 08:09:14 HST 2026",
+            "epochMs": 1792087754000,
+            "timeZone": "Pacific/Honolulu",
+            "autoTime": "0"
+          },
+          "signIn": {
+            "asked": false
+          },
+          "hospital": {
+            "QA Hosp Card Ash 5std": "QH QA Hosp Card Ash 5std Room QA1-2 · 76y QA CHF Not Yet Prepped Follow-up 1 task",
+            "QA Hosp Card Birch 5std": "QH QA Hosp Card Birch 5std Room QA1-3 · 64y QA pneumonia Pre-Rounded Follow-up"
+          },
+          "snf": {
+            "QA Resident Card Cole 5std": "QR QA Resident Card Cole 5std QA Wing · Rm 1 · MRN-OJUBFG QA rehab Pending Follow-up"
+          }
+        }
+      }
+    }
+  }
+}

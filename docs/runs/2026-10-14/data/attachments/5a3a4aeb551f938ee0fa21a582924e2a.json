@@ -1,0 +1,15 @@
+{
+  "TC-15/S20": {
+    "status": "blocked",
+    "ranAt": "2026-10-14T17:54:40.024Z",
+    "title": "Dictated custom question on a real phone, both contexts (local stack only)",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Done on the emulator, 2/2 passed: a real tap in the Ask AI question box opens the on-screen keyboard and the box stays visible above it with the typed question kept (Hospital chart and Nursing Home resident). Left: the dictated question (needs a real voice into a real phone and the live transcription session, which the local stack must not open) and the grounded answers quoting K 3.9 and 'held' (needs the live model), plus the engine / model record (3.9).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc15-s20-hospital-ask-keyboard-up.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc15-s20-snf-ask-keyboard-up.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc15-s20.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

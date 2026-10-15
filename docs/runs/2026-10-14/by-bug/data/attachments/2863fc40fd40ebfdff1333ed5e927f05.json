@@ -1,0 +1,166 @@
+{
+  "name": "dvc-oat03-s20",
+  "at": "2026-10-14T18:18:14.060Z",
+  "checks": [
+    {
+      "id": "hospital 1-after-lock-30s: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 hospital before lock.\",\"alive\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital 2-after-background-30s: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 hospital before lock. QA-INT-2 hospital before background.\",\"alive\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital 3-after-call: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 hospital before lock. QA-INT-2 hospital before background. QA-INT-3 hospital before the call.\",\"alive\":true,\"callForeground\":\"topResumedActivity=ActivityRecord{31037130 u0 com.roundcompanion.app/.MainActivity t68}\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital 4-after-airplane-20s: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 hospital before lock. QA-INT-2 hospital before background. QA-INT-3 hospital before the call. QA-INT-4 hospital typed offline.\",\"alive\":true,\"offlineMessage\":[]}",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital: a no-network message during airplane mode",
+      "ok": false,
+      "detail": "[]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital (todo TFA-92592): after 30 s in the background during Generate, the note is there or an explicit failure shows",
+      "ok": true,
+      "detail": "{\"secondsAway\":35,\"screen\":[\"AI-Generated Note\",\"QA dvc OAT03 note. Lungs clear. Plan unchanged.\",\"Oct 15: QA dvc OAT03 note. Lungs clear. Plan unchanged.\"],\"storedNote\":\"QA dvc OAT03 note. Lungs clear. Plan unchanged.\",\"status\":\"note-ready\",\"generateCalls\":[\"ok\"]}",
+      "recordOnly": true
+    },
+    {
+      "id": "snf 1-after-lock-30s: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 snf before lock.\",\"alive\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "snf 2-after-background-30s: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 snf before lock. QA-INT-2 snf before background.\",\"alive\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "snf 3-after-call: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 snf before lock. QA-INT-2 snf before background. QA-INT-3 snf before the call.\",\"alive\":true,\"callForeground\":\"topResumedActivity=ActivityRecord{31037130 u0 com.roundcompanion.app/.MainActivity t68}\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "snf 4-after-airplane-20s: typed text still in the box and on the server, app alive (typed stand-in for dictation)",
+      "ok": true,
+      "detail": "{\"inBox\":true,\"onServer\":true,\"boxValue\":\"QA-INT-1 snf before lock. QA-INT-2 snf before background. QA-INT-3 snf before the call. QA-INT-4 snf typed offline.\",\"alive\":true,\"offlineMessage\":[]}",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: a no-network message during airplane mode",
+      "ok": false,
+      "detail": "[]",
+      "recordOnly": true
+    },
+    {
+      "id": "snf (todo TFA-92592): after 30 s in the background during Generate, the note is there or an explicit failure shows",
+      "ok": true,
+      "detail": "{\"secondsAway\":35,\"screen\":[\"AI-Generated Note\",\"QA dvc OAT03 note. Lungs clear. Plan unchanged.\"],\"storedNote\":\"QA dvc OAT03 note. Lungs clear. Plan unchanged.\",\"status\":\"note-ready\",\"generateCalls\":[\"ok\",\"ok\"]}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "results": {
+      "hospital": {
+        "1-after-lock-30s": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 hospital before lock.",
+          "alive": true
+        },
+        "2-after-background-30s": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 hospital before lock. QA-INT-2 hospital before background.",
+          "alive": true
+        },
+        "3-after-call": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 hospital before lock. QA-INT-2 hospital before background. QA-INT-3 hospital before the call.",
+          "alive": true,
+          "callForeground": "topResumedActivity=ActivityRecord{31037130 u0 com.roundcompanion.app/.MainActivity t68}"
+        },
+        "4-after-airplane-20s": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 hospital before lock. QA-INT-2 hospital before background. QA-INT-3 hospital before the call. QA-INT-4 hospital typed offline.",
+          "alive": true,
+          "offlineMessage": []
+        }
+      },
+      "snf": {
+        "1-after-lock-30s": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 snf before lock.",
+          "alive": true
+        },
+        "2-after-background-30s": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 snf before lock. QA-INT-2 snf before background.",
+          "alive": true
+        },
+        "3-after-call": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 snf before lock. QA-INT-2 snf before background. QA-INT-3 snf before the call.",
+          "alive": true,
+          "callForeground": "topResumedActivity=ActivityRecord{31037130 u0 com.roundcompanion.app/.MainActivity t68}"
+        },
+        "4-after-airplane-20s": {
+          "inBox": true,
+          "onServer": true,
+          "boxValue": "QA-INT-1 snf before lock. QA-INT-2 snf before background. QA-INT-3 snf before the call. QA-INT-4 snf typed offline.",
+          "alive": true,
+          "offlineMessage": []
+        }
+      },
+      "generateWhileBackgrounded": {
+        "hospital": {
+          "secondsAway": 35,
+          "screen": [
+            "AI-Generated Note",
+            "QA dvc OAT03 note. Lungs clear. Plan unchanged.",
+            "Oct 15: QA dvc OAT03 note. Lungs clear. Plan unchanged."
+          ],
+          "storedNote": "QA dvc OAT03 note. Lungs clear. Plan unchanged.",
+          "status": "note-ready",
+          "generateCalls": [
+            "ok"
+          ]
+        },
+        "snf": {
+          "secondsAway": 35,
+          "screen": [
+            "AI-Generated Note",
+            "QA dvc OAT03 note. Lungs clear. Plan unchanged."
+          ],
+          "storedNote": "QA dvc OAT03 note. Lungs clear. Plan unchanged.",
+          "status": "note-ready",
+          "generateCalls": [
+            "ok",
+            "ok"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "name": "dvc-tc11-s22",
+  "at": "2026-10-14T18:19:55.847Z",
+  "checks": [
+    {
+      "id": "A: the visit finished on the phone a day behind is dated today on the phone and on the desktop",
+      "ok": true,
+      "detail": "today Oct 15; phone [\"Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind\"] | desktop [\"Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "B: after the phone's midnight passed in the background, the new entry is still dated the real day (phone and desktop)",
+      "ok": true,
+      "detail": "today Oct 15; phone [\"Oct 15: QA11-B pre-round after the phone's midnight\"] | desktop [\"Oct 15: QA11-B pre-round after the phone's midnight\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "C: the phone a day ahead can sign in through its form and reach the app (known B33 if not)",
+      "ok": true,
+      "detail": "{\"signIn\":{\"asked\":true,\"signInStatus\":200,\"consentShown\":false,\"outcome\":\"reached-app\"},\"reachedApp\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "D (Q4, time-zone device): the Honolulu phone's entry date vs the desktop's",
+      "ok": false,
+      "detail": "JST today Oct 15, HST today Oct 14; phone [\"Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind\",\"Visit 2 – Oct 14: QA11-D pre-round in Honolulu.\"] | desktop [\"Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind\",\"Visit 2 – Oct 14: QA11-D pre-round in Honolulu.\"]",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "phases": {
+      "A": {
+        "clock": {
+          "date": "Wed Oct 14 03:18:24 JST 2026",
+          "epochMs": 1791915504000,
+          "timeZone": "Asia/Tokyo",
+          "autoTime": "0"
+        },
+        "signIn": {
+          "asked": false
+        },
+        "phone": [
+          "Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind"
+        ],
+        "desktop": [
+          "Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind"
+        ],
+        "server": {
+          "jst": "Oct 15",
+          "utc": "Oct 14",
+          "hst": "Oct 14"
+        }
+      },
+      "B": {
+        "clock": {
+          "date": "Fri Oct 16 03:18:45 JST 2026",
+          "epochMs": 1792088325000,
+          "timeZone": "Asia/Tokyo",
+          "autoTime": "0"
+        },
+        "jsNow": "Fri Oct 16 2026 03:18:45 GMT+0900 (Japan Standard Time)",
+        "timeNowCalls": 1,
+        "sessionEndedMessage": false,
+        "signInAfterJump": {
+          "asked": true,
+          "signInStatus": -1,
+          "consentShown": false,
+          "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Before you start', exact: true }).or(getByRole('heading', { name: /^(M",
+          "outcome": "unknown"
+        },
+        "phone": [
+          "Oct 15: QA11-B pre-round after the phone's midnight"
+        ],
+        "desktop": [
+          "Oct 15: QA11-B pre-round after the phone's midnight"
+        ],
+        "server": {
+          "jst": "Oct 15",
+          "utc": "Oct 14",
+          "hst": "Oct 14"
+        }
+      },
+      "C": {
+        "signIn": {
+          "asked": true,
+          "signInStatus": 200,
+          "consentShown": false,
+          "outcome": "reached-app"
+        },
+        "reachedApp": true
+      },
+      "D": {
+        "clock": {
+          "date": "Wed Oct 14 08:19:50 HST 2026",
+          "epochMs": 1792001990000,
+          "timeZone": "Pacific/Honolulu",
+          "autoTime": "0"
+        },
+        "signIn": {
+          "asked": false
+        },
+        "phone": [
+          "Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind",
+          "Visit 2 – Oct 14: QA11-D pre-round in Honolulu."
+        ],
+        "desktop": [
+          "Visit 1 – Oct 15: QA11-A visit finished on the phone a day behind",
+          "Visit 2 – Oct 14: QA11-D pre-round in Honolulu."
+        ],
+        "server": {
+          "jst": "Oct 15",
+          "utc": "Oct 14",
+          "hst": "Oct 14"
+        }
+      }
+    }
+  }
+}

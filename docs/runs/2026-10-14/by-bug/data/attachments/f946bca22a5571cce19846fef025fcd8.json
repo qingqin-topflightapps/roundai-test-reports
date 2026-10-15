@@ -1,0 +1,16 @@
+{
+  "TC-24/S24": {
+    "status": "blocked",
+    "ranAt": "2026-10-14T18:04:48.569Z",
+    "title": "iOS simulator build on the local stack: patient delete and one item delete, confirmation and message inside the app",
+    "detail": "iOS simulator (new device, created and deleted by the test; the debug build of e02167f for the local stack, built outside the checkout): the app installs, opens on its sign-in screen, and with the account's session placed in the WebView's storage opens on the Hospital list, then on the Nursing Home list after the account's context changed (screenshots). The delete flow itself was not run on iOS: nothing on the simulator can be tapped without a permission prompt here. Android stand-in (TC-01/S24 run): the patient delete confirm is Android's system dialog (CANCEL / OK), no 'deleted' message shows, Nursing Home residents have no delete control, and a task delete has no confirmation - known B24 (AC 7 / AC 8). Our addition (10-15 review).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc24-s24-ios-01-open-sign-in.sim.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc24-s24-ios-02-signed-in-hospital-list.sim.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc24-s24-ios-03-relaunched-after-context-change.sim.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc24-s24-ios.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

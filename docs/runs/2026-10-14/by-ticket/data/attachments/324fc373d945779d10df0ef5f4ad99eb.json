@@ -1,0 +1,17 @@
+{
+  "TC-13/S24": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T18:20:37.855Z",
+    "title": "Real phone camera: photograph a printed synthetic note",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Our addition (optional per the 10-15 review). With the camera permission granted, Previous Notes -> Photograph on a Hospital chart and on a Nursing Home resident opens Android's photo picker, not the camera (no camera app at all); Back returns to the app, nothing added, no vision call. The same cause as the EFS/S18 camera finding (the manifest has no <queries> entry for the image-capture intent). Left: photographing the printed S03 note with a real camera and reading it (needs the printout and the live vision model).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc13-s24-hospital-previous-notes-back.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc13-s24-hospital-previous-notes-camera.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc13-s24-snf-previous-notes-back.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc13-s24-snf-previous-notes-camera.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc13-s24.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

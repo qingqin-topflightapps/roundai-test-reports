@@ -1,0 +1,482 @@
+{
+  "name": "dvc-tc03-s24",
+  "at": "2026-10-14T17:45:06.325Z",
+  "checks": [
+    {
+      "id": "hospital: search '41' typed on the on-screen keyboard lists the same patients as the web",
+      "ok": true,
+      "detail": "phone [\"QA Hosp Novak vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\"] | web [\"QA Hosp Novak vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\"]"
+    },
+    {
+      "id": "hospital: with the keyboard up, the first result of '41' is visible above it",
+      "ok": true,
+      "detail": "{\"innerHeight\":527,\"visualViewport\":527.2380981445312,\"firstResultTop\":360.3809509277344,\"firstResultBottom\":493.1309509277344,\"searchBottom\":305.14284896850586,\"imeTopPx\":1517,\"firstResultCenterPx\":1256}"
+    },
+    {
+      "id": "hospital: search '410' typed on the on-screen keyboard lists the same patients as the web",
+      "ok": true,
+      "detail": "phone [\"QA Hosp Novak vej\",\"QA Hosp Patel vej\"] | web [\"QA Hosp Novak vej\",\"QA Hosp Patel vej\"]"
+    },
+    {
+      "id": "hospital: with the keyboard up, the first result of '410' is visible above it",
+      "ok": true,
+      "detail": "{\"innerHeight\":527,\"visualViewport\":527.2380981445312,\"firstResultTop\":360.3809509277344,\"firstResultBottom\":493.1309509277344,\"searchBottom\":305.14284896850586,\"imeTopPx\":1517,\"firstResultCenterPx\":1256}"
+    },
+    {
+      "id": "hospital: search 'o'brien' typed on the on-screen keyboard lists the same patients as the web",
+      "ok": true,
+      "detail": "phone [\"QA Hosp O'Brien vej\"] | web [\"QA Hosp O'Brien vej\"]"
+    },
+    {
+      "id": "hospital: with the keyboard up, the first result of 'o'brien' is visible above it",
+      "ok": true,
+      "detail": "{\"innerHeight\":527,\"visualViewport\":527.2380981445312,\"firstResultTop\":360.3809509277344,\"firstResultBottom\":493.1309509277344,\"searchBottom\":305.14284896850586,\"imeTopPx\":1517,\"firstResultCenterPx\":1256}"
+    },
+    {
+      "id": "hospital: search 'jones' typed on the on-screen keyboard lists the same patients as the web",
+      "ok": true,
+      "detail": "phone [\"QA Hosp Smith-Jones vej\"] | web [\"QA Hosp Smith-Jones vej\"]"
+    },
+    {
+      "id": "hospital: with the keyboard up, the first result of 'jones' is visible above it",
+      "ok": true,
+      "detail": "{\"innerHeight\":527,\"visualViewport\":527.2380981445312,\"firstResultTop\":360.3809509277344,\"firstResultBottom\":493.1309509277344,\"searchBottom\":305.14284896850586,\"imeTopPx\":1517,\"firstResultCenterPx\":1256}"
+    },
+    {
+      "id": "hospital: 'José (CDP)' (record for Q8; Android has no smart punctuation)",
+      "ok": true,
+      "detail": "phone [\"QA Hosp José Núñez vej\"] | web [\"QA Hosp José Núñez vej\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital: 'O’Brien (CDP)' (record for Q8; Android has no smart punctuation)",
+      "ok": true,
+      "detail": "phone [] | web []",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital: the on-screen keyboard opened on a tap in the search box",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "id": "hospital: the native picker lists the three orders",
+      "ok": true,
+      "detail": "[\"Sort: Room number\",\"Sort: Name A–Z\",\"Sort: Status (to-do first)\"]"
+    },
+    {
+      "id": "hospital: 'Sort: Room number' picked in the native picker gives the web's order",
+      "ok": true,
+      "detail": "phone [\"QA Hosp Lund vej\",\"QA Hosp Novak vej\",\"QA Hosp O'Brien vej\",\"QA Hosp Smith-Jones vej\",\"QA Hosp José Núñez vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\"] | web [\"QA Hosp Lund vej\",\"QA Hosp Novak vej\",\"QA Hosp O'Brien vej\",\"QA Hosp Smith-Jones vej\",\"QA Hosp José Núñez vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\"]"
+    },
+    {
+      "id": "hospital: 'Sort: Name A–Z' picked in the native picker gives the web's order",
+      "ok": true,
+      "detail": "phone [\"QA Hosp José Núñez vej\",\"QA Hosp Lund vej\",\"QA Hosp Novak vej\",\"QA Hosp O'Brien vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\",\"QA Hosp Smith-Jones vej\"] | web [\"QA Hosp José Núñez vej\",\"QA Hosp Lund vej\",\"QA Hosp Novak vej\",\"QA Hosp O'Brien vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\",\"QA Hosp Smith-Jones vej\"]"
+    },
+    {
+      "id": "hospital: 'Sort: Status (to-do first)' picked in the native picker gives the web's order",
+      "ok": true,
+      "detail": "phone [\"QA Hosp Smith-Jones vej\",\"QA Hosp Patel vej\",\"QA Hosp Novak vej\",\"QA Hosp José Núñez vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Lund vej\",\"QA Hosp O'Brien vej\"] | web [\"QA Hosp Smith-Jones vej\",\"QA Hosp Patel vej\",\"QA Hosp Novak vej\",\"QA Hosp José Núñez vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Lund vej\",\"QA Hosp O'Brien vej\"]"
+    },
+    {
+      "id": "hospital: a search typed, then the picker: the filtered list sorted as on the web, search kept",
+      "ok": true,
+      "detail": "{\"phone\":[\"QA Hosp José Núñez vej\",\"QA Hosp Lund vej\",\"QA Hosp Novak vej\",\"QA Hosp O'Brien vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\",\"QA Hosp Smith-Jones vej\"],\"web\":[\"QA Hosp José Núñez vej\",\"QA Hosp Lund vej\",\"QA Hosp Novak vej\",\"QA Hosp O'Brien vej\",\"QA Hosp Ortiz vej\",\"QA Hosp Patel vej\",\"QA Hosp Smith-Jones vej\"],\"same\":true,\"searchKept\":\"QA\"}"
+    },
+    {
+      "id": "snf: search '41' typed on the on-screen keyboard lists the same patients as the web",
+      "ok": true,
+      "detail": "phone [\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"] | web [\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"]"
+    },
+    {
+      "id": "snf: with the keyboard up, the first result of '41' is visible above it",
+      "ok": true,
+      "detail": "{\"innerHeight\":527,\"visualViewport\":527.2380981445312,\"firstResultTop\":320.8571472167969,\"firstResultBottom\":457.1071472167969,\"searchBottom\":235.61904525756836,\"imeTopPx\":1517,\"firstResultCenterPx\":1157}"
+    },
+    {
+      "id": "snf: search 'd'angelo' typed on the on-screen keyboard lists the same patients as the web",
+      "ok": true,
+      "detail": "phone [\"QA Resident D'Angelo vej\"] | web [\"QA Resident D'Angelo vej\"]"
+    },
+    {
+      "id": "snf: with the keyboard up, the first result of 'd'angelo' is visible above it",
+      "ok": true,
+      "detail": "{\"innerHeight\":527,\"visualViewport\":527.2380981445312,\"firstResultTop\":320.8571472167969,\"firstResultBottom\":457.1071472167969,\"searchBottom\":235.61904525756836,\"imeTopPx\":1517,\"firstResultCenterPx\":1157}"
+    },
+    {
+      "id": "snf: 'D’Angelo (CDP)' (record for Q8; Android has no smart punctuation)",
+      "ok": true,
+      "detail": "phone [] | web []",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: the on-screen keyboard opened on a tap in the search box",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "id": "snf: the native picker lists the three orders",
+      "ok": true,
+      "detail": "[\"Sort: Room number\",\"Sort: Name A–Z\",\"Sort: Status (to-do first)\"]"
+    },
+    {
+      "id": "snf: 'Sort: Room number' picked in the native picker gives the web's order",
+      "ok": true,
+      "detail": "phone [\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"] | web [\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"]"
+    },
+    {
+      "id": "snf: 'Sort: Name A–Z' picked in the native picker gives the web's order",
+      "ok": true,
+      "detail": "phone [\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"] | web [\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"]"
+    },
+    {
+      "id": "snf: 'Sort: Status (to-do first)' picked in the native picker gives the web's order",
+      "ok": true,
+      "detail": "phone [\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"] | web [\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"]"
+    },
+    {
+      "id": "snf: a search typed, then the picker: the filtered list sorted as on the web, search kept",
+      "ok": true,
+      "detail": "{\"phone\":[\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"],\"web\":[\"QA Resident D'Angelo vej\",\"QA Resident Novak vej\",\"QA Resident Ortiz vej\",\"QA Resident Patel vej\"],\"same\":true,\"searchKept\":\"QA\"}"
+    }
+  ],
+  "data": {
+    "results": {
+      "hospital": {
+        "keyboard": {
+          "shownAfterTap": true,
+          "viewportBefore": {
+            "inner": 839,
+            "vv": 839.2380981445312
+          }
+        },
+        "searches": {
+          "41": {
+            "typedValue": "41",
+            "phone": [
+              "QA Hosp Novak vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej"
+            ],
+            "web": [
+              "QA Hosp Novak vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej"
+            ],
+            "same": true,
+            "layout": {
+              "innerHeight": 527,
+              "visualViewport": 527.2380981445312,
+              "firstResultTop": 360.3809509277344,
+              "firstResultBottom": 493.1309509277344,
+              "searchBottom": 305.14284896850586,
+              "imeTopPx": 1517,
+              "firstResultCenterPx": 1256
+            },
+            "keyboardUp": true
+          },
+          "410": {
+            "typedValue": "410",
+            "phone": [
+              "QA Hosp Novak vej",
+              "QA Hosp Patel vej"
+            ],
+            "web": [
+              "QA Hosp Novak vej",
+              "QA Hosp Patel vej"
+            ],
+            "same": true,
+            "layout": {
+              "innerHeight": 527,
+              "visualViewport": 527.2380981445312,
+              "firstResultTop": 360.3809509277344,
+              "firstResultBottom": 493.1309509277344,
+              "searchBottom": 305.14284896850586,
+              "imeTopPx": 1517,
+              "firstResultCenterPx": 1256
+            },
+            "keyboardUp": true
+          },
+          "o'brien": {
+            "typedValue": "o'brien",
+            "phone": [
+              "QA Hosp O'Brien vej"
+            ],
+            "web": [
+              "QA Hosp O'Brien vej"
+            ],
+            "same": true,
+            "layout": {
+              "innerHeight": 527,
+              "visualViewport": 527.2380981445312,
+              "firstResultTop": 360.3809509277344,
+              "firstResultBottom": 493.1309509277344,
+              "searchBottom": 305.14284896850586,
+              "imeTopPx": 1517,
+              "firstResultCenterPx": 1256
+            },
+            "keyboardUp": true
+          },
+          "jones": {
+            "typedValue": "jones",
+            "phone": [
+              "QA Hosp Smith-Jones vej"
+            ],
+            "web": [
+              "QA Hosp Smith-Jones vej"
+            ],
+            "same": true,
+            "layout": {
+              "innerHeight": 527,
+              "visualViewport": 527.2380981445312,
+              "firstResultTop": 360.3809509277344,
+              "firstResultBottom": 493.1309509277344,
+              "searchBottom": 305.14284896850586,
+              "imeTopPx": 1517,
+              "firstResultCenterPx": 1256
+            },
+            "keyboardUp": true
+          },
+          "José (CDP)": {
+            "phone": [
+              "QA Hosp José Núñez vej"
+            ],
+            "web": [
+              "QA Hosp José Núñez vej"
+            ]
+          },
+          "O’Brien (CDP)": {
+            "phone": [],
+            "web": []
+          }
+        },
+        "sorts": {
+          "options": [
+            "Sort: Room number",
+            "Sort: Name A–Z",
+            "Sort: Status (to-do first)"
+          ],
+          "Sort: Name A–Z": {
+            "phone": [
+              "QA Hosp José Núñez vej",
+              "QA Hosp Lund vej",
+              "QA Hosp Novak vej",
+              "QA Hosp O'Brien vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej",
+              "QA Hosp Smith-Jones vej"
+            ],
+            "web": [
+              "QA Hosp José Núñez vej",
+              "QA Hosp Lund vej",
+              "QA Hosp Novak vej",
+              "QA Hosp O'Brien vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej",
+              "QA Hosp Smith-Jones vej"
+            ],
+            "same": true,
+            "selectValue": "name"
+          },
+          "Sort: Status (to-do first)": {
+            "phone": [
+              "QA Hosp Smith-Jones vej",
+              "QA Hosp Patel vej",
+              "QA Hosp Novak vej",
+              "QA Hosp José Núñez vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Lund vej",
+              "QA Hosp O'Brien vej"
+            ],
+            "web": [
+              "QA Hosp Smith-Jones vej",
+              "QA Hosp Patel vej",
+              "QA Hosp Novak vej",
+              "QA Hosp José Núñez vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Lund vej",
+              "QA Hosp O'Brien vej"
+            ],
+            "same": true,
+            "selectValue": "status"
+          },
+          "Sort: Room number": {
+            "phone": [
+              "QA Hosp Lund vej",
+              "QA Hosp Novak vej",
+              "QA Hosp O'Brien vej",
+              "QA Hosp Smith-Jones vej",
+              "QA Hosp José Núñez vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej"
+            ],
+            "web": [
+              "QA Hosp Lund vej",
+              "QA Hosp Novak vej",
+              "QA Hosp O'Brien vej",
+              "QA Hosp Smith-Jones vej",
+              "QA Hosp José Núñez vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej"
+            ],
+            "same": true,
+            "selectValue": "room"
+          },
+          "searchThenPicker": {
+            "phone": [
+              "QA Hosp José Núñez vej",
+              "QA Hosp Lund vej",
+              "QA Hosp Novak vej",
+              "QA Hosp O'Brien vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej",
+              "QA Hosp Smith-Jones vej"
+            ],
+            "web": [
+              "QA Hosp José Núñez vej",
+              "QA Hosp Lund vej",
+              "QA Hosp Novak vej",
+              "QA Hosp O'Brien vej",
+              "QA Hosp Ortiz vej",
+              "QA Hosp Patel vej",
+              "QA Hosp Smith-Jones vej"
+            ],
+            "same": true,
+            "searchKept": "QA"
+          }
+        }
+      },
+      "snf": {
+        "keyboard": {
+          "shownAfterTap": true,
+          "viewportBefore": {
+            "inner": 839,
+            "vv": 839.2380981445312
+          }
+        },
+        "searches": {
+          "41": {
+            "typedValue": "41",
+            "phone": [
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "web": [
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "same": true,
+            "layout": {
+              "innerHeight": 527,
+              "visualViewport": 527.2380981445312,
+              "firstResultTop": 320.8571472167969,
+              "firstResultBottom": 457.1071472167969,
+              "searchBottom": 235.61904525756836,
+              "imeTopPx": 1517,
+              "firstResultCenterPx": 1157
+            },
+            "keyboardUp": true
+          },
+          "d'angelo": {
+            "typedValue": "d'angelo",
+            "phone": [
+              "QA Resident D'Angelo vej"
+            ],
+            "web": [
+              "QA Resident D'Angelo vej"
+            ],
+            "same": true,
+            "layout": {
+              "innerHeight": 527,
+              "visualViewport": 527.2380981445312,
+              "firstResultTop": 320.8571472167969,
+              "firstResultBottom": 457.1071472167969,
+              "searchBottom": 235.61904525756836,
+              "imeTopPx": 1517,
+              "firstResultCenterPx": 1157
+            },
+            "keyboardUp": true
+          },
+          "D’Angelo (CDP)": {
+            "phone": [],
+            "web": []
+          }
+        },
+        "sorts": {
+          "options": [
+            "Sort: Room number",
+            "Sort: Name A–Z",
+            "Sort: Status (to-do first)"
+          ],
+          "Sort: Name A–Z": {
+            "phone": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "web": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "same": true,
+            "selectValue": "name"
+          },
+          "Sort: Status (to-do first)": {
+            "phone": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "web": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "same": true,
+            "selectValue": "status"
+          },
+          "Sort: Room number": {
+            "phone": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "web": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "same": true,
+            "selectValue": "room"
+          },
+          "searchThenPicker": {
+            "phone": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "web": [
+              "QA Resident D'Angelo vej",
+              "QA Resident Novak vej",
+              "QA Resident Ortiz vej",
+              "QA Resident Patel vej"
+            ],
+            "same": true,
+            "searchKept": "QA"
+          }
+        }
+      }
+    }
+  }
+}

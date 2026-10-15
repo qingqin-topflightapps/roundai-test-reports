@@ -1,0 +1,27 @@
+{
+  "OAT-03/S20": {
+    "status": "blocked",
+    "ranAt": "2026-10-14T18:18:14.061Z",
+    "title": "Dictation on a real phone survives lock, background, a phone call and airplane mode (iOS and Android)",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Dictated words cannot be produced on the emulator (no microphone input, and the live transcription session must not be opened on the local stack), so TYPED text stood in for dictation, both contexts: text typed into the Hospital pre-round editor and the Nursing Home visit box stayed in the box and reached the server through a 30 s screen lock, 30 s in the background, an incoming call (the emulator's GSM console; it showed as a heads-up over the app) and 20 s of airplane mode (14/14 record-only checks). The airplane-mode 'no network' banner did NOT show here, but that is the rig: the app reaches the local stack through adb reverse, which airplane mode does not cut, and Android WebView keeps navigator.onLine true; with the app's socket really cut (EFS/S18 run) the banner shows. Generate with a 25 s model wait while the app sat 30 s in the background: the note was there on return in both contexts (gate TFA-92592: recorded). Left for a physical phone: real dictation through lock / background / a real call / airplane mode, and whether the words dictated before each interruption are kept.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-1-after-lock-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-2-after-background-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-3-after-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-3a-incoming-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-4-after-airplane-20s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-4a-airplane.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-5-generate-after-background.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-1-after-lock-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-2-after-background-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-3-after-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-3a-incoming-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-4-after-airplane-20s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-4a-airplane.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-5-generate-after-background.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

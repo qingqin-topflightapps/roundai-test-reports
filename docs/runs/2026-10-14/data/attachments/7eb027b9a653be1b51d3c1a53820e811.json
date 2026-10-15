@@ -1,0 +1,17 @@
+{
+  "TC-10/S04": {
+    "status": "blocked",
+    "ranAt": "2026-10-14T18:02:41.051Z",
+    "title": "Real devices, local stack: dictation, a dropped connection mid-dictation, wrong date / time zone",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Part (3) done as a record (gate TFA-92588 ready for pr = todo): Save Note on one Hospital patient from the phone 2 days ahead, from the phone in Pacific/Honolulu and from the correct desktop (typed text; summary answered at the socket). The phone 2 days ahead wrote its course line as 'Oct 15' (server-corrected) but shows 'Saved 3:02 AM · Oct 17'; the Honolulu phone wrote 'Oct 14' (its local day) and 'Saved 8:02 AM · Oct 14'; the desktop's 'Oct 15' line replaced the first one, so the chart ends with two lines dated Oct 15 and Oct 14 for the same morning. No date is shown with the vitals panel. Left: parts (1) and (2) need a real voice into real phones and the live transcription session (and Wi-Fi drops mid-dictation).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc10-s04-desktop-pre-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc10-s04-phone-correct-clock-after-all.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc10-s04-phone-honolulu-pre-round.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc10-s04-phone-plus2d-pre-round.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc10-s04.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

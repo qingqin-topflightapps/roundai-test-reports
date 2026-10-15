@@ -1,0 +1,15 @@
+{
+  "TC-09/S25": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T18:20:37.855Z",
+    "title": "Real camera photo of a printed supervisor list on Android and iOS, against the local stack",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Our addition (10-15 review): recorded only. The Nursing Home scan control ('Take Photo or Choose Image') opens Android's photo picker, not the camera, even with the camera permission granted (see EFS/S18); Back returns with nothing added. Left: the camera photo / iPhone HEIC of the printed supervisor-day1 sheet and its 2 known / 2 new result - needs a physical phone, the printout and the live vision model (and known B01 currently makes every scan read empty).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc09-s25-snf-scan-back.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc09-s25-snf-scan-camera.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc09-s25.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "name": "dvc-tc21-s22",
+  "at": "2026-10-14T18:10:03.492Z",
+  "checks": [
+    {
+      "id": "hospital: same badge on the phone (2 days ahead, Kiritimati) and the desktop (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone follow-up | desktop new"
+    },
+    {
+      "id": "hospital: same pre-selected template on both (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone 'SOAP progress' | desktop 'H&P'"
+    },
+    {
+      "id": "hospital (todo TFA-92599): the template list is the same on the phone and the desktop, and has no Clinic template",
+      "ok": true,
+      "detail": "phone [\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\"] | desktop [\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: same badge on the phone (2 days ahead, Kiritimati) and the desktop (known B18 / TFA-92584 AC 8)",
+      "ok": false,
+      "detail": "phone follow-up | desktop consult"
+    },
+    {
+      "id": "snf: same pre-selected template on both (known B18 / TFA-92584 AC 8)",
+      "ok": true,
+      "detail": "phone 'SNF follow-up' | desktop 'SNF follow-up'"
+    },
+    {
+      "id": "snf (todo TFA-92599): the template list is the same on the phone and the desktop, and has no Clinic template",
+      "ok": true,
+      "detail": "phone [\"SNF admission\",\"SNF follow-up\"] | desktop [\"SNF admission\",\"SNF follow-up\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "todo TFA-92599: the context last chosen (Nursing Home) is remembered after background and after reopening",
+      "ok": true,
+      "detail": "{\"afterBackground\":\"Nursing Home\",\"afterReopen\":\"Nursing Home\",\"switcherOptions\":[\"Hospital\",\"Nursing Home\",\"Nursing Home\"]}",
+      "recordOnly": true
+    },
+    {
+      "id": "todo TFA-92599: no Clinic in the context switcher",
+      "ok": true,
+      "detail": "[\"Hospital\",\"Nursing Home\",\"Nursing Home\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "timeline (TFA-92589, 3.8): the line the phone (2 days ahead) writes is dated with the real day, as the desktop shows it",
+      "ok": true,
+      "detail": "desktop today 'Oct 15'; phone lines [\"Visit 1 – Oct 15: Pre-rounded.\"] | desktop lines [\"Visit 1 – Oct 15: Pre-rounded.\"]"
+    },
+    {
+      "id": "hospital day / visit number: not shown on cards or chart header on main (known B23)",
+      "ok": true,
+      "detail": "phone header 'QA Hosp Clock21 uiey Room QA21 · 81y · — Follow-up ▾ New Admission Follow-up Consult'",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "phoneClock": {
+      "clock": {
+        "date": "Sat Oct 17 08:09:34 +14 2026",
+        "epochMs": 1792174174000,
+        "timeZone": "Pacific/Kiritimati",
+        "autoTime": "0"
+      },
+      "js": {
+        "now": "Sat Oct 17 2026 08:09:39 GMT+1400 (Line Islands Time)",
+        "tz": "Pacific/Kiritimati"
+      },
+      "signIn": {
+        "asked": true,
+        "signInStatus": 200,
+        "consentShown": false,
+        "outcome": "reached-app"
+      }
+    },
+    "compare": {
+      "desktop": {
+        "hospital": {
+          "header": "QA Hosp Clock21 uiey Room QA21 · 81y · — New Admission ▾ New Admission Follow-up Consult",
+          "badge": "new",
+          "noteFormat": {
+            "selected": "H&P",
+            "options": [
+              "H&P",
+              "SOAP progress",
+              "Consult note",
+              "Discharge summary"
+            ]
+          },
+          "timeline": [
+            "Oct 15:"
+          ]
+        },
+        "snf": {
+          "header": "QA Resident Clock21 uiey MRN-TC4YU3 · QA Wing · Rm 21 Nursing Home Consult ▾ New Admission Follow-up Consult",
+          "badge": "consult",
+          "noteFormat": {
+            "selected": "SNF follow-up",
+            "options": [
+              "SNF admission",
+              "SNF follow-up"
+            ]
+          },
+          "timeline": [],
+          "timelineAfterPhoneSave": [
+            "Visit 1 – Oct 15: Pre-rounded."
+          ]
+        }
+      },
+      "phone": {
+        "hospital": {
+          "header": "QA Hosp Clock21 uiey Room QA21 · 81y · — Follow-up ▾ New Admission Follow-up Consult",
+          "badge": "follow-up",
+          "noteFormat": {
+            "selected": "SOAP progress",
+            "options": [
+              "H&P",
+              "SOAP progress",
+              "Consult note",
+              "Discharge summary"
+            ]
+          },
+          "timeline": [
+            "Oct 15:"
+          ]
+        },
+        "snf": {
+          "header": "QA Resident Clock21 uiey MRN-TC4YU3 · QA Wing · Rm 21 Nursing Home Follow-up ▾ New Admission Follow-up Consult",
+          "badge": "follow-up",
+          "noteFormat": {
+            "selected": "SNF follow-up",
+            "options": [
+              "SNF admission",
+              "SNF follow-up"
+            ]
+          },
+          "timeline": [],
+          "timelineAfterPhoneSave": [
+            "Visit 1 – Oct 15: Pre-rounded."
+          ]
+        }
+      },
+      "context": {
+        "afterBackground": "Nursing Home",
+        "afterReopen": "Nursing Home",
+        "switcherOptions": [
+          "Hospital",
+          "Nursing Home",
+          "Nursing Home"
+        ]
+      },
+      "stored": {
+        "hospital": {
+          "encType": "follow-up",
+          "encTypeDay": "2026-10-17"
+        },
+        "snf": {
+          "encType": "follow-up",
+          "encTypeDay": "2026-10-17",
+          "snfVisitDates": [
+            "Sat Oct 17 2026"
+          ]
+        }
+      }
+    }
+  }
+}

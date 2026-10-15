@@ -1,0 +1,174 @@
+{
+  "name": "dvc-tc25-s22-hospital",
+  "at": "2026-10-14T16:47:42.475Z",
+  "checks": [
+    {
+      "id": "U1 (gated TFA-94513/94704): computer still signed in after the phone's own sign-in",
+      "ok": true,
+      "detail": "list shown",
+      "recordOnly": true
+    },
+    {
+      "id": "T3: the app signs in through its own email-code form (own session, 200)",
+      "ok": true,
+      "detail": "sign-in POST 200"
+    },
+    {
+      "id": "T3: a patient added in the app is stored like a web add",
+      "ok": true,
+      "detail": "stored kx750vsmynbr5fge2nwhrses6x8g9vg1"
+    },
+    {
+      "id": "U2 (gated): the computer shows the phone's add without a refresh",
+      "ok": true,
+      "detail": "after 3 ms, 0 navigations",
+      "recordOnly": true
+    },
+    {
+      "id": "U3 (gated): the computer's pre-round save shows on the phone without a refresh (text)",
+      "ok": false,
+      "detail": "text after null ms",
+      "recordOnly": true
+    },
+    {
+      "id": "U3 panels (gated Q5): the panel values Save Note filled show on the phone",
+      "ok": true,
+      "detail": "BP 124/78 after 318 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "T3: the pre-round note saved on the computer reaches the app's open chart as it reaches a web session's",
+      "ok": true,
+      "detail": "app: text null ms, BP 318 ms; web control: text null ms, BP 316 ms; app after re-opening the chart: 311 ms"
+    },
+    {
+      "id": "T3: the pre-round note saved on the computer is in the app's chart (live or after re-opening it)",
+      "ok": true,
+      "detail": "live null ms, re-opened 311 ms"
+    },
+    {
+      "id": "T3: Generate in the app stores the note like the web (scripted model answer)",
+      "ok": true,
+      "detail": "stored note: QA dvc mocked note. Exam: scattered crackles at the right base. Plan: continue c"
+    },
+    {
+      "id": "T3: the app shows the generated note",
+      "ok": true,
+      "detail": "after 1655 ms"
+    },
+    {
+      "id": "U4 (gated): the phone's note shows on the computer's Post-Round without a refresh",
+      "ok": true,
+      "detail": "after 3 ms, 0 navigations",
+      "recordOnly": true
+    },
+    {
+      "id": "T3: delete on the computer removes the patient for the app too (server row gone)",
+      "ok": true,
+      "detail": "gone"
+    },
+    {
+      "id": "U5 (gated): the phone drops the deleted card without a refresh",
+      "ok": true,
+      "detail": "after 322 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "the app never showed the sign-in gate or the crash screen on the observing checkpoints",
+      "ok": true,
+      "detail": "ok"
+    }
+  ],
+  "data": {
+    "phoneSignIn": {
+      "signInStatus": 200,
+      "consentShown": false
+    },
+    "step2": {
+      "phoneShowsAdd": 356,
+      "computerShowsAfterMs": 3,
+      "stored": true,
+      "computerNavigations": 0
+    },
+    "step3control": {
+      "webControlTextMs": null,
+      "webControlBpMs": 316
+    },
+    "step3reopen": {
+      "reopenedTextMs": 311
+    },
+    "step3": {
+      "phoneShowsTextMs": null,
+      "phoneShowsPanelBpMs": 318,
+      "computerParseCalls": 1,
+      "status": "pre-rounded",
+      "phoneNavigations": 5
+    },
+    "step4": {
+      "generateCalls": 1,
+      "phoneSocket": [
+        "ai/notes:generateNote:ok",
+        "ai/notes:refreshCourseAndBackground:ok",
+        "ai/parsing:extractMedicationEvents:ok"
+      ],
+      "phoneShowsNoteMs": 1655,
+      "computerShowsNoteMs": 3,
+      "computerNavigations": 0,
+      "storedNote": "QA dvc mocked note. Exam: scattered crackles at the right base. Plan: continue ceftriaxone 1 g IV daily, day 2 of 5.",
+      "status": "note-ready"
+    },
+    "step5": {
+      "deleteControl": true,
+      "dialogs": [
+        "Remove QA Sync Hosp from the rounding list? This will delete all notes, vitals, and encounter data for this patient."
+      ],
+      "phoneDropsCardMs": 322,
+      "phoneNavigations": [
+        "2026-10-14T16:47:00.234Z https://localhost/rounding/add",
+        "2026-10-14T16:47:01.798Z https://localhost/rounding",
+        "2026-10-14T16:47:02.528Z https://localhost/rounding/kx7b866t2tcpn3sg4d4hyg5s6x8g8yte",
+        "2026-10-14T16:47:35.142Z https://localhost/rounding",
+        "2026-10-14T16:47:35.552Z https://localhost/rounding/kx7b866t2tcpn3sg4d4hyg5s6x8g8yte",
+        "2026-10-14T16:47:40.199Z https://localhost/rounding"
+      ]
+    },
+    "phoneSocketAll": [
+      "Mutation time:now passed",
+      "Mutation rounding:applyLifecycle passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation rounding:add passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logChartAccess passed",
+      "Mutation usage:record passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logChartAccess passed",
+      "Mutation usage:record passed",
+      "Mutation rounding:update passed",
+      "Mutation rounding:update passed",
+      "Action ai/notes:generateNote ok",
+      "Mutation usage:record passed",
+      "Mutation rounding:update passed",
+      "Action ai/notes:refreshCourseAndBackground ok",
+      "Action ai/parsing:extractMedicationEvents ok",
+      "Mutation rounding:update passed",
+      "Mutation rounding:update passed",
+      "Mutation rounding:update passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed",
+      "Mutation access:logPanelAccess passed"
+    ],
+    "computerSocketAi": [
+      "ai/parsing:parsePreRoundNotes:ok",
+      "ai/parsing:extractTasks:ok",
+      "ai/notes:suggestBilling:ok"
+    ],
+    "phoneUrl": "https://localhost/rounding"
+  }
+}

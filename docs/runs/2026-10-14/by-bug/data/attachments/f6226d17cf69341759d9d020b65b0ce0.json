@@ -1,0 +1,21 @@
+{
+  "TC-11/S22": {
+    "status": "record-only",
+    "ranAt": "2026-10-14T18:19:55.847Z",
+    "title": "Real phone with a wrong date or another time zone",
+    "detail": "Android rig: debug build of main e02167f bundled for the LOCAL stack only (bundle names 127.0.0.1:4510/4511, reached through adb reverse), built outside the checkout, on the rc_api36 emulator (Pixel 7, Android 16); Playwright attached to the app's own WebView; every ai/* action the app sends is answered or failed at the WebView's socket (no model call; aiCallLog had no new row in any run). Our addition (10-15 review): recorded only. (A) Phone one day behind finished a Nursing Home visit (scripted note and course line): the entry reads 'Visit 1 – Oct 15: …' (the real day) on the phone and on the desktop - the server-clock label of TFA-92589 works. (B) The app was sent to the background, the phone's clock jumped a day ahead (past its midnight), and the app came back: it ended the session and asked for sign-in (run 1 showed 'Your session has ended. Taking you to sign in…'; known B33); after signing in, a Hospital pre-round save wrote 'Oct 15: …', again the real day on both devices. (C) The phone a day ahead, data wiped, signed in through its form with a new code and reached the app (so the new sign-in itself works). (D) A phone at the real time in Pacific/Honolulu wrote the resident's entry as 'Visit 2 – Oct 14: …' (its local day; the desktop's day is Oct 15), so the resident now shows Visit 2 dated a day before Visit 1 on every device - the time-zone device is Q4.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-A-desktop-snf-timeline.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-A-phone-day-behind-snf-timeline.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-B-desktop-hospital-timeline.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-B-phone-after-midnight-hospital-timeline.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-B-phone-back-after-clock-jump.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-C-phone-day-ahead-sign-in.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-D-desktop-snf-timeline.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22-D-phone-honolulu-snf-timeline.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-tc11-s22.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

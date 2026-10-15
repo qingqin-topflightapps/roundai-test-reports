@@ -1,0 +1,27 @@
+{
+  "TC-23/S20": {
+    "status": "blocked",
+    "ranAt": "2026-10-14T18:18:14.061Z",
+    "title": "A phone call, backgrounding or a screen lock mid-dictation loses no text",
+    "detail": "Not runnable on the emulator: it needs words actually dictated (and transcribed by gpt-live) when the call / background / lock / Wi-Fi-to-cellular switch happens, the Recover control, and the engine of each take; the emulator has no microphone input, no cellular, and the live transcription session must not be opened on the local stack. What the emulator did show (OAT-03/S20 run, typed stand-in): typed text survives a 30 s lock, 30 s in the background and an incoming call in both contexts, and the app does not crash.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-1-after-lock-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-2-after-background-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-3-after-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-3a-incoming-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-4-after-airplane-20s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-4a-airplane.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-hospital-5-generate-after-background.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-1-after-lock-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-2-after-background-30s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-3-after-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-3a-incoming-call.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-4-after-airplane-20s.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-4a-airplane.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20-snf-5-generate-after-background.device.png",
+      "runs/2026-10-14-local/newspec-c/evidence/dvc-oat03-s20.json"
+    ],
+    "method": "PW",
+    "pkg": "dvc"
+  }
+}

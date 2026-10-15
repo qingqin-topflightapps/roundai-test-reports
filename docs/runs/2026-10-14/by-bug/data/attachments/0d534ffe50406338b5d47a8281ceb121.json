@@ -1,0 +1,123 @@
+{
+  "name": "dvc-oat06-s25",
+  "at": "2026-10-14T18:02:13.428Z",
+  "checks": [
+    {
+      "id": "events fire from the native app (same kinds as the desktop's)",
+      "ok": true,
+      "detail": "phone [\"note_marked_complete\",\"task_deleted\",\"task_completed\",\"pre_round_summary_opened\"] | desktop [\"note_marked_complete\",\"task_deleted\",\"task_completed\",\"pre_round_summary_opened\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "the wrong-date phone's rows carry the same day as the desktop's and land in the same daily row (3.8; code read predicts the device's day)",
+      "ok": false,
+      "detail": "phone days [\"2026-10-13\"] | desktop days [\"2026-10-15\"]",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "events": {
+      "phoneClock": {
+        "date": "Tue Oct 13 08:01:53 HST 2026",
+        "epochMs": 1791914513000,
+        "timeZone": "Pacific/Honolulu",
+        "autoTime": "0"
+      },
+      "phoneLog": [
+        "task completed",
+        "task deleted",
+        "mark complete clicked"
+      ],
+      "deskLog": [
+        "task completed",
+        "task deleted",
+        "mark complete clicked"
+      ],
+      "phone": [
+        {
+          "event": "note_marked_complete",
+          "day": "2026-10-13",
+          "careSetting": "hospital"
+        },
+        {
+          "event": "task_deleted",
+          "day": "2026-10-13",
+          "careSetting": "hospital"
+        },
+        {
+          "event": "task_completed",
+          "day": "2026-10-13",
+          "careSetting": "hospital"
+        },
+        {
+          "event": "pre_round_summary_opened",
+          "day": "2026-10-13",
+          "careSetting": "hospital"
+        }
+      ],
+      "desktop": [
+        {
+          "event": "note_marked_complete",
+          "day": "2026-10-15",
+          "careSetting": "hospital"
+        },
+        {
+          "event": "task_deleted",
+          "day": "2026-10-15",
+          "careSetting": "hospital"
+        },
+        {
+          "event": "task_completed",
+          "day": "2026-10-15",
+          "careSetting": "hospital"
+        },
+        {
+          "event": "pre_round_summary_opened",
+          "day": "2026-10-15",
+          "careSetting": "hospital"
+        }
+      ],
+      "daily": {
+        "2026-10-15": [
+          {
+            "_creationTime": 1792000924649.0103,
+            "_id": "kd75edc1ev29haqx0nwpwb01nn8g92m4",
+            "careSetting": "hospital",
+            "day": "2026-10-15",
+            "encountersTimed": 1,
+            "handoffsGenerated": 0,
+            "handoffsSent": 0,
+            "minutesPreRoundToComplete": 0,
+            "notesCompleted": 1,
+            "notesGenerated": 0,
+            "preRoundSummariesOpened": 1,
+            "tasksCompleted": 1,
+            "tasksDeleted": 1,
+            "updatedAt": "2026-10-14T18:02:08.550Z",
+            "userId": "jd75md64y0gx36tnde6vechgs58g8d72"
+          }
+        ],
+        "2026-10-13": [
+          {
+            "_creationTime": 1792000916506.3252,
+            "_id": "kd7c29ka3zfgt8t2f43m04zxcd8g8cgb",
+            "careSetting": "hospital",
+            "day": "2026-10-13",
+            "encountersTimed": 1,
+            "handoffsGenerated": 0,
+            "handoffsSent": 0,
+            "minutesPreRoundToComplete": 0,
+            "notesCompleted": 1,
+            "notesGenerated": 0,
+            "preRoundSummariesOpened": 1,
+            "tasksCompleted": 1,
+            "tasksDeleted": 1,
+            "updatedAt": "2026-10-14T18:02:01.058Z",
+            "userId": "jd75md64y0gx36tnde6vechgs58g8d72"
+          }
+        ]
+      },
+      "serverNow": "2026-10-14T18:01:48.905Z"
+    }
+  }
+}
