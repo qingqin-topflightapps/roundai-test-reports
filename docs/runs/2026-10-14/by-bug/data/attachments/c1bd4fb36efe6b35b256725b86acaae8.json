@@ -1,0 +1,21 @@
+{
+  "TC-02/S06": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "known": true,
+    "bug": "B01",
+    "ranAt": "2026-10-16T16:02:36.622Z",
+    "title": "Imperfect photos still give a usable result (dev)",
+    "detail": "Dev (<dev address>, build 25acd727), dataset lane pl-tc02 (QA_TARGET=dev scripts/datasets/run.sh pl-tc02 under runs/.dev.lock, Quinn's saved session, 2026-10-17 01:01–01:04 JST), real vision model. Raw scanCensusSheet rows read from the page's own socket (ActionResponse of the scan request), diagnostics:list for model and timing. Photos from cases/fixtures/devprep-photo10/media (truth from render-media LAYOUTS). census-hosp-rotated and census-nh-rotated were read: both returned [] ('No patients found…' / 'No residents found…'), gemini-3.6-flash ok, 2945 / 7958 ms. After two empty reads the case stopped (brief 4: no retry loop); not read: census-hosp/nh-clean, -smudge, -cutoff, -handwritten (8 photos), so the Q3 9/10 threshold could not be counted. Judged per read: the diagnostics row names Gemini Flash with durationMs and providerMs (2/2). Known B01.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S06.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S06-census-hosp-rotated-sheet.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/cleanup.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pl-b01-parse.json"
+    ],
+    "productIssue": "Every photo scan says 'No patients found in the image' / 'No residents found' although Gemini answered: nothing can be added from a photo (B01).",
+    "pkg": "pl"
+  }
+}

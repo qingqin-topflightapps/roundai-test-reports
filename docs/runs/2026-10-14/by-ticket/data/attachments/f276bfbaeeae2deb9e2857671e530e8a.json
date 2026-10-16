@@ -1,0 +1,295 @@
+{
+  "name": "tc02-s12",
+  "at": "2026-10-16T16:12:03.878Z",
+  "checks": [
+    {
+      "id": "s12-overlap: the 5 rows are listed",
+      "ok": true,
+      "detail": "Scan Resident List Photo the nursing director's list — replaces today's visits 5 residents found — tap to include 1 already in All Residents · 3 new · 1 to review QA Juniper ✓ In panel Cedar 19 QA Kale ＋ New Cedar 16 QA Larch ! Review Cedar 12 Same or similar name without matching DOB or MRN QA Mapl"
+    },
+    {
+      "id": "s12-overlap (U4, Q1 wording): '2 patients are already on your list' or '2 already known', and an 'add only the new / add the new' option",
+      "ok": false,
+      "detail": "1 already in All Residents · 3 new · 1 to review"
+    },
+    {
+      "id": "s12-today-after: Juniper, Kale, Larch, Maple and Nettle are on Today's Visits; no Hospital patient",
+      "ok": true,
+      "detail": "QA Juniper | QA Kale | QA Larch | QA Maple | QA Nettle"
+    },
+    {
+      "id": "s12-today-after (U7): no app-made 'SNF-' MRN on Today's Visits",
+      "ok": false,
+      "detail": "SNF-301079, SNF-242649, SNF-583904"
+    },
+    {
+      "id": "s12-today-after (Q6, recorded): the fixture resident (In Today, not on the photo) stays on Today's Visits",
+      "ok": false,
+      "detail": "left Today's Visits",
+      "recordOnly": true
+    },
+    {
+      "id": "s12-all-after: the five names and the fixture resident are in All Residents",
+      "ok": true,
+      "detail": "QA Juniper | QA Kale | QA Kale | QA Larch | QA Maple | QA Nettle | QA Resident T0D0"
+    },
+    {
+      "id": "backend (U4/U5): Juniper 1, Kale 2 (the 1952 one added as a different resident), Larch 1, Maple 1, Nettle 1",
+      "ok": true,
+      "detail": "QA Juniper×1, QA Kale×2, QA Larch×1, QA Maple×1, QA Nettle×1"
+    },
+    {
+      "id": "backend (U5): Juniper keeps DOB 1938-04-02, Cedar 10, New Admission, its pre-round text and its task",
+      "ok": true,
+      "detail": "{\"name\":\"QA Juniper\",\"unit\":\"Cedar 10\",\"mrn\":\"\",\"dob\":\"1938-04-02\",\"diagnosis\":\"Post-acute rehabilitation\",\"encType\":\"new\",\"inToday\":true,\"tasks\":[\"QA-TASK-JUNIPER check weight\"],\"pr\":\"QA-PR-JUNIPER seeded pre-round marker\"}"
+    },
+    {
+      "id": "backend (U5): the existing Kale (1941-07-19) keeps Cedar 11 and its task",
+      "ok": true,
+      "detail": "{\"name\":\"QA Kale\",\"unit\":\"Cedar 11\",\"mrn\":\"\",\"dob\":\"1941-07-19\",\"diagnosis\":\"Post-acute rehabilitation\",\"encType\":\"follow-up\",\"inToday\":false,\"tasks\":[\"QA-TASK-KALE PT follow-up\"],\"pr\":\"\"}"
+    },
+    {
+      "id": "backend (U5): Larch keeps its DOB 1945-01-30 and Cedar 12",
+      "ok": true,
+      "detail": "{\"name\":\"QA Larch\",\"unit\":\"Cedar 12\",\"mrn\":\"\",\"dob\":\"1945-01-30\",\"diagnosis\":\"Post-acute rehabilitation\",\"encType\":\"follow-up\",\"inToday\":true,\"tasks\":[],\"pr\":\"\"}"
+    },
+    {
+      "id": "backend (U6): Maple, Nettle and the second Kale are Follow-up",
+      "ok": true,
+      "detail": "[\"follow-up\",\"follow-up\",\"follow-up\"]"
+    },
+    {
+      "id": "backend (U7): Maple, Nettle and the second Kale carry no app-made 'SNF-' MRN (noPlaceholderMrn)",
+      "ok": false,
+      "detail": "[\"SNF-301079\",\"SNF-242649\",\"SNF-583904\"]"
+    },
+    {
+      "id": "s12-juniper-chart (U5): Cedar 10, New Admission selected; no Cedar 19",
+      "ok": true,
+      "detail": "{\"jadm\":\"New Admission\"}"
+    },
+    {
+      "id": "s12-juniper-chart (recorded): the pre-round marker and the task show on the chart's tabs",
+      "ok": false,
+      "detail": "{\"pr\":true,\"task\":false}",
+      "recordOnly": true
+    },
+    {
+      "id": "s12-kale-chart (U5): the Kale in Cedar 11 shows Cedar 11; no Cedar 16 (its task is judged on the server row above)",
+      "ok": true,
+      "detail": "{\"c11\":true,\"c16\":false}"
+    },
+    {
+      "id": "s12-tasks-screen (recorded): the seeded tasks show on the Nursing Home Tasks screen (Kale left Today's Visits: Q6)",
+      "ok": false,
+      "detail": "{\"juniper\":true,\"kale\":false}",
+      "recordOnly": true
+    },
+    {
+      "id": "s12-maple-chart (U6/U7): Follow-up selected; no 'SNF-' MRN",
+      "ok": false,
+      "detail": "{\"madm\":\"Follow-up\",\"snf\":\"SNF-301079\"}"
+    },
+    {
+      "id": "activity (T2): every duplicate_prompt_shown has exactly one accepted or rejected row",
+      "ok": true,
+      "detail": "[{\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"nursing_home\",\"addMethod\":\"scan_census\",\"promptId\":\"d8441227\"},{\"event\":\"duplicate_prompt_accepted\",\"careSetting\":\"nursing_home\",\"addMethod\":\"scan_census\",\"promptId\":\"d8441227\"}]"
+    },
+    {
+      "id": "activity (T2): patient_added scan_census / nursing_home = the residents this scan created (Maple, Nettle, second Kale = 3)",
+      "ok": true,
+      "detail": "8 patient_added"
+    },
+    {
+      "id": "activity (T2): no PHI in any row",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "setup: 1 scripted read(s); every other ai/* action refused at the socket (no model)",
+      "ok": true,
+      "detail": "[\"ai/vision:scanCensusSheet -> ok\"]"
+    }
+  ],
+  "data": {
+    "sheet": "Scan Resident List Photo the nursing director's list — replaces today's visits 5 residents found — tap to include 1 already in All Residents · 3 new · 1 to review QA Juniper ✓ In panel Cedar 19 QA Kale ＋ New Cedar 16 QA Larch ! Review Cedar 12 Same or similar name without matching DOB or MRN QA Maple ＋ New Cedar 14 QA Nettle ＋ New Cedar 15 Add 5 to Today's Visits",
+    "review-asked": [
+      "Possible duplicate This resident may already be in All Residents, or appear twice in the photo. You decide — the app won’t drop or duplicate anyone on its own. QA Larch Cedar 12 Same or similar name without matching DOB or MRN Already in All Residents: QA Larch Same resident (don’t add) Different — "
+    ],
+    "backend": [
+      {
+        "name": "QA Resident T0D0",
+        "unit": "Maple 4",
+        "mrn": "MRN-0QKU2P",
+        "age": 84,
+        "diagnosis": "Post-acute rehab",
+        "encType": "follow-up",
+        "inToday": false,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Juniper",
+        "unit": "Cedar 10",
+        "mrn": "",
+        "dob": "1938-04-02",
+        "diagnosis": "Post-acute rehabilitation",
+        "encType": "new",
+        "inToday": true,
+        "tasks": [
+          "QA-TASK-JUNIPER check weight"
+        ],
+        "pr": "QA-PR-JUNIPER seeded pre-round marker"
+      },
+      {
+        "name": "QA Kale",
+        "unit": "Cedar 11",
+        "mrn": "",
+        "dob": "1941-07-19",
+        "diagnosis": "Post-acute rehabilitation",
+        "encType": "follow-up",
+        "inToday": false,
+        "tasks": [
+          "QA-TASK-KALE PT follow-up"
+        ],
+        "pr": ""
+      },
+      {
+        "name": "QA Larch",
+        "unit": "Cedar 12",
+        "mrn": "",
+        "dob": "1945-01-30",
+        "diagnosis": "Post-acute rehabilitation",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Kale",
+        "unit": "Cedar 16",
+        "mrn": "SNF-583904",
+        "dob": "1952-10-10",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Maple",
+        "unit": "Cedar 14",
+        "mrn": "SNF-301079",
+        "dob": "1950-02-14",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Nettle",
+        "unit": "Cedar 15",
+        "mrn": "SNF-242649",
+        "dob": "1936-11-05",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "new-residents": [
+      {
+        "name": "QA Maple",
+        "unit": "Cedar 14",
+        "mrn": "SNF-301079",
+        "dob": "1950-02-14",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Nettle",
+        "unit": "Cedar 15",
+        "mrn": "SNF-242649",
+        "dob": "1936-11-05",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Kale",
+        "unit": "Cedar 16",
+        "mrn": "SNF-583904",
+        "dob": "1952-10-10",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "activity": [
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "duplicate_prompt_shown",
+        "careSetting": "nursing_home",
+        "addMethod": "scan_census",
+        "promptId": "d8441227"
+      },
+      {
+        "event": "duplicate_prompt_accepted",
+        "careSetting": "nursing_home",
+        "addMethod": "scan_census",
+        "promptId": "d8441227"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "scan_census"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "scan_census"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "scan_census"
+      },
+      {
+        "event": "scan_census_completed",
+        "careSetting": "nursing_home",
+        "addMethod": "scan_census"
+      }
+    ],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 7
+    }
+  }
+}

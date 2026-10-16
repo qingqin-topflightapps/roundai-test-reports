@@ -1,0 +1,71 @@
+{
+  "ref": "TC-02/S02",
+  "title": "TC-02/S02 Nursing Home real pass: a clean resident list adds every resident, Follow-up, no invented MRN",
+  "dataset": "pl-tc02",
+  "target": "dev",
+  "at": "2026-10-16T16:02:13.554Z",
+  "cells": [
+    {
+      "name": "read",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "photo": "n-clean",
+        "mode": "snf",
+        "uiMs": 3320,
+        "raw": [],
+        "rawError": null,
+        "client": [],
+        "sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\nTake Photo or Choose Image\n\nNo residents found. Try a clearer photo.",
+        "shown": "error: No residents found. Try a clearer photo.",
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 2655,
+          "providerMs": 2652,
+          "appMs": 3,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    },
+    {
+      "name": "S02: the 4 printed rows are read (U1)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "shown": "error: No residents found. Try a clearer photo.",
+        "raw": [],
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 2655,
+          "providerMs": 2652,
+          "appMs": 3,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        "why": "B01 (vision reply fenced in ```json; parseModelJson returns {}; every read is empty)"
+      },
+      "ref": "B01"
+    },
+    {
+      "name": "S02: not confirmed: nothing was read",
+      "kind": "record",
+      "ok": null,
+      "detail": null
+    }
+  ],
+  "shots": [
+    "evidence/TC-02-S02-s02-sheet.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-02-S02-s02-sheet.png": 0
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "ref": "TC-02/S06",
+  "title": "TC-02/S06 imperfect photos still give a usable result (5 Hospital + 5 Nursing Home)",
+  "dataset": "pl-tc02",
+  "target": "dev",
+  "at": "2026-10-16T16:02:36.622Z",
+  "cells": [
+    {
+      "name": "census-hosp-rotated: rows read from the photo (4 printed)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "photo": "census-hosp-rotated",
+        "mode": "hospital",
+        "uiMs": 3825,
+        "raw": [],
+        "rawError": null,
+        "client": [],
+        "sheet": "Scan Patient List\nPhoto your census sheet — AI reads all patients\n✕\nRetake photo\nNo patients found in the image. Try a clearer photo.",
+        "shown": "error: No patients found in the image. Try a clearer photo.",
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 2945,
+          "providerMs": 2941,
+          "appMs": 4,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        "why": "B01 (vision reply fenced in ```json; parseModelJson returns {}; every read is empty)"
+      },
+      "ref": "B01"
+    },
+    {
+      "name": "census-nh-rotated: rows read from the photo (4 printed)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "photo": "census-nh-rotated",
+        "mode": "snf",
+        "uiMs": 8862,
+        "raw": [],
+        "rawError": null,
+        "client": [],
+        "sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\nTake Photo or Choose Image\n\nNo residents found. Try a clearer photo.",
+        "shown": "error: No residents found. Try a clearer photo.",
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 7958,
+          "providerMs": 7953,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        "why": "B01 (vision reply fenced in ```json; parseModelJson returns {}; every read is empty)"
+      },
+      "ref": "B01"
+    },
+    {
+      "name": "photos not read (two reads in a row came back empty: B01; re-run after the B01 fix)",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        "census-hosp-clean",
+        "census-nh-clean",
+        "census-hosp-smudge",
+        "census-nh-smudge",
+        "census-hosp-cutoff",
+        "census-nh-cutoff",
+        "census-hosp-handwritten",
+        "census-nh-handwritten"
+      ]
+    },
+    {
+      "name": "diagnostics per read (model, durationMs, providerMs; 3.5 timing is a target, not judged here)",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        {
+          "photo": "census-hosp-rotated",
+          "uiMs": 3825,
+          "log": {
+            "fn": "vision.scanCensusSheet",
+            "model": "gemini-3.6-flash",
+            "ok": true,
+            "durationMs": 2945,
+            "providerMs": 2941,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          "shown": "error: No patients found in the image. Try a clearer photo."
+        },
+        {
+          "photo": "census-nh-rotated",
+          "uiMs": 8862,
+          "log": {
+            "fn": "vision.scanCensusSheet",
+            "model": "gemini-3.6-flash",
+            "ok": true,
+            "durationMs": 7958,
+            "providerMs": 7953,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          "shown": "error: No residents found. Try a clearer photo."
+        }
+      ]
+    },
+    {
+      "name": "census-hosp-rotated: diagnostics row with model + durationMs + providerMs; the model names Gemini Flash (U10, T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "vision.scanCensusSheet",
+        "model": "gemini-3.6-flash",
+        "ok": true,
+        "durationMs": 2945,
+        "providerMs": 2941,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "census-nh-rotated: diagnostics row with model + durationMs + providerMs; the model names Gemini Flash (U10, T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "vision.scanCensusSheet",
+        "model": "gemini-3.6-flash",
+        "ok": true,
+        "durationMs": 7958,
+        "providerMs": 7953,
+        "appMs": 5,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "S06 threshold (Q3 proposal 9/10): 0/0 photos usable, 8 not read",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "usable": 0,
+        "judged": 0,
+        "notRead": [
+          "census-hosp-clean",
+          "census-nh-clean",
+          "census-hosp-smudge",
+          "census-nh-smudge",
+          "census-hosp-cutoff",
+          "census-nh-cutoff",
+          "census-hosp-handwritten",
+          "census-nh-handwritten"
+        ]
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-02-S06-census-hosp-rotated-sheet.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-02-S06-census-hosp-rotated-sheet.png": 0
+  }
+}

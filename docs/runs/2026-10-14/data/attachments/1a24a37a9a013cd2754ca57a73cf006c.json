@@ -1,0 +1,21 @@
+{
+  "TC-02/S29": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "ranAt": "2026-10-16T16:11:03.749Z",
+    "title": "Duplicate prompt answered for one row, left open across a reload / a Back for another; Nursing Home removal; the logs (local)",
+    "detail": "Local spec pl-tc02-local.spec.ts 'TC-02 S29'. Hospital: seeded Alder 300101 and Birch 300102, read answered with h-day1-clean (Alder, Birch, Cedar). Judged 6/10. Held: Cedar auto-added; one 'Possible duplicates' sheet asks about Alder and Birch together; 'Different — add anyway' on Alder adds a second Alder; counts Alder 2 / Birch 1 / Cedar 1, no partial adds; activity: Alder shown + rejected, Birch shown with no outcome, no PHI. FAILED: (1) after a reload with the Birch question open, the question is gone and nothing says Birch was not added (Q15 accepts either; silently gone fails both); (2) Nursing Home (seeded Juniper with no DOB, Kale 1941-07-19; read Juniper / Kale / Larch): the review for Juniper shows ('Same or similar name without matching DOB or MRN'); after Back the app is on the Hospital list and the Nursing Home list shows no review and no message, and nothing of the scan was written: Larch (new) not created, Kale not put on Today's Visits (the whole Nursing Home scan waits for every review answer, useResidentListScan.ts confirmScan / submitScan); (3) known B24: no delete control for a resident (card or chart), so QA Kale cannot be removed and no patient_removed nursing_home row can exist. Recorded: no duplicate_prompt_shown row was written for the Juniper review although it was on screen (the page left within about a second).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s29.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s29-s29-h-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s29-s29-h-alder-question.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s29-s29-n-after-back-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s29-s29-n-after-back.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s29-s29-n-all-before-delete.png"
+    ],
+    "productIssue": "A duplicate question left open (reload, Back) is lost without a word: in Hospital that patient is not added; in Nursing Home the whole scan is discarded (new residents never created, known ones not put on Today's Visits). Nursing Home residents cannot be deleted (B24).",
+    "pkg": "pl"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "TC-02/S12": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "ranAt": "2026-10-16T16:12:03.878Z",
+    "title": "Nursing Home day-2 overlapping list: 'N already', add only the new ones, nothing overwritten, no silent merge or duplicate (local)",
+    "detail": "Local spec pl-tc02-local.spec.ts 'TC-02 S12'. Seeded In Today: Juniper 1938-04-02 Cedar 10 (New Admission, pre-round 'QA-PR-JUNIPER…', task), Kale 1941-07-19 Cedar 11 (task), Larch 1945-01-30 Cedar 12; read answered with n-day2-overlap (Juniper 1938-04-02 Cedar 19; Kale 1952-10-10 Cedar 16; Larch no DOB; Maple; Nettle). Judged 14/18. FAILED: (1) U4/Q1: the sheet says '1 already in All Residents · 3 new · 1 to review' (Juniper matched by name + DOB, Larch sent to review, Kale-1952 counted new), neither '2 patients are already on your list' nor TC-09's '2 already known … add the new ones?', and there is no 'add only the new' option; (2) U7 ×3 cells: Maple, Nettle and the second Kale are stored and shown with app-made MRNs (SNF-301079 / SNF-242649 / SNF-583904; Q5, p72 does the same). Held: the Larch review ('Same resident') adds nothing; counts Juniper 1 / Kale 2 (the 1952 one created, never dropped) / Larch 1 / Maple 1 / Nettle 1; Juniper keeps DOB, Cedar 10, New Admission (chart select), pre-round text and task, no Cedar 19; the existing Kale keeps Cedar 11 and its task, no Cedar 16; Larch keeps its DOB; new ones Follow-up; activity: shown + accepted for the Larch prompt, 3 patient_added scan_census / nursing_home, no PHI. Recorded: Q6 the fixture resident and the existing Kale (not on the photo) left Today's Visits; Nursing Home tasks are on the Tasks screen, not the chart (Juniper's shows there, the existing Kale's does not since it left today).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-all-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-juniper-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-juniper-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-kale-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-maple-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-overlap.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-review.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-tasks-screen.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s12-s12-today-after.png"
+    ],
+    "productIssue": "On an overlapping resident list the physician sees '1 already · 3 new · 1 to review' instead of being told 2 are already on the list with an 'add only the new' option; new residents get invented SNF- MRNs.",
+    "pkg": "pl"
+  }
+}

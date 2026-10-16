@@ -1,0 +1,71 @@
+{
+  "ref": "TC-02/S01",
+  "title": "TC-02/S01 Hospital real pass: a clean census photo adds every patient, Follow-up, no re-typing",
+  "dataset": "pl-tc02",
+  "target": "dev",
+  "at": "2026-10-16T16:02:05.213Z",
+  "cells": [
+    {
+      "name": "read",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "photo": "h-clean",
+        "mode": "hospital",
+        "uiMs": 5848,
+        "raw": [],
+        "rawError": null,
+        "client": [],
+        "sheet": "Scan Patient List\nPhoto your census sheet — AI reads all patients\n✕\nRetake photo\nNo patients found in the image. Try a clearer photo.",
+        "shown": "error: No patients found in the image. Try a clearer photo.",
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 4890,
+          "providerMs": 4880,
+          "appMs": 10,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    },
+    {
+      "name": "S01: the 4 printed rows are read (U1)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "shown": "error: No patients found in the image. Try a clearer photo.",
+        "raw": [],
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 4890,
+          "providerMs": 4880,
+          "appMs": 10,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        "why": "B01 (vision reply fenced in ```json; parseModelJson returns {}; every read is empty)"
+      },
+      "ref": "B01"
+    },
+    {
+      "name": "S01: not confirmed: nothing was read",
+      "kind": "record",
+      "ok": null,
+      "detail": null
+    }
+  ],
+  "shots": [
+    "evidence/TC-02-S01-s01-sheet.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-02-S01-s01-sheet.png": 0
+  }
+}

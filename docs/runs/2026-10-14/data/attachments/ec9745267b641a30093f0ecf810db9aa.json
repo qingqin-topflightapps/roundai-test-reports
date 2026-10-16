@@ -1,0 +1,229 @@
+{
+  "name": "tc02-s29",
+  "at": "2026-10-16T16:11:03.749Z",
+  "checks": [
+    {
+      "id": "s29-h-alder-question: the app asks about QA Alder before adding it",
+      "ok": true,
+      "detail": "Possible duplicates A patient with this name is already on your list. You decide — the app won't drop anyone on its own. QA Alder · 71y Same name and MRN Already on your list: QA Alder · Room 401 Same patient (don't add) Different — add anyway QA Birch · 64y Same name and MRN Already on your list: Q"
+    },
+    {
+      "id": "s29-h (recorded): the Birch question is shown at the same time, on the same sheet",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "s29-h-after-reload (Q15 either way): the Birch question comes back, or the app says plainly QA Birch was not added (never silently gone)",
+      "ok": false,
+      "detail": "(no question, no message)"
+    },
+    {
+      "id": "backend: QA Alder 2 (the physician said different), QA Birch 1, QA Cedar 1; no partial adds",
+      "ok": true,
+      "detail": "QA Alder×2, QA Birch×1, QA Cedar×1"
+    },
+    {
+      "id": "s29-n: a review for QA Juniper (name only on file) is shown",
+      "ok": true,
+      "detail": "Possible duplicate This resident may already be in All Residents, or appear twice in the photo. You decide — the app won’t drop or duplicate anyone on its own. QA Juniper Cedar 10 · DOB 1938-04-02 Sam"
+    },
+    {
+      "id": "s29-n-after-back: the Juniper review comes back, or the app says plainly QA Juniper was not added (never silently gone)",
+      "ok": false,
+      "detail": "(no review, no message)"
+    },
+    {
+      "id": "s29-n (recorded): what the Back did to the rest of the scan (Kale linked to today, Larch created?)",
+      "ok": false,
+      "detail": "{\"larch\":0,\"kaleInToday\":false}",
+      "recordOnly": true
+    },
+    {
+      "id": "s29-n-all-after-delete (U2 of TFA-94514 / AC 7): QA Kale can be deleted from All Residents (known B24: no Nursing Home delete control)",
+      "ok": false,
+      "detail": "no delete / remove control on the Nursing Home card or chart"
+    },
+    {
+      "id": "activity (T2): Alder prompt shown + rejected; the Birch prompt shown with no outcome",
+      "ok": true,
+      "detail": "[{\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"hospital\",\"addMethod\":\"scan_census\",\"promptId\":\"dfb23c05\"},{\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"hospital\",\"addMethod\":\"scan_census\",\"promptId\":\"d380a631\"},{\"event\":\"duplicate_prompt_rejected\",\"careSetting\":\"hospital\",\"addMethod\":\"scan_census\",\"promptId\":\"dfb23c05\"}]"
+    },
+    {
+      "id": "activity (T2): patient_removed with careSetting nursing_home for QA Kale (known B24: no removal possible)",
+      "ok": false,
+      "detail": "[]"
+    },
+    {
+      "id": "activity (T2): no name, MRN, DOB or diagnosis in any row",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "setup: 2 scripted read(s); every other ai/* action refused at the socket (no model)",
+      "ok": true,
+      "detail": "[\"ai/vision:scanCensusSheet -> ok\",\"ai/vision:scanCensusSheet -> ok\"]"
+    }
+  ],
+  "data": {
+    "h-question": "Possible duplicates A patient with this name is already on your list. You decide — the app won't drop anyone on its own. QA Alder · 71y Same name and MRN Already on your list: QA Alder · Room 401 Same patient (don't add) Different — add anyway QA Birch · 64y Same name and MRN Already on your list: QA Birch · Room 402 Same patient (don't add) Different — add anyway",
+    "birch-question-open-before-reload": true,
+    "h-backend": [
+      {
+        "name": "QA Hosp ZCJ6",
+        "room": "4B-12",
+        "age": 72,
+        "diagnosis": "Community-acquired pneumonia",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Alder",
+        "room": "401",
+        "mrn": "300101",
+        "age": 71,
+        "diagnosis": "Heart failure",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Birch",
+        "room": "402",
+        "mrn": "300102",
+        "age": 64,
+        "diagnosis": "COPD exacerbation",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Cedar",
+        "room": "403",
+        "mrn": "300103",
+        "age": 80,
+        "diagnosis": "Acute kidney injury",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Alder",
+        "room": "401",
+        "mrn": "300101",
+        "age": 71,
+        "diagnosis": "Heart failure",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "n-sheet": "Scan Resident List Photo the nursing director's list — replaces today's visits 3 residents found — tap to include 1 already in All Residents · 1 new · 1 to review QA Juniper ! Review Cedar 10 Same or similar name without matching DOB or MRN QA Kale ✓ In panel Cedar 11 QA Larch ＋ New Cedar 12 Add 3 to Today's Visits",
+    "n-review": "Possible duplicate This resident may already be in All Residents, or appear twice in the photo. You decide — the app won’t drop or duplicate anyone on its own. QA Juniper Cedar 10 · DOB 1938-04-02 Same or similar name without matching DOB or MRN Already in All Residents: QA Juniper Same resident (don’t add) Different — add anyway Decide later",
+    "after-back": {
+      "url": "http://localhost:6473/rounding",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI. Hospital Nursing Home Saturday, October 17, 2026 Morning Rounds 0/5 Handoff 5 patients remaining MY PATIENTS Sort: Room number Sort: Name A–Z Sort: Status (to-do first) Dashboard QH QA Hosp ZCJ6 NEW TODAY Room 4B-12",
+      "snf": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI. Hospital Nursing Home Nursing Home 0/1 residents seen today Today's Visits All Residents Sort: Room number Sort: Name A–Z Sort: Status (to-do first) QR QA Resident ZCJ6 Maple 4 · 84y · MRN-LKTDM8 Post-acute rehab Pending Follow-up Task Export Residents Handoff Dashboard Settings"
+    },
+    "n-backend": [
+      {
+        "name": "QA Resident ZCJ6",
+        "unit": "Maple 4",
+        "mrn": "MRN-LKTDM8",
+        "age": 84,
+        "diagnosis": "Post-acute rehab",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Juniper",
+        "unit": "Cedar 10",
+        "mrn": "",
+        "diagnosis": "Post-acute rehabilitation",
+        "encType": "follow-up",
+        "inToday": false,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Kale",
+        "unit": "Cedar 11",
+        "mrn": "",
+        "dob": "1941-07-19",
+        "diagnosis": "Post-acute rehabilitation",
+        "encType": "follow-up",
+        "inToday": false,
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "activity": [
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "scan_census"
+      },
+      {
+        "event": "duplicate_prompt_shown",
+        "careSetting": "hospital",
+        "addMethod": "scan_census",
+        "promptId": "dfb23c05"
+      },
+      {
+        "event": "duplicate_prompt_shown",
+        "careSetting": "hospital",
+        "addMethod": "scan_census",
+        "promptId": "d380a631"
+      },
+      {
+        "event": "duplicate_prompt_rejected",
+        "careSetting": "hospital",
+        "addMethod": "scan_census",
+        "promptId": "dfb23c05"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "scan_census"
+      }
+    ],
+    "cleanup": {
+      "hospital": 5,
+      "nursingHome": 3
+    }
+  }
+}

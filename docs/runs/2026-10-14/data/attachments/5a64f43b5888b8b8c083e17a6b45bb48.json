@@ -1,0 +1,24 @@
+{
+  "TC-02/S11": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "ranAt": "2026-10-16T16:10:23.613Z",
+    "title": "Hospital day-2 overlapping scan: 'N already', add only the new ones, nothing overwritten, no silent merge or duplicate (local)",
+    "detail": "Local spec pl-tc02-local.spec.ts 'TC-02 S11'. Seeded Alder (401, Heart failure, 300101, New Admission, pre-round 'QA-PR-ALDER…', task 'QA-TASK-ALDER…'), Birch (402, COPD, 300102, task), Cedar (403, AKI, 300103); read answered with h-day2-overlap's 5 rows (Alder 409 'Heart failure, improving' 300101; Birch 52 Gout flare 300199; Cedar no MRN; Dogwood 405; Elm 406). Judged 15/16. FAILED (U4, Q1): there is no '2 patients are already on your list … add only the new ones' step: the sheet says nothing about overlap ('5 patients found', all ticked); after Add the app shows per-row questions ('Possible duplicates — A patient with this name is already on your list. You decide…', one card each for QA Alder 'Same name and MRN' and QA Cedar 'Same name (no DOB or MRN…)', buttons 'Same patient (don't add)' / 'Different — add anyway'). This is p72's design word for word (Q1 asks which design is accepted). Held: answering 'same' for Alder and Cedar adds nothing for them; the Birch with MRN 300199 was not asked about and was added as a second QA Birch in room 407 (accepted by the then); Dogwood and Elm added at Follow-up; counts Alder 1 / Birch 2 / Cedar 1 / Dogwood 1 / Elm 1; Alder keeps Room 401, 'Heart failure', MRN, New Admission (chart select), its pre-round text and its task, no Room 409 / 'improving'; Birch 402 keeps COPD and its task (chart); Cedar keeps 403 and MRN 300103; Dogwood's chart Room 405 at Follow-up; activity: 2 duplicate_prompt_shown each with exactly one accepted, 3 patient_added scan_census, no name / MRN / diagnosis in any row. Recorded: a same-name row with a different MRN is added without asking (Q7: an MRN misread would duplicate the chart).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-alder-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-alder-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-before.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-birch-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-dogwood-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-list-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-overlap-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s11-s11-review.png"
+    ],
+    "productIssue": "On an overlapping re-scan the physician is not told how many are already on the list and has no 'add only the new ones' option; each overlap is asked one by one (prototype design, Q1).",
+    "pkg": "pl"
+  }
+}

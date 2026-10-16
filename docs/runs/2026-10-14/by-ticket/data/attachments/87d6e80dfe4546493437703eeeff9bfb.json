@@ -1,0 +1,29 @@
+{
+  "TC-02/S20": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "record-only",
+    "ranAt": "2026-10-16T16:13:52.057Z",
+    "title": "Visual lane on the scan screens: axe, phone width and WebKit (local)",
+    "detail": "Spec newspec-c/pl-tc02-s20-visual.spec.ts, visual lane profiles desktop Chromium, Pixel 7 (Chromium) and iPhone 15 (WebKit), 8 states each: Hospital scan sheet empty / with 10 rows / 'Possible duplicates', /rounding/add; Nursing Home scan sheet empty / with 10 rows / 'Possible duplicate residents', /snf/add (reads answered in the browser, aiFirewall; tripwire clean). Our own addition (no UAT item or ticket asks for axe or tap sizes): recorded, findings are suggestions (Quinn 2026-10-14). The usability part was judged and holds 69/69: 'Take Photo or Choose Image', the first and last row checkbox / resident row, the Add buttons and both duplicate choices are on screen and on top in every profile (nothing covers them, no bottom navigation over them), and no state overflows sideways. Suggestions: axe color-contrast (serious) on the sheet subtitles, row detail lines and add-form hints (A4); the Nursing Home sheet's close X has no accessible name (button-name, critical; A1); Nursing Home resident rows are clickable divs with no role / pressed state (A1); Hospital row checkboxes are 16×16 (the whole row label is tappable), 'Close' 36×36, 'Deselect all' 91×26, 'Decide later' 24 px tall, add-form Back 30×30 (< 44 pt).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-desktop.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-iphone15.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-desktop-h-sheet-10-rows.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-desktop-h-duplicate-review.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-desktop-n-sheet-10-rows.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-desktop-n-resident-review.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-pixel7-h-sheet-10-rows.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-pixel7-h-duplicate-review.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-pixel7-n-sheet-10-rows.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-pixel7-n-resident-review.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-iphone15-h-sheet-10-rows.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-iphone15-h-duplicate-review.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-iphone15-n-sheet-10-rows.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s20-iphone15-n-resident-review.png"
+    ],
+    "pkg": "pl"
+  }
+}

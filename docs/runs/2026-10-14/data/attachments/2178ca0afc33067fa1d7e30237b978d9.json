@@ -1,0 +1,161 @@
+{
+  "name": "tc02-s05",
+  "at": "2026-10-16T16:11:45.603Z",
+  "checks": [
+    {
+      "id": "s05-h-cards (U3, compare): the age/sex text is shown the same way on both cards",
+      "ok": true,
+      "detail": "Room 420 · 70y · MRN-917756Heart | Room 421 · 70y · —Heart"
+    },
+    {
+      "id": "s05-h-cards (U3, compare): the hospital day is the same for both (stored dayNum; no card or chart header shows it)",
+      "ok": false,
+      "detail": "manual 0 vs scanned 1 (Q4 lists this difference; not accepted yet)"
+    },
+    {
+      "id": "s05-h-cards (Q5, recorded): the MRN display — manual form fills in 'MRN-…', a scan stores '—'",
+      "ok": false,
+      "detail": "manual 'MRN-917756Heart' vs scanned '—Heart'",
+      "recordOnly": true
+    },
+    {
+      "id": "s05-quill-chart: Room 420, 'Heart failure', Follow-up selected, Pre-Round / Encounter / Post-Round tabs",
+      "ok": true,
+      "detail": "{\"adm\":\"Follow-up\",\"tabs\":[\"Pre-Round\",\"Encounter\",\"Post-Round\"]}"
+    },
+    {
+      "id": "s05-rowan-chart: Room 421, 'Heart failure', Follow-up selected, Pre-Round / Encounter / Post-Round tabs",
+      "ok": true,
+      "detail": "{\"adm\":\"Follow-up\",\"tabs\":[\"Pre-Round\",\"Encounter\",\"Post-Round\"]}"
+    },
+    {
+      "id": "s05-rowan-chart (U7): the scanned patient shows no app-made 'MRN-' number",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s05-quill-chart (Q5, recorded): the manual patient shows the form's generated 'MRN-' number",
+      "ok": false,
+      "detail": "MRN-917756",
+      "recordOnly": true
+    },
+    {
+      "id": "backend (U6): both Hospital patients are Follow-up",
+      "ok": true,
+      "detail": "follow-up / follow-up"
+    },
+    {
+      "id": "backend (Q4, recorded): other stored differences (admit date, background)",
+      "ok": true,
+      "detail": "{\"quill\":{\"admitDate\":\"Oct 17\",\"dayNum\":0,\"mrn\":\"MRN-917756\"},\"rowan\":{\"admitDate\":\"Oct 17\",\"dayNum\":1,\"mrn\":\"—\"}}",
+      "recordOnly": true
+    },
+    {
+      "id": "s05-n-all (U3, compare): the two All Residents rows show the same field set the same way (unit, DOB, age, MRN display, badge)",
+      "ok": true,
+      "detail": "<unit> · DOB 1941-05-05 · SNF-#PendingFollow-up || <unit> · DOB 1941-05-05 · SNF-#PendingFollow-up"
+    },
+    {
+      "id": "s05-sumac-chart: Cedar 30, Follow-up selected",
+      "ok": true,
+      "detail": "Follow-up"
+    },
+    {
+      "id": "s05-tansy-chart: Cedar 31, Follow-up selected",
+      "ok": true,
+      "detail": "Follow-up"
+    },
+    {
+      "id": "s05-tansy-chart (U7): the scanned resident shows no app-made 'SNF-' MRN",
+      "ok": false,
+      "detail": "SNF-633640"
+    },
+    {
+      "id": "s05-sumac-chart (Q5, recorded): the manual resident shows the form's generated 'SNF-' MRN",
+      "ok": false,
+      "detail": "SNF-941470",
+      "recordOnly": true
+    },
+    {
+      "id": "backend (recorded, our own addition): the admission-status day is stored the same way (manual stores encTypeDay, scan stores none)",
+      "ok": false,
+      "detail": "{\"sumac\":\"2026-10-17\",\"tansy\":null}",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: 2 scripted read(s); every other ai/* action refused at the socket (no model)",
+      "ok": true,
+      "detail": "[\"ai/vision:scanCensusSheet -> ok\",\"ai/vision:scanCensusSheet -> ok\"]"
+    }
+  ],
+  "data": {
+    "h-sheet": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 1 patients found Deselect all QA Rowan Room 421 · Heart failure 70y Add 1 Patient to My Rounding List",
+    "h-backend": [
+      {
+        "name": "QA Quill",
+        "room": "420",
+        "mrn": "MRN-917756",
+        "age": 70,
+        "diagnosis": "Heart failure",
+        "encType": "follow-up",
+        "dayNum": 0,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Rowan",
+        "room": "421",
+        "mrn": "—",
+        "age": 70,
+        "diagnosis": "Heart failure",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "h-cards": {
+      "quillCard": "QQQA QuillNew todayRoom 420 · 70y · MRN-917756Heart failureNot Yet PreppedFollow-up",
+      "rowanCard": "QRQA RowanNew todayRoom 421 · 70y · —Heart failureNot Yet PreppedFollow-up"
+    },
+    "h-identity": {
+      "quill": "Room 420 · 70y · MRN-917756Heart",
+      "rowan": "Room 421 · 70y · —Heart",
+      "quillRest": "QQRoom 420 · 70y · MRN-917756Heart failureNot Yet PreppedFollow-up",
+      "rowanRest": "QRRoom 421 · 70y · —Heart failureNot Yet PreppedFollow-up"
+    },
+    "n-sheet": "Scan Resident List Photo the nursing director's list — replaces today's visits 1 resident found — tap to include 0 already in All Residents · 1 new · 0 to review QA Tansy ＋ New Cedar 31 Add 1 to Today's Visits",
+    "n-backend": [
+      {
+        "name": "QA Sumac",
+        "unit": "Cedar 30",
+        "mrn": "SNF-941470",
+        "dob": "1941-05-05",
+        "encType": "follow-up",
+        "inToday": false,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Tansy",
+        "unit": "Cedar 31",
+        "mrn": "SNF-633640",
+        "dob": "1941-05-05",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "n-cards": {
+      "sumacCard": "QSQA SumacCedar 30 · DOB 1941-05-05 · SNF-941470+ TodayPendingFollow-up",
+      "tansyCard": "QTQA TansyCedar 31 · DOB 1941-05-05 · SNF-633640In Today ✓PendingFollow-up"
+    },
+    "cleanup": {
+      "hospital": 3,
+      "nursingHome": 3
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "TC-02/S14": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "known": true,
+    "bug": "B01",
+    "ranAt": "2026-10-16T16:03:44.673Z",
+    "title": "AI check: a hard-to-read name is flagged, not guessed (dev)",
+    "detail": "Dev (<dev address>, build 25acd727), dataset lane pl-tc02 (QA_TARGET=dev scripts/datasets/run.sh pl-tc02 under runs/.dev.lock, Quinn's saved session, 2026-10-17 01:01–01:04 JST), real vision model. Raw scanCensusSheet rows read from the page's own socket (ActionResponse of the scan request), diagnostics:list for model and timing. Media rendered for this package (cases/fixtures/pl-tc02/media h-u1..5 / n-u1..5: ink blot, blur, scribble, faint, cut; the 5th row's name unreadable, 4 legible rows). h-u1 and n-u1 returned [] (3167 / 6208 ms); the other 8 not read after two empty reads; 3.2 threshold not countable. Known B01. Locally (S28) the app silently drops a row whose name comes back blank and has no 'unclear' flag at all, so this check would fail even after B01 is fixed unless the model writes a marker into the name.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S14.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S14-h-u1-sheet.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/cleanup.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pl-b01-parse.json"
+    ],
+    "productIssue": "Every photo scan says 'No patients found in the image' / 'No residents found' although Gemini answered: nothing can be added from a photo (B01).",
+    "pkg": "pl"
+  }
+}

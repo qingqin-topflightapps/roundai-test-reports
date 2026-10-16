@@ -1,0 +1,21 @@
+{
+  "TC-02/S07": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "known": true,
+    "bug": "B01",
+    "ranAt": "2026-10-16T16:03:00.224Z",
+    "title": "Row counts: header-only, one row, 40 / 30 rows (dev)",
+    "detail": "Dev (<dev address>, build 25acd727), dataset lane pl-tc02 (QA_TARGET=dev scripts/datasets/run.sh pl-tc02 under runs/.dev.lock, Quinn's saved session, 2026-10-17 01:01–01:04 JST), real vision model. Raw scanCensusSheet rows read from the page's own socket (ActionResponse of the scan request), diagnostics:list for model and timing. h-b1 (1 row) and n-b1 (1 row) returned [] (3207 / 8842 ms, gemini-3.6-flash ok); the 40-row, 30-row and header-only pages were not read after two empty reads (a header-only page's empty answer would prove nothing under B01). Known B01.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S07.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S07-h-b1-sheet.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/cleanup.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pl-b01-parse.json"
+    ],
+    "productIssue": "Every photo scan says 'No patients found in the image' / 'No residents found' although Gemini answered: nothing can be added from a photo (B01).",
+    "pkg": "pl"
+  }
+}

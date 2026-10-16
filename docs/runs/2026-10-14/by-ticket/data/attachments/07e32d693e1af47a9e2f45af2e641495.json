@@ -1,0 +1,274 @@
+{
+  "name": "tc02-s11",
+  "at": "2026-10-16T16:10:23.613Z",
+  "checks": [
+    {
+      "id": "s11-before: QA Alder, QA Birch, QA Cedar and the fixture patient are on the list",
+      "ok": true,
+      "detail": "QA Alder | QA Birch | QA Cedar | QA Hosp 7XPQ"
+    },
+    {
+      "id": "s11-review: the 5 rows read are listed",
+      "ok": true,
+      "detail": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 5 patients found Deselect all QA Alder Room 409 · Heart failure, improving 71y · MRN 300101 QA Birch Room 407 · Gout flare 52y · MRN 300199 QA Cedar Room 403 · Acute kidney injury 80y QA Dogwood Room 405 · Cellulitis 58y · MRN 30010"
+    },
+    {
+      "id": "s11-review (recorded): the sheet says nothing about patients already on the list before confirming",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "s11-overlap-prompt (U4, Q1 wording): the app says '2 patients are already on your list' and offers to add only the new ones",
+      "ok": false,
+      "detail": "Possible duplicates A patient with this name is already on your list. You decide — the app won't drop anyone on its own. QA Alder · 71y Same name and MRN Already on your list: QA Alder · Room 401 Same patient (don't add) Different — add anyway QA Cedar · 80y Same name (no DOB or MRN on the sheet to compare) Already on your list: QA Cedar · Room 403 Same patient (don't add) Different — add anyway"
+    },
+    {
+      "id": "s11 (recorded): the rows the app asked about (the Birch with MRN 300199 is judged below: asked about, or a second chart)",
+      "ok": true,
+      "detail": "asked about: QA Alder, QA Cedar",
+      "recordOnly": true
+    },
+    {
+      "id": "s11-list-after (U6): QA Dogwood and QA Elm are added; Alder, Birch, Cedar and the fixture are still there; no Nursing Home resident",
+      "ok": true,
+      "detail": "QA Alder | QA Birch | QA Birch | QA Cedar | QA Dogwood | QA Elm | QA Hosp 7XPQ"
+    },
+    {
+      "id": "backend (U4/U5): no silent merge or duplicate: Alder 1, Birch 2 (the 300199 one added as a second chart), Cedar 1, Dogwood 1, Elm 1",
+      "ok": true,
+      "detail": "QA Alder×1, QA Birch×2, QA Cedar×1, QA Dogwood×1, QA Elm×1"
+    },
+    {
+      "id": "backend (U5): Alder keeps Room 401, 'Heart failure', MRN 300101, New Admission, its pre-round text and its task",
+      "ok": true,
+      "detail": "{\"name\":\"QA Alder\",\"room\":\"401\",\"mrn\":\"300101\",\"age\":71,\"diagnosis\":\"Heart failure\",\"encType\":\"new\",\"tasks\":[\"QA-TASK-ALDER call cardiology\"],\"pr\":\"QA-PR-ALDER seeded pre-round marker\"}"
+    },
+    {
+      "id": "backend (U5): Birch (300102) keeps Room 402, COPD exacerbation and its task",
+      "ok": true,
+      "detail": "{\"name\":\"QA Birch\",\"room\":\"402\",\"mrn\":\"300102\",\"age\":64,\"diagnosis\":\"COPD exacerbation\",\"encType\":\"follow-up\",\"tasks\":[\"QA-TASK-BIRCH repeat ABG\"],\"pr\":\"\"}"
+    },
+    {
+      "id": "backend (U5): Cedar keeps Room 403, MRN 300103 and its diagnosis",
+      "ok": true,
+      "detail": "{\"name\":\"QA Cedar\",\"room\":\"403\",\"mrn\":\"300103\",\"age\":80,\"diagnosis\":\"Acute kidney injury\",\"encType\":\"follow-up\",\"tasks\":[],\"pr\":\"\"}"
+    },
+    {
+      "id": "backend (U6): Dogwood, Elm and the second Birch are Follow-up",
+      "ok": true,
+      "detail": "[\"follow-up\",\"follow-up\",\"follow-up\"]"
+    },
+    {
+      "id": "s11-alder-chart (U5): Room 401, 'Heart failure', New Admission selected; no Room 409 / 'improving'",
+      "ok": true,
+      "detail": "{\"aadm\":\"New Admission\"}"
+    },
+    {
+      "id": "s11-alder-chart (recorded): the pre-round marker and the task show somewhere on the chart's tabs",
+      "ok": true,
+      "detail": "{\"pr\":true,\"task\":true}",
+      "recordOnly": true
+    },
+    {
+      "id": "s11-birch-chart (U5): the Birch in room 402 shows Room 402, COPD exacerbation and its task; not Gout flare / Room 407 / 300199",
+      "ok": true,
+      "detail": "{\"r402\":true,\"task\":true}"
+    },
+    {
+      "id": "s11-dogwood-chart (U6): Room 405, Follow-up selected",
+      "ok": true,
+      "detail": "Follow-up"
+    },
+    {
+      "id": "activity (T2): every duplicate_prompt_shown has exactly one accepted or rejected row (one per asked row, Q1)",
+      "ok": true,
+      "detail": "[{\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"hospital\",\"addMethod\":\"scan_census\",\"promptId\":\"71122f51\"},{\"event\":\"duplicate_prompt_shown\",\"careSetting\":\"hospital\",\"addMethod\":\"scan_census\",\"promptId\":\"2f5549b9\"},{\"event\":\"duplicate_prompt_accepted\",\"careSetting\":\"hospital\",\"addMethod\":\"scan_census\",\"promptId\":\"71122f51\"},{\"event\":\"duplicate_prompt_accepted\",\"careSetting\":\"hospital\",\"addMethod\":\"scan_census\",\"promptId\":\"2f5549b9\"}]"
+    },
+    {
+      "id": "activity (T2): patient_added scan_census = the charts this scan created (Dogwood, Elm, second Birch = 3)",
+      "ok": true,
+      "detail": "8 patient_added"
+    },
+    {
+      "id": "activity (T2): no name, MRN or diagnosis in any row",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "setup: 1 scripted read(s); every other ai/* action refused at the socket (no model)",
+      "ok": true,
+      "detail": "[\"ai/vision:scanCensusSheet -> ok\"]"
+    }
+  ],
+  "data": {
+    "sheet": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 5 patients found Deselect all QA Alder Room 409 · Heart failure, improving 71y · MRN 300101 QA Birch Room 407 · Gout flare 52y · MRN 300199 QA Cedar Room 403 · Acute kidney injury 80y QA Dogwood Room 405 · Cellulitis 58y · MRN 300105 QA Elm Room 406 · Pneumonia 77y · MRN 300106 Add 5 Patients to My Rounding List",
+    "overlap-prompt": "Possible duplicates A patient with this name is already on your list. You decide — the app won't drop anyone on its own. QA Alder · 71y Same name and MRN Already on your list: QA Alder · Room 401 Same patient (don't add) Different — add anyway QA Cedar · 80y Same name (no DOB or MRN on the sheet to compare) Already on your list: QA Cedar · Room 403 Same patient (don't add) Different — add anyway",
+    "asked-rows": [
+      "QA Alder",
+      "QA Cedar"
+    ],
+    "backend": [
+      {
+        "name": "QA Hosp 7XPQ",
+        "room": "4B-12",
+        "age": 72,
+        "diagnosis": "Community-acquired pneumonia",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Alder",
+        "room": "401",
+        "mrn": "300101",
+        "age": 71,
+        "diagnosis": "Heart failure",
+        "encType": "new",
+        "tasks": [
+          "QA-TASK-ALDER call cardiology"
+        ],
+        "pr": "QA-PR-ALDER seeded pre-round marker"
+      },
+      {
+        "name": "QA Birch",
+        "room": "402",
+        "mrn": "300102",
+        "age": 64,
+        "diagnosis": "COPD exacerbation",
+        "encType": "follow-up",
+        "tasks": [
+          "QA-TASK-BIRCH repeat ABG"
+        ],
+        "pr": ""
+      },
+      {
+        "name": "QA Cedar",
+        "room": "403",
+        "mrn": "300103",
+        "age": 80,
+        "diagnosis": "Acute kidney injury",
+        "encType": "follow-up",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Birch",
+        "room": "407",
+        "mrn": "300199",
+        "age": 52,
+        "diagnosis": "Gout flare",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Dogwood",
+        "room": "405",
+        "mrn": "300105",
+        "age": 58,
+        "diagnosis": "Cellulitis",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Elm",
+        "room": "406",
+        "mrn": "300106",
+        "age": 77,
+        "diagnosis": "Pneumonia",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "second-birch": {
+      "name": "QA Birch",
+      "room": "407",
+      "mrn": "300199",
+      "age": 52,
+      "diagnosis": "Gout flare",
+      "encType": "follow-up",
+      "dayNum": 1,
+      "admitDate": "Oct 17",
+      "tasks": [],
+      "pr": ""
+    },
+    "activity": [
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "nursing_home",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "manual"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "scan_census"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "scan_census"
+      },
+      {
+        "event": "patient_added",
+        "careSetting": "hospital",
+        "addMethod": "scan_census"
+      },
+      {
+        "event": "duplicate_prompt_shown",
+        "careSetting": "hospital",
+        "addMethod": "scan_census",
+        "promptId": "71122f51"
+      },
+      {
+        "event": "duplicate_prompt_shown",
+        "careSetting": "hospital",
+        "addMethod": "scan_census",
+        "promptId": "2f5549b9"
+      },
+      {
+        "event": "duplicate_prompt_accepted",
+        "careSetting": "hospital",
+        "addMethod": "scan_census",
+        "promptId": "71122f51"
+      },
+      {
+        "event": "duplicate_prompt_accepted",
+        "careSetting": "hospital",
+        "addMethod": "scan_census",
+        "promptId": "2f5549b9"
+      }
+    ],
+    "cleanup": {
+      "hospital": 7,
+      "nursingHome": 1
+    }
+  }
+}

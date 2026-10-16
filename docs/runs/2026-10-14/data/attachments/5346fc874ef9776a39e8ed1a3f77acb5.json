@@ -1,0 +1,21 @@
+{
+  "TC-02/S01": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "known": true,
+    "bug": "B01",
+    "ranAt": "2026-10-16T16:02:05.213Z",
+    "title": "Hospital real pass: a clean census photo (dev)",
+    "detail": "Dev (<dev address>, build 25acd727), dataset lane pl-tc02 (QA_TARGET=dev scripts/datasets/run.sh pl-tc02 under runs/.dev.lock, Quinn's saved session, 2026-10-17 01:01–01:04 JST), real vision model. Raw scanCensusSheet rows read from the page's own socket (ActionResponse of the scan request), diagnostics:list for model and timing. h-clean.jpg (4 rows, prefix 'QA DS1-pl-tc02 '): the server returned patients: [] and the sheet said 'No patients found in the image. Try a clearer photo.'; diagnostics: model gemini-3.6-flash, ok true, durationMs 4890, providerMs 4880 (Gemini answered in ~5 s; its answer gave no rows). Not confirmed (nothing read). Known B01: proven on 25acd727 code by newspec-c/pl-b01-parse.spec.ts (the real scanCensusSheet handler in-process with only the Vertex hop stubbed: a ```json-fenced reply gives 0 rows in both modes, bare JSON gives all 3; the diagnostics row says ok for the empty result). The raw Gemini text is not visible on dev (diagnostics keep no response text), so 'fenced' is the matching mechanism, not an observed string. The local half (what the app does with a read) passed: see the local results file.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S01.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S01-s01-sheet.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/cleanup.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pl-b01-parse.json"
+    ],
+    "productIssue": "Every photo scan says 'No patients found in the image' / 'No residents found' although Gemini answered: nothing can be added from a photo (B01).",
+    "pkg": "pl"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "name": "tc02-s28",
+  "at": "2026-10-16T16:10:51.562Z",
+  "checks": [
+    {
+      "id": "s28-h-f1-sheet (U7): the 4 rows; no app-made 'MRN-' / 'SNF-' value",
+      "ok": true,
+      "detail": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 4 patients found Deselect all QA Fir Room 410 · Sepsis 69y QA Gum Room 411 · GI bleed QA Hazel Syncope 66y QA Ivy Room 412 81y Add 4 Patients to My Rounding List"
+    },
+    {
+      "id": "s28-h-f1-sheet (Q2, recorded): how a missing room / age / diagnosis looks on the sheet (no marker text found = nothing flagged)",
+      "ok": false,
+      "detail": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 4 patients found Deselect all QA Fir Room 410 · Sepsis 69y QA Gum Room 411 · GI bleed QA Hazel Syncope 66y QA Ivy Room 412 81y Add 4 Patients to My Rounding List",
+      "recordOnly": true
+    },
+    {
+      "id": "s28-hazel-chart (U7): 'Syncope'; no 'MRN-' / 'SNF-'; no neighbour's room ('Room 41…')",
+      "ok": true,
+      "detail": "Room — · 66y · — Follow-up ▾ New Adm"
+    },
+    {
+      "id": "s28-hazel-chart (Q2, recorded): the missing room shows as",
+      "ok": true,
+      "detail": "Room — · 66y · —",
+      "recordOnly": true
+    },
+    {
+      "id": "backend (Q13, recorded): admit date / hospital day stored for a sheet without those columns",
+      "ok": true,
+      "detail": "{\"admitDate\":\"Oct 17\",\"dayNum\":1,\"mrn\":\"—\",\"room\":\"—\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "backend (U7): blank fields are stored blank, not invented (Hazel's room, Gum's age, Ivy's diagnosis; no MRN-#)",
+      "ok": true,
+      "detail": "{\"hazelRoom\":\"—\",\"gumAge\":null,\"ivyDx\":\"—\"}"
+    },
+    {
+      "id": "s28-h-u1-sheet (U8): the 4 legible rows, and the unreadable row (room 605) is on the sheet with an 'unclear' marker",
+      "ok": false,
+      "detail": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 4 patients found Deselect all QA Aspen Room 601 · Pneumonia 72y QA Basswood Room 602 · CHF exacerbation 65y QA Catalpa Room 603 · UTI 80y QA Damson Room 604 · Cellulitis 58y Add 4 Patients to My Rounding List"
+    },
+    {
+      "id": "s28-h-u1-list (U8 rowCheck): the room-605 entry carries an unclear marker, or it is absent and the app said so",
+      "ok": false,
+      "detail": "no room-605 patient and no message; list: QA Aspen | QA Basswood | QA Catalpa | QA Damson | QA Fir | QA Gum | QA Hazel | QA Hosp BM8H | QA Ivy"
+    },
+    {
+      "id": "s28 (recorded): if a read marked the name '[unclear]', the sheet would show it as an ordinary row, ticked for adding with the rest (no warning, no edit step)",
+      "ok": true,
+      "detail": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 5 patients found Deselect all QA Aspen Room 601 · Pneumonia 72y QA Basswood Room 602 · CHF exacerbation 65y QA Catalpa Room 603 · UTI 80y QA Damson Room 604 · Cellulitis 58y [unclear] Room 605 · COPD exacerbation 77y Add 5 Patients ",
+      "recordOnly": true
+    },
+    {
+      "id": "s28-n-f1-sheet (U7): the 3 rows; no 'SNF-' / 'MRN-' value",
+      "ok": true,
+      "detail": "Scan Resident List Photo the nursing director's list — replaces today's visits 3 residents found — tap to include 0 already in All Residents · 3 new · 0 to review QA Umber ＋ New Birch 5 QA Vetch ＋ New Birch 6 QA Willow ＋ New Add 3 to Today's Visits"
+    },
+    {
+      "id": "s28-vetch-chart (U7): 'Birch 6'; no 'SNF-' / 'MRN-' value",
+      "ok": false,
+      "detail": "SNF-838611"
+    },
+    {
+      "id": "backend (U7): Willow's missing unit and Vetch's missing DOB are stored blank; no 'SNF-' MRN on the 3",
+      "ok": false,
+      "detail": "[{\"n\":\"QA Umber\",\"unit\":\"Birch 5\",\"dob\":\"1940-01-01\",\"mrn\":\"SNF-292523\"},{\"n\":\"QA Vetch\",\"unit\":\"Birch 6\",\"dob\":\"\",\"mrn\":\"SNF-838611\"},{\"n\":\"QA Willow\",\"unit\":\"\",\"dob\":\"1943-03-03\",\"mrn\":\"SNF-793565\"}]"
+    },
+    {
+      "id": "s28-n-u1-sheet (U8): the 4 legible rows, and the unreadable row (Birch 15) is on the sheet with an 'unclear' marker",
+      "ok": false,
+      "detail": "Scan Resident List Photo the nursing director's list — replaces today's visits 4 residents found — tap to include 0 already in All Residents · 4 new · 0 to review QA Elder ＋ New Birch 11 QA Fennel ＋ New Birch 12 QA Ginkgo ＋ New Birch 13 QA Holly ＋ New Birch 14 Add 4 to Today's Visits"
+    },
+    {
+      "id": "s28-n-u1-today (U8 rowCheck): the Birch-15 entry carries an unclear marker, or it is absent and the app said so",
+      "ok": false,
+      "detail": "no Birch-15 resident and no message; today: QA Elder | QA Fennel | QA Ginkgo | QA Holly"
+    },
+    {
+      "id": "setup: 5 scripted read(s); every other ai/* action refused at the socket (no model)",
+      "ok": true,
+      "detail": "[\"ai/vision:scanCensusSheet -> ok\",\"ai/vision:scanCensusSheet -> ok\",\"ai/vision:scanCensusSheet -> ok\",\"ai/vision:scanCensusSheet -> ok\",\"ai/vision:scanCensusSheet -> ok\"]"
+    }
+  ],
+  "data": {
+    "h-f1-sheet": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 4 patients found Deselect all QA Fir Room 410 · Sepsis 69y QA Gum Room 411 · GI bleed QA Hazel Syncope 66y QA Ivy Room 412 81y Add 4 Patients to My Rounding List",
+    "h-f1-backend": [
+      {
+        "name": "QA Fir",
+        "room": "410",
+        "mrn": "—",
+        "age": 69,
+        "diagnosis": "Sepsis",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Gum",
+        "room": "411",
+        "mrn": "—",
+        "diagnosis": "GI bleed",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Hazel",
+        "room": "—",
+        "mrn": "—",
+        "age": 66,
+        "diagnosis": "Syncope",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Ivy",
+        "room": "412",
+        "mrn": "—",
+        "age": 81,
+        "diagnosis": "—",
+        "encType": "follow-up",
+        "dayNum": 1,
+        "admitDate": "Oct 17",
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "h-u1-sheet": "Scan Patient List Photo your census sheet — AI reads all patients ✕ 4 patients found Deselect all QA Aspen Room 601 · Pneumonia 72y QA Basswood Room 602 · CHF exacerbation 65y QA Catalpa Room 603 · UTI 80y QA Damson Room 604 · Cellulitis 58y Add 4 Patients to My Rounding List",
+    "n-f1-sheet": "Scan Resident List Photo the nursing director's list — replaces today's visits 3 residents found — tap to include 0 already in All Residents · 3 new · 0 to review QA Umber ＋ New Birch 5 QA Vetch ＋ New Birch 6 QA Willow ＋ New Add 3 to Today's Visits",
+    "n-f1-backend": [
+      {
+        "name": "QA Umber",
+        "unit": "Birch 5",
+        "mrn": "SNF-292523",
+        "dob": "1940-01-01",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Vetch",
+        "unit": "Birch 6",
+        "mrn": "SNF-838611",
+        "dob": "",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      },
+      {
+        "name": "QA Willow",
+        "unit": "",
+        "mrn": "SNF-793565",
+        "dob": "1943-03-03",
+        "encType": "follow-up",
+        "inToday": true,
+        "tasks": [],
+        "pr": ""
+      }
+    ],
+    "n-u1-sheet": "Scan Resident List Photo the nursing director's list — replaces today's visits 4 residents found — tap to include 0 already in All Residents · 4 new · 0 to review QA Elder ＋ New Birch 11 QA Fennel ＋ New Birch 12 QA Ginkgo ＋ New Birch 13 QA Holly ＋ New Birch 14 Add 4 to Today's Visits",
+    "cleanup": {
+      "hospital": 9,
+      "nursingHome": 8
+    }
+  }
+}

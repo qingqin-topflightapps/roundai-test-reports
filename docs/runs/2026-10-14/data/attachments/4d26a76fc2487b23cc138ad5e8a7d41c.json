@@ -1,0 +1,22 @@
+{
+  "TC-02/S05": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "ranAt": "2026-10-16T16:11:45.603Z",
+    "title": "A manual patient and a scanned patient with the same fields look and act the same (both contexts, local)",
+    "detail": "Local spec pl-tc02-local.spec.ts 'TC-02 S05'. Hospital: QA Quill typed into /rounding/add (70, room 420, Heart failure, MRN blank); QA Rowan scanned (421, 70, Heart failure, MRN blank). Nursing Home: QA Sumac typed into /snf/add (DOB 1941-05-05, Cedar 30, MRN blank); QA Tansy scanned (1941-05-05, Cedar 31). Judged 9/11. Held: both charts show room, diagnosis, Follow-up and the same three tabs; age shown the same way ('70y' on both cards); the two All Residents rows show the same field set the same way (unit · DOB · SNF-# · Pending · Follow-up, In Today toggle excluded: Q6); the scanned Hospital chart shows no 'MRN-'. FAILED: (1) hospital day differs: manual stored dayNum 0, scanned 1 (Q4 lists this difference, not accepted; neither card nor chart header shows it, it feeds the note); (2) U7: the scanned resident QA Tansy shows an app-made 'SNF-633640' (same cause as S02, Q5). Recorded (Q5): the manual forms fill in 'MRN-917756' / 'SNF-941470' while a Hospital scan stores '—', so the MRN display differs ('Room 420 · 70y · MRN-917756' vs 'Room 421 · 70y · —'); manual Nursing Home add stores encTypeDay, the scan stores none (our own addition). Not exercised: B08 (Back on a filled add form adds the patient) is a known bug on the same form.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s05.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s05-s05-h-cards.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s05-s05-n-all.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s05-s05-quill-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s05-s05-rowan-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s05-s05-sumac-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s05-s05-tansy-chart.png"
+    ],
+    "productIssue": "The same patient added by hand gets hospital day 0, scanned gets day 1; a scanned resident gets an invented SNF- MRN.",
+    "pkg": "pl"
+  }
+}

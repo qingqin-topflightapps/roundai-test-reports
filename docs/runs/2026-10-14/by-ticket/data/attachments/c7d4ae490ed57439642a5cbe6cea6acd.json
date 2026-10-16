@@ -1,0 +1,21 @@
+{
+  "TC-02/S02": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "known": true,
+    "bug": "B01",
+    "ranAt": "2026-10-16T16:02:13.554Z",
+    "title": "Nursing Home real pass: a clean resident list (dev)",
+    "detail": "Dev (<dev address>, build 25acd727), dataset lane pl-tc02 (QA_TARGET=dev scripts/datasets/run.sh pl-tc02 under runs/.dev.lock, Quinn's saved session, 2026-10-17 01:01–01:04 JST), real vision model. Raw scanCensusSheet rows read from the page's own socket (ActionResponse of the scan request), diagnostics:list for model and timing. n-clean.jpg (4 rows): residents: [], sheet 'No residents found. Try a clearer photo.'; gemini-3.6-flash ok, durationMs 2655, providerMs 2652. Not confirmed. Known B01 (mechanism: pl-b01-parse). Local half: failed on the invented SNF- MRN (local results file).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S02.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/evidence/TC-02-S02-s02-sheet.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-pl/pl-tc02/cleanup.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pl-b01-parse.json"
+    ],
+    "productIssue": "Every photo scan says 'No patients found in the image' / 'No residents found' although Gemini answered: nothing can be added from a photo (B01).",
+    "pkg": "pl"
+  }
+}

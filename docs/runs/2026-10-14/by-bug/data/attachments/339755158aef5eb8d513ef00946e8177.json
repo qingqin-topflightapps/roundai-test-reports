@@ -1,0 +1,25 @@
+{
+  "TC-02/S28": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "ranAt": "2026-10-16T16:10:51.562Z",
+    "title": "What the physician sees for a missing field and an unreadable name (scan sheet, list and chart, both contexts; local)",
+    "detail": "Local spec pl-tc02-local.spec.ts 'TC-02 S28'; reads answered as the census prompts instruct a model ('Use an empty string for any single field you truly cannot read'): H-F1 (Hazel no room, Gum no age, Ivy no diagnosis, no MRN column), H-U1 (room 605's name ''), N-F1 (Vetch no DOB, Willow no unit, no MRN column), N-U1 (Birch 15's name ''). Judged 5/11. Held: H-F1 sheet has no app-made value; Hazel's chart 'Room — · 66y · —' with 'Syncope', no MRN-, no neighbour's room; blanks stored as '—' / no age, not invented; N-F1 sheet has no SNF-/MRN-. FAILED: (1) U8 ×4: the unreadable row is silently dropped in both contexts: the client discards a row whose name is shorter than 3 characters (scannedPatient.ts isLikelyPatientRow / useResidentListScan.ts extractedResidents), so the sheet shows '4 patients found' / '4 residents found' with no room-605 / Birch-15 row and no 'unclear' marker, and after adding there is no such patient and no message; neither the vision prompts nor the client have any 'unclear' flag (AC 6 'unclear names are flagged' is not built); (2) U7 ×2: Vetch's chart and all three N-F1 residents carry app-made SNF- MRNs (Q5). Recorded: Q2 a missing room / MRN shows as '—' (whether a dash is a flag is Q2); Q13 admitDate 'Oct 17' and dayNum 1 are filled for a sheet with no such columns; if a read marked the name '[unclear]', the sheet would list it as an ordinary ticked row ('5 patients found') and adding would create a patient named '[unclear]' with no edit step. The real model's handling of an unreadable name could not be read on dev (B01).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-h-f1-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-h-u1-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-h-u1-marked-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-h-u1-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-hazel-chart.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-n-f1-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-n-u1-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-n-u1-today.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc02-s28-s28-vetch-chart.png"
+    ],
+    "productIssue": "A census row whose name cannot be read disappears from the scan without any warning, so that patient is silently missing from the list; nothing is ever flagged as unclear.",
+    "pkg": "pl"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "ref": "TC-02/S07",
+  "title": "TC-02/S07 row counts: a header-only page, one row, a 40-row census and a 30-row resident list",
+  "dataset": "pl-tc02",
+  "target": "dev",
+  "at": "2026-10-16T16:03:00.224Z",
+  "cells": [
+    {
+      "name": "h-b1: rows read from the photo (1 printed)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "photo": "h-b1",
+        "mode": "hospital",
+        "uiMs": 3816,
+        "raw": [],
+        "rawError": null,
+        "client": [],
+        "sheet": "Scan Patient List\nPhoto your census sheet — AI reads all patients\n✕\nRetake photo\nNo patients found in the image. Try a clearer photo.",
+        "shown": "error: No patients found in the image. Try a clearer photo.",
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 3207,
+          "providerMs": 3204,
+          "appMs": 3,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        "why": "B01 (vision reply fenced in ```json; parseModelJson returns {}; every read is empty)"
+      },
+      "ref": "B01"
+    },
+    {
+      "name": "n-b1: rows read from the photo (1 printed)",
+      "kind": "known",
+      "ok": false,
+      "detail": {
+        "photo": "n-b1",
+        "mode": "snf",
+        "uiMs": 9373,
+        "raw": [],
+        "rawError": null,
+        "client": [],
+        "sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\nTake Photo or Choose Image\n\nNo residents found. Try a clearer photo.",
+        "shown": "error: No residents found. Try a clearer photo.",
+        "log": {
+          "fn": "vision.scanCensusSheet",
+          "model": "gemini-3.6-flash",
+          "ok": true,
+          "durationMs": 8842,
+          "providerMs": 8839,
+          "appMs": 3,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        "why": "B01 (vision reply fenced in ```json; parseModelJson returns {}; every read is empty)"
+      },
+      "ref": "B01"
+    },
+    {
+      "name": "photos not read (two reads in a row came back empty: B01; re-run after the B01 fix)",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        "h-b40",
+        "n-b30",
+        "h-b0",
+        "n-b0"
+      ]
+    },
+    {
+      "name": "diagnostics per read (model, durationMs, providerMs; 3.5 timing is a target, not judged here)",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        {
+          "photo": "h-b1",
+          "uiMs": 3816,
+          "log": {
+            "fn": "vision.scanCensusSheet",
+            "model": "gemini-3.6-flash",
+            "ok": true,
+            "durationMs": 3207,
+            "providerMs": 3204,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          "shown": "error: No patients found in the image. Try a clearer photo."
+        },
+        {
+          "photo": "n-b1",
+          "uiMs": 9373,
+          "log": {
+            "fn": "vision.scanCensusSheet",
+            "model": "gemini-3.6-flash",
+            "ok": true,
+            "durationMs": 8842,
+            "providerMs": 8839,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          "shown": "error: No residents found. Try a clearer photo."
+        }
+      ]
+    },
+    {
+      "name": "h-b1: diagnostics row with model + durationMs + providerMs; the model names Gemini Flash (U10, T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "vision.scanCensusSheet",
+        "model": "gemini-3.6-flash",
+        "ok": true,
+        "durationMs": 3207,
+        "providerMs": 3204,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "n-b1: diagnostics row with model + durationMs + providerMs; the model names Gemini Flash (U10, T3)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "vision.scanCensusSheet",
+        "model": "gemini-3.6-flash",
+        "ok": true,
+        "durationMs": 8842,
+        "providerMs": 8839,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-02-S07-h-b1-sheet.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-02-S07-h-b1-sheet.png": 0
+  }
+}
