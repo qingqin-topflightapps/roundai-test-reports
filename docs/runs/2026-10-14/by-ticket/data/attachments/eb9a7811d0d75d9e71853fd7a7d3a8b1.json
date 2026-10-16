@@ -1,0 +1,179 @@
+{
+  "name": "tc20-s09-dev",
+  "at": "2026-10-16T10:31:13.123Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "hosp: while generating, the row does not claim a note",
+      "ok": true,
+      "detail": "Seen"
+    },
+    {
+      "id": "hosp: the note lands on the open dashboard as Note Ready (no reload)",
+      "ok": true,
+      "detail": "{\"ms\":12946,\"badge\":\"Note Ready\"}"
+    },
+    {
+      "id": "hosp: tiles equal the stored rows after the note",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"1/0/1/0\",\"want\":\"1/0/1/0\"}"
+    },
+    {
+      "id": "hosp: ticking a task moves the open row to '1 task pending'",
+      "ok": true,
+      "detail": "{\"ms\":616,\"line\":\"Room 4B-21 · 1 task pending\"}"
+    },
+    {
+      "id": "hosp: completion shows on the open dashboard (badge Complete, tiles equal the stored rows)",
+      "ok": true,
+      "detail": "{\"ms\":612,\"ok\":true,\"got\":\"1/0/0/1\",\"want\":\"1/0/0/1\"}"
+    },
+    {
+      "id": "hosp: Q9, after Regenerate on a finished chart the row stays Complete",
+      "ok": true,
+      "detail": "{\"badge\":\"Complete\",\"status\":\"post-rounded\"}",
+      "record": true
+    },
+    {
+      "id": "hosp: tab A was never reloaded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "snf: while generating, the row does not claim a note",
+      "ok": true,
+      "detail": "Not Yet Prepped"
+    },
+    {
+      "id": "snf: the note lands on the open dashboard as Note Ready (no reload)",
+      "ok": true,
+      "detail": "{\"ms\":4059,\"badge\":\"Note Ready\"}"
+    },
+    {
+      "id": "snf: tiles equal the stored rows after the note",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"1/0/1/0\",\"want\":\"1/0/1/0\"}"
+    },
+    {
+      "id": "snf: completion shows on the open dashboard (badge Complete, tiles equal the stored rows)",
+      "ok": true,
+      "detail": "{\"ms\":614,\"ok\":true,\"got\":\"1/0/0/1\",\"want\":\"1/0/0/1\"}"
+    },
+    {
+      "id": "snf: Q9, after Regenerate on a finished chart the row stays Complete",
+      "ok": true,
+      "detail": "{\"badge\":\"Complete\",\"status\":\"complete\"}",
+      "record": true
+    },
+    {
+      "id": "snf: tab A was never reloaded",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "hosp-start": {
+      "tiles": {
+        "total": "1",
+        "pending": "0",
+        "inProgress": "1",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA DSH-TC20 Live H",
+        "line": "Room 4B-21 · 2 tasks pending",
+        "badge": "Pre-Rounded"
+      }
+    },
+    "hosp-while-generating": {
+      "tiles": {
+        "total": "1",
+        "pending": "0",
+        "inProgress": "1",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA DSH-TC20 Live H",
+        "line": "Room 4B-21 · 2 tasks pending",
+        "badge": "Seen"
+      }
+    },
+    "hosp-note": {
+      "tiles": {
+        "total": "1",
+        "pending": "0",
+        "inProgress": "1",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA DSH-TC20 Live H",
+        "line": "Room 4B-21 · 2 tasks pending",
+        "badge": "Note Ready"
+      },
+      "msAfterTap": 12946,
+      "stored": {
+        "ok": true,
+        "got": "1/0/1/0",
+        "want": "1/0/1/0"
+      }
+    },
+    "hosp-regenerated": true,
+    "snf-start": {
+      "tiles": {
+        "total": "1",
+        "pending": "1",
+        "inProgress": "0",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA DSH-TC20 Live N",
+        "line": "Cedar 121 · 0 tasks pending",
+        "badge": "Not Yet Prepped"
+      }
+    },
+    "snf-while-generating": {
+      "tiles": {
+        "total": "1",
+        "pending": "1",
+        "inProgress": "0",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA DSH-TC20 Live N",
+        "line": "Cedar 121 · 0 tasks pending",
+        "badge": "Not Yet Prepped"
+      }
+    },
+    "snf-note": {
+      "tiles": {
+        "total": "1",
+        "pending": "0",
+        "inProgress": "1",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA DSH-TC20 Live N",
+        "line": "Cedar 121 · 0 tasks pending",
+        "badge": "Note Ready"
+      },
+      "msAfterTap": 4059,
+      "stored": {
+        "ok": true,
+        "got": "1/0/1/0",
+        "want": "1/0/1/0"
+      }
+    },
+    "snf-regenerated": true,
+    "diag": {
+      "hosp": [],
+      "snf": []
+    }
+  }
+}

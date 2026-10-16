@@ -1,0 +1,18 @@
+{
+  "TC-18/S08": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "env": "dev",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:28:20Z",
+    "title": "Custom template typed through Settings bills like its type (live)",
+    "detail": "Dev 25acd727 (deployed 2026-10-15 14:04Z), live models (every call Haiku 4.5, no fallback), run 19:25-19:28 JST under runs/.dev.lock and the dev-session run lock (ctx-tc21-dev.spec.ts); only rows named 'QA TC21-CTX …' and two 'QA TC21-CTX …' templates were created, all deleted (cleanup: 12 rows deleted, 0 left, no other row of the account changed). Two custom templates created in Settings -> New on dev: the type lists were Hospital = H&P, SOAP progress, Consult note, Discharge summary, Procedure / other and Nursing Home = SNF admission, SNF follow-up, SNF consult, SNF discharge, Procedure / other. 'QA TC21-CTX Hosp SOAP type' (SOAP progress) used with the badge on New Admission: live code 99231 (99231-99233), frozen source soap — the badge does not decide. 'QA TC21-CTX SNF consult type' (SNF consult) with the badge on Follow-up: 99304 (99304-99306), frozen source snf-consult. Recorded (not a finding): the Hospital custom-template note began 'Patient is a [age]-year-old patient' because this seeded patient had no age (the add form requires one).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e2-custom-types.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e2-h-custom-soap.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e2-n-custom-snf-consult.png"
+    ],
+    "pkg": "ctx"
+  }
+}

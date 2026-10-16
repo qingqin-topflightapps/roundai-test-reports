@@ -1,0 +1,205 @@
+{
+  "ref": "OAT-03/S17",
+  "title": "OAT-03/S17 Generate double-tapped plus one more tap while generating (Hospital): one note, one billing request",
+  "dataset": "rst-oat03-s17",
+  "target": "dev",
+  "at": "2026-10-16T10:32:00.533Z",
+  "cells": [
+    {
+      "name": "taps",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "taps": [
+          {
+            "tap": "double-tap",
+            "before": "Generate Note & Finish",
+            "after": "Generating Note…",
+            "landed": true
+          },
+          {
+            "tap": "one more tap while generating",
+            "before": "Generating Note…",
+            "after": "Generating Note…",
+            "landed": true
+          }
+        ],
+        "disabledWhileGenerating": true
+      }
+    },
+    {
+      "name": "calls in the window (diagnostics:list, unique rows)",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3561,
+          "providerMs": 3556,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        {
+          "fn": "notes.refreshCourseAndBackground",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2213,
+          "providerMs": 2210,
+          "appMs": 3,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        {
+          "fn": "parsing.extractMedicationEvents",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2340,
+          "providerMs": 2337,
+          "appMs": 3,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        {
+          "fn": "billing.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2666,
+          "providerMs": 2595,
+          "appMs": 71,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        {
+          "fn": "parsing.classifyAdmissionReason",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 1952,
+          "providerMs": 1948,
+          "appMs": 4,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      ]
+    },
+    {
+      "name": "stored",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "noteChars": 497,
+        "noteGeneratedAt": "2026-10-16T10:31:41.972Z",
+        "firstNoteAt": "2026-10-16T10:31:41.972Z",
+        "billingStatus": null,
+        "billingJob": {
+          "attempt": 1,
+          "failures": 0,
+          "scheduledId": "kc21ryn0rjkrk10s0q8xrh06rn8gczqe",
+          "started": true
+        },
+        "billingForNoteAt": "2026-10-16T10:31:41.972Z",
+        "billingSettled": true,
+        "status": "note-ready"
+      }
+    },
+    {
+      "name": "one Generate: exactly one notes.generateNote row in the run window, and it is ok",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 3561,
+          "providerMs": 3556,
+          "appMs": 5,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      ]
+    },
+    {
+      "name": "one billing request for the note: exactly one billing.suggestBilling row",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "fn": "billing.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 2666,
+          "providerMs": 2595,
+          "appMs": 71,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      ]
+    },
+    {
+      "name": "one note stored (non-empty) and its noteGeneratedAt did not move after the first save",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "first": "2026-10-16T10:31:41.972Z",
+        "final": "2026-10-16T10:31:41.972Z"
+      }
+    },
+    {
+      "name": "the dictation is unchanged (encounterNotes = the typed text)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "encounterNotes": "QA OAT-03 double tap: tolerating diet, pain controlled, discharge planning started."
+      }
+    },
+    {
+      "name": "Post-Round shows 'AI-Generated Note' once (one note, not two)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "headings": 1
+      }
+    },
+    {
+      "name": "billing settled on the chart (one suggestion, or an explicit error)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "settled": true,
+        "billingStatus": null,
+        "attempt": 1
+      }
+    },
+    {
+      "name": "the note text is not doubled (ASSESSMENT headings counted)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "sections": 1
+      }
+    }
+  ],
+  "shots": [
+    "evidence/OAT-03-S17-post-round.png"
+  ],
+  "maskedElements": {
+    "evidence/OAT-03-S17-post-round.png": 0
+  }
+}

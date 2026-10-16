@@ -1,0 +1,109 @@
+{
+  "name": "tc21-s26",
+  "at": "2026-10-16T10:20:29.232Z",
+  "checks": [
+    {
+      "id": "Hospital: the badge is the same on both browsers (3.8)",
+      "ok": false,
+      "detail": "new vs follow-up"
+    },
+    {
+      "id": "Hospital: the pre-selected template is the same on both browsers (3.8)",
+      "ok": false,
+      "detail": "H&P vs SOAP progress"
+    },
+    {
+      "id": "Nursing Home: the badge is the same on both browsers (3.8)",
+      "ok": false,
+      "detail": "new vs follow-up"
+    },
+    {
+      "id": "Nursing Home: the pre-selected template is the same on both browsers (3.8)",
+      "ok": false,
+      "detail": "SNF admission vs SNF follow-up"
+    },
+    {
+      "id": "Hospital list card (day / badge) is the same on both browsers",
+      "ok": false,
+      "detail": "QH QA Hosp Clock S26 ZPJB NEW TODAY Room 412 · 72y Community-acquired pneumonia Not Yet Prepped New Admission || QH QA Hosp Clock S26 ZPJB Room 412 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "Nursing Home list card (visit / badge) is the same on both browsers",
+      "ok": false,
+      "detail": "QR QA Resident Clock S26 ZPJB Cedar Wing · Room 12 · 84y · MRN-UPK17B Post-acute rehab after hip fracture Pending New Admission || QR QA Resident Clock S26 ZPJB Cedar Wing · Room 12 · 84y · MRN-UPK17B Post-acute rehab after hip fracture Pending Follow-up"
+    },
+    {
+      "id": "the timeline's 'today' cards are the same on both browsers (TFA-92589)",
+      "ok": false,
+      "detail": "{\"hA\":[\"Oct 16: QA course line T21 today\"],\"hB\":[],\"nA\":[\"Visit 1 – Oct 16: QA visit line T21.\"],\"nB\":[\"Visit 1 – Oct 16: QA visit line T21.\"]}"
+    },
+    {
+      "id": "the wrong-clock browser did not change the shared record (still New Admission today for both)",
+      "ok": false,
+      "detail": "{\"H\":\"follow-up@2026-10-19\",\"R\":\"follow-up@2026-10-19\",\"A2\":{\"hChart\":{\"badge\":\"follow-up\",\"noteFormat\":\"SOAP progress\",\"timeline\":[\"Oct 16: QA course line T21 today\"]},\"nChart\":{\"badge\":\"follow-up\",\"noteFormat\":\"SNF follow-up\",\"timeline\":[\"Visit 1 – Oct 16: QA visit line T21.\"]}}}"
+    }
+  ],
+  "data": {
+    "A": {
+      "hCard": "QH QA Hosp Clock S26 ZPJB NEW TODAY Room 412 · 72y Community-acquired pneumonia Not Yet Prepped New Admission",
+      "hChart": {
+        "badge": "new",
+        "noteFormat": "H&P",
+        "timeline": [
+          "Oct 16: QA course line T21 today"
+        ]
+      },
+      "nCard": "QR QA Resident Clock S26 ZPJB Cedar Wing · Room 12 · 84y · MRN-UPK17B Post-acute rehab after hip fracture Pending New Admission",
+      "nChart": {
+        "badge": "new",
+        "noteFormat": "SNF admission",
+        "timeline": [
+          "Visit 1 – Oct 16: QA visit line T21."
+        ]
+      }
+    },
+    "B": {
+      "signIn": {
+        "signedOutByClock": true,
+        "uiSignIn": "reached-app"
+      },
+      "deviceNow": "Mon Oct 19 2026 00:20:07 GMT+1400 (Line Islands Time)",
+      "hCard": "QH QA Hosp Clock S26 ZPJB Room 412 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up",
+      "hChart": {
+        "badge": "follow-up",
+        "noteFormat": "SOAP progress",
+        "timeline": []
+      },
+      "nCard": "QR QA Resident Clock S26 ZPJB Cedar Wing · Room 12 · 84y · MRN-UPK17B Post-acute rehab after hip fracture Pending Follow-up",
+      "nChart": {
+        "badge": "follow-up",
+        "noteFormat": "SNF follow-up",
+        "timeline": [
+          "Visit 1 – Oct 16: QA visit line T21."
+        ]
+      }
+    },
+    "afterB": {
+      "stored": {
+        "H": "follow-up@2026-10-19",
+        "R": "follow-up@2026-10-19"
+      },
+      "A2": {
+        "hChart": {
+          "badge": "follow-up",
+          "noteFormat": "SOAP progress",
+          "timeline": [
+            "Oct 16: QA course line T21 today"
+          ]
+        },
+        "nChart": {
+          "badge": "follow-up",
+          "noteFormat": "SNF follow-up",
+          "timeline": [
+            "Visit 1 – Oct 16: QA visit line T21."
+          ]
+        }
+      }
+    }
+  }
+}

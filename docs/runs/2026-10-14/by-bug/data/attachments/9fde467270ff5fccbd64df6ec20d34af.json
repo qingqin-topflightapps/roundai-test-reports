@@ -1,0 +1,82 @@
+{
+  "name": "tc21-s07b",
+  "at": "2026-10-16T09:54:35.622Z",
+  "checks": [
+    {
+      "id": "switch 1 -> snf: own resident listed",
+      "ok": true,
+      "detail": "[\"QA Resident S07b 2DDS\"]"
+    },
+    {
+      "id": "switch 1: no Clinic",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "switch 2 -> hospital: the empty context shows its empty state (not a blank page) and never the other context's resident",
+      "ok": true,
+      "detail": "{\"step\":2,\"mode\":\"hospital\",\"names\":[],\"emptyState\":true}"
+    },
+    {
+      "id": "switch 2: no Clinic",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "switch 3 -> snf: own resident listed",
+      "ok": true,
+      "detail": "[\"QA Resident S07b 2DDS\"]"
+    },
+    {
+      "id": "switch 3: no Clinic",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "switch 4 -> hospital: the empty context shows its empty state (not a blank page) and never the other context's resident",
+      "ok": true,
+      "detail": "{\"step\":4,\"mode\":\"hospital\",\"names\":[],\"emptyState\":true}"
+    },
+    {
+      "id": "switch 4: no Clinic",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "steps": [
+      {
+        "step": 1,
+        "mode": "snf",
+        "names": [
+          "QA Resident S07b 2DDS"
+        ],
+        "emptyState": false
+      },
+      {
+        "step": 2,
+        "mode": "hospital",
+        "names": [],
+        "emptyState": true
+      },
+      {
+        "step": 3,
+        "mode": "snf",
+        "names": [
+          "QA Resident S07b 2DDS"
+        ],
+        "emptyState": false
+      },
+      {
+        "step": 4,
+        "mode": "hospital",
+        "names": [],
+        "emptyState": true
+      }
+    ]
+  }
+}

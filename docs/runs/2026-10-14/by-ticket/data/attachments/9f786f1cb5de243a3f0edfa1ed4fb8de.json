@@ -1,0 +1,159 @@
+{
+  "h-custom-soap": {
+    "typeOptions": [
+      "Select a note type",
+      "H&P",
+      "SOAP progress",
+      "Consult note",
+      "Discharge summary",
+      "Procedure / other"
+    ],
+    "templateType": "soap",
+    "picked": {
+      "value": "jh77xxfern2yprnmke9gpgxjns8gd09v",
+      "label": "QA TC21-CTX Hosp SOAP type ★"
+    },
+    "badge": "new",
+    "card": {
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN2: \"Patient is a [age]-year-old patient with no past medical history documented in the available records who presented with community-acquired pneumonia.\"\nN3: \"The patient is on day 3 of hospitalization with clinical improvement; cough is improving and the patient has remained afebrile overnight.\"\nN4: \"The patient continues to require inpatient management with intravenous antibiotics.\"\nN6: \"1. Community-acquired pneumonia — Continue intravenous ceftriaxone and azithromycin; monitor clinical response and consider transition to oral antibiotics as clinical improvement continues.\"\nStable, acute illness\nN7: \"2. Blood pressure management — Lisinopril held due to soft blood pressure; continue to hold and reassess as clinical status evolves.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nPrescription drug management\nN6: \"1. Community-acquired pneumonia — Continue intravenous ceftriaxone and azithromycin; monitor clinical response and consider transition to oral antibiotics as clinical improvement continues.\"\nPrescription drug management\nN7: \"2. Blood pressure management — Lisinopril held due to soft blood pressure; continue to hold and reassess as clinical status evolves.\"",
+      "labelled": true,
+      "code": "99231",
+      "level": "Low Complexity",
+      "inFamily": true,
+      "oneCode": true,
+      "levelOk": true,
+      "quotesOk": true,
+      "reasoning": [],
+      "stored": {
+        "noteTemplate": "jh77xxfern2yprnmke9gpgxjns8gd09v",
+        "frozen": "soap",
+        "family": "hospital-subsequent",
+        "code": "99231",
+        "time": null,
+        "status": null
+      }
+    },
+    "noteExcerpt": "AI-Generated Note\n\n7:27 PM · Oct 16\n\nASSESSMENT AND PLAN\n\nPatient is a [age]-year-old patient with no past medical history documented in the available records who presented with community-acquired pneumonia. The patient is on day 3 of hospitalization with clinical improvement; cough is improving and the patient has remained afebrile overnight. The patient continues to require inpatient management with intravenous antibiotics.\n\nPLAN\n\n1. Community-acquired pneumonia — Continue intravenous ceftriaxone and azithromycin; monitor clinical response and consider transition to oral antibiotics as clinical improvement continues.\n\n2. Blood pressure management — Lisinopril held due to soft blood pressure; continue to hold and reassess as clinical status evolves.\n\nEdit Note\nCopy to EMR",
+    "diag": [
+      {
+        "at": "2026-10-16T10:28:02.379Z",
+        "fn": "parsing.classifyAdmissionReason",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 1818,
+        "providerMs": 1813,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:27:59.791Z",
+        "fn": "notes.refreshCourseAndBackground",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3189,
+        "providerMs": 3186,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:27:59.142Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3044,
+        "providerMs": 2678,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:27:59.040Z",
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2247,
+        "providerMs": 2242,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:27:55.367Z",
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4098,
+        "providerMs": 4091,
+        "fellBackFrom": null
+      }
+    ]
+  },
+  "n-custom-snf-consult": {
+    "typeOptions": [
+      "Select a note type",
+      "SNF admission",
+      "SNF follow-up",
+      "SNF consult",
+      "SNF discharge",
+      "Procedure / other"
+    ],
+    "templateType": "snf-consult",
+    "picked": {
+      "value": "jh7dhzk6yh31j0tkj8hgcmx50n8gdnq7",
+      "label": "QA TC21-CTX SNF consult type ★"
+    },
+    "badge": "follow-up",
+    "card": {
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99304\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury\nN2: \"Consultation requested to evaluate new lower extremity edema.\"\nN4: \"The resident presents with new lower extremity edema and a weight gain of 3 pounds over the past week, concerning for fluid retention.\"\nN5: \"Initiation of diuretic therapy is indicated.\"\nDATA — Minimal\nTest ordered\nN8: \"2. Recheck basic metabolic panel in three days to monitor electrolytes and renal function.\"\nRISK — Moderate\nPrescription drug management\nN7: \"1. Start furosemide 20 mg daily for lower extremity edema and fluid retention.\"",
+      "labelled": true,
+      "code": "99304",
+      "level": "Low Complexity",
+      "inFamily": true,
+      "oneCode": true,
+      "levelOk": true,
+      "quotesOk": true,
+      "reasoning": [],
+      "stored": {
+        "noteTemplate": "jh7dhzk6yh31j0tkj8hgcmx50n8gdnq7",
+        "frozen": "snf-consult",
+        "family": "snf-initial",
+        "code": "99304",
+        "time": null,
+        "status": null
+      }
+    },
+    "noteExcerpt": "AI-Generated Note\n\n7:28 PM · Oct 16\n\nREASON FOR VISIT\n\nConsultation requested to evaluate new lower extremity edema.\n\nASSESSMENT\n\nThe resident presents with new lower extremity edema and a weight gain of 3 pounds over the past week, concerning for fluid retention. Initiation of diuretic therapy is indicated.\n\nPLAN\n\n1. Start furosemide 20 mg daily for lower extremity edema and fluid retention.\n\n2. Recheck basic metabolic panel in three days to monitor electrolytes and renal function.\n\nEdit Note\nCopy to EMR",
+    "diag": [
+      {
+        "at": "2026-10-16T10:28:19.977Z",
+        "fn": "notes.refreshCourseAndBackground",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2847,
+        "providerMs": 2845,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:28:19.813Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2900,
+        "providerMs": 2829,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:28:19.353Z",
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2221,
+        "providerMs": 2218,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:28:16.381Z",
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3299,
+        "providerMs": 3292,
+        "fellBackFrom": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "name": "tc09-s18",
+  "at": "2026-10-16T10:03:12.976Z",
+  "checks": [
+    {
+      "id": "(a) the app says clearly that no residents were found (EFS 'Explicit message')",
+      "ok": true,
+      "detail": "No residents found. Try a clearer photo."
+    },
+    {
+      "id": "(a) nothing to add: no Add button on the sheet",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "(a) nothing added or changed",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident 0J7V\",\"unit\":\"Maple 4\",\"mrn\":\"QA-0J7V-10\",\"inToday\":true},{\"name\":\"QA TC-09-S18 Fir\",\"unit\":\"Birch 1\",\"mrn\":\"QA-0J7V-11\",\"inToday\":true},{\"name\":\"QA TC-09-S18 Gum\",\"unit\":\"Birch 2\",\"mrn\":\"QA-0J7V-12\",\"inToday\":false},{\"name\":\"QA TC-09-S18 Hazel\",\"unit\":\"Birch 3\",\"mrn\":\"QA-0J7V-13\",\"inToday\":false}]"
+    },
+    {
+      "id": "(b) the 'Possible duplicate residents' sheet asks about the repeated Juniper row",
+      "ok": true,
+      "detail": "Possible duplicate This resident may already be in All Residents, or appear twice in the photo. You decide — the app won’t drop or duplicate anyone on its own. QA TC-09-S18 Juniper Birch 4 This reside"
+    },
+    {
+      "id": "(b) Today's Visits: the fixture resident and Fir stay; Gum, Juniper and Kestrel are not there",
+      "ok": true,
+      "detail": "QA Resident 0J7V | QA TC-09-S18 Fir"
+    },
+    {
+      "id": "(b) backend: nothing written (no Juniper / Kestrel / Nursing Home Ivy, Gum still off today, In Today unchanged)",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident 0J7V\",\"unit\":\"Maple 4\",\"mrn\":\"QA-0J7V-10\",\"inToday\":true},{\"name\":\"QA TC-09-S18 Fir\",\"unit\":\"Birch 1\",\"mrn\":\"QA-0J7V-11\",\"inToday\":true},{\"name\":\"QA TC-09-S18 Gum\",\"unit\":\"Birch 2\",\"mrn\":\"QA-0J7V-12\",\"inToday\":false},{\"name\":\"QA TC-09-S18 Hazel\",\"unit\":\"Birch 3\",\"mrn\":\"QA-0J7V-13\",\"inToday\":false}]"
+    },
+    {
+      "id": "(c) Today's Visits: the fixture resident and Fir stay; Gum, Juniper and Kestrel are not there",
+      "ok": true,
+      "detail": "QA Resident 0J7V | QA TC-09-S18 Fir"
+    },
+    {
+      "id": "(c) All Residents: fixture, Fir, Gum, Hazel present; no Juniper, Kestrel or Ivy in Nursing Home",
+      "ok": true,
+      "detail": "QA Resident 0J7V | QA TC-09-S18 Fir | QA TC-09-S18 Gum | QA TC-09-S18 Hazel"
+    },
+    {
+      "id": "(c) backend: nothing written",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident 0J7V\",\"unit\":\"Maple 4\",\"mrn\":\"QA-0J7V-10\",\"inToday\":true},{\"name\":\"QA TC-09-S18 Fir\",\"unit\":\"Birch 1\",\"mrn\":\"QA-0J7V-11\",\"inToday\":true},{\"name\":\"QA TC-09-S18 Gum\",\"unit\":\"Birch 2\",\"mrn\":\"QA-0J7V-12\",\"inToday\":false},{\"name\":\"QA TC-09-S18 Hazel\",\"unit\":\"Birch 3\",\"mrn\":\"QA-0J7V-13\",\"inToday\":false}]"
+    },
+    {
+      "id": "setup: three scripted reads",
+      "ok": true,
+      "detail": "3"
+    }
+  ],
+  "data": {
+    "a-blank": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\nTake Photo or Choose Image\n\nNo residents found. Try a clearer photo.",
+    "b-review": "Possible duplicate This resident may already be in All Residents, or appear twice in the photo. You decide — the app won’t drop or duplicate anyone on its own. QA TC-09-S18 Juniper Birch 4 This resident appears more than once in the scan Also found in this photo: QA TC-09-S18 Juniper Same resident (don’t add) Different — add anyway Decide later",
+    "b": {
+      "today": [
+        "QA Resident 0J7V",
+        "QA TC-09-S18 Fir"
+      ],
+      "backend": [
+        {
+          "name": "QA Resident 0J7V",
+          "unit": "Maple 4",
+          "mrn": "QA-0J7V-10",
+          "inToday": true
+        },
+        {
+          "name": "QA TC-09-S18 Fir",
+          "unit": "Birch 1",
+          "mrn": "QA-0J7V-11",
+          "inToday": true
+        },
+        {
+          "name": "QA TC-09-S18 Gum",
+          "unit": "Birch 2",
+          "mrn": "QA-0J7V-12",
+          "inToday": false
+        },
+        {
+          "name": "QA TC-09-S18 Hazel",
+          "unit": "Birch 3",
+          "mrn": "QA-0J7V-13",
+          "inToday": false
+        }
+      ]
+    },
+    "c-sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n7 residents found — tap to include\n\n2 already in All Residents · 4 new · 1 to review\n\nQA TC-09-S18 Fir\n✓ In panel\n\nBirch 1 · QA-0J7V-11\n\nQA TC-09-S18 Gum\n✓ In panel\n\nBirch 2 · QA-0J7V-12\n\nQA TC-09-S18 Hazel\n＋ New\n\nBirch",
+    "c": {
+      "today": [
+        "QA Resident 0J7V",
+        "QA TC-09-S18 Fir"
+      ],
+      "all": [
+        "QA Resident 0J7V",
+        "QA TC-09-S18 Fir",
+        "QA TC-09-S18 Gum",
+        "QA TC-09-S18 Hazel"
+      ],
+      "backend": [
+        {
+          "name": "QA Resident 0J7V",
+          "unit": "Maple 4",
+          "mrn": "QA-0J7V-10",
+          "inToday": true
+        },
+        {
+          "name": "QA TC-09-S18 Fir",
+          "unit": "Birch 1",
+          "mrn": "QA-0J7V-11",
+          "inToday": true
+        },
+        {
+          "name": "QA TC-09-S18 Gum",
+          "unit": "Birch 2",
+          "mrn": "QA-0J7V-12",
+          "inToday": false
+        },
+        {
+          "name": "QA TC-09-S18 Hazel",
+          "unit": "Birch 3",
+          "mrn": "QA-0J7V-13",
+          "inToday": false
+        }
+      ]
+    },
+    "cleanup": {
+      "hospital": 2,
+      "nursingHome": 4
+    }
+  }
+}

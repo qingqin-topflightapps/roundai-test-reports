@@ -1,0 +1,172 @@
+{
+  "name": "tc20-s19-pixel7",
+  "at": "2026-10-16T10:03:20.101Z",
+  "checks": [
+    {
+      "id": "rounding: the four counts are not truncated (a physician reads the right number)",
+      "ok": true,
+      "detail": "[[\"Total\",false],[\"Pending\",false],[\"In Progress\",false],[\"Done\",false]]"
+    },
+    {
+      "id": "rounding: four tiles in one row",
+      "ok": true,
+      "detail": "[194,194,194,194]",
+      "recordOnly": true
+    },
+    {
+      "id": "rounding: tile labels not truncated",
+      "ok": true,
+      "detail": "[[\"Total\",false,1],[\"Pending\",false,1],[\"In Progress\",false,2],[\"Done\",false,1]]",
+      "recordOnly": true
+    },
+    {
+      "id": "rounding: no sideways scroll",
+      "ok": true,
+      "detail": "412 vs 412",
+      "recordOnly": true
+    },
+    {
+      "id": "rounding: rows are tap targets >= 24 px",
+      "ok": true,
+      "detail": "[{\"h\":64,\"bottom\":442}]",
+      "recordOnly": true
+    },
+    {
+      "id": "rounding: no fixed bottom bar covers the last row when scrolled to the end",
+      "ok": true,
+      "detail": "bottom bar top null",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: the four counts are not truncated (a physician reads the right number)",
+      "ok": true,
+      "detail": "[[\"Total\",false],[\"Pending\",false],[\"In Progress\",false],[\"Done\",false]]"
+    },
+    {
+      "id": "snf: four tiles in one row",
+      "ok": true,
+      "detail": "[254,254,254,254]",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: tile labels not truncated",
+      "ok": true,
+      "detail": "[[\"Total\",false,1],[\"Pending\",false,1],[\"In Progress\",false,2],[\"Done\",false,1]]",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: no sideways scroll",
+      "ok": true,
+      "detail": "412 vs 412",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: rows are tap targets >= 24 px",
+      "ok": true,
+      "detail": "[{\"h\":80,\"bottom\":518}]",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: no fixed bottom bar covers the last row when scrolled to the end",
+      "ok": true,
+      "detail": "bottom bar top null",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "rounding": {
+      "vw": 412,
+      "vh": 839,
+      "scrollW": 412,
+      "tiles": [
+        {
+          "top": 194,
+          "w": 82,
+          "label": "Total",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 1
+        },
+        {
+          "top": 194,
+          "w": 82,
+          "label": "Pending",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 1
+        },
+        {
+          "top": 194,
+          "w": 82,
+          "label": "In Progress",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 2
+        },
+        {
+          "top": 194,
+          "w": 82,
+          "label": "Done",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 1
+        }
+      ],
+      "rows": [
+        {
+          "h": 64,
+          "bottom": 442
+        }
+      ],
+      "bottomBarTop": null,
+      "docH": 880
+    },
+    "snf": {
+      "vw": 412,
+      "vh": 839,
+      "scrollW": 412,
+      "tiles": [
+        {
+          "top": 254,
+          "w": 82,
+          "label": "Total",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 1
+        },
+        {
+          "top": 254,
+          "w": 82,
+          "label": "Pending",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 1
+        },
+        {
+          "top": 254,
+          "w": 82,
+          "label": "In Progress",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 2
+        },
+        {
+          "top": 254,
+          "w": 82,
+          "label": "Done",
+          "labelTrunc": false,
+          "numTrunc": false,
+          "labelLines": 1
+        }
+      ],
+      "rows": [
+        {
+          "h": 80,
+          "bottom": 518
+        }
+      ],
+      "bottomBarTop": null,
+      "docH": 880
+    }
+  }
+}

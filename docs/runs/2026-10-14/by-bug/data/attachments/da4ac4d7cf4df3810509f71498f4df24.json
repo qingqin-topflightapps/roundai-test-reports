@@ -1,0 +1,30 @@
+{
+  "name": "tc20-s23-dev",
+  "at": "2026-10-16T10:18:56.037Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "opened from a searched / re-sorted / All Residents list: Today's Visits tab, same tiles as a plain open",
+      "ok": true,
+      "detail": "{\"plain\":\"7/3/3/1\",\"fromFiltered\":\"7/3/3/1\",\"tabs\":[{\"name\":\"Today's Visits\",\"selected\":true},{\"name\":\"All Residents\",\"selected\":false}]}"
+    },
+    {
+      "id": "All Residents tab: tiles equal the buckets of every stored resident; Fay and Gus listed (Q3: counts follow the tab)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"9/4/3/2\",\"want\":\"9/4/3/2\",\"ms\":614}"
+    },
+    {
+      "id": "back on Today's Visits: the In Today tiles and rows again",
+      "ok": true,
+      "detail": "7/3/3/1"
+    }
+  ],
+  "data": {}
+}

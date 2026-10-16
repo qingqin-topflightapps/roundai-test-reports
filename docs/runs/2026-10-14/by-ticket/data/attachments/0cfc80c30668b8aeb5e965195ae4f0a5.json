@@ -1,0 +1,147 @@
+{
+  "name": "oat03-s29-nh",
+  "at": "2026-10-16T09:59:08.591Z",
+  "checks": [
+    {
+      "id": "setup: the seeded chart queued no billing job",
+      "ok": true,
+      "detail": "{\"job\":null,\"status\":null}"
+    },
+    {
+      "id": "(a) setup: N1 is stored (no billing job: procedure-other)",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 snf mocked note (no model was called). Today: QA OAT-03 N1 visit: walking with a wa"
+    },
+    {
+      "id": "(a) cp3: an explicit failure after Regenerate",
+      "ok": true,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "(a) cp3: the dictation, appended line included, is still in the box",
+      "ok": true,
+      "detail": "QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy. QA OAT-03 regenerate line: plan unchanged."
+    },
+    {
+      "id": "(a) backend: the stored note still equals N1",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 snf mocked note (no model was called). Today: QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy."
+    },
+    {
+      "id": "(a) cp4: Post-Round shows N1",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\n\nQA OAT-03 S29 N1 snf mocked note (no model was called). Today: QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy"
+    },
+    {
+      "id": "(a) backend: the stored dictation includes the appended line",
+      "ok": true,
+      "detail": "QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy. QA OAT-03 regenerate line: plan unchanged."
+    },
+    {
+      "id": "(a) Q3 (recorded): the failure copy after Regenerate (no claim that N1 was replaced, since it was not)",
+      "ok": true,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "(b) setup: today's first Generate failed with an explicit message",
+      "ok": true,
+      "detail": "Generate Note & Finish"
+    },
+    {
+      "id": "(b) Post-Round: yesterday's note is not shown under today's note heading (absent, or labelled previous / dated in the same block)",
+      "ok": true,
+      "detail": "marker not on Post-Round; 'No note generated yet'"
+    },
+    {
+      "id": "(b) Pre-Round (recorded): yesterday's note is listed with its date / as a previous note",
+      "ok": true,
+      "detail": "not on Pre-Round",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: three Generate calls (N1 ok, Regenerate failed, (b) failed); no other model action refused",
+      "ok": true,
+      "detail": "[\"ai/notes:generateNote:ok\",\"ai/parsing:extractMedicationEvents:ok\",\"ai/notes:refreshCourseAndBackground:ok\",\"ai/notes:generateNote:fail\",\"ai/notes:generateNote:fail\"]"
+    }
+  ],
+  "data": {
+    "seed-b": {
+      "billingJob": null,
+      "billingStatus": null,
+      "note": "Assessment and Plan: QA OAT-03 yesterday marker: started cefazolin. Continue the"
+    },
+    "a-leg1": {
+      "note": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 snf mocked note (no model was called). Today: QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy.",
+      "billingJob": null
+    },
+    "a-cp3": {
+      "buttonLabel": "Regenerate Note",
+      "message": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "box": "QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy. QA OAT-03 regenerate line: plan unchanged."
+    },
+    "a-cp4": {
+      "postRound": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA OAT-03 S29 N1 snf mocked note (no model was called). Today: QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "stored": {
+        "note": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 snf mocked note (no model was called). Today: QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy.",
+        "encounterNotes": "QA OAT-03 N1 visit: walking with a walker, pain controlled, continue therapy. QA OAT-03 regenerate line: plan unchanged.",
+        "status": "note-ready"
+      }
+    },
+    "b": {
+      "boxBefore": "QA OAT-03 today visit line: knee pain controlled.",
+      "buttonLabel": "Generate Note & Finish",
+      "generateFailed": true,
+      "postRound": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "markerOnPostRound": {
+        "found": false,
+        "block": "",
+        "inNoteDoc": false
+      },
+      "markerOnPreRound": {
+        "found": false,
+        "block": "",
+        "inNoteDoc": false
+      },
+      "stored": {
+        "note": "",
+        "previousNotes": [
+          {
+            "addedAt": "2026-10-16T09:59:01.212Z",
+            "content": "Assessment and Plan: QA OAT-03 yesterday marker: started cefazolin. Continue therapy.",
+            "dateLabel": "Oct 15",
+            "id": "1792144741212"
+          }
+        ],
+        "status": "pending"
+      }
+    },
+    "socket": [
+      "ai/notes:generateNote:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/notes:generateNote:fail",
+      "ai/notes:generateNote:fail"
+    ]
+  }
+}

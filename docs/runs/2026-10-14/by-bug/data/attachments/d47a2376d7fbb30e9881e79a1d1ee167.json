@@ -1,0 +1,930 @@
+{
+  "name": "oat03-s09",
+  "at": "2026-10-16T09:50:17.187Z",
+  "checks": [
+    {
+      "id": "hospital#1: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP."
+    },
+    {
+      "id": "hospital#1: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "hospital#1: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20003,\"providerMs\":20001}"
+    },
+    {
+      "id": "hospital#1: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20001"
+    },
+    {
+      "id": "hospital#1: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20003 - providerMs 20001 = 2"
+    },
+    {
+      "id": "hospital#1: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20001,\"duration_ms\":20003,\"ok\":true}"
+    },
+    {
+      "id": "hospital#1 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20002,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20002,\"endedAt\":20002,\"timeoutMs\":9999,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#1 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#2: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP."
+    },
+    {
+      "id": "hospital#2: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "hospital#2: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20004,\"providerMs\":20002}"
+    },
+    {
+      "id": "hospital#2: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20002"
+    },
+    {
+      "id": "hospital#2: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20004 - providerMs 20002 = 2"
+    },
+    {
+      "id": "hospital#2: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20002,\"duration_ms\":20004,\"ok\":true}"
+    },
+    {
+      "id": "hospital#2 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20003,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20003,\"endedAt\":20003,\"timeoutMs\":9998,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#2 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#3: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP."
+    },
+    {
+      "id": "hospital#3: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "hospital#3: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20004,\"providerMs\":20003}"
+    },
+    {
+      "id": "hospital#3: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20003"
+    },
+    {
+      "id": "hospital#3: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20004 - providerMs 20003 = 1"
+    },
+    {
+      "id": "hospital#3: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20003,\"duration_ms\":20004,\"ok\":true}"
+    },
+    {
+      "id": "hospital#3 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20004,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20004,\"endedAt\":20004,\"timeoutMs\":9997,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#3 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#4: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP."
+    },
+    {
+      "id": "hospital#4: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "hospital#4: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20004,\"providerMs\":20003}"
+    },
+    {
+      "id": "hospital#4: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20003"
+    },
+    {
+      "id": "hospital#4: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20004 - providerMs 20003 = 1"
+    },
+    {
+      "id": "hospital#4: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20003,\"duration_ms\":20004,\"ok\":true}"
+    },
+    {
+      "id": "hospital#4 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20004,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20004,\"endedAt\":20004,\"timeoutMs\":9997,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#4 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#5: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP."
+    },
+    {
+      "id": "hospital#5: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "hospital#5: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20004,\"providerMs\":20003}"
+    },
+    {
+      "id": "hospital#5: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20003"
+    },
+    {
+      "id": "hospital#5: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20004 - providerMs 20003 = 1"
+    },
+    {
+      "id": "hospital#5: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20003,\"duration_ms\":20004,\"ok\":true}"
+    },
+    {
+      "id": "hospital#5 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20004,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20004,\"endedAt\":20004,\"timeoutMs\":9997,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital#5 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#1: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None."
+    },
+    {
+      "id": "nursing-home#1: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "nursing-home#1: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20004,\"providerMs\":20003}"
+    },
+    {
+      "id": "nursing-home#1: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20003"
+    },
+    {
+      "id": "nursing-home#1: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20004 - providerMs 20003 = 1"
+    },
+    {
+      "id": "nursing-home#1: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20003,\"duration_ms\":20004,\"ok\":true}"
+    },
+    {
+      "id": "nursing-home#1 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20004,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20004,\"endedAt\":20004,\"timeoutMs\":9997,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#1 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#2: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None."
+    },
+    {
+      "id": "nursing-home#2: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "nursing-home#2: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20005,\"providerMs\":20004}"
+    },
+    {
+      "id": "nursing-home#2: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20004"
+    },
+    {
+      "id": "nursing-home#2: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20005 - providerMs 20004 = 1"
+    },
+    {
+      "id": "nursing-home#2: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20004,\"duration_ms\":20005,\"ok\":true}"
+    },
+    {
+      "id": "nursing-home#2 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20005,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20005,\"endedAt\":20005,\"timeoutMs\":9996,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#2 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#3: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None."
+    },
+    {
+      "id": "nursing-home#3: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "nursing-home#3: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20005,\"providerMs\":20004}"
+    },
+    {
+      "id": "nursing-home#3: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20004"
+    },
+    {
+      "id": "nursing-home#3: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20005 - providerMs 20004 = 1"
+    },
+    {
+      "id": "nursing-home#3: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20004,\"duration_ms\":20005,\"ok\":true}"
+    },
+    {
+      "id": "nursing-home#3 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20005,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20005,\"endedAt\":20005,\"timeoutMs\":9996,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#3 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#4: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None."
+    },
+    {
+      "id": "nursing-home#4: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "nursing-home#4: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20005,\"providerMs\":20004}"
+    },
+    {
+      "id": "nursing-home#4: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20004"
+    },
+    {
+      "id": "nursing-home#4: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20005 - providerMs 20004 = 1"
+    },
+    {
+      "id": "nursing-home#4: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20004,\"duration_ms\":20005,\"ok\":true}"
+    },
+    {
+      "id": "nursing-home#4 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20005,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20005,\"endedAt\":20005,\"timeoutMs\":9996,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#4 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#5: the answer comes back (no error) and names the medications on file",
+      "ok": true,
+      "detail": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None."
+    },
+    {
+      "id": "nursing-home#5: Mistral got the same chart context (its request carries every medication on file)",
+      "ok": true,
+      "detail": "{\"contextHasMeds\":true,\"mistralGotContext\":true}"
+    },
+    {
+      "id": "nursing-home#5: assist.askChart row: model = Mistral, fellBackFrom = Haiku, ok",
+      "ok": true,
+      "detail": "{\"fn\":\"assist.askChart\",\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fellBackFrom\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"ok\":true,\"durationMs\":20006,\"providerMs\":20004}"
+    },
+    {
+      "id": "nursing-home#5: providerMs >= 20000 (the hung Haiku attempt counts as the AI service's time)",
+      "ok": true,
+      "detail": "providerMs 20004"
+    },
+    {
+      "id": "nursing-home#5: durationMs - providerMs <= ~2000 (the app's own time around the calls)",
+      "ok": true,
+      "detail": "durationMs 20006 - providerMs 20004 = 2"
+    },
+    {
+      "id": "nursing-home#5: the ai_disclosure audit row names Mistral, fell_back_from Haiku, provider_ms >= 20000",
+      "ok": true,
+      "detail": "{\"model\":\"mistral.mistral-large-3-675b-instruct\",\"fell_back_from\":\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"provider_ms\":20004,\"duration_ms\":20006,\"ok\":true}"
+    },
+    {
+      "id": "nursing-home#5 (Q4, recorded): Haiku asked a second time before Mistral (UAT step 6)",
+      "ok": false,
+      "detail": "1 Haiku attempt(s): [{\"model\":\"haiku\",\"at\":1,\"endedAt\":20005,\"timeoutMs\":20000,\"outcome\":\"threw AbortError\"},{\"model\":\"mistral\",\"at\":20005,\"endedAt\":20005,\"timeoutMs\":9996,\"outcome\":\"answered\"}]",
+      "recordOnly": true
+    },
+    {
+      "id": "nursing-home#5 (Q6, recorded): question-to-answer within 30 s",
+      "ok": true,
+      "detail": "20 s",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "runs": [
+      {
+        "id": "hospital#1",
+        "mode": "hospital",
+        "answer": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP.",
+        "error": "",
+        "wallMs": 20003,
+        "mustInclude": [
+          {
+            "re": "/Metoprolol/i",
+            "ok": true
+          },
+          {
+            "re": "/Lisinopril/i",
+            "ok": true
+          },
+          {
+            "re": "/held|on hold/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20002,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20002,
+            "endedAt": 20002,
+            "timeoutMs": 9999,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20003,
+          "providerMs": 20001
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20001,
+          "duration_ms": 20003,
+          "ok": true
+        }
+      },
+      {
+        "id": "hospital#2",
+        "mode": "hospital",
+        "answer": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP.",
+        "error": "",
+        "wallMs": 20004,
+        "mustInclude": [
+          {
+            "re": "/Metoprolol/i",
+            "ok": true
+          },
+          {
+            "re": "/Lisinopril/i",
+            "ok": true
+          },
+          {
+            "re": "/held|on hold/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20003,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20003,
+            "endedAt": 20003,
+            "timeoutMs": 9998,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20004,
+          "providerMs": 20002
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20002,
+          "duration_ms": 20004,
+          "ok": true
+        }
+      },
+      {
+        "id": "hospital#3",
+        "mode": "hospital",
+        "answer": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP.",
+        "error": "",
+        "wallMs": 20004,
+        "mustInclude": [
+          {
+            "re": "/Metoprolol/i",
+            "ok": true
+          },
+          {
+            "re": "/Lisinopril/i",
+            "ok": true
+          },
+          {
+            "re": "/held|on hold/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20004,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20004,
+            "endedAt": 20004,
+            "timeoutMs": 9997,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20004,
+          "providerMs": 20003
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20003,
+          "duration_ms": 20004,
+          "ok": true
+        }
+      },
+      {
+        "id": "hospital#4",
+        "mode": "hospital",
+        "answer": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP.",
+        "error": "",
+        "wallMs": 20004,
+        "mustInclude": [
+          {
+            "re": "/Metoprolol/i",
+            "ok": true
+          },
+          {
+            "re": "/Lisinopril/i",
+            "ok": true
+          },
+          {
+            "re": "/held|on hold/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20004,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20004,
+            "endedAt": 20004,
+            "timeoutMs": 9997,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20004,
+          "providerMs": 20003
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20003,
+          "duration_ms": 20004,
+          "ok": true
+        }
+      },
+      {
+        "id": "hospital#5",
+        "mode": "hospital",
+        "answer": "Active: Metoprolol succinate 25 mg PO daily. Held: Lisinopril 10 mg PO daily — Held · Oct 12 — soft BP.",
+        "error": "",
+        "wallMs": 20004,
+        "mustInclude": [
+          {
+            "re": "/Metoprolol/i",
+            "ok": true
+          },
+          {
+            "re": "/Lisinopril/i",
+            "ok": true
+          },
+          {
+            "re": "/held|on hold/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20004,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20004,
+            "endedAt": 20004,
+            "timeoutMs": 9997,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20004,
+          "providerMs": 20003
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20003,
+          "duration_ms": 20004,
+          "ok": true
+        }
+      },
+      {
+        "id": "nursing-home#1",
+        "mode": "nursing-home",
+        "answer": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None.",
+        "error": "",
+        "wallMs": 20004,
+        "mustInclude": [
+          {
+            "re": "/acetaminophen/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20004,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20004,
+            "endedAt": 20004,
+            "timeoutMs": 9997,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20004,
+          "providerMs": 20003
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20003,
+          "duration_ms": 20004,
+          "ok": true
+        }
+      },
+      {
+        "id": "nursing-home#2",
+        "mode": "nursing-home",
+        "answer": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None.",
+        "error": "",
+        "wallMs": 20005,
+        "mustInclude": [
+          {
+            "re": "/acetaminophen/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20005,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20005,
+            "endedAt": 20005,
+            "timeoutMs": 9996,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20005,
+          "providerMs": 20004
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20004,
+          "duration_ms": 20005,
+          "ok": true
+        }
+      },
+      {
+        "id": "nursing-home#3",
+        "mode": "nursing-home",
+        "answer": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None.",
+        "error": "",
+        "wallMs": 20005,
+        "mustInclude": [
+          {
+            "re": "/acetaminophen/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20005,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20005,
+            "endedAt": 20005,
+            "timeoutMs": 9996,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20005,
+          "providerMs": 20004
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20004,
+          "duration_ms": 20005,
+          "ok": true
+        }
+      },
+      {
+        "id": "nursing-home#4",
+        "mode": "nursing-home",
+        "answer": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None.",
+        "error": "",
+        "wallMs": 20005,
+        "mustInclude": [
+          {
+            "re": "/acetaminophen/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20005,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20005,
+            "endedAt": 20005,
+            "timeoutMs": 9996,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20005,
+          "providerMs": 20004
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20004,
+          "duration_ms": 20005,
+          "ok": true
+        }
+      },
+      {
+        "id": "nursing-home#5",
+        "mode": "nursing-home",
+        "answer": "Active: Acetaminophen 650 mg PO every 6 hours. Held: None.",
+        "error": "",
+        "wallMs": 20006,
+        "mustInclude": [
+          {
+            "re": "/acetaminophen/i",
+            "ok": true
+          }
+        ],
+        "contextHasMeds": true,
+        "mistralGotContext": true,
+        "attempts": [
+          {
+            "model": "haiku",
+            "at": 1,
+            "endedAt": 20005,
+            "timeoutMs": 20000,
+            "outcome": "threw AbortError"
+          },
+          {
+            "model": "mistral",
+            "at": 20005,
+            "endedAt": 20005,
+            "timeoutMs": 9996,
+            "outcome": "answered"
+          }
+        ],
+        "row": {
+          "fn": "assist.askChart",
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fellBackFrom": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 20006,
+          "providerMs": 20004
+        },
+        "audit": {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "fell_back_from": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "provider_ms": 20004,
+          "duration_ms": 20006,
+          "ok": true
+        }
+      }
+    ]
+  }
+}

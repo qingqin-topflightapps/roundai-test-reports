@@ -1,0 +1,48 @@
+{
+  "name": "tc21-s15-save-extract",
+  "at": "2026-10-16T10:09:28.862Z",
+  "checks": [
+    {
+      "id": "Save & Extract: message, notes saved, INR closed, PT open, pharmacy task added, codeword task verbatim (U9)",
+      "ok": true,
+      "detail": "{\"msg\":false,\"tasks\":[{\"category\":\"labs\",\"done\":true,\"doneAt\":\"2026-10-16T10:09:28.586Z\",\"id\":\"open-inr\",\"text\":\"Recheck INR\"},{\"category\":\"plan\",\"done\":false,\"id\":\"open-pt\",\"text\":\"PT evaluation\"},{\"category\":\"task\",\"createdAt\":\"2026-10-16T10:09:28.586Z\",\"done\":false,\"id\":\"1792145368886\",\"text\":\"ask the family about the care conference\",\"urgent\":false},{\"category\":\"call\",\"createdAt\":\"2026-10-16T10:09:28.586Z\",\"done\":false,\"id\":\"1792145374586\",\"text\":\"Call pharmacy about warfarin dose\",\"urgent\":false}]}"
+    }
+  ],
+  "data": {
+    "tasks": [
+      {
+        "category": "labs",
+        "done": true,
+        "doneAt": "2026-10-16T10:09:28.586Z",
+        "id": "open-inr",
+        "text": "Recheck INR"
+      },
+      {
+        "category": "plan",
+        "done": false,
+        "id": "open-pt",
+        "text": "PT evaluation"
+      },
+      {
+        "category": "task",
+        "createdAt": "2026-10-16T10:09:28.586Z",
+        "done": false,
+        "id": "1792145368886",
+        "text": "ask the family about the care conference",
+        "urgent": false
+      },
+      {
+        "category": "call",
+        "createdAt": "2026-10-16T10:09:28.586Z",
+        "done": false,
+        "id": "1792145374586",
+        "text": "Call pharmacy about warfarin dose",
+        "urgent": false
+      }
+    ],
+    "encounterNotesSaved": true,
+    "aiCalls": [
+      "ai/parsing:extractTasks:ok"
+    ]
+  }
+}

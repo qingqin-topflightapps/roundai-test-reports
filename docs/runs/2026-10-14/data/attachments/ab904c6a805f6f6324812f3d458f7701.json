@@ -1,0 +1,19 @@
+{
+  "TC-21/S04": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:59:18.206Z",
+    "title": "Template picker per context: exactly 4, never another context's, a removed or the other context's custom template",
+    "detail": "Local 25acd727 (ctx-tc21-templates.spec.ts). One custom template created per context through Settings -> New (Hospital 'QA Hosp Custom T21 …' typed SOAP progress, Nursing Home 'QA SNF Custom T21 …' typed SNF follow-up). 8/8 judged: NH Settings never lists the Hospital template; templates:list returns each context's own template only; NH picker built-ins exactly the 4 SNF templates (SNF consult and SNF discharge present, U2/T1), Hospital picker built-ins exactly the 4 Hospital templates; neither picker shows the other context's custom template, the other context's templates, a removed prototype template or Clinic (U3, U5, U6). Q2 recorded (not judged): each context's own custom template is listed after the 4 built-ins with a star ('QA SNF Custom T21 … ★'), so the picker holds 5 options when a custom template exists.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s04.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s04-1-snf-picker.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s04-1-snf-picker.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s04-2-hospital-picker.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s04-2-hospital-picker.png"
+    ],
+    "pkg": "ctx"
+  }
+}

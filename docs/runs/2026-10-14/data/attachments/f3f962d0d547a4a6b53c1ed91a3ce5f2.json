@@ -1,0 +1,17 @@
+{
+  "TC-20/S13": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:50:39.680Z",
+    "title": "Switching care setting, deep links and reload: each dashboard lists only its own patient",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 20/20. Hospital -> Nursing Home -> Hospital through the list toggle and each list's Dashboard control, then /snf/dashboard + reload and /rounding/dashboard + reload: each of the 5 checkpoints lists only its own patient, Total 1, no stuck loading or 'being updated', and the resident with no unit shows '0 tasks pending' (no 'undefined' / 'null' / 'NaN').",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s13.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s13-h-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s13-n-reload.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

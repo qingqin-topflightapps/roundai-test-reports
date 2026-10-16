@@ -1,0 +1,80 @@
+{
+  "name": "tc06-s07-c-generate",
+  "at": "2026-10-16T10:03:41.352Z",
+  "checks": [
+    {
+      "id": "consult-preselected: the picker shows consult, Generate sends that template's instructions, and the note save carries noteTemplate consult",
+      "ok": true,
+      "detail": "picker=consult saved=consult"
+    },
+    {
+      "id": "consult-preselected: nothing stored (the note save was refused at the socket, so no billing job)",
+      "ok": true,
+      "detail": "stored="
+    },
+    {
+      "id": "new-override-soap: the picker shows soap, Generate sends that template's instructions, and the note save carries noteTemplate soap",
+      "ok": true,
+      "detail": "picker=soap saved=soap"
+    },
+    {
+      "id": "new-override-soap: nothing stored (the note save was refused at the socket, so no billing job)",
+      "ok": true,
+      "detail": "stored="
+    },
+    {
+      "id": "new-hp: the picker shows hp, Generate sends that template's instructions, and the note save carries noteTemplate hp",
+      "ok": true,
+      "detail": "picker=hp saved=hp"
+    },
+    {
+      "id": "new-hp: nothing stored (the note save was refused at the socket, so no billing job)",
+      "ok": true,
+      "detail": "stored="
+    },
+    {
+      "id": "discharge-by-hand: the picker shows discharge, Generate sends that template's instructions, and the note save carries noteTemplate discharge",
+      "ok": true,
+      "detail": "picker=discharge saved=discharge"
+    },
+    {
+      "id": "discharge-by-hand: nothing stored (the note save was refused at the socket, so no billing job)",
+      "ok": true,
+      "detail": "stored="
+    }
+  ],
+  "data": {
+    "consult-preselected": {
+      "picker": "consult",
+      "generateCalls": 1,
+      "savedTemplate": "consult",
+      "saveAnswered": "fail",
+      "storedNote": null,
+      "uiText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Gen consult-preselected LXUC\n\nRoom 412 · 72y · —\n\nConsult\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acqu"
+    },
+    "new-override-soap": {
+      "picker": "soap",
+      "generateCalls": 1,
+      "savedTemplate": "soap",
+      "saveAnswered": "fail",
+      "storedNote": null,
+      "uiText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Gen new-override-soap L70B\n\nRoom 412 · 72y · —\n\nNew Admission\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-"
+    },
+    "new-hp": {
+      "picker": "hp",
+      "generateCalls": 1,
+      "savedTemplate": "hp",
+      "saveAnswered": "fail",
+      "storedNote": null,
+      "uiText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Gen new-hp 260Z\n\nRoom 412 · 72y · —\n\nNew Admission\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pn"
+    },
+    "discharge-by-hand": {
+      "picker": "discharge",
+      "generateCalls": 1,
+      "savedTemplate": "discharge",
+      "saveAnswered": "fail",
+      "storedNote": null,
+      "uiText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Gen discharge-by-hand N0RS\n\nRoom 412 · 72y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acqu"
+    }
+  }
+}

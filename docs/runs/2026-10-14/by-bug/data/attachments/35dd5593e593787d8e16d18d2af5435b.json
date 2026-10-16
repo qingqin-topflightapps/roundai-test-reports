@@ -1,0 +1,23 @@
+{
+  "name": "tc21-s02-reverse",
+  "at": "2026-10-16T09:55:51.231Z",
+  "checks": [
+    {
+      "id": "the open Hospital list does not write Hospital back over the saved Nursing Home",
+      "ok": true,
+      "detail": "[\"snf\",\"snf\",\"snf\",\"snf\",\"snf\",\"snf\"]"
+    },
+    {
+      "id": "the open Hospital list keeps showing Hospital (the URL is the context)",
+      "ok": true,
+      "detail": "http://localhost:6473/rounding"
+    },
+    {
+      "id": "after a reload on /rounding the saved setting follows the route (record)",
+      "ok": true,
+      "detail": "rounding",
+      "recordOnly": true
+    }
+  ],
+  "data": {}
+}

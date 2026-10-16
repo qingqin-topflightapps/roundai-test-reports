@@ -1,0 +1,172 @@
+{
+  "name": "tc20-s15-dev",
+  "at": "2026-10-16T10:31:13.124Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "hosp: the note landed while the chart was closed (stored note, note-ready)",
+      "ok": true,
+      "detail": "{\"note\":true,\"status\":\"note-ready\"}"
+    },
+    {
+      "id": "hosp: the dashboard row shows Note Ready without the chart being opened",
+      "ok": true,
+      "detail": "{\"ms\":11075,\"badge\":\"Note Ready\"}"
+    },
+    {
+      "id": "hosp: tiles equal the stored rows",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"2/0/1/1\",\"want\":\"2/0/1/1\"}"
+    },
+    {
+      "id": "hosp: Post-Round shows the generated note, no stuck generating state",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteChars\":544,\"mentionsLungs\":true,\"generating\":false,\"failure\":false}"
+    },
+    {
+      "id": "hosp: the note reflects the dictation ('lungs')",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteChars\":544,\"mentionsLungs\":true,\"generating\":false,\"failure\":false}",
+      "record": true
+    },
+    {
+      "id": "snf: the note landed while the chart was closed (stored note, note-ready)",
+      "ok": true,
+      "detail": "{\"note\":true,\"status\":\"note-ready\"}"
+    },
+    {
+      "id": "snf: the dashboard row shows Note Ready without the chart being opened",
+      "ok": true,
+      "detail": "{\"ms\":4339,\"badge\":\"Note Ready\"}"
+    },
+    {
+      "id": "snf: tiles equal the stored rows",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"2/0/1/1\",\"want\":\"2/0/1/1\"}"
+    },
+    {
+      "id": "snf: Post-Round shows the generated note, no stuck generating state",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteChars\":557,\"mentionsLungs\":true,\"generating\":false,\"failure\":false}"
+    },
+    {
+      "id": "snf: the note reflects the dictation ('lungs')",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteChars\":557,\"mentionsLungs\":true,\"generating\":false,\"failure\":false}",
+      "record": true
+    }
+  ],
+  "data": {
+    "hosp": {
+      "msToNoteReady": 11074,
+      "row": {
+        "name": "QA DSH-TC20 Leave hosp",
+        "line": "Room 4B-31 · 0 tasks pending",
+        "badge": "Note Ready"
+      },
+      "stored": {
+        "note": true,
+        "status": "note-ready"
+      },
+      "tiles": {
+        "ok": true,
+        "got": "2/0/1/1",
+        "want": "2/0/1/1"
+      }
+    },
+    "hosp-postRound": {
+      "noteShown": true,
+      "noteChars": 544,
+      "mentionsLungs": true,
+      "generating": false,
+      "failure": false
+    },
+    "snf": {
+      "msToNoteReady": 4339,
+      "row": {
+        "name": "QA DSH-TC20 Leave snf",
+        "line": "Cedar 131 · 0 tasks pending",
+        "badge": "Note Ready"
+      },
+      "stored": {
+        "note": true,
+        "status": "note-ready"
+      },
+      "tiles": {
+        "ok": true,
+        "got": "2/0/1/1",
+        "want": "2/0/1/1"
+      }
+    },
+    "snf-postRound": {
+      "noteShown": true,
+      "noteChars": 557,
+      "mentionsLungs": true,
+      "generating": false,
+      "failure": false
+    },
+    "diag": {
+      "hosp": [
+        {
+          "at": "2026-10-16T10:30:22.568Z",
+          "fn": "billing.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2936,
+          "durationMs": 3007,
+          "error": null
+        }
+      ],
+      "snf": [
+        {
+          "at": "2026-10-16T10:30:33.209Z",
+          "fn": "parsing.classifyAdmissionReason",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1896,
+          "durationMs": 1900,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:31.086Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3770,
+          "durationMs": 3774,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:23.451Z",
+          "fn": "notes.refreshCourseAndBackground",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3707,
+          "durationMs": 3709,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:22.568Z",
+          "fn": "billing.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2936,
+          "durationMs": 3007,
+          "error": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "TC-20/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:04:32Z",
+    "title": "The queries behind the dashboard never return another physician's patients",
+    "detail": "Lane A on 25acd727 (api project, tripwire clean): 'hospital: server search, indexed order, sparse pagination, isolation and projection updates' and 'snf: …' both passed: listPage never returns the other physician's matching row, totals move only with the owner's adds and removes, the Nursing Home 'today' count covers only In Today rows. Server level; the screens are S03, S04a/b, S13.",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/TC-20.laneA.json",
+      "runs/2026-10-14-local/matrix/TC-20.results.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

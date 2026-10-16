@@ -1,0 +1,19 @@
+{
+  "TC-18/S03": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "env": "dev",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:27:30Z",
+    "title": "Template -> family: the new SNF consult and SNF discharge templates with the live billing job",
+    "detail": "Dev 25acd727 (deployed 2026-10-15 14:04Z), live models (every call Haiku 4.5, no fallback), run 19:25-19:28 JST under runs/.dev.lock and the dev-session run lock (ctx-tc21-dev.spec.ts); only rows named 'QA TC21-CTX …' and two 'QA TC21-CTX …' templates were created, all deleted (cleanup: 12 rows deleted, 0 left, no other row of the account changed). Ten Nursing Home visits generated in the app with the new templates (5 SNF consult pre-selected by the Consult badge, 5 SNF discharge picked by hand), then the server billing job. SNF consult 5/5 in 99304-99306 (99304 x3, 99305 x2), one code each, code and level agree, every quote is in the note, no reasoning text; frozen billing source snf-consult. SNF discharge 5/5 by time: 'Total discharge time 40 minutes' -> 99316, 'Time spent on discharge 25 minutes' -> 99315, 'More than 30 minutes' -> 99316, and the two visits with no time dictated show the one-tap ≤ 30 / > 30 prompt with 'CODE: none yet' (no guessed code). The other 6 templates' live cells passed on 43c38a4f (results.bil.json); the billing path changed on 25acd727 only by moving the care-setting check into requireNoteTypeFitsSetting (same logic).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-snf-templates.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-c2-fall.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-d3-time25.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-d2-notime-nebs.png"
+    ],
+    "pkg": "ctx"
+  }
+}

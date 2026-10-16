@@ -1,0 +1,20 @@
+{
+  "TC-21/S26": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-16T10:20:29.232Z",
+    "title": "Server clock, not device clock: two browsers, one 2 days ahead in Pacific/Kiritimati",
+    "detail": "Local 25acd727, runnerGap R7 spec: same account in two browser contexts; A on the real clock, B with the clock 2 days ahead and time zone Pacific/Kiritimati (UTC+14, signed in again through the form after its session read as expired). Patient and resident set New Admission today. 0/8 judged equal: B shows Follow-up where A shows New Admission (Hospital and NH), so B pre-selects SOAP progress / SNF follow-up where A pre-selects H&P / SNF admission; the list cards differ (A 'NEW TODAY … New Admission', B '… Follow-up'); B's Hospital Course Timeline shows no card for today's line ('Oct 16: …') that A shows. And B's route lifecycle wrote its own day to the shared record: both rows became follow-up@2026-10-19 (a day that has not come yet), so afterwards A also shows Follow-up / SOAP progress / SNF follow-up. Known B18 (TFA-92584 AC 8, UAT 3.8). The lane-A cell (Tim's 'today's line is dated by the server clock, not the device's') passed on 43c38a4f; it stores a note so it is not re-run locally, and the code it covers is unchanged on 25acd727 (git diff 43c38a4f 25acd727 has no change under src/domain, src/features/snf/patient/EncounterTab.tsx or AppLayout.tsx).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s26.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s26-A-snf-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s26-B-snf-encounter.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s26-B-snf-encounter.aria.txt"
+    ],
+    "productIssue": "A device whose clock is ahead shows New Admission patients as Follow-up with the follow-up template pre-selected, and it saves that roll with its own future date, so every other device then shows Follow-up too (known B18).",
+    "pkg": "ctx"
+  }
+}

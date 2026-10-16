@@ -1,0 +1,102 @@
+{
+  "name": "oat03-s02-nh",
+  "at": "2026-10-16T09:55:58.386Z",
+  "checks": [
+    {
+      "id": "first tap: the inline message says the dictation is saved and the note couldn't be generated",
+      "ok": true,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "first tap: the box still holds the dictation",
+      "ok": true,
+      "detail": "E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan."
+    },
+    {
+      "id": "first tap: Generate Note & Finish is still offered",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "first tap: the server holds the dictation and no note is stored",
+      "ok": true,
+      "detail": "{\"enc\":\"E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan.\",\"note\":null}"
+    },
+    {
+      "id": "Q3 (recorded): the copy is the literal 'Note not generated'",
+      "ok": false,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "Q1 (recorded): no automatic retry — one generateNote call until the physician taps again",
+      "ok": true,
+      "detail": "1 call(s) after the first tap",
+      "recordOnly": true
+    },
+    {
+      "id": "second tap: the note is rendered (the mocked note's text, with the dictation in it)",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\n\nQA OAT-03 S02 snf mocked note (no model was called). Today: E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan."
+    },
+    {
+      "id": "second tap: the note is saved (note = the returned text, noteGeneratedAt set, template = the picked one, status note-ready)",
+      "ok": true,
+      "detail": "{\"same\":true,\"at\":\"2026-10-16T09:55:57.348Z\",\"tpl\":\"js75r8gdc5y7jcn284jnz6cfhx8gcv4q\",\"status\":\"note-ready\"}"
+    },
+    {
+      "id": "second tap: the dictation is unchanged",
+      "ok": true,
+      "detail": "E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan."
+    },
+    {
+      "id": "setup: exactly two Generate calls; the stored note queued no billing job (procedure-other)",
+      "ok": true,
+      "detail": "{\"calls\":2,\"billingStatus\":null,\"job\":null}"
+    },
+    {
+      "id": "reload: the same note is shown on Post-Round and still stored",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\n\nQA OAT-03 S02 snf mocked note (no model was called). Today: E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea,"
+    },
+    {
+      "id": "setup: no unscripted model action (none was refused at the socket)",
+      "ok": true,
+      "detail": "[\"ai/notes:generateNote\"]"
+    }
+  ],
+  "data": {
+    "after-first-tap": {
+      "message": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "box": "E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan.",
+      "server": {
+        "encounterNotes": "E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan.",
+        "note": "",
+        "noteGeneratedAt": null,
+        "status": null
+      }
+    },
+    "after-second-tap": {
+      "calls": 2,
+      "server": {
+        "note": "ASSESSMENT AND PLAN\nQA OAT-03 S02 snf mocked note (no model was called). Today: E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan.",
+        "noteGeneratedAt": "2026-10-16T09:55:57.348Z",
+        "noteTemplate": "js75r8gdc5y7jcn284jnz6cfhx8gcv4q",
+        "status": "note-ready",
+        "encounterNotes": "E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan.",
+        "billingStatus": null,
+        "billingJob": null
+      }
+    },
+    "after-reload": {
+      "shown": "ASSESSMENT AND PLAN\n\nQA OAT-03 S02 snf mocked note (no model was called). Today: E2E SNF encounter: appetite improved, participating in therapy, no new dyspnea, continue rehabilitation plan.",
+      "stored": "ASSESSMENT AND PLAN\nQA OAT-03 S02 snf mocked note (no model was called). Today: E2E SNF encounter: appetite improved, pa"
+    },
+    "socket": [
+      "ai/notes:generateNote:fail",
+      "ai/notes:generateNote:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:refreshCourseAndBackground:ok"
+    ]
+  }
+}

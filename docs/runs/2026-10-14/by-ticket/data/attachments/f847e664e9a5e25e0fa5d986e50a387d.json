@@ -1,0 +1,17 @@
+{
+  "TC-15/S24": {
+    "status": "passed",
+    "ranAt": "2026-10-14T15:10:00Z",
+    "title": "A dictated question can be asked only once its last words have arrived (both settings)",
+    "detail": "New local spec (review of TFA-92593): a copy of Tim's e2e/dictation-completion.spec.ts with the Ask button matched by /^Ask AI/ (its label is no longer exactly \"Ask AI\"). Speech recogniser mocked, the last words delivered 1.5 s after Stop; Ask AI never pressed (askChart answered with a failure if it were). Both settings: after Stop, Ask AI and Dictate are disabled and \"Transcribing\" shows; the last words land after the typed text (\"Please check: What medications changed today?\"); then both buttons are enabled again. 10/10 judged checks pass; no model call (tripwire clean).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s24-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s24-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s24-h-question-complete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc15-s24-n-question-complete.png",
+      "runs/2026-10-14-local/newspec-c/reports/tc15-s24-dictated-question.json"
+    ],
+    "method": "PW",
+    "replacesLaneA": true
+  }
+}

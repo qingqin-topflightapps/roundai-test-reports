@@ -1,0 +1,21 @@
+{
+  "TC-20/S16": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-16T10:18:56.037Z",
+    "title": "Double tap on the In Today toggle: the toggle ends where two taps put it, and the dashboard agrees",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts + agent unit U56. Judged 1/4. Known B30, still on dev. A double-click on Hal's 'In Today ✓' loses one tap: the toggle ends on '+ Today', the stored inTodaysSession is false, and the dashboard no longer lists Hal. Toggle, server and dashboard agree with each other (the dashboard is not stale; the tap is lost in the list's toggle). Agent unit U56 (oracle.mjs, one browser_click with doubleClick: true) on the same build: Fail, the same lost tap ('+ Today', inTodaysSession false, dashboard Total 0, 'No residents on today's visit list.').",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/tc20-s16-dev.json",
+      "runs/2026-10-14-dev/units/U56.verdict.json",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u56/s16-all-after-double.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u56/s16-dash-after-double.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u56/notes.md"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "productIssue": "A physician who double-taps 'In Today ✓' sees the resident drop off Today's Visits and the dashboard (one tap lost).",
+    "pkg": "dsh"
+  }
+}

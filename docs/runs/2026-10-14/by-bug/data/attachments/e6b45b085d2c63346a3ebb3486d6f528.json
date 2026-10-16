@@ -1,0 +1,17 @@
+{
+  "TC-18/S05": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "env": "dev",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:27:30Z",
+    "title": "n-consult in the app: Consult badge -> SNF consult -> Generate -> SNF initial family",
+    "detail": "Dev 25acd727 (deployed 2026-10-15 14:04Z), live models (every call Haiku 4.5, no fallback), run 19:25-19:28 JST under runs/.dev.lock and the dev-session run lock (ctx-tc21-dev.spec.ts); only rows named 'QA TC21-CTX …' and two 'QA TC21-CTX …' templates were created, all deleted (cleanup: 12 rows deleted, 0 left, no other row of the account changed). 5/5 visits with the Consult badge: SNF consult pre-selected with the picker untouched, Generate wrote the note in SNF consult (stored noteTemplate snf-consult, frozen billing source snf-consult), and the card shows a code from 99304-99306 (99304 x3, 99305 x2) with its level. The Hospital legs and NH step 4 passed on 43c38a4f dev and are unchanged.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-snf-templates.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-c1-confusion.png"
+    ],
+    "pkg": "ctx"
+  }
+}

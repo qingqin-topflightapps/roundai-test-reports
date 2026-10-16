@@ -1,0 +1,20 @@
+{
+  "TC-21/S06": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:15:41.124Z",
+    "title": "A hand-picked discharge template is never carried into a fresh pre-selection (both contexts)",
+    "detail": "Local 25acd727, in-app navigation (the app's back control and the switcher, no page load). Hospital and Nursing Home halves (the NH half is new: SNF discharge exists on this build). 12/12 judged: positive controls (Discharge summary / SNF discharge picked by hand shows, 3 times per context); a badge change pre-selects afresh (New Admission -> H&P / SNF admission, never the discharge pick); after a reload the badge's template (SOAP progress / SNF follow-up) is pre-selected; another patient / resident opened right after the pick shows its badge's template, never the discharge template. Q11 recorded (not judged): the physician's own discharge pick is kept when the same chart is reopened in-app the same day and after a Hospital -> Nursing Home -> Hospital round-trip (the pick lives in the page session: src/features/clinical/useNoteFormats.ts 'picks'); the strict reading of S06 wants the badge's template there. Daniela's answer to Q11 decides those two cells.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s06-hospital.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s06-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s06-hospital-4-reopen.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s06-hospital-5-roundtrip.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s06-snf-4-reopen.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s06-snf-7-other-patient.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

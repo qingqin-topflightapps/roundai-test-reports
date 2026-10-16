@@ -1,0 +1,114 @@
+{
+  "name": "tc21-s01",
+  "at": "2026-10-16T09:54:09.721Z",
+  "checks": [
+    {
+      "id": "cp1 Hospital list shows its patient and not the resident",
+      "ok": true,
+      "detail": "[\"QA Hosp Rivera S01 OBE2\"]"
+    },
+    {
+      "id": "cp1 switcher: exactly one Hospital and one Nursing Home button, no Clinic (U5)",
+      "ok": true,
+      "detail": "Hospital=1 NursingHome=1 Clinic=0"
+    },
+    {
+      "id": "cp1 Quick Dictation available in Hospital (U1e)",
+      "ok": true,
+      "detail": "count=1"
+    },
+    {
+      "id": "cp2 NH list shows the resident and not the Hospital patient",
+      "ok": true,
+      "detail": "[\"QA Resident Okafor S01 OBE2\"]"
+    },
+    {
+      "id": "cp2 Quick Dictation absent in Nursing Home (U1e)",
+      "ok": true,
+      "detail": "count=0"
+    },
+    {
+      "id": "cp2 no Clinic on the NH list (U5)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp3a resident chart: Medications, Vitals and Labs panels (U9) and no Hospital patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp3a resident chart says 'Admission Summary', never 'Background Summary' (U1c)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp3a no Clinic in the resident chart (U5)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp3b NH Note Format is exactly SNF admission, SNF follow-up, SNF consult, SNF discharge (U2, T1)",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\"]"
+    },
+    {
+      "id": "cp3b NH picker has no Hospital template, removed template or Clinic (U3, U5, U6)",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\"]"
+    },
+    {
+      "id": "cp3b Save & Extract is on the NH Encounter tab (U9)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp3b resident chart has no Hospital patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp4a Hospital chart says 'Background Summary', never 'Admission Summary' (U1c)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp4 Hospital Note Format is exactly H&P, SOAP progress, Consult note, Discharge summary (U2)",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\"]"
+    },
+    {
+      "id": "cp4 Hospital picker has no SNF template, removed template or Clinic (U3, U5, U6)",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\"]"
+    },
+    {
+      "id": "cp5 Hospital list at the end: own patient only, no Clinic",
+      "ok": true,
+      "detail": "[\"QA Hosp Rivera S01 OBE2\"]"
+    }
+  ],
+  "data": {
+    "cp3b.noteFormat": {
+      "selected": "SNF follow-up",
+      "value": "snf-progress",
+      "options": [
+        "SNF admission",
+        "SNF follow-up",
+        "SNF consult",
+        "SNF discharge"
+      ]
+    },
+    "cp4.noteFormat": {
+      "selected": "SOAP progress",
+      "value": "soap",
+      "options": [
+        "H&P",
+        "SOAP progress",
+        "Consult note",
+        "Discharge summary"
+      ]
+    },
+    "aiCalls": []
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "TC-06/S02": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:00:04.362Z",
+    "title": "Nursing Home walk (step 7)",
+    "detail": "Local 25acd727. 11/11 judged: untouched Add Resident form Follow-up by default; untouched resident Follow-up with SNF follow-up; New Admission -> SNF admission; Consult -> SNF consult (on this build; never SNF admission or SNF discharge); override to SNF admission keeps the badge Consult; stored consult; survives the reload with SNF consult; list shows Consult; the hand change back to Follow-up is saved, pre-selects SNF follow-up and shows on the list.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s02.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s02-1-add-form.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s02-2-after-reload.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

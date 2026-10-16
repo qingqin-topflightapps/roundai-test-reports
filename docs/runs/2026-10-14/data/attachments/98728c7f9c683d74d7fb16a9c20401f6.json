@@ -1,0 +1,19 @@
+{
+  "TC-20/S21": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:03:17.341Z",
+    "title": "Hospital dashboard matches the p72 prototype; Nursing Home reuses the same design",
+    "detail": "PW screenshots + side-by-side read against the prototype source. Quinn's rule (2026-10-16): a case that only compares with the prototype passes for now; differences recorded. Compared handoff-docs/RoundCompanion_PLAYGROUND_p72_HAIKU.html DashboardScreen (line 12898) with the 25acd727 screens: same heading, back arrow, date line, 4-column tiles Total / Pending / In Progress / Done with the number above the label (640bc7c4 changed Complete -> Done and the order), same tile colours except Pending (prototype yellow-100/700, app amber-100/700), same 'All Patients' list with name, 'Room N · N task(s) pending', status badge, tap to open. Differences: the app adds the 'Hospital · All Patients' subtitle and the legend line (Q7); real date instead of the hard-coded one; the app counts Seen and Note Ready as In Progress and only post-rounded/complete as Done, the prototype counts only pre-rounded / in-encounter as In Progress so its tiles do not add up (Q1); badge words differ (prototype 'Pending' / 'In Encounter', app 'Not Yet Prepped' / 'Seen'); tiles say Done while the row badge says Complete. Nursing Home: same layout, unit without 'Room', plus the two tabs (ticket rule 4).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s21.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s21-rounding.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s21-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s05-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s05-nursing-home.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

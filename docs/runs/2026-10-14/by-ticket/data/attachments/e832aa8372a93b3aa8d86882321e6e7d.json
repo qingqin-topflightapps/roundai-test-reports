@@ -1,0 +1,410 @@
+{
+  "ref": "TC-10/S08",
+  "title": "TC-10/S08 AI Check: 10 pre-round dictations with no vitals, labs or tests leave those panels empty, invent nothing (5 Hospital + 5 Nursing Home, 9/10)",
+  "dataset": "rst-tc10-s08",
+  "target": "dev",
+  "at": "2026-10-16T10:25:06.377Z",
+  "cells": [
+    {
+      "name": "H-01 (hospital): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "72-year-old man with HFrEF admitted with a CHF exacerbation. Feels less short of breath and slept flat last night. Plan: talk with cardiology about GDMT and confirm the home health referral.",
+        "fails": [],
+        "stored": {
+          "ctx": "hosp",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [],
+          "background": "72-year-old man with HFrEF admitted with CHF exacerbation, now with improved dyspnea, sleeping flat, pending cardiology discussion on GDMT and home health referral confirmation\n• CHF exacerbation — improved dyspnea, slept flat last night, IV diuretics ongoing\n• GDMT optimization — cardiology consultation planned\n• Home health referral — confirmation pending",
+          "course": "Oct 16: 72-year-old with HFrEF admitted for CHF exacerbation; improved dyspnea overnight. Coordinating GDMT with cardiology and confirming home health referral.. ⏳ Encounter pending.",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 14199,
+            "providerMs": 14196,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-02 (hospital): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Overnight uneventful, clinically stable. Asking about going home. Husband at the bedside with questions about wound care. Plan: PT evaluation today, discuss discharge timing.",
+        "fails": [],
+        "stored": {
+          "ctx": "hosp",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [],
+          "background": "66-year-old female admitted with elective hip replacement, now post-operative, clinically stable, expressing readiness for discharge.\n• Post-operative hip replacement — overnight uneventful, clinically stable\n• Discharge planning — PT evaluation scheduled today, husband present with wound care questions",
+          "course": "Oct 16: Post-operative day 1 from elective hip replacement, clinically stable overnight. PT evaluation scheduled; discharge planning underway with family.. ⏳ Encounter pending.",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4563,
+            "providerMs": 4559,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-03 (hospital): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Day 3 for left leg cellulitis. Redness receding from the marked border, pain 3/10. Continue IV cefazolin 2 g every 8 hours. Plan to switch to oral cephalexin tomorrow if still improving.",
+        "fails": [],
+        "stored": {
+          "ctx": "hosp",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [
+            {
+              "name": "IV cefazolin 2 g every 8 hours",
+              "status": "active",
+              "reason": "continue current regimen"
+            }
+          ],
+          "background": "58-year-old male admitted with cellulitis of the left leg, now day 3 with receding erythema and improving pain on IV cefazolin, planned transition to oral cephalexin.\n• Left leg cellulitis — redness receding from marked border, pain 3/10, continuing IV cefazolin 2 g q8h with plan to switch to oral cephalexin if improvement continues",
+          "course": "Oct 16: Day 3 left leg cellulitis with receding erythema and improving pain on IV cefazolin; plan oral cephalexin switch if improvement continues.. ⏳ Encounter pending.",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4118,
+            "providerMs": 4115,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-04 (hospital): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "dictation": "Admitted with a COPD exacerbation. Breathing easier, using the rescue inhaler less. Prednisone 40 mg, day 4 of 5. Wants to know when the nebulizers can stop. Plan: wean nebs, smoking cessation counselling.",
+        "fails": [
+          "a lab value: mg day 4 of 5"
+        ],
+        "stored": {
+          "ctx": "hosp",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [
+            {
+              "name": "Prednisone 40 mg",
+              "status": "active",
+              "reason": "day 4 of 5-day taper"
+            }
+          ],
+          "background": "69-year-old male admitted with COPD exacerbation, now on day 4 of 5 prednisone 40 mg with improving dyspnea and decreased rescue inhaler use\n• COPD exacerbation — breathing easier, rescue inhaler use decreased, prednisone 40 mg day 4 of 5, plan to wean nebulizers\n• Smoking cessation — counseling planned",
+          "course": "Oct 16: COPD exacerbation improving on prednisone day 4 of 5. Plan: wean nebulizers, smoking cessation counseling.. ⏳ Encounter pending.",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 12556,
+            "providerMs": 12553,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-05 (hospital): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Post-op day 1 after laparoscopic cholecystectomy. Tolerating clear liquids, walking in the hall, pain controlled on oral medication. Plan: advance the diet, discharge tomorrow if she tolerates it.",
+        "fails": [],
+        "stored": {
+          "ctx": "hosp",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [],
+          "background": "45-year-old female admitted with acute cholecystitis, now s/p laparoscopic cholecystectomy this admission, tolerating clear liquids, ambulating, pain controlled on oral medication, discharge planned tomorrow if diet tolerated\n• Post-op day 1 s/p laparoscopic cholecystectomy — tolerating clear liquids, ambulating, pain controlled on oral medication\n• Diet advancement — plan to advance and discharge tomorrow if tolerated",
+          "course": "Oct 16: Post-op day 1 after laparoscopic cholecystectomy. Tolerating clear liquids, ambulating, pain controlled on oral medication. Plan: advance diet, discharge tomorrow if tolerated.. ⏳ Encounter pending.",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3846,
+            "providerMs": 3842,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-01 (nursing-home): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Long-term resident with Parkinson's disease. Ate most of breakfast and walked to the dining room with her walker. Daughter wants a care conference next week. Plan: continue the current regimen and schedule the conference.",
+        "fails": [],
+        "stored": {
+          "ctx": "snf",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [],
+          "background": "Long-term care resident with Parkinson's disease, currently ambulatory with walker, tolerating oral intake well.\n• Parkinson's disease — stable on current regimen, ambulating with walker\n• Care conference — scheduled for next week per daughter's request",
+          "course": "Visit 1 · Oct 16: Long-term Parkinson's disease resident ambulating with walker, tolerating oral intake. Daughter requesting care conference next week; continue current regimen..",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3896,
+            "providerMs": 3893,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-02 (nursing-home): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Rehab after a right knee replacement. Working with PT twice daily, now 80 feet with a rolling walker. Pain controlled with scheduled acetaminophen. Plan: discuss discharge home with her husband.",
+        "fails": [],
+        "stored": {
+          "ctx": "snf",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [
+            {
+              "name": "Acetaminophen",
+              "status": "active",
+              "reason": "scheduled for pain control"
+            }
+          ],
+          "background": "Patient admitted for rehab after right knee replacement, now ambulating 80 feet with rolling walker, pain controlled.\n• Right knee replacement rehabilitation — ambulating 80 feet with rolling walker, PT twice daily\n• Pain control — managed with scheduled acetaminophen\n• Discharge planning — discussion with husband regarding discharge home",
+          "course": "Visit 1 · Oct 16: Post-right knee replacement, ambulating 80 feet with rolling walker on scheduled acetaminophen. Discharge planning discussion with husband planned..",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3867,
+            "providerMs": 3853,
+            "appMs": 14,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-03 (nursing-home): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "One episode of agitation at sundown, redirected without medication. No falls. Sleeping better. Plan: continue the behavior log and review it with the family.",
+        "fails": [],
+        "stored": {
+          "ctx": "snf",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [],
+          "background": "Patient with moderate dementia, now with improved sleep and one episode of sundown agitation managed without medication\n• Moderate dementia with behavioral symptoms — one episode of agitation at sundown, redirected without medication; behavior log ongoing\n• Sleep — improved\n• Fall risk — no falls",
+          "course": "Visit 1 · Oct 16: Moderate dementia with one episode of sundown agitation, redirected without medication. Sleeping improved. Continuing behavior log review with family..",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4199,
+            "providerMs": 4195,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-04 (nursing-home): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Here for rehab after a CHF admission. Says his legs feel less swollen and he can lie flat. Taking furosemide 20 mg daily without trouble. Plan: continue the low-salt diet, cardiology follow-up in 2 weeks.",
+        "fails": [],
+        "stored": {
+          "ctx": "snf",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [
+            {
+              "name": "Furosemide 20 mg daily",
+              "status": "active",
+              "reason": ""
+            }
+          ],
+          "background": "Patient admitted with CHF, now in rehab with improving volume status\n• Congestive heart failure — legs less swollen, able to lie flat, on furosemide 20 mg daily\n• Low-sodium diet — continued\n• Cardiology follow-up — scheduled in 2 weeks",
+          "course": "Visit 1 · Oct 16: Post-CHF admission rehab. Improved volume status; legs less swollen, able to lie flat. Continuing low-salt diet and furosemide. Cardiology follow-up in 2 weeks..",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4227,
+            "providerMs": 4221,
+            "appMs": 6,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-05 (nursing-home): no vitals / labs / tests invented, nothing the dictation does not name",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Long-term resident with diabetes and a healing heel ulcer. The wound nurse says the ulcer is smaller. Eating well and in good spirits. Plan: keep the offloading boot, podiatry visit on Thursday.",
+        "fails": [],
+        "stored": {
+          "ctx": "snf",
+          "vitals": {},
+          "stableVitals": false,
+          "labs": [],
+          "radiology": [],
+          "medications": [],
+          "background": "Long-term resident with diabetes admitted with healing heel ulcer, now with smaller ulcer on offloading boot\n• Diabetes — on current regimen\n• Heel ulcer — healing, smaller per wound nurse, offloading boot in place, podiatry visit Thursday\n• Nutrition — eating well\n• Mood — in good spirits",
+          "course": "Visit 1 · Oct 16: Long-term resident with diabetes and healing heel ulcer showing clinical improvement. Wound smaller per nursing. Continue offloading boot; podiatry visit Thursday..",
+          "points": []
+        },
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3802,
+            "providerMs": 3798,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "AI Check pool (U9, 3.2): 9/10 dictations leave vitals / labs / tests empty and invent nothing (pass at 9/10, every failure quoted)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "passed": 9,
+        "of": 10,
+        "failures": [
+          {
+            "id": "H-04",
+            "fails": [
+              "a lab value: mg day 4 of 5"
+            ]
+          }
+        ],
+        "notObserved": []
+      }
+    },
+    {
+      "name": "U10: the check ran in both Hospital and Nursing Home (5 + 5 observed)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "hospital": 5,
+        "nursingHome": 5
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-10-S08-H-01-preround.png",
+    "evidence/TC-10-S08-N-01-preround.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-10-S08-H-01-preround.png": 0,
+    "evidence/TC-10-S08-N-01-preround.png": 0
+  }
+}

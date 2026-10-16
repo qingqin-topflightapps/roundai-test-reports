@@ -1,0 +1,23 @@
+{
+  "OAT-03/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:52:24.643Z",
+    "title": "Both models fail at Generate: a working state at once, an explicit failure within the budget, dictation kept, no empty note (both contexts)",
+    "detail": "rst-oat03-s11-both-fail.spec.ts. Part 1, in-process (the real convex/ai/notes.ts generateNote handler, bedrock.invoke stubbed): both models hanging until their attempt deadline -> the action rejects after 30.0 s (Haiku 20 s, no second Haiku try, Mistral 10 s), notes.generateNote row ok = false; both throttling (429) -> rejects after 1.0 s (Haiku, 1 s pause, Haiku, Mistral); 6/6 judged. Part 2, browser, Hospital and Nursing Home: ai/notes:generateNote answered with a failure at the Convex socket after the measured worst case (30 s; no model called, no note stored, so no billing job). Each context 10/10 judged: 0.35 s after the tap the button reads 'Generating Note…'; when it settles an explicit message shows (Hospital 'The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.'; NH 'The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.'), the typed dictation is still in the box and on the server, Generate Note & Finish is offered again, no 'AI-Generated Note', no note stored, the chart not finished, Post-Round shows 'No note generated yet'. Recorded only: Q3 / D7 — the literal 'Note not generated' is not used (known gap); Q6 / UAT 3.5 — tap-to-message 30.3 s (the 30 s server worst case plus the round trip; flagged for review, not a Fail). Seen on the Hospital Post-Round after the failure: the disabled 'Finalizing Encounter Data…' spinner under 'No note generated yet' (known B27, still on 25acd727). Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-hosp-cp1-working.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-hosp-cp2-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-hosp-cp3-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-nh-cp1-working.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-nh-cp2-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-nh-cp3-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s11-server.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst"
+  }
+}

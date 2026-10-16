@@ -1,0 +1,17 @@
+{
+  "TC-20/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:02:33.460Z",
+    "title": "Day and retention boundaries against the buckets (partial: back-dated records, server clock not moved)",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 6/6, 5 record-only. Partial run: no aging helper, so each record's own timestamps were back-dated on a fresh account (seeded notes carry noteTemplate procedure-other, no billing job); the dashboards ran the lifecycle pass at 10:02 UTC and every row's bucket was compared with the stored chart. Judged and passed: (a) note 17 h -> Done with the note kept; note 19 h -> note cleared, Pending; (b) Hospital pre-round 13 h -> text cleared, Pending; (e) Nursing Home pre-round 11 h -> text kept, In Progress; 13 h -> cleared, Pending; every dashboard bucket equals the stored status. Recorded for decisions: (b) Hospital pre-round 11 h old, done 23:02 UTC the previous UTC day, is back in Pending while the chart still shows the pre-round text (the reset follows the server's UTC day, Q4); (c) seen with no note, encounter dictation 19 h / 36 h old -> dictation cleared but still Seen / In Progress with an empty chart, no rule ever moves it (Q10); (d) open tasks on a chart last processed 37 h ago are still counted on the row (UAT 3.6 36 h) - known B19 (TFA-94699, in progress: todo); (f) a resident In Today with yesterday's note: the note left and the resident is Pending, still In Today because the mark has no day (D8). Left: the same pre-rounded patient read at 05:00 and 18:00 UTC and after the server day changes, and In Today across a server day, need a movable server clock (not on main).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s11.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s11-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s11-nursing-home.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

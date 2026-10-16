@@ -1,0 +1,56 @@
+{
+  "name": "tc06-s09",
+  "at": "2026-10-16T10:00:11.930Z",
+  "checks": [
+    {
+      "id": "positive control: seeded consult / new / consult with yesterday's day",
+      "ok": true,
+      "detail": "{\"today\":\"2026-10-16\",\"H\":\"consult@2026-10-15\",\"R1\":\"new@2026-10-15\",\"R2\":\"consult@2026-10-15\"}"
+    },
+    {
+      "id": "Hospital list: rolled Consult reads Follow-up",
+      "ok": true,
+      "detail": "QH QA Hosp Ines S09 7BPK NEW TODAY Room 412 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "Hospital chart: Follow-up with SOAP progress, never Consult note or Discharge summary",
+      "ok": true,
+      "detail": "SOAP progress"
+    },
+    {
+      "id": "NH list: rolled New Admission and rolled Consult both read Follow-up",
+      "ok": true,
+      "detail": "QR QA Resident Dora S09 7BPK Cedar Wing · Room 12 · 84y · MRN-RLHM20 Post-acute rehab after hip fracture Pending Follow-up || QR QA Resident Fern S09 7BPK Cedar Wing · Room 12 · 84y · MRN-SPC3DK Post-acute rehab after hip fracture Pending Follow-up"
+    },
+    {
+      "id": "NH chart Dora: Follow-up with SNF follow-up, never SNF admission / SNF consult / SNF discharge",
+      "ok": true,
+      "detail": "SNF follow-up"
+    },
+    {
+      "id": "NH chart Fern: Follow-up with SNF follow-up, never SNF admission / SNF consult / SNF discharge",
+      "ok": true,
+      "detail": "SNF follow-up"
+    },
+    {
+      "id": "a rolled patient set again to New Admission holds after the reload and after the lifecycle run, with today's day",
+      "ok": true,
+      "detail": "{\"afterReload\":{\"badge\":\"new\",\"nf\":\"H&P\"},\"stored\":\"new@2026-10-16\"}"
+    }
+  ],
+  "data": {
+    "positiveControl": {
+      "today": "2026-10-16",
+      "H": "consult@2026-10-15",
+      "R1": "new@2026-10-15",
+      "R2": "consult@2026-10-15"
+    },
+    "handSet": {
+      "afterReload": {
+        "badge": "new",
+        "nf": "H&P"
+      },
+      "stored": "new@2026-10-16"
+    }
+  }
+}

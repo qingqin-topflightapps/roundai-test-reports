@@ -1,0 +1,154 @@
+{
+  "name": "tc20-s08-dev",
+  "at": "2026-10-16T10:31:13.124Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "Hospital after Save Note: the patient left Pending (badge Pre-Rounded), tiles equal the stored rows",
+      "ok": true,
+      "detail": "{\"badge\":\"Pre-Rounded\",\"ok\":true,\"got\":\"3/0/2/1\",\"want\":\"3/0/2/1\"}"
+    },
+    {
+      "id": "Hospital after Save & Extract: still In Progress (badge Seen), tiles equal the stored rows",
+      "ok": true,
+      "detail": "{\"badge\":\"Seen\",\"ok\":true,\"got\":\"3/0/2/1\",\"want\":\"3/0/2/1\"}"
+    },
+    {
+      "id": "Nursing Home after Save Note: the resident left Pending (Pre-Rounded), tiles equal the stored rows",
+      "ok": true,
+      "detail": "{\"badge\":\"Pre-Rounded\",\"ok\":true,\"got\":\"3/0/2/1\",\"want\":\"3/0/2/1\"}"
+    },
+    {
+      "id": "U8: Hospital Save Note within 15 s (click to stored status)",
+      "ok": true,
+      "detail": "674 ms (processing finished 7925 ms)",
+      "record": true
+    },
+    {
+      "id": "U8: Nursing Home Save Note within 15 s",
+      "ok": true,
+      "detail": "5497 ms",
+      "record": true
+    }
+  ],
+  "data": {
+    "h0": {
+      "row": {
+        "name": "QA DSH-TC20 Save H",
+        "line": "Room 4B-08 · 0 tasks pending",
+        "badge": "Not Yet Prepped"
+      }
+    },
+    "timesMs": {
+      "hospitalSaveNoteToStatus": 674,
+      "hospitalSaveNoteProcessed": 7925,
+      "hospitalSaveExtractToStatus": 369,
+      "nursingHomeSaveNoteToStatus": 5497
+    },
+    "diag": {
+      "hospitalSaveNote": [
+        {
+          "at": "2026-10-16T10:30:41.727Z",
+          "fn": "parsing.extractMedicationEvents",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2349,
+          "durationMs": 2352,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:41.136Z",
+          "fn": "parsing.extractTasks",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1765,
+          "durationMs": 1767,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:35.336Z",
+          "fn": "parsing.extractTasks",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1457,
+          "durationMs": 1460,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:33.209Z",
+          "fn": "parsing.classifyAdmissionReason",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1896,
+          "durationMs": 1900,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:31.086Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3770,
+          "durationMs": 3774,
+          "error": null
+        }
+      ],
+      "hospitalSaveExtract": [
+        {
+          "at": "2026-10-16T10:30:56.081Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3898,
+          "durationMs": 3902,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:41.727Z",
+          "fn": "parsing.extractMedicationEvents",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2349,
+          "durationMs": 2352,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:41.136Z",
+          "fn": "parsing.extractTasks",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1765,
+          "durationMs": 1767,
+          "error": null
+        }
+      ],
+      "nursingHomeSaveNote": [
+        {
+          "at": "2026-10-16T10:30:56.081Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3898,
+          "durationMs": 3902,
+          "error": null
+        }
+      ]
+    }
+  }
+}

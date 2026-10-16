@@ -1,0 +1,15 @@
+{
+  "TC-20/S23": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:18:56.037Z",
+    "title": "Nursing Home dashboard tabs: switching moves rows and counts; list search / sort / tab do not leak in",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts driving the app UI. Judged 3/3. Opened from the list searched for 'Ada', sorted by name, on All Residents: the dashboard is on Today's Visits with the same tiles as a plain open (7/3/3/1). Its All Residents tab shows 9/4/3/2 = every stored resident, Fay and Gus listed (full counts 0.6 s after the tap; Q3: counts follow the tab); back on Today's Visits 7/3/3/1 without Fay.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/tc20-s23-dev.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

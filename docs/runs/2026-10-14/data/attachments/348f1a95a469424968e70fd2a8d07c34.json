@@ -1,0 +1,300 @@
+{
+  "name": "tc20-s20a-dsh",
+  "at": "2026-10-16T09:58:47.086Z",
+  "checks": [
+    {
+      "id": "A: Today's Visits holds exactly the two In Today residents",
+      "ok": true,
+      "detail": "QA Resident Clock MQQQ Today Pending, QA Resident Clock MQQQ Today PreRound"
+    },
+    {
+      "id": "A: Nursing Home dashboard (Today's Visits) 2 / 1 / 1 / 0",
+      "ok": true,
+      "detail": "2/1/1/0"
+    },
+    {
+      "id": "B plus24h: kept its stored session",
+      "ok": false,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "B plus24h: can use the app",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}"
+    },
+    {
+      "id": "plus24h: Hospital dashboard same counts",
+      "ok": true,
+      "detail": "A {\"total\":\"5\",\"pending\":\"2\",\"inProgress\":\"2\",\"done\":\"1\"} B {\"total\":\"5\",\"pending\":\"2\",\"inProgress\":\"2\",\"done\":\"1\"}"
+    },
+    {
+      "id": "plus24h: Hospital dashboard same rows",
+      "ok": true,
+      "detail": "A {\"QA Hosp Clock MQQQ Pending\":\"Not Yet Prepped | Room QA01 · 0 tasks pending\",\"QA Hosp Clock MQQQ PreRound\":\"Pre-Rounded | Room QA02 · 0 tasks pending\",\"QA Hosp Clock MQQQ NoteReady\":\"Note Ready | Room QA03 · 0 tasks pending\",\"QA Hosp Clock MQQQ Done\":\"Complete | Room QA04 · 0 tasks pending\",\"QA Hosp Clock MQQQ NewAdmit\":\"Not Yet Prepped | Room QA05 · 0 tasks pending\"} B {\"QA Hosp Clock MQQQ Pending\":\"Not Yet Prepped | Room QA01 · 0 tasks pending\",\"QA Hosp Clock MQQQ PreRound\":\"Pre-Rounded | Room QA02 · 0 tasks pending\",\"QA Hosp Clock MQQQ NoteReady\":\"Note Ready | Room QA03 · 0 tasks pending\",\"QA Hosp Clock MQQQ Done\":\"Complete | Room QA04 · 0 tasks pending\",\"QA Hosp Clock MQQQ NewAdmit\":\"Not Yet Prepped | Room QA05 · 0 tasks pending\"}"
+    },
+    {
+      "id": "plus24h: Nursing Home dashboard same counts",
+      "ok": true,
+      "detail": "A {\"total\":\"2\",\"pending\":\"1\",\"inProgress\":\"1\",\"done\":\"0\"} B {\"total\":\"2\",\"pending\":\"1\",\"inProgress\":\"1\",\"done\":\"0\"}"
+    },
+    {
+      "id": "plus24h: Nursing Home dashboard same rows",
+      "ok": true,
+      "detail": "A {\"QA Resident Clock MQQQ Today Pending\":\"Not Yet Prepped | QA1 · 0 tasks pending\",\"QA Resident Clock MQQQ Today PreRound\":\"Pre-Rounded | QA2 · 0 tasks pending\"} B {\"QA Resident Clock MQQQ Today Pending\":\"Not Yet Prepped | QA1 · 0 tasks pending\",\"QA Resident Clock MQQQ Today PreRound\":\"Pre-Rounded | QA2 · 0 tasks pending\"}"
+    },
+    {
+      "id": "plus24h: Today's Visits same In Today residents",
+      "ok": true,
+      "detail": "A QA Resident Clock MQQQ Today Pending, QA Resident Clock MQQQ Today PreRound | B QA Resident Clock MQQQ Today Pending, QA Resident Clock MQQQ Today PreRound"
+    },
+    {
+      "id": "plus24h: date line A vs B (Q4, record)",
+      "ok": true,
+      "detail": "A Friday, October 16, 2026 | B Friday, October 16, 2026",
+      "recordOnly": true
+    },
+    {
+      "id": "plus24h: B's visit changed no count, Nursing Home row or In Today mark A sees",
+      "ok": true,
+      "detail": "unchanged"
+    },
+    {
+      "id": "plus24h: Hospital rows unchanged for A (B's device day may roll today's New Admission: known TFA-92584 / B18)",
+      "ok": true,
+      "detail": "{\"QA Hosp Clock MQQQ Pending\":\"Not Yet Prepped | Room QA01 · 0 tasks pending\",\"QA Hosp Clock MQQQ PreRound\":\"Pre-Rounded | Room QA02 · 0 tasks pending\",\"QA Hosp Clock MQQQ NoteReady\":\"Note Ready | Room QA03 · 0 tasks pending\",\"QA Hosp Clock MQQQ Done\":\"Complete | Room QA04 · 0 tasks pending\",\"QA Hosp Clock MQQQ NewAdmit\":\"Not Yet Prepped | Room QA05 · 0 tasks pending\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "B nextCalendarDay: kept its stored session",
+      "ok": false,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "B nextCalendarDay: can use the app",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}"
+    },
+    {
+      "id": "nextCalendarDay: Hospital dashboard same counts",
+      "ok": true,
+      "detail": "A {\"total\":\"5\",\"pending\":\"2\",\"inProgress\":\"2\",\"done\":\"1\"} B {\"total\":\"5\",\"pending\":\"2\",\"inProgress\":\"2\",\"done\":\"1\"}"
+    },
+    {
+      "id": "nextCalendarDay: Hospital dashboard same rows",
+      "ok": true,
+      "detail": "A {\"QA Hosp Clock MQQQ Pending\":\"Not Yet Prepped | Room QA01 · 0 tasks pending\",\"QA Hosp Clock MQQQ PreRound\":\"Pre-Rounded | Room QA02 · 0 tasks pending\",\"QA Hosp Clock MQQQ NoteReady\":\"Note Ready | Room QA03 · 0 tasks pending\",\"QA Hosp Clock MQQQ Done\":\"Complete | Room QA04 · 0 tasks pending\",\"QA Hosp Clock MQQQ NewAdmit\":\"Not Yet Prepped | Room QA05 · 0 tasks pending\"} B {\"QA Hosp Clock MQQQ Pending\":\"Not Yet Prepped | Room QA01 · 0 tasks pending\",\"QA Hosp Clock MQQQ PreRound\":\"Pre-Rounded | Room QA02 · 0 tasks pending\",\"QA Hosp Clock MQQQ NoteReady\":\"Note Ready | Room QA03 · 0 tasks pending\",\"QA Hosp Clock MQQQ Done\":\"Complete | Room QA04 · 0 tasks pending\",\"QA Hosp Clock MQQQ NewAdmit\":\"Not Yet Prepped | Room QA05 · 0 tasks pending\"}"
+    },
+    {
+      "id": "nextCalendarDay: Nursing Home dashboard same counts",
+      "ok": true,
+      "detail": "A {\"total\":\"2\",\"pending\":\"1\",\"inProgress\":\"1\",\"done\":\"0\"} B {\"total\":\"2\",\"pending\":\"1\",\"inProgress\":\"1\",\"done\":\"0\"}"
+    },
+    {
+      "id": "nextCalendarDay: Nursing Home dashboard same rows",
+      "ok": true,
+      "detail": "A {\"QA Resident Clock MQQQ Today Pending\":\"Not Yet Prepped | QA1 · 0 tasks pending\",\"QA Resident Clock MQQQ Today PreRound\":\"Pre-Rounded | QA2 · 0 tasks pending\"} B {\"QA Resident Clock MQQQ Today Pending\":\"Not Yet Prepped | QA1 · 0 tasks pending\",\"QA Resident Clock MQQQ Today PreRound\":\"Pre-Rounded | QA2 · 0 tasks pending\"}"
+    },
+    {
+      "id": "nextCalendarDay: Today's Visits same In Today residents",
+      "ok": true,
+      "detail": "A QA Resident Clock MQQQ Today Pending, QA Resident Clock MQQQ Today PreRound | B QA Resident Clock MQQQ Today Pending, QA Resident Clock MQQQ Today PreRound"
+    },
+    {
+      "id": "nextCalendarDay: date line A vs B (Q4, record)",
+      "ok": false,
+      "detail": "A Friday, October 16, 2026 | B Saturday, October 17, 2026",
+      "recordOnly": true
+    },
+    {
+      "id": "nextCalendarDay: B's visit changed no count, Nursing Home row or In Today mark A sees",
+      "ok": true,
+      "detail": "unchanged"
+    },
+    {
+      "id": "nextCalendarDay: Hospital rows unchanged for A (B's device day may roll today's New Admission: known TFA-92584 / B18)",
+      "ok": true,
+      "detail": "{\"QA Hosp Clock MQQQ Pending\":\"Not Yet Prepped | Room QA01 · 0 tasks pending\",\"QA Hosp Clock MQQQ PreRound\":\"Pre-Rounded | Room QA02 · 0 tasks pending\",\"QA Hosp Clock MQQQ NoteReady\":\"Note Ready | Room QA03 · 0 tasks pending\",\"QA Hosp Clock MQQQ Done\":\"Complete | Room QA04 · 0 tasks pending\",\"QA Hosp Clock MQQQ NewAdmit\":\"Not Yet Prepped | Room QA05 · 0 tasks pending\"}",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "A": {
+      "tz": "Asia/Tokyo",
+      "hosp": {
+        "tiles": {
+          "total": "5",
+          "pending": "2",
+          "inProgress": "2",
+          "done": "1"
+        },
+        "rows": {
+          "QA Hosp Clock MQQQ Pending": "Not Yet Prepped | Room QA01 · 0 tasks pending",
+          "QA Hosp Clock MQQQ PreRound": "Pre-Rounded | Room QA02 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NoteReady": "Note Ready | Room QA03 · 0 tasks pending",
+          "QA Hosp Clock MQQQ Done": "Complete | Room QA04 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NewAdmit": "Not Yet Prepped | Room QA05 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "snf": {
+        "tiles": {
+          "total": "2",
+          "pending": "1",
+          "inProgress": "1",
+          "done": "0"
+        },
+        "rows": {
+          "QA Resident Clock MQQQ Today Pending": "Not Yet Prepped | QA1 · 0 tasks pending",
+          "QA Resident Clock MQQQ Today PreRound": "Pre-Rounded | QA2 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "todaysVisits": [
+        "QA Resident Clock MQQQ Today Pending",
+        "QA Resident Clock MQQQ Today PreRound"
+      ]
+    },
+    "B-plus24h": {
+      "hosp": {
+        "tiles": {
+          "total": "5",
+          "pending": "2",
+          "inProgress": "2",
+          "done": "1"
+        },
+        "rows": {
+          "QA Hosp Clock MQQQ Pending": "Not Yet Prepped | Room QA01 · 0 tasks pending",
+          "QA Hosp Clock MQQQ PreRound": "Pre-Rounded | Room QA02 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NoteReady": "Note Ready | Room QA03 · 0 tasks pending",
+          "QA Hosp Clock MQQQ Done": "Complete | Room QA04 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NewAdmit": "Not Yet Prepped | Room QA05 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "snf": {
+        "tiles": {
+          "total": "2",
+          "pending": "1",
+          "inProgress": "1",
+          "done": "0"
+        },
+        "rows": {
+          "QA Resident Clock MQQQ Today Pending": "Not Yet Prepped | QA1 · 0 tasks pending",
+          "QA Resident Clock MQQQ Today PreRound": "Pre-Rounded | QA2 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "todaysVisits": [
+        "QA Resident Clock MQQQ Today Pending",
+        "QA Resident Clock MQQQ Today PreRound"
+      ]
+    },
+    "A-after-plus24h": {
+      "hosp": {
+        "tiles": {
+          "total": "5",
+          "pending": "2",
+          "inProgress": "2",
+          "done": "1"
+        },
+        "rows": {
+          "QA Hosp Clock MQQQ Pending": "Not Yet Prepped | Room QA01 · 0 tasks pending",
+          "QA Hosp Clock MQQQ PreRound": "Pre-Rounded | Room QA02 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NoteReady": "Note Ready | Room QA03 · 0 tasks pending",
+          "QA Hosp Clock MQQQ Done": "Complete | Room QA04 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NewAdmit": "Not Yet Prepped | Room QA05 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "snf": {
+        "tiles": {
+          "total": "2",
+          "pending": "1",
+          "inProgress": "1",
+          "done": "0"
+        },
+        "rows": {
+          "QA Resident Clock MQQQ Today Pending": "Not Yet Prepped | QA1 · 0 tasks pending",
+          "QA Resident Clock MQQQ Today PreRound": "Pre-Rounded | QA2 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "todaysVisits": [
+        "QA Resident Clock MQQQ Today Pending",
+        "QA Resident Clock MQQQ Today PreRound"
+      ]
+    },
+    "B-nextCalendarDay": {
+      "hosp": {
+        "tiles": {
+          "total": "5",
+          "pending": "2",
+          "inProgress": "2",
+          "done": "1"
+        },
+        "rows": {
+          "QA Hosp Clock MQQQ Pending": "Not Yet Prepped | Room QA01 · 0 tasks pending",
+          "QA Hosp Clock MQQQ PreRound": "Pre-Rounded | Room QA02 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NoteReady": "Note Ready | Room QA03 · 0 tasks pending",
+          "QA Hosp Clock MQQQ Done": "Complete | Room QA04 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NewAdmit": "Not Yet Prepped | Room QA05 · 0 tasks pending"
+        },
+        "dateLine": "Saturday, October 17, 2026"
+      },
+      "snf": {
+        "tiles": {
+          "total": "2",
+          "pending": "1",
+          "inProgress": "1",
+          "done": "0"
+        },
+        "rows": {
+          "QA Resident Clock MQQQ Today Pending": "Not Yet Prepped | QA1 · 0 tasks pending",
+          "QA Resident Clock MQQQ Today PreRound": "Pre-Rounded | QA2 · 0 tasks pending"
+        },
+        "dateLine": "Saturday, October 17, 2026"
+      },
+      "todaysVisits": [
+        "QA Resident Clock MQQQ Today Pending",
+        "QA Resident Clock MQQQ Today PreRound"
+      ]
+    },
+    "A-after-nextCalendarDay": {
+      "hosp": {
+        "tiles": {
+          "total": "5",
+          "pending": "2",
+          "inProgress": "2",
+          "done": "1"
+        },
+        "rows": {
+          "QA Hosp Clock MQQQ Pending": "Not Yet Prepped | Room QA01 · 0 tasks pending",
+          "QA Hosp Clock MQQQ PreRound": "Pre-Rounded | Room QA02 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NoteReady": "Note Ready | Room QA03 · 0 tasks pending",
+          "QA Hosp Clock MQQQ Done": "Complete | Room QA04 · 0 tasks pending",
+          "QA Hosp Clock MQQQ NewAdmit": "Not Yet Prepped | Room QA05 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "snf": {
+        "tiles": {
+          "total": "2",
+          "pending": "1",
+          "inProgress": "1",
+          "done": "0"
+        },
+        "rows": {
+          "QA Resident Clock MQQQ Today Pending": "Not Yet Prepped | QA1 · 0 tasks pending",
+          "QA Resident Clock MQQQ Today PreRound": "Pre-Rounded | QA2 · 0 tasks pending"
+        },
+        "dateLine": "Friday, October 16, 2026"
+      },
+      "todaysVisits": [
+        "QA Resident Clock MQQQ Today Pending",
+        "QA Resident Clock MQQQ Today PreRound"
+      ]
+    }
+  }
+}

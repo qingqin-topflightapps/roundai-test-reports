@@ -1,0 +1,36 @@
+{
+  "name": "tc21-s15-hub",
+  "at": "2026-10-16T10:09:27.344Z",
+  "checks": [
+    {
+      "id": "record (Q8 / B28): Tim's test asserts the diagnosis on the NH card; UAT TC-01/TC-03 say no diagnosis",
+      "ok": true,
+      "detail": "QR QA Resident Hub 7QJK Cedar Wing · Room 12 · DOB 1942-03-14 · MRN-E0YZ Post-acute rehabilitation Pending New Admission",
+      "recordOnly": true
+    },
+    {
+      "id": "every hub destination and chart tab was reached (U9 wiring), New Admission pre-selects SNF admission and the picker lists the 4 SNF templates",
+      "ok": true,
+      "detail": "{\"cardIdentity\":true,\"chartPreRound\":true,\"beginEncounter\":true,\"newAdmissionPreselectsSnfAdmission\":true,\"fourSnfTemplates\":true,\"postRound\":true,\"addResident\":true,\"scan\":true,\"inbox\":true,\"taskExport\":true,\"handoff\":true,\"settings\":true}"
+    }
+  ],
+  "data": {
+    "steps": {
+      "cardIdentity": true,
+      "chartPreRound": true,
+      "beginEncounter": true,
+      "newAdmissionPreselectsSnfAdmission": true,
+      "fourSnfTemplates": true,
+      "postRound": true,
+      "addResident": true,
+      "scan": true,
+      "inbox": true,
+      "taskExport": true,
+      "handoff": true,
+      "settings": true
+    },
+    "aiCalls": [
+      "ai/assist:generateHandoff:ok"
+    ]
+  }
+}

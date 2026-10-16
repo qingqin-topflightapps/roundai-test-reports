@@ -1,0 +1,24 @@
+{
+  "OAT-03/S02": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:55:55.674Z",
+    "title": "A failed Generate keeps the dictation; a second tap gives the note, which survives a reload (both contexts); the no-network banner comes and goes",
+    "detail": "Mocked copy of Tim's four lane-A titles (they cannot run locally on 25acd727: note-generation.spec.ts's second tap calls the configured model and stores a note with a billing template, so the server would queue a live billing job; its SNF fixture also lacks rawPreRoundNotes, so the stale-panels gate blocks its Generate). rst-oat03-s02-retry.spec.ts, local stack, fresh physician per test; the first ai/notes:generateNote is answered with a failure at the Convex socket (no model), the second with a mocked note; a custom 'procedure-other' template is picked first so the stored note queues no billing job (checked: billingJob null). Hospital 10/10 and Nursing Home 10/10 judged checks pass: first tap -> 'The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.' (NH: 'The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.'), box and server keep the dictation, no note stored, Generate offered again; second tap -> the note renders, is stored (same text, noteGeneratedAt set, the picked template, note-ready), dictation unchanged; after a reload Post-Round shows the same note. The NH fixture is Tim's plus rawPreRoundNotes = preRoundNotes and notesProcessedAt (the correction the review asked for). Tim's encounter-workflow 'a generation failure keeps the saved dictation' is covered by the Hospital first tap. Banner (connection-banner title, copied, no model): 3/3 — 'No network connection. What you dictate stays on this screen…' while offline, gone when back online. Recorded only: Q1 (no automatic retry: one generateNote call until the physician taps again), Q3 (the copy is not the literal 'Note not generated'). Web only (U13 iOS / Android is the device lane). Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-banner-offline.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-banner.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-hosp-cp1-first-tap-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-hosp-cp2-second-tap-note.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-hosp-cp3-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-nh-cp1-first-tap-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-nh-cp2-second-tap-note.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-nh-cp3-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s02-nh.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst"
+  }
+}

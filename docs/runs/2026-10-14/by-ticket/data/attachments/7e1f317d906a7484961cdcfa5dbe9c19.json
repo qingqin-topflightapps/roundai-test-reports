@@ -1,0 +1,326 @@
+{
+  "ref": "TC-11/S03",
+  "title": "TC-11/S03 UAT journey in one sitting: earlier days seeded by date, today a real Generate (Hospital + Nursing Home); timeline recorded for the T4 trend rating",
+  "dataset": "rst-tc11-s03",
+  "target": "dev",
+  "at": "2026-10-16T10:33:14.212Z",
+  "cells": [
+    {
+      "name": "Hospital cards before today's visit (day 3 morning)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable"
+        ],
+        "ledger": [
+          "Oct 14: Admitted with CHF exacerbation, IV furosemide started",
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable"
+        ]
+      }
+    },
+    {
+      "name": "Hospital after today's Generate",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+          "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+        ],
+        "settled": true,
+        "ledger": [
+          "Oct 14: Admitted with CHF exacerbation, IV furosemide started",
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+          "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+        ],
+        "ai": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4722,
+            "providerMs": 4718,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.extractMedicationEvents",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2274,
+            "providerMs": 2271,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "billing.suggestBilling",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2760,
+            "providerMs": 2692,
+            "appMs": 68,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "notes.refreshCourseAndBackground",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3276,
+            "providerMs": 3273,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.classifyAdmissionReason",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2016,
+            "providerMs": 2014,
+            "appMs": 2,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Hospital (U1): the cards are yesterday's ('Oct 15:') then today's ('Oct 16:'), one each",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+          "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+        ]
+      }
+    },
+    {
+      "name": "Hospital (U1): the admission day 'Oct 14' is off the cards",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+          "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+        ]
+      }
+    },
+    {
+      "name": "Hospital: today's card carries an encounter fact (furosemide | BMP | crackles | weight)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "today": "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+      }
+    },
+    {
+      "name": "Hospital: no 'Encounter done' / pending marker left",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+          "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+        ]
+      }
+    },
+    {
+      "name": "Hospital (U3): the stored ledger has one line per day (Oct 14, Oct 15, Oct 16), the earlier two unchanged",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "ledger": [
+          "Oct 14: Admitted with CHF exacerbation, IV furosemide started",
+          "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+          "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+        ]
+      }
+    },
+    {
+      "name": "Nursing Home after today's Generate",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 13: Admitted for rehab after hip fracture, PT started",
+          "Visit 2 – Oct 15: Walking 40 feet with walker, pain 4/10",
+          "Visit 3 – Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+        ],
+        "settled": true,
+        "ledger": [
+          "Visit 1 · Oct 13: Admitted for rehab after hip fracture, PT started",
+          "Visit 2 · Oct 15: Walking 40 feet with walker, pain 4/10",
+          "Visit 3 · Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+        ],
+        "ai": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3628,
+            "providerMs": 3613,
+            "appMs": 15,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.extractMedicationEvents",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 1848,
+            "providerMs": 1845,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "billing.suggestBilling",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3593,
+            "providerMs": 3504,
+            "appMs": 89,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "notes.refreshCourseAndBackground",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3305,
+            "providerMs": 3302,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Nursing Home (U2/U4): Visit 1–3 in order, each with its own date (Visit 1 – Oct 13, Visit 2 – Oct 15, Visit 3 – Oct 16)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 13: Admitted for rehab after hip fracture, PT started",
+          "Visit 2 – Oct 15: Walking 40 feet with walker, pain 4/10",
+          "Visit 3 – Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+        ]
+      }
+    },
+    {
+      "name": "Nursing Home (U2): the skipped day 'Oct 14' is absent",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Visit 1 – Oct 13: Admitted for rehab after hip fracture, PT started",
+          "Visit 2 – Oct 15: Walking 40 feet with walker, pain 4/10",
+          "Visit 3 – Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+        ]
+      }
+    },
+    {
+      "name": "Nursing Home (U3): no duplicate visit line (one line per visit in the ledger)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "ledger": [
+          "Visit 1 · Oct 13: Admitted for rehab after hip fracture, PT started",
+          "Visit 2 · Oct 15: Walking 40 feet with walker, pain 4/10",
+          "Visit 3 · Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+        ]
+      }
+    },
+    {
+      "name": "Nursing Home: Visit 3 carries an encounter fact (80 feet | 2/10 | discharge | PT)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "visit3": "Visit 3 – Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+      }
+    },
+    {
+      "name": "Nursing Home: the earlier visits' lines are unchanged",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "ledger": [
+          "Visit 1 · Oct 13: Admitted for rehab after hip fracture, PT started",
+          "Visit 2 · Oct 15: Walking 40 feet with walker, pain 4/10",
+          "Visit 3 · Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+        ]
+      }
+    },
+    {
+      "name": "T4 (no written oracle, Q8): read the cards as a trend of the stay and rate it (Quinn)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "hospital": {
+          "cards": [
+            "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+            "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+          ],
+          "ledger": [
+            "Oct 14: Admitted with CHF exacerbation, IV furosemide started",
+            "Oct 15: Diuresing well, net negative 1.5 L, creatinine stable",
+            "Oct 16: CHF exacerbation responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily"
+          ]
+        },
+        "nursingHome": {
+          "cards": [
+            "Visit 1 – Oct 13: Admitted for rehab after hip fracture, PT started",
+            "Visit 2 – Oct 15: Walking 40 feet with walker, pain 4/10",
+            "Visit 3 – Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+          ],
+          "ledger": [
+            "Visit 1 · Oct 13: Admitted for rehab after hip fracture, PT started",
+            "Visit 2 · Oct 15: Walking 40 feet with walker, pain 4/10",
+            "Visit 3 · Oct 16: 84-year-old female with left hip fracture progressing well in rehab; ambulating 80 feet with walker, pain 2/10; discharge planned next week if functional improvement continues"
+          ]
+        }
+      },
+      "ref": "Q8"
+    },
+    {
+      "name": "the run stayed on one local day",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "day0": "Oct 16"
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-11-S03-hospital-timeline.png",
+    "evidence/TC-11-S03-nursing-home-timeline.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-11-S03-hospital-timeline.png": 0,
+    "evidence/TC-11-S03-nursing-home-timeline.png": 0
+  }
+}

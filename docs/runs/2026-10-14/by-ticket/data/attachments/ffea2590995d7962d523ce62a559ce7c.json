@@ -1,0 +1,232 @@
+{
+  "name": "tc09-s06",
+  "at": "2026-10-16T10:02:51.569Z",
+  "checks": [
+    {
+      "id": "s06-sheet (U10): '7 residents found', every row listed",
+      "ok": true,
+      "detail": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n7 residents found — tap to include\n\n2 already in All Residents · 4 new · 1 to review\n\nQA TC-09-S06 Fir\n✓ In panel\n\nBirch 1 · QA-KS02-11\n\nQA TC-09-S06 Gum\n✓ In panel\n\nBirch 2 · QA-KS02-12\n\nQA TC-09-S06 Hazel\n＋ New\n\nBirch 3 · QA-KS02-31\n\nQA TC-09-S06 Juniper\n＋ New\n\nBirch 4\n\nQA TC-09-S06 Juniper\n! Review\n\nBirch 4\n\nThis r"
+    },
+    {
+      "id": "s06-sheet (U8): no Hospital-only patient row other than the photographed Ivy; the fixture Hospital patient is absent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s06-sheet (Q2, recorded): the summary counts",
+      "ok": true,
+      "detail": "2 already in All Residents · 4 new · 1 to review",
+      "recordOnly": true
+    },
+    {
+      "id": "s06 (recorded): the rows the review sheet asked about",
+      "ok": true,
+      "detail": "Possible duplicate This resident may already be in All Residents, or appear twice in the photo. You decide — the app won’t drop or duplicate anyone on its own. QA TC-09-S06 Juniper Birch 4 This reside",
+      "recordOnly": true
+    },
+    {
+      "id": "s06-today: Fir (known, already In Today) stays on today, once",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "s06-today: Gum (known, not In Today) joins today",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "s06-today: Juniper (new, twice on the photo) is on today once",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "s06-today: Kestrel (new) is on today",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "s06-today (U8): Ivy (known only in Hospital) is new for Nursing Home and on today",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "s06-today (U8): the Hospital fixture patient is not on the Nursing Home list",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s06-today (Q1, recorded): the fixture resident (In Today, not on the photo) is still on today",
+      "ok": false,
+      "detail": "left today without a prompt",
+      "recordOnly": true
+    },
+    {
+      "id": "s06-all: Fir, Gum, Hazel, Juniper, Kestrel and Ivy are in All Residents",
+      "ok": true,
+      "detail": "QA Resident KS02 | QA TC-09-S06 Fir | QA TC-09-S06 Gum | QA TC-09-S06 Hazel | QA TC-09-S06 Hazel | QA TC-09-S06 Ivy | QA TC-09-S06 Juniper | QA TC-09-S06 Kestrel"
+    },
+    {
+      "id": "s06-all (U3): the repeated Juniper row created one resident",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "s06-all (U3): Gum's unit is unchanged (Birch 2)",
+      "ok": true,
+      "detail": "QT QA TC-09-S06 Gum Birch 2 · 81y · QA-KS02-12 In Today ✓ Post-acute rehab Pending Follow-up"
+    },
+    {
+      "id": "s06-all (U7): every new resident is Follow-up (no New Admission / Consult)",
+      "ok": true,
+      "detail": "QT QA TC-09-S06 Juniper Birch 4 · SNF-660506 In Today ✓ Pending Follow-up || QT QA TC-09-S06 Kestrel SNF-988578 In Today ✓ Pending Follow-up || QT QA TC-09-S06 Ivy Birch 6 · SNF-515230 In Today ✓ Pending Follow-up"
+    },
+    {
+      "id": "backend (U3): Gum and Juniper exist exactly once, Kestrel and Ivy once",
+      "ok": true,
+      "detail": "QA TC-09-S06 Gum×1, QA TC-09-S06 Juniper×1, QA TC-09-S06 Kestrel×1, QA TC-09-S06 Ivy×1"
+    },
+    {
+      "id": "backend (U3): Gum keeps unit Birch 2 and its MRN",
+      "ok": true,
+      "detail": "{\"_creationTime\":1792144965830.51,\"_id\":\"m57dws129v55rjvqqw85vegscx8gchgg\",\"addedAt\":\"2026-10-16T10:02:45.830Z\",\"age\":81,\"diagnosis\":\"Post-acute rehab\",\"encType\":\"follow-up\",\"inTodaysSession\":true,\"mrn\":\"QA-KS02-12\",\"name\":\"QA TC-09-S06 Gum\",\"status\":\"pending\",\"unit\":\"Birch 2\",\"userId\":\"jd7fq10s72yca46tq9g348ewb18gc50r\"}"
+    },
+    {
+      "id": "backend (U10): Kestrel is stored with a blank unit and no DOB",
+      "ok": true,
+      "detail": "{\"unit\":\"\",\"dob\":\"\"}"
+    },
+    {
+      "id": "backend (Q6, recorded): Kestrel (no MRN on the photo) has no generated MRN",
+      "ok": false,
+      "detail": "SNF-988578",
+      "recordOnly": true
+    },
+    {
+      "id": "backend (Q8, recorded): the Hazel row with another MRN — how many Hazels now",
+      "ok": false,
+      "detail": "2 resident(s) named QA TC-09-S06 Hazel: [{\"mrn\":\"QA-KS02-13\",\"unit\":\"Birch 3\",\"inToday\":false},{\"mrn\":\"QA-KS02-31\",\"unit\":\"Birch 3\",\"inToday\":true}]",
+      "recordOnly": true
+    },
+    {
+      "id": "s06-kestrel-chart (U7): Follow-up selected",
+      "ok": true,
+      "detail": "Follow-up"
+    },
+    {
+      "id": "s06-kestrel-chart (U10): no inferred unit ('Birch 5')",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s06-kestrel-chart (Q6, recorded): no 'SNF-' MRN shown",
+      "ok": false,
+      "detail": "SNF-988578",
+      "recordOnly": true
+    },
+    {
+      "id": "s06-hospital (U8): Ivy and the fixture patient are on the Hospital list; nothing from Nursing Home is",
+      "ok": true,
+      "detail": "QA Hosp KS02 | QA TC-09-S06 Ivy"
+    },
+    {
+      "id": "setup: one scripted read; nothing else reached a model",
+      "ok": true,
+      "detail": "[\"ai/vision:scanCensusSheet\"]"
+    }
+  ],
+  "data": {
+    "sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n7 residents found — tap to include\n\n2 already in All Residents · 4 new · 1 to review\n\nQA TC-09-S06 Fir\n✓ In panel\n\nBirch 1 · QA-KS02-11\n\nQA TC-09-S06 Gum\n✓ In panel\n\nBirch 2 · QA-KS02-12\n\nQA TC-09-S06 Hazel\n＋ New\n\nBirch 3 · QA-KS02-31\n\nQA TC-09-S06 Juniper\n＋ New\n\nBirch 4\n\nQA TC-09-S06 Juniper\n! Review\n\nBirch 4\n\nThis resident appears more than once in the scan\n\nQA TC-09-S06 Kestrel\n＋ New\nQA TC-09-S06 Ivy\n＋ New\n\nBirch 6\n\nAdd 7 to Today's Visits",
+    "review-asked": [
+      "Possible duplicate This resident may already be in All Residents, or appear twice in the photo. You decide — the app won’t drop or duplicate anyone on its own. QA TC-09-S06 Juniper Birch 4 This reside"
+    ],
+    "today": [
+      "QA TC-09-S06 Fir",
+      "QA TC-09-S06 Gum",
+      "QA TC-09-S06 Hazel",
+      "QA TC-09-S06 Ivy",
+      "QA TC-09-S06 Juniper",
+      "QA TC-09-S06 Kestrel"
+    ],
+    "all": {
+      "names": [
+        "QA Resident KS02",
+        "QA TC-09-S06 Fir",
+        "QA TC-09-S06 Gum",
+        "QA TC-09-S06 Hazel",
+        "QA TC-09-S06 Hazel",
+        "QA TC-09-S06 Ivy",
+        "QA TC-09-S06 Juniper",
+        "QA TC-09-S06 Kestrel"
+      ],
+      "gumCard": "QT QA TC-09-S06 Gum Birch 2 · 81y · QA-KS02-12 In Today ✓ Post-acute rehab Pending Follow-up",
+      "newCards": [
+        "QT QA TC-09-S06 Juniper Birch 4 · SNF-660506 In Today ✓ Pending Follow-up",
+        "QT QA TC-09-S06 Kestrel SNF-988578 In Today ✓ Pending Follow-up",
+        "QT QA TC-09-S06 Ivy Birch 6 · SNF-515230 In Today ✓ Pending Follow-up"
+      ]
+    },
+    "backend": [
+      {
+        "name": "QA Resident KS02",
+        "unit": "Maple 4",
+        "mrn": "QA-KS02-10",
+        "inToday": false
+      },
+      {
+        "name": "QA TC-09-S06 Fir",
+        "unit": "Birch 1",
+        "mrn": "QA-KS02-11",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S06 Gum",
+        "unit": "Birch 2",
+        "mrn": "QA-KS02-12",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S06 Hazel",
+        "unit": "Birch 3",
+        "mrn": "QA-KS02-13",
+        "inToday": false
+      },
+      {
+        "name": "QA TC-09-S06 Hazel",
+        "unit": "Birch 3",
+        "mrn": "QA-KS02-31",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S06 Ivy",
+        "unit": "Birch 6",
+        "mrn": "SNF-515230",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S06 Juniper",
+        "unit": "Birch 4",
+        "mrn": "SNF-660506",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S06 Kestrel",
+        "unit": "",
+        "mrn": "SNF-988578",
+        "inToday": true
+      }
+    ],
+    "kestrel-chart": {
+      "badge": "Follow-up",
+      "birch5": false,
+      "snfMrn": "SNF-988578"
+    },
+    "hospital": [
+      "QA Hosp KS02",
+      "QA TC-09-S06 Ivy"
+    ],
+    "cleanup": {
+      "hospital": 2,
+      "nursingHome": 8
+    }
+  }
+}

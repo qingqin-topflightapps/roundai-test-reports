@@ -1,0 +1,163 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "qa-agent.config.ts",
+      "qa-agent-tests/newspec-c/rst-tc11-s05-clock-cells.spec.ts",
+      "--reporter=list,json",
+      "--output=tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/rst-tc11-s05-clock-cells",
+      "--workers=1",
+      "-g",
+      "S05 midnight"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/rst-tc11-s05-clock-cells",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "qa-agent",
+        "name": "qa-agent",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "newspec-c/rst-tc11-s05-clock-cells.spec.ts",
+      "file": "newspec-c/rst-tc11-s05-clock-cells.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-11 S05 midnight: Hospital Pre-Round Save at 23:58, Generate at 23:59, the refresh returns at 00:00:20 device-local",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 582129,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "qa-agent",
+              "projectName": "qa-agent",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 308384,
+                  "error": {
+                    "message": "Error: midnight: one line for the visit: [\"Oct 15: Breathing easier on 2 L. Encounter done\",\"Oct 16: Note finished, plan unchanged\"]\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: midnight: one line for the visit: [\"Oct 15: Breathing easier on 2 L. Encounter done\",\"Oct 16: Note finished, plan unchanged\"]\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at Evidence.check (round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts:95:41)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/rst-tc11-s05-clock-cells.spec.ts:238:8",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts",
+                      "column": 41,
+                      "line": 95
+                    },
+                    "snippet": "   at newspec-c/support.ts:95\n\n  93 |   check(id: string, ok: boolean, detail: string) {\n  94 |     this.checks.push({ id, ok, detail });\n> 95 |     expect.soft(ok, `${id}: ${detail}`).toBe(true);\n     |                                         ^\n  96 |   }\n  97 |   // Logged only (open UAT question); never decides the test.\n  98 |   note(id: string, ok: boolean, detail: string) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts",
+                        "column": 41,
+                        "line": 95
+                      },
+                      "message": "Error: midnight: one line for the visit: [\"Oct 15: Breathing easier on 2 L. Encounter done\",\"Oct 16: Note finished, plan unchanged\"]\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n   at newspec-c/support.ts:95\n\n  93 |   check(id: string, ok: boolean, detail: string) {\n  94 |     this.checks.push({ id, ok, detail });\n> 95 |     expect.soft(ok, `${id}: ${detail}`).toBe(true);\n     |                                         ^\n  96 |   }\n  97 |   // Logged only (open UAT question); never decides the test.\n  98 |   note(id: string, ok: boolean, detail: string) {\n    at Evidence.check (round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts:95:41)\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/rst-tc11-s05-clock-cells.spec.ts:238:8"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T10:55:16.310Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/rst-tc11-s05-clock-cells/newspec-c-rst-tc11-s05-clo-2fea2-ns-at-00-00-20-device-local-qa-agent/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/rst-tc11-s05-clock-cells/newspec-c-rst-tc11-s05-clo-2fea2-ns-at-00-00-20-device-local-qa-agent/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-c/artifacts/rst-tc11-s05-clock-cells/newspec-c-rst-tc11-s05-clo-2fea2-ns-at-00-00-20-device-local-qa-agent/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-c/support.ts",
+                    "column": 41,
+                    "line": 95
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "381264dd6725ca97c0b5-d04df0cb344d8994b35b",
+          "file": "newspec-c/rst-tc11-s05-clock-cells.spec.ts",
+          "line": 199,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T10:55:15.954Z",
+    "duration": 309297.489,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

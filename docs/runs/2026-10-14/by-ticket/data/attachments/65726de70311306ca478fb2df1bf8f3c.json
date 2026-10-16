@@ -1,0 +1,68 @@
+{
+  "name": "tc21-s07a",
+  "at": "2026-10-16T09:54:22.432Z",
+  "checks": [
+    {
+      "id": "switch 1 -> snf: the empty context shows its empty state (not a blank page) and never the other context's patient",
+      "ok": true,
+      "detail": "{\"step\":1,\"mode\":\"snf\",\"names\":[],\"emptyState\":true}"
+    },
+    {
+      "id": "switch 1: no Clinic",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "switch 2 -> hospital: own patient listed",
+      "ok": true,
+      "detail": "[\"QA Hosp S07a FCJ5\"]"
+    },
+    {
+      "id": "switch 2: no Clinic",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "switch 3 -> snf: the empty context shows its empty state (not a blank page) and never the other context's patient",
+      "ok": true,
+      "detail": "{\"step\":3,\"mode\":\"snf\",\"names\":[],\"emptyState\":true}"
+    },
+    {
+      "id": "switch 3: no Clinic",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "a: NH All Residents tab also empty and without the Hospital patient",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\nNursing Home\n\n0/0 residents seen today\n\nToday's Visits\nAll Residents\nSort: Room number\nSort: Name A–Z\nSort: Status (to-do first)\n\nNo residents in the panel yet.\n\nTap + to add a resident.\n\nTask "
+    }
+  ],
+  "data": {
+    "steps": [
+      {
+        "step": 1,
+        "mode": "snf",
+        "names": [],
+        "emptyState": true
+      },
+      {
+        "step": 2,
+        "mode": "hospital",
+        "names": [
+          "QA Hosp S07a FCJ5"
+        ],
+        "emptyState": false
+      },
+      {
+        "step": 3,
+        "mode": "snf",
+        "names": [],
+        "emptyState": true
+      }
+    ]
+  }
+}

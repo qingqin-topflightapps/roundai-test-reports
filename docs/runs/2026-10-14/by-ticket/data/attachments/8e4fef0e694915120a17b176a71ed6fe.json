@@ -1,0 +1,90 @@
+{
+  "name": "tc09-s08",
+  "at": "2026-10-16T10:03:01.394Z",
+  "checks": [
+    {
+      "id": "setup: the fixture resident is on Today's Visits before the scan; Alder is not",
+      "ok": true,
+      "detail": "QA Resident WM56"
+    },
+    {
+      "id": "s08-sheet: the one row is listed",
+      "ok": true,
+      "detail": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n1 resident found — tap to include\n\n1 already in All Residents · 0 new · 0 to review\n\nQA TC-09-S08 Alder\n✓ In panel\n\nOak"
+    },
+    {
+      "id": "s08-today (U2): Alder joins Today's Visits",
+      "ok": true,
+      "detail": "QA TC-09-S08 Alder"
+    },
+    {
+      "id": "s08-today (U8): no Hospital patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s08-today (Q1, recorded): the fixture resident (not on the photo) is still on Today's Visits (UAT 'adds', AC 3 'never silently dropping')",
+      "ok": false,
+      "detail": "dropped from today without a word (warning before the write: false)",
+      "recordOnly": true
+    },
+    {
+      "id": "s08-all (U5): Alder and the fixture resident are both still in All Residents",
+      "ok": true,
+      "detail": "QA Resident WM56 | QA TC-09-S08 Alder"
+    },
+    {
+      "id": "backend: Alder In Today, exactly once",
+      "ok": true,
+      "detail": "{\"_creationTime\":1792144977070.878,\"_id\":\"m5735qhh857cdfkmmhnwzy0yds8gcw3g\",\"addedAt\":\"2026-10-16T10:02:57.070Z\",\"age\":86,\"diagnosis\":\"Post-acute rehab\",\"encType\":\"follow-up\",\"inTodaysSession\":true,\"mrn\":\"QA-WM56-01\",\"name\":\"QA TC-09-S08 Alder\",\"status\":\"pending\",\"unit\":\"Oak 1\",\"userId\":\"jd79751geqaty0ssbdp8haxj3n8gd3db\"}"
+    },
+    {
+      "id": "backend (Q1, recorded): the fixture resident's In Today after the scan",
+      "ok": false,
+      "detail": "inTodaysSession = false",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: one scripted read",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "today-before": [
+      "QA Resident WM56"
+    ],
+    "sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n1 resident found — tap to include\n\n1 already in All Residents · 0 new · 0 to review\n\nQA TC-09-S08 Alder\n✓ In panel\n\nOak 1 · QA-WM56-01\n\nAdd 1 to Today's Visits",
+    "confirm": {
+      "warningShown": false
+    },
+    "today": [
+      "QA TC-09-S08 Alder"
+    ],
+    "all": {
+      "names": [
+        "QA Resident WM56",
+        "QA TC-09-S08 Alder"
+      ],
+      "fixtureCard": "QR QA Resident WM56 Maple 4 · 84y · QA-WM56-10 + Today Post-acute rehab Pending Follow-up"
+    },
+    "backend": [
+      {
+        "name": "QA Resident WM56",
+        "unit": "Maple 4",
+        "mrn": "QA-WM56-10",
+        "inToday": false
+      },
+      {
+        "name": "QA TC-09-S08 Alder",
+        "unit": "Oak 1",
+        "mrn": "QA-WM56-01",
+        "inToday": true
+      }
+    ],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 2
+    }
+  }
+}

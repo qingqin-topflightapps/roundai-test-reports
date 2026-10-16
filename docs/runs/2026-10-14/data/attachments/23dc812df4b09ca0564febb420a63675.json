@@ -1,0 +1,20 @@
+{
+  "TC-20/S09": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:31:13.123Z",
+    "title": "UAT step 3 as written: live Generate, finish a task, complete and regenerate in tab B while the dashboard stays open in tab A",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts driving the app UI. Judged 11/11, 2 record-only. Tab A held the dashboard and was never reloaded; tab B generated with the live model (default template, live billing job too). Hospital (seeded pre-rounded, 2 open tasks): while generating the row read Seen, not Note Ready; Note Ready appeared in A 12.9 s after the tap with tiles equal to the stored rows; ticking 'Follow up BMP' moved A's row to '1 task pending' in 0.6 s; Mark Encounter Complete (keep tasks) -> badge Complete, 1/0/0/1, in 0.6 s. Nursing Home: Not Yet Prepped while generating, Note Ready after 4.1 s, Mark Visit Complete -> 1/0/0/1 in 0.6 s. Q9 recorded: Regenerate Note on the finished chart leaves both rows Complete (status post-rounded / complete). The NH second-visit Generate was not repeated on dev (recorded locally).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/tc20-s09-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s09-hosp-a-note-ready.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s09-hosp-a-complete.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s09-snf-a-note-ready.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s09-snf-a-complete.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/cleanup.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

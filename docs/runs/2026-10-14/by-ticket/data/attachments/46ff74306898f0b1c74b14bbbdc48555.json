@@ -1,0 +1,35 @@
+{
+  "name": "tc21-s15-billing-block",
+  "at": "2026-10-16T10:09:33.711Z",
+  "checks": [
+    {
+      "id": "snf-progress: the NH billing block shows a code from its family (99307/99308/99309/99310) with its level, and no job was queued",
+      "ok": true,
+      "detail": "{\"code\":\"99309\",\"billingJob\":null,\"card\":true}"
+    },
+    {
+      "id": "snf-consult: the NH billing block shows a code from its family (99304/99305/99306) with its level, and no job was queued",
+      "ok": true,
+      "detail": "{\"code\":\"99305\",\"billingJob\":null,\"card\":true}"
+    },
+    {
+      "id": "no billing call from the page",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "cards": {
+      "snf-progress": {
+        "code": "99309",
+        "billingJob": null,
+        "card": true
+      },
+      "snf-consult": {
+        "code": "99305",
+        "billingJob": null,
+        "card": true
+      }
+    }
+  }
+}

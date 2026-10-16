@@ -1,0 +1,128 @@
+{
+  "name": "tc21-s18",
+  "at": "2026-10-16T10:08:56.298Z",
+  "checks": [
+    {
+      "id": "hospital sheet lists only its own context's patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "hospital: no mailto: link on the handoff screen",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "snf sheet lists only its own context's resident",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "snf: no mailto: link on the handoff screen",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "sender's Sent lists one Hospital and one Nursing Home handoff to the recipient, with a time",
+      "ok": true,
+      "detail": "[\"snf:Dr QA Recipient T21 HDLA:2026-10-16T10:08:51.702Z\",\"rounding:Dr QA Recipient T21 HDLA:2026-10-16T10:08:48.357Z\"]"
+    },
+    {
+      "id": "recipient's Received lists both, with the sender and the time",
+      "ok": true,
+      "detail": "[\"snf:Dr. QA Newspec hmldt:2026-10-16T10:08:51.702Z\",\"rounding:Dr. QA Newspec hmldt:2026-10-16T10:08:48.357Z\"]"
+    },
+    {
+      "id": "structure identical in both contexts: the delivered texts carry the same section headings for the same kind of data (92599 AC)",
+      "ok": true,
+      "detail": "{\"hs\":[\"ACTIVE DIAGNOSES\",\"FOLLOW-UP TOMORROW\"],\"ns\":[\"ACTIVE DIAGNOSES\",\"FOLLOW-UP TOMORROW\"]}"
+    },
+    {
+      "id": "each delivered handoff holds only its own context's patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "empty sections stay empty: no barriers to discharge invented for either context (nothing on file)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "record: the two texts' first line (title)",
+      "ok": true,
+      "detail": "PATIENT HANDOFF | NURSING HOME HANDOFF",
+      "recordOnly": true
+    },
+    {
+      "id": "todo (TFA-92586 ready for pr): four sections incl. pending results and to-do/if-then",
+      "ok": false,
+      "detail": "[\"ACTIVE DIAGNOSES\",\"FOLLOW-UP TOMORROW\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "recipient's inbox screen shows two handoffs from the sender",
+      "ok": true,
+      "detail": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Back\"\n- heading \"Handoffs\" [level=1]\n- button \"Received\"\n- button \"Sent\"\n- button \"Nursing Home Handoff — Oct 16, 2026 — 1 resident From Dr. QA Newspec hmldt · Fri, Oct 16, 7:08 PM 1\":\n  - paragrap"
+    }
+  ],
+  "data": {
+    "sentBox": [
+      {
+        "_id": "jn75yqz5zkhbdett837eh7j7vh8gcfex",
+        "counterpartName": "Dr QA Recipient T21 HDLA",
+        "patientCount": 1,
+        "readAt": null,
+        "sentAt": "2026-10-16T10:08:51.702Z",
+        "title": "Nursing Home Handoff — Oct 16, 2026 — 1 resident",
+        "variant": "snf"
+      },
+      {
+        "_id": "jn7cps84a20gzmkztgrsnagf8s8gcfc2",
+        "counterpartName": "Dr QA Recipient T21 HDLA",
+        "patientCount": 1,
+        "readAt": null,
+        "sentAt": "2026-10-16T10:08:48.357Z",
+        "title": "Patient Handoff — Oct 16, 2026 — 1 patient",
+        "variant": "rounding"
+      }
+    ],
+    "recipientInbox": [
+      {
+        "_id": "jn75yqz5zkhbdett837eh7j7vh8gcfex",
+        "counterpartName": "Dr. QA Newspec hmldt",
+        "patientCount": 1,
+        "readAt": null,
+        "sentAt": "2026-10-16T10:08:51.702Z",
+        "title": "Nursing Home Handoff — Oct 16, 2026 — 1 resident",
+        "variant": "snf"
+      },
+      {
+        "_id": "jn7cps84a20gzmkztgrsnagf8s8gcfc2",
+        "counterpartName": "Dr. QA Newspec hmldt",
+        "patientCount": 1,
+        "readAt": null,
+        "sentAt": "2026-10-16T10:08:48.357Z",
+        "title": "Patient Handoff — Oct 16, 2026 — 1 patient",
+        "variant": "rounding"
+      }
+    ],
+    "deliveredTexts": {
+      "rounding": "PATIENT HANDOFF\nFriday, October 16, 2026 · 07:08 PM\n══════════════════════════════════════════════════\n\n1. QA HOSP HANDOFF S18 HDLA | Room 412 | Community-acquired pneumonia\n\nQA-X intro: on file data only.\n\nACTIVE DIAGNOSES:\n  • QA active diagnosis\n\nFOLLOW-UP TOMORROW:\n  • QA follow-up item\n\n──────────────────────────────────────────────────",
+      "snf": "NURSING HOME HANDOFF\nFriday, October 16, 2026 · 07:08 PM\n══════════════════════════════════════════════════\n\n1. QA RESIDENT HANDOFF S18 HDLA | Unit Cedar Wing · Room 12 | Post-acute rehab after hip fracture\n\nQA-X intro: on file data only.\n\nACTIVE DIAGNOSES:\n  • QA active diagnosis\n\nFOLLOW-UP TOMORROW:\n  • QA follow-up item\n\n──────────────────────────────────────────────────"
+    },
+    "deliveredSections": {
+      "hospital": [
+        "ACTIVE DIAGNOSES",
+        "FOLLOW-UP TOMORROW"
+      ],
+      "snf": [
+        "ACTIVE DIAGNOSES",
+        "FOLLOW-UP TOMORROW"
+      ]
+    },
+    "aiCalls": [
+      "ai/assist:generateHandoff:ok",
+      "ai/assist:generateHandoff:ok"
+    ]
+  }
+}

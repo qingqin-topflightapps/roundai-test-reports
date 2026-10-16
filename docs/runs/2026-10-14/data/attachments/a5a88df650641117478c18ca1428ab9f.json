@@ -1,0 +1,20 @@
+{
+  "TC-21/S25": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:10:35.713Z",
+    "title": "Marker data never crosses contexts on any screen",
+    "detail": "Local 25acd727, runnerGap R3 closed in the spec: markers seeded (Hospital pre-round 'MARK-H-PR T21…', Important Point 'MARK-H ip T21', open task 'MARK-H task T21…', Quick Dictation box 'MARK-H qd T21'; NH medication 'MARK-N med T21', Important Point 'MARK-N ip T21', open task 'MARK-N task T21…'), generateHandoff answered at the socket. 16/16 judged: own markers present where they belong (positive controls: Hospital pre-round, its editor's Important Point, Quick Dictation box, Hospital Task Export; NH Pre-Round med and point, NH Task Export) and never the other context's marker or patient on: both lists, both charts, search ('Resident' in Hospital, 'Hosp' in NH), both dashboards (Total = 1 each), both Task Exports, both handoff sheets, the Handoffs inbox from the NH list; no Quick Dictation box or control in Nursing Home; NH header '0/1 residents'.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s25.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s25-h-preround-editor.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s25-h-dashboard.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s25-n-tasks.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s25-n-handoff.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s25-inbox.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

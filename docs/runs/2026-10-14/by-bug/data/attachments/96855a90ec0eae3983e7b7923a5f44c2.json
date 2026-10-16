@@ -1,0 +1,18 @@
+{
+  "TC-20/S17": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:40:36.812Z",
+    "title": "AI trace and timing for TC-20's AI steps (Save Note, Generate), plus time to full counts",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts (D3, D4). Judged 2/2, 2 record-only. From diagnostics:list (the account's aiCallLog). U7: each live Generate left a notes.generateNote row naming the model, us.anthropic.claude-haiku-4-5 (Hospital and Nursing Home), no fallback; each Save Note left a parsing.parsePreRoundNotes row (Haiku 4.5). U8: every successful call logs providerMs apart from durationMs: generateNote 3.26/3.27 s Hospital, 2.50/2.50 s Nursing Home; parsePreRoundNotes 3.77-3.90 s; extractTasks 1.5-1.8 s; refreshCourseAndBackground 2.7-4.8 s; billing.suggestBilling 2.5-3.0 s; nothing over 30 s; Save Note 0.7 s (Hospital, processing done 7.9 s) and 5.5 s (Nursing Home) to stored status, inside 15 s. Recorded: tap to note-ready 13.3 s Hospital / 4.1 s Nursing Home (the Hospital Generate also runs classifyAdmissionReason first); on the open dashboard a chart write shows within 0.6 s. Note for the runner: aiCallLog keeps only the newest 8 rows per physician (convex/diagnostics.ts LOG_LIMIT), so the Generate rows of the D3 run had already been pushed out when they were read at its end (that D3 check failed for this reason, not a product fault); D4 read them right after each Generate.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-193924/evidence/tc20-s17-generate-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/tc20-s17-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/tc20-s08-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-193924/evidence/cleanup.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

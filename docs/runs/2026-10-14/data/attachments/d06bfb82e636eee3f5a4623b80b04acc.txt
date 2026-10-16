@@ -1,0 +1,43 @@
+URL: http://localhost:6473/rounding
+- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+- button "Hospital"
+- button "Nursing Home"
+- paragraph: How is Round Companion working for you?
+- paragraph: Your answers go to the pilot team. Please don’t include patient details.
+- radiogroup "Rating, 1 is not useful and 5 is essential":
+  - radio "Rate 1": "1"
+  - radio "Rate 2": "2"
+  - radio "Rate 3": "3"
+  - radio "Rate 4": "4"
+  - radio "Rate 5": "5"
+- textbox "What should change?"
+- button "Send feedback" [disabled]
+- button "Not now"
+- paragraph: Friday, October 16, 2026
+- heading "Morning Rounds" [level=1]
+- text: 0/1
+- button "Handoff"
+- button "Inbox"
+- button "Open quick dictation"
+- button "Scan patient list from photo"
+- button "Add patient"
+- paragraph: 1 patient remaining
+- textbox "Search patients":
+  - /placeholder: Search by name, room, MRN, or diagnosis…
+- text: My Patients
+- combobox "Sort patients":
+  - 'option "Sort: Room number" [selected]'
+  - 'option "Sort: Name A–Z"'
+  - 'option "Sort: Status (to-do first)"'
+- button "Dashboard"
+- button "Open chart for QA Hosp Rivera S08 I5MY":
+  - text: QH QA Hosp Rivera S08 I5MY New today
+  - paragraph: Room 412 · 72y
+  - button "Remove QA Hosp Rivera S08 I5MY from the rounding list"
+  - paragraph: Community-acquired pneumonia
+  - text: Not Yet Prepped Follow-up
+- button "Add New Patient"
+- button "Task Export"
+- button "Patients"
+- button "Dashboard"
+- button "Settings"

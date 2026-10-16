@@ -1,0 +1,260 @@
+{
+  "name": "tc20-s11",
+  "at": "2026-10-16T10:02:33.460Z",
+  "checks": [
+    {
+      "id": "(a) note 17 h old: still Done and the chart still holds the note",
+      "ok": true,
+      "detail": "{\"bucket\":\"Done\",\"badge\":\"Complete\",\"line\":\"Room 11A · 0 tasks pending\",\"status\":\"post-rounded\",\"chart\":{\"note\":true,\"preRound\":false,\"encounter\":false,\"openTasks\":0,\"inToday\":null}}"
+    },
+    {
+      "id": "(a) note 19 h old (past 18 h): the note is gone and the patient is back in Pending",
+      "ok": true,
+      "detail": "{\"bucket\":\"Pending\",\"badge\":\"Not Yet Prepped\",\"line\":\"Room 11B · 0 tasks pending\",\"status\":\"pending\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":false,\"openTasks\":0,\"inToday\":null}}"
+    },
+    {
+      "id": "(b) pre-round 13 h old (past 12 h): pre-round text cleared and the patient is not counted as work in progress",
+      "ok": true,
+      "detail": "{\"bucket\":\"Pending\",\"badge\":\"Not Yet Prepped\",\"line\":\"Room 11D · 0 tasks pending\",\"status\":\"pending\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":false,\"openTasks\":0,\"inToday\":null}}"
+    },
+    {
+      "id": "(b) pre-round 11 h old: text kept; bucket follows the server calendar day (Q4, record)",
+      "ok": true,
+      "detail": "{\"bucket\":\"Pending\",\"badge\":\"Not Yet Prepped\",\"line\":\"Room 11C · 0 tasks pending\",\"status\":\"pending\",\"chart\":{\"note\":false,\"preRound\":true,\"encounter\":false,\"openTasks\":0,\"inToday\":null}}",
+      "recordOnly": true
+    },
+    {
+      "id": "(c) seen, encounter 17 h: dictation kept, In Progress",
+      "ok": true,
+      "detail": "{\"bucket\":\"In Progress\",\"badge\":\"Seen\",\"line\":\"Room 11E · 0 tasks pending\",\"status\":\"seen\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":true,\"openTasks\":0,\"inToday\":null}}",
+      "recordOnly": true
+    },
+    {
+      "id": "(c) seen, encounter 19 h / 36 h: dictation cleared; still counted In Progress with an empty chart (Q10, record)",
+      "ok": true,
+      "detail": "{\"bucket\":\"In Progress\",\"badge\":\"Seen\",\"line\":\"Room 11F · 0 tasks pending\",\"status\":\"seen\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":false,\"openTasks\":0,\"inToday\":null}} {\"bucket\":\"In Progress\",\"badge\":\"Seen\",\"line\":\"Room 11G · 0 tasks pending\",\"status\":\"seen\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":false,\"openTasks\":0,\"inToday\":null}}",
+      "recordOnly": true
+    },
+    {
+      "id": "(d) open tasks 35 h / 37 h: the row's pending count still includes the 37 h task (UAT 3.6 36 h, record)",
+      "ok": true,
+      "detail": "{\"bucket\":\"Pending\",\"badge\":\"Not Yet Prepped\",\"line\":\"Room 11H · 2 tasks pending\",\"status\":\"pending\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":false,\"openTasks\":2,\"inToday\":null}}",
+      "recordOnly": true
+    },
+    {
+      "id": "(e) Nursing Home pre-round 11 h: text kept, In Progress",
+      "ok": true,
+      "detail": "{\"bucket\":\"In Progress\",\"badge\":\"Pre-Rounded\",\"line\":\"S11A · 0 tasks pending\",\"status\":\"pre-rounded\",\"chart\":{\"note\":false,\"preRound\":true,\"encounter\":false,\"openTasks\":0,\"inToday\":true}}"
+    },
+    {
+      "id": "(e) Nursing Home pre-round 13 h: text cleared, back in Pending",
+      "ok": true,
+      "detail": "{\"bucket\":\"Pending\",\"badge\":\"Not Yet Prepped\",\"line\":\"S11B · 0 tasks pending\",\"status\":\"pending\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":false,\"openTasks\":0,\"inToday\":true}}"
+    },
+    {
+      "id": "(f) resident In Today with a 19 h-old note: still In Today; the note left and the resident is Pending (D8: In Today has no day; record)",
+      "ok": true,
+      "detail": "{\"bucket\":\"Pending\",\"badge\":\"Not Yet Prepped\",\"line\":\"S11C · 0 tasks pending\",\"status\":\"pending\",\"chart\":{\"note\":false,\"preRound\":false,\"encounter\":false,\"openTasks\":0,\"inToday\":true}}",
+      "recordOnly": true
+    },
+    {
+      "id": "every dashboard bucket equals the stored status's bucket",
+      "ok": true,
+      "detail": "{\"a17\":\"Done/post-rounded\",\"a19\":\"Pending/pending\",\"b11\":\"Pending/pending\",\"b13\":\"Pending/pending\",\"c17\":\"In Progress/seen\",\"c19\":\"In Progress/seen\",\"c36\":\"In Progress/seen\",\"d\":\"Pending/pending\",\"e11\":\"In Progress/pre-rounded\",\"e13\":\"Pending/pending\",\"f\":\"Pending/pending\"}"
+    }
+  ],
+  "data": {
+    "serverNow": {
+      "iso": "2026-10-16T10:02:25.203Z",
+      "utcHour": 10
+    },
+    "firstReads": {
+      "hospital": {
+        "total": "8",
+        "pending": "4",
+        "inProgress": "3",
+        "done": "1"
+      },
+      "snf": {
+        "total": "3",
+        "pending": "2",
+        "inProgress": "1",
+        "done": "0"
+      }
+    },
+    "rows": {
+      "a17": {
+        "bucket": "Done",
+        "badge": "Complete",
+        "line": "Room 11A · 0 tasks pending",
+        "status": "post-rounded",
+        "chart": {
+          "note": true,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": null
+        }
+      },
+      "a19": {
+        "bucket": "Pending",
+        "badge": "Not Yet Prepped",
+        "line": "Room 11B · 0 tasks pending",
+        "status": "pending",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": null
+        }
+      },
+      "b11": {
+        "bucket": "Pending",
+        "badge": "Not Yet Prepped",
+        "line": "Room 11C · 0 tasks pending",
+        "status": "pending",
+        "chart": {
+          "note": false,
+          "preRound": true,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": null
+        }
+      },
+      "b13": {
+        "bucket": "Pending",
+        "badge": "Not Yet Prepped",
+        "line": "Room 11D · 0 tasks pending",
+        "status": "pending",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": null
+        }
+      },
+      "c17": {
+        "bucket": "In Progress",
+        "badge": "Seen",
+        "line": "Room 11E · 0 tasks pending",
+        "status": "seen",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": true,
+          "openTasks": 0,
+          "inToday": null
+        }
+      },
+      "c19": {
+        "bucket": "In Progress",
+        "badge": "Seen",
+        "line": "Room 11F · 0 tasks pending",
+        "status": "seen",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": null
+        }
+      },
+      "c36": {
+        "bucket": "In Progress",
+        "badge": "Seen",
+        "line": "Room 11G · 0 tasks pending",
+        "status": "seen",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": null
+        }
+      },
+      "d": {
+        "bucket": "Pending",
+        "badge": "Not Yet Prepped",
+        "line": "Room 11H · 2 tasks pending",
+        "status": "pending",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 2,
+          "inToday": null
+        }
+      },
+      "e11": {
+        "bucket": "In Progress",
+        "badge": "Pre-Rounded",
+        "line": "S11A · 0 tasks pending",
+        "status": "pre-rounded",
+        "chart": {
+          "note": false,
+          "preRound": true,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": true
+        }
+      },
+      "e13": {
+        "bucket": "Pending",
+        "badge": "Not Yet Prepped",
+        "line": "S11B · 0 tasks pending",
+        "status": "pending",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": true
+        }
+      },
+      "f": {
+        "bucket": "Pending",
+        "badge": "Not Yet Prepped",
+        "line": "S11C · 0 tasks pending",
+        "status": "pending",
+        "chart": {
+          "note": false,
+          "preRound": false,
+          "encounter": false,
+          "openTasks": 0,
+          "inToday": true
+        }
+      }
+    },
+    "utcDays": {
+      "now": "2026-10-16",
+      "pre11": "2026-10-15",
+      "pre13": "2026-10-15"
+    },
+    "tiles": {
+      "hospital": {
+        "total": "8",
+        "pending": "4",
+        "inProgress": "3",
+        "done": "1"
+      },
+      "snf": {
+        "total": "3",
+        "pending": "2",
+        "inProgress": "1",
+        "done": "0"
+      }
+    },
+    "rowsListed": [
+      "QA Hosp ZCEO a-note17:post-rounded",
+      "QA Hosp ZCEO a-note19:pending",
+      "QA Hosp ZCEO b-pre11:pending",
+      "QA Hosp ZCEO b-pre13:pending",
+      "QA Hosp ZCEO c-enc17:seen",
+      "QA Hosp ZCEO c-enc19:seen",
+      "QA Hosp ZCEO c-enc36:seen",
+      "QA Hosp ZCEO d-tasks:pending"
+    ]
+  }
+}

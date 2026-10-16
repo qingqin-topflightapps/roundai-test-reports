@@ -1,0 +1,74 @@
+{
+  "name": "tc21-s05",
+  "at": "2026-10-16T09:59:28.700Z",
+  "checks": [
+    {
+      "id": "hospital new: H&P pre-selected (picker closed), never a discharge template (U4)",
+      "ok": true,
+      "detail": "{\"badge\":\"new\",\"selected\":\"H&P\"}"
+    },
+    {
+      "id": "hospital follow-up: SOAP progress pre-selected (picker closed), never a discharge template (U4)",
+      "ok": true,
+      "detail": "{\"badge\":\"follow-up\",\"selected\":\"SOAP progress\"}"
+    },
+    {
+      "id": "hospital consult: Consult note pre-selected (picker closed), never a discharge template (U4)",
+      "ok": true,
+      "detail": "{\"badge\":\"consult\",\"selected\":\"Consult note\"}"
+    },
+    {
+      "id": "hospital: with Consult set, the picker still changes by hand and the badge stays Consult",
+      "ok": true,
+      "detail": "{\"selected\":\"SOAP progress\",\"value\":\"soap\",\"options\":[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\"]}"
+    },
+    {
+      "id": "snf new: SNF admission pre-selected (picker closed), never a discharge template (U4)",
+      "ok": true,
+      "detail": "{\"badge\":\"new\",\"selected\":\"SNF admission\"}"
+    },
+    {
+      "id": "snf follow-up: SNF follow-up pre-selected (picker closed), never a discharge template (U4)",
+      "ok": true,
+      "detail": "{\"badge\":\"follow-up\",\"selected\":\"SNF follow-up\"}"
+    },
+    {
+      "id": "snf consult: SNF consult pre-selected (picker closed), never a discharge template (U4)",
+      "ok": true,
+      "detail": "{\"badge\":\"consult\",\"selected\":\"SNF consult\"}"
+    },
+    {
+      "id": "snf: with Consult set, the picker still changes by hand and the badge stays Consult",
+      "ok": true,
+      "detail": "{\"selected\":\"SNF follow-up\",\"value\":\"snf-progress\",\"options\":[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\"]}"
+    }
+  ],
+  "data": {
+    "cells": {
+      "hospital-new": {
+        "badge": "new",
+        "selected": "H&P"
+      },
+      "hospital-follow-up": {
+        "badge": "follow-up",
+        "selected": "SOAP progress"
+      },
+      "hospital-consult": {
+        "badge": "consult",
+        "selected": "Consult note"
+      },
+      "snf-new": {
+        "badge": "new",
+        "selected": "SNF admission"
+      },
+      "snf-follow-up": {
+        "badge": "follow-up",
+        "selected": "SNF follow-up"
+      },
+      "snf-consult": {
+        "badge": "consult",
+        "selected": "SNF consult"
+      }
+    }
+  }
+}

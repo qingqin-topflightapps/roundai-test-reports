@@ -1,0 +1,25 @@
+URL: http://localhost:6473/snf/add
+- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+- button "Back"
+- heading "Add Resident" [level=1]
+- paragraph: Add to your nursing home panel
+- text: Full Name*
+- textbox "Full Name*":
+  - /placeholder: e.g. Eleanor Brooks
+- text: Date of Birth
+- textbox "Date of Birth":
+  - /placeholder: e.g. Mar 4, 1939
+- text: Unit / Room
+- textbox "Unit / Room":
+  - /placeholder: e.g. Long-Term Care · Rm 12
+- text: MRN
+- textbox "MRN":
+  - /placeholder: Optional
+- paragraph: Auto-generated if left blank
+- text: Encounter Type
+- combobox "Encounter Type":
+  - option "New Admission"
+  - option "Follow-Up" [selected]
+  - option "Consult"
+- paragraph: Admission summary, course, vitals, labs, and medications can be added or dictated from the resident's Pre-Round tab.
+- button "Add to Resident Panel"

@@ -1,0 +1,17 @@
+{
+  "TC-20/S20a": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:58:47.086Z",
+    "title": "Web: a browser with the wrong date and another time zone shows the same counts and In Today set (UAT 3.8)",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 16/16, 6 record-only. Context A real clock (host time zone) vs context B in Pacific/Honolulu with its clock +24 h and, second variant, on the next calendar day; seeds without notes (no billing job). Same Hospital counts (5/2/2/1) and rows, same Nursing Home counts (Today's Visits 2/1/1/0) and rows, same Today's Visits residents on A and B in both variants; B's visit changed nothing A sees. Recorded: B's stored session was dropped by its own clock and it signed in again through the form (known B33); the date line follows the device (A 'Friday, October 16, 2026', B next-calendar-day 'Saturday, October 17, 2026', Q4 / B18); the New Admission roll did not change A's rows.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s20a-dsh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s20a-dsh-B-nextCalendarDay-snf-list.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s20a-dsh-B-plus24h-snf-list.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

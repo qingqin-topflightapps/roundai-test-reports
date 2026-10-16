@@ -1,0 +1,18 @@
+{
+  "TC-06/S07": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:03:41.352Z",
+    "title": "Badge -> pre-selected template, override holds, picker matches what Generate uses (Hospital)",
+    "detail": "Local 25acd727, mocked copies of Tim's three titles (the third, 'Generate writes the note in the format the status pre-selected', stores a note and would queue the server billing job, so it is not run as lane A). Copy 1: soap -> hp (New Admission) -> Discharge picked by hand held across a tab change -> consult -> soap (1/1). Copy 2: a picked custom template that is deleted leaves the picker on SOAP progress (1/1). Copy 3, four Generate legs (Consult pre-selected; New Admission overridden to SOAP progress; New Admission H&P; Discharge summary by hand), generateNote answered at the socket and the note save refused there: in each leg the picker value, the template instructions sent in patientContext and the noteTemplate the app tries to save all match (consult / soap / hp / discharge), and nothing was stored (8/8). The stored noteTemplate after a real Generate is checked on dev (TC-18/S05 n-legs, dev results).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s07-a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s07-b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s07-c-generate.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s07-c-consult-preselected.png"
+    ],
+    "pkg": "ctx"
+  }
+}

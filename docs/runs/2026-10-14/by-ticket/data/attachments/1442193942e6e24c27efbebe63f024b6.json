@@ -1,0 +1,98 @@
+{
+  "name": "oat03-s11-nh",
+  "at": "2026-10-16T09:52:58.144Z",
+  "checks": [
+    {
+      "id": "cp1 (U1): right after the tap the screen shows it is generating",
+      "ok": true,
+      "detail": "348 ms after the tap: button 'Generating Note…'"
+    },
+    {
+      "id": "cp2 (U2): an explicit failure message shows",
+      "ok": true,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "cp2 (U3): the typed dictation is still in the box",
+      "ok": true,
+      "detail": "QA OAT-03 both-fail probe: afebrile, ambulating, continue plan."
+    },
+    {
+      "id": "cp2: Generate Note & Finish is offered again",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp2: no 'AI-Generated Note' on the page (no blank or half note shown as a note)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "backend: no note stored",
+      "ok": true,
+      "detail": "{\"note\":\"\",\"noteGeneratedAt\":null}"
+    },
+    {
+      "id": "backend: the chart is not marked finished (not note-ready / post-rounded / complete)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "backend (U3): the stored dictation is the typed text",
+      "ok": true,
+      "detail": "QA OAT-03 both-fail probe: afebrile, ambulating, continue plan."
+    },
+    {
+      "id": "setup: exactly one Generate call, answered as a failure; no other model action reached",
+      "ok": true,
+      "detail": "[\"ai/notes:generateNote:fail\"]"
+    },
+    {
+      "id": "Q3 (known gap, recorded): the literal 'Note not generated' state",
+      "ok": false,
+      "detail": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "Q6 / UAT 3.5 (recorded): tap-to-message within ~30 s",
+      "ok": false,
+      "detail": "30.3 s (socket held the call 30 s, the server's measured worst case)",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3: Post-Round has no blank note",
+      "ok": true,
+      "detail": "{\"noteShown\":false,\"noteText\":\"\",\"noNoteYet\":true,\"completeFirst\":true,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    }
+  ],
+  "data": {
+    "cp1": {
+      "msAfterTap": 348,
+      "button": "Generating Note…",
+      "generatingText": "Generating Note…"
+    },
+    "cp2": {
+      "tapToMessageMs": 30267,
+      "message": "The visit dictation is saved, but the note couldn’t be generated. Check your connection and tap Generate Note & Finish to retry.",
+      "box": "QA OAT-03 both-fail probe: afebrile, ambulating, continue plan.",
+      "generateOffered": true,
+      "server": {
+        "note": "",
+        "status": "",
+        "encounterNotes": "QA OAT-03 both-fail probe: afebrile, ambulating, continue plan.",
+        "noteGeneratedAt": null
+      }
+    },
+    "cp3-post-round": {
+      "noteShown": false,
+      "noteText": "",
+      "noNoteYet": true,
+      "completeFirst": true,
+      "finalizingSpinner": false,
+      "generatingMarker": false,
+      "generatingText": "",
+      "failure": false,
+      "failureText": ""
+    }
+  }
+}

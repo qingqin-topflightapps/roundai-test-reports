@@ -1,0 +1,20 @@
+{
+  "TC-11/S05": {
+    "status": "failed",
+    "ranAt": "2026-10-16T11:00:24.722Z",
+    "title": "Server clock table: which day a visit's line is filed under (device clock −3 d / +1 d, and a finish across midnight)",
+    "detail": "rst-tc11-s05-clock-cells.spec.ts, local, every ai/* answered at the socket, every Generate with a custom procedure-other template (no billing job). The seven cells Tim's suite lacks plus a mocked copy of his one cell (NH direct Generate −3 d; his test stores a note with the SNF billing template, so it cannot run locally on 25acd727). −3 d (page.clock three days behind, server day Oct 16, device day Oct 13): Hospital and Nursing Home × Pre-Round Save / Save then Generate / direct Generate — 6/6 cells: exactly one line, filed under Oct 16, none under Oct 13 ('Visit 1 · Oct 16: …' / 'Oct 16: … ⏳ Encounter pending.' / finished 'Oct 16: <entry>'); 11/11 judged. +1 d (a second browser of the same physician a day ahead): the stored session was dropped by the device clock (B33, still), signing in through the form worked (UAT 3.8 judged: pass); then the same six cells 6/6, nothing under Oct 17; 12/12 judged. Midnight (FAILED): Hospital chart on a device in Etc/GMT+11 (no clock skew; the server's own time crosses the device's midnight at 11:00 UTC): Pre-Round Save at 23:58:00 wrote 'Oct 15: Breathing easier on 2 L. ⏳ Encounter pending.'; Generate at 23:59:00; the course refresh answered at 00:00:22 local -> the stored ledger has TWO lines for the one visit: 'Oct 15: Breathing easier on 2 L. Encounter done' and 'Oct 16: Note finished, plan unchanged' (the matrix judges one line; which day it carries is Q14, recorded). Cause in the code: useNoteGeneration flips today's line to 'Encounter done' under the label read at the tap (Oct 15) and replaceTodayCourseLine writes the refreshed entry under the label read when the refresh returns (Oct 16), appending a new line when that day has none (src/domain/courseTimeline.ts). New candidate (proposed P2). Tripwire: no model call in any run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s05-midnight-after-midnight.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s05-midnight.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s05-minus3d.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s05-plus1d.json",
+      "runs/2026-10-14-local/newspec-c/reports/rst-tc11-s05-clock-cells.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst",
+    "productIssue": "A Hospital note finished just before the physician's local midnight (the timeline refresh comes back after midnight) leaves two Course Timeline lines for one visit: the day of the visit keeps a half-finished 'Breathing easier on 2 L. Encounter done' and the next day gets the finished entry, so the timeline shows a visit on a day the patient was not seen (both lines fall in the yesterday-and-today window, so both are on the cards)."
+  }
+}

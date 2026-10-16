@@ -1,0 +1,17 @@
+{
+  "TC-20/S03": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:50:21.665Z",
+    "title": "Hospital: mixed census matches the list; list search/sort do not leak; row lines; no other care setting or physician",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 9/9. Fresh account with 5 Hospital patients seeded (2 pending, pre-rounded, seen, post-rounded; Ana 2 open + 1 done task, Ben 1 open), 1 Nursing Home resident, and 1 pending patient on a second @roundai.test physician. List header 1/5; list searched for 'Ana' (1 card) and sorted by name, then the list's own Dashboard control: Total 5 / Pending 2 / In Progress 2 / Done 1, the five patients and nothing else, Ana 'Room 401 · 2 tasks pending' (done task not counted), Ben 'Room 402 · 1 task pending' (singular), no resident, no other physician's patient, no junk or loading text. TFA-92598 AC 3 / AC 5, UAT TC-20 'counts match the patient list'.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s03.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s03-dashboard.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s03-list.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

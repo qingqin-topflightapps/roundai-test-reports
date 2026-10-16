@@ -1,0 +1,147 @@
+{
+  "name": "tc11-s05-plus1d",
+  "at": "2026-10-16T10:10:05.148Z",
+  "checks": [
+    {
+      "id": "+1 d: the stored session survived the clock (known B33 when not)",
+      "ok": false,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "+1 d (UAT 3.8): the physician can sign in on a device a day ahead",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}"
+    },
+    {
+      "id": "+1 d snf × save: exactly one line for the visit, filed under the server's today (Oct 16), none under the device day (Oct 17)",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Breathing easier on 2 L.\"]"
+    },
+    {
+      "id": "+1 d snf × save (recorded): the line reads exactly 'Visit 1 · Oct 16: Breathing easier on 2 L.'",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Breathing easier on 2 L.\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "+1 d snf × save+generate: exactly one line for the visit, filed under the server's today (Oct 16), none under the device day (Oct 17)",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "+1 d snf × save+generate (recorded): the line reads exactly 'Visit 1 · Oct 16: Note finished, plan unchanged'",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Note finished, plan unchanged\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "+1 d snf × save+generate: the finished line carries the refreshed entry, no pending / done marker",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "+1 d snf × generate: exactly one line for the visit, filed under the server's today (Oct 16), none under the device day (Oct 17)",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "+1 d snf × generate (recorded): the line reads exactly 'Visit 1 · Oct 16: Note finished, plan unchanged'",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Note finished, plan unchanged\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "+1 d snf × generate: the finished line carries the refreshed entry, no pending / done marker",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "+1 d hospital × save: exactly one line for the visit, filed under the server's today (Oct 16), none under the device day (Oct 17)",
+      "ok": true,
+      "detail": "[\"Oct 16: Breathing easier on 2 L. ⏳ Encounter pending.\"]"
+    },
+    {
+      "id": "+1 d hospital × save (recorded): the line reads exactly 'Oct 16: Breathing easier on 2 L. ⏳ Encounter pending.'",
+      "ok": true,
+      "detail": "[\"Oct 16: Breathing easier on 2 L. ⏳ Encounter pending.\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "+1 d hospital × save+generate: exactly one line for the visit, filed under the server's today (Oct 16), none under the device day (Oct 17)",
+      "ok": true,
+      "detail": "[\"Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "+1 d hospital × save+generate (recorded): the line reads exactly 'Oct 16: Note finished, plan unchanged'",
+      "ok": true,
+      "detail": "[\"Oct 16: Note finished, plan unchanged\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "+1 d hospital × save+generate: the finished line carries the refreshed entry, no pending / done marker",
+      "ok": true,
+      "detail": "[\"Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "+1 d hospital × generate: exactly one line for the visit, filed under the server's today (Oct 16), none under the device day (Oct 17)",
+      "ok": true,
+      "detail": "[\"Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "+1 d hospital × generate (recorded): the line reads exactly 'Oct 16: Note finished, plan unchanged'",
+      "ok": true,
+      "detail": "[\"Oct 16: Note finished, plan unchanged\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "+1 d hospital × generate: the finished line carries the refreshed entry, no pending / done marker",
+      "ok": true,
+      "detail": "[\"Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "setup: no ai/* action refused",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "days": {
+      "serverNow": "2026-10-16T10:09:52.086Z",
+      "serverDay": "Oct 16",
+      "deviceDay": "Oct 17"
+    },
+    "access": {
+      "signedOutByClock": true,
+      "uiSignIn": "reached-app"
+    },
+    "ledgers": {
+      "snf:save": "Visit 1 · Oct 16: Breathing easier on 2 L.",
+      "snf:save+generate": "Visit 1 · Oct 16: Note finished, plan unchanged",
+      "snf:generate": "Visit 1 · Oct 16: Note finished, plan unchanged",
+      "hospital:save": "Oct 16: Breathing easier on 2 L. ⏳ Encounter pending.",
+      "hospital:save+generate": "Oct 16: Note finished, plan unchanged",
+      "hospital:generate": "Oct 16: Note finished, plan unchanged"
+    },
+    "socket": [
+      "ai/parsing:parsePreRoundNotes:ok",
+      "ai/parsing:parsePreRoundNotes:ok",
+      "ai/notes:generateNote:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/notes:generateNote:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/parsing:parsePreRoundNotes:ok",
+      "ai/parsing:extractTasks:ok",
+      "ai/parsing:parsePreRoundNotes:ok",
+      "ai/parsing:extractTasks:ok",
+      "ai/notes:generateNote:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:generateNote:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/parsing:extractMedicationEvents:ok"
+    ]
+  }
+}

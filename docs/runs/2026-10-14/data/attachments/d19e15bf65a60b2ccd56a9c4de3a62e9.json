@@ -1,0 +1,17 @@
+{
+  "TC-20/S05": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:50:28.616Z",
+    "title": "Nursing Home dashboard has the two tabs and the Hospital design; Hospital has no tabs",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 7/7, 1 record-only. Hospital (from the list's Dashboard control): 'Rounding Dashboard', tiles Total / Pending / In Progress / Done, row 'Room 4B-05 · 0 tasks pending' + badge, no tab, no In Today control, no resident. Nursing Home (Hospital toggle -> Nursing Home -> bottom bar Dashboard): the same heading and the same four tiles, role=tab 'Today's Visits' (selected) and 'All Residents', row 'Cedar 5 · 0 tasks pending' + badge, no Hospital patient. Same layout and classes (screenshots tc20-s05-hospital / -nursing-home).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s05.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s05-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s05-nursing-home.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "name": "tc20-s03",
+  "at": "2026-10-16T09:50:21.665Z",
+  "checks": [
+    {
+      "id": "list: the five patients are listed, not the resident nor the other physician's patient",
+      "ok": true,
+      "detail": "QA Hosp OBWD Ana, QA Hosp OBWD Ben, QA Hosp OBWD Cara, QA Hosp OBWD Dev, QA Hosp OBWD Eve"
+    },
+    {
+      "id": "list: header shows 1/5 done",
+      "ok": true,
+      "detail": "1/5"
+    },
+    {
+      "id": "dashboard: counts Total 5 / Pending 2 / In Progress 2 / Done 1 (search and sort ignored)",
+      "ok": true,
+      "detail": "5/2/2/1"
+    },
+    {
+      "id": "dashboard: tiles add up to Total",
+      "ok": true,
+      "detail": "5/2/2/1"
+    },
+    {
+      "id": "dashboard: all five patients listed, nothing else",
+      "ok": true,
+      "detail": "QA Hosp OBWD Ana, QA Hosp OBWD Ben, QA Hosp OBWD Cara, QA Hosp OBWD Dev, QA Hosp OBWD Eve"
+    },
+    {
+      "id": "dashboard: Ana's row reads 'Room 401 · 2 tasks pending' (done task not counted)",
+      "ok": true,
+      "detail": "Room 401 · 2 tasks pending"
+    },
+    {
+      "id": "dashboard: Ben's row reads 'Room 402 · 1 task pending' (singular)",
+      "ok": true,
+      "detail": "Room 402 · 1 task pending"
+    },
+    {
+      "id": "dashboard: neither the resident nor the other physician's patient",
+      "ok": true,
+      "detail": "absent check"
+    },
+    {
+      "id": "dashboard: no placeholder junk, no stuck loading / being-updated text",
+      "ok": true,
+      "detail": "Room 401 · 2 tasks pending | Room 402 · 1 task pending | Room 403 · 0 tasks pending | Room 404 · 0 tasks pending | Room 405 · 0 tasks pending"
+    }
+  ],
+  "data": {
+    "list": {
+      "names": [
+        "QA Hosp OBWD Ana",
+        "QA Hosp OBWD Ben",
+        "QA Hosp OBWD Cara",
+        "QA Hosp OBWD Dev",
+        "QA Hosp OBWD Eve"
+      ],
+      "header": "1/5"
+    },
+    "listAfterSearch": [],
+    "dashboard": {
+      "heading": true,
+      "subtitle": "Hospital · All Patients",
+      "dateLine": "Friday, October 16, 2026",
+      "busy": "false",
+      "tiles": {
+        "total": "5",
+        "pending": "2",
+        "inProgress": "2",
+        "done": "1"
+      },
+      "labels": [
+        "Total",
+        "Pending",
+        "In Progress",
+        "Done"
+      ],
+      "tabs": [],
+      "rows": [
+        {
+          "name": "QA Hosp OBWD Ana",
+          "line": "Room 401 · 2 tasks pending",
+          "badge": "Not Yet Prepped"
+        },
+        {
+          "name": "QA Hosp OBWD Ben",
+          "line": "Room 402 · 1 task pending",
+          "badge": "Not Yet Prepped"
+        },
+        {
+          "name": "QA Hosp OBWD Cara",
+          "line": "Room 403 · 0 tasks pending",
+          "badge": "Pre-Rounded"
+        },
+        {
+          "name": "QA Hosp OBWD Dev",
+          "line": "Room 404 · 0 tasks pending",
+          "badge": "Seen"
+        },
+        {
+          "name": "QA Hosp OBWD Eve",
+          "line": "Room 405 · 0 tasks pending",
+          "badge": "Complete"
+        }
+      ],
+      "status": "",
+      "empty": "",
+      "liveRegion": "polite/",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nRounding Dashboard\n\nFriday, October 16, 2026\n\nHospital · All Patients\n\nTotal\n5\nPending\n2\nIn Progress\n2\nDone\n1\n\nPending: not yet prepped. In Progress: pre-rounded, seen, or note ready. Done: rounding finished.\n\nALL PATIENTS\n\nQA Hosp OBWD Ana\n\nRoom 401 · 2 tasks pending\n\nNot Yet Prepped\n\nQA Hosp OBWD Ben\n\nRoom 402 · 1 task pending\n\nNot Yet Prepped\n\nQA Hosp OBWD Cara\n\nRoom 403 · 0 tasks pending\n\nPre-Rounded\n\nQA Hosp OBWD Dev\n\nRoom 404 · 0 tasks pending\n\nSeen\n\nQA Hosp OBWD Eve\n\nRoom 405 · 0 tasks pending\n\nComplete"
+    },
+    "badges": {
+      "QA Hosp OBWD Ana": "Not Yet Prepped",
+      "QA Hosp OBWD Ben": "Not Yet Prepped",
+      "QA Hosp OBWD Cara": "Pre-Rounded",
+      "QA Hosp OBWD Dev": "Seen",
+      "QA Hosp OBWD Eve": "Complete"
+    }
+  }
+}

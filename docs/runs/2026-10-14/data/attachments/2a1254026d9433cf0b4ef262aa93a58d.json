@@ -1,0 +1,24 @@
+{
+  "TC-20/S24": {
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-16T09:57:02.345Z",
+    "title": "Note generation fails on both models: the dashboard row never claims a note, the chart says 'Note not generated'",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 13/16. generateNote failed at tab B's socket (no note stored, so no billing job). Passed both settings: tab A's row never showed Note Ready / Complete (Hospital Pre-Rounded -> Seen, 1/0/1/0; Nursing Home stays Not Yet Prepped, 1/1/0/0), explicit failure text on the Encounter tab, dictation kept in the box and stored, no note saved. Failed: the UAT words 'Note not generated' appear nowhere (Hospital: 'The encounter dictation is saved, but the formatted note couldn’t be generated and saved…'; Nursing Home: 'The visit dictation is saved, but the note couldn’t be generated…'; Post-Round: 'No note generated yet.') - D7, open with Daniela; Hospital Post-Round still spins 'Finalizing Encounter Data…' 10 s after the failure - B27. Same result as on e02167f.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-rounding-chart-after-failure.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-rounding-dashboard-after-failure.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-rounding-postround-after-failure-10s.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-snf-chart-after-failure.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-snf-dashboard-after-failure.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s24-dsh-snf-postround-after-failure-10s.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "productIssue": "After a failed Generate, the Hospital Post-Round tab shows a 'Finalizing Encounter Data…' spinner that never ends (B27); neither setting uses the UAT wording 'Note not generated' (D7).",
+    "pkg": "dsh"
+  }
+}

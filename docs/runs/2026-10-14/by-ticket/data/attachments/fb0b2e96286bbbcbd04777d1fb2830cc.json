@@ -1,0 +1,21 @@
+{
+  "TC-21/S15": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:09:36.970Z",
+    "title": "Nursing Home chart wiring (mocked AI): Admission Summary, New Admission -> SNF admission, Save & Extract, SNF billing code, Medications panel",
+    "detail": "Local 25acd727, mocked copies of Tim's four titles (ctx-tc21-handoff.spec.ts), not lane A: on this build the hub title opens Handoff and reaches the live ai/assist:generateHandoff (not mocked there), and the matrix title 'a generated Nursing Home note requests and saves an SNF code' no longer exists (cases/e2e-titles.tsv 25acd727: the nearest are 'a saved Nursing Home suggestion shows its SNF code without another call' and 'snf: Generate saves a durable billing job without a browser billing call'; the second stores a note and queues the server billing job, so it cannot run locally). 4/4 judged: hub copy reached add, scan, inbox, Task Export, Handoff (generateHandoff answered at the socket), Settings and every chart tab, with 'Admission Summary' (no 'Background Summary'), New Admission pre-selecting SNF admission and the 4 SNF templates; Save & Extract saved the dictation, closed INR, kept PT open, added the pharmacy task and the codeword task verbatim; the NH billing block shows a stored SNF follow-up suggestion as CODE 99309 and a stored SNF consult suggestion as 99305 (family 99304-99306) with its level, no job queued and no browser billing call; pre-round Save Note puts the parsed medications in the NH Medications panel after a reload. Recorded: Tim's hub test asserts the diagnosis on the NH card, which UAT TC-01 / TC-03 rule out (B28).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s15-hub.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s15-save-extract.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s15-billing-block.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s15-medications.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s15-hub-end.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s15-billing-snf-consult.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s15-medications.png"
+    ],
+    "pkg": "ctx"
+  }
+}

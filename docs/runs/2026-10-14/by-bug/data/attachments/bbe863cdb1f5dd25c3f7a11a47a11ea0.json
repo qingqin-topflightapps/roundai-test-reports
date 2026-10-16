@@ -1,0 +1,52 @@
+{
+  "name": "tc06-s01",
+  "at": "2026-10-16T09:59:58.423Z",
+  "checks": [
+    {
+      "id": "add form offers the three states with Follow-up selected (U3)",
+      "ok": true,
+      "detail": "{\"value\":\"follow-up\",\"options\":[\"New Admission\",\"Follow-Up\",\"Consult\"]}"
+    },
+    {
+      "id": "untouched patient reads Follow-up on the list (U1)",
+      "ok": true,
+      "detail": "QH QA Hosp TC06 S01 VKTV NEW TODAY Room 412 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "untouched: Follow-up with SOAP progress pre-selected, never a discharge template",
+      "ok": true,
+      "detail": "SOAP progress"
+    },
+    {
+      "id": "New Admission -> H&P (U8)",
+      "ok": true,
+      "detail": "H&P"
+    },
+    {
+      "id": "Consult -> Consult note; never Discharge summary (U8, T2)",
+      "ok": true,
+      "detail": "Consult note"
+    },
+    {
+      "id": "override to SOAP progress by hand does not change the badge (U9)",
+      "ok": true,
+      "detail": "SOAP progress / consult"
+    },
+    {
+      "id": "stored status is Consult on this patient",
+      "ok": true,
+      "detail": "consult@2026-10-16"
+    },
+    {
+      "id": "Consult survives the reload, with Consult note pre-selected",
+      "ok": true,
+      "detail": "consult / Consult note"
+    },
+    {
+      "id": "the list shows Consult",
+      "ok": true,
+      "detail": "QH QA Hosp TC06 S01 VKTV NEW TODAY Room 412 · 72y Community-acquired pneumonia Not Yet Prepped Consult"
+    }
+  ],
+  "data": {}
+}

@@ -1,0 +1,17 @@
+{
+  "TC-21/S27": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:55:41.661Z",
+    "title": "Unsaved pre-round text survives a context switch and never appears in the other context",
+    "detail": "Local 25acd727. 'MARK-H draft T21' typed in the Hospital pre-round editor, editor closed without Save Note, back to the list, switch to Nursing Home, resident chart, back to Hospital. 2/2 judged: the resident chart never shows the draft; the Hospital chart still shows it. Recorded: it survives because the editor autosaves (rounding:update with preRoundNotes / preRoundEditedAt when the editor closes), so the text is on the server, not only in the page.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s27.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s27-1-snf-chart.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s27-2-hosp-chart.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

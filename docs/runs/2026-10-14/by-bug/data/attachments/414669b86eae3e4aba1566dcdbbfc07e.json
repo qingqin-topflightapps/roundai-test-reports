@@ -1,0 +1,65 @@
+{
+  "name": "tc21-s16",
+  "at": "2026-10-16T09:55:36.824Z",
+  "checks": [
+    {
+      "id": "1 Hospital card shows the chief diagnosis (U1b)",
+      "ok": true,
+      "detail": "QH QA Hosp Rivera S16 9SUL NEW TODAY Room 412 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up"
+    },
+    {
+      "id": "1 Hospital list has no resident",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "2 Hospital chart: Background Summary, not Admission Summary (U1c)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "3 Hospital Encounter: no Nursing Home code anywhere (U1d)",
+      "ok": true,
+      "detail": "selected=SOAP progress; hint=Standard Subjective · Objective · Assessment · Plan"
+    },
+    {
+      "id": "3 Hospital picker hint for the selected template (record: SOAP shows no code family)",
+      "ok": true,
+      "detail": "Standard Subjective · Objective · Assessment · Plan",
+      "recordOnly": true
+    },
+    {
+      "id": "4 NH list: resident, no Hospital patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "4 NH card shows no diagnosis (U1b; UAT TC-01/TC-03)",
+      "ok": false,
+      "detail": "QR QA Resident Okafor S16 9SUL Cedar Wing · Room 12 · 84y · MRN-FYMHKT Post-acute rehab after hip fracture Pending Follow-up"
+    },
+    {
+      "id": "5 NH chart: Admission Summary, not Background Summary (U1c)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "6 NH Encounter: SNF follow-up pre-selected with its 99307 hint, no Hospital code (U1d)",
+      "ok": true,
+      "detail": "selected=SNF follow-up"
+    },
+    {
+      "id": "6 NH hints: SNF consult carries 99304-99306 and SNF discharge 99315 / 99316 (U1d)",
+      "ok": true,
+      "detail": "{\"snf-admission\":\"Skilled nursing facility admission note — 99304–99306\",\"snf-consult\":\"Skilled nursing facility consult note — 99304–99306\",\"snf-discharge\":\"Skilled nursing facility discharge summary — 99315 / 99316 by time\",\"snf-progress\":\"Skilled nursing facility progress note — 99307–99310\"}"
+    }
+  ],
+  "data": {
+    "snfHints": {
+      "snf-admission": "Skilled nursing facility admission note — 99304–99306",
+      "snf-consult": "Skilled nursing facility consult note — 99304–99306",
+      "snf-discharge": "Skilled nursing facility discharge summary — 99315 / 99316 by time",
+      "snf-progress": "Skilled nursing facility progress note — 99307–99310"
+    }
+  }
+}

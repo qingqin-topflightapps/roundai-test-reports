@@ -1,0 +1,18 @@
+{
+  "TC-11/S03": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:33:14.212Z",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst",
+    "method": "PW",
+    "title": "UAT journey, one-day version: earlier days seeded by date, today a real Generate (Hospital + Nursing Home); T4 recorded for Quinn",
+    "detail": "Dev, dataset lane (rst-tc11-s03; spec web/qa-agent-tests/datasets/rst-tc11-s03.spec.ts), rows 'QA DS1-rst-tc11-s03 …' deleted after (3 deleted, 0 remaining, no other row changed). The one-day version the review allows: the earlier days are ledger lines written with the run's own day labels (server clock in the page's time zone) through rounding:add / snf:add, today's visit is a real Generate (Haiku 4.5). Hospital (ledger Oct 14 admission, Oct 15 diuresing; Generate Oct 16): the Course Timeline cards are exactly 'Oct 15: …' then 'Oct 16: …' (the Oct 14 admission day is off the cards, U3), today's card carries the encounter (crackles, oral furosemide 40 mg), no 'Encounter done' / pending marker, the stored ledger has one line per day with the earlier two unchanged. Nursing Home (Visit 1 Oct 13, Visit 2 Oct 15, Oct 14 skipped; Generate Oct 16): cards 'Visit 1 – Oct 13', 'Visit 2 – Oct 15', 'Visit 3 – Oct 16' in order, the skipped day absent (U2), one line per visit, Visit 3 carries the encounter (80 feet, pain 2/10, discharge next week), earlier lines unchanged. 10/10 judged pass. Not covered: three real calendar days on one live chart (the UAT as written; the matrix's 'local stack, live AI' given cannot run under the local rules). T4 (trend view, no written oracle, Q8): cards recorded for Quinn to rate — note that the Hospital Oct 16 line ('…responding well to IV diuretics with net negative 1.5 L, improved crackles, and stable renal function; transitioning to oral furosemide 40 mg daily') carries yesterday's 'net negative 1.5 L' and 'stable renal function' as if today's and drops today's dictated 'weight down 1 kg' (same class as B14; for Quinn / Preston, not judged here).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc11-s03/evidence/TC-11-S03-hospital-timeline.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc11-s03/evidence/TC-11-S03-nursing-home-timeline.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc11-s03/evidence/TC-11-S03.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc11-s03/cleanup.json"
+    ]
+  }
+}

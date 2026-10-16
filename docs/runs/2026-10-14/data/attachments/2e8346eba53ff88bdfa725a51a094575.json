@@ -1,0 +1,155 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "qa-agent.config.ts",
+      "qa-agent-tests/newspec-c/tc15-s24-dictated-question.spec.ts",
+      "--reporter=list,json",
+      "--output=tools/qa-agent/runs/2026-10-15-local-0010/newspec-c/artifacts/tc15-s24-dictated-question",
+      "--workers=1"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-15-local-0010/newspec-c/artifacts/tc15-s24-dictated-question",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "qa-agent",
+        "name": "qa-agent",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "newspec-c/tc15-s24-dictated-question.spec.ts",
+      "file": "newspec-c/tc15-s24-dictated-question.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-15 S24 (hospital): Ask AI waits for the complete dictated question",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "qa-agent",
+              "projectName": "qa-agent",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T15:10:26.332Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c8906d35067d9f584705-3ef1a3e317b8c1248e54",
+          "file": "newspec-c/tc15-s24-dictated-question.spec.ts",
+          "line": 10,
+          "column": 3
+        },
+        {
+          "title": "TC-15 S24 (nursing-home): Ask AI waits for the complete dictated question",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "qa-agent",
+              "projectName": "qa-agent",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3034,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T15:10:29.978Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c8906d35067d9f584705-764b3ee8833475379c94",
+          "file": "newspec-c/tc15-s24-dictated-question.spec.ts",
+          "line": 10,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T15:10:25.992Z",
+    "duration": 7052.436,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

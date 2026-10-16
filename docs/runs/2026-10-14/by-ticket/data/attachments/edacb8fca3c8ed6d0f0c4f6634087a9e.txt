@@ -1,0 +1,40 @@
+URL: http://localhost:6473/snf
+- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+- button "Hospital"
+- button "Nursing Home"
+- paragraph: How is Round Companion working for you?
+- paragraph: Your answers go to the pilot team. Please don’t include patient details.
+- radiogroup "Rating, 1 is not useful and 5 is essential":
+  - radio "Rate 1": "1"
+  - radio "Rate 2": "2"
+  - radio "Rate 3": "3"
+  - radio "Rate 4": "4"
+  - radio "Rate 5": "5"
+- textbox "What should change?"
+- button "Send feedback" [disabled]
+- button "Not now"
+- heading "Nursing Home" [level=1]
+- paragraph: 0/1 residents seen today
+- button "Inbox"
+- button
+- button "Scan resident list"
+- button
+- button "Today's Visits"
+- button "All Residents"
+- textbox "Search patients":
+  - /placeholder: Search by name, room, MRN, or diagnosis…
+- combobox "Sort patients":
+  - 'option "Sort: Room number" [selected]'
+  - 'option "Sort: Name A–Z"'
+  - 'option "Sort: Status (to-do first)"'
+- button "Open chart for QA Resident Okafor S08 I5MY":
+  - text: QR
+  - paragraph: QA Resident Okafor S08 I5MY
+  - paragraph: Cedar Wing · Room 12 · 84y · MRN-H51SNV
+  - paragraph: Post-acute rehab after hip fracture
+  - text: Pending Follow-up
+- button "Task Export"
+- button "Residents"
+- button "Handoff"
+- button "Dashboard"
+- button "Settings"

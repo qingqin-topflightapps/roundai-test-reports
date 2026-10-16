@@ -1,0 +1,62 @@
+{
+  "name": "tc06-s02",
+  "at": "2026-10-16T10:00:04.362Z",
+  "checks": [
+    {
+      "id": "add form offers the three states with Follow-up selected (U3)",
+      "ok": true,
+      "detail": "{\"value\":\"follow-up\",\"options\":[\"New Admission\",\"Follow-Up\",\"Consult\"]}"
+    },
+    {
+      "id": "untouched patient reads Follow-up on the list (U1)",
+      "ok": true,
+      "detail": "QR QA Resident TC06 S02 X4NJ Cedar Wing · Room 12 · 84y · MRN-I6N37X Post-acute rehab after hip fracture Pending Follow-up"
+    },
+    {
+      "id": "untouched: Follow-up with SNF follow-up pre-selected, never a discharge template",
+      "ok": true,
+      "detail": "SNF follow-up"
+    },
+    {
+      "id": "New Admission -> SNF admission (U8)",
+      "ok": true,
+      "detail": "SNF admission"
+    },
+    {
+      "id": "Consult -> SNF consult; never SNF admission or SNF discharge (U8, T2)",
+      "ok": true,
+      "detail": "SNF consult"
+    },
+    {
+      "id": "override to SNF admission by hand does not change the badge (U9)",
+      "ok": true,
+      "detail": "SNF admission / consult"
+    },
+    {
+      "id": "stored status is Consult on this patient",
+      "ok": true,
+      "detail": "consult@2026-10-16"
+    },
+    {
+      "id": "Consult survives the reload, with SNF consult pre-selected",
+      "ok": true,
+      "detail": "consult / SNF consult"
+    },
+    {
+      "id": "the list shows Consult",
+      "ok": true,
+      "detail": "QR QA Resident TC06 S02 X4NJ Cedar Wing · Room 12 · 84y · MRN-I6N37X Post-acute rehab after hip fracture Pending Consult"
+    },
+    {
+      "id": "NH: the hand change back to Follow-up is saved and pre-selects SNF follow-up (step 5 in NH)",
+      "ok": true,
+      "detail": "SNF follow-up"
+    },
+    {
+      "id": "NH list shows Follow-up after the hand change",
+      "ok": true,
+      "detail": "QR QA Resident TC06 S02 X4NJ Cedar Wing · Room 12 · 84y · MRN-I6N37X Post-acute rehab after hip fracture Pending Follow-up"
+    }
+  ],
+  "data": {}
+}

@@ -1,0 +1,60 @@
+{
+  "name": "tc20-s04a-dev",
+  "at": "2026-10-16T10:18:56.036Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "opens on the Today's Visits tab",
+      "ok": true,
+      "detail": "[{\"name\":\"Today's Visits\",\"selected\":true},{\"name\":\"All Residents\",\"selected\":false}]"
+    },
+    {
+      "id": "Total counts only the residents marked In Today (every stored In Today row of the account)",
+      "ok": true,
+      "detail": "{\"got\":\"7\",\"inToday\":\"7\",\"allResidents\":\"9\"}"
+    },
+    {
+      "id": "my 7 In Today residents listed; Fay and Gus (not in today) not listed",
+      "ok": true,
+      "detail": "[\"Ada\",\"Bo\",\"Cy\",\"Di\",\"Ed\",\"Hal\",\"Nia\"]"
+    }
+  ],
+  "data": {
+    "dashboard": {
+      "tiles": {
+        "total": "7",
+        "pending": "3",
+        "inProgress": "3",
+        "done": "1"
+      },
+      "tabs": [
+        {
+          "name": "Today's Visits",
+          "selected": true
+        },
+        {
+          "name": "All Residents",
+          "selected": false
+        }
+      ],
+      "mine": [
+        "QA DSH-TC20 Ada",
+        "QA DSH-TC20 Bo",
+        "QA DSH-TC20 Cy",
+        "QA DSH-TC20 Di",
+        "QA DSH-TC20 Ed",
+        "QA DSH-TC20 Hal",
+        "QA DSH-TC20 Nia"
+      ],
+      "expectedToday": "7/3/3/1",
+      "expectedAll": "9/4/3/2"
+    }
+  }
+}

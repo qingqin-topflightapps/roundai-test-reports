@@ -1,0 +1,20 @@
+{
+  "TC-09/S09": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:18:56.037Z",
+    "title": "In Today x rounding status -> Nursing Home dashboard counts",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts + agent unit U57. Judged 4/4. Marks made by tapping the All Residents toggle (searched by name): marking Fay (pending) 7/3/3/1 -> 8/4/3/1 and she is listed; un-marking Bo 8/4/3/1 -> 7/3/3/1 and he is gone; Gus (not in today, complete) never counted; Bo still exists with inTodaysSession false. Each reading equals the buckets of the stored In Today rows. B25 fixed on dev. Agent unit U57 (oracle.mjs) with the matrix seed: oracle 'Fail (known)', but the only failing cells are the 'Complete' tile regex: 640bc7c4 renamed that tile 'Done', which the case file (cases/TC-09.matrix.json S09) still names. Re-read from its saved snapshots: Total / Pending / In Progress / Done = 3/2/0/1, 4/2/1/1 (Maple marked), 3/1/1/1 (Kale un-marked), exactly the expected table; the backend checks passed. So U57 passes on the content; the matrix needs 'Complete' -> 'Done'.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/tc09-s09-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/d1-tc09-s09-after.png",
+      "runs/2026-10-14-dev/units/U57.verdict.json",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u57/s09-dash-1.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u57/s09-dash-2.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u57/s09-dash-3.md"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

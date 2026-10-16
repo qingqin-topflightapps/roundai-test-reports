@@ -1,0 +1,37 @@
+{
+  "name": "tc11-s09-hosp-resave",
+  "at": "2026-10-16T10:17:12.257Z",
+  "checks": [
+    {
+      "id": "setup: the first Save Note wrote today's pending line",
+      "ok": true,
+      "detail": "[\"Oct 16: Fall after lunch, no injury. ⏳ Encounter pending.\"]"
+    },
+    {
+      "id": "Save Note again: one line for today (no second line)",
+      "ok": true,
+      "detail": "[\"Oct 16: Fall after lunch, no injury; hip films ordered. ⏳ Encounter pending.\"]"
+    },
+    {
+      "id": "recorded (Q9): today's line after the re-save carries the corrected entry and is still pending",
+      "ok": true,
+      "detail": "Oct 16: Fall after lunch, no injury; hip films ordered. ⏳ Encounter pending.",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: two summary calls answered in the browser; nothing refused",
+      "ok": true,
+      "detail": "[\"ai/parsing:parsePreRoundNotes:ok\",\"ai/parsing:extractTasks:ok\",\"ai/parsing:parsePreRoundNotes:ok\",\"ai/parsing:extractTasks:ok\"]"
+    }
+  ],
+  "data": {
+    "ledger": {
+      "afterFirstSave": [
+        "Oct 16: Fall after lunch, no injury. ⏳ Encounter pending."
+      ],
+      "afterSecondSave": [
+        "Oct 16: Fall after lunch, no injury; hip films ordered. ⏳ Encounter pending."
+      ]
+    }
+  }
+}

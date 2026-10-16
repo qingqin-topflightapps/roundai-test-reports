@@ -1,0 +1,16 @@
+{
+  "TC-20/S02": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:21:36.278Z",
+    "title": "Nursing Home dashboard counts the whole roster and stays live (dev)",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts driving the app UI. Judged 10/10. 51 In Today residents + 1 not in today: Today's Visits Total 51 = the stored In Today rows, all 51 listed, the not-in-today resident absent; a resident added live appears (+1 Total / Pending in 0.3 s) and leaves when removed, no reload; the All Residents tab counts 52 and lists the not-in-today resident; back on Today's Visits it is gone.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192030/evidence/tc20-s02-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192030/evidence/d2-snf-dashboard.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

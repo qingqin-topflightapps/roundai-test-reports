@@ -1,0 +1,124 @@
+{
+  "name": "tc21-s13-tc18-s09",
+  "at": "2026-10-16T09:59:51.698Z",
+  "checks": [
+    {
+      "id": "hospital type list: exactly H&P, SOAP progress, Consult note, Discharge summary, Procedure / other (TC-18 S08 h-options)",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\",\"Procedure / other\"]"
+    },
+    {
+      "id": "hospital type list: no Handoff, Clinic or removed template",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\",\"Procedure / other\"]"
+    },
+    {
+      "id": "hospital Q11 (record): the type list holds only this context's 4 types + Procedure / other (the other context's 4 are not offered)",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\",\"Procedure / other\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "hospital: Save with no type is refused: the form stays open with a required-field message, no server error",
+      "ok": true,
+      "detail": "open=true"
+    },
+    {
+      "id": "hospital: after closing, the template is not in the Settings list nor on the server",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "snf type list: exactly SNF admission, SNF follow-up, SNF consult, SNF discharge, Procedure / other (TC-18 S08 n-options)",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\",\"Procedure / other\"]"
+    },
+    {
+      "id": "snf type list: no Handoff, Clinic or removed template",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\",\"Procedure / other\"]"
+    },
+    {
+      "id": "snf Q11 (record): the type list holds only this context's 4 types + Procedure / other (the other context's 4 are not offered)",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\",\"Procedure / other\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "snf: Save with no type is refused: the form stays open with a required-field message, no server error",
+      "ok": true,
+      "detail": "open=true"
+    },
+    {
+      "id": "snf: after closing, the template is not in the Settings list nor on the server",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "hospital.typeOptions": [
+      {
+        "value": "",
+        "text": "Select a note type",
+        "disabled": true
+      },
+      {
+        "value": "hp",
+        "text": "H&P",
+        "disabled": false
+      },
+      {
+        "value": "soap",
+        "text": "SOAP progress",
+        "disabled": false
+      },
+      {
+        "value": "consult",
+        "text": "Consult note",
+        "disabled": false
+      },
+      {
+        "value": "discharge",
+        "text": "Discharge summary",
+        "disabled": false
+      },
+      {
+        "value": "procedure-other",
+        "text": "Procedure / other",
+        "disabled": false
+      }
+    ],
+    "snf.typeOptions": [
+      {
+        "value": "",
+        "text": "Select a note type",
+        "disabled": true
+      },
+      {
+        "value": "snf-admission",
+        "text": "SNF admission",
+        "disabled": false
+      },
+      {
+        "value": "snf-progress",
+        "text": "SNF follow-up",
+        "disabled": false
+      },
+      {
+        "value": "snf-consult",
+        "text": "SNF consult",
+        "disabled": false
+      },
+      {
+        "value": "snf-discharge",
+        "text": "SNF discharge",
+        "disabled": false
+      },
+      {
+        "value": "procedure-other",
+        "text": "Procedure / other",
+        "disabled": false
+      }
+    ]
+  }
+}

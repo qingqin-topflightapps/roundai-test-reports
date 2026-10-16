@@ -1,0 +1,28 @@
+{
+  "OAT-03/S29": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:58:59.909Z",
+    "title": "A failed Regenerate keeps today's note and the added dictation; yesterday's note never shows as today's (both contexts)",
+    "detail": "Our addition (review TFA-94422): record bar is 'physician loses data or sees a wrong note'. rst-oat03-s29-regenerate-fail.spec.ts, local, mocked model, procedure-other template (no billing job; the seeded NH yesterday-note is typed procedure-other with a stored suggestion, checked: no job). (a) N1 generated with the mocked model, then ' QA OAT-03 regenerate line: plan unchanged.' appended and Regenerate Note answered with a failure: explicit failure; the box and the server keep the dictation with the appended line; the stored note still equals N1 and Post-Round shows N1. (b) Hospital: a previousNotes entry 20 h old with 'QA OAT-03 yesterday marker: started cefazolin.'; Nursing Home: a note generated 20 h ago (the first page load moved it to previousNotes, dated Oct 15); today's first Generate fails -> Post-Round shows 'No note generated yet', the marker is not under today's note heading. Each context 10/10 judged (setup checks included). Recorded: the failure copy does not claim N1 was replaced (Q3); the Pre-Round tab did not show yesterday's note text (the panel is collapsed). Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-hosp-cp-b-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-hosp-cp-b-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-hosp-cp-b-pre-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-hosp-cp1-n1.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-hosp-cp3-regenerate-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-hosp-cp4-post-round-n1.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-nh-cp-b-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-nh-cp-b-post-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-nh-cp-b-pre-round.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-nh-cp1-n1.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-nh-cp3-regenerate-failed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-nh-cp4-post-round-n1.png",
+      "runs/2026-10-14-local/newspec-c/evidence/oat03-s29-nh.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst"
+  }
+}

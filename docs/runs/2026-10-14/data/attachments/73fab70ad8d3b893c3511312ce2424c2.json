@@ -1,0 +1,16 @@
+{
+  "TC-20/S06": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:18:56.037Z",
+    "title": "Status x care setting -> bucket (every patient in exactly one tile)",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts driving the app UI. Judged 4/4. Hospital, one row per status: 6/1/4/1 (pending only in Pending; pre-rounded, in-encounter, seen, note-ready In Progress; post-rounded Done), badges Not Yet Prepped / Pre-Rounded / Seen / Seen / Note Ready / Complete; Nursing Home Today's Visits 7/3/3/1 equal the stored In Today rows. Tiles add up. Q1 recorded: Note Ready counts as In Progress.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/tc20-s06-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/d1-hospital-dashboard.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "tc11-s09-nh-resave",
+  "at": "2026-10-16T10:17:07.272Z",
+  "checks": [
+    {
+      "id": "setup: the first revisit Save Note appended 'Visit 2 · today' beneath Visit 1",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Stable, lungs clear; continuing therapy\",\"Visit 2 · Oct 16: Fall after lunch, no injury.\"]"
+    },
+    {
+      "id": "Save Note again: still 'Visit 2 · today', one line for it, no Visit 3; Visit 1 unchanged",
+      "ok": true,
+      "detail": "[\"Visit 1 · Oct 16: Stable, lungs clear; continuing therapy\",\"Visit 2 · Oct 16: Fall after lunch, no injury; hip films ordered.\"]"
+    },
+    {
+      "id": "recorded (Q9): Visit 2's line after the re-save carries the corrected pre-round entry",
+      "ok": true,
+      "detail": "Visit 2 · Oct 16: Fall after lunch, no injury; hip films ordered.",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: two summary calls answered in the browser; nothing refused",
+      "ok": true,
+      "detail": "[\"ai/parsing:parsePreRoundNotes:ok\",\"ai/parsing:parsePreRoundNotes:ok\"]"
+    }
+  ],
+  "data": {
+    "ledger": {
+      "afterFirstSave": [
+        "Visit 1 · Oct 16: Stable, lungs clear; continuing therapy",
+        "Visit 2 · Oct 16: Fall after lunch, no injury."
+      ],
+      "afterSecondSave": [
+        "Visit 1 · Oct 16: Stable, lungs clear; continuing therapy",
+        "Visit 2 · Oct 16: Fall after lunch, no injury; hip films ordered."
+      ]
+    }
+  }
+}

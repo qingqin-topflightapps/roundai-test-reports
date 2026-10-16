@@ -1,0 +1,15 @@
+{
+  "TC-20/S08": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:31:13.124Z",
+    "title": "Pending -> In Progress through real chart actions (Save Note, Save & Extract), both care settings (live parse)",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts driving the app UI. Judged 3/3, 2 record-only. Live pre-round parse and task extraction. Hospital Save Note -> badge Pre-Rounded and tiles equal the stored rows; Save & Extract -> still In Progress (badge Seen); Nursing Home Save Note -> Pre-Rounded. U8 recorded: click to stored status 0.7 s Hospital (the pre-round processing finished 7.9 s after the click) and 5.5 s Nursing Home, inside the 15 s target; aiCallLog rows parsing.parsePreRoundNotes 3.8-3.9 s AI time of 3.8-3.9 s total, extractTasks 1.5-1.8 s, all Haiku 4.5, no fallback.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/tc20-s08-dev.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

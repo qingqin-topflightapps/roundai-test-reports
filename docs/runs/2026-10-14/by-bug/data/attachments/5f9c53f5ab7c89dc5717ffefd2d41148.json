@@ -1,0 +1,43 @@
+{
+  "name": "tc11-s05-midnight",
+  "at": "2026-10-16T11:00:24.722Z",
+  "checks": [
+    {
+      "id": "midnight (Etc/GMT+11): the setup really crossed midnight between Generate (23:59:00) and the refresh",
+      "ok": true,
+      "detail": "{\"saveLocal\":\"23:58:00\",\"genLocal\":\"23:59:00\"}"
+    },
+    {
+      "id": "midnight: one line for the visit",
+      "ok": false,
+      "detail": "[\"Oct 15: Breathing easier on 2 L. Encounter done\",\"Oct 16: Note finished, plan unchanged\"]"
+    },
+    {
+      "id": "midnight (Q14, recorded): the visit's line carries Oct 15 (the day it was seen) or Oct 16",
+      "ok": false,
+      "detail": "[\"Oct 15: Breathing easier on 2 L. Encounter done\",\"Oct 16: Note finished, plan unchanged\"]",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "pick": {
+      "tz": "Etc/GMT+11",
+      "midnightUtc": "2026-10-16T11:00:00.000Z",
+      "waitMs": 162129,
+      "saveAtUtc": "2026-10-16T10:58:00.000Z"
+    },
+    "timeline": {
+      "tz": "Etc/GMT+11",
+      "saveLocal": "23:58:00",
+      "genLocal": "23:59:00",
+      "refreshAnsweredLocal": "00:00:22",
+      "dayBefore": "Oct 15",
+      "dayAfter": "Oct 16",
+      "afterSave": "Oct 15: Breathing easier on 2 L. ⏳ Encounter pending.",
+      "final": [
+        "Oct 15: Breathing easier on 2 L. Encounter done",
+        "Oct 16: Note finished, plan unchanged"
+      ]
+    }
+  }
+}

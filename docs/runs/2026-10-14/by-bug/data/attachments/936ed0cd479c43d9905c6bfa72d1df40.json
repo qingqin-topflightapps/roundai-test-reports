@@ -1,0 +1,21 @@
+{
+  "TC-21/S19": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "env": "dev",
+    "status": "failed",
+    "ranAt": "2026-10-16T10:27:30Z",
+    "title": "The new SNF consult / SNF discharge templates on dev: the notes they write (AI content)",
+    "detail": "Dev 25acd727 (deployed 2026-10-15 14:04Z), live models (every call Haiku 4.5, no fallback), run 19:25-19:28 JST under runs/.dev.lock and the dev-session run lock (ctx-tc21-dev.spec.ts); only rows named 'QA TC21-CTX …' and two 'QA TC21-CTX …' templates were created, all deleted (cleanup: 12 rows deleted, 0 left, no other row of the account changed). Structure, judged against the v1.0 template text: 10/10 notes have every section in order (consult: Reason for Consultation … Recommendations and the closing sentence, no signature or date line; discharge: Admission Date … Time Spent on Discharge, 'Time spent on discharge: N minutes' or 'Not dictated'), no bracket placeholder, never 'yesterday'. Content (dictated facts only, as the template and TFA-92592 'The note reflects only what was dictated' require): 7 pass, 2 FAIL, 1 UNSURE, below 3.2's 9/10. FAIL c1-confusion: consulting service 'Geriatric Medicine' invented (the earlier run wrote 'Internal Medicine'), 'delirium' added as the impression, and Recommendation 5 'Monitor mental status closely and notify the attending physician if confusion worsens…' was never dictated (the template allows a monitoring or notify instruction only when dictated). FAIL d3-time25: Condition at Discharge 'The resident is discharged in stable condition.' and Course 'The resident tolerated the course and is now ready for discharge.' — boilerplate the template forbids (no condition was dictated, so it must read 'Not dictated.'). UNSURE c3-edema: 'possible early heart failure' / 'early pulmonary edema' as the impression and 'monitor for continued weight loss or gain' added to the dictated daily weights. Minor in passing notes: 'PO' added to dictated doses (d1, d5), the dictated ambulation filed under Condition while Functional Status reads 'Not dictated.' (d1, d4), an undictated rationale for holding aspirin (c5). Earlier run (19:19, same build, 4 visits, ctx-1919): the same confusion consult again invented a service and added 'notify the attending' / 'close monitoring', and a discharge dictation 'Stop the nebulizers.' produced a note with 'Discharge Medications: Not documented in chart provided' and no mention of the nebulizers (a dictated stop dropped; the 19:25 run of the same text kept it). A person confirms each FAIL / UNSURE before it is filed (grading rule).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-snf-templates.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1919/evidence/ctx-dev-e1-snf-templates.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-c1-confusion.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-d3-time25.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-c3-edema.png"
+    ],
+    "productIssue": "Notes written with the new SNF consult and SNF discharge templates sometimes contain things the physician never said: an invented consulting service, a 'delirium' or 'heart failure' impression, 'monitor … and notify the attending' recommendations, and 'discharged in stable condition' boilerplate; once a dictated medication stop was left out of the discharge medications.",
+    "pkg": "ctx"
+  }
+}

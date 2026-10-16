@@ -1,0 +1,20 @@
+{
+  "TC-11/S09": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:17:07.272Z",
+    "title": "Nursing Home ledger rules: the two 'Save Note again' cells and the hand-typed unnumbered line",
+    "detail": "Our addition (review TFA-92589). rst-tc11-s09-resave.spec.ts, local, parsePreRoundNotes answered at the socket. (1) NH: Visit 1 finished, a revisit's Pre-Round Save Note appended 'Visit 2 · Oct 16: Fall after lunch, no injury.'; Save Note again -> still two lines, 'Visit 2 · Oct 16: Fall after lunch, no injury; hip films ordered.', no Visit 3, Visit 1 unchanged (judged, pass). (2) Hospital: today's pending line, then Save Note again -> one line 'Oct 16: Fall after lunch, no injury; hip films ordered. ⏳ Encounter pending.' (judged, pass; the corrected content is Q9, recorded). (3) NH: Visit 1 finished + the hand-typed unnumbered line 'Family meeting held, goals of care reviewed', then a new Pre-Round -> the build writes 'Visit 3 · Oct 16: …' (Q13 expects Visit 2; recorded only, never judged). The table's other cells are Tim's course-timeline titles (they store a note with the default template, so on 25acd727 they cannot run locally; not part of this package's re-run). Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s09-hosp-resave-after-resave.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s09-hosp-resave.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s09-nh-handtyped-after-save.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s09-nh-handtyped.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s09-nh-resave-after-resave.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc11-s09-nh-resave.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst"
+  }
+}

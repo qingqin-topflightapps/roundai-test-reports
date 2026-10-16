@@ -1,0 +1,20 @@
+{
+  "TC-20/S25": {
+    "status": "passed",
+    "ranAt": "2026-10-16T09:57:29.382Z",
+    "title": "Network drops with the dashboard open: a clear no-network message, then the counts catch up without a reload",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 10/10. Both settings: context A offline (setOffline + its Convex socket cut); banner 'No network connection. What you dictate stays on this screen…'; context B's pre-round Save Note moved the chart; on reconnect A shows Pending 0 / In Progress 1 within 0.2 s, no reload, banner gone.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s25-dsh-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s25-dsh-rounding-offline.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s25-dsh-rounding-reconnected.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s25-dsh-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s25-dsh-snf-offline.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s25-dsh-snf-reconnected.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

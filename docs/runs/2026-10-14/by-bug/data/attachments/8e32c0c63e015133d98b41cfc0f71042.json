@@ -1,0 +1,42 @@
+{
+  "name": "tc20-s16-dev",
+  "at": "2026-10-16T10:18:56.037Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "two taps are two toggles: the toggle reads 'In Today ✓'",
+      "ok": false,
+      "detail": "+ Today"
+    },
+    {
+      "id": "server: inTodaysSession true",
+      "ok": false,
+      "detail": "false"
+    },
+    {
+      "id": "dashboard counts Hal",
+      "ok": false,
+      "detail": "not listed"
+    },
+    {
+      "id": "toggle, server and dashboard agree",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "after": {
+      "label": "+ Today",
+      "inTodaysSession": false,
+      "listedOnDashboard": false,
+      "tiles": "6/2/3/1"
+    }
+  }
+}

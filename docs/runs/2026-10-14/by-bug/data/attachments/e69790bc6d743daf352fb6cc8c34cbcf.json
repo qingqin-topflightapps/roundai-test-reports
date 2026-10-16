@@ -1,0 +1,393 @@
+{
+  "n-consult-1": {
+    "preselected": {
+      "value": "snf-consult",
+      "label": "SNF consult"
+    },
+    "picked": {
+      "value": "snf-consult",
+      "label": "SNF consult"
+    },
+    "note": "AI-Generated Note\n\n7:19 PM · Oct 16\n\nConsulting Service and Requesting Provider\n\nInternal Medicine consultation requested by the attending physician.\n\nReason for Consultation\n\nEvaluation of worsening confusion over the past two days.\n\nHistory of Present Illness\n\nThe resident is a patient admitted to the skilled nursing facility for rehabilitation following left hip open reduction and internal fixation. The resident has developed worsening confusion over the past two days, prompting this consultation.\n\nPast Medical History and Active Comorbidities\n\nNot provided.\n\nCurrent Medications\n\nSee chart.\n\nAllergies\n\nNot provided.\n\nFunctional Status\n\nNot dictated.\n\nPhysical Examination\n\nNot documented in the dictation.\n\nTesting Results\n\nUrinalysis is pending. Basic metabolic panel is planned for tomorrow.\n\nAssessment\n\nThe resident presents with acute worsening confusion over two days in the setting of recent hip surgery and rehabilitation. The clinical picture raises concern for delirium, which in the postoperative period may be related to medication effects, metabolic derangement, infection, or other acute medical processes. Urinalysis has been sent to evaluate for urinary tract infection as a potential contributor. Pending basic metabolic panel will help assess for electrolyte abnormalities or other metabolic causes. The decision to hold oxybutynin addresses a potential anticholinergic contribution to altered mental status. Encouragement of oral fluid intake supports hydration and may help mitigate delirium. Further workup and close monitoring are warranted to identify and address the underlying etiology.\n\nRecommendations\n\n1. Hold oxybutynin pending resolution of confusion.\n\n2. Encourage oral fluids to maintain adequate hydration.\n\n3. Recheck basic metabolic panel tomorrow and review results for electrolyte abnormalities or other metabolic derangements.\n\n4. Await urinalysis results and notify the attending if urinary tract infection is identified.\n\n5. Continue close monitoring of mental status and reassess for improvement or further decline.\n\nWe will continue to follow. Thank you for allowing us to participate in this resident's care.\n\nEdit Note\nCopy to EMR",
+    "judged": {
+      "present": [
+        "Reason for Consultation",
+        "History of Present Illness",
+        "Past Medical History",
+        "Current Medications",
+        "Allergies",
+        "Functional Status",
+        "Physical Exam",
+        "Testing Results",
+        "Assessment",
+        "Recommendations"
+      ],
+      "missing": [],
+      "checks": {
+        "allMandatoryHeaders": true,
+        "sectionsInOrder": true,
+        "noBracketPlaceholder": true,
+        "noSignatureOrDateLine": true,
+        "neverYesterday": true,
+        "closingSentence": true,
+        "endsWithClosing": false,
+        "functionalNotDictated": true
+      },
+      "ok": false
+    },
+    "card": {
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99305\nLEVEL: Moderate Complexity\nPROBLEMS — Moderate\nUndiagnosed new problem with uncertain prognosis\nN4: \"Evaluation of worsening confusion over the past two days.\"\nN7: \"The resident has developed worsening confusion over the past two days, prompting this consultation.\"\nN22: \"The resident presents with acute worsening confusion over two days in the setting of recent hip surgery and rehabilitation.\"\nN23: \"The clinical picture raises concern for delirium, which in the postoperative period may be related to medication effects, metabolic derangement, infection, or other acute medical processes.\"\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN6: \"The resident is a patient admitted to the skilled nursing facility for rehabilitation following left hip open reduction and internal fixation.\"\nN22: \"The resident presents with acute worsening confusion over two days in the setting of recent hip surgery and rehabilitation.\"\nDATA — Limited\nTest ordered\nN19: \"Urinalysis is pending.\"\nTest ordered\nN20: \"Basic metabolic panel is planned for tomorrow.\"\nN32: \"3. Recheck basic metabolic panel tomorrow and review results for electrolyte abnormalities or other metabolic derangements.\"\nRISK — Moderate\nPrescription drug management\nN26: \"The decision to hold oxybutynin addresses a potential anticholinergic contribution to altered mental status.\"\nN30: \"1. Hold oxybutynin pending resolution of confusion.\"\nLow risk of morbidity from additional diagnostic testing or treatment\nN31: \"2. Encourage oral fluids to maintain adequate hydration.\"\nLow risk of morbidity from additional diagnostic testing or treatment\nN34: \"5. Continue close monitoring of mental status and reassess for improvement or further decline.\"",
+      "labelled": true,
+      "code": "99305",
+      "level": "Moderate Complexity",
+      "inFamily": true,
+      "oneCode": true,
+      "levelOk": true,
+      "quotesOk": true,
+      "reasoning": [],
+      "stored": {
+        "noteTemplate": "snf-consult",
+        "frozen": "snf-consult",
+        "family": "snf-initial",
+        "code": "99305",
+        "time": null,
+        "status": null
+      }
+    },
+    "prompt": null,
+    "diag": [
+      {
+        "at": "2026-10-16T10:19:38.704Z",
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4796,
+        "providerMs": 4792,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:19:38.309Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4667,
+        "providerMs": 4573,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:19:32.946Z",
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 7748,
+        "providerMs": 7733,
+        "fellBackFrom": null
+      }
+    ]
+  },
+  "n-consult-2": {
+    "preselected": {
+      "value": "snf-consult",
+      "label": "SNF consult"
+    },
+    "picked": {
+      "value": "snf-consult",
+      "label": "SNF consult"
+    },
+    "note": "AI-Generated Note\n\n7:19 PM · Oct 16\n\nConsulting Service and Requesting Provider\n\nFacility physician.\n\nReason for Consultation\n\nEvaluation following a fall last night without head strike.\n\nHistory of Present Illness\n\nThe resident fell last night without reported head strike. The resident is currently ambulating 100 feet with a rolling walker in therapy and requires standby assist for transfers.\n\nPast Medical History and Active Comorbidities\n\nRehabilitation after left hip open reduction internal fixation (ORIF).\n\nCurrent Medications\n\nSee chart.\n\nAllergies\n\nNot provided.\n\nFunctional Status\n\nThe resident walks 100 feet with a rolling walker in therapy and requires standby assist for transfers.\n\nPhysical Examination\n\nVital signs: Blood pressure 104/60 sitting.\n\nTesting Results\n\nNot provided.\n\nAssessment\n\nThe resident is a post-operative patient recovering from left hip ORIF who sustained a fall last night without head strike. Current ambulation tolerance is 100 feet with a rolling walker and standby assist for transfers. Blood pressure is 104/60 sitting. The fall warrants assessment for orthostatic hypotension and gait stability as contributing factors. Management will focus on fall prevention, reassessment of gait mechanics, and monitoring for orthostatic changes.\n\nRecommendations\n\n1. Discontinue tamsulosin.\n\n2. Obtain orthostatic vital signs daily for three days.\n\n3. Physical therapy to reassess gait and fall risk.\n\nWe will continue to follow. Thank you for allowing us to participate in this resident's care.\n\nEdit Note\nCopy to EMR",
+    "judged": {
+      "present": [
+        "Reason for Consultation",
+        "History of Present Illness",
+        "Past Medical History",
+        "Current Medications",
+        "Allergies",
+        "Functional Status",
+        "Physical Exam",
+        "Testing Results",
+        "Assessment",
+        "Recommendations"
+      ],
+      "missing": [],
+      "checks": {
+        "allMandatoryHeaders": true,
+        "sectionsInOrder": true,
+        "noBracketPlaceholder": true,
+        "noSignatureOrDateLine": true,
+        "neverYesterday": true,
+        "closingSentence": true,
+        "endsWithClosing": false
+      },
+      "ok": false
+    },
+    "card": {
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99305\nLEVEL: Moderate Complexity\nPROBLEMS — Moderate\nAcute, uncomplicated illness or injury\nN4: \"Evaluation following a fall last night without head strike.\"\nN6: \"The resident fell last night without reported head strike.\"\nN21: \"The resident is a post-operative patient recovering from left hip ORIF who sustained a fall last night without head strike.\"\nStable, acute illness\nN9: \"Rehabilitation after left hip open reduction internal fixation (ORIF).\"\nN21: \"The resident is a post-operative patient recovering from left hip ORIF who sustained a fall last night without head strike.\"\nN22: \"Current ambulation tolerance is 100 feet with a rolling walker and standby assist for transfers.\"\nUndiagnosed new problem with uncertain prognosis\nN24: \"The fall warrants assessment for orthostatic hypotension and gait stability as contributing factors.\"\nN25: \"Management will focus on fall prevention, reassessment of gait mechanics, and monitoring for orthostatic changes.\"\nDATA — Minimal\nTest ordered\nN28: \"2. Obtain orthostatic vital signs daily for three days.\"\nRISK — Moderate\nPrescription drug management\nN27: \"1. Discontinue tamsulosin.\"\nLow risk of morbidity from additional diagnostic testing or treatment\nN29: \"3. Physical therapy to reassess gait and fall risk.\"",
+      "labelled": true,
+      "code": "99305",
+      "level": "Moderate Complexity",
+      "inFamily": true,
+      "oneCode": true,
+      "levelOk": true,
+      "quotesOk": true,
+      "reasoning": [],
+      "stored": {
+        "noteTemplate": "snf-consult",
+        "frozen": "snf-consult",
+        "family": "snf-initial",
+        "code": "99305",
+        "time": null,
+        "status": null
+      }
+    },
+    "prompt": null,
+    "diag": [
+      {
+        "at": "2026-10-16T10:19:52.756Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3241,
+        "providerMs": 3162,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:19:52.207Z",
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2357,
+        "providerMs": 2354,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:19:48.972Z",
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4220,
+        "providerMs": 4215,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:19:41.191Z",
+        "fn": "notes.refreshCourseAndBackground",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 7308,
+        "providerMs": 7305,
+        "fellBackFrom": null
+      }
+    ]
+  },
+  "n-discharge-time": {
+    "preselected": {
+      "value": "snf-progress",
+      "label": "SNF follow-up"
+    },
+    "picked": {
+      "value": "snf-discharge",
+      "label": "SNF discharge"
+    },
+    "note": "AI-Generated Note\n\n7:19 PM · Oct 16\n\nAdmission Date\n\nNot documented.\n\nReason for SNF Stay\n\nRehabilitation after left hip open reduction internal fixation (ORIF).\n\nCourse of Stay\n\nNot documented.\n\nCondition at Discharge\n\nResident is ambulating with a cane and is ready for discharge home.\n\nFunctional Status at Discharge\n\nNot dictated.\n\nDischarge Medications\n\nApixaban 2.5 mg PO twice daily — continue for two more weeks.\n\nDischarge Disposition\n\nDischarged home with daughter.\n\nFollow-up Instructions\n\n1. Follow up with orthopedics in two weeks.\n\n2. Home health physical therapy ordered.\n\nReturn Precautions\n\nReturn if calf swelling or chest pain develops.\n\nTime Spent on Discharge\n\nTime spent on discharge: 40 minutes.\n\nEdit Note\nCopy to EMR",
+    "judged": {
+      "present": [
+        "Admission Date",
+        "Reason for SNF Stay",
+        "Course of Stay",
+        "Condition at Discharge",
+        "Functional Status at Discharge",
+        "Discharge Medications",
+        "Discharge Disposition",
+        "Follow-up Instructions",
+        "Return Precautions",
+        "Time Spent on Discharge"
+      ],
+      "missing": [],
+      "checks": {
+        "allMandatoryHeaders": true,
+        "sectionsInOrder": true,
+        "noBracketPlaceholder": true,
+        "noSignatureOrDateLine": true,
+        "neverYesterday": true,
+        "timeLine": true,
+        "noDayTimeline": true
+      },
+      "ok": true
+    },
+    "card": {
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99316\nLEVEL: —\nTime on discharge: > 30 min — documented in the note\nN21: \"Time spent on discharge: 40 minutes.\"",
+      "labelled": true,
+      "code": "99316",
+      "level": "—",
+      "inFamily": true,
+      "oneCode": true,
+      "levelOk": true,
+      "quotesOk": true,
+      "reasoning": [],
+      "stored": {
+        "noteTemplate": "snf-discharge",
+        "frozen": "snf-discharge",
+        "family": "snf-discharge",
+        "code": "99316",
+        "time": "over_30",
+        "status": null
+      }
+    },
+    "prompt": null,
+    "diag": [
+      {
+        "at": "2026-10-16T10:20:06.361Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3575,
+        "providerMs": 3492,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:20:02.149Z",
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3311,
+        "providerMs": 3305,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:19:53.836Z",
+        "fn": "notes.refreshCourseAndBackground",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3974,
+        "providerMs": 3972,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:19:52.756Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3241,
+        "providerMs": 3162,
+        "fellBackFrom": null
+      }
+    ]
+  },
+  "n-discharge-notime": {
+    "preselected": {
+      "value": "snf-progress",
+      "label": "SNF follow-up"
+    },
+    "picked": {
+      "value": "snf-discharge",
+      "label": "SNF discharge"
+    },
+    "note": "AI-Generated Note\n\n7:20 PM · Oct 16\n\nAdmission Date\n\nNot documented\n\nReason for SNF Stay\n\nRehabilitation following left hip open reduction internal fixation (ORIF).\n\nCourse of Stay\n\nThe resident was admitted for rehabilitation after left hip ORIF. During the stay, the resident recovered from pneumonia. Lungs are now clear on examination.\n\nCondition at Discharge\n\nLungs clear. Pneumonia recovery complete.\n\nFunctional Status at Discharge\n\nNot dictated\n\nDischarge Medications\n\nNot documented in chart provided\n\nDischarge Disposition\n\nNot dictated\n\nFollow-up Instructions\n\n1. Follow up with primary care next week.\n\nReturn Precautions\n\nNot dictated\n\nTime Spent on Discharge\n\nNot dictated\n\nEdit Note\nCopy to EMR",
+    "judged": {
+      "present": [
+        "Admission Date",
+        "Reason for SNF Stay",
+        "Course of Stay",
+        "Condition at Discharge",
+        "Functional Status at Discharge",
+        "Discharge Medications",
+        "Discharge Disposition",
+        "Follow-up Instructions",
+        "Return Precautions",
+        "Time Spent on Discharge"
+      ],
+      "missing": [],
+      "checks": {
+        "allMandatoryHeaders": true,
+        "sectionsInOrder": true,
+        "noBracketPlaceholder": true,
+        "noSignatureOrDateLine": true,
+        "neverYesterday": true,
+        "timeLine": true,
+        "functionalNotDictated": false,
+        "dispositionNotDictated": true,
+        "noDayTimeline": true
+      },
+      "ok": false
+    },
+    "card": {
+      "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: none yet — select the time on discharge\nLEVEL: —\nTime on discharge:\n≤ 30 min\n> 30 min",
+      "labelled": true,
+      "code": null,
+      "level": "—",
+      "inFamily": false,
+      "oneCode": true,
+      "levelOk": false,
+      "quotesOk": true,
+      "reasoning": [],
+      "stored": {
+        "noteTemplate": "snf-discharge",
+        "frozen": "snf-discharge",
+        "family": "snf-discharge",
+        "code": null,
+        "time": "not_documented",
+        "status": null
+      }
+    },
+    "prompt": {
+      "shown": true,
+      "noCodeYet": true
+    },
+    "diag": [
+      {
+        "at": "2026-10-16T10:20:20.235Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3775,
+        "providerMs": 3699,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:20:19.304Z",
+        "fn": "notes.refreshCourseAndBackground",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2607,
+        "providerMs": 2604,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:20:19.128Z",
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2441,
+        "providerMs": 2439,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:20:15.831Z",
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3051,
+        "providerMs": 3047,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:20:07.869Z",
+        "fn": "notes.refreshCourseAndBackground",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4829,
+        "providerMs": 4827,
+        "fellBackFrom": null
+      },
+      {
+        "at": "2026-10-16T10:20:07.605Z",
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4561,
+        "providerMs": 4558,
+        "fellBackFrom": null
+      }
+    ]
+  }
+}

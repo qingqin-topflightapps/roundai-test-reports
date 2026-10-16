@@ -1,0 +1,18 @@
+{
+  "TC-20/S07": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:18:56.037Z",
+    "title": "Nursing Home: un-mark and re-mark In Today; the dashboard follows each time",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts + agent unit U69. Judged 3/3. Ada un-marked on All Residents (toggle reads '+ Today', she stays on All Residents); the dashboard drops her from the Today's Visits rows and counts (7/3/3/1 -> 6/2/3/1); re-marked -> back, 7/3/3/1. Agent unit U69 (oracle.mjs) on the same build: Pass, all 4 checkpoints + backend (1/1/0/0 -> off today 0/0/0/0 and not listed, still on All Residents with '+ Today' -> back 1/1/0/0; one row, nothing deleted or created). U69 failed on e02167f (B25).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/tc20-s07-dev.json",
+      "runs/2026-10-14-dev/units/U69.verdict.json",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u69/s07-dash-out.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/u69/s07-all-unmarked.md"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

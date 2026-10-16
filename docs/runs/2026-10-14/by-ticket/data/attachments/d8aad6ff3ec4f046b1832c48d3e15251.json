@@ -1,0 +1,17 @@
+{
+  "TC-20/S04a": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:18:56.036Z",
+    "title": "Nursing Home: In Today yes/no decides who is counted (TFA-92587 AC 6, TFA-92598 AC 4)",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts driving the app UI. Judged 3/3. 9 residents seeded with the run prefix (7 In Today in mixed statuses, Fay pending and Gus complete not in today); the shared account had no other rows. The Nursing Home dashboard opens on Today's Visits with Total 7 (all residents: 9) and lists exactly the 7 In Today residents. B25 (dashboard counted every resident) does not reproduce on dev.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/tc20-s04a-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/d1-snf-dashboard-today.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-191806/evidence/cleanup.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

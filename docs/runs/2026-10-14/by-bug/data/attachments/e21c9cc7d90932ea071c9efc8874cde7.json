@@ -1,0 +1,19 @@
+{
+  "TC-10/S08": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:25:06.377Z",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst",
+    "method": "PW",
+    "title": "AI Check: 10 dictations with no vitals, labs or tests (5 Hospital + 5 Nursing Home), pass at 9/10",
+    "detail": "Dev, dataset lane (rst-tc10-s08; dataset cases/datasets/rst-tc10-s08.json built from the matrix's S08 spec.cases; spec web/qa-agent-tests/datasets/rst-tc10-s08.spec.ts), 10 prefixed charts with nothing on file, deleted after (10 deleted, 0 remaining, no other row changed). On dev no action is called directly (runner-contract §10.2), so each dictation went through the app's own Pre-Round Save Note (parsePreRoundNotes, Haiku 4.5, 3.8-14.2 s, no fallback) and the matrix's checks were judged on what the app stored: emptyPanels, noLabValue, mustNotInclude over everything the save wrote, fieldNotIncludes. Pool 10/10 (>= 9/10; U9 TFA-92588 AC 7 now ready for QA), both contexts 5 + 5 (U10). Vitals, Labs and Diagnostic Testing stayed empty in all ten; Medications empty where no drug was named (H-02, H-05, N-01, N-03, N-05) — rows only for drugs the dictation named (cefazolin, prednisone, acetaminophen, furosemide), never cephalexin (H-03's plan-only drug); no 'afebrile' / 'vital signs stable' / invented PMH; backgrounds name only the chart diagnosis and the dictation. The first judging counted H-04 as a failure ('40 mg day 4 of 5' read as a magnesium value by a case-insensitive 'Mg'); the rule was fixed (short lab abbreviations read in capitals only) and the stored panels re-judged offline (TC-10-S08.rejudged.json): 10/10. Either way the pool passes. Judged on the app's write path (stricter scope than the matrix's 'model + exported guards').",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc10-s08/evidence/TC-10-S08-H-01-preround.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc10-s08/evidence/TC-10-S08-N-01-preround.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc10-s08/evidence/TC-10-S08.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc10-s08/evidence/TC-10-S08.rejudged.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-tc10-s08/cleanup.json"
+    ]
+  }
+}

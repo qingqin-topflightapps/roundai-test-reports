@@ -1,0 +1,106 @@
+{
+  "name": "tc21-s21",
+  "at": "2026-10-16T10:19:37.552Z",
+  "checks": [
+    {
+      "id": "pixel7: exactly one Hospital and one Nursing Home button, no Clinic, on both lists",
+      "ok": true,
+      "detail": "[{\"hospital\":1,\"nh\":1,\"clinic\":0,\"qd\":1},{\"hospital\":1,\"nh\":1,\"clinic\":0,\"qd\":0},{\"hospital\":1,\"nh\":1,\"clinic\":0,\"qd\":1}]"
+    },
+    {
+      "id": "pixel7: Quick Dictation on /rounding and absent on /snf",
+      "ok": true,
+      "detail": "[1,0,1]"
+    },
+    {
+      "id": "pixel7: no bleed after the taps (each list only its own)",
+      "ok": true,
+      "detail": "0/0"
+    },
+    {
+      "id": "pixel7: NH picker on the phone is the 4 SNF templates",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\"]"
+    },
+    {
+      "id": "iphone15: exactly one Hospital and one Nursing Home button, no Clinic, on both lists",
+      "ok": true,
+      "detail": "[{\"hospital\":1,\"nh\":1,\"clinic\":0,\"qd\":1},{\"hospital\":1,\"nh\":1,\"clinic\":0,\"qd\":0},{\"hospital\":1,\"nh\":1,\"clinic\":0,\"qd\":1}]"
+    },
+    {
+      "id": "iphone15: Quick Dictation on /rounding and absent on /snf",
+      "ok": true,
+      "detail": "[1,0,1]"
+    },
+    {
+      "id": "iphone15: no bleed after the taps (each list only its own)",
+      "ok": true,
+      "detail": "0/0"
+    },
+    {
+      "id": "iphone15: NH picker on the phone is the 4 SNF templates",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\"]"
+    }
+  ],
+  "data": {
+    "pixel7": {
+      "engine": "chromium 151.0.7922.34",
+      "c1": {
+        "hospital": 1,
+        "nh": 1,
+        "clinic": 0,
+        "qd": 1
+      },
+      "c2": {
+        "hospital": 1,
+        "nh": 1,
+        "clinic": 0,
+        "qd": 0
+      },
+      "c3": {
+        "hospital": 1,
+        "nh": 1,
+        "clinic": 0,
+        "qd": 1
+      },
+      "hOnNh": 0,
+      "rOnH": 0,
+      "nhPicker": [
+        "SNF admission",
+        "SNF follow-up",
+        "SNF consult",
+        "SNF discharge"
+      ]
+    },
+    "iphone15": {
+      "engine": "webkit 26.5",
+      "c1": {
+        "hospital": 1,
+        "nh": 1,
+        "clinic": 0,
+        "qd": 1
+      },
+      "c2": {
+        "hospital": 1,
+        "nh": 1,
+        "clinic": 0,
+        "qd": 0
+      },
+      "c3": {
+        "hospital": 1,
+        "nh": 1,
+        "clinic": 0,
+        "qd": 1
+      },
+      "hOnNh": 0,
+      "rOnH": 0,
+      "nhPicker": [
+        "SNF admission",
+        "SNF follow-up",
+        "SNF consult",
+        "SNF discharge"
+      ]
+    }
+  }
+}

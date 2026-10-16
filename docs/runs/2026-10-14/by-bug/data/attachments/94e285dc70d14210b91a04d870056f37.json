@@ -1,0 +1,20 @@
+{
+  "TC-21/S05": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:59:28.700Z",
+    "title": "Badge x context -> pre-selected template",
+    "detail": "Local 25acd727, picker read closed after each badge change through the chart header. 8/8 judged: Hospital New Admission -> H&P, Follow-up -> SOAP progress, Consult -> Consult note; Nursing Home New Admission -> SNF admission, Follow-up -> SNF follow-up, Consult -> SNF consult (the cell that was a known gap until this build: SNF consult now exists and is pre-selected); a discharge template is never pre-selected; with Consult set the picker still changes by hand in both contexts and the badge stays Consult (U4).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s05.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s05-h-new.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s05-h-consult.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s05-n-new.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s05-n-follow-up.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s05-n-consult.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

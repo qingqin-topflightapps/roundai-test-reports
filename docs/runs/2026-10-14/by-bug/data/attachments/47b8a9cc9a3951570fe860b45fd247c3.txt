@@ -1,0 +1,65 @@
+URL: http://localhost:6473/rounding/add
+- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+- button "Back"
+- heading "Add Patient" [level=1]
+- paragraph: Add to today's rounding list
+- text: Smart dictation
+- button "Dictate all"
+- paragraph: Say it in one breath — “Margaret Chen, 72, room 4B-12, CHF exacerbation, day 3” — and the fields below fill in. Anything you have already typed is left alone.
+- heading "Patient" [level=3]
+- text: Full Name*
+- textbox "Full Name*":
+  - /placeholder: e.g. Margaret Chen
+- button "Dictate"
+- text: Age*
+- textbox "Age*":
+  - /placeholder: e.g. 72
+- text: Room*
+- textbox "Room*":
+  - /placeholder: e.g. 4B-12
+- text: MRN
+- textbox "MRN":
+  - /placeholder: Optional
+- paragraph: Auto-generated if left blank
+- heading "Encounter" [level=3]
+- text: Diagnosis*
+- textbox "Diagnosis*":
+  - /placeholder: e.g. CHF exacerbation
+- button "Dictate"
+- text: Encounter Type
+- combobox "Encounter Type":
+  - option "New Admission"
+  - option "Follow-Up" [selected]
+  - option "Consult"
+- text: Hospital Day
+- textbox "Hospital Day":
+  - /placeholder: "0"
+  - text: "0"
+- text: Admit Date
+- textbox "Admit Date":
+  - /placeholder: e.g. Apr 4
+- paragraph: Defaults from hospital day
+- text: Specialty
+- combobox "Specialty":
+  - option "General Internal Medicine" [selected]
+  - option "Hospital Medicine"
+  - option "Cardiology"
+  - option "Pulmonology"
+  - option "Nephrology"
+  - option "Neurology"
+  - option "Gastroenterology"
+  - option "Oncology"
+  - option "Surgery"
+  - option "Orthopedics"
+  - option "Pediatrics"
+  - option "Critical Care"
+  - option "Other"
+- heading "Current Medications" [level=3]
+- text: "0"
+- textbox "e.g. Metoprolol 25mg PO BID"
+- button "Add" [disabled]
+- heading "Admission Notes" [level=3]
+- button "Dictate"
+- textbox "Dictate or type the admission story — presentation, findings, initial plan. This becomes the patient's background summary."
+- paragraph: Optional. When present it is summarised into the patient's background; if that fails, a plain factual line is used instead.
+- button "Add Patient to Rounds"

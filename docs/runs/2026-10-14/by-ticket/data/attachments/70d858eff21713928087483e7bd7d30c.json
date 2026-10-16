@@ -1,0 +1,15 @@
+{
+  "TC-20/S18": {
+    "status": "record-only",
+    "ranAt": "2026-10-16T10:03:17.341Z",
+    "title": "Both dashboards pass axe, and the counts sit in a live region",
+    "detail": "Our own accessibility check (no UAT item or ticket asks for it: record only; findings are suggestions, Quinn 2026-10-14). axe-core wcag2a + wcag2aa on both dashboards: only color-contrast (serious): the row line 'Room 4B-18 · 1 task pending' / 'Cedar Wing · Room 18 · 0 tasks pending' 2.63:1 (#90a1b9 on white; known A4) and, new with the 640bc7c4 tabs, the unselected 'All Residents' tab label 4.34:1 (#62748e on #f1f5f9). The four tiles are inside <dl aria-live='polite' aria-label='Rounding status counts'> with the numbers in it; each row is a button whose name starts with the patient's name. Whether a screen reader announces a change is S20b (person).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s18.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

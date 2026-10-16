@@ -1,0 +1,93 @@
+{
+  "case": "TC-09-S09",
+  "title": "In Today × rounding status → Nursing Home dashboard counts",
+  "needs": [
+    "seed",
+    "oracle-regex",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail (known)",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s09-dash-1.md",
+      "verdict": "Fail (known)",
+      "url": "/snf/dashboard",
+      "problems": [],
+      "known": [
+        "no match for /-\\s*term\\b[^\\n]*:\\s*Complete\\s*\\n\\s*-\\s*definition\\b[^\\n]*:\\s*\"?1\"?[ \\t]*$/im — known: TFA-92587 AC 6: roundingDashboard.ts loads Nursing Home with view 'all' on e02167f, so residents not In Today are counted; TFA-92598 AC 4 in progress (Q4)"
+      ],
+      "recorded": [
+        "(Q4: Total over every resident (view 'all') would be 5) fail: no match for /-\\s*term\\b[^\\n]*:\\s*Total\\s*\\n\\s*-\\s*definition\\b[^\\n]*:\\s*\"?5\"?[ \\t]*$/im"
+      ]
+    },
+    {
+      "file": "s09-dash-2.md",
+      "verdict": "Fail (known)",
+      "url": "/snf/dashboard",
+      "problems": [],
+      "known": [
+        "no match for /-\\s*term\\b[^\\n]*:\\s*Complete\\s*\\n\\s*-\\s*definition\\b[^\\n]*:\\s*\"?1\"?[ \\t]*$/im — known: TFA-92587 AC 6: roundingDashboard.ts loads Nursing Home with view 'all' on e02167f, so residents not In Today are counted; TFA-92598 AC 4 in progress (Q4)"
+      ],
+      "recorded": [
+        "(Q4: Total over every resident (view 'all') would be 5) fail: no match for /-\\s*term\\b[^\\n]*:\\s*Total\\s*\\n\\s*-\\s*definition\\b[^\\n]*:\\s*\"?5\"?[ \\t]*$/im",
+        "(marking In Today leaves the status alone) pass: backend list-dash-2 [name={maple}].status = \"pre-rounded\""
+      ]
+    },
+    {
+      "file": "s09-dash-3.md",
+      "verdict": "Fail (known)",
+      "url": "/snf/dashboard",
+      "problems": [],
+      "known": [
+        "no match for /-\\s*term\\b[^\\n]*:\\s*Complete\\s*\\n\\s*-\\s*definition\\b[^\\n]*:\\s*\"?1\"?[ \\t]*$/im — known: TFA-92587 AC 6: roundingDashboard.ts loads Nursing Home with view 'all' on e02167f, so residents not In Today are counted; TFA-92598 AC 4 in progress (Q4)"
+      ],
+      "recorded": [
+        "(Q4: Total over every resident (view 'all') would be 5) fail: no match for /-\\s*term\\b[^\\n]*:\\s*Total\\s*\\n\\s*-\\s*definition\\b[^\\n]*:\\s*\"?5\"?[ \\t]*$/im"
+      ]
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": [
+        "(seed precondition) pass: backend list-before [name={maple}].status = \"pre-rounded\"",
+        "(seed precondition) pass: backend list-before [name={larch}].status = \"complete\"",
+        "(seed precondition) pass: backend list-before [name={nettle}].inTodaysSession = false"
+      ]
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "Q4: which ticket owns a counts mismatch (TFA-92587 AC 6 ready for qa / TFA-92598 AC 4 in progress) and whether the list header 'N/M residents seen today' must follow too"
+  ],
+  "agent": {
+    "turns": 28,
+    "costUsd": 0.1604998,
+    "durationMs": 41252,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false,
+  "unit": "U57",
+  "covers": [
+    "TC-09/S09"
+  ],
+  "evidenceDir": "generateddev/20261014dev/u57",
+  "caseFile": "cases/generated-dev/2026-10-14-dev/U57.json",
+  "foreignBefore": {
+    "hospitalPatient": 0,
+    "snfResident": 0
+  }
+}

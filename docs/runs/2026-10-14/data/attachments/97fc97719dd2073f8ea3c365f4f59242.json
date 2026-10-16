@@ -1,0 +1,19 @@
+{
+  "TC-14/S04": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:06:38.016Z",
+    "title": "Save & Extract closes and adds tasks and records medication changes; a later Generate does not send the notes to the medication extractor again",
+    "detail": "Generate cell: mocked copy of Tim's medication-tracker.spec.ts 'Generate does not send Save & Extract's notes to the extractor again' (on 25acd727 his stored note queues the live billing job and his classifier call is unmocked) — rst-tc14-s04-generate-no-reextract.spec.ts with a custom procedure-other template picked before Generate, every ai/* answered at the socket. 7/7 judged: '✓ Medications updated — 1 medication change'; the note shows; exactly one extractMedicationEvents call (Save & Extract's, content = the notes) — Generate sent nothing again; the tracker shows Eliquis 5 mg once, 'Held · Oct 16'; one medication event, Eliquis held / changeType held / changeDay 3; medicationEventsSourceHash = the notes' hash; no billing job. The other three titles re-run on 25acd727 as Tim's own (playwright -g, chromium, local lock + tripwire, no model call): encounter-workflow 'Save & Extract persists a model-extracted action item' passed, snf-save-extract 'Save & Extract saves the notes, closes and adds tasks, and keeps a codeword task verbatim' passed, medication-detection 'Save & Extract automatically detects and persists medication changes' passed. Wiring only (mocked model); AI quality is S05 / TC-22.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s04-generate-after-generate.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s04-generate-tracker.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc14-s04-generate.json",
+      "runs/2026-10-14-local/newspec-c/reports/rst-tc14-s04-generate-no-reextract.json",
+      "runs/2026-10-14-local/newspec-c/reports/rst-laneA-tc10-s03-tc14-s04.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "tc20-s04b-dev",
+  "at": "2026-10-16T10:18:56.037Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "buckets on the In Today set equal the stored rows (Pending / In Progress / Done)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"7/3/3/1\",\"want\":\"7/3/3/1\"}"
+    },
+    {
+      "id": "Ada 'Cedar 101 · 2 tasks pending', Cy 'Cedar 103 · 1 task pending'",
+      "ok": true,
+      "detail": "[\"Cedar 101 · 2 tasks pending\",\"Cedar 103 · 1 task pending\"]"
+    }
+  ],
+  "data": {}
+}

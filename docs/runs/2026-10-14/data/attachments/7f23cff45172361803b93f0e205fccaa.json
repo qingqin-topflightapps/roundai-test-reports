@@ -1,0 +1,119 @@
+{
+  "name": "tc20-s05",
+  "at": "2026-10-16T09:50:28.616Z",
+  "checks": [
+    {
+      "id": "Hospital: 'Rounding Dashboard' with the four tiles Total / Pending / In Progress / Done",
+      "ok": true,
+      "detail": "Total, Pending, In Progress, Done"
+    },
+    {
+      "id": "Hospital: the patient's row has the prototype line ('Room N · N task(s) pending') and a badge",
+      "ok": true,
+      "detail": "{\"name\":\"QA Hosp RQQD S05\",\"line\":\"Room 4B-05 · 0 tasks pending\",\"badge\":\"Not Yet Prepped\"}"
+    },
+    {
+      "id": "Hospital: no tabs and no In Today control; no resident",
+      "ok": true,
+      "detail": "tabs 0, 'In Today' 0"
+    },
+    {
+      "id": "Nursing Home: the same heading and the same four tiles",
+      "ok": true,
+      "detail": "Total, Pending, In Progress, Done"
+    },
+    {
+      "id": "Nursing Home: 'Today's Visits' and 'All Residents' tabs",
+      "ok": true,
+      "detail": "[{\"name\":\"Today's Visits\",\"selected\":true},{\"name\":\"All Residents\",\"selected\":false}]"
+    },
+    {
+      "id": "Nursing Home: the resident's row has the same shape (unit · N task(s) pending, badge)",
+      "ok": true,
+      "detail": "{\"name\":\"QA Resident RQQD S05\",\"line\":\"Cedar 5 · 0 tasks pending\",\"badge\":\"Not Yet Prepped\"}"
+    },
+    {
+      "id": "Nursing Home: no Hospital patient",
+      "ok": true,
+      "detail": "absent check"
+    },
+    {
+      "id": "design: same tile container classes and row button classes on both (T2, record)",
+      "ok": true,
+      "detail": "compare screenshots tc20-s05-hospital / tc20-s05-nursing-home",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "hospital": {
+      "heading": true,
+      "subtitle": "Hospital · All Patients",
+      "dateLine": "Friday, October 16, 2026",
+      "busy": "false",
+      "tiles": {
+        "total": "1",
+        "pending": "1",
+        "inProgress": "0",
+        "done": "0"
+      },
+      "labels": [
+        "Total",
+        "Pending",
+        "In Progress",
+        "Done"
+      ],
+      "tabs": [],
+      "rows": [
+        {
+          "name": "QA Hosp RQQD S05",
+          "line": "Room 4B-05 · 0 tasks pending",
+          "badge": "Not Yet Prepped"
+        }
+      ],
+      "status": "",
+      "empty": "",
+      "liveRegion": "polite/",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nRounding Dashboard\n\nFriday, October 16, 2026\n\nHospital · All Patients\n\nTotal\n1\nPending\n1\nIn Progress\n0\nDone\n0\n\nPending: not yet prepped. In Progress: pre-rounded, seen, or note ready. Done: rounding finished.\n\nALL PATIENTS\n\nQA Hosp RQQD S05\n\nRoom 4B-05 · 0 tasks pending\n\nNot Yet Prepped",
+      "tabCount": 0
+    },
+    "nursingHome": {
+      "heading": true,
+      "subtitle": "Nursing Home · Today's Visits",
+      "dateLine": "Friday, October 16, 2026",
+      "busy": "false",
+      "tiles": {
+        "total": "1",
+        "pending": "1",
+        "inProgress": "0",
+        "done": "0"
+      },
+      "labels": [
+        "Total",
+        "Pending",
+        "In Progress",
+        "Done"
+      ],
+      "tabs": [
+        {
+          "name": "Today's Visits",
+          "selected": true
+        },
+        {
+          "name": "All Residents",
+          "selected": false
+        }
+      ],
+      "rows": [
+        {
+          "name": "QA Resident RQQD S05",
+          "line": "Cedar 5 · 0 tasks pending",
+          "badge": "Not Yet Prepped"
+        }
+      ],
+      "status": "",
+      "empty": "",
+      "liveRegion": "polite/",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nRounding Dashboard\n\nFriday, October 16, 2026\n\nNursing Home · Today's Visits\n\nToday's Visits\nAll Residents\nTotal\n1\nPending\n1\nIn Progress\n0\nDone\n0\n\nPending: not yet prepped. In Progress: pre-rounded, seen, or note ready. Done: rounding finished.\n\nTODAY'S VISITS\n\nQA Resident RQQD S05\n\nCedar 5 · 0 tasks pending\n\nNot Yet Prepped"
+    }
+  }
+}

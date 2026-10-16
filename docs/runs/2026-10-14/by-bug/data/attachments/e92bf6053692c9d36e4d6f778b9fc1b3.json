@@ -1,0 +1,17 @@
+{
+  "OAT-03/S17": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:32:00.533Z",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst",
+    "method": "PW",
+    "title": "Generate double-tapped plus one more tap while it is generating (Hospital): one note, one billing request",
+    "detail": "Dev (<dev address>, 25acd727), Quinn's session of 19:12 JST, dataset lane (scripts/datasets/run.sh rst-oat03-s17 under runs/.dev.lock; dataset cases/datasets/rst-oat03-s17.json, spec web/qa-agent-tests/datasets/rst-oat03-s17.spec.ts), one prefixed Hospital row 'QA DS1-rst-oat03-s17 Hosp Hale', deleted after (cleanup: 0 remaining, no other row changed, appMode restored). No fault injected (review TFA-94422: Hospital only). The physician double-tapped Generate Note & Finish, then tapped once more while it read 'Generating Note…' (the button is disabled while generating, so that tap does nothing). 5/5 judged: exactly one notes.generateNote row in the window (Haiku 4.5, ok, 3.6 s, providerMs 3.6 s), exactly one billing.suggestBilling row (Haiku 4.5, ok, 2.7 s), one stored note whose noteGeneratedAt never moved, encounterNotes = the typed text, Post-Round shows 'AI-Generated Note' once. Recorded: the billing job settled on attempt 1; the note has one ASSESSMENT section. diagnostics:list was read every 1.5 s (it keeps 8 rows per user), 5 unique rows in the window. Nursing Home not run (the brief and the review ask Hospital only).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-oat03-s17/evidence/OAT-03-S17-post-round.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-oat03-s17/evidence/OAT-03-S17.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rst-oat03-s17/cleanup.json"
+    ]
+  }
+}

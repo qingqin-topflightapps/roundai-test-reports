@@ -1,0 +1,19 @@
+{
+  "TC-10/S03": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:06:33.674Z",
+    "title": "Pre-round notepad: fullscreen editor and points channel, typed text autosaves, a (mocked) dictation is saved as reviewed",
+    "detail": "Dictation cell: mocked copy of Tim's chart.spec.ts 'on-device dictation is reviewable and saved' (his test lets Save Note reach parsePreRoundNotes on the configured model) — rst-tc10-s03-dictation-saved.spec.ts, the account keeps the on-device marker so Dictate reaches the browser speech mock; parsePreRoundNotes and the follow-up calls answered at the socket. 4/4 judged: the dictated text appears in the box, Stop shows 'Dictation done — review before saving', after Save Note rounding.list preRoundNotes equals the dictated text exactly; recorded: rawPreRoundNotes and the text sent to the summary equal it too. The other three cells re-run on 25acd727 as Tim's own titles (playwright -g, chromium, under the local lock + tripwire, no model call): chart.spec.ts 'entry opens a fullscreen editor with a separate manual-points channel' passed, 'typed notes survive closing the editor' passed, important-points.spec.ts 'Important Points is nested in the editor and add/delete persist' passed. U1's points half belongs to TFA-92590 (in progress): that title's pass is recorded (todo), not counted. Tripwire: no model call in either run.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s03-dictation-review.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s03-dictation-saved.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s03-dictation.json",
+      "runs/2026-10-14-local/newspec-c/reports/rst-tc10-s03-dictation-saved.json",
+      "runs/2026-10-14-local/newspec-c/reports/rst-laneA-tc10-s03-tc14-s04.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst"
+  }
+}

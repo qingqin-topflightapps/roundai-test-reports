@@ -1,0 +1,17 @@
+{
+  "TC-21/S02": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:22:45Z",
+    "title": "Existing specs on main: switcher, Quick Dictation, /clinic redirect, deep-link reload, custom templates and Settings per context (+ reverse 'not written back' cell)",
+    "detail": "Lane A on 25acd727 (spec-matrix.mjs cases/TC-21.matrix.json S02, under the lock and the tripwire: no model call): Tim's 4 titles all expected — 'offers only Hospital and Nursing Home and remembers the selection', 'a deep link to a chart survives a reload', 'custom note templates stay visible only in their care setting', 'Settings belongs to the list it was opened from, and a setting saved elsewhere is not written back' (none stores a note or calls a model). The runnerGap cell (R7, the reverse direction) was written: an open Hospital list while another device saves Nursing Home: 6/6 reads over 6 s stay 'snf' (not written back) and the page keeps showing Hospital; 2/2 judged. Recorded: a reload on /rounding then saves 'rounding' once (the URL is the context).",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/TC-21.results.json",
+      "runs/2026-10-14-local/matrix/TC-21.laneA.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s02-reverse.json"
+    ],
+    "pkg": "ctx"
+  }
+}

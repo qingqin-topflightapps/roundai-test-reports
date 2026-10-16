@@ -1,0 +1,57 @@
+URL: http://localhost:6473/settings
+- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.
+- heading "Create Note Template" [level=3]
+- button "Close"
+- text: Write plain-English instructions for what type of note the AI should produce. Be as specific as you like — format, sections, emphasis. Note Type*
+- combobox "Note Type*" [invalid]:
+  - option "Select a note type" [disabled] [selected]
+  - option "H&P"
+  - option "SOAP progress"
+  - option "Consult note"
+  - option "Discharge summary"
+  - option "Procedure / other"
+- alert: Select a note type
+- text: Template Name*
+- textbox "Template Name*":
+  - /placeholder: e.g. "My Cardiology Note"
+  - text: QA Template no-type ICAI
+- text: Short Description
+- textbox "Short Description":
+  - /placeholder: e.g. Problem-focused cardiology follow-up
+- text: ✨ Auto-fill from one of your notes (optional)
+- paragraph: Paste a note you've written and the AI will read its section layout and draft the instructions below. Only the structure is captured — no patient details are saved.
+- textbox "Paste a prior note here…"
+- button "Generate template from this note" [disabled]
+- text: Instructions for AI*
+- textbox "Instructions for AI*":
+  - /placeholder: "Example:\n\"Focus on hemodynamics and fluid status. Skip ROS. End with a one-line assessment per problem and a clear numbered plan. Keep under 300 words.\""
+  - text: Short assessment and plan, one line per problem.
+- button "Save Template"
+- heading "Settings" [level=2]
+- button
+- text: Hospital Note Templates
+- button "New"
+- paragraph: Built-in and custom templates stay within this care context. Your custom templates appear in its note-format picker with a ★.
+- paragraph: No custom templates yet — tap New to create one.
+- text: Feedback
+- paragraph: How is Round Companion working for you? Your answers go to the pilot team. Please don’t include patient details.
+- radiogroup "Rating, 1 is not useful and 5 is essential":
+  - radio "Rate 1": "1"
+  - radio "Rate 2": "2"
+  - radio "Rate 3": "3"
+  - radio "Rate 4": "4"
+  - radio "Rate 5": "5"
+- textbox "What should change?"
+- button "Send feedback" [disabled]
+- text: Account
+- paragraph: Signed in as e2e-fresh-b12d6d43-08c@roundai.test
+- button "Sign out"
+- button "Sign out everywhere"
+- paragraph: Sessions end after 12 hours without use and after 30 days at most.
+- button "Delete account"
+- text: About
+- link "Privacy Policy":
+  - /url: https://roundcompanion.com/privacy.html
+- link "Contact support":
+  - /url: mailto:vikram@roundcompanion.com
+- paragraph: Version 1.0.0 (25acd727)

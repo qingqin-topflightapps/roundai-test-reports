@@ -1,0 +1,30 @@
+{
+  "name": "tc20-s07-dev",
+  "at": "2026-10-16T10:18:56.037Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "un-marked resident still on All Residents with '+ Today'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "after the un-mark: Ada off the Today's Visits rows and counts (Total -1)",
+      "ok": true,
+      "detail": "{\"before\":\"7/3/3/1\",\"after\":\"6/2/3/1\"}"
+    },
+    {
+      "id": "after the re-mark: Ada back, Total as before",
+      "ok": true,
+      "detail": "7/3/3/1"
+    }
+  ],
+  "data": {}
+}

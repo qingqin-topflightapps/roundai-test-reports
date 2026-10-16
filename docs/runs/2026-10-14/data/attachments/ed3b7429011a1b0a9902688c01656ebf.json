@@ -1,0 +1,16 @@
+{
+  "TC-06/S09": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:00:11.930Z",
+    "title": "Rolled statuses read Follow-up and the pre-selection follows; a status set again holds",
+    "detail": "Local 25acd727, runnerGap closed in the spec: seeded Hospital Consult, NH New Admission and NH Consult with yesterday's day (positive control read before opening: consult / new / consult @ 2026-10-15). 7/7 judged: all three read Follow-up on the list and in the chart, with SOAP progress / SNF follow-up pre-selected (never Consult note, SNF admission, SNF consult or a discharge template); the Hospital patient set again to New Admission by hand keeps New Admission with H&P after a reload and after rounding:applyLifecycle with today (stored new @ 2026-10-16).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s09.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s09-3-snf-list.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "TC-21/S12": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:55:32.076Z",
+    "title": "Rapid Nursing Home -> Hospital -> Nursing Home taps: no stale or mixed list (desktop half)",
+    "detail": "Local 25acd727, the desktop mouse half (runnerGap R7 spec): three switcher clicks with noWaitAfter, 5 runs. 5/5 judged: the final page is /snf with only the resident, no Hospital row, and settings:get appMode = snf. Left: the UAT's real-phone taps (see blockers); the same React code runs in the Capacitor app.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s12.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s12-final.png"
+    ],
+    "pkg": "ctx"
+  }
+}

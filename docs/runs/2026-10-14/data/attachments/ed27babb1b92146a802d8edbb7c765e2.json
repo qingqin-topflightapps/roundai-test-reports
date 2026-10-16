@@ -1,0 +1,23 @@
+{
+  "TC-21/S01": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:54:09.721Z",
+    "title": "Full context round-trip: lists, templates, panels, no Clinic, no bleed",
+    "detail": "Local 25acd727, fresh physician, one Hospital patient and one Nursing Home resident (both with a stored summary), every model action refused at the socket (spec ctx-tc21-nav.spec.ts). 17/17 judged cells passed: Hospital list shows only its patient, exactly one Hospital and one Nursing Home button, no Clinic, Quick Dictation present (U1e, U5); NH list shows only the resident, no Quick Dictation, no Clinic; resident chart has Medications, Vitals and Labs panels, 'Admission Summary' and never 'Background Summary' (U9, U1c); NH Note Format is exactly SNF admission, SNF follow-up, SNF consult, SNF discharge (U2, T1, new on this build) with Save & Extract on the Encounter tab; Hospital chart 'Background Summary', Note Format exactly H&P, SOAP progress, Consult note, Discharge summary; no removed template (A&P Only, Brief Progress, Addendum, Outpatient Consult, Clinic *) or the other context's template in either picker (U3, U6); Hospital list at the end clean. Recorded: on a Hospital patient with no stored summary the Hospital Course panel (and its 'Background Summary' label) is hidden until a summary exists, while the NH chart always shows 'Admission Summary' with 'No admission summary yet.'.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp1-hospital-list.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp2-snf-list.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp3a-snf-preround.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp3b-snf-templates.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp3b-snf-templates.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp4-hospital-templates.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp4-hospital-templates.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s01-cp5-hospital-list-after.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

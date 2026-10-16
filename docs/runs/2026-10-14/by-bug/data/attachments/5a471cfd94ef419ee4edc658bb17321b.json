@@ -1,0 +1,60 @@
+{
+  "name": "tc21-s06-snf",
+  "at": "2026-10-16T10:15:41.124Z",
+  "checks": [
+    {
+      "id": "1 positive control: SNF discharge picked by hand shows",
+      "ok": true,
+      "detail": "SNF discharge"
+    },
+    {
+      "id": "2 a badge change (New Admission) pre-selects afresh: SNF admission, not SNF discharge",
+      "ok": true,
+      "detail": "SNF admission"
+    },
+    {
+      "id": "3 positive control: Follow-up and SNF discharge picked again",
+      "ok": true,
+      "detail": "SNF discharge"
+    },
+    {
+      "id": "4 Q11 (record): same chart reopened in-app the same day (strict reading wants SNF follow-up; the app keeps the physician's own pick)",
+      "ok": false,
+      "detail": "SNF discharge",
+      "recordOnly": true
+    },
+    {
+      "id": "5 Q11 (record): after snf -> hospital -> snf in-app (strict reading wants SNF follow-up)",
+      "ok": false,
+      "detail": "SNF discharge",
+      "recordOnly": true
+    },
+    {
+      "id": "5r after a reload the pick is gone and the badge's SNF follow-up is pre-selected (U4)",
+      "ok": true,
+      "detail": "SNF follow-up"
+    },
+    {
+      "id": "6 positive control: SNF discharge picked once more",
+      "ok": true,
+      "detail": "SNF discharge"
+    },
+    {
+      "id": "7 another resident opened in-app right after: SNF follow-up (badge Follow-up), never SNF discharge (U4)",
+      "ok": true,
+      "detail": "SNF follow-up"
+    }
+  ],
+  "data": {
+    "cells": {
+      "p1": "SNF discharge",
+      "p2": "SNF admission",
+      "p3": "SNF discharge",
+      "p4": "SNF discharge",
+      "p5": "SNF discharge",
+      "p5r": "SNF follow-up",
+      "p6": "SNF discharge",
+      "p7": "SNF follow-up"
+    }
+  }
+}

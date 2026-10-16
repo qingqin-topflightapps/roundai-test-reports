@@ -1,0 +1,116 @@
+{
+  "name": "oat03-s11-server",
+  "at": "2026-10-16T09:51:50.740Z",
+  "checks": [
+    {
+      "id": "hang: both models hang until their attempt deadline (AbortError) -> the action rejects (never hangs, never returns an empty note)",
+      "ok": true,
+      "detail": "ConvexError: {\"kind\":\"retryable\",\"name\":\"AbortError\",\"status\":null}"
+    },
+    {
+      "id": "hang: Haiku then Mistral were both asked",
+      "ok": true,
+      "detail": "[\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"mistral.mistral-large-3-675b-instruct\"]"
+    },
+    {
+      "id": "hang: the notes.generateNote log row says ok = false",
+      "ok": true,
+      "detail": "{\"fn\":\"notes.generateNote\",\"ok\":false,\"error\":\"unknown\"}"
+    },
+    {
+      "id": "hang (Q6 / UAT 3.5, recorded): Generate gives up within ~30 s",
+      "ok": true,
+      "detail": "30 s",
+      "recordOnly": true
+    },
+    {
+      "id": "throttle: both models throttle at once (429) -> the action rejects (never hangs, never returns an empty note)",
+      "ok": true,
+      "detail": "ConvexError: {\"kind\":\"retryable\",\"name\":\"ThrottlingException\",\"status\":429}"
+    },
+    {
+      "id": "throttle: Haiku then Mistral were both asked",
+      "ok": true,
+      "detail": "[\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"us.anthropic.claude-haiku-4-5-20251001-v1:0\",\"mistral.mistral-large-3-675b-instruct\"]"
+    },
+    {
+      "id": "throttle: the notes.generateNote log row says ok = false",
+      "ok": true,
+      "detail": "{\"fn\":\"notes.generateNote\",\"ok\":false,\"error\":\"rate_limited\"}"
+    },
+    {
+      "id": "throttle (Q6 / UAT 3.5, recorded): Generate gives up within ~30 s",
+      "ok": true,
+      "detail": "1 s",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "hang": {
+      "rejected": true,
+      "error": "ConvexError: {\"kind\":\"retryable\",\"name\":\"AbortError\",\"status\":null}",
+      "ms": 30003,
+      "attempts": [
+        {
+          "model": "haiku",
+          "at": 0,
+          "endedAt": 20005,
+          "timeoutMs": 20000,
+          "outcome": "threw AbortError"
+        },
+        {
+          "model": "mistral",
+          "at": 20005,
+          "endedAt": 30001,
+          "timeoutMs": 9995,
+          "outcome": "threw AbortError"
+        }
+      ],
+      "row": {
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": false,
+        "error": "unknown",
+        "durationMs": 30002,
+        "providerMs": 30001
+      }
+    },
+    "throttle": {
+      "rejected": true,
+      "error": "ConvexError: {\"kind\":\"retryable\",\"name\":\"ThrottlingException\",\"status\":429}",
+      "ms": 1004,
+      "attempts": [
+        {
+          "model": "haiku",
+          "at": 1,
+          "endedAt": 1,
+          "timeoutMs": 20000,
+          "outcome": "threw ThrottlingException"
+        },
+        {
+          "model": "haiku",
+          "at": 1004,
+          "endedAt": 1004,
+          "timeoutMs": 20000,
+          "outcome": "threw ThrottlingException"
+        },
+        {
+          "model": "mistral",
+          "at": 1004,
+          "endedAt": 1004,
+          "timeoutMs": 20000,
+          "outcome": "threw ThrottlingException"
+        }
+      ],
+      "row": {
+        "fn": "notes.generateNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": false,
+        "error": "rate_limited",
+        "durationMs": 1003,
+        "providerMs": 0
+      }
+    },
+    "worstCaseMsUsedInPart2": 30003
+  }
+}

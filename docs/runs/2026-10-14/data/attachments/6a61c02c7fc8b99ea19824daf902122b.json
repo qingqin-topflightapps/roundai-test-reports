@@ -1,0 +1,19 @@
+{
+  "TC-21/S07": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:54:35.622Z",
+    "title": "Empty other context, both directions",
+    "detail": "Local 25acd727, the runner gap (variants) closed by two specs with their own fresh accounts. Variant a (1 Hospital patient, 0 residents): NH -> Hospital -> NH; variant b (1 resident, 0 Hospital patients): NH -> Hospital -> NH -> Hospital. 8/8 judged: every switch to the empty context shows its empty state ('No residents on today's visit list.' / 'No patients on your list yet.') under the list heading, never a blank page and never the other context's patient; every switch to the full context lists its own row; NH All Residents is empty too ('No residents in the panel yet.'). No Clinic on any screen (recorded).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s07a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s07b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s07a-3-snf.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s07b-4-hospital.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s07a-all-residents.png"
+    ],
+    "pkg": "ctx"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "name": "tc20-s06-dev",
+  "at": "2026-10-16T10:18:56.037Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "Hospital tiles equal the buckets of every stored Hospital row (Note Ready -> In Progress)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"6/1/4/1\",\"want\":\"6/1/4/1\"}"
+    },
+    {
+      "id": "Hospital: my six rows listed, each with its status badge",
+      "ok": true,
+      "detail": "H-pending=Not Yet Prepped, H-pre-rounded=Pre-Rounded, H-in-encounter=Seen, H-seen=Seen, H-note-ready=Note Ready, H-post-rounded=Complete"
+    },
+    {
+      "id": "Hospital: tiles add up",
+      "ok": true,
+      "detail": "6/1/4/1"
+    },
+    {
+      "id": "Nursing Home Today's Visits tiles equal the buckets of the stored In Today rows",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"7/3/3/1\",\"want\":\"7/3/3/1\"}"
+    }
+  ],
+  "data": {
+    "hospital": {
+      "tiles": {
+        "total": "6",
+        "pending": "1",
+        "inProgress": "4",
+        "done": "1"
+      },
+      "mine": [
+        {
+          "name": "QA DSH-TC20 H-pending",
+          "line": "Room 51 · 0 tasks pending",
+          "badge": "Not Yet Prepped"
+        },
+        {
+          "name": "QA DSH-TC20 H-pre-rounded",
+          "line": "Room 52 · 0 tasks pending",
+          "badge": "Pre-Rounded"
+        },
+        {
+          "name": "QA DSH-TC20 H-in-encounter",
+          "line": "Room 53 · 0 tasks pending",
+          "badge": "Seen"
+        },
+        {
+          "name": "QA DSH-TC20 H-seen",
+          "line": "Room 54 · 0 tasks pending",
+          "badge": "Seen"
+        },
+        {
+          "name": "QA DSH-TC20 H-note-ready",
+          "line": "Room 55 · 0 tasks pending",
+          "badge": "Note Ready"
+        },
+        {
+          "name": "QA DSH-TC20 H-post-rounded",
+          "line": "Room 56 · 0 tasks pending",
+          "badge": "Complete"
+        }
+      ]
+    },
+    "nursingHome": {
+      "tiles": {
+        "total": "7",
+        "pending": "3",
+        "inProgress": "3",
+        "done": "1"
+      },
+      "mine": [
+        {
+          "name": "QA DSH-TC20 Ada",
+          "line": "Cedar 101 · 2 tasks pending",
+          "badge": "Not Yet Prepped"
+        },
+        {
+          "name": "QA DSH-TC20 Bo",
+          "line": "Cedar 102 · 0 tasks pending",
+          "badge": "Not Yet Prepped"
+        },
+        {
+          "name": "QA DSH-TC20 Cy",
+          "line": "Cedar 103 · 1 task pending",
+          "badge": "Pre-Rounded"
+        },
+        {
+          "name": "QA DSH-TC20 Di",
+          "line": "Cedar 104 · 0 tasks pending",
+          "badge": "Seen"
+        },
+        {
+          "name": "QA DSH-TC20 Ed",
+          "line": "Cedar 105 · 0 tasks pending",
+          "badge": "Complete"
+        },
+        {
+          "name": "QA DSH-TC20 Nia",
+          "line": "Cedar 108 · 0 tasks pending",
+          "badge": "Note Ready"
+        },
+        {
+          "name": "QA DSH-TC20 Hal",
+          "line": "Cedar 109 · 0 tasks pending",
+          "badge": "Not Yet Prepped"
+        }
+      ]
+    }
+  }
+}

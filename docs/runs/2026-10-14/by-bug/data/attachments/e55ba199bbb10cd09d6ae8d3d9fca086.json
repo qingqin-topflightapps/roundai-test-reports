@@ -1,0 +1,63 @@
+{
+  "name": "tc20-s25-dsh-snf",
+  "at": "2026-10-16T09:57:29.382Z",
+  "checks": [
+    {
+      "id": "before: Pending 1",
+      "ok": true,
+      "detail": "1/1/0/0"
+    },
+    {
+      "id": "offline: a clear no-network message",
+      "ok": true,
+      "detail": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then."
+    },
+    {
+      "id": "offline: stale counts not presented as current",
+      "ok": true,
+      "detail": "1/1/0/0 with the banner"
+    },
+    {
+      "id": "reconnect: counts catch up (Pending 0, In Progress 1) without a reload",
+      "ok": true,
+      "detail": "1/0/1/0"
+    },
+    {
+      "id": "reconnect: no reload",
+      "ok": true,
+      "detail": "page not reloaded"
+    }
+  ],
+  "data": {
+    "before": {
+      "total": "1",
+      "pending": "1",
+      "inProgress": "0",
+      "done": "0"
+    },
+    "offline": {
+      "banner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+      "tiles": {
+        "total": "1",
+        "pending": "1",
+        "inProgress": "0",
+        "done": "0"
+      }
+    },
+    "afterReconnect": {
+      "tiles": {
+        "total": "1",
+        "pending": "0",
+        "inProgress": "1",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA Resident Offline PPHQ",
+        "line": "QA1 · 0 tasks pending",
+        "badge": "Pre-Rounded"
+      },
+      "catchUpMs": 213
+    },
+    "bannerGoneAfterReconnect": true
+  }
+}

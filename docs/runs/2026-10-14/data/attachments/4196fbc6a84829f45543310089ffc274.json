@@ -1,0 +1,142 @@
+{
+  "name": "tc20-s17-generate-dev",
+  "at": "2026-10-16T10:40:36.812Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "U7: each Generate left a notes.generateNote row naming the model (one per care setting)",
+      "ok": true,
+      "detail": "[\"hosp: us.anthropic.claude-haiku-4-5-20251001-v1:0 ok=true\",\"snf: us.anthropic.claude-haiku-4-5-20251001-v1:0 ok=true\"]"
+    },
+    {
+      "id": "U8: the note's AI time (providerMs) is logged apart from the total (durationMs)",
+      "ok": true,
+      "detail": "[\"hosp: 3257/3267 ms\",\"snf: 2498/2503 ms\"]"
+    },
+    {
+      "id": "U8: no Generate over 30 s",
+      "ok": true,
+      "detail": "[\"hosp: 3267 ms\",\"snf: 2503 ms\"]",
+      "record": true
+    },
+    {
+      "id": "no fallback used",
+      "ok": true,
+      "detail": "[\"none\",\"none\"]",
+      "record": true
+    }
+  ],
+  "data": {
+    "perGenerate": [
+      {
+        "setting": "hosp",
+        "tapToNoteMs": 13342,
+        "rows": [
+          {
+            "at": "2026-10-16T10:39:51.944Z",
+            "fn": "parsing.classifyAdmissionReason",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 2344,
+            "durationMs": 2346,
+            "error": null
+          },
+          {
+            "at": "2026-10-16T10:39:49.309Z",
+            "fn": "notes.refreshCourseAndBackground",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 4838,
+            "durationMs": 4841,
+            "error": null
+          },
+          {
+            "at": "2026-10-16T10:39:47.274Z",
+            "fn": "billing.suggestBilling",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 2982,
+            "durationMs": 3064,
+            "error": null
+          },
+          {
+            "at": "2026-10-16T10:39:46.596Z",
+            "fn": "parsing.extractMedicationEvents",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 2124,
+            "durationMs": 2128,
+            "error": null
+          },
+          {
+            "at": "2026-10-16T10:39:43.803Z",
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 3257,
+            "durationMs": 3267,
+            "error": null
+          }
+        ]
+      },
+      {
+        "setting": "snf",
+        "tapToNoteMs": 4071,
+        "rows": [
+          {
+            "at": "2026-10-16T10:40:18.201Z",
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 2498,
+            "durationMs": 2503,
+            "error": null
+          },
+          {
+            "at": "2026-10-16T10:40:21.795Z",
+            "fn": "notes.refreshCourseAndBackground",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 2695,
+            "durationMs": 2697,
+            "error": null
+          },
+          {
+            "at": "2026-10-16T10:40:21.318Z",
+            "fn": "billing.suggestBilling",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 2468,
+            "durationMs": 2539,
+            "error": null
+          },
+          {
+            "at": "2026-10-16T10:40:21.014Z",
+            "fn": "parsing.extractMedicationEvents",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "fellBackFrom": null,
+            "providerMs": 1894,
+            "durationMs": 1897,
+            "error": null
+          }
+        ]
+      }
+    ]
+  }
+}

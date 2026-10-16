@@ -1,0 +1,325 @@
+{
+  "name": "tc20-s17-dev",
+  "at": "2026-10-16T10:31:13.124Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "U7: every Generate in this run left a notes.generateNote row naming the model",
+      "ok": false,
+      "detail": "[]"
+    },
+    {
+      "id": "U7: the pre-round processing behind each Save Note left a parsing.parsePreRoundNotes row naming the model",
+      "ok": true,
+      "detail": "[\"us.anthropic.claude-haiku-4-5-20251001-v1:0 ok=true\",\"us.anthropic.claude-haiku-4-5-20251001-v1:0 ok=true\"]"
+    },
+    {
+      "id": "U8: each successful AI call logs the AI time (providerMs) apart from the total (durationMs)",
+      "ok": true,
+      "detail": "[\"parsing.parsePreRoundNotes 3898/3902\",\"parsing.extractMedicationEvents 2349/2352\",\"parsing.extractTasks 1765/1767\",\"parsing.extractTasks 1457/1460\",\"parsing.classifyAdmissionReason 1896/1900\",\"parsing.parsePreRoundNotes 3770/3774\",\"notes.refreshCourseAndBackground 3707/3709\",\"billing.suggestBilling 2936/3007\"]"
+    },
+    {
+      "id": "U8: no AI call over 30 s (a slow one where the AI time is not most of the total is flagged for Vikram)",
+      "ok": true,
+      "detail": "[]",
+      "record": true
+    },
+    {
+      "id": "U8: Save Note (Hospital and Nursing Home) within the 15 s target (click to stored status)",
+      "ok": true,
+      "detail": "{\"hSave\":674,\"hProcessed\":7925,\"nSave\":5497}",
+      "record": true
+    },
+    {
+      "id": "fallbacks used",
+      "ok": true,
+      "detail": "[]",
+      "record": true
+    }
+  ],
+  "data": {
+    "windows": {
+      "s09-hosp-generate": {
+        "from": 1792146534222,
+        "to": 1792146546757
+      },
+      "s09-hosp-regenerate": {
+        "from": 1792146550317,
+        "to": 1792146561798
+      },
+      "s09-snf-generate": {
+        "from": 1792146569808,
+        "to": 1792146573472
+      },
+      "s09-snf-regenerate": {
+        "from": 1792146576262,
+        "to": 1792146585985
+      },
+      "s15-hosp": {
+        "from": 1792146597985,
+        "to": 1792146608309
+      },
+      "s15-snf": {
+        "from": 1792146616139,
+        "to": 1792146619710
+      },
+      "s08-hosp-save-note": {
+        "from": 1792146626820,
+        "to": 1792146634745
+      },
+      "s08-hosp-save-extract": {
+        "from": 1792146638902,
+        "to": 1792146647274
+      },
+      "s08-snf-save-note": {
+        "from": 1792146652006,
+        "to": 1792146665505
+      }
+    },
+    "perStep": {
+      "s09-hosp-generate": [],
+      "s09-hosp-regenerate": [],
+      "s09-snf-generate": [],
+      "s09-snf-regenerate": [],
+      "s15-hosp": [
+        {
+          "at": "2026-10-16T10:30:22.568Z",
+          "fn": "billing.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2936,
+          "durationMs": 3007,
+          "error": null
+        }
+      ],
+      "s15-snf": [
+        {
+          "at": "2026-10-16T10:30:33.209Z",
+          "fn": "parsing.classifyAdmissionReason",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1896,
+          "durationMs": 1900,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:31.086Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3770,
+          "durationMs": 3774,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:23.451Z",
+          "fn": "notes.refreshCourseAndBackground",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3707,
+          "durationMs": 3709,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:22.568Z",
+          "fn": "billing.suggestBilling",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2936,
+          "durationMs": 3007,
+          "error": null
+        }
+      ],
+      "s08-hosp-save-note": [
+        {
+          "at": "2026-10-16T10:30:41.727Z",
+          "fn": "parsing.extractMedicationEvents",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2349,
+          "durationMs": 2352,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:41.136Z",
+          "fn": "parsing.extractTasks",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1765,
+          "durationMs": 1767,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:35.336Z",
+          "fn": "parsing.extractTasks",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1457,
+          "durationMs": 1460,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:33.209Z",
+          "fn": "parsing.classifyAdmissionReason",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1896,
+          "durationMs": 1900,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:31.086Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3770,
+          "durationMs": 3774,
+          "error": null
+        }
+      ],
+      "s08-hosp-save-extract": [
+        {
+          "at": "2026-10-16T10:30:56.081Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3898,
+          "durationMs": 3902,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:41.727Z",
+          "fn": "parsing.extractMedicationEvents",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 2349,
+          "durationMs": 2352,
+          "error": null
+        },
+        {
+          "at": "2026-10-16T10:30:41.136Z",
+          "fn": "parsing.extractTasks",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 1765,
+          "durationMs": 1767,
+          "error": null
+        }
+      ],
+      "s08-snf-save-note": [
+        {
+          "at": "2026-10-16T10:30:56.081Z",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "fellBackFrom": null,
+          "providerMs": 3898,
+          "durationMs": 3902,
+          "error": null
+        }
+      ]
+    },
+    "allRowsSinceStart": [
+      {
+        "at": "2026-10-16T10:30:56.081Z",
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 3898,
+        "durationMs": 3902,
+        "error": null
+      },
+      {
+        "at": "2026-10-16T10:30:41.727Z",
+        "fn": "parsing.extractMedicationEvents",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2349,
+        "durationMs": 2352,
+        "error": null
+      },
+      {
+        "at": "2026-10-16T10:30:41.136Z",
+        "fn": "parsing.extractTasks",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1765,
+        "durationMs": 1767,
+        "error": null
+      },
+      {
+        "at": "2026-10-16T10:30:35.336Z",
+        "fn": "parsing.extractTasks",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1457,
+        "durationMs": 1460,
+        "error": null
+      },
+      {
+        "at": "2026-10-16T10:30:33.209Z",
+        "fn": "parsing.classifyAdmissionReason",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1896,
+        "durationMs": 1900,
+        "error": null
+      },
+      {
+        "at": "2026-10-16T10:30:31.086Z",
+        "fn": "parsing.parsePreRoundNotes",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 3770,
+        "durationMs": 3774,
+        "error": null
+      },
+      {
+        "at": "2026-10-16T10:30:23.451Z",
+        "fn": "notes.refreshCourseAndBackground",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 3707,
+        "durationMs": 3709,
+        "error": null
+      },
+      {
+        "at": "2026-10-16T10:30:22.568Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2936,
+        "durationMs": 3007,
+        "error": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "name": "tc21-s04",
+  "at": "2026-10-16T09:59:18.206Z",
+  "checks": [
+    {
+      "id": "setup: Hospital custom template saved through Settings (type SOAP progress)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "NH Settings lists no Hospital custom template",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "setup: NH custom template saved through Settings (type SNF follow-up)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "server: each context lists only its own custom template",
+      "ok": true,
+      "detail": "{\"hospital\":[\"QA Hosp Custom T21 6NHI:soap\"],\"snf\":[\"QA SNF Custom T21 6NHI:snf-progress\"]}"
+    },
+    {
+      "id": "NH picker: built-ins are exactly SNF admission, SNF follow-up, SNF consult, SNF discharge (U2, T1)",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\",\"QA SNF Custom T21 6NHI ★\"]"
+    },
+    {
+      "id": "NH picker: never the Hospital custom template, a Hospital template, a removed template or Clinic (U3, U5, U6)",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\",\"QA SNF Custom T21 6NHI ★\"]"
+    },
+    {
+      "id": "Q2 (record): the NH custom template shows in its own picker with a star",
+      "ok": true,
+      "detail": "[\"SNF admission\",\"SNF follow-up\",\"SNF consult\",\"SNF discharge\",\"QA SNF Custom T21 6NHI ★\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "Hospital picker: built-ins are exactly H&P, SOAP progress, Consult note, Discharge summary (U2)",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\",\"QA Hosp Custom T21 6NHI ★\"]"
+    },
+    {
+      "id": "Hospital picker: never the NH custom template, an SNF template, a removed template or Clinic (U3, U5, U6)",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\",\"QA Hosp Custom T21 6NHI ★\"]"
+    },
+    {
+      "id": "Q2 (record): the Hospital custom template shows in its own picker with a star",
+      "ok": true,
+      "detail": "[\"H&P\",\"SOAP progress\",\"Consult note\",\"Discharge summary\",\"QA Hosp Custom T21 6NHI ★\"]",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "server": {
+      "hospital": [
+        "QA Hosp Custom T21 6NHI:soap"
+      ],
+      "snf": [
+        "QA SNF Custom T21 6NHI:snf-progress"
+      ]
+    },
+    "snfPicker": {
+      "selected": "SNF follow-up",
+      "value": "snf-progress",
+      "options": [
+        "SNF admission",
+        "SNF follow-up",
+        "SNF consult",
+        "SNF discharge",
+        "QA SNF Custom T21 6NHI ★"
+      ]
+    },
+    "hospitalPicker": {
+      "selected": "SOAP progress",
+      "value": "soap",
+      "options": [
+        "H&P",
+        "SOAP progress",
+        "Consult note",
+        "Discharge summary",
+        "QA Hosp Custom T21 6NHI ★"
+      ]
+    }
+  }
+}

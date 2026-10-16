@@ -1,0 +1,19 @@
+{
+  "TC-21/S08": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:54:43.759Z",
+    "title": "Chart -> list -> switch -> browser Back -> reload: the page always matches its URL's context",
+    "detail": "Local 25acd727 with a real browser Back and a real reload (Playwright page.goBack / page.reload, the agent lane's runnerGap). 4/4 judged: Hospital chart shows 'Background Summary' and not the resident; NH list after the switch shows only the resident; after Back the URL is /rounding and the page shows the Hospital patient, not the resident; after the reload, same URL and content. Recorded: the saved care setting is 'rounding' at the end.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s08.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s08-1-chart.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s08-2-after-switch.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s08-3-after-back.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s08-4-after-reload.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

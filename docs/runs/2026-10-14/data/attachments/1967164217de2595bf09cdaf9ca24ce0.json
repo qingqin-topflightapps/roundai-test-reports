@@ -1,0 +1,17 @@
+{
+  "TC-06/S01": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:59:58.423Z",
+    "title": "Hospital walk: add-form default, list badge, three states, pre-selection, override, reload",
+    "detail": "Local 25acd727 (ctx-tc21-templates.spec.ts). 9/9 judged: untouched Add Patient form offers New Admission / Follow-Up / Consult with Follow-up selected; the untouched patient reads Follow-up on the list and in the chart with SOAP progress pre-selected; New Admission -> H&P; Consult -> Consult note (never Discharge summary); overriding Note Format to SOAP progress keeps the badge Consult; stored encType consult with today's day; Consult and Consult note survive a reload; the list shows Consult.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s01.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s01-1-add-form.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc06-s01-2-after-reload.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

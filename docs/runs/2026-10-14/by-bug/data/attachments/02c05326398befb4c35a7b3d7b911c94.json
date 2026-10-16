@@ -1,0 +1,17 @@
+{
+  "TC-21/S24": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "env": "dev",
+    "status": "passed",
+    "ranAt": "2026-10-16T10:28:20Z",
+    "title": "Billing family by context and template at Generate (live half)",
+    "detail": "Dev 25acd727 (deployed 2026-10-15 14:04Z), live models (every call Haiku 4.5, no fallback), run 19:25-19:28 JST under runs/.dev.lock and the dev-session run lock (ctx-tc21-dev.spec.ts); only rows named 'QA TC21-CTX …' and two 'QA TC21-CTX …' templates were created, all deleted (cleanup: 12 rows deleted, 0 left, no other row of the account changed). Nursing Home cells through the app's Generate: SNF consult -> 99304/99305 (5/5), SNF discharge -> 99315/99316 by time or the time prompt (5/5); custom-type cells: Hospital custom SOAP progress with New Admission -> 99231, NH custom SNF consult with Follow-up -> 99304. No NH note got a 9922x/9923x code, no Hospital note a 993xx code. Hospital stock-template cells passed on 43c38a4f dev (B22 fixed there).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e1-snf-templates.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/ctx-1925/evidence/ctx-dev-e2-custom-types.json"
+    ],
+    "pkg": "ctx"
+  }
+}

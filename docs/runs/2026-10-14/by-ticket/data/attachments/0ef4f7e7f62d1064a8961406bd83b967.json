@@ -1,0 +1,20 @@
+{
+  "TC-21/S13": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "passed",
+    "ranAt": "2026-10-16T09:59:51.698Z",
+    "title": "Custom template without a type cannot be saved; the type list (both contexts)",
+    "detail": "Local 25acd727 (the type field is on main since 43c38a4f; 25acd727 adds the care-setting rule). Same run as TC-18/S09, one fresh account. 8/8 judged per both contexts: Settings -> New, name and instructions filled, no type, Save Template: the form stays open with 'Select a note type', no 'Could not save template'; after Close the template is in neither the Settings list nor templates:list. Type list: Hospital = H&P, SOAP progress, Consult note, Discharge summary, Procedure / other; Nursing Home = SNF admission, SNF follow-up, SNF consult, SNF discharge, Procedure / other; no Handoff, Clinic or removed template. Q11 recorded: each context offers only its own 4 types + Procedure / other (the case text says 'the 8 pilot types'); 25acd727 makes this the rule (518bb75c: a custom template's note type must fit its care setting).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s13-tc18-s09.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s13-hospital-1-save-no-type.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s13-hospital-1-save-no-type.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s13-snf-1-save-no-type.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s13-hospital-2-list.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s13-snf-2-list.aria.txt"
+    ],
+    "pkg": "ctx"
+  }
+}

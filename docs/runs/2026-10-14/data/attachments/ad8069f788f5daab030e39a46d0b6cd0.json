@@ -1,0 +1,19 @@
+{
+  "TC-20/S15": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:31:13.124Z",
+    "title": "Tap Generate, leave the chart at once: the note still lands and the dashboard row shows it (live model)",
+    "detail": "Dev (<dev address>, build 25acd727, live models), PW spec dsh-tc20-dev.spec.ts driving the app UI. Judged 8/8, 2 record-only. Both settings, live Generate: tap, at once the chart's back arrow and the list's Dashboard control. The note landed while the chart was closed (stored note, note-ready); the dashboard row showed Note Ready after 11.1 s (Hospital) / 4.3 s (Nursing Home) without the chart being opened, tiles equal to the stored rows; the chart's Post-Round then shows the generated note (544 / 557 chars, mentions the lungs from the dictation), no stuck generating state. U6 (UAT 3.5) and U4 pass on dev.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/tc20-s15-dev.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s15-hosp-dashboard.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s15-hosp-post-round.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s15-snf-dashboard.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/dsh-192836/evidence/d3-s15-snf-post-round.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

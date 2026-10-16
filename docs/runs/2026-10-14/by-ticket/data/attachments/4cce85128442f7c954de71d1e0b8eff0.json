@@ -1,0 +1,44 @@
+{
+  "name": "tc10-s03-dictation",
+  "at": "2026-10-16T10:06:33.674Z",
+  "checks": [
+    {
+      "id": "the dictated text appears in the box",
+      "ok": true,
+      "detail": "Admitted for pneumonia, oxygen 94 percent, creatinine 1.4."
+    },
+    {
+      "id": "Stop shows 'Dictation done — review before saving'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the stored pre-round text equals the dictated text exactly (rounding.list preRoundNotes)",
+      "ok": true,
+      "detail": "Admitted for pneumonia, oxygen 94 percent, creatinine 1.4."
+    },
+    {
+      "id": "recorded: the processed copy (rawPreRoundNotes) and the text sent to the summary call are the dictated text",
+      "ok": true,
+      "detail": "{\"raw\":\"Admitted for pneumonia, oxygen 94 percent, creatinine 1.4.\",\"sent\":\"Admitted for pneumonia, oxygen 94 percent, creatinine 1.4.\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: the summary call was answered in the browser; no ai/* action was refused or forwarded",
+      "ok": true,
+      "detail": "[\"ai/parsing:parsePreRoundNotes:ok\",\"ai/parsing:extractTasks:ok\"]"
+    }
+  ],
+  "data": {
+    "stored": {
+      "preRoundNotes": "Admitted for pneumonia, oxygen 94 percent, creatinine 1.4.",
+      "rawPreRoundNotes": "Admitted for pneumonia, oxygen 94 percent, creatinine 1.4.",
+      "notesProcessedAt": "2026-10-16T10:06:31.981Z",
+      "sentToSummary": "Admitted for pneumonia, oxygen 94 percent, creatinine 1.4."
+    },
+    "socket": [
+      "ai/parsing:parsePreRoundNotes:ok",
+      "ai/parsing:extractTasks:ok"
+    ]
+  }
+}

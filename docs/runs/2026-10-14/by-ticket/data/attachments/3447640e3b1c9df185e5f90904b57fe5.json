@@ -1,0 +1,95 @@
+{
+  "name": "tc20-s24-dsh-rounding",
+  "at": "2026-10-16T09:56:34.593Z",
+  "checks": [
+    {
+      "id": "chart: an explicit failure message about the note",
+      "ok": true,
+      "detail": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "chart: the typed dictation is still in the box",
+      "ok": true,
+      "detail": "box: Seen at bedside, comfortable, lungs clear. Plan unchanged."
+    },
+    {
+      "id": "server: the typed dictation is stored",
+      "ok": true,
+      "detail": "encounterNotes: Seen at bedside, comfortable, lungs clear. Plan unchanged."
+    },
+    {
+      "id": "server: no note saved",
+      "ok": true,
+      "detail": "note: (none)"
+    },
+    {
+      "id": "chart: shows 'Note not generated' (UAT Empty & Failure States state 4; D7 open)",
+      "ok": false,
+      "detail": "Encounter tab: 'The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.'; Post-Round: 'Note | No note generated yet.'"
+    },
+    {
+      "id": "chart: no endless spinner on any tab after the failure (UAT 3.5 / OAT-03; B27)",
+      "ok": false,
+      "detail": "Encounter tab: none; Post-Round tab: Finalizing Encounter Data…"
+    },
+    {
+      "id": "dashboard: the row never showed Note Ready or Complete",
+      "ok": true,
+      "detail": "badges seen: Pre-Rounded, Seen"
+    },
+    {
+      "id": "dashboard: Hospital Done 0, In Progress 1 (pre-rounded or seen)",
+      "ok": true,
+      "detail": "1/0/1/0"
+    }
+  ],
+  "data": {
+    "dashboardBefore": {
+      "tiles": {
+        "total": "1",
+        "pending": "0",
+        "inProgress": "1",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA Hosp GenFail UQYY",
+        "line": "Room QA2 · 0 tasks pending",
+        "badge": "Pre-Rounded"
+      }
+    },
+    "generateCalls": 1,
+    "chartFailureText": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+    "serverAfter": {
+      "status": "seen",
+      "note": null,
+      "billingStatus": null
+    },
+    "postRoundTabText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp GenFail UQYY\n\nRoom QA2 · 70y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…",
+    "spinnersAfterFailure": {
+      "encounterTab": [],
+      "postRoundTab": [
+        "Finalizing Encounter Data…"
+      ]
+    },
+    "dashboardAfter": {
+      "tiles": {
+        "total": "1",
+        "pending": "0",
+        "inProgress": "1",
+        "done": "0"
+      },
+      "row": {
+        "name": "QA Hosp GenFail UQYY",
+        "line": "Room QA2 · 0 tasks pending",
+        "badge": "Seen"
+      },
+      "badgesSeen": [
+        "Pre-Rounded",
+        "Seen"
+      ]
+    },
+    "aiCalls": [
+      "ai/notes:generateNote:fail"
+    ]
+  }
+}

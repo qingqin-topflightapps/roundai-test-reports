@@ -1,0 +1,20 @@
+{
+  "TC-20/S19": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:03:22.952Z",
+    "title": "Dashboards on phone width (Pixel 7, iPhone 15; Chromium emulation)",
+    "detail": "PW, local stack 25acd727, model mocked or blocked at the socket (tripwire clean). Judged 4/4, 20 record-only. Both dashboards at Pixel 7 (412 px) and iPhone 15 (393 px) size, Chromium device emulation (not WebKit, not the native apps). Judged (a physician must read the right number): no count truncated, 4/4 tiles x 2 settings x 2 profiles. Recorded (our own layout checks): four tiles in one row, no tile label cut (but 'In Progress' wraps to two lines, so its number sits higher than the other three), no sideways scroll, rows 64-80 px tall, no fixed bottom bar on the dashboard. iPhone in real WebKit and the native apps are not covered here.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s19-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s19-pixel7-rounding.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s19-pixel7-snf.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s19-iphone15.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s19-iphone15-rounding.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc20-s19-iphone15-snf.png"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "dsh"
+  }
+}

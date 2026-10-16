@@ -1,0 +1,19 @@
+{
+  "TC-09/S07": {
+    "status": "passed",
+    "ranAt": "2026-10-16T10:02:56.418Z",
+    "title": "Rows the physician deselects on the scan sheet → outcome",
+    "detail": "Local, rst-tc09-scans.spec.ts: the real Nursing Home scan sheet with ai/vision:scanCensusSheet answered at the Convex socket with the exact rows the case's photo lists (the photo is a neutral fixture image; the read itself — Vertex / B01 — is not exercised); fresh physician per case, names 'QA TC-09-Sxx <word>' as the matrix asks. Open questions recorded, never judged (brief 2026-10-16): Q1 (the scan replaces today's list), Q6 (a row with no MRN is stored with a generated 'SNF-######' MRN), Q8 (a known name with another MRN), Q2 (count wording). T2 / U9 (Vertex Gemini read the photo; model and AI time logged) cannot be checked locally: the read never reaches the server; the 10-15 dev photo10 run logged them (gemini-3.6-flash, providerMs) but every live read returns no rows (B01, still on 25acd727: convex/ai/vision.ts + convex/lib/modelJson.ts parseModelJson unchanged, no fence stripping, Vertex has no JSON mode). S07: 10/10 judged pass — after unticking Oak, Poplar and Sorrel the button reads 'Add 1 to Today's Visits'; Pine (selected) stays on today; Poplar (deselected, not In Today) stays off today, unchanged in All Residents ('+ Today', Cedar 3); Sorrel (new, deselected) is not created; Oak, Pine and Poplar all remain in All Residents. Recorded (Q1, judged against UAT 'adds' it would fail): Oak, In Today and deselected, left Today's Visits, and no warning showed before the write (the sheet's subtitle 'Photo the nursing director's list — replaces today's visits' is the only hint); the fixture resident left today the same way.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s07-s07-all.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s07-s07-confirm.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s07-s07-sheet-deselected.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s07-s07-today.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s07.json"
+    ],
+    "method": "PW",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "rst"
+  }
+}

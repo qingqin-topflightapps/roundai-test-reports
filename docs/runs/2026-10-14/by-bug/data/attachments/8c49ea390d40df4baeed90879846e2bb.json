@@ -1,0 +1,147 @@
+{
+  "name": "oat03-s29-hosp",
+  "at": "2026-10-16T09:58:59.909Z",
+  "checks": [
+    {
+      "id": "setup: the seeded chart queued no billing job",
+      "ok": true,
+      "detail": "{\"job\":null,\"status\":null}"
+    },
+    {
+      "id": "(a) setup: N1 is stored (no billing job: procedure-other)",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 hospital mocked note (no model was called). Today: QA OAT-03 N1 dictation: afebrile"
+    },
+    {
+      "id": "(a) cp3: an explicit failure after Regenerate",
+      "ok": true,
+      "detail": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry."
+    },
+    {
+      "id": "(a) cp3: the dictation, appended line included, is still in the box",
+      "ok": true,
+      "detail": "QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibiotics. QA OAT-03 regenerate line: plan unchanged."
+    },
+    {
+      "id": "(a) backend: the stored note still equals N1",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 hospital mocked note (no model was called). Today: QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibi"
+    },
+    {
+      "id": "(a) cp4: Post-Round shows N1",
+      "ok": true,
+      "detail": "ASSESSMENT AND PLAN\n\nQA OAT-03 S29 N1 hospital mocked note (no model was called). Today: QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antib"
+    },
+    {
+      "id": "(a) backend: the stored dictation includes the appended line",
+      "ok": true,
+      "detail": "QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibiotics. QA OAT-03 regenerate line: plan unchanged."
+    },
+    {
+      "id": "(a) Q3 (recorded): the failure copy after Regenerate (no claim that N1 was replaced, since it was not)",
+      "ok": true,
+      "detail": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "recordOnly": true
+    },
+    {
+      "id": "(b) setup: today's first Generate failed with an explicit message",
+      "ok": true,
+      "detail": "Generate Note & Finish"
+    },
+    {
+      "id": "(b) Post-Round: yesterday's note is not shown under today's note heading (absent, or labelled previous / dated in the same block)",
+      "ok": true,
+      "detail": "marker not on Post-Round; 'No note generated yet'"
+    },
+    {
+      "id": "(b) Pre-Round (recorded): yesterday's note is listed with its date / as a previous note",
+      "ok": true,
+      "detail": "not on Pre-Round",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: three Generate calls (N1 ok, Regenerate failed, (b) failed); no other model action refused",
+      "ok": true,
+      "detail": "[\"ai/notes:generateNote:ok\",\"ai/notes:refreshCourseAndBackground:ok\",\"ai/parsing:extractMedicationEvents:ok\",\"ai/notes:generateNote:fail\",\"ai/notes:generateNote:fail\"]"
+    }
+  ],
+  "data": {
+    "seed-b": {
+      "billingJob": null,
+      "billingStatus": null,
+      "note": ""
+    },
+    "a-leg1": {
+      "note": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 hospital mocked note (no model was called). Today: QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibiotics.",
+      "billingJob": null
+    },
+    "a-cp3": {
+      "buttonLabel": "Regenerate Note",
+      "message": "The encounter dictation is saved, but the formatted note couldn’t be generated and saved. Tap Generate Note & Finish to retry.",
+      "box": "QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibiotics. QA OAT-03 regenerate line: plan unchanged."
+    },
+    "a-cp4": {
+      "postRound": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA OAT-03 S29 N1 hospital mocked note (no model was called). Today: QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibiotics.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "stored": {
+        "note": "ASSESSMENT AND PLAN\nQA OAT-03 S29 N1 hospital mocked note (no model was called). Today: QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibiotics.",
+        "encounterNotes": "QA OAT-03 N1 dictation: afebrile overnight, eating well, continue antibiotics. QA OAT-03 regenerate line: plan unchanged.",
+        "status": "note-ready"
+      }
+    },
+    "b": {
+      "boxBefore": "QA OAT-03 today line: leg redness receding.",
+      "buttonLabel": "Generate Note & Finish",
+      "generateFailed": true,
+      "postRound": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": true,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "markerOnPostRound": {
+        "found": false,
+        "block": "",
+        "inNoteDoc": false
+      },
+      "markerOnPreRound": {
+        "found": false,
+        "block": "",
+        "inNoteDoc": false
+      },
+      "stored": {
+        "note": "",
+        "previousNotes": [
+          {
+            "addedAt": "2026-10-15T13:58:51.738Z",
+            "content": "Assessment and Plan: QA OAT-03 yesterday marker: started cefazolin. Elevate the leg.",
+            "dateLabel": "Thu Oct 15 2026",
+            "id": "h2-prev-1"
+          }
+        ],
+        "status": "seen"
+      }
+    },
+    "socket": [
+      "ai/notes:generateNote:ok",
+      "ai/notes:refreshCourseAndBackground:ok",
+      "ai/parsing:extractMedicationEvents:ok",
+      "ai/notes:generateNote:fail",
+      "ai/notes:generateNote:fail"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "tc09-s09-dev",
+  "at": "2026-10-16T10:18:56.037Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "Fay marked: she is counted (Total +1, Pending +1) and listed",
+      "ok": true,
+      "detail": "{\"before\":\"7/3/3/1\",\"after\":\"8/4/3/1\",\"stored\":\"8/4/3/1\"}"
+    },
+    {
+      "id": "Bo un-marked: no longer counted (back to the start Total / Pending) nor listed",
+      "ok": true,
+      "detail": "{\"after\":\"7/3/3/1\",\"stored\":\"7/3/3/1\"}"
+    },
+    {
+      "id": "Gus (not in today, complete) never counted",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Bo still exists, inTodaysSession false",
+      "ok": true,
+      "detail": "{\"exists\":true,\"inToday\":false}"
+    }
+  ],
+  "data": {
+    "start": {
+      "ok": true,
+      "got": "7/3/3/1",
+      "want": "7/3/3/1"
+    }
+  }
+}

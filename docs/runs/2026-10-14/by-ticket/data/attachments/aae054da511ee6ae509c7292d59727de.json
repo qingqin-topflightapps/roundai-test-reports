@@ -1,0 +1,69 @@
+{
+  "name": "tc14-s04-generate",
+  "at": "2026-10-16T10:06:38.016Z",
+  "checks": [
+    {
+      "id": "Save & Extract: '✓ Medications updated — 1 medication change'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Generate: the note shows",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Generate makes no second medication-extraction call: exactly one call, from Save & Extract, with the notes",
+      "ok": true,
+      "detail": "1 call(s): [\"Hold apixaban for the procedure.\"]"
+    },
+    {
+      "id": "tracker: Eliquis 5 mg once, tagged 'Held · Oct 16'",
+      "ok": true,
+      "detail": "count 1; held tag true"
+    },
+    {
+      "id": "server: one medication event; Eliquis held, changeType held, changeDay 3",
+      "ok": true,
+      "detail": "{\"changeDate\":\"Oct 16\",\"changeDay\":3,\"changeType\":\"held\",\"changed\":true,\"changedNote\":\"Apixaban held for the procedure\",\"id\":\"eliquis\",\"name\":\"Eliquis 5 mg\",\"status\":\"held\",\"updatedAt\":\"2026-10-16T10:06:35.805Z\"}"
+    },
+    {
+      "id": "server: medicationEventsSourceHash = the hash of Save & Extract's notes (a later Generate will not resend them)",
+      "ok": true,
+      "detail": "198c0bef:32"
+    },
+    {
+      "id": "setup: the note is stored with the procedure-other template and queued no billing job; no ai/* action refused",
+      "ok": true,
+      "detail": "{\"tpl\":\"js71vgn3bjy7qhftnkcg0wpgj58gcssq\",\"job\":null,\"calls\":[\"ai/parsing:extractTasks:ok\",\"ai/parsing:extractMedicationEvents:ok\",\"ai/notes:generateNote:ok\",\"ai/notes:refreshCourseAndBackground:ok\",\"ai/parsing:classifyAdmissionReason:ok\"]}"
+    }
+  ],
+  "data": {
+    "extraction-calls": [
+      {
+        "content": "Hold apixaban for the procedure.",
+        "notes": null,
+        "answered": "ok"
+      }
+    ],
+    "server": {
+      "eventCount": 1,
+      "eliquis": {
+        "changeDate": "Oct 16",
+        "changeDay": 3,
+        "changeType": "held",
+        "changed": true,
+        "changedNote": "Apixaban held for the procedure",
+        "id": "eliquis",
+        "name": "Eliquis 5 mg",
+        "status": "held",
+        "updatedAt": "2026-10-16T10:06:35.805Z"
+      },
+      "sourceHash": "198c0bef:32",
+      "note": "ASSESSMENT AND PLAN\n\nMedication plan reviewed.",
+      "noteTemplate": "js71vgn3bjy7qhftnkcg0wpgj58gcssq",
+      "billingJob": null,
+      "billingStatus": null
+    }
+  }
+}

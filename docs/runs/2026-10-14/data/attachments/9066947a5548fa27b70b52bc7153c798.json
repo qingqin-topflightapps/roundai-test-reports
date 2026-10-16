@@ -1,0 +1,35 @@
+{
+  "name": "tc21-s08",
+  "at": "2026-10-16T09:54:43.759Z",
+  "checks": [
+    {
+      "id": "1 Hospital chart: Background Summary, no Admission Summary, no resident, no Clinic",
+      "ok": true,
+      "detail": "http://localhost:6473/rounding/kx7383tdm32aafwqrtg0kn4g4n8gdas0"
+    },
+    {
+      "id": "2 NH list after the switch: resident only",
+      "ok": true,
+      "detail": "[\"QA Resident Okafor S08 I5MY\"]"
+    },
+    {
+      "id": "3 after browser Back: the Hospital page shows the Hospital patient and not the resident",
+      "ok": true,
+      "detail": "http://localhost:6473/rounding"
+    },
+    {
+      "id": "4 after reload: same URL, Hospital patient shown, no resident",
+      "ok": true,
+      "detail": "http://localhost:6473/rounding"
+    },
+    {
+      "id": "saved care setting after Back + reload on the Hospital list (record)",
+      "ok": true,
+      "detail": "rounding",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "appModeAtEnd": "rounding"
+  }
+}

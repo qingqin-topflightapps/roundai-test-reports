@@ -1,0 +1,76 @@
+{
+  "name": "tc20-s02-dev",
+  "at": "2026-10-16T10:21:36.278Z",
+  "build": {
+    "sha": "25acd727d7f8d5e3e13f2b0caaf5324d0a67525c",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-15T14:04:39Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "Total covers every row of the roster past the 50-row page (tiles equal the stored rows)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"51/51/0/0\",\"want\":\"51/51/0/0\"}"
+    },
+    {
+      "id": "all 51 of this run's rows are listed",
+      "ok": true,
+      "detail": "51"
+    },
+    {
+      "id": "tiles add up",
+      "ok": true,
+      "detail": "51/51/0/0"
+    },
+    {
+      "id": "the other care setting's rows are absent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the not-in-today resident is not on Today's Visits",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "a row added by another client appears and Total / Pending go +1 without a reload",
+      "ok": true,
+      "detail": "{\"ms\":312,\"tiles\":\"52/52/0/0\"}"
+    },
+    {
+      "id": "removing it takes it out again",
+      "ok": true,
+      "detail": "{\"ms\":313,\"tiles\":\"51/51/0/0\"}"
+    },
+    {
+      "id": "no reload",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "All Residents tab counts the whole panel and lists the not-in-today resident",
+      "ok": true,
+      "detail": "{\"ok\":true,\"got\":\"52/52/0/0\",\"want\":\"52/52/0/0\"}"
+    },
+    {
+      "id": "back on Today's Visits it is gone again",
+      "ok": true,
+      "detail": "51/51/0/0"
+    }
+  ],
+  "data": {
+    "open": {
+      "tiles": {
+        "total": "51",
+        "pending": "51",
+        "inProgress": "0",
+        "done": "0"
+      },
+      "myRows": 51,
+      "expected": "51/51/0/0"
+    }
+  }
+}
