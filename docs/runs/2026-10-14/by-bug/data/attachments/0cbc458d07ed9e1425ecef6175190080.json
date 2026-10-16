@@ -1,0 +1,20 @@
+{
+  "TC-06/S24": {
+    "status": "passed",
+    "ranAt": "2026-10-16T11:23:22.205Z",
+    "build": "25acd727",
+    "supersedes": true,
+    "pkg": "b22",
+    "method": "AGENT",
+    "title": "Badge x template chosen at Generate -> billing family: the badge only pre-selects, the template decides (incl. a badge change after Generate)",
+    "detail": "Re-test of B22 on dev (<dev address>, 25acd727), Quinn's session of 19:12 JST: dev unit U44 re-run unchanged (scripts/dev/run-unit.sh U44 2026-10-16-b22-dev under runs/.dev.lock), live models (Haiku 4.5, no fallback). 4/4 checkpoints pass: H1 New Admission + SOAP progress picked by hand bills CODE 99232 (on e02167f it billed 99221); H2 badge changed to Consult after Generate pre-selects Consult note, SOAP progress picked by hand, Regenerate bills 99232; N1 Follow-up + SNF admission picked by hand bills 99305. Cleanup: the two prefixed rows deleted, 0 remaining, no other row changed. Recorded only: the case file still looks for the billing call under its old name notes.suggestBilling; on this build it is billing.suggestBilling (Haiku 4.5, present for H1, H2 and N1), so the three \"billing model missing\" record lines are a stale anchor, not a product issue.",
+    "evidence": [
+      "runs/2026-10-16-b22-dev/generateddev/20261016b22dev/u44/s24-h-new-soap-billing.png",
+      "runs/2026-10-16-b22-dev/generateddev/20261016b22dev/u44/s24-h-consult-after-generate.png",
+      "runs/2026-10-16-b22-dev/generateddev/20261016b22dev/u44/s24-h-consult-soap-billing.png",
+      "runs/2026-10-16-b22-dev/generateddev/20261016b22dev/u44/s24-n-followup-snfadm-billing.png",
+      "runs/2026-10-16-b22-dev/generateddev/20261016b22dev/u44/cleanup.json",
+      "runs/2026-10-16-b22-dev/units/U44.verdict.json"
+    ]
+  }
+}
