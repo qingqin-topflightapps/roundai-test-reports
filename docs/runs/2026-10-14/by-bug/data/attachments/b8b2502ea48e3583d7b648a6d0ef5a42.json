@@ -1,0 +1,260 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a",
+      "tc25-sync.spec.ts",
+      "-g",
+      "S24a",
+      "--retries=0"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tc25-sync.spec.ts",
+      "file": "tc25-sync.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "TC-25/S24a hospital: phone a day ahead in another time zone shows the same badge, day, note date and 'today' as the computer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10600,
+                  "error": {
+                    "message": "Error: phone and computer show the same card (badge, day / visit)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"QS QA Sync Hosp ED975 \u001b[7mNEW TODAY \u001b[27mRoom 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\nReceived: \u001b[31m\"QS QA Sync Hosp ED975 Room 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m",
+                    "stack": "Error: phone and computer show the same card (badge, day / visit)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"QS QA Sync Hosp ED975 \u001b[7mNEW TODAY \u001b[27mRoom 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\nReceived: \u001b[31m\"QS QA Sync Hosp ED975 Room 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:502:96",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 96,
+                      "line": 502
+                    },
+                    "snippet": "  500 |     };\n  501 |     evidence(`tc25-s24a/${mode}.json`, rec);\n> 502 |     expect.soft(rec.cards.phone, \"phone and computer show the same card (badge, day / visit)\").toBe(rec.cards.computer);\n      |                                                                                                ^\n  503 |     expect.soft(rec.headers.phone, \"phone and computer show the same chart header (hospital day / visit)\").toBe(rec.headers.computer);\n  504 |     if (ALLOW_GENERATE) {\n  505 |       expect.soft(JSON.stringify(rec.noteDates.phone), \"same note date on both\").toBe(JSON.stringify(rec.noteDates.computer));"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 96,
+                        "line": 502
+                      },
+                      "message": "Error: phone and computer show the same card (badge, day / visit)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"QS QA Sync Hosp ED975 \u001b[7mNEW TODAY \u001b[27mRoom 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\nReceived: \u001b[31m\"QS QA Sync Hosp ED975 Room 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\n\n  500 |     };\n  501 |     evidence(`tc25-s24a/${mode}.json`, rec);\n> 502 |     expect.soft(rec.cards.phone, \"phone and computer show the same card (badge, day / visit)\").toBe(rec.cards.computer);\n      |                                                                                                ^\n  503 |     expect.soft(rec.headers.phone, \"phone and computer show the same chart header (hospital day / visit)\").toBe(rec.headers.computer);\n  504 |     if (ALLOW_GENERATE) {\n  505 |       expect.soft(JSON.stringify(rec.noteDates.phone), \"same note date on both\").toBe(JSON.stringify(rec.noteDates.computer));\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:502:96"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T20:02:05.067Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 96,
+                    "line": 502
+                  }
+                },
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9096,
+                  "error": {
+                    "message": "Error: phone and computer show the same card (badge, day / visit)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"QS QA Sync Hosp 410B9 \u001b[7mNEW TODAY \u001b[27mRoom 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\nReceived: \u001b[31m\"QS QA Sync Hosp 410B9 Room 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m",
+                    "stack": "Error: phone and computer show the same card (badge, day / visit)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"QS QA Sync Hosp 410B9 \u001b[7mNEW TODAY \u001b[27mRoom 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\nReceived: \u001b[31m\"QS QA Sync Hosp 410B9 Room 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:502:96",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                      "column": 96,
+                      "line": 502
+                    },
+                    "snippet": "  500 |     };\n  501 |     evidence(`tc25-s24a/${mode}.json`, rec);\n> 502 |     expect.soft(rec.cards.phone, \"phone and computer show the same card (badge, day / visit)\").toBe(rec.cards.computer);\n      |                                                                                                ^\n  503 |     expect.soft(rec.headers.phone, \"phone and computer show the same chart header (hospital day / visit)\").toBe(rec.headers.computer);\n  504 |     if (ALLOW_GENERATE) {\n  505 |       expect.soft(JSON.stringify(rec.noteDates.phone), \"same note date on both\").toBe(JSON.stringify(rec.noteDates.computer));"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                        "column": 96,
+                        "line": 502
+                      },
+                      "message": "Error: phone and computer show the same card (badge, day / visit)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"QS QA Sync Hosp 410B9 \u001b[7mNEW TODAY \u001b[27mRoom 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\nReceived: \u001b[31m\"QS QA Sync Hosp 410B9 Room 6D-29 · 72y Pneumonia Not Yet Prepped Follow-up\"\u001b[39m\n\n  500 |     };\n  501 |     evidence(`tc25-s24a/${mode}.json`, rec);\n> 502 |     expect.soft(rec.cards.phone, \"phone and computer show the same card (badge, day / visit)\").toBe(rec.cards.computer);\n      |                                                                                                ^\n  503 |     expect.soft(rec.headers.phone, \"phone and computer show the same chart header (hospital day / visit)\").toBe(rec.headers.computer);\n  504 |     if (ALLOW_GENERATE) {\n  505 |       expect.soft(JSON.stringify(rec.noteDates.phone), \"same note date on both\").toBe(JSON.stringify(rec.noteDates.computer));\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts:502:96"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-19T20:02:16.045Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes-retry1/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-tc25-s24a/tc25-sync-TC-25-S24a-hospi-9961c-e-and-today-as-the-computer-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/tc25-sync.spec.ts",
+                    "column": 96,
+                    "line": 502
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-e0cf861f836496aa699f",
+          "file": "tc25-sync.spec.ts",
+          "line": 438,
+          "column": 3
+        },
+        {
+          "title": "TC-25/S24a snf: phone a day ahead in another time zone shows the same badge, day, note date and 'today' as the computer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 10627,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T20:02:05.065Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "757d2d4193a9b73a2145-6acacac253e9f8afadff",
+          "file": "tc25-sync.spec.ts",
+          "line": 438,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-19T20:02:04.662Z",
+    "duration": 20583.707000000002,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

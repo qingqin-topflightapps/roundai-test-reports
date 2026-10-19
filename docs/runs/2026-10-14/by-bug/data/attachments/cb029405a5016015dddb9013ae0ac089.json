@@ -1,0 +1,19 @@
+{
+  "TC-04/S10": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "STATIC",
+    "title": "Quick Dictation retention",
+    "bug": "D6",
+    "bugNow": "still",
+    "stated": "decision D6 (UAT 3.6 windows)",
+    "detail": "Quick Dictation boxes still never expire at 8b4be94a: no cron or lifecycle code touches quickDictationDrafts (the new 1-minute cron sweeps only Important Points). Hard-coded windows unchanged: Hospital pre-round 12 / encounter 18 / note 18 / done task 16 / medication 36 / previous note 36 / archive 48 h; NH pre-round 12 / encounter 12 / note 18 / done task 16 h, 3 visits.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-04-S10.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

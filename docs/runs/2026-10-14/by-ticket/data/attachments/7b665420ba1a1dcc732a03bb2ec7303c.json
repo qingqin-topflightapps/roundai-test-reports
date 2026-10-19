@@ -1,0 +1,19 @@
+{
+  "EFS/S06": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Generate gate on seeded charts A–E (pre-efs-s06-gate-rows.spec.ts)",
+    "bug": "B27",
+    "bugNow": "still",
+    "stated": "TFA-94745 state 3 (an interrupted pre-round save must say what to do)",
+    "detail": "Re-run on 8b4be94a, 12/13 judged passed. Still B27: Hospital row B (a save that stopped processing) — the Encounter tab says 'Today's pre-round is still being processed. Wait for the panels, then generate.' while nothing is processing; the case wants it to say to tap Save Note. Tripwire clean.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s06-pre.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s06-pre-hosp-B-processing.png"
+    ]
+  }
+}

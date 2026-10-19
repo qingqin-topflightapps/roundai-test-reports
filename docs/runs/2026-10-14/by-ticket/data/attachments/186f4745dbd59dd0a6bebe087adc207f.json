@@ -1,0 +1,141 @@
+{
+  "ref": "TC-01/S03",
+  "title": "TC-01/S03 Card field × context: every required field present, diagnosis only on Hospital",
+  "dataset": "identity",
+  "target": "local",
+  "at": "2026-10-19T18:23:39.234Z",
+  "cells": [
+    {
+      "name": "Hospital h1: name and room (U1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "ty Hosp Ana Rivera Room 412 · 76y CHF exacerbation Not Yet Prepped New Admission"
+    },
+    {
+      "name": "Hospital h1: age/sex as '76F' (U3)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "shown": [
+          "412",
+          "76y"
+        ]
+      }
+    },
+    {
+      "name": "Hospital h1: badge 'New Admission' (U4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Hospital h1: hospital day shown (U5)",
+      "kind": "judged",
+      "ok": false,
+      "detail": "none"
+    },
+    {
+      "name": "Hospital h1: diagnosis shown on a Hospital card (U2)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Hospital h1: no 'pre-round notes', 'undefined', 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH Today's Visits n1: name and unit/room (U1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "ty Res Dora Nguyen Cedar Wing · Room 12 · 87y Post-acute rehab after hip fracture Pending New Admission"
+    },
+    {
+      "name": "NH Today's Visits n1: age/sex as '87F' (U3)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "shown": [
+          "12",
+          "87y"
+        ]
+      }
+    },
+    {
+      "name": "NH Today's Visits n1: badge 'New Admission' (U4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH Today's Visits n1: visit number shown (U5)",
+      "kind": "judged",
+      "ok": false,
+      "detail": "none"
+    },
+    {
+      "name": "NH Today's Visits n1: no diagnosis on a Nursing Home card, although one is stored (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "storedDiagnosisShown": true
+      }
+    },
+    {
+      "name": "NH Today's Visits n1: no 'pre-round notes', 'undefined', 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH All Residents n1: name and unit/room (U1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "ty Res Dora Nguyen Cedar Wing · Room 12 · 87y In Today ✓ Post-acute rehab after hip fracture Pending New Admission"
+    },
+    {
+      "name": "NH All Residents n1: age/sex as '87F' (U3)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "shown": [
+          "12",
+          "87y"
+        ]
+      }
+    },
+    {
+      "name": "NH All Residents n1: badge 'New Admission' (U4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH All Residents n1: visit number shown (U5)",
+      "kind": "judged",
+      "ok": false,
+      "detail": "none"
+    },
+    {
+      "name": "NH All Residents n1: no diagnosis on a Nursing Home card, although one is stored (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "storedDiagnosisShown": true
+      }
+    },
+    {
+      "name": "NH All Residents n1: no 'pre-round notes', 'undefined', 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    "evidence/TC-01-S03-hosp-h1.png",
+    "evidence/TC-01-S03-nh-n1.png"
+  ],
+  "error": "Error: TC-01/S03: judged cells that failed"
+}

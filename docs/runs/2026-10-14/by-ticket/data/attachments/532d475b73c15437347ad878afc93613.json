@@ -1,0 +1,59 @@
+{
+  "name": "ip-tc12-s03",
+  "at": "2026-10-19T17:54:00.871Z",
+  "checks": [
+    {
+      "id": "Hospital (d/c, Q3): three lines in one Add Point box -> 1 card(s) (the UAT's literal 'one per line' reading wants 3; the prototype and AC 3 'added via + Add Point' give 1)",
+      "ok": false,
+      "detail": "[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "Hospital: the three-line entry is stored exactly as typed, line breaks kept (AC 4)",
+      "ok": true,
+      "detail": "\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\""
+    },
+    {
+      "id": "Hospital (e/f/g): a card with a line break stays 1 card, a case-only pair stays 2, the same point twice stays 2",
+      "ok": true,
+      "detail": "[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"]"
+    },
+    {
+      "id": "Hospital: after Save Note the six cards are identical (ids, text, order, clocks): no merge, no dedup, no split",
+      "ok": true,
+      "detail": "{\"before\":[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"],\"after\":[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"]}"
+    },
+    {
+      "id": "Hospital: the editor shows the six cards in order after Save Note",
+      "ok": true,
+      "detail": "[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"]"
+    },
+    {
+      "id": "Nursing Home (d/c, Q3): three lines in one Add Point box -> 1 card(s) (the UAT's literal 'one per line' reading wants 3; the prototype and AC 3 'added via + Add Point' give 1)",
+      "ok": false,
+      "detail": "[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "Nursing Home: the three-line entry is stored exactly as typed, line breaks kept (AC 4)",
+      "ok": true,
+      "detail": "\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\""
+    },
+    {
+      "id": "Nursing Home (e/f/g): a card with a line break stays 1 card, a case-only pair stays 2, the same point twice stays 2",
+      "ok": true,
+      "detail": "[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"]"
+    },
+    {
+      "id": "Nursing Home: after Save Note the six cards are identical (ids, text, order, clocks): no merge, no dedup, no split",
+      "ok": true,
+      "detail": "{\"before\":[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"],\"after\":[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"]}"
+    },
+    {
+      "id": "Nursing Home: the editor shows the six cards in order after Save Note",
+      "ok": true,
+      "detail": "[\"Line one: check IV site\\nLine two: ask about sleep\\nLine three: review fluid balance\",\"Daughter visiting at 6\\n(bring the consent form)\",\"Call ID re cultures\",\"call ID re cultures\",\"Weigh before breakfast\",\"Weigh before breakfast\"]"
+    }
+  ],
+  "data": {}
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ip-tc12-s28-hosp",
+  "at": "2026-10-19T17:54:48.084Z",
+  "checks": [
+    {
+      "id": "(a) failure: an explicit error is shown",
+      "ok": true,
+      "detail": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry."
+    },
+    {
+      "id": "(a) failure: the stored list is identical to the seed (case-only pair still two points)",
+      "ok": true,
+      "detail": "[\"Call ID re cultures\",\"call ID re cultures\",\"Check drain site\"]"
+    },
+    {
+      "id": "(a) failure: the unsaved draft is kept and did not become a card",
+      "ok": true,
+      "detail": "{\"draft\":\"Draft: ask about home O2\"}"
+    },
+    {
+      "id": "(b) while the call hangs: the list and draft are unchanged",
+      "ok": true,
+      "detail": "{\"t\":[\"Call ID re cultures\",\"call ID re cultures\",\"Check drain site\"],\"d\":\"Draft: ask about home O2\"}"
+    },
+    {
+      "id": "(b) after the hang ends in a failure: an explicit error is shown",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "(b) after the hang: the list is identical to the seed and the draft kept",
+      "ok": true,
+      "detail": "{\"t\":[\"Call ID re cultures\",\"call ID re cultures\",\"Check drain site\"],\"d\":\"Draft: ask about home O2\"}"
+    },
+    {
+      "id": "(c) after the retry succeeds: the list is identical to the seed (ids, text, order, clocks); nothing from the parse added",
+      "ok": true,
+      "detail": "[\"Call ID re cultures\",\"call ID re cultures\",\"Check drain site\"]"
+    },
+    {
+      "id": "(c) after the retry succeeds: the draft is still a draft, not a card",
+      "ok": true,
+      "detail": "{\"draft\":\"Draft: ask about home O2\"}"
+    }
+  ],
+  "data": {
+    "(b) while hanging: what the editor shows": "Pre-round notes\nIMPORTANT POINTS\n3\nAdd Point\nDictate\nSave Point\nCancel\nCall ID re cultures\ncall ID re cultures\nCheck drain site\n✓ Note saved. Updating structured summary…\nDictate\nSaving & Updating…"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "TC-19/S20": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:50:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U62 (scripts/dev/run-unit.sh U62 2026-10-20-rb2): a 12-drug pre-round dictation with 4 changes in each mode, oracle verdict 'Fail'",
+    "title": "Medication-heavy dictation: time and model per call, and no dictated change dropped (12 drugs, 4 changes, both modes)",
+    "detail": "D4 re-check on 8b4be94a (live Haiku): STILL, identical to 10-14. Both modes store only 4 rows (the 4 changed drugs) out of the 12 named + 1 started (expected 13; the others stay only in the background text): s20-ph and s20-pn fail on the row count. The dictated changes themselves land (furosemide renamed with 20 and 40 kept in the reason; amlodipine history '5'). Per-call logging of the pre-round calls is there (model, providerMs on parsePreRoundNotes, extractTasks, classifyAdmissionReason; no fallback). Review TFA-92597 filed the row count as a product failure (AC 3 / T9: the app's own pre-round prompt lists every active drug); whether 'continue X' must make a row stays D4 (not dictated here). Note for 3.9 on this build: a Generate's follow-up calls (course refresh, medication extraction) no longer log rows of their own, only the job's 'notes.generateNote' row (seen in TC-19/S11 N-dose).",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U62.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u62"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "TC-24/S03": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:02:30Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "local Playwright spec newspec-c/vis-tc24-s23-s28-lists-delete.spec.ts (desktop, Pixel 7, iPhone 15 WebKit) + code read",
+    "title": "Hospital patient delete from the card: one app-style pop-up, Cancel keeps, OK deletes everything at once, deleted message, nothing left behind, audit trail kept",
+    "detail": "B24 re-check on 8b4be94a: STILL. Tapping a Hospital card's trash icon still opens the browser's native confirm() ('Remove <name> from the rounding list? … This will delete all notes, vitals, and encounter data for this patient.'), not an app-style pop-up (src/components/clinical/PatientCard.tsx:146 window.confirm, unchanged); Cancel keeps the patient, OK deletes only that patient (server row gone), but no 'deleted' message appears within 4 s of OK on any of the three profiles. Stated: TFA-92579 AC 7-8 / UAT TC-24 ER 5-6 (app-style confirmation, deleted message). Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-after-delete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-list.json",
+      "runs/2026-10-14-local/newspec-c/rb2-logs/s28.log"
+    ]
+  }
+}

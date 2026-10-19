@@ -1,0 +1,89 @@
+{
+  "name": "te-tc07-s08-nh-c-preround",
+  "at": "2026-10-19T19:33:35.151Z",
+  "checks": [
+    {
+      "id": "routing: the INR task is stored done",
+      "ok": true,
+      "detail": "[\"[x] Recheck INR\",\"[ ] Order TSH\"]"
+    },
+    {
+      "id": "U2: 'Recheck INR' under Finished Tasks with the resident; 'Order TSH' pending above with no visit label",
+      "ok": true,
+      "detail": "{\"p\":[{\"name\":\"QA Resident Ida Novak 9wo\",\"location\":\"Unit Elm 4\",\"tasks\":[{\"text\":\"Order TSH\",\"when\":\"\"}]}],\"f\":[{\"name\":\"QA Resident Ida Novak 9wo\",\"location\":\"Unit Elm 4\",\"tasks\":[{\"text\":\"Recheck INR\",\"when\":\"Done Oct 20 · Visit 2\"}]}]}"
+    },
+    {
+      "id": "U5 / AC 8: the 'Recheck INR' row shows the visit it was closed on (Visit 2: one earlier visit, closed at today's)",
+      "ok": true,
+      "detail": "Done Oct 20 · Visit 2; stored doneVisit 2"
+    },
+    {
+      "id": "harness: no model action left the page",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "variant": "ledger 'Visit 1 · <7 days ago>', pre-round Save Note today (the visit starts), then Save & Extract",
+    "beforeExtract": {
+      "course": "Visit 1 · Oct 13: Admitted for rehab.\nVisit 2 · Oct 20: Pre-rounded.",
+      "snfVisitDates": [
+        "2026-10-12T19:33:31.307Z",
+        "Tue Oct 20 2026"
+      ]
+    },
+    "afterExtract": {
+      "message": "✓ Tasks updated — 1 completed",
+      "stored": [
+        {
+          "category": "plan",
+          "done": true,
+          "doneAt": "2026-10-19T19:33:33.586Z",
+          "doneVisit": 2,
+          "id": "1700004113291",
+          "text": "Recheck INR",
+          "urgent": false
+        },
+        {
+          "category": "plan",
+          "done": false,
+          "doneAt": null,
+          "id": "1700004113292",
+          "text": "Order TSH",
+          "urgent": false
+        }
+      ],
+      "course": "Visit 1 · Oct 13: Admitted for rehab.\nVisit 2 · Oct 20: Pre-rounded.",
+      "snfVisitDates": [
+        "2026-10-12T19:33:31.307Z",
+        "Tue Oct 20 2026"
+      ]
+    },
+    "screen": {
+      "pending": [
+        {
+          "name": "QA Resident Ida Novak 9wo",
+          "location": "Unit Elm 4",
+          "tasks": [
+            {
+              "text": "Order TSH",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA Resident Ida Novak 9wo",
+          "location": "Unit Elm 4",
+          "tasks": [
+            {
+              "text": "Recheck INR",
+              "when": "Done Oct 20 · Visit 2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

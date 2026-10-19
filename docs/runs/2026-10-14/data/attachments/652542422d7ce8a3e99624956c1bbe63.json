@@ -1,0 +1,20 @@
+{
+  "OAT-02/S18": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:21:07Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "PW (newspec-c/te-oat02-handoff.spec.ts), handoff summaries answered in the page as S11; tripwire clean",
+    "title": "Nursing Home handoff: sheet → Send dialog → closed → reload, never an email option",
+    "detail": "Sheet lists the In Today resident only. In all four states (sheet, dialog, closed, reloaded): no mailto/sms link, no email/share/SMS/print/download control, no email address shown or offered. The dialog lists no recipients at all (one 'Colleague’s email' box, AC 13) — the matrix's 'wait until the colleague names are listed' no longer applies on this build. Nothing sent. 8/8 judged.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s18.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s18-1-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s18-2-dialog.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s18-3-closed.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s18-4-reloaded.png"
+    ],
+    "stated": "P0"
+  }
+}

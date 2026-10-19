@@ -1,0 +1,107 @@
+{
+  "name": "rb3-efs-s21-n",
+  "at": "2026-10-19T20:41:30.833Z",
+  "checks": [
+    {
+      "id": "n1: right after tapping Ask AI the sheet shows 'Searching…' (U11)",
+      "ok": true,
+      "detail": "3 ms after the tap"
+    },
+    {
+      "id": "n2: the question is kept (U13)",
+      "ok": true,
+      "detail": "What is the plan today?"
+    },
+    {
+      "id": "n2: a failure word (U11)",
+      "ok": true,
+      "detail": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again."
+    },
+    {
+      "id": "n2: a next step (U11)",
+      "ok": true,
+      "detail": "tap ask ai again"
+    },
+    {
+      "id": "n2: never left on 'Searching…' (U11)",
+      "ok": true,
+      "detail": "settled"
+    },
+    {
+      "id": "n2: tap-to-message time within 30 s (UAT 3.5 target: a flag for Vikram, not a verdict)",
+      "ok": false,
+      "detail": "30541 ms (socket held the call 30000 ms)",
+      "recordOnly": true
+    },
+    {
+      "id": "n3: right after tapping Save Note the button shows 'Saving & Updating…' (U11)",
+      "ok": true,
+      "detail": "2 ms after the tap"
+    },
+    {
+      "id": "n4: the typed text is kept (U13)",
+      "ok": true,
+      "detail": "QA-EFS-21 resident BP 130/80, slept well."
+    },
+    {
+      "id": "n4: a failure word (U11)",
+      "ok": true,
+      "detail": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry."
+    },
+    {
+      "id": "n4: a next step (U11)",
+      "ok": true,
+      "detail": "tap save note"
+    },
+    {
+      "id": "n4: never left on 'Saving & Updating…' (U11)",
+      "ok": true,
+      "detail": "settled"
+    },
+    {
+      "id": "n4: tap-to-message time within 30 s (UAT 3.5 target: a flag for Vikram, not a verdict)",
+      "ok": false,
+      "detail": "30525 ms (socket held the call 30000 ms)",
+      "recordOnly": true
+    },
+    {
+      "id": "n: aiCallLog durationMs / providerMs (3.5)",
+      "ok": false,
+      "detail": "n/a: the calls were answered in the browser, so the server wrote no aiCallLog row",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: Ask AI and the summary were each held at the socket and then failed; no unscripted AI call",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"fail\",\"atMs\":618,\"conn\":1},{\"udfPath\":\"ai/parsing:parsePreRoundNotes\",\"answered\":\"fail\",\"atMs\":31329,\"conn\":1}]"
+    }
+  ],
+  "data": {
+    "n2": {
+      "tapToMessageMs": 30541,
+      "message": "The chart assistant couldn’t be reached, so there is no answer. Nothing shown here is a stand-in. Check your connection and tap Ask AI again.",
+      "box": "What is the plan today?",
+      "over30s": true
+    },
+    "n4": {
+      "tapToMessageMs": 30525,
+      "message": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.",
+      "box": "QA-EFS-21 resident BP 130/80, slept well.",
+      "over30s": true
+    },
+    "socket": [
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "fail",
+        "atMs": 618,
+        "conn": 1
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "fail",
+        "atMs": 31329,
+        "conn": 1
+      }
+    ]
+  }
+}

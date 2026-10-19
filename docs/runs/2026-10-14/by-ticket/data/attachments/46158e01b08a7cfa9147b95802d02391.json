@@ -1,0 +1,151 @@
+{
+  "name": "ho-s17",
+  "at": "2026-10-19T20:21:39.471Z",
+  "build": {
+    "sha": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-19T17:04:37Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "record: the sheet was still generating when the list changed",
+      "ok": false,
+      "detail": "",
+      "record": true
+    },
+    {
+      "id": "Hospital: M1, M3, M4 and the new M5 listed, '4 patients'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Hospital: the deleted M2 is gone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Hospital: each card header exactly once",
+      "ok": true,
+      "detail": "[[\"Room 2B-01 ·\",1],[\"Room 2B-03 ·\",1],[\"Room 2B-04 ·\",1],[\"Room 2B-05 ·\",1]]"
+    },
+    {
+      "id": "Hospital: no 'Generating' left, Send enabled",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "record: the NH sheet was still generating when the list changed",
+      "ok": false,
+      "detail": "",
+      "record": true
+    },
+    {
+      "id": "Nursing Home: R1, R3, R4 and the new R5 listed, '4 residents'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Nursing Home: R2 (removed) is gone",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Nursing Home: each card header exactly once",
+      "ok": true,
+      "detail": "[[\"Unit Elm 1 ·\",1],[\"Unit Elm 3 ·\",1],[\"Unit Elm 4 ·\",1],[\"Unit Elm 5 ·\",1]]"
+    },
+    {
+      "id": "deviation: R2 was deleted, not taken out of In Today (the dev runner has no snf:update)",
+      "ok": true,
+      "detail": "",
+      "record": true
+    }
+  ],
+  "data": {
+    "aiCalls": [
+      {
+        "at": "2026-10-19T20:21:37.692Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2172,
+        "durationMs": 2230,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:21:37.186Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1912,
+        "durationMs": 2003,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:21:36.958Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2038,
+        "durationMs": 2089,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:21:36.300Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1857,
+        "durationMs": 1918,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:21:34.581Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": null,
+        "durationMs": 32,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:21:28.595Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 3978,
+        "durationMs": 4040,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:21:27.633Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1932,
+        "durationMs": 2000,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:21:27.434Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2344,
+        "durationMs": 2398,
+        "error": null
+      }
+    ]
+  }
+}

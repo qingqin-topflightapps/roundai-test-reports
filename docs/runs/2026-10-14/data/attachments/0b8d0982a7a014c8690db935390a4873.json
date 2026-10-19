@@ -1,0 +1,28 @@
+{
+  "OAT-03/S19": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:26:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW (scripted dictation)",
+    "title": "Voice transcription fails: a failed recovery shows the raw server error",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. Re-verdict from TC-23/S25 and TC-23/S08 on this build (rb1-tc23-client.spec.ts with rb1-harness.ts). When the kept recording's recovery fails, the Hospital editor shows 'Local recording recovery failed: [CONVEX A(ai/transcribe:transcribeAudio)] … Called by client' (raw Convex error, B17; usePreRoundAudioRecovery.ts unchanged message). Nursing Home: the red 'Live dictation disconnected.' stays after the dropped take was recovered (B27). The quiet reconnect and one recovery pass (TC-23/S08 7/9). Real-microphone part set aside.",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-dictation-rb1/shots/S25-H-2-dropped-unsaved.png",
+      "runs/2026-10-14-local/aicheck-dictation-rb1/raw/TC-23-S08.json",
+      "runs/2026-10-14-local/aicheck-dictation-rb1/run-0521/TC-23-S25.json"
+    ],
+    "bug": {
+      "id": "B17",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT OAT-03 step 7 + ER 4; TFA-94745 AC 4",
+      "quote": "photo reading and transcription retry automatically; if they still fail, a clear message shows",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

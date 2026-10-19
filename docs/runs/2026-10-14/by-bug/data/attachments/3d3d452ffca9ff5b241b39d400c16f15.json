@@ -1,0 +1,15 @@
+{
+  "TC-08/S20": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local",
+    "title": "Send under faults: failed send, retry, double-click, sender clock +2 days",
+    "detail": "Local 8b4be94a, fresh @roundai.test accounts; no model: handoff/persistence:ensure answered at the Convex socket (ts 0, nothing scheduled), every ai/* refused, charts carry stored stand-in summaries re-inserted with `convex import --append` (ho-support.ts); tripwire 'no model call' on every run. Sender context Pacific/Honolulu, clock +2 days (stored session read as expired; UI sign-in with a local test code). First handoffs:send failed at the socket: dialog stays open with the edited text, message 'The handoff couldn’t be sent. Nothing left the app — try again.', no 'Sent to', no row either side, no email fallback; retry → exactly 1 Received row; sentAt 2026-10-19T20:01:52Z = server time (not +2 days); double-click on the confirming Send → exactly one more row (2). Recorded Q8: title 'Patient Handoff — Oct 21, 2026' and text header 'Wednesday, October 21, 2026 · 10:01 AM' come from the sender's device clock (server day Oct 19/20).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s20.json"
+    ]
+  }
+}

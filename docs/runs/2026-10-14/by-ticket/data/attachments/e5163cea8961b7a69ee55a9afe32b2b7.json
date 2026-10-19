@@ -1,0 +1,18 @@
+{
+  "TC-07/S21": {
+    "status": "record-only",
+    "ranAt": "2026-10-19T19:37:55Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "Visual lane (qa-agent-tests/visual/te-tc07-s21.spec.ts; desktop, Pixel 7, iPhone 15/WebKit); output runs/2026-10-14-local/newspec-c/te/visual",
+    "title": "Visual lane on both task screens and the Send dialog: axe, phone widths, WebKit Copy Text",
+    "detail": "Recorded for Quinn (P2, accessibility is our extra): both task screens have serious axe color-contrast (5 nodes: header subtitle, location text); the icon-only toggles are named only 'Mark task done' / 'Undo — move back to pending' (not which task), expose no aria-pressed/checked (done shown by strike-through/colour only) and are 20×20 px (<24); Copy Text / Send are 44 px tall; a 120-character task wraps, no horizontal overflow; the Send dialog has no serious axe issue. Copy Text read back: Chromium desktop/Pixel 7 = same text as the screen; WebKit (iPhone 15 profile) clipboard read is refused by Playwright's WebKit (NotAllowedError) — the WebKit comparison stays with S23 (real phone).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/te/visual/TC-07_S21/desktop.verdict.json",
+      "runs/2026-10-14-local/newspec-c/te/visual/TC-07_S21/pixel7.verdict.json",
+      "runs/2026-10-14-local/newspec-c/te/visual/TC-07_S21/iphone15.verdict.json"
+    ],
+    "stated": "P2 (ours: accessibility)"
+  }
+}

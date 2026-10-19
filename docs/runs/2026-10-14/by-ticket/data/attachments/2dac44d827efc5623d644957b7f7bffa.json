@@ -1,0 +1,308 @@
+{
+  "name": "ho-s21",
+  "at": "2026-10-19T20:23:56.664Z",
+  "build": {
+    "sha": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-19T17:04:37Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "rounding: all 10 on one sheet ('10 patients'), Send enabled, no 'Generating'",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"waitMs\":6901,\"banner\":[]}"
+    },
+    {
+      "id": "rounding: 3.5 / 3.9 every handoff call seen is logged with model and providerMs",
+      "ok": true,
+      "detail": "{\"calls\":10,\"ok\":10,\"models\":[\"us.anthropic.claude-haiku-4-5-20251001-v1:0\"],\"fellBack\":0,\"durationMs\":{\"max\":3634,\"median\":2468},\"providerMissing\":0,\"over30s\":0}"
+    },
+    {
+      "id": "rounding: handoff calls seen in diagnostics:list (keeps 8 per user; polled)",
+      "ok": true,
+      "detail": "10 of 10",
+      "record": true
+    },
+    {
+      "id": "rounding (Q10, 3.5): no single call over 30 s",
+      "ok": true,
+      "detail": "{\"max\":3634,\"median\":2468}",
+      "record": true
+    },
+    {
+      "id": "rounding (Q10): sheet wait ≤ 30 s",
+      "ok": true,
+      "detail": "6901 ms for 10",
+      "record": true
+    },
+    {
+      "id": "snf: all 10 on one sheet ('10 residents'), Send enabled, no 'Generating'",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"waitMs\":5885,\"banner\":[]}"
+    },
+    {
+      "id": "snf: 3.5 / 3.9 every handoff call seen is logged with model and providerMs",
+      "ok": true,
+      "detail": "{\"calls\":10,\"ok\":10,\"models\":[\"us.anthropic.claude-haiku-4-5-20251001-v1:0\"],\"fellBack\":0,\"durationMs\":{\"max\":3020,\"median\":2245},\"providerMissing\":0,\"over30s\":0}"
+    },
+    {
+      "id": "snf: handoff calls seen in diagnostics:list (keeps 8 per user; polled)",
+      "ok": true,
+      "detail": "10 of 10",
+      "record": true
+    },
+    {
+      "id": "snf (Q10, 3.5): no single call over 30 s",
+      "ok": true,
+      "detail": "{\"max\":3020,\"median\":2245}",
+      "record": true
+    },
+    {
+      "id": "snf (Q10): sheet wait ≤ 30 s",
+      "ok": true,
+      "detail": "5885 ms for 10",
+      "record": true
+    }
+  ],
+  "data": {
+    "rounding.timing": {
+      "sheetWaitMs": 6901,
+      "perPatientMs": 690,
+      "calls": 10,
+      "ok": 10,
+      "models": [
+        "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+      ],
+      "fellBack": 0,
+      "durationMs": {
+        "max": 3634,
+        "median": 2468
+      },
+      "providerMissing": 0,
+      "over30s": 0
+    },
+    "rounding.aiCalls": [
+      {
+        "at": "2026-10-19T20:23:22.489Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2337,
+        "durationMs": 2435,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:22.964Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2359,
+        "durationMs": 2426,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:23.227Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2917,
+        "durationMs": 2993,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:23.318Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2403,
+        "durationMs": 2486,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:23.348Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2150,
+        "durationMs": 2207,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:23.696Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2185,
+        "durationMs": 2269,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:24.200Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2144,
+        "durationMs": 2468,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:24.891Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2139,
+        "durationMs": 2212,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:25.017Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2580,
+        "durationMs": 2675,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:25.740Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 3523,
+        "durationMs": 3634,
+        "error": null
+      }
+    ],
+    "snf.timing": {
+      "sheetWaitMs": 5885,
+      "perPatientMs": 589,
+      "calls": 10,
+      "ok": 10,
+      "models": [
+        "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+      ],
+      "fellBack": 0,
+      "durationMs": {
+        "max": 3020,
+        "median": 2245
+      },
+      "providerMissing": 0,
+      "over30s": 0
+    },
+    "snf.aiCalls": [
+      {
+        "at": "2026-10-19T20:23:44.239Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2180,
+        "durationMs": 2245,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:44.301Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2089,
+        "durationMs": 2148,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:44.645Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2134,
+        "durationMs": 2192,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:45.562Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2446,
+        "durationMs": 2508,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:45.778Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2955,
+        "durationMs": 3020,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:45.859Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2359,
+        "durationMs": 2426,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:45.922Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2193,
+        "durationMs": 2258,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:46.030Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2014,
+        "durationMs": 2077,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:46.396Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2075,
+        "durationMs": 2139,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:23:46.753Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2137,
+        "durationMs": 2206,
+        "error": null
+      }
+    ]
+  }
+}

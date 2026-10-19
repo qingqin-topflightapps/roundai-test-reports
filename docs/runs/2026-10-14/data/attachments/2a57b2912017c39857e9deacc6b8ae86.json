@@ -1,0 +1,16 @@
+{
+  "TC-16/S10": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:15:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U17 (scripts/dev/run-unit.sh U17 2026-10-20-rb2), seeded transcript rows, oracle verdict 'Fail'",
+    "title": "Hospital retention, seeded: no recording from D-4 or earlier and no notes row archived over 36 h ago is listed; typed dictation is listed after 18 h and kept before it",
+    "detail": "B34 re-check on 8b4be94a: STILL, the same checkpoints fail as on 10-14. s10-h2: a 5-day-old bedside recording still shows as 'Most Recent' (TFA-92594 AC 2: 'Hospital shows today and yesterday only'). s10-h1: the seeded rows show as two undated 'Earlier sessions' rows; no row reads '<D-1> (prior)' or '<date> · Encounter notes', so the two open-row checkpoints were not reached (agent BLOCKED notes). Code: bedside '(prior)' rows carry no archivedAt and the 48 h prune keeps entries without one (convex/lib/lifecycle.ts keptTranscripts, unchanged).",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U17.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u17"
+    ]
+  }
+}

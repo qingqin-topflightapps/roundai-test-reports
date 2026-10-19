@@ -1,0 +1,16 @@
+{
+  "TC-19/S10": {
+    "status": "failed",
+    "ranAt": "2026-10-19T21:33:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U67 (scripts/dev/run-unit.sh U67 2026-10-20-rb2): 10 charts (5 Hospital + 5 Nursing Home), each dictation with an ambiguous bare value, checked on the course card and the stored rows; oracle verdict 'Fail'",
+    "title": "AI Check 2: units — no guessed unit on ambiguous values, °C never °F, bare weight never pounds (5 Hospital + 5 Nursing Home)",
+    "detail": "B07 re-check on 8b4be94a (live Haiku): STILL. AI Check 2 pool 6/10 (needs 9/10, UAT 3.2), the same four fail as in the 10-14 rejudged run: H-02 'heparin at 14' becomes '14 units' in the Hospital Course; H-03 the insulin drip 'at 3' becomes '3 units/hr'; N-03 a bare weight 142 becomes '142 lb'; N-04 fluids at 75 become 'mL/hr' in the course and in the stored medication row name. Stated: UAT TC-19 AI Check 2 / TFA-92597 rule 11 ('A guessed unit on an ambiguous value … fails'). Ticket of the bug entry: TFA-94229 (in progress); the review also files it under TFA-92597 R11 (ready for qa).",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U67.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u67"
+    ]
+  }
+}

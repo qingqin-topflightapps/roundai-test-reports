@@ -1,0 +1,28 @@
+{
+  "TC-23/S25": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:26:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW (scripted dictation)",
+    "title": "Dictated audio kept on the device after Save Note and after sign-out",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-tc23-client.spec.ts -g S25 with rb1-harness.ts (Save Note answered at the socket). 3/7 decided cells pass. After sign-out round-ai-local-audio still holds the dropped take's recording (51 KB) and the landed, unsaved dictation (137 KB + 70-char transcript); the second physician signing in has both rows on the device. 36 h cell needs the aging helper (Manual).",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-dictation-rb1/run-0521/TC-23-S25.json",
+      "runs/2026-10-14-local/aicheck-dictation-rb1/shots/S25-H-3-signed-out.png",
+      "runs/2026-10-14-local/aicheck-dictation-rb1/shots/S25-H-4-other-physician.png"
+    ],
+    "bug": {
+      "id": "B02",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "TFA-94745 AC 7; TFA-92570 AC 7",
+      "quote": "No patient data is stored on the device to support offline use (minimal session cache only, per SOW)",
+      "mixed": true,
+      "statedPart": "no device-held patient audio beyond a minimal session cache"
+    }
+  }
+}

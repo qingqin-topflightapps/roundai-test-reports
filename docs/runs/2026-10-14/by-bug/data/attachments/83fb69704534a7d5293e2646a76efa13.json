@@ -1,0 +1,155 @@
+{
+  "ref": "TC-09/S23",
+  "profile": "desktop",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,2×: .bg-black.hover\\:bg-slate-700.h-8:nth-child(2) | .bg-black.hover\\:bg-slate-700.h-8:nth-child(4)); color-contrast(serious,5×: .py-1\\.5.transition.px-4 | .hover\\:bg-teal-700)",
+      "state": "todays-visits"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,2×: .bg-black.hover\\:bg-slate-700.h-8:nth-child(2) | .bg-black.hover\\:bg-slate-700.h-8:nth-child(4)); color-contrast(serious,5×: .transition.px-4.bg-teal-600 | .hover\\:bg-teal-700); nested-interactive(serious,2×: .overflow-hidden.border-l-4.border-l-teal-400:nth-child(2) > .cursor-pointer.text-left[role=\"button\"] | .overflow-hidden.border-l-4.border-l-teal-400:nth-child(3) > .cursor-pointer.text-left[role=\"button\"])",
+      "state": "all-residents"
+    },
+    {
+      "name": "every toggle's name identifies its resident",
+      "pass": false,
+      "detail": "[\"In Today ✓\",\"+ Today\"]",
+      "state": "all-residents"
+    },
+    {
+      "name": "every toggle exposes its on/off state (aria-pressed / aria-checked)",
+      "pass": false,
+      "detail": "[null,null]",
+      "state": "all-residents"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,3×: .hover\\:text-slate-700 | .bg-black.hover\\:bg-slate-700.h-8:nth-child(2)); color-contrast(serious,6×: .transition.px-4.bg-teal-600 | .hover\\:bg-teal-700); nested-interactive(serious,2×: .overflow-hidden.border-l-4.border-l-teal-400:nth-child(2) > .cursor-pointer.text-left[role=\"button\"] | .overflow-hidden.border-l-4.border-l-teal-400:nth-child(3) > .cursor-pointer.text-left[role=\"button\"])",
+      "state": "scan-sheet-empty"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,3×: .hover\\:text-slate-700 | .bg-black.hover\\:bg-slate-700.h-8:nth-child(2)); color-contrast(serious,7×: .transition.px-4.py-1\\.5 | .hover\\:bg-teal-700.inline-flex.disabled\\:pointer-events-none); nested-interactive(serious,2×: .overflow-hidden.border-l-4.border-l-teal-400:nth-child(2) > .text-left.p-4[role=\"button\"] | .overflow-hidden.border-l-4.border-l-teal-400:nth-child(3) > .text-left.p-4[role=\"button\"])",
+      "state": "scan-sheet-results"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,3×: .hover\\:text-slate-700 | .bg-black.hover\\:bg-slate-700.h-8:nth-child(2)); color-contrast(serious,8×: .transition.py-1\\.5.bg-teal-600 | .hover\\:bg-teal-700.bg-teal-600.inline-flex); nested-interactive(serious,2×: .overflow-hidden.border-l-4.border-l-teal-400:nth-child(2) > .text-left.p-4[role=\"button\"] | .overflow-hidden.border-l-4.border-l-teal-400:nth-child(3) > .text-left.p-4[role=\"button\"])",
+      "state": "duplicate-sheet"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,3×: .space-y-1:nth-child(4) > .text-slate-400 | .leading-relaxed)",
+      "state": "snf-add"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,3×: .flex-1.py-2.transition-colors:nth-child(2) | .text-slate-400)",
+      "state": "snf-dashboard"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "toggles (name, resident, state attr)",
+      "value": [
+        {
+          "name": "In Today ✓",
+          "resident": "QA Resident OGI7P Today",
+          "state": null
+        },
+        {
+          "name": "+ Today",
+          "resident": "QA Resident OGI7P Linked",
+          "state": null
+        }
+      ],
+      "state": "all-residents"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "todays-visits",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-09_S23/desktop--todays-visits.png",
+      "url": "/snf",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×5"
+      ]
+    },
+    {
+      "state": "all-residents",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-09_S23/desktop--all-residents.png",
+      "url": "/snf",
+      "findings": 2,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×5",
+        "nested-interactive/serious×2"
+      ]
+    },
+    {
+      "state": "scan-sheet-empty",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-09_S23/desktop--scan-sheet-empty.png",
+      "url": "/snf",
+      "findings": 25,
+      "axe": [
+        "button-name/critical×3",
+        "color-contrast/serious×6",
+        "nested-interactive/serious×2"
+      ]
+    },
+    {
+      "state": "scan-sheet-results",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-09_S23/desktop--scan-sheet-results.png",
+      "url": "/snf",
+      "findings": 28,
+      "axe": [
+        "button-name/critical×3",
+        "color-contrast/serious×7",
+        "nested-interactive/serious×2"
+      ]
+    },
+    {
+      "state": "duplicate-sheet",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-09_S23/desktop--duplicate-sheet.png",
+      "url": "/snf",
+      "findings": 49,
+      "axe": [
+        "button-name/critical×3",
+        "color-contrast/serious×8",
+        "nested-interactive/serious×2"
+      ]
+    },
+    {
+      "state": "snf-add",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-09_S23/desktop--snf-add.png",
+      "url": "/snf/add",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×3"
+      ]
+    },
+    {
+      "state": "snf-dashboard",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-09_S23/desktop--snf-dashboard.png",
+      "url": "/snf/dashboard",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×3"
+      ]
+    }
+  ]
+}

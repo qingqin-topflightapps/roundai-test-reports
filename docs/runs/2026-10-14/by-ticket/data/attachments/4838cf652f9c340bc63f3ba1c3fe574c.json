@@ -1,0 +1,14 @@
+{
+  "TC-07/S24": {
+    "status": "record-only",
+    "ranAt": "2026-10-20T04:40:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "Code review (read only, 8b4be94a) + human review pending",
+    "title": "Human review: matches the prototype minus Email Tasks; Email Tasks gone as functionality",
+    "detail": "Code half: no 'Email Tasks' string and no mailto / navigator.share / Capacitor Share in src except the Settings support link (SettingsModal.tsx, not reachable from the task screens); TasksOverlay has only Send to… (handoff delivery, kind 'tasks') and Copy Text; convex/email.ts sendEmail is called only by the sign-in code paths (auth_provider_extension.ts, lib/emailOtpAuth.ts). The side-by-side prototype comparison (RoundCompanion_PLAYGROUND_p72_HAIKU.html) needs a person: Manual.",
+    "evidence": [],
+    "stated": "P0 (TFA-92585 AC 1, AC 11)"
+  }
+}

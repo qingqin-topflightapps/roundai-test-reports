@@ -1,0 +1,16 @@
+{
+  "TC-19/S12": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:09:42Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev dataset rb2-s12 (live Haiku): one Hospital chart added with 20 h old stamps (yesterday's magnesium Given, metoprolol, BP 136/84, HR 78, Cr 1.3), Pre-Round Save Note 'Overnight uneventful. No complaints this morning.', rounding:get right after (the dev check the TFA-92597 review asked for)",
+    "title": "Hospital retention: day 2, the 18 h label and the 36 h clear (±1 h), held clock refreshed by processing",
+    "detail": "B04 re-check on 8b4be94a: CHANGED. Fixed part: BP / HR keep their recorded time (vitalsRecordedAt), creatinine keeps its recordedAt, and vitalsUpdatedAt / labsUpdatedAt (the clocks the 36 h purge reads) are not moved by the Save Note. Still: the live model still echoes the one-time dose, and the merge re-dates it: magnesium 'Given · Oct 19' becomes 'Given · Oct 20' with updatedAt now, so yesterday's dose looks like today's and its 36 h clock restarts (convex/lib/medications.ts mergePreRoundMedications). Metoprolol (echoed active) keeps its stamp. Local replay of the same echo (runs/2026-10-14-local results.rb2.json) shows the 37 h consequence: magnesium survives, metoprolol is cleared. Stated: UAT TC-19 ER 10 / TFA-92597 rule 6.",
+    "evidence": [
+      "runs/2026-10-14-dev/datasets-rb2/rb2-s12/evidence/TC-19-S12-b04.json",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-s12/cleanup.json"
+    ]
+  }
+}

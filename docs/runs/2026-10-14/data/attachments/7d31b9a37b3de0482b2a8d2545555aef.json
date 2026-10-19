@@ -1,0 +1,23 @@
+{
+  "TC-22/S01": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:16:43Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "DEV agent unit T22-S01 (cases/run-plan-dev-2026-10-15-ext.json, run-unit-plan.sh, run-id 2026-10-14-dev), live models; rows 'QA TC-22-S01 …' deleted after",
+    "title": "Hospital, UAT steps 1–3 in the app: pre-round tasks, Save & Extract closes two, third open, conditional task, no retraction task",
+    "detail": "Pre-round Save Note with 'Follow up BMP. PT eval. Recheck weight in two weeks.' stored 2 tasks (BMP, PT); 'Recheck weight in two weeks' never became a task (as on 43c38a4f). Save & Extract with the UAT bedside text closed BMP and PT (this run BMP closed too); no task for 'Advance diet to clears if pain stays under 4' (N22 still); no glargine task. Task Review: 'All tasks complete!', Finished Tasks: Follow up BMP, PT eval, each 'Done Oct 20' (TFA-92585 AC 8 Hospital day: shown). The oracle's 'Pending Tasks' anchor no longer exists (heading is 'Task Review' on this build) — read from the snapshot instead.",
+    "evidence": [
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s01/verdict.json",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s01/notes.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s01/s01-h-after-preround.png",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s01/s01-h-after-extract.png",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s01/s01-h-task-export.png",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s01/backend/h-at-1.json",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s01/backend/h-at-2.json"
+    ],
+    "bug": "N22",
+    "stated": "P0: UAT TC-22 'The conditional order becomes a task' / step 1 three tasks"
+  }
+}

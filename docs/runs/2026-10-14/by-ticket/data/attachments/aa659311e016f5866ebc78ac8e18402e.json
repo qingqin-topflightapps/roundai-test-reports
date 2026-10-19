@@ -1,0 +1,278 @@
+{
+  "name": "oat06-s26",
+  "at": "2026-10-19T19:33:02.115Z",
+  "checks": [
+    {
+      "id": "checkpoint s26-d1-delete-pending.md (Fin1's Post-Round tab after Delete Pending Tasks & Complete)",
+      "ok": true,
+      "detail": "url /rounding/kx7eaag3svqkrm13ep5gty56a98gjghs; missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s26-d2-keep.md (Fin2's Post-Round tab after Keep Tasks & Mark Complete)",
+      "ok": true,
+      "detail": "url /rounding/kx7eebktc98b2w3tv2gcemce2h8gjnd7; missing []; present but must not be []"
+    },
+    {
+      "id": "checkpoint s26-d3-cancel.md (Fin3's Post-Round tab after Cancel — go back)",
+      "ok": true,
+      "detail": "url /rounding/kx7dta8erp2f8gs9kaxvj6t41h8gjzdw; missing []; present but must not be []"
+    },
+    {
+      "id": "the Pending Tasks question opened for each chart and listed both tasks",
+      "ok": true,
+      "detail": "[[\"D1\",[\"QA fin task one: repeat lactate\",\"QA fin task two: wound photo\"]],[\"D2\",[\"QA fin task one: repeat lactate\",\"QA fin task two: wound photo\"]],[\"D3\",[\"QA fin task one: repeat lactate\",\"QA fin task two: wound photo\"]]]"
+    },
+    {
+      "id": "D1 note_marked_complete = 1 against chart 1",
+      "ok": true,
+      "detail": "pre_round_summary_opened, note_marked_complete"
+    },
+    {
+      "id": "D1 task_deleted = 2 against chart 1 (oracle: judged against AC 2 'task deleted' is logged; whether the bulk delete should count is Q6)",
+      "ok": false,
+      "detail": "task_deleted 0, task_completed 0; chart 1 tasks stored after the choice: []"
+    },
+    {
+      "id": "D2 note_marked_complete = 1 against chart 2 and no task row",
+      "ok": true,
+      "detail": "pre_round_summary_opened, note_marked_complete"
+    },
+    {
+      "id": "D3 Cancel logs nothing and changes nothing: no note_marked_complete or task row, chart 3 still note-ready with both tasks open",
+      "ok": true,
+      "detail": "rows pre_round_summary_opened; stored {\"status\":\"note-ready\",\"tasks\":[{\"id\":\"qa-s26-D3-1\",\"text\":\"QA fin task one: repeat lactate\",\"done\":false},{\"id\":\"qa-s26-D3-2\",\"text\":\"QA fin task two: wound photo\",\"done\":false}]}"
+    },
+    {
+      "id": "the day's hospital rollup notesCompleted +2 (D1 and D2, not D3)",
+      "ok": true,
+      "detail": "notesCompleted +2"
+    },
+    {
+      "id": "rollup tasksDeleted delta (recorded; follows D1 and Q6)",
+      "ok": false,
+      "detail": "tasksDeleted +0, tasksCompleted +0",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-17 step 4 (TFA-92595 in progress, record-only): D1 removed only chart 1's pending tasks, D2 kept them open",
+      "ok": true,
+      "detail": "{\"D1\":{\"status\":\"post-rounded\",\"tasks\":[]},\"D2\":{\"status\":\"post-rounded\",\"tasks\":[{\"id\":\"qa-s26-D2-1\",\"text\":\"QA fin task one: repeat lactate\",\"done\":false},{\"id\":\"qa-s26-D2-2\",\"text\":\"QA fin task two: wound photo\",\"done\":false}]}}",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S29 (c) (record-only): rows the bulk delete at completion writes",
+      "ok": true,
+      "detail": "chart 1 rows: pre_round_summary_opened, note_marked_complete",
+      "recordOnly": true
+    },
+    {
+      "id": "note_marked_complete carries minutesFromPreRoundOpened (each chart was opened on Pre-Round first)",
+      "ok": true,
+      "detail": "[[0],[0]]",
+      "recordOnly": true
+    },
+    {
+      "id": "no row holds a name, room, diagnosis, task or note text",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "no model call was attempted on this path",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "T0": {
+      "serverNow": 1792438360860,
+      "day": "2026-10-20",
+      "chartIds": {
+        "D1": "kx7eaag3svqkrm13ep5gty56a98gjghs",
+        "D2": "kx7eebktc98b2w3tv2gcemce2h8gjnd7",
+        "D3": "kx7dta8erp2f8gs9kaxvj6t41h8gjzdw"
+      },
+      "usageRows": 0,
+      "daily": []
+    },
+    "D1 Delete Pending Tasks & Complete": {
+      "rows": [
+        {
+          "event": "note_marked_complete",
+          "patientId": "kx7eaag3svqkrm13ep5gty56a98gjghs",
+          "minutes": 0
+        }
+      ],
+      "stored": {
+        "status": "post-rounded",
+        "tasks": []
+      },
+      "dialogShown": true,
+      "listed": [
+        "QA fin task one: repeat lactate",
+        "QA fin task two: wound photo"
+      ]
+    },
+    "checkpoint s26-d1-delete-pending.md": {
+      "when": "Fin1's Post-Round tab after Delete Pending Tasks & Complete",
+      "url": "http://localhost:6473/rounding/kx7eaag3svqkrm13ep5gty56a98gjghs",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s26-s26-d1-delete-pending.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp OAT06 Fin1\n\nRoom 4B-71 · 68y · QA0626D1\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nSepsis, improving\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n4:32 AM · Oct 20\n\nQA fin note for D1. Stable. Plan unchanged.\n\nEdit Note\nCopy to EMR\nCopy A&P\n\nAssessment & Plan not found, use Copy to EMR.\n\nEncounter Complete\n\nBILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\n\nGenerate a new note for a billing suggestion."
+    },
+    "D2 Keep Tasks & Mark Complete": {
+      "rows": [
+        {
+          "event": "note_marked_complete",
+          "patientId": "kx7eebktc98b2w3tv2gcemce2h8gjnd7",
+          "minutes": 0
+        }
+      ],
+      "stored": {
+        "status": "post-rounded",
+        "tasks": [
+          {
+            "id": "qa-s26-D2-1",
+            "text": "QA fin task one: repeat lactate",
+            "done": false
+          },
+          {
+            "id": "qa-s26-D2-2",
+            "text": "QA fin task two: wound photo",
+            "done": false
+          }
+        ]
+      },
+      "dialogShown": true,
+      "listed": [
+        "QA fin task one: repeat lactate",
+        "QA fin task two: wound photo"
+      ]
+    },
+    "checkpoint s26-d2-keep.md": {
+      "when": "Fin2's Post-Round tab after Keep Tasks & Mark Complete",
+      "url": "http://localhost:6473/rounding/kx7eebktc98b2w3tv2gcemce2h8gjnd7",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s26-s26-d2-keep.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp OAT06 Fin2\n\nRoom 4B-72 · 68y · QA0626D2\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nSepsis, improving\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n4:32 AM · Oct 20\n\nQA fin note for D2. Stable. Plan unchanged.\n\nEdit Note\nCopy to EMR\nCopy A&P\n\nAssessment & Plan not found, use Copy to EMR.\n\nEncounter Complete\n\nBILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\n\nGenerate a new note for a billing suggestion."
+    },
+    "D3 Cancel — go back": {
+      "rows": [],
+      "stored": {
+        "status": "note-ready",
+        "tasks": [
+          {
+            "id": "qa-s26-D3-1",
+            "text": "QA fin task one: repeat lactate",
+            "done": false
+          },
+          {
+            "id": "qa-s26-D3-2",
+            "text": "QA fin task two: wound photo",
+            "done": false
+          }
+        ]
+      },
+      "dialogShown": true,
+      "listed": [
+        "QA fin task one: repeat lactate",
+        "QA fin task two: wound photo"
+      ]
+    },
+    "checkpoint s26-d3-cancel.md": {
+      "when": "Fin3's Post-Round tab after Cancel — go back",
+      "url": "http://localhost:6473/rounding/kx7dta8erp2f8gs9kaxvj6t41h8gjzdw",
+      "missing": [],
+      "unexpectedlyPresent": [],
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/oat06-s26-s26-d3-cancel.png",
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp OAT06 Fin3\n\nRoom 4B-73 · 68y · QA0626D3\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nSepsis, improving\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n4:32 AM · Oct 20\n\nQA fin note for D3. Stable. Plan unchanged.\n\nEdit Note\nCopy to EMR\nCopy A&P\n\nAssessment & Plan not found, use Copy to EMR.\n\nMark Encounter Complete\n\nBILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\n\nGenerate a new note for a billing suggestion."
+    },
+    "usage rows since T0": [
+      {
+        "_creationTime": 1792438361531.035,
+        "_id": "kh768acekzyemw22qyss5spr2d8gjtsz",
+        "careSetting": "hospital",
+        "day": "2026-10-20",
+        "event": "pre_round_summary_opened",
+        "patientId": "kx7eaag3svqkrm13ep5gty56a98gjghs",
+        "userId": "jd7407tyf3hqbq472xkmvm6fgn8gj6kg"
+      },
+      {
+        "_creationTime": 1792438363220.6023,
+        "_id": "kh7ea45k8svbnzfp8rfapezzd18gj1pp",
+        "careSetting": "hospital",
+        "day": "2026-10-20",
+        "event": "note_marked_complete",
+        "minutesFromPreRoundOpened": 0,
+        "patientId": "kx7eaag3svqkrm13ep5gty56a98gjghs",
+        "userId": "jd7407tyf3hqbq472xkmvm6fgn8gj6kg"
+      },
+      {
+        "_creationTime": 1792438367304.289,
+        "_id": "kh7a9rvwbq6jdgrtndb345nchh8gkxa5",
+        "careSetting": "hospital",
+        "day": "2026-10-20",
+        "event": "pre_round_summary_opened",
+        "patientId": "kx7eebktc98b2w3tv2gcemce2h8gjnd7",
+        "userId": "jd7407tyf3hqbq472xkmvm6fgn8gj6kg"
+      },
+      {
+        "_creationTime": 1792438368971.3184,
+        "_id": "kh70mfjcywgcdtewpaw0nfdwks8gj1fd",
+        "careSetting": "hospital",
+        "day": "2026-10-20",
+        "event": "note_marked_complete",
+        "minutesFromPreRoundOpened": 0,
+        "patientId": "kx7eebktc98b2w3tv2gcemce2h8gjnd7",
+        "userId": "jd7407tyf3hqbq472xkmvm6fgn8gj6kg"
+      },
+      {
+        "_creationTime": 1792438373003.986,
+        "_id": "kh79mamr1sxb4hm70s6r38e8cx8gjjwh",
+        "careSetting": "hospital",
+        "day": "2026-10-20",
+        "event": "pre_round_summary_opened",
+        "patientId": "kx7dta8erp2f8gs9kaxvj6t41h8gjzdw",
+        "userId": "jd7407tyf3hqbq472xkmvm6fgn8gj6kg"
+      }
+    ],
+    "daily hospital before / after / delta": {
+      "delta": {
+        "preRoundSummariesOpened": 3,
+        "notesCompleted": 2,
+        "encountersTimed": 2,
+        "minutesPreRoundToComplete": 0,
+        "notesGenerated": 0,
+        "handoffsGenerated": 0,
+        "handoffsSent": 0,
+        "tasksCompleted": 0,
+        "tasksDeleted": 0
+      },
+      "after": {
+        "_creationTime": 1792438361531.0352,
+        "_id": "kd77f0n6fzxr7b9f0s1magy2r18gj3jw",
+        "careSetting": "hospital",
+        "day": "2026-10-20",
+        "encountersTimed": 2,
+        "handoffsGenerated": 0,
+        "handoffsSent": 0,
+        "minutesPreRoundToComplete": 0,
+        "notesCompleted": 2,
+        "notesGenerated": 0,
+        "preRoundSummariesOpened": 3,
+        "tasksCompleted": 0,
+        "tasksDeleted": 0,
+        "updatedAt": "2026-10-19T19:32:53.003Z",
+        "userId": "jd7407tyf3hqbq472xkmvm6fgn8gj6kg"
+      },
+      "before": null
+    },
+    "dialogs (native)": [],
+    "ai calls attempted (all refused at the socket)": [],
+    "cleanup": {
+      "hospital": 3,
+      "nursingHome": 0
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "OAT-05/S30": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "STATIC",
+    "title": "Vision failure forwards the provider's raw error",
+    "bug": "A6",
+    "bugNow": "still",
+    "stated": "our own stricter reading of OAT-05 step 1 (A6 suggestion)",
+    "detail": "Code at 8b4be94a: vertex.ts:135 still copies the provider's first error line (≤300 chars) into ConvexError data.detail, vertex.ts:168 wraps any SDK error, retry.ts:183 rethrows (vision has no fallback), phi.ts rethrows to the browser. phi.ts change since e02167f is only internalAiAction.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/OAT-05-S30.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

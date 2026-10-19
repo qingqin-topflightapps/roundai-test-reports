@@ -1,0 +1,78 @@
+{
+  "name": "ip-tc12-s02-snf",
+  "at": "2026-10-19T17:53:56.696Z",
+  "checks": [
+    {
+      "id": "cp1: after Save Note the panel has no card (UAT TC-12 step 1)",
+      "ok": true,
+      "detail": "0 cards"
+    },
+    {
+      "id": "cp1: the parse's important_points never reach the panel or the server",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "cp1 empty-state copy does not say the AI fills the panel (U1; old NH copy 'process notes with AI')",
+      "ok": true,
+      "detail": "IMPORTANT POINTS\n0\nAdd Point\n\nAdd your reminders for today's encounter. Points expire after 12 hours.",
+      "recordOnly": true
+    },
+    {
+      "id": "layout (AC 1): Important Points sits in the bottom box of the Pre-Round fullscreen editor, below the dictation",
+      "ok": true,
+      "detail": "{\"noteBox\":{\"x\":16,\"y\":79,\"width\":1248,\"height\":334},\"pBox\":{\"x\":16,\"y\":425,\"width\":1248,\"height\":180}}"
+    },
+    {
+      "id": "layout (UAT TC-10 'the dictation (most of the screen)'): the notes box is taller than the points box",
+      "ok": true,
+      "detail": "{\"note\":334,\"points\":180}",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2: three Add Point entries are three separate cards with the typed texts (AC 3)",
+      "ok": true,
+      "detail": "[\"Falls x2 this wk - ask PT re walker\",\"Dtr wants call re hospice criteria\",\"Orthostatics before any trazodone change\"]"
+    },
+    {
+      "id": "cp2: stored exactly as typed, source manual, each with its own server clock (AC 4)",
+      "ok": true,
+      "detail": "[{\"id\":\"821cbac9-f8ce-4d69-b246-f07910b462d4\",\"text\":\"Falls x2 this wk - ask PT re walker\",\"source\":\"manual\",\"createdAt\":1792432435939},{\"id\":\"049e6c4a-fceb-4a4c-9bc7-9a83f206da30\",\"text\":\"Dtr wants call re hospice criteria\",\"source\":\"manual\",\"createdAt\":1792432436090},{\"id\":\"c51a3b52-ab17-40b3-86a1-0521a439b67e\",\"text\":\"Orthostatics before any trazodone change\",\"source\":\"manual\",\"createdAt\":1792432436223}]"
+    },
+    {
+      "id": "cp3: after re-saving with different content the same three cards, same text and order (UAT bullet 3)",
+      "ok": true,
+      "detail": "[\"Falls x2 this wk - ask PT re walker\",\"Dtr wants call re hospice criteria\",\"Orthostatics before any trazodone change\"]"
+    },
+    {
+      "id": "cp3: server list identical to before the re-save (ids, text, order, source, createdAt) (AC 2)",
+      "ok": true,
+      "detail": "{\"before\":[{\"id\":\"821cbac9-f8ce-4d69-b246-f07910b462d4\",\"text\":\"Falls x2 this wk - ask PT re walker\",\"source\":\"manual\",\"createdAt\":1792432435939},{\"id\":\"049e6c4a-fceb-4a4c-9bc7-9a83f206da30\",\"text\":\"Dtr wants call re hospice criteria\",\"source\":\"manual\",\"createdAt\":1792432436090},{\"id\":\"c51a3b52-ab17-40b3-86a1-0521a439b67e\",\"text\":\"Orthostatics before any trazodone change\",\"source\":\"manual\",\"createdAt\":1792432436223}],\"after\":[{\"id\":\"821cbac9-f8ce-4d69-b246-f07910b462d4\",\"text\":\"Falls x2 this wk - ask PT re walker\",\"source\":\"manual\",\"createdAt\":1792432435939},{\"id\":\"049e6c4a-fceb-4a4c-9bc7-9a83f206da30\",\"text\":\"Dtr wants call re hospice criteria\",\"source\":\"manual\",\"createdAt\":1792432436090},{\"id\":\"c51a3b52-ab17-40b3-86a1-0521a439b67e\",\"text\":\"Orthostatics before any trazodone change\",\"source\":\"manual\",\"createdAt\":1792432436223}]}"
+    },
+    {
+      "id": "setup: no ai/* call was refused or forwarded",
+      "ok": true,
+      "detail": "[\"ai/parsing:parsePreRoundNotes:ok\",\"ai/parsing:parsePreRoundNotes:ok\"]"
+    }
+  ],
+  "data": {
+    "tab: 'Important Points' text outside the editor (count)": 0,
+    "cp1 panel text": "IMPORTANT POINTS\n0\nAdd Point\n\nAdd your reminders for today's encounter. Points expire after 12 hours.",
+    "layout: editor boxes (notes above points)": {
+      "noteBox": {
+        "x": 16,
+        "y": 79,
+        "width": 1248,
+        "height": 334
+      },
+      "pointsBox": {
+        "x": 16,
+        "y": 425,
+        "width": 1248,
+        "height": 180
+      }
+    },
+    "summary calls answered in the page": 2,
+    "devReloadsBlocked": 0
+  }
+}

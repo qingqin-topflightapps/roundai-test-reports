@@ -1,0 +1,838 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/probes/probes.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28",
+      "efs-s28-draft-clock.spec.ts",
+      "--retries=0"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/probes.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "probes",
+        "name": "probes",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/probes",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "efs-s28-draft-clock.spec.ts",
+      "file": "efs-s28-draft-clock.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "EFS/S28 (a) hospital: device clock 2 h behind the server — the tail written after the session ended is restored",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 40481,
+                  "error": {
+                    "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 131,
+                      "line": 89
+                    },
+                    "snippet": "  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 131,
+                        "line": 89
+                      },
+                      "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:56:13.086Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-ef9d9-e-session-ended-is-restored-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-ef9d9-e-session-ended-is-restored-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-ef9d9-e-session-ended-is-restored-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 131,
+                    "line": 89
+                  }
+                },
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 40104,
+                  "error": {
+                    "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 131,
+                      "line": 89
+                    },
+                    "snippet": "  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 131,
+                        "line": 89
+                      },
+                      "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-19T19:56:54.024Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-ef9d9-e-session-ended-is-restored-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-ef9d9-e-session-ended-is-restored-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-ef9d9-e-session-ended-is-restored-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 131,
+                    "line": 89
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "85d7859ac37cf04a375c-418a638245c326a52387",
+          "file": "efs-s28-draft-clock.spec.ts",
+          "line": 49,
+          "column": 3
+        },
+        {
+          "title": "EFS/S28 (b) hospital: device clock 2 h ahead — newer text from another session stays, the stale tail does not overwrite it",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 44574,
+                  "error": {
+                    "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 83,
+                      "line": 139
+                    },
+                    "snippet": "  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 83,
+                        "line": 139
+                      },
+                      "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 89,
+                        "line": 140
+                      },
+                      "message": "Error: (b) the stale tail overwrites / joins the newer text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n> 140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n      |                                                                                         ^\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n  143 |   });\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:140:89"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 105,
+                        "line": 141
+                      },
+                      "message": "Error: (b) the server still holds the newer text after the phone signed in again\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"newer text from the computer\"\u001b[39m\nReceived string:    \u001b[31m\"QA-EFS-28 first line. QA-EFS-28 ahead stale tail.\"\u001b[39m\n\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n> 141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n      |                                                                                                         ^\n  142 |     await dev.context.close();\n  143 |   });\n  144 | }\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:141:105"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:57:34.488Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 83,
+                    "line": 139
+                  }
+                },
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 44636,
+                  "error": {
+                    "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 83,
+                      "line": 139
+                    },
+                    "snippet": "  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 83,
+                        "line": 139
+                      },
+                      "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 89,
+                        "line": 140
+                      },
+                      "message": "Error: (b) the stale tail overwrites / joins the newer text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n> 140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n      |                                                                                         ^\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n  143 |   });\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:140:89"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 105,
+                        "line": 141
+                      },
+                      "message": "Error: (b) the server still holds the newer text after the phone signed in again\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"newer text from the computer\"\u001b[39m\nReceived string:    \u001b[31m\"QA-EFS-28 first line. QA-EFS-28 ahead stale tail.\"\u001b[39m\n\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n> 141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n      |                                                                                                         ^\n  142 |     await dev.context.close();\n  143 |   });\n  144 | }\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:141:105"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-19T19:58:19.406Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes-retry1/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-92f0c--tail-does-not-overwrite-it-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 83,
+                    "line": 139
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "85d7859ac37cf04a375c-89aba8cf8b96cfdd445b",
+          "file": "efs-s28-draft-clock.spec.ts",
+          "line": 93,
+          "column": 3
+        },
+        {
+          "title": "EFS/S28 (a) snf: device clock 2 h behind the server — the tail written after the session ended is restored",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 39897,
+                  "error": {
+                    "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 131,
+                      "line": 89
+                    },
+                    "snippet": "  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 131,
+                        "line": 89
+                      },
+                      "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:59:04.409Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-d6069-e-session-ended-is-restored-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-d6069-e-session-ended-is-restored-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-d6069-e-session-ended-is-restored-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 131,
+                    "line": 89
+                  }
+                },
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 40068,
+                  "error": {
+                    "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 131,
+                      "line": 89
+                    },
+                    "snippet": "  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 131,
+                        "line": 89
+                      },
+                      "message": "Error: (a) the behind tail is restored although the device clock says it predates the server's save\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  87 |     // Premise: the tail reached the device copy (otherwise the leg proves nothing about the restore).\n  88 |     expect(draftHasTail, \"setup: the device copy holds the tail typed after the session ended\").toBe(true);\n> 89 |     expect.soft(rec.tailRestored, \"(a) the behind tail is restored although the device clock says it predates the server's save\").toBe(true);\n     |                                                                                                                                   ^\n  90 |     await dev.context.close();\n  91 |   });\n  92 |\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:89:131"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-19T19:59:44.665Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-d6069-e-session-ended-is-restored-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-d6069-e-session-ended-is-restored-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-d6069-e-session-ended-is-restored-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 131,
+                    "line": 89
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "85d7859ac37cf04a375c-b062709f9c922c0be6cb",
+          "file": "efs-s28-draft-clock.spec.ts",
+          "line": 49,
+          "column": 3
+        },
+        {
+          "title": "EFS/S28 (b) snf: device clock 2 h ahead — newer text from another session stays, the stale tail does not overwrite it",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 44976,
+                  "error": {
+                    "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 83,
+                      "line": 139
+                    },
+                    "snippet": "  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 83,
+                        "line": 139
+                      },
+                      "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 89,
+                        "line": 140
+                      },
+                      "message": "Error: (b) the stale tail overwrites / joins the newer text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n> 140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n      |                                                                                         ^\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n  143 |   });\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:140:89"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 105,
+                        "line": 141
+                      },
+                      "message": "Error: (b) the server still holds the newer text after the phone signed in again\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"newer text from the computer\"\u001b[39m\nReceived string:    \u001b[31m\"QA-EFS-28 first line. QA-EFS-28 ahead stale tail.\"\u001b[39m\n\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n> 141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n      |                                                                                                         ^\n  142 |     await dev.context.close();\n  143 |   });\n  144 | }\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:141:105"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:56:13.086Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 83,
+                    "line": 139
+                  }
+                },
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 44554,
+                  "error": {
+                    "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 83,
+                      "line": 139
+                    },
+                    "snippet": "  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 83,
+                        "line": 139
+                      },
+                      "message": "Error: (b) the newer text from the other session stays\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  137 |     expect(draftHasTail, \"setup: the device copy holds the stale tail\").toBe(true);\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n> 139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n      |                                                                                   ^\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:139:83"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 89,
+                        "line": 140
+                      },
+                      "message": "Error: (b) the stale tail overwrites / joins the newer text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  138 |     expect(storedAfterOther.encounterNotes, \"setup: the server stored the computer's newer text\").toContain(\"newer text from the computer\");\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n> 140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n      |                                                                                         ^\n  141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n  142 |     await dev.context.close();\n  143 |   });\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:140:89"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 105,
+                        "line": 141
+                      },
+                      "message": "Error: (b) the server still holds the newer text after the phone signed in again\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"newer text from the computer\"\u001b[39m\nReceived string:    \u001b[31m\"QA-EFS-28 first line. QA-EFS-28 ahead stale tail.\"\u001b[39m\n\n  139 |     expect.soft(rec.newerKept, \"(b) the newer text from the other session stays\").toBe(true);\n  140 |     expect.soft(rec.staleShown, \"(b) the stale tail overwrites / joins the newer text\").toBe(false);\n> 141 |     expect.soft(storedEnd, \"(b) the server still holds the newer text after the phone signed in again\").toContain(\"newer text from the computer\");\n      |                                                                                                         ^\n  142 |     await dev.context.close();\n  143 |   });\n  144 | }\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:141:105"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-19T19:56:58.441Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes-retry1/test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-f0331--tail-does-not-overwrite-it-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 83,
+                    "line": 139
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "85d7859ac37cf04a375c-fa7f7189628bd78a5e16",
+          "file": "efs-s28-draft-clock.spec.ts",
+          "line": 93,
+          "column": 3
+        },
+        {
+          "title": "EFS/S28 (c) kept drafts 19 h / 37 h (Hospital) and 13 h (Nursing Home) old: not silently put into today's field; none older than 36 h left",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "probes",
+              "projectName": "probes",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 13290,
+                  "error": {
+                    "message": "Error: (c) h19: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: (c) h19: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 121,
+                      "line": 185
+                    },
+                    "snippet": "  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 121,
+                        "line": 185
+                      },
+                      "message": "Error: (c) h19: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 121,
+                        "line": 185
+                      },
+                      "message": "Error: (c) h37: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 121,
+                        "line": 185
+                      },
+                      "message": "Error: (c) n13: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:57:43.329Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-c88ee-d-none-older-than-36-h-left-probes/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-c88ee-d-none-older-than-36-h-left-probes/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-c88ee-d-none-older-than-36-h-left-probes/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 121,
+                    "line": 185
+                  }
+                },
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 13173,
+                  "error": {
+                    "message": "Error: (c) h19: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: (c) h19: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                      "column": 121,
+                      "line": 185
+                    },
+                    "snippet": "  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 121,
+                        "line": 185
+                      },
+                      "message": "Error: (c) h19: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 121,
+                        "line": 185
+                      },
+                      "message": "Error: (c) h37: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121"
+                    },
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                        "column": 121,
+                        "line": 185
+                      },
+                      "message": "Error: (c) n13: an old tail silently put into today's Encounter box\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceived: \u001b[31mtrue\u001b[39m\n\n  183 |   for (const c of cases) {\n  184 |     const r = rec[c.key] as Obj;\n> 185 |     expect.soft(r.oldTailInField && !r.datedOffer, `(c) ${c.key}: an old tail silently put into today's Encounter box`).toBe(false);\n      |                                                                                                                         ^\n  186 |   }\n  187 |   expect.soft(drafts.filter((d) => d.savedAt < sNow - 36 * HOUR).length, \"(c) no draft row older than server now − 36 h left on the device\").toBe(0);\n  188 |   await dev.context.close();\n    at round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts:185:121"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 1,
+                  "startTime": "2026-10-19T19:57:56.956Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-c88ee-d-none-older-than-36-h-left-probes-retry1/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-c88ee-d-none-older-than-36-h-left-probes-retry1/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/probes/artifacts/rb3-efs-s28/efs-s28-draft-clock-EFS-S2-c88ee-d-none-older-than-36-h-left-probes-retry1/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/probes/efs-s28-draft-clock.spec.ts",
+                    "column": 121,
+                    "line": 185
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "85d7859ac37cf04a375c-1049bf7f08edc472bb24",
+          "file": "efs-s28-draft-clock.spec.ts",
+          "line": 146,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-19T19:56:12.723Z",
+    "duration": 252107.91,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

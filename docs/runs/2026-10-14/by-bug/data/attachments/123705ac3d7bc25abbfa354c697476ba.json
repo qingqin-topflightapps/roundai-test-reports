@@ -1,0 +1,15 @@
+{
+  "TC-17/S24": {
+    "status": "record-only",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "VISUAL",
+    "title": "axe + phone checks on Post-Round screens, Pending Tasks and Ask sheets (own extension)",
+    "detail": "pr-tc17-s24-a11y.spec.ts, desktop Chromium, Pixel 7 Chromium, iPhone 15 on WebKit (ran), both contexts, 30 screens. Not in UAT/ticket: QA-improvement findings only. Every screen: axe color-contrast (serious). NH: back button, task complete/delete icons unnamed (button-name), note/tasks/meds toggles expose no aria-pressed (Hospital does). Ask sheet (both): no dialog role, close X unnamed. Pending Tasks sheet is a named dialog. Small (<24 px) tap targets on every screen (icon buttons). No sideways scroll anywhere.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s24.json"
+    ]
+  }
+}

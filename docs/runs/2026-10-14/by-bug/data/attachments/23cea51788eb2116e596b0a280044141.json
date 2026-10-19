@@ -1,0 +1,15 @@
+{
+  "TC-11/S25": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "code read against the 10-14 retention-lane run (not re-run, same reason as OAT-04/S15)",
+    "title": "Hospital entries older than yesterday are cleared at 36 h (±1 h)",
+    "detail": "B19 re-check on 8b4be94a: STILL. Lines dated before yesterday are never cleared from the stored ledger (no course branch in convex/lib/lifecycle.ts; TFA-94699 AC 1 in progress). Stated: UAT 3.6, OAT-04 ER 1.",
+    "evidence": [
+      "runs/2026-10-14-local/retention/evidence/TC-11-S25.json"
+    ]
+  }
+}

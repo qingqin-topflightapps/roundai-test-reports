@@ -1,0 +1,23 @@
+{
+  "TC-07/S08": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:16:55Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec; every ai/* action answered in the page (ext-support extSocket), tripwire clean (newspec-c/te-tc07-s08-tc22.spec.ts); the extractor answer closes the answered task, so the display is what is judged",
+    "title": "A task closed by dictation (Save & Extract) shows as completed, with the visit it was closed on",
+    "detail": "Hospital: 'Repeat BMP in the morning' closed by Save & Extract → under Finished Tasks with its patient, 'Done Oct 20' (server day; Hospital reading of Q3), 'Order PT evaluation' pending above — pass. Nursing Home, one earlier visit, 'Recheck INR' closed by Save & Extract: (a) as the matrix seeds it (snfVisitDates only, no course ledger, no pre-round today) → 'Done Oct 20', no visit at all (stored doneVisit undefined); (b) ledger 'Visit 1 · Oct 13' and no pre-round today → 'Done Oct 20 · Visit 1' (stored doneVisit 1) although today is visit 2; (c) after today's pre-round Save Note (ledger gets 'Visit 2 · Oct 20: Pre-rounded.') → 'Done Oct 20 · Visit 2' — pass. The server stamps the LAST visit on the course ledger (convex/lib/taskStamps.ts + lastVisitNumber), so a dictation closing a task before today's pre-round names the previous visit, and a resident with no ledger line gets none. Same in TC-22/S03 (first visit, typed tasks): 'Done Oct 20' with no visit.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-hospital.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-hospital-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-nh-a-matrix.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-nh-a-matrix-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-nh-b-ledger.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-nh-b-ledger-task-export.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-nh-c-preround.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s08-nh-c-preround-task-export.png"
+    ],
+    "stated": "P0: UAT TC-07 ER 3 / TFA-92585 AC 8 'Tasks closed by dictation show as completed, with the visit they were closed on'"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "name": "rb1-tc22-s09-b43-counts-rounding",
+  "at": "2026-10-19T18:28:46.215Z",
+  "checks": [
+    {
+      "id": "C0: the request carries every open task (0)",
+      "ok": true,
+      "detail": "0 sent"
+    },
+    {
+      "id": "C0: nothing added",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "C0: the answered tasks close (none), every other task stays open",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "C0: each task listed once",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "C0: the header counts the open tasks",
+      "ok": true,
+      "detail": "header 0"
+    },
+    {
+      "id": "C1: the request carries every open task (1)",
+      "ok": true,
+      "detail": "1 sent"
+    },
+    {
+      "id": "C1: nothing added",
+      "ok": true,
+      "detail": "[\"[x] Follow up BMP\"]"
+    },
+    {
+      "id": "C1: the answered tasks close (Follow up BMP), every other task stays open",
+      "ok": true,
+      "detail": "[\"[x] Follow up BMP\"]"
+    },
+    {
+      "id": "C1: each task listed once",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "C1: the header counts the open tasks",
+      "ok": true,
+      "detail": "header 0"
+    },
+    {
+      "id": "C12: the request carries every open task (12)",
+      "ok": true,
+      "detail": "12 sent"
+    },
+    {
+      "id": "C12: nothing added",
+      "ok": true,
+      "detail": "[\"[x] Follow up BMP\",\"[x] PT eval\",\"[ ] Recheck weight in two weeks\",\"[ ] Follow up blood cultures\",\"[ ] Order echocardiogram\",\"[ ] Call cardiology about anticoagulation\",\"[ ] Check TSH\",\"[ ] Repeat chest X-ray\",\"[ ] Follow up urinalysis\",\"[ ] Ask GI about colonoscopy timing\",\"[ ] Check vitamin B12 level\",\"[ ] Order lower extremity Doppler\"]"
+    },
+    {
+      "id": "C12: the answered tasks close (Follow up BMP, PT eval), every other task stays open",
+      "ok": true,
+      "detail": "[\"[x] Follow up BMP\",\"[x] PT eval\",\"[ ] Recheck weight in two weeks\",\"[ ] Follow up blood cultures\",\"[ ] Order echocardiogram\",\"[ ] Call cardiology about anticoagulation\",\"[ ] Check TSH\",\"[ ] Repeat chest X-ray\",\"[ ] Follow up urinalysis\",\"[ ] Ask GI about colonoscopy timing\",\"[ ] Check vitamin B12 level\",\"[ ] Order lower extremity Doppler\"]"
+    },
+    {
+      "id": "C12: each task listed once",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "C12: the header counts the open tasks",
+      "ok": true,
+      "detail": "header 10"
+    },
+    {
+      "id": "no model call left the page unanswered by the script",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "C0": {
+      "request": {
+        "openTasks": 0,
+        "chars": 65
+      },
+      "message": "✓ Notes saved — no new tasks or medication changes found",
+      "stored": []
+    },
+    "C1": {
+      "request": {
+        "openTasks": 1,
+        "chars": 65
+      },
+      "message": "✓ Tasks updated — 1 completed",
+      "stored": [
+        "[x] Follow up BMP"
+      ]
+    },
+    "C12": {
+      "request": {
+        "openTasks": 12,
+        "chars": 65
+      },
+      "message": "✓ Tasks updated — 2 completed",
+      "stored": [
+        "[x] Follow up BMP",
+        "[x] PT eval",
+        "[ ] Recheck weight in two weeks",
+        "[ ] Follow up blood cultures",
+        "[ ] Order echocardiogram",
+        "[ ] Call cardiology about anticoagulation",
+        "[ ] Check TSH",
+        "[ ] Repeat chest X-ray",
+        "[ ] Follow up urinalysis",
+        "[ ] Ask GI about colonoscopy timing",
+        "[ ] Check vitamin B12 level",
+        "[ ] Order lower extremity Doppler"
+      ]
+    }
+  }
+}

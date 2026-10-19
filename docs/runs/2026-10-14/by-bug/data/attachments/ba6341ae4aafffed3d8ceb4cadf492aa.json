@@ -1,0 +1,18 @@
+{
+  "TC-07/S09": {
+    "status": "passed",
+    "ranAt": "2026-10-19T19:48:30Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "DEV dataset te-gen (cases/datasets/te-gen.json, web/qa-agent-tests/datasets/te-gen.spec.ts), <dev account>, rows 'QA DS1-te-gen …' deleted after (0 left); live Generate (server note job)",
+    "title": "Generate and Regenerate leave the task list exactly as it was (PR #50)",
+    "detail": "Hospital and Nursing Home, each with one open task the encounter text answers ('BMP came back…' / 'INR came back 2.4…'), one other open, one done: after Generate Note & Finish and again after Regenerate Note the stored tasks are identical (ids, text, done, doneAt, doneVisit) and Task Review shows the same rows; the answered task stays open (only Save & Extract closes tasks). 14/14 judged.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/te-gen-s09-dataset/evidence/TC-07-S09.json",
+      "runs/2026-10-14-dev/newspec-c/te-gen-s09-dataset/evidence/TC-07-S09-h9-after-generate.png",
+      "runs/2026-10-14-dev/newspec-c/te-gen-s09-dataset/evidence/TC-07-S09-n9-after-regenerate.png"
+    ],
+    "stated": "P0: UAT TC-07 ER 2 / TFA-92585 AC 9"
+  }
+}

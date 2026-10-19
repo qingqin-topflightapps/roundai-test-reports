@@ -1,0 +1,19 @@
+{
+  "TC-12/S20": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:16:10.596Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "local Playwright spec (newspec-c/ip-*.spec.ts) on the QA stack at 8b4be94a, fresh @roundai.test physician, every ai/* call answered at the Convex socket (hostile parse whose important_points the physician never typed); tripwire: no model call on every run",
+    "title": "Visual lane: Important Points states under axe, labels and focus, phone profiles (WebKit blocked)",
+    "detail": "Desktop + Pixel 7, both modes: labels (aria-label on both point boxes), Edit point / Delete point / Cancel edit names, focus into the new-point box, last card reachable, 500-character point wraps whole: all hold. Fails (our P2 accessibility checks, A1 class, suggestions not bugs): axe serious color-contrast (13-14 nodes, incl. the 'Important Points' heading) in both modes and a critical button-name violation (one unnamed button, '.-ml-1') in the Nursing Home editor. Delete controls on a list are all named 'Delete point'. iPhone 15 (WebKit emulation) BLOCKED: the QA page scan (axe + page checks) never finished in WebKit (5 min and 20 min attempts); WebKit itself loads the app fine.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ip-visual-desktop-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/ip-logs/r2-vis.log",
+      "runs/2026-10-14-local/newspec-c/ip-logs/r3-vis-iphone.log"
+    ],
+    "stated": "none (TC-12/S20 is P2: accessibility is not asked for by the UAT or TFA-92590)",
+    "bug": "A1"
+  }
+}

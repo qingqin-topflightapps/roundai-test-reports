@@ -1,0 +1,16 @@
+{
+  "TC-13/S15": {
+    "status": "failed",
+    "ranAt": "2026-10-20T04:55:00+09:00",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pn",
+    "method": "PW",
+    "title": "Window edges ±1 h (11/13 h, 17/19 h, 35/37 h), with real deletion queried on the server",
+    "detail": "pn copy pn-tc13-s15-window-edges.spec.ts (Important Points seeded with createdAt=T0 for the per-point clock of TFA-92590; note seeded with template procedure-other so no billing job). 24/36 judged pass (10-14: 22/36). Now pass: 13 h Important Points gone, and gone on the server before any device opens the app (server sweep, TFA-92590). Still fail (gate TFA-94699 in progress): 19 h note not viewable read-only as the previous note (data + screen); 37 h open task kept; server purge of pre-round text (13 h), encounter/note (19 h), vitals/labs/imaging/metoprolol/open task/pasted prior note (37 h) only happens when a client calls applyLifecycle. Recorded: 35 h prior note present (Q15), yesterday's transcript still listed at 35/37 h (Q7).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/pn-runs/manual-evidence/TC-13-S15/cells-main.json",
+      "runs/2026-10-14-local/newspec-c/pn-runs/s15.log"
+    ]
+  }
+}

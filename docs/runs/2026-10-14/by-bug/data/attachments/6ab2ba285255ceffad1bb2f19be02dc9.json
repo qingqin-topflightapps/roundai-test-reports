@@ -1,0 +1,157 @@
+{
+  "OAT-05/S30 (A6)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/convex/ai/providers/vertex.ts:135  detail: (err.message ?? \"\").split(\"\\n\")[0].slice(0, 300),",
+      "apps/web/convex/ai/providers/vertex.ts:168  throw toVertexConvexError(err instanceof Error ? err : new Error(String(err)))  (any GoogleGenAI SDK error)",
+      "apps/web/convex/ai/providers/index.ts:242-269  vision(): runWithRetry with fallback: null, Vertex via ctx.runAction(internal.ai.providers.vertex.invokeVision)",
+      "apps/web/convex/ai/providers/retry.ts:183  throw lastError;  (no fallback -> last error rethrown unchanged)",
+      "apps/web/convex/lib/phi.ts:209-214  'Rethrown untouched, so the client still sees the original error' ... throw err;  (audit gets only error_class)",
+      "apps/web/convex/ai/vision.ts:44/66/84  scanCensusSheet / scanClinicSchedule / scanPriorNote are public aiActions calling vision()"
+    ],
+    "diff": "e02167f..8b4be94a: vertex.ts, retry.ts, providers/index.ts, vision.ts unchanged; convex/lib/phi.ts | 26 ++++++++++++++++++++++---- (1 file, +22 -4: aiAction split into auditedAiConfig + new internalAiAction; catch/rethrow block unchanged). 25acd727..8b4be94a: none of these files changed.",
+    "detail": "Same path as at e02167f. A Vertex SDK failure is wrapped by toVertexConvexError, which copies the first line of the provider message (up to 300 chars) into ConvexError data.detail; vision() has no fallback so retry.ts rethrows it, and the aiAction wrapper rethrows it untouched to the browser. The only phi.ts change is a refactor (internalAiAction for server jobs); the public catch still rethrows err unchanged. The other paths the prior run listed (openai.ts apiErrorMessage, transcribe.ts, email.ts) are also unchanged since e02167f."
+  },
+  "OAT-05/S11 (D1)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/convex/ai/transcribe.ts:47  export const prepareSession = aiAction({   (aiAction -> phi.ts:57 action(auditedAiConfig(config, (ctx) => requireUserId(ctx))))",
+      "apps/web/convex/ai/transcribe.ts:74-75  client.realtime.clientSecrets.create({ expires_after: { anchor: \"created_at\", seconds: 60 }, ...",
+      "apps/web/src/lib/speech/liveSession.ts:391  fetch(\"https://api.openai.com/v1/realtime/calls\", ...)  (browser posts SDP, audio over WebRTC straight to OpenAI)",
+      "apps/web/convex/ai/transcribe.ts:119,148  transcribeAudio = aiAction; fd.append(\"model\", route.batchModel)  (recovery / whisper go server -> api.openai.com/v1/audio/transcriptions, transcribe.ts:12)",
+      "apps/web/convex/lib/transcription.ts:16,23  batchModel: \"whisper-1\"; :26-28 default branch throws 'The ${provider} transcription adapter is not configured' (voxtral/transcribe/transcribe-medical refused, no fallback)",
+      "apps/web/convex/aiProvider.ts:53  DEFAULT_TRANSCRIPTION = \"whisper\"",
+      "apps/web/convex/settings.ts:84-87  on-device marker -> assertTestFixtureUser; apps/web/convex/lib/authRows.ts:68 only @roundai.test",
+      "apps/web/src/lib/dictation.ts:49-56  resolveDictationEngine returns \"web-speech\" only for the test marker, else \"cloud\""
+    ],
+    "diff": "e02167f..8b4be94a: transcribe.ts, transcription.ts, aiProvider.ts, settings.ts, authRows.ts, liveSession.ts, dictation.ts all unchanged; only convex/lib/phi.ts | 26 (+22 -4) (refactor, requireUserId still applied to public aiAction). 25acd727..8b4be94a: no change to any of them.",
+    "detail": "The route table is identical to e02167f. Live capture: a signed-in user gets a 60 s OpenAI client secret minted on the server, and the browser posts its SDP/audio directly to api.openai.com (authenticated but not proxied) - this is still the row decision D1 is about. Recovery and whisper go through the server to whisper-1; other providers are refused; the on-device marker is still limited to roundai.test, so a real account always resolves to the cloud engine."
+  },
+  "TC-06/S18 (D9)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/convex/lib/encounterType.ts:53  export function legacyInferEncounterType(text: string): EncounterType | null {  (regexes still at :24 etc.; only e2e/unit/encounter-type-set.unit.ts:4 imports it)",
+      "apps/web/convex/ai/parsing.ts:398-402  '// Evaluation-only encounter classifier...' export const classifyEncounterType = aiAction({  (public action; uses encounterTypePrompt at :425; callers only e2e/api/encounter-type.live.spec.ts:88 and e2e/support/actions.ts:137)",
+      "apps/web/convex/lib/encounterType.ts:87,137,157  buildEncounterTypeContent / readEncounterTypeReply / classifyEncounterContent helpers",
+      "apps/web/convex/ai/prompts/library/v1/encounter/encounter-type.md:4  'Classify today's hospital visit as new admission, follow-up, or consult from the'  (compiled: prompts/generated.ts:218,1074; prompts/index.ts:216; prompts.lock.json:85)",
+      "apps/web/convex/lib/validators.ts:312-314  encTypeSource schema field, comment 'Nothing reads or writes it now'"
+    ],
+    "diff": "e02167f..8b4be94a: convex/lib/encounterType.ts and encounter/encounter-type.md unchanged. parsing.ts | 90 (+~10 -80) and validators.ts | 190 changed (25acd727..8b4be94a: parsing.ts + validators.ts 2 files, +122 -99, via 4c06a810 TFA-92592 note job), but classifyEncounterType and encTypeSource are untouched.",
+    "detail": "All four pieces the prior result listed are still in the repo: the regex legacyInferEncounterType, the public evaluation-only classifyEncounterType aiAction with its helpers, the encounter-type.md prompt compiled into generated.ts, and the encTypeSource schema field. Nothing in apps/web/src calls the classifier and nothing writes encType/encTypeSource from text, so it is still pending D9 (does evaluation-only code count)."
+  },
+  "TC-03/S10 (B29)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/convex/lib/validators.ts:434-448  export const snfFields = { name, age, dob, sex, mrn, unit, note, ... }  (no facility; only 'facility' hit in the file is a billing comment at :472)",
+      "apps/web/convex/schema.ts:270-273  snfResidents: defineTable({ userId, ...snfDocFields })",
+      "apps/web/convex/snf.ts:39,191-194  snfFields as residentFields; export const add = mutation({ args: v.object(residentFields).omit(...)",
+      "apps/web/src/routes/snf/AddResident.tsx:109-122  fields Full Name / Date of Birth / Unit / Room / MRN only",
+      "apps/web/src/components/clinical/PatientCard.tsx:292-297  SNF identity = unit, DOB, age, mrn",
+      "apps/web/convex/lib/patientList.ts:127-147  matchesPatientSearch over name, room, unit, mrn, diagnosis"
+    ],
+    "diff": "25acd727..8b4be94a: validators.ts | 131, schema.ts | 21, snf.ts | 168, AddResident.tsx | 2 (4 files, +270 -52); PatientCard.tsx and patientList.ts unchanged. The AddResident.tsx change is only the import path of findSnfMatch (@/lib/snf -> ../../../convex/lib/snf); the validators/schema/snf changes are noteJob/noteSections/nextPreRoundSummary/completeVisit work. git grep -i facility at 8b4be94a in validators.ts, schema.ts, snf.ts, routes/snf, features/snf, PatientCard.tsx, patientList.ts: one hit, validators.ts:472 (E/M facility code family comment).",
+    "detail": "No facility field was added. The record, snf:add args, Add Resident form, resident card and search matcher are all still without a facility, exactly as at e02167f. The AddResident.tsx diff is a one-line import move, and validators.ts grew with note-job and note-section fields, not facility."
+  },
+  "TC-04/S10 (D6)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/convex/crons.ts:60-75  two crons only: 'sweep expired important points' every 1 min (sweepImportantPoints over roundingPatients/snfResidents, :11-56) and 'sweep expired sessions' hourly; no quickDictationDrafts",
+      "git grep quickDictation in crons.ts and lib/lifecycle.ts at 8b4be94a: no hits",
+      "apps/web/convex/quickDictation.ts:36-43  list returns every box by_user sorted by order, no age filter; deletes only via remove (:191-204), clear (:219), account deletion (account.ts:137-143)",
+      "apps/web/convex/lib/lifecycle.ts:9-28 HOSPITAL_RETENTION: preRound 12 h (:10), encounter 18 h (:11), note 18 h (:12), doneTask 16 h (:13), medication 36 h (:21), previousNote 36 h (:22), encounterArchive 48 h (:23), objectiveData 36 h (:27)",
+      "apps/web/convex/lib/lifecycle.ts:30-38 SNF_RETENTION: preRound 12 h, encounter 12 h, note 18 h, doneTask 16 h, transcriptVisits 3, previousNotes 3, medicationVisits 3",
+      "apps/web/convex/lib/importantPoints.ts:7  IMPORTANT_POINT_TTL_MS = 12 * 60 * 60 * 1000  (Important Points left HOSPITAL_RETENTION, where it was importantPoints: 18 h; now 12 h per card, swept by the 1-minute cron)",
+      "apps/web/convex/lib/lifecycle.ts:134-143 / :317-325  failed noteJob marker cleared once the encounter window expires (noteJobExpired, lib/noteJob.ts:44-49)"
+    ],
+    "diff": "25acd727..8b4be94a: crons.ts | 62 (+62), lifecycle.ts | 38 (+21 -17) (2 files, +83 -17). e02167f..8b4be94a: crons.ts | 62, lifecycle.ts | 51 (+96 -17). quickDictation.ts unchanged since e02167f.",
+    "detail": "Quick Dictation boxes still have no retention window: neither new cron nor the lifecycle changes touch quickDictationDrafts, and the list query has no age filter, so boxes stay until the physician deletes them (still pending D6). What changed around it: Important Points moved out of lifecycle.ts to a per-card 12 h TTL (was 18 h in HOSPITAL_RETENTION) with a server cron every minute, and a failed note-job marker is cleared with the encounter. The other windows are the same hard-coded consts as before, including Hospital encounterArchive 48 h and SNF transcriptVisits 3."
+  },
+  "OAT-06/S22": {
+    "now": "still",
+    "evidence": [
+      "git ls-tree 8b4be94a docs/: billing-acceptance-review.md, billing-topology.md, mobile-e2e.md only; docs/pilot-analytics.md removed by 43c38a4f; no .md at 8b4be94a names pilotUsageEvents / pilotDailyRounding / patientActivityEvents / surveyResponses / surveyDismissals / pilotSettings",
+      "apps/web/convex/schema.ts:241-263  aiCallLog: ok (bare boolean, :245), httpStatus (:246), promptChars/responseChars/error (:257-259) have no comment; parseStatus, durationMs/providerMs, fellBackFrom are described only by schema comments",
+      "apps/web/src/data/snf.ts:36  remove: useMutation(api.snf.remove)  - only screen user apps/web/src/routes/snf/AddResident.tsx:26 const { add } = useSnfActions(); no remove call under src/routes/snf or src/features/snf (backend still logs patient_removed nursing_home at convex/snf.ts:398-402)",
+      "apps/web/convex/surveys.ts:26-29  baseline / handoff_followup / feedback / task_reminder (end-of-pilot survey present since #86); PilotSurveyCards.tsx:20 mounts TaskReminderSurveyCard",
+      "apps/web/convex/lib/usage.ts:20-36  event names: pre_round_summary_opened, note_marked_complete, handoff_generated, handoff_sent, note_generated, task_completed, task_deleted (no encounter_completed event exists)",
+      "apps/web/convex/rounding.ts:265-271 and apps/web/convex/snf.ts:285-291  note_marked_complete now written by the server in completeEncounter / completeVisit (was client useMarkEncounterComplete.ts:12 and snf PostRoundTab.tsx:48 at e02167f/43c38a4f)",
+      "task_deleted is still only written by client per-tap: src/features/rounding/patient/useEncounterTasks.ts:336, usePostRoundTasks.ts:60, src/features/snf/patient/PostRoundTab.tsx:138"
+    ],
+    "diff": "43c38a4f..8b4be94a: docs/ unchanged; convex/lib/usage.ts, convex/usage.ts, convex/surveys.ts, src/data/snf.ts unchanged; schema.ts | 21; src/routes/snf + src/features/snf: 16 files +310 -566 (none adds a remove call). bddda26a: rounding.ts | 36, snf.ts | 36, PostRoundTab.tsx x2, useMarkEncounterComplete.ts deleted (-17).",
+    "detail": "Same two failing points as the 43c38a4f re-run: there is no hand-off doc for Vikram in the repo (pilot-analytics.md was dropped by #86 and nothing replaced it, so aiCallLog's ok/httpStatus/promptChars/responseChars/error remain undescribed), and no Nursing Home screen removes a resident. The end-of-pilot survey stays fixed. New with bddda26a: note_marked_complete moved from the client into completeEncounter/completeVisit (same event name, now server-side and atomic with the status change); task_deleted writes are unchanged and still client-side per tap, and there is no event called encounter_completed."
+  },
+  "EFS/S18 (N9)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/android/app/src/main/AndroidManifest.xml:4-8  <queries> holds only <action android:name=\"android.speech.RecognitionService\" />; no android.media.action.IMAGE_CAPTURE",
+      "apps/web/android/app/src/main/AndroidManifest.xml:51-52  CAMERA permission + camera feature (required=false) present",
+      "apps/web/android/variables.gradle:4  targetSdkVersion = 36 (package-visibility rules apply)",
+      "Camera path is an HTML file input, not @capacitor/camera: src/features/rounding/list/CensusScanModal.tsx:75-78, src/routes/snf/List.tsx:108-111, src/features/clinic/list/ScheduleScanModal.tsx:86, src/features/rounding/patient/panels/PreviousNotesPanel.tsx:181, src/features/snf/patient/panels/PreviousNotesPanel.tsx:125  (type=file accept=image/* capture=environment)",
+      "node_modules/@capacitor/android (8.5.2) BridgeWebChromeClient.java:330-332  new Intent(MediaStore.ACTION_IMAGE_CAPTURE); if (takePictureIntent.resolveActivity(...) == null) return false;  -> :321-324 'Falling back to default file picker'"
+    ],
+    "diff": "e02167f..8b4be94a -- apps/web/android: no changes (git log empty); capacitor.config.ts unchanged; package.json | 1 (+1, cron-schedule only).",
+    "detail": "Nothing changed in the Android project since e02167f. The manifest still declares no <queries> entry for IMAGE_CAPTURE, and with targetSdk 36 Capacitor's resolveActivity check for the camera intent can return null, which makes the WebView fall back to the file picker - the mechanism behind N9. The camera is reached only through <input capture=environment> in five places; there is no Capacitor Camera plugin use."
+  },
+  "OAT-06/S27 (D12)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/src/components/BaselineSurveyCard.tsx:208  label=\"Before Round Companion, how long did preparing for each patient take (chart review, pre-rounding)?\"  (ticket B2: 'Before RoundAI, ...')",
+      "apps/web/src/components/BaselineSurveyCard.tsx:177  'About rounding before Round Companion. No patient details,'",
+      "apps/web/src/components/SettingsModal.tsx:252  'How is Round Companion working for you? Your answers go to the'  (ticket F1: 'How is RoundAI working for you? ...')",
+      "apps/web/src/components/DailyFeedbackCard.tsx:40  'How is Round Companion working for you?'  (daily feedback card, added by #86 after e02167f)",
+      "git grep RoundAI at 8b4be94a in BaselineSurveyCard / SettingsModal / FeedbackForm / TaskReminderSurveyCard / HandoffFollowUpPrompt / PilotSurveyCards: no hits"
+    ],
+    "diff": "e02167f..8b4be94a: BaselineSurveyCard.tsx, SettingsModal.tsx, DailyFeedbackCard.tsx (new) - 3 files, +80 -115. 25acd727..8b4be94a and 43c38a4f..8b4be94a: none of the survey components changed.",
+    "detail": "The survey still says 'Round Companion' where the ticket text says 'RoundAI' (B2 in the baseline survey, F1 in Settings feedback). There is now a third place with the same wording, the daily feedback card from #86 (DailyFeedbackCard.tsx:40), which the 10-14 survey-copy check did not list. No RoundAI string appears in any survey component."
+  },
+  "OAT-06/S26 (D13)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/src/features/rounding/patient/panels/FinalizeModal.tsx:64  <Trash2 size={15} /> Delete Pending Tasks &amp; Complete  (shared modal)",
+      "Hospital: apps/web/src/features/rounding/patient/PostRoundTab.tsx:99-105 complete = (dropPendingTasks) => completeEncounter({ id, dropPendingTasks, day: localDay() }); :434-446 FinalizeModal onDeletePending -> complete(true)",
+      "Nursing Home: apps/web/src/features/snf/patient/PostRoundTab.tsx:42 imports the same FinalizeModal; :62-67 completeVisit({ id, dropPendingTasks, day }); :395-407 onDeletePending -> complete(true)",
+      "apps/web/convex/rounding.ts:245-273  completeEncounter: commitHospitalPatch status post-rounded, :262 tasks: (existing.tasks ?? []).filter((task) => task.done); :265-271 recordUsageEvent note_marked_complete only",
+      "apps/web/convex/snf.ts:265-293  completeVisit: :282 same filter; :285-291 recordUsageEvent note_marked_complete only",
+      "task_deleted is written only by single-task Delete taps: src/features/rounding/patient/usePostRoundTasks.ts:60, useEncounterTasks.ts:336, src/features/snf/patient/PostRoundTab.tsx:138"
+    ],
+    "diff": "25acd727..8b4be94a: rounding.ts | 147, snf.ts | 168, rounding PostRoundTab.tsx | 235, snf PostRoundTab.tsx | 225, useMarkEncounterComplete.ts | 17 (deleted) - 5 files +520 -272 (bddda26a: rounding.ts +36, snf.ts +36, both PostRoundTab.tsx ~22, useMarkEncounterComplete.ts -17). FinalizeModal.tsx unchanged since e02167f.",
+    "detail": "'Delete Pending Tasks & Complete' still exists and is used by both Hospital and Nursing Home Post-Round. What changed is the mechanism: the bulk drop now happens on the server inside completeEncounter / completeVisit (filter to done tasks) instead of a client markComplete patch. It still writes no task_deleted event for the dropped tasks - the only pilot event written is note_marked_complete - so the D13 question (should a bulk drop count as task_deleted) stands as before."
+  },
+  "TC-01/S20 (D5)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/convex/rounding.ts:350-364  remove -> deleteRoundingPatient; :370-394 deletes the patient row, syncRoundingList, audit row, patient_removed activity - no quickDictationDrafts query/delete",
+      "apps/web/convex/snf.ts:360-374 remove -> deleteSnfResident; :380-404 same shape, no quickDictationDrafts (SNF boxes cannot be assigned anyway: schema assignedPatientId is v.id(\"roundingPatients\"))",
+      "apps/web/convex/schema.ts:186-200  quickDictationDrafts keeps identifier (room), text, assignedPatientId, assignedLabel (room . name), assignedText",
+      "apps/web/convex/quickDictation.ts:36-43  list returns every box of the user, no check that assignedPatientId still exists; QuickDictationModal.tsx:147 still renders the assigned label",
+      "deletes of boxes only in quickDictation.ts remove/clear and account.ts:137-143"
+    ],
+    "diff": "25acd727..8b4be94a: rounding.ts | 147 (+~120), snf.ts | 168 - none of it touches deleteRoundingPatient / deleteSnfResident beyond context; quickDictation.ts unchanged since e02167f; account.ts unchanged since 25acd727.",
+    "detail": "Deleting a patient still leaves the Quick Dictation box behind: deleteRoundingPatient removes only the chart (plus list projection, audit row and patient_removed event) and never looks at quickDictationDrafts. The box keeps the dictated text, the room identifier and the 'room . name' assignedLabel, and the pad lists it as before. Still pending D5."
+  },
+  "B12 (TC-04/S27)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/convex/quickDictation.ts:114-188  assign mutation: reads patient, :151-156 existing = (patient.encounterNotes || \"\").trim(); effectiveRoundingPatch(patient, { encounterNotes: existing + \"\\n\\n\" + addition, encounterEditedAt: now }) -> ctx.db.patch",
+      "apps/web/convex/rounding.ts:340-348  effectiveRoundingPatch = applyTranscriptArchive(applyStatusRatchet + normalizeAdmissionStatusPatch) - no hospitalLifecyclePatch, no encounterEditedAt age check",
+      "apps/web/convex/lib/transcriptArchive.ts:73-90  applyTranscriptArchive acts only on patches carrying transcript + transcriptDate; assign sends neither",
+      "apps/web/convex/lib/lifecycle.ts:144-159  the 18 h encounter archive (HOSPITAL_RETENTION.encounter) runs only inside hospitalLifecyclePatch",
+      "apps/web/convex/rounding.ts:132-170 applyLifecycle (only caller of hospitalLifecyclePatch, :150) is triggered by the client: src/components/layout/AppLayout.tsx:78-79 on route + :128 every 10 min; crons.ts has no encounter sweep"
+    ],
+    "diff": "quickDictation.ts and transcriptArchive.ts unchanged since e02167f. 25acd727..8b4be94a: lifecycle.ts | 38 (Important Points moved out, noteJob expiry added), rounding.ts | 147 - the encounter branch of hospitalLifecyclePatch and effectiveRoundingPatch's composition are unchanged.",
+    "detail": "Assigning a box still appends straight onto patient.encounterNotes without applying the lifecycle patch or checking how old encounterEditedAt is. If the client-triggered applyLifecycle has not run since the encounter passed 18 h (app closed, or within the 10-minute repeat), the new text joins yesterday's encounter. Because assign also stamps encounterEditedAt = now, the merged text then counts as fresh and the later cleanup will not split yesterday's part off."
+  },
+  "B10 (TC-04/S16)": {
+    "now": "still",
+    "evidence": [
+      "apps/web/src/features/rounding/patient/useEncounterCapture.ts:131  const [input, setInputState] = useState(patient.encounterNotes || \"\")  (seeded once; later server changes are not merged into input)",
+      "apps/web/src/features/rounding/patient/useEncounterCapture.ts:137-147  useAutosave(input, patient.encounterNotes, (value) => save({ encounterNotes: value, encounterEditedAt: Date.now() }))  (whole field)",
+      "apps/web/src/lib/useAutosave.ts:85-97  saves whenever value !== persistedRef (no comparison with the current server text); :140-149 unmount flush saves the local value too",
+      "apps/web/src/features/rounding/patient/useEncounterTasks.ts:82-98  Save & Extract (EncounterTab.tsx:280 updateFromNotes(capture.input)) -> savePatient({ encounterNotes: notes, ... })",
+      "apps/web/src/features/rounding/patient/useNoteGeneration.ts:49-56  Generate: captured = encounterNotes.trim() || patient.encounterNotes; savePatient({ encounterNotes: captured, ... })  (EncounterTab.tsx:85-89 passes capture.input)",
+      "apps/web/convex/rounding.ts:225-238 update -> commitHospitalPatch :282-308 ctx.db.patch(existing._id, { ...effective })  - no version / expected-encounterEditedAt / merge for encounterNotes (git grep for expected*/baseVersion/conflict: none)"
+    ],
+    "diff": "e02167f..8b4be94a: EncounterTab.tsx | 13 (+11 -2: only noteJob view / generating flag); useEncounterCapture.ts and useAutosave.ts unchanged; useNoteGeneration.ts | 363 and useEncounterTasks.ts | 13 (25acd727..8b4be94a: 2 files +21 -305, generation moved to the server job) - the encounterNotes save lines remain. rounding.ts | 147 since 25acd727 (completeEncounter, commitHospitalPatch via/also, noteJob) - no concurrency check added.",
+    "detail": "Still last-write-wins. The Encounter tab holds its own copy of the notes from mount, and autosave, Save & Extract and Generate all send the whole encounterNotes string from that copy; the server patches it in without any version or timestamp check. So a tab opened before Quick Dictation appended text will overwrite that text on its next autosave or Save & Extract. The EncounterTab.tsx and rounding.ts changes are about the server note job and the complete step, not this."
+  }
+}

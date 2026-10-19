@@ -1,0 +1,19 @@
+{
+  "TC-06/S18": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "STATIC",
+    "title": "Old admission-status-from-dictation code removed?",
+    "bug": "D9",
+    "bugNow": "still",
+    "stated": "TFA-92584 AC 5 / decision D9",
+    "detail": "All four pieces still in the repo at 8b4be94a: legacyInferEncounterType (encounterType.ts:53), the public evaluation-only classifyEncounterType (parsing.ts:402), the encounter-type.md prompt (compiled into generated.ts), the encTypeSource field (validators.ts:314). Nothing in src calls them.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-06-S18.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

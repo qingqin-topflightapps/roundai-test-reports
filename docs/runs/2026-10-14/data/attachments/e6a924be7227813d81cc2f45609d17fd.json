@@ -1,0 +1,16 @@
+{
+  "TC-12/S23": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:06:37.669Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "local Playwright spec (newspec-c/ip-*.spec.ts) on the QA stack at 8b4be94a, fresh @roundai.test physician, every ai/* call answered at the Convex socket (hostile parse whose important_points the physician never typed); tripwire: no model call on every run",
+    "title": "Wrong browser clock (-48 h, or +13 h Kiritimati): points neither vanish nor take the device's time",
+    "detail": "Both modes x both clocks: createdAt is server time (within 0.2 s of time:now), the point stays through add, Save Note, open/close and reload in the wrong-clock browser, the normal browser shows it, and it is still stored after two server sweeps. (+13 h: the stored session looked expired to the browser; signed in again through the form.) Judged checks 13/13.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s23.json"
+    ],
+    "bug": "B18"
+  }
+}

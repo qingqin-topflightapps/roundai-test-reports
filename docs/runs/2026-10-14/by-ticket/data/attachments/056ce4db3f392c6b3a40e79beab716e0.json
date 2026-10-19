@@ -1,0 +1,515 @@
+{
+  "name": "efs-s20-kept-dictation",
+  "at": "2026-10-19T18:43:40.806Z",
+  "checks": [
+    {
+      "id": "1a: once the server has A's line, the device keeps no draft of it",
+      "ok": true,
+      "detail": "[]",
+      "recordOnly": true
+    },
+    {
+      "id": "1b: after the session ended the sign-in screen shows",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "id": "1b: the device keeps exactly one draft: A's encounter field with the line and its tail",
+      "ok": true,
+      "detail": "[[\"<p1>:kx73ke7excdrsv39fjc8e3peex8gkywr:encounterNotes\",\"QA-EFS-20 saved line for A. QA-EFS-20 tail for A.\"]]"
+    },
+    {
+      "id": "1b: no chart data (name, diagnosis, room, lines) in any other device store",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1 (patient B): no trace of A's line or tail",
+      "ok": true,
+      "detail": "(B's box empty)"
+    },
+    {
+      "id": "cp2 (patient A): A's line and its tail are back",
+      "ok": true,
+      "detail": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A."
+    },
+    {
+      "id": "after cp2: the server has A's tail",
+      "ok": true,
+      "detail": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+      "recordOnly": true
+    },
+    {
+      "id": "after cp2: no draft row for A once the server has the text",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "3a: the device keeps exactly one draft: C's visit field with the line and its tail",
+      "ok": true,
+      "detail": "[[\"<p1>:m577p0fah3213tm3122dq34mdd8gjtwk:encounterNotes\",\"QA-EFS-20 saved line for C. QA-EFS-20 tail for C.\"]]"
+    },
+    {
+      "id": "cp3 (resident D): no trace of C's line or tail, nor A's tail",
+      "ok": true,
+      "detail": "(D's box empty)"
+    },
+    {
+      "id": "cp4 (resident C): C's line and its tail are back, no Hospital tail",
+      "ok": true,
+      "detail": "QA-EFS-20 saved line for C. QA-EFS-20 tail for C."
+    },
+    {
+      "id": "after cp4: no draft row for C once the server has the text",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "cp5 (physician 2's list): Morning Rounds, signed in",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow ro"
+    },
+    {
+      "id": "cp5: no trace of physician 1 (second tail, A's / C's tails, A's name)",
+      "ok": true,
+      "detail": "checked the list text"
+    },
+    {
+      "id": "cp5b: physician 2 opening patient A's link sees none of A's data or tails",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n\nPatient not found.\n\nBack to rounds"
+    },
+    {
+      "id": "cp5: physician 1's kept drafts are gone from the device once physician 2 is signed in",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "cp5: physician 1's pending recording is gone from the device once physician 2 is signed in (B02)",
+      "ok": false,
+      "detail": "1 pending recording(s) still on the device",
+      "recordOnly": true
+    },
+    {
+      "id": "cp6: signed out (the sign-in screen with 'code sent to your email')",
+      "ok": true,
+      "detail": "RC\nRound Companion\nPhysician Assistant\n\nSign in or create an account with a code sent to your email.\n\nEmail\nSend sign-in codeI already have a code\nRound Compani"
+    },
+    {
+      "id": "cp6: the drafts store is empty after sign-out",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "cp6: every device store is empty after sign-out (recording store included; B02 if not)",
+      "ok": false,
+      "detail": "{\"round-ai-local-audio\":{\"pending-recordings\":1},\"roundcompanion-session-drafts\":{\"drafts\":0}}"
+    },
+    {
+      "id": "cp7: account deleted, the sign-in screen shows",
+      "ok": true,
+      "detail": "RC\nRound Companion\nPhysician Assistant\n\nSign in or create an account with a code sent to your email.\n\nEmail\nSend sign-in codeI already have a code\nRound Compani"
+    },
+    {
+      "id": "cp7: the drafts store is empty after account deletion",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "cp7: every device store is empty after account deletion (recording store included; B02 if not)",
+      "ok": false,
+      "detail": "{\"round-ai-local-audio\":{\"pending-recordings\":2},\"roundcompanion-session-drafts\":{\"drafts\":0}}"
+    }
+  ],
+  "data": {
+    "5": {
+      "pending": [
+        {
+          "id": "rounding:<A>:encounter:note",
+          "audio": "<ArrayBuffer 4096 bytes>",
+          "baseText": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A."
+        }
+      ]
+    },
+    "8": {
+      "rows": {
+        "round-ai-local-audio": {
+          "pending-recordings": 2
+        },
+        "roundcompanion-session-drafts": {
+          "drafts": 1
+        }
+      }
+    },
+    "setup": {
+      "physician1": {
+        "userId": "jd79dwn514n0axrdvw4s1drxkn8gj3fq"
+      },
+      "physician2": {
+        "userId": "jd711pgasvz71nn303z6tvz9g18gj9wn"
+      },
+      "charts": {
+        "A": "kx73ke7excdrsv39fjc8e3peex8gkywr",
+        "B": "kx7f7wx68qhf0j6jgnpg1qtc3d8gjf12",
+        "C": "m577p0fah3213tm3122dq34mdd8gjtwk",
+        "D": "m57at2tj5hzxrfzkrygzfkdje58gjpt6"
+      }
+    },
+    "1b": {
+      "prompted": true,
+      "drafts": [
+        {
+          "key": "<physician1>:kx73ke7excdrsv39fjc8e3peex8gkywr:encounterNotes",
+          "text": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A."
+        }
+      ],
+      "elsewhere": []
+    },
+    "cp1cp2": {
+      "cp1Value": "",
+      "cp2Value": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+      "serverA": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A."
+    },
+    "3a": {
+      "prompted": true,
+      "drafts": [
+        {
+          "key": "<physician1>:m577p0fah3213tm3122dq34mdd8gjtwk:encounterNotes",
+          "text": "QA-EFS-20 saved line for C. QA-EFS-20 tail for C."
+        }
+      ],
+      "elsewhere": []
+    },
+    "cp3cp4": {
+      "cp3Value": "",
+      "cp4Value": "QA-EFS-20 saved line for C. QA-EFS-20 tail for C."
+    },
+    "4.recoveryNoticeOnA": "A local encounter recording is waiting for recovery.",
+    "6a": {
+      "prompted": true,
+      "drafts": [
+        {
+          "key": "<physician1>:kx73ke7excdrsv39fjc8e3peex8gkywr:encounterNotes",
+          "text": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A. QA-EFS-20 second tail."
+        }
+      ],
+      "pending": 1
+    },
+    "cp7": {
+      "dialogs": [
+        "confirm: Delete your account? This permanently deletes your account and all of your patients, notes and templates. It can't be undone."
+      ],
+      "text": "RC\nRound Companion\nPhysician Assistant\n\nSign in or create an account with a code sent to your email.\n\nEmail\nSend sign-in codeI already have a code\nRound Companion — Physician Access Only",
+      "serverRowCounts": {
+        "identity": {
+          "accounts": 0,
+          "sessions": 0,
+          "user": false
+        },
+        "tables": {
+          "clinicPatients": 0,
+          "handoffsReceived": 0,
+          "handoffsSent": 0,
+          "noteTemplates": 0,
+          "patientImportRequests": 0,
+          "quickDictationDrafts": 0,
+          "roundingPatients": 0,
+          "snfResidents": 0,
+          "unassignedRoundingItems": 0,
+          "userSettings": 0
+        }
+      }
+    },
+    "storage": {
+      "1a-saved-line-on-server": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 0
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 0
+          }
+        },
+        "drafts": [],
+        "pendingRecordings": [],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "1b-session-ended-tail-A": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 0
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 1
+          }
+        },
+        "drafts": [
+          {
+            "id": "jd79dwn514n0axrdvw4s1drxkn8gj3fq:kx73ke7excdrsv39fjc8e3peex8gkywr:encounterNotes",
+            "userId": "jd79dwn514n0axrdvw4s1drxkn8gj3fq",
+            "text": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+            "savedAt": 1792435256676
+          }
+        ],
+        "pendingRecordings": [],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "2-after-A-restored": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 0
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 0
+          }
+        },
+        "drafts": [],
+        "pendingRecordings": [],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "3a-session-ended-tail-C": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 0
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 1
+          }
+        },
+        "drafts": [
+          {
+            "id": "jd79dwn514n0axrdvw4s1drxkn8gj3fq:m577p0fah3213tm3122dq34mdd8gjtwk:encounterNotes",
+            "userId": "jd79dwn514n0axrdvw4s1drxkn8gj3fq",
+            "text": "QA-EFS-20 saved line for C. QA-EFS-20 tail for C.",
+            "savedAt": 1792435301169
+          }
+        ],
+        "pendingRecordings": [],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "4-after-C-restored": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 0
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 0
+          }
+        },
+        "drafts": [],
+        "pendingRecordings": [],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "5-pending-recording-written": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 1
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 0
+          }
+        },
+        "drafts": [],
+        "pendingRecordings": [
+          {
+            "id": "rounding:kx73ke7excdrsv39fjc8e3peex8gkywr:encounter:note",
+            "audio": "<ArrayBuffer 4096 bytes>",
+            "mimeType": "audio/webm",
+            "baseText": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+            "transcript": "",
+            "createdAt": 1792435342811
+          }
+        ],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "6a-before-second-physician": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 1
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 1
+          }
+        },
+        "drafts": [
+          {
+            "id": "jd79dwn514n0axrdvw4s1drxkn8gj3fq:kx73ke7excdrsv39fjc8e3peex8gkywr:encounterNotes",
+            "userId": "jd79dwn514n0axrdvw4s1drxkn8gj3fq",
+            "text": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A. QA-EFS-20 second tail.",
+            "savedAt": 1792435344739
+          }
+        ],
+        "pendingRecordings": [
+          {
+            "id": "rounding:kx73ke7excdrsv39fjc8e3peex8gkywr:encounter:note",
+            "audio": "<ArrayBuffer 4096 bytes>",
+            "mimeType": "audio/webm",
+            "baseText": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+            "transcript": "",
+            "createdAt": 1792435342811
+          }
+        ],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "6-second-physician-signed-in": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 1
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 0
+          }
+        },
+        "drafts": [],
+        "pendingRecordings": [
+          {
+            "id": "rounding:kx73ke7excdrsv39fjc8e3peex8gkywr:encounter:note",
+            "audio": "<ArrayBuffer 4096 bytes>",
+            "mimeType": "audio/webm",
+            "baseText": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+            "transcript": "",
+            "createdAt": 1792435342811
+          }
+        ],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie"
+        ],
+        "sessionKeys": []
+      },
+      "7-after-sign-out": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 1
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 0
+          }
+        },
+        "drafts": [],
+        "pendingRecordings": [
+          {
+            "id": "rounding:kx73ke7excdrsv39fjc8e3peex8gkywr:encounter:note",
+            "audio": "<ArrayBuffer 4096 bytes>",
+            "mimeType": "audio/webm",
+            "baseText": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+            "transcript": "",
+            "createdAt": 1792435342811
+          }
+        ],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie",
+          "better-auth.message"
+        ],
+        "sessionKeys": []
+      },
+      "8-before-account-deletion": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 2
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 1
+          }
+        },
+        "drafts": [
+          {
+            "id": "jd79dwn514n0axrdvw4s1drxkn8gj3fq:kx7f7wx68qhf0j6jgnpg1qtc3d8gjf12:encounterNotes",
+            "userId": "jd79dwn514n0axrdvw4s1drxkn8gj3fq",
+            "text": "QA-EFS-20 kept draft before deletion.",
+            "savedAt": 1792435417592
+          }
+        ],
+        "pendingRecordings": [
+          {
+            "id": "rounding:kx73ke7excdrsv39fjc8e3peex8gkywr:encounter:note",
+            "audio": "<ArrayBuffer 4096 bytes>",
+            "mimeType": "audio/webm",
+            "baseText": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+            "transcript": "",
+            "createdAt": 1792435342811
+          },
+          {
+            "id": "rounding:kx7f7wx68qhf0j6jgnpg1qtc3d8gjf12:encounter:note",
+            "mimeType": "audio/webm",
+            "baseText": "",
+            "transcript": "",
+            "audio": "<ArrayBuffer 2048 bytes>",
+            "createdAt": 1792435417595
+          }
+        ],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie",
+          "better-auth.message"
+        ],
+        "sessionKeys": []
+      },
+      "9-after-account-deletion": {
+        "rows": {
+          "round-ai-local-audio": {
+            "pending-recordings": 2
+          },
+          "roundcompanion-session-drafts": {
+            "drafts": 0
+          }
+        },
+        "drafts": [],
+        "pendingRecordings": [
+          {
+            "id": "rounding:kx73ke7excdrsv39fjc8e3peex8gkywr:encounter:note",
+            "audio": "<ArrayBuffer 4096 bytes>",
+            "mimeType": "audio/webm",
+            "baseText": "QA-EFS-20 saved line for A. QA-EFS-20 tail for A.",
+            "transcript": "",
+            "createdAt": 1792435342811
+          },
+          {
+            "id": "rounding:kx7f7wx68qhf0j6jgnpg1qtc3d8gjf12:encounter:note",
+            "mimeType": "audio/webm",
+            "baseText": "",
+            "transcript": "",
+            "audio": "<ArrayBuffer 2048 bytes>",
+            "createdAt": 1792435417595
+          }
+        ],
+        "localKeys": [
+          "better-auth_session_data",
+          "better-auth_cookie",
+          "better-auth.message"
+        ],
+        "sessionKeys": []
+      }
+    },
+    "aiCalls": []
+  }
+}

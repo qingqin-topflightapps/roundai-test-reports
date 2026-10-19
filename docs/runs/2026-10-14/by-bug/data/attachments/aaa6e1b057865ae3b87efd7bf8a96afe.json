@@ -1,0 +1,19 @@
+{
+  "TC-01/S20": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Hard delete removes every trace (newspec-a tc01-hard-delete)",
+    "bug": "D5",
+    "bugNow": "still",
+    "stated": "decision D5 (Q10)",
+    "detail": "Nursing Home passes. Hospital (API and card trash): 1 quickDictationDrafts row still references the deleted patient (label room · name and the dictated text); every other table clean. rounding.ts:370-394 does not touch quickDictationDrafts.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-a/rb3-tc01-s20.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

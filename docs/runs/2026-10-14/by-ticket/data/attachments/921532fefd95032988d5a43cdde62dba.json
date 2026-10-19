@@ -1,0 +1,16 @@
+{
+  "TC-16/S14": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:19:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "local Playwright spec manual/tc16-s14-aging-walk.spec.ts -g 'Nursing Home' (both Nursing Home walks; evidence root runs/2026-10-14-local/manual-rb2)",
+    "title": "Manual aging walk on the server clock: Hospital day 1 → 2 → 3 with real recordings; Nursing Home visits 1 → 4 weeks apart",
+    "detail": "B35 re-check on 8b4be94a: STILL. After visit 3 the resident keeps V1, V2, V3 and after visit 4 V2, V3, V4 (stored and on the Encounter tab), in both walks (visit text written through the app's update, and typed in the Encounter box); UAT 3.6 / TFA-92594 AC 2: the last two visits. One constant: SNF_RETENTION.transcriptVisits = 3 (convex/lib/lifecycle.ts, unchanged). Hospital day 1→3 walk not re-run (its 10-14 cells passed and the bedside recorder starts Generate, now a server job). Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/manual-rb2/s14.log",
+      "runs/2026-10-14-local/manual-rb2/evidence/TC-16-S14"
+    ]
+  }
+}

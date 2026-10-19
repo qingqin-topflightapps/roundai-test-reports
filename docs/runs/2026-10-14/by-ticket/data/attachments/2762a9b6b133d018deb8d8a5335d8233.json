@@ -1,0 +1,19 @@
+{
+  "OAT-06/S26": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Mark Encounter Complete with pending tasks: which rows each choice writes (an1-oat06-s26-pending-choices.spec.ts)",
+    "bug": "D13",
+    "bugNow": "still",
+    "stated": "decision D13 (TFA-92595 AC 8 vs TFA-94700 AC 5); cell judged against TFA-94514 AC 2",
+    "detail": "'Delete Pending Tasks & Complete' still exists (FinalizeModal.tsx:64, both contexts) and now drops the tasks on the server (completeEncounter rounding.ts:262 / completeVisit snf.ts:282); it writes 0 task_deleted rows (only note_marked_complete).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s26.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

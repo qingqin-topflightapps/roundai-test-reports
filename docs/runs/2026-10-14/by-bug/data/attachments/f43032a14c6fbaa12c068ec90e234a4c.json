@@ -1,0 +1,16 @@
+{
+  "TC-19/S09": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:35:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev dataset rb2-meds-s09 (copy of meds-s09, 20 charts, deleted after: 20 deleted, 0 left, no other row changed); each fixture on two charts: Pre-Round Save Note and the encounter path (Hospital Save & Extract; Nursing Home Generate = server job)",
+    "title": "AI Check 1: no medication change dictated → no row added or changed (5 Hospital + 5 Nursing Home)",
+    "detail": "N5 re-check on 8b4be94a (live Haiku): STILL. AI Check pool 4/10 (H-01, H-02, H-04, N-01), needs 9/10 (UAT 3.2), the same 4/10 as on 10-14. The encounter path left every row exactly as on file on all 10 fixtures; every failure is on the pre-round path, which writes reasons onto rows only restated as continuing: H-03 Furosemide 'continues'; N-02 Lisinopril 'continued at current dose'; N-03 Acetaminophen PRN 'as-needed for pain control'; N-05 Potassium chloride 'consider discontinuation at next visit if labs acceptable' (a future plan on today's row); N-04 Warfarin goes from Changed (status) to active with changeType changed and its reason replaced by 'INR 2.4 today, in range; recheck INR next week'; H-05 'Heparin drip at 14 continues. Diltiazem drip stays at 5' now keeps the names (no more 'Heparin drip 14') but writes '14 units/kg/hr continues' and '5 mg/hr for rate control' as reasons (units nobody dictated: B07). Stated: UAT TC-19 AI Check 1 ('No med changes dictated → no row added or changed').",
+    "evidence": [
+      "runs/2026-10-14-dev/datasets-rb2/rb2-meds-s09/evidence/TC-19-S09.json",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-meds-s09/cleanup.json"
+    ]
+  }
+}

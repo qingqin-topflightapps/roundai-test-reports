@@ -1,0 +1,26 @@
+{
+  "TC-22/S02": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:21:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Nursing Home pre-round: dictated tasks never reach the task list",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-ext-tc22-s01-s03-uat-flow.spec.ts -g S02 (with rb1-ext-support.ts: the Nursing Home opener is now named 'Open pre-round notes editor'). After the Nursing Home pre-round Save Note the only model call is parsePreRoundNotes, no extractTasks request; Post-Round reads 'No tasks yet.', 0 stored (N23; useSnfPreRoundProcess.ts has no task request).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s02-b43-nh-preround.json"
+    ],
+    "bug": {
+      "id": "N23",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-22 steps 1, 4; TFA-92588 AC 10",
+      "quote": "Pre-round tasks appear in the task list",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

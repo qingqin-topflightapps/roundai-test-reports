@@ -1,0 +1,26 @@
+{
+  "name": "ip-tc12-s29",
+  "at": "2026-10-19T18:11:58.719Z",
+  "build": "8b4be94a",
+  "method": "code read of the QA worktree at 8b4be94a",
+  "checks": [
+    {
+      "id": "the Important Points window is 12 h",
+      "ok": true,
+      "detail": "convex/lib/importantPoints.ts:7 export const IMPORTANT_POINT_TTL_MS = 12 * 60 * 60 * 1000;"
+    },
+    {
+      "id": "the same window applies in both modes (one server sweep over roundingPatients then snfResidents)",
+      "ok": true,
+      "detail": "convex/crons.ts sweepImportantPoints: table roundingPatients, then snfResidents; importantPointsLifecyclePatch -> stampImportantPointEdits (lib/importantPoints.ts:43 return now - createdAt >= IMPORTANT_POINT_TTL_MS)"
+    },
+    {
+      "id": "UAT 3.6 \"All windows are configuration values, not hard-coded\": the window is read from configuration (env variable or settings row) and can change without a deploy",
+      "ok": false,
+      "detail": "IMPORTANT_POINT_TTL_MS is a TypeScript const; no process.env / settings read in lib/importantPoints.ts or crons.ts; the only uses are lib/importantPoints.ts:7 and :43. Changing it needs a code deploy. Whether a named constant counts as a configuration value is Q12 (open)."
+    }
+  ],
+  "data": {
+    "cronLine": "{ minutes: 1 },"
+  }
+}

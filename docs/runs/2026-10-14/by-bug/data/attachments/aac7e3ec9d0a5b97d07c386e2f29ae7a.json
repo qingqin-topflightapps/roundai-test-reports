@@ -1,0 +1,30 @@
+{
+  "name": "ip-tc12-s18",
+  "at": "2026-10-19T18:03:10.061Z",
+  "checks": [
+    {
+      "id": "Hospital: session 1's open editor shows session 2's change live (no reload)",
+      "ok": true,
+      "detail": "[\"Session check A: wound photo\",\"Session check C: added on phone\"]"
+    },
+    {
+      "id": "Hospital: after Save Note completes the stored list is [\"Session check A: wound photo\",\"Session check C: added on phone\",\"Session check F: added while processing\"] (nothing brought back, nothing dropped)",
+      "ok": true,
+      "detail": "[\"Session check A: wound photo\",\"Session check C: added on phone\",\"Session check F: added while processing\"]"
+    },
+    {
+      "id": "Nursing Home: session 1's open editor shows session 2's change live (no reload)",
+      "ok": true,
+      "detail": "[\"Session check D: weigh\",\"Session check E: added on phone\"]"
+    },
+    {
+      "id": "Nursing Home: after Save Note completes the stored list is [\"Session check D: weigh\",\"Session check E: added on phone\",\"Session check G: added while processing\"] (nothing brought back, nothing dropped)",
+      "ok": true,
+      "detail": "[\"Session check D: weigh\",\"Session check E: added on phone\",\"Session check G: added while processing\"]"
+    }
+  ],
+  "data": {
+    "Hospital: processing flag when session 2 wrote": true,
+    "Nursing Home: processing flag when session 2 wrote": null
+  }
+}

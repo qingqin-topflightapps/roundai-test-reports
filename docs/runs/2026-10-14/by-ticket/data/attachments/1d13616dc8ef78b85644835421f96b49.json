@@ -1,0 +1,17 @@
+{
+  "TC-15/S16": {
+    "status": "failed",
+    "ranAt": "2026-10-19T21:56:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U41 (scripts/dev/run-unit.sh U41 2026-10-20-rb2): 'What was the temperature?' on charts whose stored temperature is °C (NH, Hospital), °F (Hospital) or a bare number (37, 100, 60); oracle verdict 'Fail'",
+    "title": "Stored temperature unit is kept: °C (NH and Hospital), °F (Hospital), bare number (Hospital)",
+    "detail": "D2 re-check on 8b4be94a (live Haiku): STILL, identical to 10-14 (decision pending, Preston). The stated part passes: 38.1 °C stays °C in both contexts, 100.6 °F stays °F, bare 37 and 100 are not given a unit (s16-nc / hc / hf / hbare37 / hbare100 pass). The bare value 60 is answered as '60°F … incompatible with life' (s16-hbare60 fails on '°F'): whether giving a bare number a unit is an 'invented unit' is D2 (GK11). Stated: UAT TC-15 ER / TFA-92593 AC 8 ('Temperatures are quoted in the stored unit'); the bare-number cell is the mixed case's extension. The unit's other scenarios (TC-15/S12, S08) pass.",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U41.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u41/s16-hbare60-temp.md",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u41/s16-hbare60-temp.png"
+    ]
+  }
+}

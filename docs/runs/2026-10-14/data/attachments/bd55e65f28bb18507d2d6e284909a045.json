@@ -1,0 +1,15 @@
+{
+  "TC-19/S23": {
+    "status": "blocked",
+    "ranAt": "2026-10-19T18:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "not run: Android rig (dvc-tc19-s23-held-clock.spec.ts) needs a debug APK of 8b4be94a bundled for the local stack",
+    "title": "Real dictation of medication changes on iPhone and Android, both contexts",
+    "detail": "Not re-run: the APK the 10-14 rig used (e02167f) is gone from the scratchpad and no build of 8b4be94a for the local stack exists; building one (a repo copy outside the checkout, pnpm build against 127.0.0.1:4510, cap sync, gradle assembleDebug) was not done in this package. The same web bundle runs in the WebView, and TC-19/S19 on the web shows the B18 hold symptom changed (hold dated by the server, row kept); the phone run stays to be done. Case scope P1 (real-device variant, ours).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc19-s19.json"
+    ]
+  }
+}

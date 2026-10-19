@@ -1,0 +1,38 @@
+{
+  "name": "rb1-tc22-s23-b43-rounding-minus24h",
+  "at": "2026-10-19T18:20:30.130Z",
+  "checks": [
+    {
+      "id": "doneAt within ±5 min of server time",
+      "ok": true,
+      "detail": "doneAt 2026-10-19T18:20:25.402Z vs server 2026-10-19T18:20:25.543Z (0 min)"
+    },
+    {
+      "id": "after the lifecycle run 'follow up BMP' is still under Finished Tasks (U13: Hospital completed tasks 16 h)",
+      "ok": true,
+      "detail": "stored: done=true doneAt=2026-10-19T18:20:25.402Z; Task Export Finished Tasks lists it"
+    }
+  ],
+  "data": {
+    "access": {
+      "signedOutByClock": false,
+      "uiSignIn": null
+    },
+    "deviceNow": "2026-10-18T18:20:24.925Z",
+    "doneAt": {
+      "doneAt": "2026-10-19T18:20:25.402Z",
+      "serverNow": "2026-10-19T18:20:25.543Z",
+      "offMinutes": 0
+    },
+    "afterLifecycle": {
+      "bmp": {
+        "category": "labs",
+        "done": true,
+        "doneAt": "2026-10-19T18:20:25.402Z",
+        "id": "1792430349549",
+        "text": "follow up BMP",
+        "urgent": false
+      }
+    }
+  }
+}

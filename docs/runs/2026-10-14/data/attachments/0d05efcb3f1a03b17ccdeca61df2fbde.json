@@ -1,0 +1,36 @@
+{
+  "name": "ip-tc12-s15-hosp",
+  "at": "2026-10-19T18:21:19.951Z",
+  "checks": [
+    {
+      "id": "paste import: Important Points still hold only the physician's own point, id and createdAt unchanged",
+      "ok": true,
+      "detail": "[{\"id\":\"qa-own\",\"text\":\"QA own point: ask about orthopnea\",\"source\":\"manual\",\"createdAt\":1792423274191}]"
+    },
+    {
+      "id": "photo import: Important Points still hold only the physician's own point, id and createdAt unchanged",
+      "ok": true,
+      "detail": "[{\"id\":\"qa-own\",\"text\":\"QA own point: ask about orthopnea\",\"source\":\"manual\",\"createdAt\":1792423274191}]"
+    },
+    {
+      "id": "the editor shows only the physician's own point",
+      "ok": true,
+      "detail": "[\"QA own point: ask about orthopnea\"]"
+    },
+    {
+      "id": "setup: both imports went through the app's own path (the scripted photo read was used; no ai/* call refused)",
+      "ok": true,
+      "detail": "[\"ai/parsing:extractPriorNote:ok\",\"ai/vision:scanPriorNote:ok\",\"ai/parsing:extractPriorNote:ok\"]"
+    }
+  ],
+  "data": {
+    "after paste: previous notes count": 1,
+    "after photo: previous notes count": 2,
+    "where the key issues went (Hospital Course text)": "Admitted for volume overload with CKD stage 3.\n• Volume overload - continue oral diuresis\n• CKD - avoid nephrotoxins",
+    "ai calls": [
+      "ai/parsing:extractPriorNote:ok",
+      "ai/vision:scanPriorNote:ok",
+      "ai/parsing:extractPriorNote:ok"
+    ]
+  }
+}

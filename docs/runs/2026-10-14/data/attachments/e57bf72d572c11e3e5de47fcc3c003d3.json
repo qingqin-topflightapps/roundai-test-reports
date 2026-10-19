@@ -1,0 +1,607 @@
+{
+  "ref": "TC-13/S06",
+  "title": "TC-13/S06 AI Check: extraction grounding over 10 synthetic prior notes, 5 Hospital and 5 Nursing Home style",
+  "dataset": "pn-extract",
+  "target": "dev",
+  "at": "2026-10-19T18:32:26.123Z",
+  "cells": [
+    {
+      "name": "H-01: FAIL",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [
+          "mustInclude 'pleural effusion' missing"
+        ],
+        "extraction": {
+          "background_narrative": "74-year-old man with CKD stage 3 and HFrEF admitted Oct 9 for volume overload. Presented with acute on chronic heart failure with reduced ejection fraction requiring IV diuretic therapy.",
+          "imaging": [
+            "Chest X-ray Oct 9: bilateral pleural effusions",
+            "TTE Oct 10: EF 30%",
+            "Renal ultrasound pending"
+          ],
+          "key_issues": [
+            "Acute on chronic HFrEF, continue IV furosemide",
+            "CKD stage 3, trend creatinine",
+            "Renal ultrasound pending"
+          ],
+          "labs": [
+            {
+              "name": "creatinine",
+              "trend": "",
+              "value": "1.1"
+            },
+            {
+              "name": "potassium",
+              "trend": "",
+              "value": "4.2"
+            },
+            {
+              "name": "BNP",
+              "trend": "",
+              "value": "1250"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "H-02: pass",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "81-year-old woman admitted October 8 after a fall at home. Currently working with physical therapy and walking with a walker.",
+          "imaging": [],
+          "key_issues": [
+            "Continue physical therapy",
+            "Discharge planning with family"
+          ],
+          "labs": []
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "H-03: FAIL",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [
+          "mustNotInclude '89%' present",
+          "mustNotInclude 'RR 24' present"
+        ],
+        "extraction": {
+          "background_narrative": "66-year-old male with COPD exacerbation. Overnight vitals documented on Oct 11 showed tachycardia, tachypnea, and hypoxemia on supplemental oxygen. Steroid taper and nebulizer therapy initiated.",
+          "imaging": [],
+          "key_issues": [
+            "COPD exacerbation with hypoxemia (SpO2 89% on 3 L oxygen)",
+            "Tachycardia (HR 104) and tachypnea (RR 24)",
+            "Plan: nebulizers every 4 hours, steroid taper"
+          ],
+          "labs": []
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "H-04: pass",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "70-year-old female admitted for GI bleed. EGD on October 5 identified a gastric ulcer with clip placement. Patient was discharged on October 7.",
+          "imaging": [
+            "EGD October 5: gastric ulcer, clip placed"
+          ],
+          "key_issues": [
+            "GI bleed from gastric ulcer treated with endoscopic clip placement"
+          ],
+          "labs": [
+            {
+              "name": "Na",
+              "trend": "",
+              "value": "134"
+            },
+            {
+              "name": "K",
+              "trend": "",
+              "value": "3.6"
+            },
+            {
+              "name": "Cl",
+              "trend": "",
+              "value": "99"
+            },
+            {
+              "name": "CO2",
+              "trend": "",
+              "value": "24"
+            },
+            {
+              "name": "BUN",
+              "trend": "",
+              "value": "32"
+            },
+            {
+              "name": "Cr",
+              "trend": "",
+              "value": "1.8"
+            },
+            {
+              "name": "glucose",
+              "trend": "",
+              "value": "142"
+            },
+            {
+              "name": "WBC",
+              "trend": "",
+              "value": "11.2"
+            },
+            {
+              "name": "Hgb",
+              "trend": "",
+              "value": "9.8"
+            },
+            {
+              "name": "Plt",
+              "trend": "",
+              "value": "210"
+            },
+            {
+              "name": "Mg",
+              "trend": "",
+              "value": "1.7"
+            },
+            {
+              "name": "INR",
+              "trend": "",
+              "value": "1.3"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "H-05: pass",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "59-year-old male presenting with abdominal pain. CT abdomen and pelvis has been ordered with results pending. MRI brain is scheduled for tomorrow.",
+          "imaging": [
+            "CT abdomen and pelvis ordered, result pending",
+            "MRI brain scheduled for tomorrow"
+          ],
+          "key_issues": [
+            "Abdominal pain with pending CT abdomen and pelvis evaluation",
+            "MRI brain scheduled for tomorrow"
+          ],
+          "labs": [
+            {
+              "name": "Lipase",
+              "trend": "",
+              "value": "412"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "N-01: pass",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "84-year-old female admitted to skilled nursing on October 4 following left hip fracture repair performed on October 3. Past medical history includes hypertension, type 2 diabetes, CKD 3a, and osteoarthritis. Current medications include amlodipine 5 mg daily and metformin 500 mg twice daily.",
+          "imaging": [
+            "X-ray left hip October 3: hardware intact"
+          ],
+          "key_issues": [
+            "Post-operative left hip fracture repair with intact hardware",
+            "Physical therapy and occupational therapy planned",
+            "Weight-bearing as tolerated protocol"
+          ],
+          "labs": [
+            {
+              "name": "Hemoglobin",
+              "trend": "",
+              "value": "10.9"
+            },
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "1.2"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "N-02: FAIL",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [
+          "mustNotInclude '68.2' present",
+          "mustNotInclude '37.8' present",
+          "mustNotInclude '132/78' present"
+        ],
+        "extraction": {
+          "background_narrative": "79-year-old male long-term nursing home resident with Parkinson disease. Weight declined from 70 kg to 68.2 kg over the past week. Fever of 37.8°C documented on Oct 9, which has resolved. Blood pressure 132/78.",
+          "imaging": [],
+          "key_issues": [
+            "Weight loss (68.2 kg, down from 70 kg)",
+            "Dietitian review planned",
+            "Weekly weights monitoring"
+          ],
+          "labs": []
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "N-03: pass",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "88-year-old female long-term nursing home resident with Alzheimer dementia and history of recurrent urinary tract infections. Patient developed new confusion starting October 10; differential diagnosis includes urinary tract infection versus medication effect.",
+          "imaging": [
+            "Chest X-ray October 10: no acute process"
+          ],
+          "key_issues": [
+            "New confusion since October 10 with differential of UTI versus medication effect",
+            "Urinalysis pending",
+            "Recurrent urinary tract infections"
+          ],
+          "labs": []
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "N-04: pass",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "76-year-old male nursing home resident with COPD and type 2 diabetes, stable. Monthly labs obtained on October 9.",
+          "imaging": [],
+          "key_issues": [
+            "COPD, stable",
+            "Type 2 diabetes, stable"
+          ],
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "",
+              "value": "1.3"
+            },
+            {
+              "name": "Potassium",
+              "trend": "",
+              "value": "4.5"
+            },
+            {
+              "name": "Hemoglobin",
+              "trend": "",
+              "value": "11.2"
+            },
+            {
+              "name": "A1c",
+              "trend": "",
+              "value": "7.4"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "N-05: pass",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "90-year-old female resident in nursing home on comfort-focused care. Currently stable.",
+          "imaging": [],
+          "key_issues": [
+            "Comfort-focused care plan in place",
+            "Stable clinical status"
+          ],
+          "labs": []
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "3.2: at least 9 of 10 fixtures hold every check (7/10; Hospital fails 2, Nursing Home-style fails 1)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "hFails": [
+          {
+            "id": "H-01",
+            "fails": [
+              "mustInclude 'pleural effusion' missing"
+            ]
+          },
+          {
+            "id": "H-03",
+            "fails": [
+              "mustNotInclude '89%' present",
+              "mustNotInclude 'RR 24' present"
+            ]
+          }
+        ],
+        "nFails": [
+          {
+            "id": "N-02",
+            "fails": [
+              "mustNotInclude '68.2' present",
+              "mustNotInclude '37.8' present",
+              "mustNotInclude '132/78' present"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-01: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 7131,
+        "providerMs": 7127,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "H-02: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2180,
+        "providerMs": 2177,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "H-03: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2662,
+        "providerMs": 2659,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "H-04: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 4047,
+        "providerMs": 4045,
+        "appMs": 2,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "H-05: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2091,
+        "providerMs": 2088,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "N-01: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3094,
+        "providerMs": 3091,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "N-02: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3259,
+        "providerMs": 3257,
+        "appMs": 2,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "N-03: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2466,
+        "providerMs": 2463,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "N-04: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2712,
+        "providerMs": 2709,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "N-05: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (U13a, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2453,
+        "providerMs": 2448,
+        "appMs": 5,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "timing (3.5: no target for the extraction, Q10; over 30 s listed for review)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "durationMs": [
+          7131,
+          2180,
+          2662,
+          4047,
+          2091,
+          3094,
+          3259,
+          2466,
+          2712,
+          2453
+        ],
+        "providerMs": [
+          7127,
+          2177,
+          2659,
+          4045,
+          2088,
+          3091,
+          3257,
+          2463,
+          2709,
+          2448
+        ],
+        "uiMs": [
+          8380,
+          3330,
+          4342,
+          5353,
+          3334,
+          4353,
+          4857,
+          3822,
+          3845,
+          4342
+        ],
+        "models": [
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+        ],
+        "fellBackFrom": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "over30sForReview": []
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-13-S06-last-fixture.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-13-S06-last-fixture.png": 0
+  },
+  "error": "Error: TC-13/S06: judged cells that failed"
+}

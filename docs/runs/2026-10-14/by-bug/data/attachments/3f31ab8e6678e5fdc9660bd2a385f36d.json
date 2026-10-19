@@ -1,0 +1,298 @@
+{
+  "name": "tc14-s07-hosp",
+  "at": "2026-10-15T08:07:12.949Z",
+  "checks": [
+    {
+      "id": "a1: H2's Post-Round right after opening it shows nothing of H1's dictation",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Owen 1JL5\n\nRoom 622 · 64y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nDiverticulitis\n\nPre-Round\nEncou"
+    },
+    {
+      "id": "a2: 45 s later H2's Post-Round says 'No note generated yet' and shows no note and nothing of H1",
+      "ok": true,
+      "detail": "{\"noteShown\":false,\"noteText\":\"\",\"noNoteYet\":true,\"completeFirst\":true,\"finalizingSpinner\":true,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "a3: H2's Encounter tab shows nothing of H1's dictation",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Owen 1JL5\n\nRoom 622 · 64y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nDiverticulitis\n\nPre-Round\nEncou"
+    },
+    {
+      "id": "a3 backend: H2 has no note, no noteGeneratedAt, and none of H1's text",
+      "ok": true,
+      "detail": "{\"note\":null,\"noteGeneratedAt\":null,\"encounterNotes\":null,\"status\":null}"
+    },
+    {
+      "id": "a4: right after returning H1's Post-Round shows the note, a generating state or the failure, never only 'Complete the Encounter tab first'",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "a5: 30 s later H1's Post-Round shows this cell's note (131/77) or an explicit failure",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "a6: H1's Encounter tab still holds the dictation",
+      "ok": true,
+      "detail": "Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow."
+    },
+    {
+      "id": "cell A backend: H1's note carries 131/77 and was generated after the press",
+      "ok": true,
+      "detail": "noteGeneratedAt 2026-10-15T08:04:18.264Z vs press 2026-10-15T08:04:18.185Z"
+    },
+    {
+      "id": "b1: 45 s after Generate and a reload, H2's Post-Round shows this cell's note (143/81) or an explicit failure, never only 'Complete the Encounter tab first'",
+      "ok": false,
+      "detail": "{\"noteShown\":false,\"noteText\":\"\",\"noNoteYet\":true,\"completeFirst\":true,\"finalizingSpinner\":true,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "b1 (B27): the Hospital finalize button spins 'Finalizing Encounter Data…' with no note",
+      "ok": false,
+      "detail": "finalizing spinner shown: true",
+      "recordOnly": true
+    },
+    {
+      "id": "b2: the dictation is still on the Encounter tab after the reload",
+      "ok": true,
+      "detail": "Up in the chair for lunch, blood pressure 143 over 81, plan discharge Friday."
+    },
+    {
+      "id": "b2 backend: the dictation is stored",
+      "ok": true,
+      "detail": "{\"note\":null,\"noteGeneratedAt\":null,\"encounterNotes\":\"Up in the chair for lunch, blood pressure 143 over 81, plan discharge Friday.\",\"status\":\"seen\"}"
+    },
+    {
+      "id": "d1: 45 s after Regenerate and closing the tab, H1's Post-Round shows this cell's note (136/84) or an explicit failure",
+      "ok": false,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "d1: the previous note (131/77) is what Post-Round shows, with no sign that the regenerate was lost",
+      "ok": false,
+      "detail": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for ora",
+      "recordOnly": true
+    },
+    {
+      "id": "d2: the cell-D dictation is still on the Encounter tab after the tab was closed",
+      "ok": true,
+      "detail": "Sat on the edge of the bed for breakfast, blood pressure 136 over 84, continue antibiotics."
+    }
+  ],
+  "data": {
+    "a1-second-patient": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": true,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Owen 1JL5\n\nRoom 622 · 64y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nDiverticulitis\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…"
+    },
+    "a2-second-patient-late": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": true,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Owen 1JL5\n\nRoom 622 · 64y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nDiverticulitis\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…"
+    },
+    "a3-second-patient-encounter": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Owen 1JL5\n\nRoom 622 · 64y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nDiverticulitis\n\nPre-Round\nEncounter\nPost-Round\n\nTap the mic to capture the encounter\n\nTap to toggle\nHold to talk\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nTASKS\n0 pending\nDictate\nAdd\n\nNo pending tasks — tap Add or Dictate to create one.\n\nNOTE FORMAT\nH&P\nSOAP progress\nConsult note\nDischarge summary\nQA gen procedure note H ★\n\nStandard Subjective · Objective · Assessment · Plan\n\nGenerate Note & Finish"
+    },
+    "backend-h2-a3": {
+      "note": null,
+      "noteGeneratedAt": null,
+      "encounterNotes": null,
+      "status": null
+    },
+    "a4-return-early": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Nora 1JL5\n\nRoom 620 · 77y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nPneumonia, improving\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n5:04 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\n\nEdit Note\nCopy to EMR\nTOMORROW'S PRE-ROUND SUMMARY\nEdit\n\nOct 15: QA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\n\nThis appears in pre-round tomorrow. Tap Edit to refine.\n\nMark Encounter Complete"
+    },
+    "a5-return-late": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Nora 1JL5\n\nRoom 620 · 77y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nPneumonia, improving\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n5:04 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\n\nEdit Note\nCopy to EMR\nTOMORROW'S PRE-ROUND SUMMARY\nEdit\n\nOct 15: QA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\n\nThis appears in pre-round tomorrow. Tap Edit to refine.\n\nMark Encounter Complete"
+    },
+    "a6-encounter": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Nora 1JL5\n\nRoom 620 · 77y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nPneumonia, improving\n\nPre-Round\nEncounter\nPost-Round\n\nTap the mic to capture the encounter\n\nTap to toggle\nHold to talk\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nTASKS\n0 pending\nDictate\nAdd\n\nNo pending tasks — tap Add or Dictate to create one.\n\nNOTE FORMAT\nH&P\nSOAP progress\nConsult note\nDischarge summary\n\nStandard Subjective · Objective · Assessment · Plan\n\nRegenerate Note"
+    },
+    "backend-h1-a": {
+      "note": "ASSESSMENT AND PLAN\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.",
+      "noteGeneratedAt": "2026-10-15T08:04:18.264Z",
+      "encounterNotes": "Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.",
+      "status": "note-ready"
+    },
+    "cellB-at-reload": {
+      "msAfterPress": 144,
+      "generateAnswered": "in flight"
+    },
+    "b1-after-reload": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": true,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Owen 1JL5\n\nRoom 622 · 64y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nDiverticulitis\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…"
+    },
+    "b2-encounter-after-reload": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Owen 1JL5\n\nRoom 622 · 64y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nDiverticulitis\n\nPre-Round\nEncounter\nPost-Round\n\nTap the mic to capture the encounter\n\nTap to toggle\nHold to talk\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nTASKS\n0 pending\nDictate\nAdd\n\nNo pending tasks — tap Add or Dictate to create one.\n\nNOTE FORMAT\nH&P\nSOAP progress\nConsult note\nDischarge summary\nQA gen procedure note H ★\n\nStandard Subjective · Objective · Assessment · Plan\n\nGenerate Note & Finish"
+    },
+    "backend-h2-b": {
+      "note": null,
+      "noteGeneratedAt": null,
+      "encounterNotes": "Up in the chair for lunch, blood pressure 143 over 81, plan discharge Friday.",
+      "status": "seen"
+    },
+    "cellB-note-stored": {
+      "note": false,
+      "status": "seen"
+    },
+    "cellD-hosp": {
+      "regenerateButton": "Regenerate Note",
+      "closedOldTabMsAfterPress": 378
+    },
+    "d1-hosp-new-tab": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Nora 1JL5\n\nRoom 620 · 77y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nPneumonia, improving\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n5:04 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\n\nEdit Note\nCopy to EMR\nTOMORROW'S PRE-ROUND SUMMARY\nEdit\n\nOct 15: QA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.\n\nThis appears in pre-round tomorrow. Tap Edit to refine.\n\nMark Encounter Complete"
+    },
+    "d2-hosp-encounter": {
+      "url": "http://localhost:6473/rounding/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Nora 1JL5\n\nRoom 620 · 77y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nPneumonia, improving\n\nPre-Round\nEncounter\nPost-Round\n\nTap the mic to capture the encounter\n\nTap to toggle\nHold to talk\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nTASKS\n0 pending\nDictate\nAdd\n\nNo pending tasks — tap Add or Dictate to create one.\n\nNOTE FORMAT\nH&P\nSOAP progress\nConsult note\nDischarge summary\nQA gen procedure note H ★\n\nStandard Subjective · Objective · Assessment · Plan\n\nRegenerate Note"
+    },
+    "backend-h1-d": {
+      "note": "ASSESSMENT AND PLAN\nQA S07 call 1 mocked note (no model was called). Today: Lungs clear today, walked the hall twice, blood pressure 131 over 77, ready for oral antibiotics tomorrow.",
+      "noteGeneratedAt": "2026-10-15T08:04:18.264Z",
+      "encounterNotes": "Sat on the edge of the bed for breakfast, blood pressure 136 over 84, continue antibiotics.",
+      "status": "note-ready"
+    },
+    "calls": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "at": 1792051458277
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok",
+        "at": 1792051466341
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok",
+        "at": 1792051466342
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "at": 1792051538613
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "at": 1792051586624
+      }
+    ]
+  }
+}

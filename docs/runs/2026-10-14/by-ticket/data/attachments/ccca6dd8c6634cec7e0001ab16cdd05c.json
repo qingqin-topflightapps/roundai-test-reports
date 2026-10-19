@@ -1,0 +1,140 @@
+{
+  "name": "pr-tc17-s02-sections",
+  "at": "2026-10-19T18:19:04.388Z",
+  "checks": [
+    {
+      "id": "a1: the saved edit renders after Save Edits",
+      "ok": true,
+      "detail": "shown"
+    },
+    {
+      "id": "a1 the copy finished (notice 'Note copied to clipboard — paste into your EMR.', clipboard changed)",
+      "ok": true,
+      "detail": "notice: 'Note copied to clipboard — paste into your EMR.'; clipboard changed"
+    },
+    {
+      "id": "a1 Hospital clipboard after Save Edits + Copy to EMR: QA-EDIT-1 and the whole note (SUBJECTIVE ... ceftriaxone)",
+      "ok": true,
+      "detail": "\n\nASSESSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-1 ambulate twice today"
+    },
+    {
+      "id": "a2 Hospital editor still holds the unsaved QA-EDIT-2 after note -> tasks -> note",
+      "ok": false,
+      "detail": "editor open; value ends: riaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-1 ambulate twice today"
+    },
+    {
+      "id": "a3: the saved edit renders after Save Edits",
+      "ok": true,
+      "detail": "shown"
+    },
+    {
+      "id": "a3 the copy finished (notice 'Note copied to clipboard — paste into your EMR.', clipboard changed)",
+      "ok": true,
+      "detail": "notice: 'Note copied to clipboard — paste into your EMR.'; clipboard changed"
+    },
+    {
+      "id": "a3 Hospital clipboard after the second Save Edits + Copy: QA-EDIT-2 and the whole note, not QA-EDIT-1",
+      "ok": true,
+      "detail": "SSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-2 ambulate three times today"
+    },
+    {
+      "id": "a4 the copy finished (notice 'Note copied to clipboard — paste into your EMR.', clipboard changed)",
+      "ok": true,
+      "detail": "notice: 'Note copied to clipboard — paste into your EMR.'; clipboard changed"
+    },
+    {
+      "id": "a4 Hospital clipboard after a cancelled edit + Copy: QA-EDIT-2, not QA-EDIT-3",
+      "ok": true,
+      "detail": "SSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-2 ambulate three times today"
+    },
+    {
+      "id": "a5: the saved edit renders after Save Edits",
+      "ok": true,
+      "detail": "shown"
+    },
+    {
+      "id": "a5 the copy finished (notice 'Note copied to clipboard — paste into your EMR.', clipboard changed)",
+      "ok": true,
+      "detail": "notice: 'Note copied to clipboard — paste into your EMR.'; clipboard changed"
+    },
+    {
+      "id": "a5 Nursing Home clipboard after Save Edits + Copy: QA-EDIT-N1 and the whole note, no Hospital text",
+      "ok": true,
+      "detail": "olved on senna.\n\nPLAN\n\n1. Continue PT/OT twice daily, weight bearing as tolerated.\n2. Continue senna 8.6 mg nightly.\n3. Family meeting Friday about discharge home.\nQA-EDIT-N1 transfers with one assist"
+    },
+    {
+      "id": "a6: the saved edit renders after Save Edits",
+      "ok": true,
+      "detail": "shown"
+    },
+    {
+      "id": "a6 the copy finished (notice 'Note copied to clipboard — paste into your EMR.', clipboard changed)",
+      "ok": true,
+      "detail": "notice: 'Note copied to clipboard — paste into your EMR.'; clipboard changed"
+    },
+    {
+      "id": "a6 Nursing Home clipboard after the second Save Edits + Copy: QA-EDIT-N2, not N1, no Hospital text",
+      "ok": true,
+      "detail": "d on senna.\n\nPLAN\n\n1. Continue PT/OT twice daily, weight bearing as tolerated.\n2. Continue senna 8.6 mg nightly.\n3. Family meeting Friday about discharge home.\nQA-EDIT-N2 transfers with standby assist"
+    },
+    {
+      "id": "a7 every origin contacted while copying is the local stack",
+      "ok": true,
+      "detail": "http://localhost:6473, http://127.0.0.1:4511, http://127.0.0.1:4510"
+    },
+    {
+      "id": "guard: no Generate request and no model action reached the server",
+      "ok": true,
+      "detail": "22 socket calls"
+    }
+  ],
+  "data": {
+    "a1": "SUBJECTIVE\n\nCough improving; mild pleuritic pain on deep breath.\n\nOBJECTIVE\n\nT 37.4 °C, BP 128/76, HR 88, SpO2 95% on 2 L.\n\nASSESSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-1 ambulate twice today",
+    "a2": "1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-1 ambulate twice today",
+    "a3": "SUBJECTIVE\n\nCough improving; mild pleuritic pain on deep breath.\n\nOBJECTIVE\n\nT 37.4 °C, BP 128/76, HR 88, SpO2 95% on 2 L.\n\nASSESSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-2 ambulate three times today",
+    "a4": "SUBJECTIVE\n\nCough improving; mild pleuritic pain on deep breath.\n\nOBJECTIVE\n\nT 37.4 °C, BP 128/76, HR 88, SpO2 95% on 2 L.\n\nASSESSMENT AND PLAN\n\n1. Community-acquired pneumonia, improving. Continue ceftriaxone, day 3 of 5.\n2. AKI, Cr 1.4 from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-2 ambulate three times today",
+    "a5": "SUBJECTIVE\n\nHip pain 3/10, working with PT twice daily.\n\nOBJECTIVE\n\nBP 118/70, HR 72, afebrile. Incision clean and dry.\n\nASSESSMENT\n\n1. Left hip fracture s/p ORIF, progressing with therapy.\n2. Constipation, resolved on senna.\n\nPLAN\n\n1. Continue PT/OT twice daily, weight bearing as tolerated.\n2. Continue senna 8.6 mg nightly.\n3. Family meeting Friday about discharge home.\nQA-EDIT-N1 transfers with one assist",
+    "a6": "SUBJECTIVE\n\nHip pain 3/10, working with PT twice daily.\n\nOBJECTIVE\n\nBP 118/70, HR 72, afebrile. Incision clean and dry.\n\nASSESSMENT\n\n1. Left hip fracture s/p ORIF, progressing with therapy.\n2. Constipation, resolved on senna.\n\nPLAN\n\n1. Continue PT/OT twice daily, weight bearing as tolerated.\n2. Continue senna 8.6 mg nightly.\n3. Family meeting Friday about discharge home.\nQA-EDIT-N2 transfers with standby assist",
+    "stored": {
+      "hospital": {
+        "noteTail": "from 1.1. Hold lisinopril; repeat BMP in the morning.\nQA-EDIT-2 ambulate three times today",
+        "sections": 3,
+        "billingStatus": null
+      },
+      "nursingHome": {
+        "noteTail": "y.\n3. Family meeting Friday about discharge home.\nQA-EDIT-N2 transfers with standby assist",
+        "sections": 4,
+        "billingStatus": null
+      }
+    },
+    "a7origins": [
+      "http://localhost:6473",
+      "http://127.0.0.1:4511",
+      "http://127.0.0.1:4510"
+    ],
+    "socket": [
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation rounding:update forwarded",
+      "Mutation access:logExport forwarded",
+      "Mutation rounding:update forwarded",
+      "Mutation access:logExport forwarded",
+      "Mutation access:logExport forwarded",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation settings:update forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation access:logExport forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation access:logExport forwarded"
+    ]
+  }
+}

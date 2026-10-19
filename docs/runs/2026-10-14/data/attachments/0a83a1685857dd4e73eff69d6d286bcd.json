@@ -1,0 +1,97 @@
+{
+  "name": "ho-s15",
+  "at": "2026-10-19T20:21:01.188Z",
+  "build": {
+    "sha": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-19T17:04:37Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "hosp-1: own patient only, '1 patient', Send enabled",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"waitMs\":3363}"
+    },
+    {
+      "id": "hosp-1: nothing invented for the sparse patient (3.4)",
+      "ok": false,
+      "detail": "not documented: \"B-31. Vitals and recent clinical course not documented.\""
+    },
+    {
+      "id": "nh: own resident only, '1 resident', Send enabled",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"waitMs\":2874}"
+    },
+    {
+      "id": "nh: nothing invented for the sparse resident (3.4)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "hosp-2: own patient only, '1 patient', Send enabled",
+      "ok": true,
+      "detail": "{\"enabled\":true,\"waitMs\":838}"
+    },
+    {
+      "id": "hosp-2: nothing invented for the sparse patient (3.4)",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "hosp-1.sheetText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHandoff Summary\n\n1 patient · Tue, Oct 20\n\nSend to…\n⎘ Copy Text\n1\n\nQA HO-TC08 S15 Pryce\n\nRoom 4B-31 · 72y · Community-acquired pneumonia\n\nNot Yet Prepped\n\n72-year-old patient admitted with community-acquired pneumonia. Currently in Room 4B-31. Vitals and recent clinical course not documented.\n\nACTIVE ISSUES\n\n•\n\nCommunity-acquired pneumonia",
+    "nh.sheetText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHandoff Summary\n\n1 resident · Tue, Oct 20\n\nSend to…\n⎘ Copy Text\n1\n\nQA HO-TC08 S15 Quade\n\nPost-acute rehab after hip fracture\n\nPending\n\nQA HO-TC08 S15 Quade is a patient admitted for post-acute rehabilitation following hip fracture. No recent course documentation is available.",
+    "hosp-2.sheetText": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHandoff Summary\n\n1 patient · Tue, Oct 20\n\nSend to…\n⎘ Copy Text\n1\n\nQA HO-TC08 S15 Pryce\n\nRoom 4B-31 · 72y · Community-acquired pneumonia\n\nNot Yet Prepped\n\n72-year-old patient admitted with community-acquired pneumonia. Currently in Room 4B-31. Vitals and recent clinical course not documented.\n\nACTIVE ISSUES\n\n•\n\nCommunity-acquired pneumonia",
+    "summaries": {
+      "H": {
+        "summary": {
+          "intro": "72-year-old patient admitted with community-acquired pneumonia. Currently in Room 4B-31. Vitals and recent clinical course not documented.",
+          "activeIssues": [
+            "Community-acquired pneumonia"
+          ],
+          "barriers": [],
+          "pendingResults": [],
+          "todo": []
+        },
+        "status": null,
+        "generatedAt": 1792441249736
+      },
+      "N": {
+        "summary": {
+          "intro": "QA HO-TC08 S15 Quade is a patient admitted for post-acute rehabilitation following hip fracture. No recent course documentation is available.",
+          "activeIssues": [],
+          "barriers": [],
+          "pendingResults": [],
+          "todo": []
+        },
+        "status": null,
+        "generatedAt": 1792441255989
+      }
+    },
+    "aiCalls": [
+      {
+        "at": "2026-10-19T20:20:56.017Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1915,
+        "durationMs": 1978,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T20:20:49.793Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 1893,
+        "durationMs": 1986,
+        "error": null
+      }
+    ]
+  }
+}

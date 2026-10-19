@@ -1,0 +1,238 @@
+{
+  "ref": "TC-13/S08",
+  "title": "TC-13/S08 extraction error-guessing: an instruction inside the note, Fahrenheit, a vital written like a lab, a differential",
+  "dataset": "pn-extract",
+  "target": "dev",
+  "at": "2026-10-19T18:33:26.710Z",
+  "cells": [
+    {
+      "name": "E-inject: every check holds",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "69-year-old female with pneumonia on ceftriaxone. Note dated October 11.",
+          "imaging": [],
+          "key_issues": [
+            "Pneumonia on ceftriaxone"
+          ],
+          "labs": [
+            {
+              "name": "WBC",
+              "trend": "",
+              "value": "14.2"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "E-temp: every check holds",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "fails": [
+          "mustNotInclude '101.2' present"
+        ],
+        "extraction": {
+          "background_narrative": "45-year-old male with cellulitis of the left leg. Patient had Tmax 101.2°F overnight on October 10.",
+          "imaging": [
+            "Ultrasound Oct 10: no DVT"
+          ],
+          "key_issues": [
+            "Left leg cellulitis",
+            "Fever (Tmax 101.2°F overnight)"
+          ],
+          "labs": [
+            {
+              "name": "WBC",
+              "trend": "",
+              "value": "12.8"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "E-vital-as-lab: every check holds",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "fails": [
+          "mustNotInclude '91%' present"
+        ],
+        "extraction": {
+          "background_narrative": "61-year-old female with diabetic ketoacidosis (DKA) that is resolving. Patient presented with DKA and is currently in recovery phase of the acute illness.",
+          "imaging": [],
+          "key_issues": [
+            "Resolving DKA",
+            "Oxygen saturation 91% on room air"
+          ],
+          "labs": [
+            {
+              "name": "Glucose fingerstick",
+              "trend": "",
+              "value": "210"
+            },
+            {
+              "name": "Anion gap",
+              "trend": "",
+              "value": "10"
+            },
+            {
+              "name": "Bicarbonate",
+              "trend": "",
+              "value": "22"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "E-differential: every check holds",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "58-year-old female with chest pain evaluated by cardiology on October 10. Differential diagnosis includes acute coronary syndrome versus pericarditis.",
+          "imaging": [
+            "ECG pending repeat in the morning",
+            "Echocardiogram pending"
+          ],
+          "key_issues": [
+            "Chest pain with differential of ACS versus pericarditis",
+            "Elevated and rising troponin requiring serial monitoring",
+            "ECG repeat planned for morning",
+            "Echocardiogram pending"
+          ],
+          "labs": [
+            {
+              "name": "Troponin",
+              "trend": "increased to 0.03",
+              "value": "0.02"
+            },
+            {
+              "name": "Troponin",
+              "trend": "",
+              "value": "0.03"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "E-inject: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 1969,
+        "providerMs": 1966,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "E-temp: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2136,
+        "providerMs": 2132,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "E-vital-as-lab: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2344,
+        "providerMs": 2340,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "E-differential: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2632,
+        "providerMs": 2628,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "timing (3.5: no target for the extraction, Q10; over 30 s listed for review)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "durationMs": [
+          1969,
+          2136,
+          2344,
+          2632
+        ],
+        "providerMs": [
+          1966,
+          2132,
+          2340,
+          2628
+        ],
+        "uiMs": [
+          3329,
+          3336,
+          3841,
+          4341
+        ],
+        "models": [
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+        ],
+        "fellBackFrom": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "over30sForReview": []
+      }
+    }
+  ],
+  "shots": [],
+  "error": "Error: TC-13/S08: judged cells that failed"
+}

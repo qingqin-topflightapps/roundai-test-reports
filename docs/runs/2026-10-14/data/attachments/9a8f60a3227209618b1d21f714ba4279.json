@@ -1,0 +1,75 @@
+{
+  "name": "tc10-s28-pre-hosp",
+  "at": "2026-10-15T08:24:01.056Z",
+  "checks": [
+    {
+      "id": "cp1: Labs holds all 12 labs with their values",
+      "ok": true,
+      "detail": "all 12"
+    },
+    {
+      "id": "cp1: Medications holds all 7 drugs with their doses",
+      "ok": false,
+      "detail": "missing: Ceftriaxone 2 g IV daily | Azithromycin 500 mg daily | Enoxaparin 40 mg subcutaneous daily | Pantoprazole 40 mg daily | Metoprolol tartrate 25 mg twice daily | Atorvastatin 40 mg nightly | Acetaminophen 650 mg every 6 hours as needed"
+    },
+    {
+      "id": "cp1: Diagnostic Testing holds all 3 studies",
+      "ok": true,
+      "detail": "all 3"
+    },
+    {
+      "id": "cp2 / AC 10: the plan item after character 1,200 becomes a task: Ask infectious disease about removing the PICC line",
+      "ok": false,
+      "detail": "[]"
+    },
+    {
+      "id": "cp2 / AC 10: the plan item after character 1,200 becomes a task: Book a repeat echocardiogram for Friday",
+      "ok": false,
+      "detail": "[]"
+    },
+    {
+      "id": "recorded: the task extractor was sent the whole pre-round text",
+      "ok": false,
+      "detail": "sent 1200 of 1507 characters; ends '…fortable since. The PICC site was clean this morning with no'",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "cp1": {
+      "labs": "LABS\nEdit\nWBC\n\n11.2\n\nToday\n\nHemoglobin\n\n10.9\n\nToday\n\nPlatelets\n\n312\n\nToday\n\nSodium\n\n136\n\nToday\n\nPotassium\n\n3.8\n\nToday\n\nChloride\n\n101\n\nToday\n\nBicarbonate\n\n24\n\nToday\n\nBUN\n\n18\n\nToday\n\nCreatinine\n\n1.07\n\nToday\n\nGlucose\n\n141\n\nToday\n\nMagnesium\n\n1.9\n\nToday\n\nPhosphorus\n\n3.3\n\nToday",
+      "meds": "MEDICATIONS\n0\nEdit\n\nNo medications recorded yet.",
+      "dx": "DIAGNOSTIC TESTING\n3\nEdit\n\nChest X-ray: right lower lobe consolidation slightly improved\n\nCT chest (Tuesday): small right parapneumonic effusion, not loculated\n\nRenal ultrasound: no hydronephrosis"
+    },
+    "cp2": {
+      "tasksShown": [],
+      "extractTasksContent": {
+        "length": 1200,
+        "endsWith": "eaned to room air yesterday afternoon and she has stayed comfortable since. The PICC site was clean this morning with no",
+        "containsPlan": false,
+        "planStartsAt": 1404
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 1577
+      },
+      {
+        "udfPath": "ai/parsing:classifyAdmissionReason",
+        "answered": "ok",
+        "atMs": 1589
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 1738
+      }
+    ]
+  }
+}

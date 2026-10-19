@@ -1,0 +1,129 @@
+{
+  "name": "te-tc07-s17",
+  "at": "2026-10-19T19:34:34.004Z",
+  "checks": [
+    {
+      "id": "Hospital: no mailto / SMS / share sheet; no list of accounts (AC 13: exact email of a signed-in user)",
+      "ok": true,
+      "detail": "{\"mailto\":0,\"options\":0,\"share\":0}"
+    },
+    {
+      "id": "Hospital: matrix said 'no email field'; TFA-92585 AC 13 (live) asks for the colleague's exact email, so the email box is the stated design",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "Hospital: the sender's own email is refused before sending",
+      "ok": true,
+      "detail": "That's your own email. Enter a colleague's."
+    },
+    {
+      "id": "Hospital: an address that is not an app account is refused",
+      "ok": true,
+      "detail": "No Round Companion account with this email"
+    },
+    {
+      "id": "Hospital: a double tap on Send makes exactly one record on each side",
+      "ok": false,
+      "detail": "{\"sentNew\":2,\"inbox\":2}"
+    },
+    {
+      "id": "Hospital: an outsider opening the record's address sees 'not available' and none of the tasks",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHandoff\n\nThis handoff isn’t available to you."
+    },
+    {
+      "id": "Hospital: an outsider's API read of the record gets nothing",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "id": "Hospital: the outsider has no inbox row",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Nursing Home: no mailto / SMS / share sheet; no list of accounts (AC 13: exact email of a signed-in user)",
+      "ok": true,
+      "detail": "{\"mailto\":0,\"options\":0,\"share\":0}"
+    },
+    {
+      "id": "Nursing Home: matrix said 'no email field'; TFA-92585 AC 13 (live) asks for the colleague's exact email, so the email box is the stated design",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "Nursing Home: the sender's own email is refused before sending",
+      "ok": true,
+      "detail": "That's your own email. Enter a colleague's."
+    },
+    {
+      "id": "Nursing Home: an address that is not an app account is refused",
+      "ok": true,
+      "detail": "No Round Companion account with this email"
+    },
+    {
+      "id": "Nursing Home: a double tap on Send makes exactly one record on each side",
+      "ok": true,
+      "detail": "{\"sentNew\":1,\"inbox\":1}"
+    },
+    {
+      "id": "Nursing Home: an outsider opening the record's address sees 'not available' and none of the tasks",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHandoff\n\nThis handoff isn’t available to you."
+    },
+    {
+      "id": "Nursing Home: an outsider's API read of the record gets nothing",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "id": "Nursing Home: the outsider has no inbox row",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the recipient can neither read nor change the sender's patients through the API; their tasks are intact",
+      "ok": true,
+      "detail": "{\"reach\":{\"QA Hosp Ana Rivera 9fy\":\"null/refused\",\"QA Hosp Ben Okafor 9fy\":\"null/refused\",\"QA Resident Dora Nguyen 9fy\":\"null/refused\",\"QA Resident Eli Brooks 9fy\":\"null/refused\"},\"intact\":[2,2,2,2]}"
+    }
+  ],
+  "data": {
+    "rounding-dialog": {
+      "mailto": 0,
+      "options": 0,
+      "share": 0
+    },
+    "rounding-afterDoubleTap": {
+      "before": 0,
+      "sent": 2,
+      "inbox": 2
+    },
+    "snf-dialog": {
+      "mailto": 0,
+      "options": 0,
+      "share": 0
+    },
+    "snf-afterDoubleTap": {
+      "before": 0,
+      "sent": 1,
+      "inbox": 1
+    },
+    "recipientReach": {
+      "reach": {
+        "QA Hosp Ana Rivera 9fy": "null/refused",
+        "QA Hosp Ben Okafor 9fy": "null/refused",
+        "QA Resident Dora Nguyen 9fy": "null/refused",
+        "QA Resident Eli Brooks 9fy": "null/refused"
+      },
+      "intact": [
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  }
+}

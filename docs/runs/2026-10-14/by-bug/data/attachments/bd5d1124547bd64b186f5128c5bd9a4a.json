@@ -1,0 +1,18 @@
+{
+  "TC-07/S06": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:37:16Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec, fresh @roundai.test physician(s), no model call (tripwire clean) (newspec-c/te-tc07-view.spec.ts)",
+    "title": "How a task got its state × context → where it shows on the screen and in Copy Text",
+    "detail": "Both contexts: A open → pending; B ticked on Task Review → completed at the bottom; C ticked on the chart's Post-Round tab → completed at the bottom; D ticked then undone → pending, stored doneAt null. Copy Text follows the same table. 6/6 judged. Cell E (deleted on chart) not run (Manual in matrix).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s06.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s06-rounding-screen.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s06-snf-screen.png"
+    ],
+    "stated": "P0"
+  }
+}

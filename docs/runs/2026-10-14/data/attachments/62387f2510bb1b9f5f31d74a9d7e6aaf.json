@@ -1,0 +1,27 @@
+{
+  "TC-18/S18": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:24:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Every billing output: one code, code-level agreement, no reasoning; quotes under the code",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). bil-tc18-dev.spec.ts D1 (59 cells through the live billing job). One code, level agrees, no reasoning: 59/59. minQuotes fails 2/59, the same two cells as on 43c38a4f: S04 i4 (readmitted, continue apixaban) → 99307 with 0 quotes; S15 g3 → 99307 with 1 quote (N14). Recorded: S17 h1 / h5 also show a code with nothing quoted (minimal notes; not judged by the cell).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/bil-d1/evidence/tc18-dev-d1-cells.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/bil-d1/evidence/cleanup.json"
+    ],
+    "bug": {
+      "id": "N14",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-18 ER 8-9; TFA-92596 AC 7",
+      "quote": "No reasoning, hedges, code comparisons, or arithmetic in the output.",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

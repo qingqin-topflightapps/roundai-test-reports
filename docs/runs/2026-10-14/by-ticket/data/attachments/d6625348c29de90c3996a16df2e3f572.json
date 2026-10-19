@@ -1,0 +1,17 @@
+{
+  "TC-13/S28": {
+    "status": "failed",
+    "ranAt": "2026-10-20T04:55:00+09:00",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pn",
+    "method": "PW",
+    "title": "When the AI fails: photo read error, extraction primary-model failure, non-default panel states",
+    "detail": "(a) both modes, thrown + unreadable: button back to Photograph, nothing saved, Paste and retry work; FAIL: the thrown error shows the raw server text '[CONVEX A(ai/vision:scanPriorNote)] … Server Error … Vertex AI request failed: 404 …' (B17 still), and the photo error has no role=alert / live region. (b) both modes pass: clear 'Prior note saved, but extraction failed…' (role=alert), note kept, Extract Fields fills; in-process: Haiku throttled ×2 → Mistral answers and is logged with fellBackFrom; all-fail rejects and logs. (c) axe violations in the paste-open / expanded / error states (contrast, P2 own check).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/pn-runs/newspec-b-evidence/tc13-s28/a-hospital-thrown.json",
+      "runs/2026-10-14-local/newspec-c/pn-runs/s28ui.log",
+      "runs/2026-10-14-local/newspec-c/pn-runs/s28inproc.log"
+    ]
+  }
+}

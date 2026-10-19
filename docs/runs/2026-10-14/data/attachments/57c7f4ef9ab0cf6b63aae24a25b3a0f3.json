@@ -1,0 +1,117 @@
+{
+  "name": "tc09-s07",
+  "at": "2026-10-19T18:01:20.825Z",
+  "checks": [
+    {
+      "id": "s07-sheet: the three unticks registered ('Add 1 to Today's Visits')",
+      "ok": true,
+      "detail": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n4 residents found — tap to include\n\n3 already in All Residents · 1 new · 0 to review\n\nQA TC-09-S07 Oak\n✓ In panel\n\nCedar 1 · QA-U3SB-21\n\nQA TC-09-S07 Pine\n✓ In panel\n\nCedar 2 · QA-U3SB-22\n\nQA TC-09-S07 Poplar\n✓ In panel"
+    },
+    {
+      "id": "s07-sheet (U8): no Hospital patient on the sheet",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s07-today: Pine (known, In Today, selected) stays on today",
+      "ok": true,
+      "detail": "QA TC-09-S07 Pine"
+    },
+    {
+      "id": "s07-today: Poplar (known, not In Today, deselected) stays off today",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s07-today (U3): Sorrel (new, deselected) is not on the list",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s07-today (Q1, recorded): Oak (In Today, deselected) stays on today, or the app said first that Oak would leave",
+      "ok": false,
+      "detail": "Oak left today; warning before the write: false",
+      "recordOnly": true
+    },
+    {
+      "id": "s07-today (Q1, recorded): the fixture resident (In Today, not on the photo) stays on today",
+      "ok": false,
+      "detail": "left today without a prompt",
+      "recordOnly": true
+    },
+    {
+      "id": "s07-all (U5): Oak, Pine and Poplar are still in All Residents (never deleted)",
+      "ok": true,
+      "detail": "QA Resident U3SB | QA TC-09-S07 Oak | QA TC-09-S07 Pine | QA TC-09-S07 Poplar"
+    },
+    {
+      "id": "s07-all: Poplar is unchanged and still off today ('+ Today', Cedar 3)",
+      "ok": true,
+      "detail": "QT QA TC-09-S07 Poplar Cedar 3 · 77y · QA-U3SB-23 + Today Post-acute rehab Pending Follow-up"
+    },
+    {
+      "id": "s07-all (U3): Sorrel was not created",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "backend (U3): no Sorrel row; Poplar not In Today with its unit",
+      "ok": true,
+      "detail": "{\"sorrel\":false,\"poplar\":{\"_creationTime\":1792432876441.917,\"_id\":\"m57cchzpjkrcxbe40hdjc0hex98gkbkd\",\"addedAt\":\"2026-10-19T18:01:16.441Z\",\"age\":77,\"diagnosis\":\"Post-acute rehab\",\"encType\":\"follow-up\",\"inTodaysSession\":false,\"mrn\":\"QA-U3SB-23\",\"name\":\"QA TC-09-S07 Poplar\",\"status\":\"pending\",\"unit\":\"Cedar 3\",\"userId\":\"jd787x62z1htrxtrckx8mp34tn8gkgwy\"}}"
+    },
+    {
+      "id": "setup: one scripted read; nothing else reached a model",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n4 residents found — tap to include\n\n3 already in All Residents · 1 new · 0 to review\n\nQA TC-09-S07 Oak\n✓ In panel\n\nCedar 1 · QA-U3SB-21\n\nQA TC-09-S07 Pine\n✓ In panel\n\nCedar 2 · QA-U3SB-22\n\nQA TC-09-S07 Poplar\n✓ In panel\n\nCedar 3 · QA-U3SB-23\n\nQA TC-09-S07 Sorrel\n＋ New\n\nCedar 4\n\nAdd 1 to Today's Visits",
+    "confirm": {
+      "warningShown": false,
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI. Hospital Nursing Home Before you start: a 2-minute baseline survey How rounding works for you today, so the pilot can measure what changes. Start survey Not now Nursing Home 0/1 residents seen today Today's Visits All Residents Sort: Room number Sort: Name A–Z Sort: Status (to-do first) QT QA TC-09-S07 Pine Cedar "
+    },
+    "today": [
+      "QA TC-09-S07 Pine"
+    ],
+    "all": {
+      "names": [
+        "QA Resident U3SB",
+        "QA TC-09-S07 Oak",
+        "QA TC-09-S07 Pine",
+        "QA TC-09-S07 Poplar"
+      ],
+      "poplarCard": "QT QA TC-09-S07 Poplar Cedar 3 · 77y · QA-U3SB-23 + Today Post-acute rehab Pending Follow-up"
+    },
+    "backend": [
+      {
+        "name": "QA Resident U3SB",
+        "unit": "Maple 4",
+        "mrn": "QA-U3SB-10",
+        "inToday": false
+      },
+      {
+        "name": "QA TC-09-S07 Oak",
+        "unit": "Cedar 1",
+        "mrn": "QA-U3SB-21",
+        "inToday": false
+      },
+      {
+        "name": "QA TC-09-S07 Pine",
+        "unit": "Cedar 2",
+        "mrn": "QA-U3SB-22",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S07 Poplar",
+        "unit": "Cedar 3",
+        "mrn": "QA-U3SB-23",
+        "inToday": false
+      }
+    ],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 4
+    }
+  }
+}

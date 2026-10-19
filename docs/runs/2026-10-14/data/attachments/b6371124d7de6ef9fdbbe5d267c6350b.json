@@ -1,0 +1,254 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node@22/22.23.0/bin/node",
+      "round-companion-wt-qa/apps/web/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "qa-agent-tests/newspec-a/newspec-a.config.ts",
+      "--reporter=json,list",
+      "--output=tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/rb3-tc01-s20",
+      "tc01-hard-delete.spec.ts",
+      "--retries=0"
+    ],
+    "configFile": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/newspec-a.config.ts",
+    "rootDir": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "round-companion-wt-qa/apps/web/e2e/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/rb3-tc01-s20",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 3
+        },
+        "id": "newspec-a",
+        "name": "newspec-a",
+        "testDir": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.spec\\.ts/"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ],
+      [
+        "list"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 5,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tc01-hard-delete.spec.ts",
+      "file": "tc01-hard-delete.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "hard delete through the API removes every trace at once, keeps the trail and the neighbour (hospital)",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1668,
+                  "error": {
+                    "message": "Error: quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts:140:43",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts",
+                      "column": 43,
+                      "line": 140
+                    },
+                    "snippet": "  138 |     const p = await newPhysician(`TC01-S20 ${ctx} ${tag(6)}`);\n  139 |     const { failures } = await deleteAndCheck(p, ctx, null, tag(6), since);\n> 140 |     expect(failures, failures.join(\"\\n\")).toEqual([]);\n      |                                           ^\n  141 |   });\n  142 | }\n  143 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts",
+                        "column": 43,
+                        "line": 140
+                      },
+                      "message": "Error: quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  138 |     const p = await newPhysician(`TC01-S20 ${ctx} ${tag(6)}`);\n  139 |     const { failures } = await deleteAndCheck(p, ctx, null, tag(6), since);\n> 140 |     expect(failures, failures.join(\"\\n\")).toEqual([]);\n      |                                           ^\n  141 |   });\n  142 | }\n  143 |\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts:140:43"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:33:03.676Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/rb3-tc01-s20/tc01-hard-delete-hard-dele-ecee9-and-the-neighbour-hospital--newspec-a/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts",
+                    "column": 43,
+                    "line": 140
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a0820d53500f4adb20c9-80715a2dc7a99454da1c",
+          "file": "tc01-hard-delete.spec.ts",
+          "line": 136,
+          "column": 3
+        },
+        {
+          "title": "hard delete through the API removes every trace at once, keeps the trail and the neighbour (snf)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1664,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:33:03.678Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a0820d53500f4adb20c9-d5a20575467bef537930",
+          "file": "tc01-hard-delete.spec.ts",
+          "line": 136,
+          "column": 3
+        },
+        {
+          "title": "hard delete from the Hospital card (trash icon, OK) removes every trace at once",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "newspec-a",
+              "projectName": "newspec-a",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 5716,
+                  "error": {
+                    "message": "Error: quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts:151:43",
+                    "location": {
+                      "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts",
+                      "column": 43,
+                      "line": 151
+                    },
+                    "snippet": "  149 |   try {\n  150 |     const { failures } = await deleteAndCheck(p, \"hospital\", page, tag(6), since);\n> 151 |     expect(failures, failures.join(\"\\n\")).toEqual([]);\n      |                                           ^\n  152 |   } finally {\n  153 |     await context.close();\n  154 |   }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts",
+                        "column": 43,
+                        "line": 151
+                      },
+                      "message": "Error: quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"quickDictationDrafts: 1 row(s) still reference the deleted id (the compartment still names the deleted patient and keeps its dictated text; whether the text itself must go is TC-24 Q6)\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  149 |   try {\n  150 |     const { failures } = await deleteAndCheck(p, \"hospital\", page, tag(6), since);\n> 151 |     expect(failures, failures.join(\"\\n\")).toEqual([]);\n      |                                           ^\n  152 |   } finally {\n  153 |     await context.close();\n  154 |   }\n    at round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts:151:43"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T19:33:03.684Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/rb3-tc01-s20/tc01-hard-delete-hard-dele-8cba1-removes-every-trace-at-once-newspec-a/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "tools/qa-agent/runs/2026-10-14-local/newspec-a/artifacts/rb3-tc01-s20/tc01-hard-delete-hard-dele-8cba1-removes-every-trace-at-once-newspec-a/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "round-companion-wt-qa/apps/web/qa-agent-tests/newspec-a/tc01-hard-delete.spec.ts",
+                    "column": 43,
+                    "line": 151
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a0820d53500f4adb20c9-2b8759ce66d7f095f6ad",
+          "file": "tc01-hard-delete.spec.ts",
+          "line": 144,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-19T19:33:03.309Z",
+    "duration": 6224.3820000000005,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

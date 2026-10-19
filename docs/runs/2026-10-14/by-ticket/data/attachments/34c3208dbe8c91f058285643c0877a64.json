@@ -1,0 +1,20 @@
+{
+  "TC-07/S28": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:36:39Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "PW, te copy of newspec-b tc07-s28-device-clock.spec.ts (heading 'Task Review'): qa-agent-tests/newspec-b/te-tc07-s28-device-clock.spec.ts",
+    "title": "Wrong browser clock: a task ticked done is stamped and shown on server time; the date header shows the server's day",
+    "detail": "Changed since 25acd727: doneAt is now stamped by the server in every run (−0.003…−0.001 min off server time with device +24 h, −24 h, Kiritimati; convex/lib/taskStamps.ts) and the completed task stays listed after the lifecycle runs — the stated half passes (was failed). Still failing: with the device clock +24 h the screen header reads 'Wed, Oct 21' while the server day is Tue Oct 20 (both contexts); with −24 h the header is right. +24 h no longer signs the browser out.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/te-b8b-tc07-s28/hospital-plus24h.json",
+      "runs/2026-10-14-local/newspec-b/evidence/te-b8b-tc07-s28/snf-plus24h.json",
+      "runs/2026-10-14-local/newspec-b/evidence/te-b8b-tc07-s28/hospital-minus24h.json",
+      "runs/2026-10-14-local/newspec-b/evidence/te-b8b-tc07-s28/snf-minus24h.json",
+      "runs/2026-10-14-local/newspec-b/evidence/te-b8b-tc07-s28/hospital-kiritimati.json"
+    ],
+    "stated": "P0 mixed: UAT 3.8 'A phone with a wrong clock … shows the same state as any other device' (doneAt + header); the header part fails"
+  }
+}

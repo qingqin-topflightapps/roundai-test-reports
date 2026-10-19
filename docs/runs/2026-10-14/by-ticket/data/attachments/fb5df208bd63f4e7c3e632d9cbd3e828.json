@@ -1,0 +1,15 @@
+{
+  "TC-11/S13": {
+    "status": "record-only",
+    "ranAt": "2026-10-19T18:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "not re-run: the counted layer calls the course refresh directly (scripts/aicheck-other/course-entry-ai.ts main), which no runner may do on dev, and no model runs locally",
+    "title": "AI Check: a note with no procedure gives an entry with no procedure — Hospital (5 of the 10)",
+    "detail": "D3 re-check: STILL pending (Preston). The course-entry model call is unchanged since e02167f: the prompt (convex/ai/prompts/library/v1/note/refresh-course-and-background.md, no diff) and the reply/parse (convex/lib/noteModelCalls.ts refreshCourseAndBackgroundReply = the 10-14 refreshCourseAndBackground handler, same system prompt, schema and temperature 0.1); what changed is who calls it (the server note job). The 10-14 record (deterministic layer 10/10, judge layer borderline on H-01) stands until the judge is calibrated.",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-other/course-entry-main/results.json"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "EFS/S14": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Offline at Generate / Ask / Save Note, then back online (rb3-efs-s14-offline-ai.spec.ts)",
+    "bug": "N8",
+    "bugNow": "still",
+    "stated": "TFA-94745 state 9 (offline: say so, keep the text, settle each step)",
+    "detail": "Copy of flt-efs-s14 with a socket guard: on 8b4be94a Generate is the server-job mutation noteJobs:request, recorded and refused at the socket so no model is reached. Both contexts: 20 s after each tap made offline, Generate still reads 'Generating Note…', Ask still 'Searching…', Save Note still 'Saving & Updating…' (no timeout, no message on the step; the 'no network' banner is shown). After reconnect the Generate request and the Ask were sent by themselves with no new tap (Q2, recorded). Typed text kept on screen and on the server. Nursing Home half re-run after the editor button got its new name.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-efs-s14-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-efs-s14-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-efs-s14-h-h2-offline-generate.png"
+    ]
+  }
+}

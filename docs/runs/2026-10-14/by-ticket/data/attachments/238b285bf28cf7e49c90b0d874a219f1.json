@@ -1,0 +1,26 @@
+{
+  "TC-14/S13": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:37:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "AICHECK",
+    "title": "AI Check 2: the physician's doubt survives a later confirmation (5 Hospital + 5 Nursing Home)",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). Dataset rb1-gen-notes-b. 6/10 notes keep the doubt and the confirmation; needs 9/10 (3.2). Failing: H-06 (no atelectasis doubt), H-09 ('making acute stroke unlikely' without the initial worry), N-07 (hardware), N-09 (no 'worried' about aspiration; only the confirming swallow study). 43c38a4f: 7/10. Provisional substring pre-screen (Preston grades, Q9/Q19).",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/rb1-gen-notes-b/evidence/TC-14-S13.json"
+    ],
+    "bug": {
+      "id": "N21",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-14 AI Check 2; TFA-92592 AC 9",
+      "quote": "A physician's expressed doubt survives in the note even if the diagnosis is confirmed later in the same dictation",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

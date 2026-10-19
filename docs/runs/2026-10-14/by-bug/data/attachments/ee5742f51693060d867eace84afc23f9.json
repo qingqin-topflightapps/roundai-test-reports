@@ -1,0 +1,64 @@
+{
+  "name": "te-tc07-s19",
+  "at": "2026-10-19T19:18:14.002Z",
+  "checks": [
+    {
+      "id": "Hospital: two records on each side, each with its own time",
+      "ok": true,
+      "detail": "[\"2026-10-19T19:17:59.137Z\",\"2026-10-19T19:17:56.253Z\"]"
+    },
+    {
+      "id": "Hospital: the first record still shows 'Order PT evaluation' as pending",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera p6s — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nQA Hosp Ben Okafor p6s — Room 415:\n  • Order PT evaluation\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp B"
+    },
+    {
+      "id": "Hospital: the second record shows it as completed",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera p6s — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp Ben Okafor p6s — Room 415:\n  ✓ Order PT evaluation — Oct 20\n  ✓ Chest X-ray read — Oct 20"
+    },
+    {
+      "id": "Hospital: both open for the recipient and the older one is unchanged after a reload",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Nursing Home: two records on each side, each with its own time",
+      "ok": true,
+      "detail": "[\"2026-10-19T19:18:08.670Z\",\"2026-10-19T19:18:05.801Z\"]"
+    },
+    {
+      "id": "Nursing Home: the first record still shows 'Wound check with nursing' as pending",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  • Recheck INR Friday\n  • Wound check with nursing\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n─────────────────────────────────────"
+    },
+    {
+      "id": "Nursing Home: the second record shows it as completed",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  • Recheck INR Friday\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  ✓ Wound check with nursing — Oct 20\n\nQA Resident Eli Brooks p6s — Unit Birch "
+    },
+    {
+      "id": "Nursing Home: both open for the recipient and the older one is unchanged after a reload",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "rounding-texts": {
+      "first": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera p6s — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nQA Hosp Ben Okafor p6s — Room 415:\n  • Order PT evaluation\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp Ben Okafor p6s — Room 415:\n  ✓ Chest X-ray read — Oct 20",
+      "second": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera p6s — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp Ben Okafor p6s — Room 415:\n  ✓ Order PT evaluation — Oct 20\n  ✓ Chest X-ray read — Oct 20",
+      "stored": [
+        "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera p6s — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nQA Hosp Ben Okafor p6s — Room 415:\n  • Order PT evaluation\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp Ben Okafor p6s — Room 415:\n  ✓ Chest X-ray read — Oct 20",
+        "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera p6s — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp Ben Okafor p6s — Room 415:\n  ✓ Order PT evaluation — Oct 20\n  ✓ Chest X-ray read — Oct 20"
+      ]
+    },
+    "snf-texts": {
+      "first": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  • Recheck INR Friday\n  • Wound check with nursing\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  ✓ Weight check — Oct 20",
+      "second": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  • Recheck INR Friday\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  ✓ Wound check with nursing — Oct 20\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  ✓ Weight check — Oct 20",
+      "stored": [
+        "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  • Recheck INR Friday\n  • Wound check with nursing\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  ✓ Weight check — Oct 20",
+        "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  • Recheck INR Friday\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Resident Dora Nguyen p6s — Unit Cedar 12:\n  ✓ Wound check with nursing — Oct 20\n\nQA Resident Eli Brooks p6s — Unit Birch 3:\n  ✓ Weight check — Oct 20"
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "OAT-02/S11": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:21:05Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "PW mocked copy (newspec-c/te-oat02-handoff.spec.ts) of Tim's 'a handoff is sent to a colleague inside the app and recorded' (that title waits for live handoff summaries, a server job since #104, so it is not run locally): handoff/persistence:ensure answered in the page and a canned summary put on the census rows (te-support teHandoffSocket); tripwire clean",
+    "title": "Hospital handoff is sent inside the app; no mailto or Email Handoff before, after or on the record",
+    "detail": "Sheet: no mailto, no Email Handoff / share / SMS / print control. Send dialog: the colleague is typed as an exact email (no account list, AC 13). Confirm 'Send to <email>?', then 'Sent to <email>'. One Sent record (kind handoff) naming the colleague; detail 'To <name> · <time>' with both patients; no mailto anywhere. 6/6 judged.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s11.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s11-1-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s11-2-confirm.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s11-3-sent.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-oat02-s11-4-record.png"
+    ],
+    "stated": "P0 (UAT OAT-02 step 3)"
+  }
+}

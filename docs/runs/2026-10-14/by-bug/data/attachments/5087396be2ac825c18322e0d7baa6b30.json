@@ -1,0 +1,17 @@
+{
+  "TC-12/S29": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:11:58.719Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "code read",
+    "title": "The Important Points window is a configuration value of 12 h (both modes)",
+    "detail": "Code read at 8b4be94a: the window is 12 h in both modes (one server sweep over both tables) — value right. But it is a TypeScript const (convex/lib/importantPoints.ts:7 IMPORTANT_POINT_TTL_MS = 12 * 60 * 60 * 1000), not read from an env variable or a settings row; changing it needs a deploy. Fails UAT 3.6 'All windows are configuration values, not hard-coded' unless a named constant counts (Q12). Judged checks 2/3.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s29.json"
+    ],
+    "stated": "UAT 3.6 'All windows are configuration values, not hard-coded'",
+    "bug": "B19"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "TC-12/S05": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:14:28.891Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "local Playwright spec (newspec-c/ip-*.spec.ts) on the QA stack at 8b4be94a, fresh @roundai.test physician, every ai/* call answered at the Convex socket (hostile parse whose important_points the physician never typed); tripwire: no model call on every run",
+    "title": "12 h expiry in both modes: present before 12 h, deleted by the server after, not restarted by Save Note, editor open/close, edit",
+    "detail": "Points written 11 h 57 min ago by server time (a new card keeps a past createdAt in stampImportantPointEdits; no clock changed, no internal call). Before 12 h all 12 charts stored + shown; after 12 h + one sweep (the 1-minute cron, server side) all deleted on the server and gone from the editor, including the chart nobody opened (H3), after Save Note (H2/N2), editor open/close (H5/N4) and an edit (H8/N8, which kept the original createdAt); a point added minutes before kept (H4/N3); an editor left open across the expiry dropped the card live and Save Note + a new point from it did not write it back (H7); a stale client re-sending the expired card with its clock is refused. Prior-note import at 11 h (H6) not run here: S15 shows import leaves id and createdAt unchanged. Recorded (ours): the unsaved draft (importantPointsDraft) is NOT cleared at 12 h; a client re-sending the expired card WITHOUT createdAt gets it back with a fresh 12 h. Judged checks 44/44.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s05-H1-after-12h.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s05-N1-after-12h.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s05.json"
+    ],
+    "stated": "UAT TC-12 'Points expire 12 h after they were written'; TFA-92590 AC 6"
+  }
+}

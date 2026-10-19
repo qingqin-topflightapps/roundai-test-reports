@@ -1,0 +1,32 @@
+{
+  "name": "te-tc07-s12",
+  "at": "2026-10-19T18:40:03.101Z",
+  "checks": [
+    {
+      "id": "cp1: resident on Today's Visits: the open task is listed",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Lena Ortiz xvi\",\"location\":\"Unit Elm 2\",\"tasks\":[{\"text\":\"Schedule podiatry visit\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "cp2: resident off Today's Visits: the open task is still listed (AC 2 all patients; AC 10 persist)",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Lena Ortiz xvi\",\"location\":\"Unit Elm 2\",\"tasks\":[{\"text\":\"Schedule podiatry visit\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "cp3: back on Today's Visits: listed once",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Lena Ortiz xvi\",\"location\":\"Unit Elm 2\",\"tasks\":[{\"text\":\"Schedule podiatry visit\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "cp4: Hospital patient with the encounter complete (post-rounded) keeps its open task on the view",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Hosp Dan Ito xvi\",\"location\":\"Room 520\",\"tasks\":[{\"text\":\"Arrange outpatient echo\",\"when\":\"\"}]}]"
+    }
+  ],
+  "data": {
+    "todayControls": [
+      "Today's Visits"
+    ],
+    "method": "Off/on Today's Visits set through snf.update (inTodaysSession) with the physician's own JWT, as the list's In Today toggle does"
+  }
+}

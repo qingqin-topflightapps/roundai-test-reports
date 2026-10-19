@@ -1,0 +1,67 @@
+{
+  "name": "ho-s20",
+  "at": "2026-10-19T20:01:56.175Z",
+  "checks": [
+    {
+      "id": "record: with the clock two days ahead the stored session reads as expired (UI sign-in needed)",
+      "ok": false,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "after the failed send: the dialog is still open with the edited text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "after the failed send: no 'Sent to' label, no record on either side",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "after the failed send: no mailto / email / share fallback",
+      "ok": true,
+      "detail": "{\"mailtoLinks\":[],\"emailShareControls\":[],\"inputs\":[{\"id\":\"handoff-text\",\"type\":null,\"label\":\"Handoff text — edit before sending\",\"placeholder\":null},{\"id\":\"handoff-recipient\",\"type\":\"email\",\"label\":\"Colleague’s email\",\"placeholder\":\"colleague@hospital.org\"}]}"
+    },
+    {
+      "id": "after the retry: exactly one Received row",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "the record's sentAt is the server's time, not the sender's clock (+2 days)",
+      "ok": true,
+      "detail": "2026-10-19T20:01:52.641Z vs server 2026-10-19T20:01:50.466Z"
+    },
+    {
+      "id": "the delivered text carries the edit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "record (Q8): title and header dates come from the sender's clock",
+      "ok": true,
+      "detail": "{\"title\":\"Patient Handoff — Oct 21, 2026 — 3 patients\",\"header\":\"PATIENT HANDOFF / Wednesday, October 21, 2026 · 10:01 AM\",\"serverDay\":\"2026-10-19\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "double-click on Send: exactly one more record (2 in total)",
+      "ok": true,
+      "detail": "2"
+    }
+  ],
+  "data": {
+    "clockSignIn": {
+      "signedOutByClock": true,
+      "uiSignIn": "reached-app"
+    },
+    "failureMessage": [
+      "The handoff couldn’t be sent. Nothing left the app — try again."
+    ],
+    "sendCalls": [
+      "fail",
+      "forward",
+      "forward"
+    ]
+  }
+}

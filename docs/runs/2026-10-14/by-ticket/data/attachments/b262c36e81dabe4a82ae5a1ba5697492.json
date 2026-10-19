@@ -1,0 +1,257 @@
+{
+  "ref": "TC-12/S11",
+  "title": "TC-12/S11 AI Check Nursing Home: a shorthand point survives the Nursing Home Save Note exactly (5 charts)",
+  "dataset": "ip-dev-a",
+  "target": "dev",
+  "at": "2026-10-19T18:52:33.720Z",
+  "cells": [
+    {
+      "name": "N01: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "LBD — NEVER antipsychotics",
+        "stored": [
+          "LBD — NEVER antipsychotics"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5138,
+            "providerMs": 5135,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N02: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "wt q Mon, call MD if up >2 lb/wk",
+        "stored": [
+          "wt q Mon, call MD if up >2 lb/wk"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3709,
+            "providerMs": 3706,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N03: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "heels offloaded? braden 12, chk sacrum",
+        "stored": [
+          "heels offloaded? braden 12, chk sacrum"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4314,
+            "providerMs": 4311,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N04: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "son (POA) re code status - revisit tmrw w/ SW",
+        "stored": [
+          "son (POA) re code status - revisit tmrw w/ SW"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3955,
+            "providerMs": 3952,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "N05: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "pain 6/10 w PT → premedicate 30 min b4",
+        "stored": [
+          "pain 6/10 w PT → premedicate 30 min b4"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4237,
+            "providerMs": 4232,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "pool: 5/5 Nursing Home variants exact",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "key": "N01",
+          "ok": true,
+          "typed": "LBD — NEVER antipsychotics",
+          "stored": [
+            "LBD — NEVER antipsychotics"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 5138,
+              "providerMs": 5135,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "N02",
+          "ok": true,
+          "typed": "wt q Mon, call MD if up >2 lb/wk",
+          "stored": [
+            "wt q Mon, call MD if up >2 lb/wk"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 3709,
+              "providerMs": 3706,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "N03",
+          "ok": true,
+          "typed": "heels offloaded? braden 12, chk sacrum",
+          "stored": [
+            "heels offloaded? braden 12, chk sacrum"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4314,
+              "providerMs": 4311,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "N04",
+          "ok": true,
+          "typed": "son (POA) re code status - revisit tmrw w/ SW",
+          "stored": [
+            "son (POA) re code status - revisit tmrw w/ SW"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 3955,
+              "providerMs": 3952,
+              "appMs": 3,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "N05",
+          "ok": true,
+          "typed": "pain 6/10 w PT → premedicate 30 min b4",
+          "stored": [
+            "pain 6/10 w PT → premedicate 30 min b4"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4237,
+              "providerMs": 4232,
+              "appMs": 5,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "shots": [
+    "evidence/TC-12-S11-N01-editor-after-save.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-12-S11-N01-editor-after-save.png": 0
+  }
+}

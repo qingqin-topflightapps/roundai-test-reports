@@ -1,0 +1,287 @@
+{
+  "ref": "TC-13/S02",
+  "title": "TC-13/S02 paste a prior note on a Hospital chart: the chart is updated and no vital is taken",
+  "dataset": "pn-extract",
+  "target": "dev",
+  "at": "2026-10-19T18:30:58.870Z",
+  "cells": [
+    {
+      "name": "s02-before: the chart shows Previous Notes with Paste and Photograph",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "s02-before: none of the note's facts on the chart before the paste (CKD, pleural effusion, EF 30) and no Nursing Home row",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "U1: opening the chart pulls in no prior note (previousNotes empty)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "previousNotes": 0
+      }
+    },
+    {
+      "name": "U1: no imaging and no background on the chart before the paste",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "radiology": null,
+        "reason": null
+      }
+    },
+    {
+      "name": "Save & Extract finished without an error line",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "error": "",
+        "message": "✓ Template ready — extracted background, active issues, prior labs, imaging, and diagnostic tests.",
+        "uiMs": 5346
+      }
+    },
+    {
+      "name": "s02-after: the saved note is collapsed (page checks read the chart, not the note)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "s02-after: the note is saved ('Note · Oct 11')",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "s02-after (U2): the chest X-ray effusions are on the chart ('pleural effusion')",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "diagnosticTesting": "DIAGNOSTIC TESTING 3 Edit Chest X-ray Oct 9: bilateral pleural effusions TTE Oct 10: EF 30% Renal ultrasound pending"
+      }
+    },
+    {
+      "name": "s02-after (U3): no vital from the note on the chart (142/88, 38.4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "hits": []
+      }
+    },
+    {
+      "name": "s02-after: no Nursing Home row on the Hospital chart",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "background on Hospital Course (CKD / heart failure; judged per field in S06)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "CKD": false,
+        "HF": false,
+        "text": ""
+      }
+    },
+    {
+      "name": "TTE on Diagnostic Testing (EF 30; judged per field in S06)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "EF30": true
+      }
+    },
+    {
+      "name": "Prior Note Labs panel (labs dated with the note; S09 judges U4)",
+      "kind": "record",
+      "ok": null,
+      "detail": "PRIOR NOTE LABS Historical values from explicitly imported notes. creatinine 1.1 Prior note · Oct 11 potassium 4.2 Prior note · Oct 11 BNP 1250 Prior note · Oct 11"
+    },
+    {
+      "name": "s02-editor (U3): no vital from the note in the pre-round notes editor (142/88, 38.4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Q2: whether the note's active issues land in Important Points (editor)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "issueTermsInEditor": [],
+        "pointsHead": "Pre-round notes IMPORTANT POINTS 1 Add Point QA point: call daughter after rounds Dictate Save Note"
+      }
+    },
+    {
+      "name": "the pasted note is saved once",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "count": 1
+      }
+    },
+    {
+      "name": "previousNotes[0].dateLabel = 'Oct 11'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dateLabel": "Oct 11"
+      }
+    },
+    {
+      "name": "previousNotes[0].source = 'explicit-import'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "source": "explicit-import"
+      }
+    },
+    {
+      "name": "U3: no vital stored from the note (vitals.bp / hr / temp / o2 absent)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "vitals": {}
+      }
+    },
+    {
+      "name": "U3: no vital in Important Points (142/88, 38.4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "points": "[\"QA point: call daughter after rounds\"]"
+      }
+    },
+    {
+      "name": "the physician's own Important Point is kept",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "points": "[\"QA point: call daughter after rounds\"]"
+      }
+    },
+    {
+      "name": "Q2: Important Points with source 'prior-note' (main before: issues written into Important Points)",
+      "kind": "record",
+      "ok": null,
+      "detail": []
+    },
+    {
+      "name": "chart after the import: radiology / admissionSummary.reason / today's labs",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "radiology": [
+          "Chest X-ray Oct 9: bilateral pleural effusions",
+          "TTE Oct 10: EF 30%",
+          "Renal ultrasound pending"
+        ],
+        "reason": "74-year-old man with CKD stage 3 and heart failure with reduced ejection fraction admitted Oct 9 for volume overload. Presented with acute on chronic HFrEF requiring IV diuretic therapy.\n• Acute on chronic HFrEF, continue IV furosemide\n• CKD stage 3, trend creatinine daily\n• Renal ultrasound pending",
+        "labs": null,
+        "labsUpdatedAt": null
+      }
+    },
+    {
+      "name": "stored extraction of the note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "background_narrative": "74-year-old man with CKD stage 3 and heart failure with reduced ejection fraction admitted Oct 9 for volume overload. Presented with acute on chronic HFrEF requiring IV diuretic therapy.",
+        "imaging": [
+          "Chest X-ray Oct 9: bilateral pleural effusions",
+          "TTE Oct 10: EF 30%",
+          "Renal ultrasound pending"
+        ],
+        "key_issues": [
+          "Acute on chronic HFrEF, continue IV furosemide",
+          "CKD stage 3, trend creatinine daily",
+          "Renal ultrasound pending"
+        ],
+        "labs": [
+          {
+            "name": "creatinine",
+            "trend": "",
+            "value": "1.1"
+          },
+          {
+            "name": "potassium",
+            "trend": "",
+            "value": "4.2"
+          },
+          {
+            "name": "BNP",
+            "trend": "",
+            "value": "1250"
+          }
+        ]
+      }
+    },
+    {
+      "name": "U3: the stored extraction holds no vital from the note (142/88, 38.4, 93%)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "background_narrative": "74-year-old man with CKD stage 3 and heart failure with reduced ejection fraction admitted Oct 9 for volume overload. Presented with acute on chronic HFrEF requiring IV diuretic therapy.",
+        "imaging": [
+          "Chest X-ray Oct 9: bilateral pleural effusions",
+          "TTE Oct 10: EF 30%",
+          "Renal ultrasound pending"
+        ],
+        "key_issues": [
+          "Acute on chronic HFrEF, continue IV furosemide",
+          "CKD stage 3, trend creatinine daily",
+          "Renal ultrasound pending"
+        ],
+        "labs": [
+          {
+            "name": "creatinine",
+            "trend": "",
+            "value": "1.1"
+          },
+          {
+            "name": "potassium",
+            "trend": "",
+            "value": "4.2"
+          },
+          {
+            "name": "BNP",
+            "trend": "",
+            "value": "1250"
+          }
+        ]
+      }
+    },
+    {
+      "name": "U13a: one extraction diagnostics row with model, providerMs, durationMs",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3293,
+        "providerMs": 3289,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-13-S02-before.png",
+    "evidence/TC-13-S02-after.png",
+    "evidence/TC-13-S02-editor.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-13-S02-before.png": 0,
+    "evidence/TC-13-S02-after.png": 0,
+    "evidence/TC-13-S02-editor.png": 0
+  }
+}

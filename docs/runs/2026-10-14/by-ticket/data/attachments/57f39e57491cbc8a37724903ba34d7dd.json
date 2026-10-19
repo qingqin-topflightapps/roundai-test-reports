@@ -1,0 +1,104 @@
+{
+  "name": "pr-tc17-s23",
+  "at": "2026-10-19T19:48:58.613Z",
+  "checks": [
+    {
+      "id": "done15: still shown at 15 h (UAT 3.6)",
+      "ok": true,
+      "detail": "shown true, stored true",
+      "recordOnly": true
+    },
+    {
+      "id": "done17: gone at 17 h (UAT 3.6)",
+      "ok": true,
+      "detail": "shown false, stored false",
+      "recordOnly": true
+    },
+    {
+      "id": "note17: still shown at 17 h (UAT 3.6)",
+      "ok": true,
+      "detail": "shown true, stored true, Copy to EMR copies the old note",
+      "recordOnly": true
+    },
+    {
+      "id": "note19: gone at 19 h (UAT 3.6)",
+      "ok": true,
+      "detail": "shown false, stored false, Copy to EMR not offered",
+      "recordOnly": true
+    },
+    {
+      "id": "med35: still shown at 35 h (UAT 3.6)",
+      "ok": true,
+      "detail": "shown true, stored true",
+      "recordOnly": true
+    },
+    {
+      "id": "med37: gone at 37 h (UAT 3.6)",
+      "ok": false,
+      "detail": "shown true, stored true",
+      "recordOnly": true
+    },
+    {
+      "id": "open35: still shown at 35 h (UAT 3.6)",
+      "ok": true,
+      "detail": "shown true, stored true",
+      "recordOnly": true
+    },
+    {
+      "id": "open37: gone at 37 h (UAT 3.6)",
+      "ok": false,
+      "detail": "shown true, stored true",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "done15": {
+      "shown": true,
+      "inDb": true,
+      "clip": null,
+      "status": "post-rounded"
+    },
+    "done17": {
+      "shown": false,
+      "inDb": false,
+      "clip": null,
+      "status": "post-rounded"
+    },
+    "note17": {
+      "shown": true,
+      "inDb": true,
+      "clip": "SUBJECTIVE\n\nCough improving; mild pleuritic pain on deep breath.\n\nOBJECTIVE\n\nT 3",
+      "status": "post-rounded"
+    },
+    "note19": {
+      "shown": false,
+      "inDb": false,
+      "clip": null,
+      "status": "pending"
+    },
+    "med35": {
+      "shown": true,
+      "inDb": true,
+      "clip": null,
+      "status": "post-rounded"
+    },
+    "med37": {
+      "shown": true,
+      "inDb": true,
+      "clip": null,
+      "status": "post-rounded"
+    },
+    "open35": {
+      "shown": true,
+      "inDb": true,
+      "clip": null,
+      "status": "post-rounded"
+    },
+    "open37": {
+      "shown": true,
+      "inDb": true,
+      "clip": null,
+      "status": "post-rounded"
+    }
+  }
+}

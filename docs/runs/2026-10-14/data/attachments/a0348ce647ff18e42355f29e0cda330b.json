@@ -1,0 +1,90 @@
+{
+  "name": "tc09-s17",
+  "at": "2026-10-19T18:01:25.690Z",
+  "checks": [
+    {
+      "id": "s17-rescan-sheet (U3): the same 4 rows",
+      "ok": true,
+      "detail": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n4 residents found — tap to include\n\n4 already in All Residents · 0 new · 0 to review\n\nQA TC-09-S17 Alder\n✓ In panel\n\nOak 1 · QA-MRN-1001-FX8P\n\nQA TC-09-S17 Birch\n✓ In panel\n\nOak 2 · QA-MRN-1002-FX8P\n\nQA TC-09-S17 Dahlia"
+    },
+    {
+      "id": "s17-rescan-sheet (U3): all 4 already known, none new",
+      "ok": true,
+      "detail": "4 already in All Residents · 0 new · 0 to review"
+    },
+    {
+      "id": "s17-today (U2/U3): each of the four is on today, once",
+      "ok": true,
+      "detail": "QA TC-09-S17 Alder | QA TC-09-S17 Birch | QA TC-09-S17 Dahlia | QA TC-09-S17 Elm"
+    },
+    {
+      "id": "s17-today (U8): no Hospital patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "s17-all (U3 'never duplicating'): each exists once in All Residents",
+      "ok": true,
+      "detail": "QA Resident FX8P | QA TC-09-S17 Alder | QA TC-09-S17 Birch | QA TC-09-S17 Dahlia | QA TC-09-S17 Elm"
+    },
+    {
+      "id": "backend (U3): each name exactly once",
+      "ok": true,
+      "detail": "QA TC-09-S17 Alder×1, QA TC-09-S17 Birch×1, QA TC-09-S17 Dahlia×1, QA TC-09-S17 Elm×1"
+    },
+    {
+      "id": "backend (U3): Alder still keeps Oak 1A and its MRN after two scans",
+      "ok": true,
+      "detail": "{\"_creationTime\":1792432881504.64,\"_id\":\"m57e2sf6br0gvp2zgdf1mjky9d8gj9kk\",\"addedAt\":\"2026-10-19T18:01:21.504Z\",\"age\":86,\"diagnosis\":\"Post-acute rehab\",\"encType\":\"new\",\"encTypeDay\":\"2026-10-20\",\"importantPoints\":[{\"createdAt\":1792432881504,\"id\":\"qa-alder-1\",\"source\":\"manual\",\"text\":\"QA point Alder\"}],\"inTodaysSession\":true,\"mrn\":\"QA-MRN-1001-FX8P\",\"name\":\"QA TC-09-S17 Alder\",\"status\":\"pending\",\"unit\":\"Oak 1A\",\"userId\":\"jd779cnp2179j4x9qjqfa047tx8gk1wc\"}"
+    },
+    {
+      "id": "setup: two scripted reads",
+      "ok": true,
+      "detail": "2"
+    }
+  ],
+  "data": {
+    "first-sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n4 residents found — tap to include\n\n2 already in All Residents · 2 new · 0 to review\n\nQA TC-09-S17 Alder\n✓ In panel\n\nOak 1 · QA-MRN-1001-FX8P\n\nQA TC-09-S17 Birch\n✓ In panel\n\nOak 2 · QA-MRN-1002-FX8P\n\nQA TC-09-S17 Dahlia\n＋ New\n\nOak 3 · QA-FX8P-03\n\nQA TC-09-S17 Elm\n＋ New\n\nOak 4 · QA-FX8P-04\n\nAdd 4 to Today's Visits",
+    "rescan-sheet": "Scan Resident List\n\nPhoto the nursing director's list — replaces today's visits\n\n4 residents found — tap to include\n\n4 already in All Residents · 0 new · 0 to review\n\nQA TC-09-S17 Alder\n✓ In panel\n\nOak 1 · QA-MRN-1001-FX8P\n\nQA TC-09-S17 Birch\n✓ In panel\n\nOak 2 · QA-MRN-1002-FX8P\n\nQA TC-09-S17 Dahlia\n✓ In panel\n\nOak 3 · QA-FX8P-03\n\nQA TC-09-S17 Elm\n✓ In panel\n\nOak 4 · QA-FX8P-04\n\nAdd 4 to Today's Visits",
+    "review-asked": {
+      "first": [],
+      "second": []
+    },
+    "backend": [
+      {
+        "name": "QA Resident FX8P",
+        "unit": "Maple 4",
+        "mrn": "QA-FX8P-10",
+        "inToday": false
+      },
+      {
+        "name": "QA TC-09-S17 Alder",
+        "unit": "Oak 1A",
+        "mrn": "QA-MRN-1001-FX8P",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S17 Birch",
+        "unit": "Oak 2",
+        "mrn": "QA-MRN-1002-FX8P",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S17 Dahlia",
+        "unit": "Oak 3",
+        "mrn": "QA-FX8P-03",
+        "inToday": true
+      },
+      {
+        "name": "QA TC-09-S17 Elm",
+        "unit": "Oak 4",
+        "mrn": "QA-FX8P-04",
+        "inToday": true
+      }
+    ],
+    "cleanup": {
+      "hospital": 1,
+      "nursingHome": 5
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "TC-10/S26": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:45:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Summary fault rows: R1 failure, R2 partial summary, R3 tasks, R4 clean",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-pre-tc10-s26-faults.spec.ts. R1, R3, R4 pass (both modes). R2 FAILS both modes: a summary that comes back without background and studies → Hospital '✓ Note saved. Auto-updated: vitals, labs, hospital course' with yesterday's one-liner and chest X-ray still on the panel and no notice; Nursing Home shows no message over yesterday's one-liner and study (B05 partial-summary half). Recorded: Nursing Home shows no success message after a clean Save (decision).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc10-s26-pre-hosp-r2.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc10-s26-pre-nh-r2.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc10-s26-pre-hosp-r1.json"
+    ],
+    "bug": {
+      "id": "B05",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-10 ER 6; TFA-92588 AC 8; TFA-94745 state 3",
+      "quote": "If the summary call fails: the raw dictation is kept, an explicit error shows, and Generate is disabled",
+      "mixed": true,
+      "statedPart": "R1 summary failure (text kept, error, Generate disabled), R2 yesterday's one-liner never shown as today's, R4"
+    }
+  }
+}

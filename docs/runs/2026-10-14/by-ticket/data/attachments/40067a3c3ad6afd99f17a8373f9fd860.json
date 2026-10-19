@@ -1,0 +1,15 @@
+{
+  "OAT-04/S15": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "code read against the 10-14 retention-lane run (not re-run: the retention lane needs its isolated stack, built with convex env set and a worktree of the app repo, which package agents may not do)",
+    "title": "No copy survives: after the 37 h purge, search every field and table for the aged values",
+    "detail": "B19 re-check on 8b4be94a: STILL (ticket TFA-94699 in progress). The four items that failed on 10-14 have no purge on 8b4be94a either: convex/lib/lifecycle.ts has no branch for vitalsHistory, labsHistory or the course ledger, and the handoffs table (convex/schema.ts handoffs) has no expiry; the only server sweep added since is Important Points (convex/crons.ts, 12 h). git diff e02167f..8b4be94a -- convex/lib/lifecycle.ts changes only the Important Points branch, noteJob and billing fields. Scope P1 (ours).",
+    "evidence": [
+      "runs/2026-10-14-local/retention/evidence/OAT-04-S15.json"
+    ]
+  }
+}

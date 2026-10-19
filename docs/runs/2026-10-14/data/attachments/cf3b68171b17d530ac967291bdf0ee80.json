@@ -1,0 +1,115 @@
+{
+  "ref": "TC-13/S20",
+  "title": "TC-13/S20 double tap on Save & Extract, and the same note pasted twice",
+  "dataset": "pn-extract",
+  "target": "dev",
+  "at": "2026-10-19T18:34:03.389Z",
+  "cells": [
+    {
+      "name": "double tap: no error left on screen",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "double tap: one note saved (previousNotes = 1)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "count": 1
+      }
+    },
+    {
+      "name": "double tap: radiology has one chest X-ray row and one TTE row (2)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "Chest X-ray Oct 9: bilateral pleural effusions",
+        "TTE Oct 10: EF 30%"
+      ]
+    },
+    {
+      "name": "double tap: the background is not doubled (no line of it repeated)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "reason": "74-year-old man with CKD stage 3 admitted Oct 9 for volume overload. Evaluation on Oct 10-11 revealed reduced cardiac function and bilateral pleural effusions on imaging.\n• Volume overload (admitted Oct 9)\n• CKD stage 3\n• Reduced ejection fraction (EF 30%)\n• Bilateral pleural effusions",
+        "repeated": []
+      }
+    },
+    {
+      "name": "double tap: how often 'CKD stage 3' appears in the background (narrative + issue bullet)",
+      "kind": "record",
+      "ok": null,
+      "detail": 2
+    },
+    {
+      "name": "same note twice: no error left on screen",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "same note twice: radiology still has 2 rows (no duplicate chest X-ray / TTE)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "Chest X-ray Oct 9: bilateral pleural effusions",
+        "TTE Oct 10: EF 30%"
+      ]
+    },
+    {
+      "name": "same note twice: the background is not doubled (no line of it repeated)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "reason": "74-year-old man with CKD stage 3 admitted Oct 9 for volume overload. Evaluation on Oct 10-11 revealed reduced cardiac function and bilateral pleural effusions on imaging.\n• Volume overload (admitted Oct 9)\n• CKD stage 3\n• Reduced ejection fraction (EF 30%)",
+        "repeated": []
+      }
+    },
+    {
+      "name": "same note twice: background before / after the second paste",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "first": "74-year-old man with CKD stage 3 admitted Oct 9 for volume overload. Evaluation on Oct 10-11 revealed reduced cardiac function and bilateral pleural effusions on imaging.\n• Volume overload (admitted Oct 9)\n• CKD stage 3\n• Reduced ejection fraction (EF 30%)\n• Bilateral pleural effusions",
+        "second": "74-year-old man with CKD stage 3 admitted Oct 9 for volume overload. Evaluation on Oct 10-11 revealed reduced cardiac function and bilateral pleural effusions on imaging.\n• Volume overload (admitted Oct 9)\n• CKD stage 3\n• Reduced ejection fraction (EF 30%)"
+      }
+    },
+    {
+      "name": "same note twice: no duplicated prior-note issue in Important Points",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "same note twice: no duplicated issue bullet under the background",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "• Volume overload (admitted Oct 9)",
+        "• CKD stage 3",
+        "• Reduced ejection fraction (EF 30%)"
+      ]
+    },
+    {
+      "name": "how many prior notes are stored / listed after two identical pastes (not specified)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "stored": 2,
+        "toggles": 2
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-13-S20-double-tap.png",
+    "evidence/TC-13-S20-same-note-twice.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-13-S20-double-tap.png": 0,
+    "evidence/TC-13-S20-same-note-twice.png": 0
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "name": "pr-tc17-s04",
+  "at": "2026-10-19T20:02:31.393Z",
+  "checks": [
+    {
+      "id": "U2 'Ask About the Encounter or Patient' at the top of Post-Round opens the Ask sheet",
+      "ok": true,
+      "detail": "sheet 'Ask About This Patient' shown"
+    },
+    {
+      "id": "A meds toggle: Mark Encounter Complete opens the Pending Tasks prompt",
+      "ok": true,
+      "detail": "Pending Tasks 4 tasks still pending QA-A1 repeat BMP in the morning QA-A2 call ID about blood cultures QA-A3 PT evaluation QA-A-OLD follow up echo read What would you like to do with these pending tas"
+    },
+    {
+      "id": "A prompt lists A's three open tasks from today, not A's done task and none of B's",
+      "ok": true,
+      "detail": "Pending Tasks 4 tasks still pending QA-A1 repeat BMP in the morning QA-A2 call ID about blood cultures QA-A3 PT evaluation QA-A-OLD follow up echo read What would you like to do with these pending tasks? Delete Pending Tasks & Complete Keep Tasks & Mark Complete Cancel — go back"
+    },
+    {
+      "id": "A prompt: the carried-over QA-A-OLD (Q11, recorded)",
+      "ok": true,
+      "detail": "listed",
+      "recordOnly": true
+    },
+    {
+      "id": "the prompt offers the three choices",
+      "ok": true,
+      "detail": "ion QA-A-OLD follow up echo read What would you like to do with these pending tasks? Delete Pending Tasks & Complete Keep Tasks & Mark Complete Cancel — go back"
+    },
+    {
+      "id": "A Cancel completes nothing: status note-ready, tasks unchanged, button still there",
+      "ok": true,
+      "detail": "status note-ready; tasks QA-A-D order sputum culture [done] | QA-A-OLD follow up echo read | QA-A1 repeat BMP in the morning | QA-A2 call ID about blood cultures | QA-A3 PT evaluation"
+    },
+    {
+      "id": "A note toggle: the prompt opens again",
+      "ok": true,
+      "detail": "Pending Tasks 4 tasks still pending QA-A1 repeat BMP in the morning QA-A2 call ID about blood cultures QA-A3 PT evaluati"
+    },
+    {
+      "id": "A after Delete: status post-rounded, A's today-open tasks gone, its done task kept",
+      "ok": true,
+      "detail": "status post-rounded; tasks QA-A-D order sputum culture [done]"
+    },
+    {
+      "id": "A after Delete: QA-A-OLD (Q11, recorded)",
+      "ok": true,
+      "detail": "deleted",
+      "recordOnly": true
+    },
+    {
+      "id": "A tasks toggle after Delete: only the done task, 'Encounter Complete', no Mark Encounter Complete",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S04 Hosp A\n\nRoom QAWJ · 70y · QA-WJ6D\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n0 PENDING TAS"
+    },
+    {
+      "id": "B is untouched by A's Delete (database): two open, one done, note-ready",
+      "ok": true,
+      "detail": "note-ready; QA-B PT evaluation today | QA-B call cardiology about the echo | QA-B urine culture reviewed [done]"
+    },
+    {
+      "id": "B tasks toggle before its choice: both open tasks and the done task, '2 pending tasks', Mark Encounter Complete present",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S04 Hosp B\n\nRoom QAHQ · 70y · QA-HQLG\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n2 PENDING TAS"
+    },
+    {
+      "id": "B note toggle: B's own note, not A's, and no task text",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S04 Hosp B\n\nRoom QAHQ · 70y · QA-HQLG\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated"
+    },
+    {
+      "id": "B prompt lists B's two open tasks only",
+      "ok": true,
+      "detail": "Pending Tasks 2 tasks still pending QA-B PT evaluation today QA-B call cardiology about the echo What would you like to do with these pending tasks? Delete Pending Tasks & Complete Keep Tasks & Mark Complete Cancel — go back"
+    },
+    {
+      "id": "B after Keep: 'Encounter Complete' on tasks and meds with no Mark Encounter Complete button",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S04 Hosp B\n\nRoom QAHQ · 70y · || This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S04 Hosp B\n\nRoom QAHQ · 70y ·"
+    },
+    {
+      "id": "B after Keep (database): post-rounded, both open tasks still open",
+      "ok": true,
+      "detail": "post-rounded; QA-B PT evaluation today | QA-B call cardiology about the echo | QA-B urine culture reviewed [done]"
+    },
+    {
+      "id": "B after a reload: still complete with both open tasks",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S04 Hosp B\n\nRoom QAHQ · 70y · QA-HQLG\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n2 PENDING TAS"
+    },
+    {
+      "id": "guard: no model action reached the server",
+      "ok": true,
+      "detail": "20 socket calls"
+    }
+  ],
+  "data": {
+    "aBefore": [
+      "QA-A-D order sputum culture [done]",
+      "QA-A-OLD follow up echo read",
+      "QA-A1 repeat BMP in the morning",
+      "QA-A2 call ID about blood cultures",
+      "QA-A3 PT evaluation"
+    ],
+    "askSheet": "Ask About This Patient sheet shown",
+    "aPromptFromMeds": "Pending Tasks 4 tasks still pending QA-A1 repeat BMP in the morning QA-A2 call ID about blood cultures QA-A3 PT evaluation QA-A-OLD follow up echo read What would you like to do with these pending tasks? Delete Pending Tasks & Complete Keep Tasks & Mark Complete Cancel — go back",
+    "aAfterDelete": [
+      "QA-A-D order sputum culture [done]"
+    ],
+    "socket": [
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation rounding:completeEncounter forwarded",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation rounding:completeEncounter forwarded",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded"
+    ]
+  }
+}

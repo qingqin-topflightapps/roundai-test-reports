@@ -1,0 +1,17 @@
+{
+  "TC-19/S25": {
+    "status": "failed",
+    "ranAt": "2026-10-19T21:17:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U68 (scripts/dev/run-unit.sh U68 2026-10-20-rb2): 12 live Generates (6 Hospital + 6 Nursing Home) on charts whose tracker rows are the fixture's, oracle verdict 'Fail'",
+    "title": "The generated note reflects the tracker: held/stopped from rows, restarted not 'held', Vikram's examples clean, dictated units kept (6 Hospital + 6 Nursing Home)",
+    "detail": "B21 re-check on 8b4be94a (live Haiku): CHANGED. The garbled copy is gone: NH-1 no longer carries 'At bedtime as needed held… Maintain held' and NH-3 now names metoprolol (both failed on 10-14, both pass); 11 of 12 checkpoints pass. New failure, NH-4: the tracker row is 'Vancomycin 1.25 g IV q12h', Stopped · Oct 11 (AKI); the note's assessment says the AKI 'prompted discontinuation of vancomycin', but the plan writes '3. Vancomycin 1.25 g IV q12h remains held since October 11 due to acute kidney injury; reassess for reinitiation' and the course line 'vancomycin held' — a stopped drug written as held (the oracle's 'stopped | discontinued' check fails; 'discontinuation' appears only in the assessment). Stated: TFA-92597 AC 4 'Note plan and med section reflect the tracker'. One live run, not a pool.",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U68.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u68/s25-nh-4.md",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u68/s25-nh-4.png"
+    ]
+  }
+}

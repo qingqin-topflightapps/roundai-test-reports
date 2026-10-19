@@ -1,0 +1,17 @@
+{
+  "TC-19/S11": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:07:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev dataset rb2-meds-s11 (copy of meds-s11, 22 charts 'QA DS1-rb2-meds-s11', deleted after: 22 deleted, 0 left, no other row changed); Nursing Home encounter path = Generate (server job), waited on the job's own aiCallLog row",
+    "title": "Encounter/visit path edges: 0/1/15 rows, two changes at once, each step class in Nursing Home, and rows dated on earlier days",
+    "detail": "B06 re-check on 8b4be94a (live Haiku): STILL, same three failures as 10-14 out of 13 judged fixtures (10 pass). B-1-dose 'Furosemide down to 20 IV twice daily.': the pre-round path renames the row 'Furosemide 20 milligrams IV twice daily' (pass) but Hospital Save & Extract leaves 'Furosemide 40 mg IV BID' tagged 'Changed · Oct 20' with the reason only (UAT TC-19 ER 4: 'A dose change renames the row and keeps history'). N-dose (Nursing Home visit, server job) 'Amlodipine up to 10 daily': the row stays 'Amlodipine 5 mg daily', tagged 'Started · Oct 19' instead of Changed; the date is the server's UTC day while the physician's day is Oct 20 (see candidate rb2-C1). R-3 (pre-round): a stopped vancomycin mentioned in passing ('level was high before we stopped it') becomes 'Held · Oct 20'. Recorded: B-0 / B-15 held. The Nursing Home job logs one aiCallLog row ('notes.generateNote'); its extraction has no row of its own.",
+    "evidence": [
+      "runs/2026-10-14-dev/datasets-rb2/rb2-meds-s11/evidence/TC-19-S11.json",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-meds-s11/evidence/TC-19-S11-last-chart.png",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-meds-s11/cleanup.json"
+    ]
+  }
+}

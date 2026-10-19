@@ -1,0 +1,16 @@
+{
+  "TC-19/S07": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:47:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U40 (scripts/dev/run-unit.sh U40 2026-10-20-rb2), oracle verdict 'Fail (known)'",
+    "title": "Hospital, live: pre-round list seeds the tracker, then one encounter with a hold, a dose change, a one-time dose, an imperative start and a continue, saved twice on the same text",
+    "detail": "B06 re-check on 8b4be94a (live): STILL. s07-cp3: after the encounter 'furosemide down to 20' the Medication Tracker still reads 'Furosemide 40' and has no row with 20 (UAT TC-19 ER 4 / TFA-92597 R7). Every other checkpoint passes now, including s07-cp4 tasks (it failed on 10-14 on the tasks scope) and the apixaban 'Held · <today>' tag; TC-19/S08 (same unit) passes.",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U40.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u40"
+    ]
+  }
+}

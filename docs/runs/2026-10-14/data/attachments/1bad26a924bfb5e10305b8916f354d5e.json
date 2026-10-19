@@ -1,0 +1,105 @@
+{
+  "name": "pr-tc17-s25",
+  "at": "2026-10-19T19:43:41.734Z",
+  "checks": [
+    {
+      "id": "B (clock +24 h, Pacific/Kiritimati) can use the app",
+      "ok": true,
+      "detail": "{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"}"
+    },
+    {
+      "id": "hospital: the wrong-clock browser shows the same note, completion, tasks and Tomorrow's Pre-Round Summary",
+      "ok": true,
+      "detail": "A {\"noteShown\":true,\"complete\":\"Encounter Complete\",\"tomorrow\":\"QA-S25-TOMORROW pneumonia improving, day 4 of ceftriaxone.\",\"tasks\":[\"QA-S25 open task\",\"QA-S25 done task\"],\"pending\":\"1 PENDING TASK\"} | B {\"noteShown\":true,\"complete\":\"Encounter Complete\",\"tomorrow\":\"QA-S25-TOMORROW pneumonia improving, day 4 of ceftriaxone.\",\"tasks\":[\"QA-S25 open task\",\"QA-S25 done task\"],\"pending\":\"1 PENDING TASK\"}"
+    },
+    {
+      "id": "hospital: the edit is saved",
+      "ok": true,
+      "detail": "QA-S25-TOMORROW edited on the wrong clock (hospital)."
+    },
+    {
+      "id": "hospital: nextPreRoundSummaryAt is within 1 min of server time (UAT 3.8)",
+      "ok": false,
+      "detail": "stored 2026-10-20T19:43:39.821Z; skew vs server 86400 s"
+    },
+    {
+      "id": "snf: the wrong-clock browser shows the same note, completion, tasks and Tomorrow's Pre-Round Summary",
+      "ok": true,
+      "detail": "A {\"noteShown\":true,\"complete\":\"Visit Complete\",\"tomorrow\":\"QA-S25-TOMORROW PT twice daily, family meeting Friday.\",\"tasks\":[\"QA-S25 open task\",\"QA-S25 done task\"],\"pending\":\"1 PENDING TASK\"} | B {\"noteShown\":true,\"complete\":\"Visit Complete\",\"tomorrow\":\"QA-S25-TOMORROW PT twice daily, family meeting Friday.\",\"tasks\":[\"QA-S25 open task\",\"QA-S25 done task\"],\"pending\":\"1 PENDING TASK\"}"
+    },
+    {
+      "id": "snf: the edit is saved",
+      "ok": true,
+      "detail": "QA-S25-TOMORROW edited on the wrong clock (snf)."
+    },
+    {
+      "id": "snf: nextPreRoundSummaryAt is within 1 min of server time (UAT 3.8)",
+      "ok": false,
+      "detail": "stored 2026-10-20T19:43:41.637Z; skew vs server 86400 s"
+    }
+  ],
+  "data": {
+    "A-right-clock": {
+      "hospital": {
+        "noteShown": true,
+        "complete": "Encounter Complete",
+        "tomorrow": "QA-S25-TOMORROW pneumonia improving, day 4 of ceftriaxone.",
+        "tasks": [
+          "QA-S25 open task",
+          "QA-S25 done task"
+        ],
+        "pending": "1 PENDING TASK"
+      },
+      "snf": {
+        "noteShown": true,
+        "complete": "Visit Complete",
+        "tomorrow": "QA-S25-TOMORROW PT twice daily, family meeting Friday.",
+        "tasks": [
+          "QA-S25 open task",
+          "QA-S25 done task"
+        ],
+        "pending": "1 PENDING TASK"
+      }
+    },
+    "B-access": {
+      "signedOutByClock": true,
+      "uiSignIn": "reached-app"
+    },
+    "hospital-saved": {
+      "summary": "QA-S25-TOMORROW edited on the wrong clock (hospital).",
+      "nextPreRoundSummaryAt": "2026-10-20T19:43:39.821Z",
+      "serverBefore": "2026-10-19T19:43:39.770Z",
+      "serverAfter": "2026-10-19T19:43:40.481Z",
+      "skewSeconds": 86400
+    },
+    "snf-saved": {
+      "summary": "QA-S25-TOMORROW edited on the wrong clock (snf).",
+      "nextPreRoundSummaryAt": "2026-10-20T19:43:41.637Z",
+      "serverBefore": "2026-10-19T19:43:41.588Z",
+      "serverAfter": "2026-10-19T19:43:41.720Z",
+      "skewSeconds": 86400
+    },
+    "B-wrong-clock": {
+      "hospital": {
+        "noteShown": true,
+        "complete": "Encounter Complete",
+        "tomorrow": "QA-S25-TOMORROW pneumonia improving, day 4 of ceftriaxone.",
+        "tasks": [
+          "QA-S25 open task",
+          "QA-S25 done task"
+        ],
+        "pending": "1 PENDING TASK"
+      },
+      "snf": {
+        "noteShown": true,
+        "complete": "Visit Complete",
+        "tomorrow": "QA-S25-TOMORROW PT twice daily, family meeting Friday.",
+        "tasks": [
+          "QA-S25 open task",
+          "QA-S25 done task"
+        ],
+        "pending": "1 PENDING TASK"
+      }
+    }
+  }
+}

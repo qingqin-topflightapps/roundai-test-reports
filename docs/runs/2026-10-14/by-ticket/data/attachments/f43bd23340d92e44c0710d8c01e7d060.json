@@ -1,0 +1,26 @@
+{
+  "TC-22/S25": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "CODEREVIEW",
+    "title": "Task prompt vs. the prototype and TFA-92592 AC 3",
+    "detail": "Code read on 8b4be94a: convex/ai/prompts/library/v1/tasks/system.md unchanged since 43c38a4f (git diff empty) and still excludes 'monitoring/trending instructions … future conditional considerations', which TFA-92592 AC 3 (ready for QA) says must become tasks. Dev on this build drops them (see TC-22/S07).",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-22-S25.json"
+    ],
+    "bug": {
+      "id": "N22",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "TFA-92592 AC 13; TFA-94229 AC 1",
+      "quote": "Prompts, templates, and clinical rules match the prototype unless Vikram approved a change",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

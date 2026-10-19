@@ -1,0 +1,21 @@
+{
+  "TC-23/S15": {
+    "status": "record-only",
+    "ranAt": "2026-10-19T22:00:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "AGENT",
+    "title": "Dictated bare temperature: kept as dictated on the panel; the model summary adds °C",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). Unit U38 (run-plan-dev.json). As on 43c38a4f: the Vitals panel and the stored value keep the bare '38' in both modes (this ticket's half passes) and the first Save Note keeps 38.4 / 37.9 °C; the model-written admission summary says 'temperature 38°C overnight', which the unit's wider scan flags. Whether adding the unit counts as an invented unit is decision D2 (Preston): needs a person, not counted. Recorded: each pre-round Save Note took about 30–60 s on dev (agent's notes).",
+    "evidence": [
+      "runs/2026-10-20-rb1-dev/units/U38.verdict.json",
+      "runs/2026-10-20-rb1-dev/generateddev/20261020rb1dev/u38/notes.md"
+    ],
+    "bug": {
+      "id": "D2",
+      "now": "still"
+    },
+    "scope": "P0"
+  }
+}

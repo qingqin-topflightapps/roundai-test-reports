@@ -1,0 +1,23 @@
+{
+  "TC-22/S23": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:20:30Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Browser clock a day off: a task closed by Save & Extract is stamped with server time",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-ext-tc22-s23-clock.spec.ts: browser clock +24 h and −24 h, both modes: doneAt within 0 min of server time (the client no longer stamps doneAt; convex/lib/taskStamps.ts), and the Hospital task stays under Finished Tasks after the lifecycle run. On 43c38a4f doneAt followed the device clock and the −24 h task was cleaned away. This fixes the task-done-time part of B18 only.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s23-b43-rounding-minus24h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s23-b43-rounding-plus24h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s23-b43-snf-minus24h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s23-b43-snf-plus24h.json"
+    ],
+    "bug": {
+      "id": "B18",
+      "now": "fixed"
+    },
+    "scope": "P0"
+  }
+}

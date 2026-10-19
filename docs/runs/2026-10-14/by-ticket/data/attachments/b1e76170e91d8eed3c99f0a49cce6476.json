@@ -1,0 +1,44 @@
+{
+  "name": "rb1-tc10-s26-pre-nh-r2",
+  "at": "2026-10-19T19:45:16.120Z",
+  "checks": [
+    {
+      "id": "R2 (U6 'yesterday's panels are never silently reused'): yesterday's one-liner / study are not shown under a plain success with no notice naming them",
+      "ok": false,
+      "detail": "success=''; one-liner shown=true; study shown=true; notice=false; stamps={\"lastUpdatedAt\":\"2026-10-19T19:44:44.404Z\",\"radiologyUpdatedAt\":\"2026-10-18T19:44:43.835Z\"}"
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "R2": {
+      "okMsg": "",
+      "oneLinerShown": true,
+      "studyShown": true,
+      "noticeNamingThem": false,
+      "updatedLines": [
+        "Saved 4:44 AM · Oct 20"
+      ],
+      "stamps": {
+        "lastUpdatedAt": "2026-10-19T19:44:44.404Z",
+        "radiologyUpdatedAt": "2026-10-18T19:44:43.835Z"
+      },
+      "stored": {
+        "reason": "Here for rehab after left hip ORIF.",
+        "radiology": [
+          "Left hip X-ray: hardware in place"
+        ]
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 531
+      }
+    ]
+  }
+}

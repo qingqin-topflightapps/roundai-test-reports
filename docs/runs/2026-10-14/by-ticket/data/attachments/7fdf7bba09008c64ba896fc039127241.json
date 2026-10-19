@@ -1,0 +1,1807 @@
+{
+  "ref": "TC-14/S15",
+  "title": "TC-14/S15 bedside checks stay reminders and doses already given are documented as done, 5 Hospital + 5 Nursing Home (live note model)",
+  "dataset": "rb1-gen-notes-b",
+  "target": "dev",
+  "at": "2026-10-19T19:40:00.928Z",
+  "cells": [
+    {
+      "name": "H-11 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-11 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nThe patient reports voiding on his own since the catheter was removed.\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTesting Results\n\nNot provided\n\nAssessment\n\n78-year-old patient with a history of urinary retention who presented with this condition requiring catheterization. The catheter has been removed and the patient is now voiding spontaneously. Blood pressure has improved to the 130s following reinitiation of metoprolol this morning. The clinical picture is consistent with resolution of acute urinary retention with successful catheter removal and resumption of normal voiding.\n\nPlan\n\n1. Continue tamsulosin for urinary retention management.\n2. Metoprolol tartrate 25 mg PO BID — restarted this morning; monitor blood pressure response.\n3. Check for dysuria this afternoon.\n4. Monitor voiding pattern and post-void residual as clinically indicated.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude restarted|resumed",
+            "ok": true,
+            "detail": "found 'restarted'"
+          },
+          {
+            "id": "mustNotInclude reports dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude complains of dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude dysuria present",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude positive for dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude denies dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude without dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude restart metoprolol",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude resume metoprolol",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude start metoprolol",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-12 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "mustInclude gave|given|received|administered: absent"
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-12 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTesting Results\n\nMagnesium 1.5.\n\nAssessment\n\nPatient is a 64-year-old who underwent cardiac catheterization yesterday, which demonstrated no new blockage. Hypomagnesemia was identified with a magnesium level of 1.5, treated with intravenous magnesium supplementation this morning. The patient is stable postprocedure and appropriate for discharge planning.\n\nPlan\n\n1. Discharge planning for tomorrow.\n2. Groin site check after lunch to assess for any access-site complications.\n3. Continue home medications and outpatient cardiology follow-up as previously arranged.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude gave|given|received|administered",
+            "ok": false,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude groin site is",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude groin site was",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude groin site clean",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude groin site without",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no hematoma",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude without hematoma",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no ooze",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude give magnesium",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude administer magnesium",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude replete magnesium",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude magnesium 2 g IV daily",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-13 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-13 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nThe patient reports that the cough is looser.\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination not documented in today's dictation.\n\nTesting Results\n\nNot provided\n\nAssessment\n\nPatient is a 59-year-old with community-acquired pneumonia. She was started on doxycycline this morning for atypical coverage. The cough is improving in character. She will continue with physical therapy and ambulation as tolerated with orthostatic precautions.\n\nPlan\n\n1. Continue doxycycline for community-acquired pneumonia.\n2. Orthostatic vital signs to be checked before ambulation with physical therapy.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude started|initiated|began",
+            "ok": true,
+            "detail": "found 'started'"
+          },
+          {
+            "id": "mustNotInclude orthostatic vital signs were",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude orthostatics were",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude orthostatics negative",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude orthostatics positive",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude not orthostatic",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no orthostatic",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude start doxycycline",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude initiate doxycycline",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude begin doxycycline",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude dose not specified",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude not specified in dictation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-14 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "mustInclude gave|given|received|administered: absent"
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-14 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTesting Results\n\nNot provided\n\nAssessment\n\nPatient is an 81-year-old with a history of congestive heart failure who presented with exacerbation. Diuresis was initiated this morning with intravenous furosemide 40 mg at 6:00 AM, producing 900 mL of urine output. The clinical picture is consistent with ongoing volume overload requiring continued diuretic management and monitoring of renal function and electrolytes.\n\nPlan\n\n1. Congestive heart failure exacerbation — continue diuresis; recheck basic metabolic panel tomorrow.\n2. Monitor for calf pain with ambulation and reassess lower extremity status.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude gave|given|received|administered",
+            "ok": false,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude denies calf pain",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no calf pain",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude calf pain present",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude reports calf pain",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude calf tenderness",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude give furosemide",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude administer furosemide",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "H-15 (hospital, soap): every judged check holds",
+      "kind": "record",
+      "ok": false,
+      "detail": {
+        "failed": [
+          "mustNotInclude restart apixaban: in: Restart apixaban 5 mg PO BID for atrial fibrillation anticoagulation; restarted this morning post-procedure."
+        ],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "H-15 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nNot provided\n\nObjective\n\nVital Signs: Heart rate in the 70s on the monitor.\n\nPhysical Examination: Not documented in today's dictation.\n\nTesting Results\n\nNot provided\n\nAssessment\n\nPatient is a 73-year-old with a history of atrial fibrillation who underwent ablation this admission. Apixaban was held perioperatively on October 19 for the procedure. Heart rate is now in the 70s on the monitor, suggesting adequate rate control in the immediate postoperative period. The plan is to restart anticoagulation and monitor for any procedural complications.\n\nPlan\n\n1. Restart apixaban 5 mg PO BID for atrial fibrillation anticoagulation; restarted this morning post-procedure.\n2. Listen for a murmur tomorrow to assess for any procedural complications.\n3. Continue monitoring heart rate and rhythm on telemetry.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude restarted|resumed",
+            "ok": true,
+            "detail": "found 'restarted'"
+          },
+          {
+            "id": "mustNotInclude murmur heard",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no murmur",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude murmur noted",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude without murmur",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude systolic murmur",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude murmur is",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude restart apixaban",
+            "ok": false,
+            "detail": "in: Restart apixaban 5 mg PO BID for atrial fibrillation anticoagulation; restarted this morning post-procedure."
+          },
+          {
+            "id": "mustNotInclude resume apixaban",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-11 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-11 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nMetoprolol tartrate restarted this morning after being held on October 6 for low blood pressure.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today. Blood pressure 132/70 documented with restart of metoprolol.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nHypertension — metoprolol tartrate restarted this morning; blood pressure 132/70. Previously held October 6 due to soft blood pressure.\n\nHip fracture rehabilitation — resident walking with physical therapy twice daily.\n\nMedication Changes\n\nMetoprolol tartrate 25 mg PO BID — restarted this morning (previously held October 6).\n\nAssessment and Plan\n\nHypertension: Blood pressure 132/70 on restart of metoprolol tartrate 25 mg PO BID. Continue current dose and monitor blood pressure response.\n\nHip fracture rehabilitation: Resident ambulating with physical therapy twice daily. Continue current therapy schedule.\n\nMonitoring: Check for dysuria at the next visit.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude restarted|resumed",
+            "ok": true,
+            "detail": "found 'restarted'"
+          },
+          {
+            "id": "mustNotInclude reports dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude complains of dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude dysuria present",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude positive for dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude denies dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude without dysuria",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude restart metoprolol",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude resume metoprolol",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-12 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-12 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nNot documented\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today\n\nFunctional Status Update\n\nNot dictated\n\nActive Medical Problems\n\nKnee osteoarthritis — resident reports pain improved to 3 out of 10 following one-time acetaminophen 650 by mouth administered this morning at 7 AM.\n\nMedication Changes\n\nAcetaminophen 650 by mouth given one time this morning for knee pain.\n\nAssessment and Plan\n\nKnee osteoarthritis — pain controlled with acetaminophen. Continue current pain management. Check heels for redness tomorrow.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude gave|given|received|administered",
+            "ok": true,
+            "detail": "found 'given'"
+          },
+          {
+            "id": "mustNotInclude heels are",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude heels without",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude heels intact",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no redness",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no erythema",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude skin intact",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude give acetaminophen",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude administer acetaminophen",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-13 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-13 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nNot documented\n\nCurrent Vitals and Weight Trend\n\nVital signs not dictated today.\n\nFunctional Status Update\n\nNot dictated\n\nActive Medical Problems\n\nLeft leg cellulitis: Started on cephalexin this morning. Aspiration risk: Resident eating soft foods; swallow precautions to be monitored at lunch.\n\nMedication Changes\n\nCephalexin initiated this morning for left leg cellulitis.\n\nAssessment and Plan\n\nLeft leg cellulitis: Resident started on cephalexin this morning. Continue cephalexin and monitor for clinical response. Aspiration risk: Resident tolerating soft foods. Continue swallow precautions and monitor closely at meals, particularly at lunch. Reassess tolerance and advance diet as tolerated if swallowing remains safe.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude started|initiated|began",
+            "ok": true,
+            "detail": "found 'started'"
+          },
+          {
+            "id": "mustNotInclude swallow is",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude swallowing without",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no coughing",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no signs of aspiration",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude swallow intact",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude start cephalexin",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude initiate cephalexin",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude begin cephalexin",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude dose not specified",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude not specified in dictation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-14 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-14 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nNot documented\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today. Weight gain of 1.5 kg noted, prompting diuretic intervention.\n\nFunctional Status Update\n\nNot dictated\n\nActive Medical Problems\n\nChronic heart failure: resident received one dose of furosemide 20 mg by mouth this morning in response to 1.5 kg weight gain. Orthopnea assessment pending tonight.\n\nMedication Changes\n\nFurosemide 20 mg by mouth given this morning for fluid overload.\n\nAssessment and Plan\n\nChronic heart failure with acute fluid retention. Resident gained 1.5 kg and was treated with a single dose of furosemide 20 mg orally this morning. Daily weights will be monitored going forward. Orthopnea will be assessed this evening to evaluate response to diuresis and guide further management.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude gave|given|received|administered",
+            "ok": true,
+            "detail": "found 'given'"
+          },
+          {
+            "id": "mustNotInclude denies orthopnea",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no orthopnea",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude reports orthopnea",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude orthopnea present",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude give furosemide",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude administer furosemide",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-15 (nursing-home, snf-progress): every judged check holds",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "failed": [],
+        "recorded": [
+          "S16 recordOnly withheld: absent",
+          "S16 recordOnly 100 Example Street: absent",
+          "S16 recordOnly 555-0100: absent",
+          "S16 recordOnly 200 Sample Avenue: absent",
+          "S16 recordOnly 555-0101: absent"
+        ]
+      }
+    },
+    {
+      "name": "N-15 note",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nAspirin restarted this morning following podiatry procedure.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nDiabetic foot wound: Left foot wound status post podiatry procedure. Blood sugars in the 140s.\n\nMedication Changes\n\nAspirin 81 mg PO daily — restarted this morning.\n\nAssessment and Plan\n\nDiabetic foot wound: Resident underwent podiatry procedure and has been restarted on aspirin. Blood glucose control remains suboptimal at 140s. Will reassess left foot wound on Friday.\n\nPlan\n\n1. Reassess left foot wound on Friday.\n2. Continue monitoring blood glucose levels.\n3. Continue aspirin 81 mg PO daily.",
+        "diag": [],
+        "checks": [
+          {
+            "id": "mustInclude restarted|resumed",
+            "ok": true,
+            "detail": "found 'restarted'"
+          },
+          {
+            "id": "mustNotInclude wound is",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude wound bed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude granulation",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude no drainage",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude wound clean",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude wound healing",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude restart aspirin",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "mustNotInclude resume aspirin",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "stock normal (U5, shared list)",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S16 mustNotInclude {ADDRESS}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {PHONE}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude {NAME}",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today's date]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Today",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Date",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Insert",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 mustNotInclude [Patient name]",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly withheld",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 100 Example Street",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0100",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 200 Sample Avenue",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S16 recordOnly 555-0101",
+            "ok": null,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude yesterday",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude electronically signed",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signed by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude signature",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude [Physician",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 mustNotInclude dictated by",
+            "ok": true,
+            "detail": "absent"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*(date|signed|signature|physician|provider|attending)\\b.{0,40}:",
+            "ok": true,
+            "detail": "none"
+          },
+          {
+            "id": "S17 noLineMatches ^\\s*_{3,}\\s*$",
+            "ok": true,
+            "detail": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "U7 / U8 (TFA-92592 AC 7, AC 8): 7/10 notes keep the bedside check a reminder and the given dose done; 9/10 (3.2 reading; Q2 asks whether one miss fails)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "failing": [
+          {
+            "id": "H-12",
+            "failed": [
+              "mustInclude gave|given|received|administered: absent"
+            ],
+            "note": "Subjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTesting Results\n\nMagnesium 1.5.\n\nAssessment\n\nPatient is a 64-year-old who underwent cardiac catheterization yesterday, which demonstrated no new blockage. Hypomagnesemia was identified with a magnesium level of 1.5, treated with intravenous magnesium supplementation this morning. The patient is stable postprocedure and appropriate for discharge planning.\n\nPlan\n\n1. Discharge planning for tomorrow.\n2. Groin site check after lunch to assess for any access-site complications.\n3. Continue home medications and outpatient cardiology follow-up as previously arranged."
+          },
+          {
+            "id": "H-14",
+            "failed": [
+              "mustInclude gave|given|received|administered: absent"
+            ],
+            "note": "Subjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination: not documented in today's dictation.\n\nTesting Results\n\nNot provided\n\nAssessment\n\nPatient is an 81-year-old with a history of congestive heart failure who presented with exacerbation. Diuresis was initiated this morning with intravenous furosemide 40 mg at 6:00 AM, producing 900 mL of urine output. The clinical picture is consistent with ongoing volume overload requiring continued diuretic management and monitoring of renal function and electrolytes.\n\nPlan\n\n1. Congestive heart failure exacerbation — continue diuresis; recheck basic metabolic panel tomorrow.\n2. Monitor for calf pain with ambulation and reassess lower extremity status."
+          },
+          {
+            "id": "H-15",
+            "failed": [
+              "mustNotInclude restart apixaban: in: Restart apixaban 5 mg PO BID for atrial fibrillation anticoagulation; restarted this morning post-procedure."
+            ],
+            "note": "Subjective\n\nNot provided\n\nObjective\n\nVital Signs: Heart rate in the 70s on the monitor.\n\nPhysical Examination: Not documented in today's dictation.\n\nTesting Results\n\nNot provided\n\nAssessment\n\nPatient is a 73-year-old with a history of atrial fibrillation who underwent ablation this admission. Apixaban was held perioperatively on October 19 for the procedure. Heart rate is now in the 70s on the monitor, suggesting adequate rate control in the immediate postoperative period. The plan is to restart anticoagulation and monitor for any procedural complications.\n\nPlan\n\n1. Restart apixaban 5 mg PO BID for atrial fibrillation anticoagulation; restarted this morning post-procedure.\n2. Listen for a murmur tomorrow to assess for any procedural complications.\n3. Continue monitoring heart rate and rhythm on telemetry."
+          }
+        ]
+      }
+    },
+    {
+      "name": "strict reading (Q2: no partial credit)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "allPass": false,
+        "count": "7/10"
+      },
+      "ref": "Q2"
+    }
+  ],
+  "shots": [],
+  "error": "Error: TC-14/S15: judged cells that failed"
+}

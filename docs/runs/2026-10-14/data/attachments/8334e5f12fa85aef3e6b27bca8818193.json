@@ -1,0 +1,18 @@
+{
+  "TC-17/S02": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Edit -> copy -> re-edit -> re-copy, cancel, toggle round-trip, local hosts only, both contexts",
+    "detail": "pr-tc17-s02-copy.spec.ts, two variants (note stored as sections = how 8b4be94a stores a generated note; note stored as plain text). Stated parts (UAT TC-17 steps 4-5, TFA-92595 AC 3, UAT 3.3) pass in both variants and both modes: a1/a3/a5/a6 each Copy to EMR holds the whole latest saved note and never the replaced marker; a4 a cancelled edit is not copied; a7 only localhost:6473 / 127.0.0.1:4510/4511 contacted while copying. Our own added check a2 (an unsaved draft survives note -> tasks -> note) fails in the sections variant only: the section editor stays open but is reset to the saved text, the draft QA-EDIT-2 is lost (plain-text variant keeps it). Not in the UAT or the ticket: QA-improvement candidate, not a bug. Tripwire clean.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s02-sections.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s02-plain.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s02-sections-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s02-sections-nursing-home.png"
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "ref": "TC-19/S27-d-reload",
+  "title": "TC-19/S27-d-reload B03 re-check (d-reload) Hospital: a hold dictated before Generate survives a reload once the note is stored (live AI)",
+  "dataset": "rb2-gen",
+  "target": "dev",
+  "at": "2026-10-19T18:57:53.525Z",
+  "cells": [
+    {
+      "name": "at the reload",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "noteStored": true,
+        "noteJob": null,
+        "rows": [
+          {
+            "name": "Apixaban 5 mg BID",
+            "status": "active"
+          }
+        ]
+      }
+    },
+    {
+      "name": "job",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 8833,
+          "providerMs": 8582,
+          "appMs": 251,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        },
+        "noteJob": null
+      }
+    },
+    {
+      "name": "rows after the job",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        {
+          "name": "Apixaban 5 mg BID",
+          "status": "held",
+          "changeType": "held",
+          "changeDate": "Oct 19",
+          "changedNote": "Hold the apixaban, procedure tomorrow."
+        }
+      ]
+    },
+    {
+      "name": "B03 (d-reload): after the reload the drug is Held · today",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "row": {
+          "name": "Apixaban 5 mg BID",
+          "status": "held",
+          "changeType": "held",
+          "changeDate": "Oct 19",
+          "changedNote": "Hold the apixaban, procedure tomorrow."
+        },
+        "device": "Oct 20",
+        "utc": "Oct 19"
+      }
+    },
+    {
+      "name": "which day the hold carries (device day vs the server's UTC day, D10)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "changeDate": "Oct 19",
+        "device": "Oct 20",
+        "utc": "Oct 19"
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-19-S27-d-reload-b03-d-reload-after-reload.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-19-S27-d-reload-b03-d-reload-after-reload.png": 0
+  }
+}

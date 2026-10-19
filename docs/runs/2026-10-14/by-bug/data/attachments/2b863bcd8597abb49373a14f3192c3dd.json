@@ -1,0 +1,26 @@
+{
+  "OAT-03/S23": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:00:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "CODEREVIEW",
+    "title": "Mistral and Haiku go through the same Bedrock guardrail; guardrail version pinned",
+    "detail": "Code read on 8b4be94a: convex/ai/providers/ is byte-identical to 43c38a4f (git diff empty), so the 10-14 verdict stands: both models go through internal.ai.providers.bedrock.invoke with one guardrailConfig, but guardrailVersion = process.env.BEDROCK_GUARDRAIL_VERSION ?? \"DRAFT\" (bedrock.ts:123-124). Whether dev sets the variable cannot be read without an admin key.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/OAT-03-S23.json"
+    ],
+    "bug": {
+      "id": "B26",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "TFA-94422 AC 4; UAT OAT-03 ER 3; TFA-92568 AC 13",
+      "quote": "Mistral calls go through the same Bedrock guardrail as Haiku",
+      "mixed": true,
+      "statedPart": "Mistral and Haiku sent with the same guardrail; which AI calls leave without the guardrail (TFA-92568 AC 13)"
+    }
+  }
+}

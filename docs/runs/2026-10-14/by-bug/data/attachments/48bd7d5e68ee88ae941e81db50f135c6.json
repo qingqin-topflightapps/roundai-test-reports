@@ -1,0 +1,78 @@
+{
+  "case": "TC-22-S12",
+  "title": "Generate after Save & Extract runs no second task extraction and leaves the stored tasks exactly as they were (PR #50)",
+  "needs": [
+    "seed",
+    "max-turns",
+    "oracle-count",
+    "oracle-regex",
+    "oracle-scope",
+    "backend-read",
+    "generate"
+  ],
+  "verdict": "Pass",
+  "passed": true,
+  "checkpoints": [
+    {
+      "file": "s12-h-a.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72embpy2bez1602cj3pdxsp58gky3d",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-h-b.md",
+      "verdict": "Pass",
+      "url": "/rounding/js72embpy2bez1602cj3pdxsp58gky3d",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-n-c.md",
+      "verdict": "Pass",
+      "url": "/snf/jx75qygzqm2kp3cans8h091ngx8gjdjx",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "s12-n-d.md",
+      "verdict": "Pass",
+      "url": "/snf/jx75qygzqm2kp3cans8h091ngx8gjdjx",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "T1 / TFA-92585 AC 9: if a check fails, compare backend/h-a.json with h-b.json (n-c with n-d) for what Generate changed, and read diag-b / diag-d for the call that changed it.",
+    "3.9: model / fellBackFrom / providerMs of notes.generateNote in backend/diag-b.json and diag-d.json (record, not judged)."
+  ],
+  "agent": {
+    "turns": 45,
+    "costUsd": 0.28356120000000007,
+    "durationMs": 150452,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-19T17:04:37Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": true
+}

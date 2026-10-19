@@ -1,0 +1,140 @@
+{
+  "name": "te-tc07-s01",
+  "at": "2026-10-19T18:37:00.353Z",
+  "checks": [
+    {
+      "id": "U1: every open task is listed once, under its own patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Hosp Ana Rivera 8em\",\"location\":\"Room 412\",\"tasks\":[{\"text\":\"Repeat BMP in the morning\",\"when\":\"\"},{\"text\":\"Call daughter about discharge plan\",\"when\":\"\"}]},{\"name\":\"QA Hosp Ben Okafor 8em\",\"location\":\"Room 415\",\"tasks\":[{\"text\":\"Order PT evaluation\",\"when\":\"\"}]},{\"name\":\"QA Hosp Cara Lopez 8em\",\"location\":\"Room 7C-14\",\"tasks\":[{\"text\":\"Recheck weight tomorrow\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "U2: one group per patient, each with its location",
+      "ok": true,
+      "detail": "[\"QA Hosp Ana Rivera 8em | Room 412\",\"QA Hosp Ben Okafor 8em | Room 415\",\"QA Hosp Cara Lopez 8em | Room 7C-14\"]"
+    },
+    {
+      "id": "U2: completed tasks at the bottom (below every pending row), each under its own patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Hosp Ben Okafor 8em\",\"location\":\"Room 415\",\"tasks\":[{\"text\":\"Follow up blood cultures\",\"when\":\"Done Oct 20\"}]},{\"name\":\"QA Hosp Cara Lopez 8em\",\"location\":\"Room 7C-14\",\"tasks\":[{\"text\":\"Chest X-ray read\",\"when\":\"Done Oct 20\"}]}]"
+    },
+    {
+      "id": "U5-lite: each completed row says when it was closed ('Done <day>')",
+      "ok": true,
+      "detail": "[[\"Done Oct 20\"],[\"Done Oct 20\"]]"
+    },
+    {
+      "id": "U9: no Email control, no mailto, no share",
+      "ok": true,
+      "detail": "email 0, mailto 0, share 0"
+    },
+    {
+      "id": "U10/no bleed: the other context's patient and task are absent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U3: Copy Text has every open task under its own patient, in groups",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Hosp Ana Rivera 8em\",\"location\":\"Room 412\",\"tasks\":[\"Repeat BMP in the morning\",\"Call daughter about discharge plan\"]},{\"name\":\"QA Hosp Ben Okafor 8em\",\"location\":\"Room 415\",\"tasks\":[\"Order PT evaluation\"]},{\"name\":\"QA Hosp Cara Lopez 8em\",\"location\":\"Room 7C-14\",\"tasks\":[\"Recheck weight tomorrow\"]}]"
+    },
+    {
+      "id": "U3: Copy Text has the completed tasks in a COMPLETED block after the pending groups, each under its patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Hosp Ben Okafor 8em\",\"location\":\"Room 415\",\"tasks\":[\"Follow up blood cultures — Oct 20\"]},{\"name\":\"QA Hosp Cara Lopez 8em\",\"location\":\"Room 7C-14\",\"tasks\":[\"Chest X-ray read — Oct 20\"]}]"
+    },
+    {
+      "id": "G3: no 'undefined' / 'null', no other-context patient in the copy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the ticked task is stored done, stamped by the server at the tick",
+      "ok": true,
+      "detail": "{\"category\":\"plan\",\"createdAt\":\"2026-10-19T15:36:57.476Z\",\"done\":true,\"doneAt\":\"2026-10-19T18:36:58.913Z\",\"id\":\"1700000175344\",\"text\":\"Follow up blood cultures\",\"urgent\":false}"
+    }
+  ],
+  "data": {
+    "screen": {
+      "heading": "Task Review",
+      "subtitle": "4 tasks across 3 patients · Tue, Oct 20",
+      "pending": [
+        {
+          "name": "QA Hosp Ana Rivera 8em",
+          "location": "Room 412",
+          "tasks": [
+            {
+              "text": "Repeat BMP in the morning",
+              "when": ""
+            },
+            {
+              "text": "Call daughter about discharge plan",
+              "when": ""
+            }
+          ]
+        },
+        {
+          "name": "QA Hosp Ben Okafor 8em",
+          "location": "Room 415",
+          "tasks": [
+            {
+              "text": "Order PT evaluation",
+              "when": ""
+            }
+          ]
+        },
+        {
+          "name": "QA Hosp Cara Lopez 8em",
+          "location": "Room 7C-14",
+          "tasks": [
+            {
+              "text": "Recheck weight tomorrow",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA Hosp Ben Okafor 8em",
+          "location": "Room 415",
+          "tasks": [
+            {
+              "text": "Follow up blood cultures",
+              "when": "Done Oct 20"
+            }
+          ]
+        },
+        {
+          "name": "QA Hosp Cara Lopez 8em",
+          "location": "Room 7C-14",
+          "tasks": [
+            {
+              "text": "Chest X-ray read",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ],
+      "finishedCount": 2,
+      "pendingAboveFinished": true,
+      "emailControls": 0,
+      "mailto": 0,
+      "shareControls": 0,
+      "emptyState": null,
+      "sendEnabled": true
+    },
+    "clipboard": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera 8em — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nQA Hosp Ben Okafor 8em — Room 415:\n  • Order PT evaluation\n\nQA Hosp Cara Lopez 8em — Room 7C-14:\n  • Recheck weight tomorrow\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp Ben Okafor 8em — Room 415:\n  ✓ Follow up blood cultures — Oct 20\n\nQA Hosp Cara Lopez 8em — Room 7C-14:\n  ✓ Chest X-ray read — Oct 20",
+    "tickedStored": {
+      "stored": {
+        "category": "plan",
+        "createdAt": "2026-10-19T15:36:57.476Z",
+        "done": true,
+        "doneAt": "2026-10-19T18:36:58.913Z",
+        "id": "1700000175344",
+        "text": "Follow up blood cultures",
+        "urgent": false
+      },
+      "tickAt": 1792435018845
+    }
+  }
+}

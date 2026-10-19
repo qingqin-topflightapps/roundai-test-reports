@@ -1,0 +1,261 @@
+{
+  "name": "rb3-efs-s14-h",
+  "at": "2026-10-19T19:27:37.057Z",
+  "checks": [
+    {
+      "id": "h1: a clear 'no network' message (U9)",
+      "ok": true,
+      "detail": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then."
+    },
+    {
+      "id": "h1: it says the work saves when the connection returns (U9 / U11)",
+      "ok": true,
+      "detail": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then."
+    },
+    {
+      "id": "h1: both lines are on screen (U13)",
+      "ok": true,
+      "detail": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet."
+    },
+    {
+      "id": "h2: both lines still on screen 20 s after Generate (U13)",
+      "ok": true,
+      "detail": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet."
+    },
+    {
+      "id": "h2: a message is on screen (U9 / U11)",
+      "ok": true,
+      "detail": "no network"
+    },
+    {
+      "id": "h2: Generate settled within 20 s, not still 'Generating Note…' (U11)",
+      "ok": false,
+      "detail": "still 'Generating Note…' 20 s after the tap; spinners: Generating Note…"
+    },
+    {
+      "id": "h3: the question is kept (U13)",
+      "ok": true,
+      "detail": "QA-EFS-14 ask while offline"
+    },
+    {
+      "id": "h3: a message is on screen (U9 / U11)",
+      "ok": true,
+      "detail": "no network"
+    },
+    {
+      "id": "h3: Ask settled within 20 s, not still 'Searching…' (U11)",
+      "ok": false,
+      "detail": "still 'Searching…' 20 s after the tap"
+    },
+    {
+      "id": "h4: the pre-round text is kept (U13)",
+      "ok": true,
+      "detail": "QA-EFS-14 pre-round typed offline."
+    },
+    {
+      "id": "h4: a message is on screen (U9 / U11)",
+      "ok": true,
+      "detail": "no network"
+    },
+    {
+      "id": "h4: Save Note settled within 20 s, not still 'Saving & Updating…' (U11)",
+      "ok": false,
+      "detail": "still 'Saving & Updating…' 20 s after the tap"
+    },
+    {
+      "id": "h5: both lines on the Encounter tab after reconnect and reload",
+      "ok": true,
+      "detail": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet."
+    },
+    {
+      "id": "h5: no 'no network' after reconnect",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "h5: line one is on the server (U9)",
+      "ok": true,
+      "detail": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet."
+    },
+    {
+      "id": "h5: line two, typed offline, is on the server after reconnect (U9)",
+      "ok": true,
+      "detail": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet."
+    },
+    {
+      "id": "h6: the pre-round typed offline is on the Pre-Round tab after reload",
+      "ok": true,
+      "detail": "shown"
+    },
+    {
+      "id": "h6: no 'no network' after reconnect",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "h6: the pre-round typed offline is on the server after reconnect (U9)",
+      "ok": true,
+      "detail": "QA-EFS-14 pre-round typed offline."
+    },
+    {
+      "id": "h: no note requested twice (at most one noteJobs:request for the chart)",
+      "ok": true,
+      "detail": "1 noteJobs:request call(s) (refused at the socket); stored note: (none)"
+    },
+    {
+      "id": "h (Q2): the Generate tapped offline ran by itself after reconnect (its request was sent with no new tap)",
+      "ok": true,
+      "detail": "1 noteJobs:request call(s) after reconnect, 0 before",
+      "recordOnly": true
+    },
+    {
+      "id": "h (Q2): the Ask tapped offline ran by itself after reconnect",
+      "ok": true,
+      "detail": "1 askChart call(s) after reconnect",
+      "recordOnly": true
+    },
+    {
+      "id": "h (Q2): the Save Note tapped offline ran by itself after reconnect",
+      "ok": true,
+      "detail": "2 parse call(s) after reconnect (one more tap: true)",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no AI call reached the socket while offline; no unscripted AI call",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/assist:askChart\",\"answered\":\"ok\",\"atMs\":69843,\"conn\":8},{\"udfPath\":\"noteJobs:request\",\"answered\":\"refused-mutation\",\"atMs\":70000,\"conn\":8},{\"udfPath\":\"ai/parsing:parsePreRoundNotes\",\"answered\":\"ok\",\"atMs\":70050,\"conn\":8},{\"udfPath\":\"ai/parsing:extractTasks\",\"answered\":\"ok\",\"atMs\":70101,\"conn\":8},{\"udfPath\":\"ai/parsing:parsePreRoundNotes\",\"answered\":\"ok\",\"atMs\":76908,\"conn\":8},{\"udfPath\":\"ai/parsing:extractTasks\",\"answered\":\"ok\",\"atMs\":76956,\"conn\":8}]"
+    }
+  ],
+  "data": {
+    "h1": {
+      "banner": "No network connection. What you dictate stays on this screen and saves when you’re back online; AI steps can be retried then.",
+      "bannerAfterMs": 2303,
+      "box": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet."
+    },
+    "h2": {
+      "generateButton": "Generating Note…",
+      "spinners": [
+        "Generating Note…"
+      ],
+      "alerts": []
+    },
+    "h3": {
+      "sheet": "Ask About This Patient\nDictate\nSearching…\n\nQUICK QUESTIONS\n\nWhat were today's labs?\nWhat medications is the patient on?\nWhat was in the pre-round note?\nAny urgent pending tasks?\nWhat's the current diagnosis?\nWhat did the patient say about symptoms?",
+      "box": "QA-EFS-14 ask while offline"
+    },
+    "h4": {
+      "box": "QA-EFS-14 pre-round typed offline.",
+      "saveButton": "Saving & Updating…",
+      "alerts": []
+    },
+    "h-reconnect": {
+      "bannerGone": true,
+      "bannerGoneMs": 2795,
+      "afterReconnect": {
+        "noteOnScreen": false,
+        "alerts": [],
+        "screen": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-14 Hosp u0dy\n\nRoom 4B-12 · 72y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nPRE-ROUND NOTES\nSaved 4:27 AM · Oct 20\n📝\nQA-EFS-14 pre-round typed offline.\nEdit\nHOSPITAL COURSE\n\nBACKGROUND SUMMARY\n\nEdit\n\nCOURSE TIMELINE\n\nOct 20:\n\nUpdated 4:27 AM · Oct 20\n\nEdit\nPREVIOUS NOTES\n0/3\nPaste\nPhotograph\n\nExplicitly paste or photograph a prior note, then review and save it. AI extracts its background, active issues, p"
+      },
+      "preRoundBoxBeforeTap": "QA-EFS-14 pre-round typed offline.",
+      "savedOnceMore": true,
+      "callsAnsweredAfterReconnect": [
+        {
+          "udfPath": "ai/assist:askChart",
+          "answered": "ok",
+          "atMs": 69843,
+          "conn": 8
+        },
+        {
+          "udfPath": "noteJobs:request",
+          "answered": "refused-mutation",
+          "atMs": 70000,
+          "conn": 8
+        },
+        {
+          "udfPath": "ai/parsing:parsePreRoundNotes",
+          "answered": "ok",
+          "atMs": 70050,
+          "conn": 8
+        },
+        {
+          "udfPath": "ai/parsing:extractTasks",
+          "answered": "ok",
+          "atMs": 70101,
+          "conn": 8
+        },
+        {
+          "udfPath": "ai/parsing:parsePreRoundNotes",
+          "answered": "ok",
+          "atMs": 76908,
+          "conn": 8
+        },
+        {
+          "udfPath": "ai/parsing:extractTasks",
+          "answered": "ok",
+          "atMs": 76956,
+          "conn": 8
+        }
+      ]
+    },
+    "h5": {
+      "box": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet.",
+      "serverEncounterNotes": "QA-EFS-14 line one: lungs clear. QA-EFS-14 line two: walked 100 feet."
+    },
+    "h6": {
+      "serverPreRoundNotes": "QA-EFS-14 pre-round typed offline.",
+      "preRoundError": null
+    },
+    "socket": [
+      {
+        "udfPath": "ai/assist:askChart",
+        "answered": "ok",
+        "atMs": 69843,
+        "conn": 8
+      },
+      {
+        "udfPath": "noteJobs:request",
+        "answered": "refused-mutation",
+        "atMs": 70000,
+        "conn": 8
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 70050,
+        "conn": 8
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 70101,
+        "conn": 8
+      },
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 76908,
+        "conn": 8
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 76956,
+        "conn": 8
+      }
+    ],
+    "socketEvents": [
+      "299 conn 1 open",
+      "4558 conn 1 cut",
+      "5987 conn 2 refused (offline)",
+      "7188 conn 3 refused (offline)",
+      "12640 conn 4 refused (offline)",
+      "23655 conn 5 refused (offline)",
+      "43511 conn 6 refused (offline)",
+      "62318 conn 7 refused (offline)",
+      "69835 restore",
+      "69838 conn 8 open",
+      "70000 mutation noteJobs:request refused",
+      "81062 conn 9 open"
+    ]
+  }
+}

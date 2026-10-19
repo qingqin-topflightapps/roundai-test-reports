@@ -1,0 +1,18 @@
+{
+  "TC-12/S10": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:51:30.105Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "dev dataset lane (scripts/datasets/run.sh ip-dev-a / ip-dev-b, datasets/ip-dev-*.spec.ts) on <dev address> at 8b4be94a, account <dev account>, rows 'QA DS1-ip-dev-* ' deleted after (cleanup: 10 + 4 deleted, 0 remaining, 0 foreign changed), live model (Haiku 4.5, no fallback)",
+    "title": "AI Check Hospital: a shorthand point is stored exactly as typed after Save Note (5 charts)",
+    "detail": "5/5 Hospital variants byte-for-byte and the only point after a live Save Note (abbreviations, '@ 1500', '↓', '??', '→', 'DONT'). parsePreRoundNotes on Haiku 4.5, 4.0-6.0 s each. With S11: 10/10 for the UAT AI Check (3.2 bar 9/10). Judged cells 6/6.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-a/evidence/TC-12-S10-H01-editor-after-save.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-a/evidence/TC-12-S10.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-a/cleanup.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-a/pw.log"
+    ]
+  }
+}

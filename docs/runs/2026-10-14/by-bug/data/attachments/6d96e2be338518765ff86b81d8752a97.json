@@ -1,0 +1,15 @@
+{
+  "TC-13/S06": {
+    "status": "failed",
+    "ranAt": "2026-10-20T04:55:00+09:00",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pn",
+    "method": "PW",
+    "title": "AI Check: extraction grounding over 10 synthetic prior notes (9/10)",
+    "detail": "Dev, app path (paste → Save & Extract → stored previousNotes[].extraction), live Haiku, all 10 logged with model/providerMs/durationMs (max 7.1 s). 8/10 after rescoring H-01 (its only miss was 'pleural effusion' vs the reply's 'pleural effusions': a word-boundary artifact of our check). Fails: H-03 key_issues 'COPD exacerbation with hypoxemia (SpO2 89% on 3 L …)' and background narrating tachycardia/tachypnea (89%, RR 24 present) — TFA-92591 AC 2 'Vitals are never taken from a prior note'; key_issues become bullets under the Hospital Course background, so the vital reaches the chart. N-02 (gated Q4) background 'Weight declined from 70 kg to 68.2 kg … Fever of 37.8°C … Blood pressure 132/78'. Below 9/10 even counting N as gated.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-pn/pn-extract/evidence/TC-13-S06.json"
+    ]
+  }
+}

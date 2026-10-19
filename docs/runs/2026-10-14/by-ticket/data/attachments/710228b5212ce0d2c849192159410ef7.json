@@ -1,0 +1,200 @@
+{
+  "ref": "TC-13/S09",
+  "title": "TC-13/S09 prior-note labs × date label × today's lab of the same name",
+  "dataset": "pn-extract",
+  "target": "dev",
+  "at": "2026-10-19T18:33:45.477Z",
+  "cells": [
+    {
+      "name": "given: today's Creatinine 1.6 and Potassium 4.0 are on the chart",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "name": "Creatinine",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "1.6"
+        },
+        {
+          "name": "Potassium",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "4.0"
+        }
+      ]
+    },
+    {
+      "name": "note A: Save & Extract finished without an error line",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "A × same name (server): today's Creatinine is still 1.6",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "name": "Creatinine",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "1.6"
+        },
+        {
+          "name": "Potassium",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "4.0"
+        }
+      ]
+    },
+    {
+      "name": "A × same name (server): the prior creatinine 1.1 is not in today's labs",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "name": "Creatinine",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "1.6"
+        },
+        {
+          "name": "Potassium",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "4.0"
+        }
+      ]
+    },
+    {
+      "name": "A × new name (server): the prior BNP 1250 is not in today's labs",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "name": "Creatinine",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "1.6"
+        },
+        {
+          "name": "Potassium",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "4.0"
+        }
+      ]
+    },
+    {
+      "name": "A × same name (screen): the Labs panel still shows 1.6 and no 1.1 / 1250",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "labs": "LABS Edit Creatinine 1.6 Today Potassium 4.0 Today"
+      }
+    },
+    {
+      "name": "A: the prior values are kept with the note (stored extraction holds creatinine 1.1 and BNP 1250)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "name": "creatinine",
+          "trend": "",
+          "value": "1.1"
+        },
+        {
+          "name": "BNP",
+          "trend": "",
+          "value": "1250"
+        }
+      ]
+    },
+    {
+      "name": "A (screen): the prior values show with the note's date ('Prior note · Oct 11' beside 1.1 and 1250)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "priorNoteLabs": "PRIOR NOTE LABS Historical values from explicitly imported notes. creatinine 1.1 Prior note · Oct 11 BNP 1250 Prior note · Oct 11",
+        "todayLabel": "Oct 20"
+      }
+    },
+    {
+      "name": "Q11: labsUpdatedAt after import A (an import does not restart the labs clock if unchanged)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "before": "2026-10-19T18:20:06.718Z",
+        "after": "2026-10-19T18:20:06.718Z",
+        "unchanged": true
+      }
+    },
+    {
+      "name": "note B: Save & Extract finished without an error line",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "error": ""
+      }
+    },
+    {
+      "name": "B × same name (server): today's Creatinine is still 1.6, and 1.0 / 2.1 / 1250 are not in today's labs",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "name": "Creatinine",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "1.6"
+        },
+        {
+          "name": "Potassium",
+          "recordedAt": "2026-10-19T18:20:06.718Z",
+          "value": "4.0"
+        }
+      ]
+    },
+    {
+      "name": "B (screen): the Labs panel still shows 1.6 and none of 1.0 / 2.1 / 1250",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "labs": "LABS Edit Creatinine 1.6 Today Potassium 4.0 Today"
+      }
+    },
+    {
+      "name": "B: the undated note is never dated today (its date label is not today's day)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dateLabel": "Date unknown",
+        "dateDefaulted": true,
+        "priorNoteLabs": "PRIOR NOTE LABS Historical values from explicitly imported notes. creatinine 1.1 Prior note · Oct 11 BNP 1250 Prior note · Oct 11 creatinine 1.0 Prior note · Date unknown lactate 2.1 Prior note · Date unknown",
+        "todayLabel": "Oct 20"
+      }
+    },
+    {
+      "name": "Q3: the date shown for note B's labs (main before: today; 8b4be94a: 'Date unknown')",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "dateLabel": "Date unknown",
+        "priorNoteLabs": "PRIOR NOTE LABS Historical values from explicitly imported notes. creatinine 1.1 Prior note · Oct 11 BNP 1250 Prior note · Oct 11 creatinine 1.0 Prior note · Date unknown lactate 2.1 Prior note · Date unknown",
+        "noteToggle": "Note · Date unknown"
+      }
+    },
+    {
+      "name": "Q11: labsUpdatedAt after import B",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "before": "2026-10-19T18:20:06.718Z",
+        "after": "2026-10-19T18:20:06.718Z"
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-13-S09-after-a.png",
+    "evidence/TC-13-S09-after-b.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-13-S09-after-a.png": 0,
+    "evidence/TC-13-S09-after-b.png": 0
+  }
+}

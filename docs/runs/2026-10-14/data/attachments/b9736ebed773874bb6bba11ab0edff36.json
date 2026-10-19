@@ -1,0 +1,200 @@
+{
+  "ref": "TC-13/S12",
+  "part": "main",
+  "at": "2026-10-19T19:21:06.625Z",
+  "method": "seeded day 1 at now − 20 h (no Generate, no model), applyLifecycle as on page load, then the chart's tabs",
+  "build": "8b4be94a",
+  "cells": [
+    {
+      "cell": "seed: Important Points as stored (a point older than 12 h is dropped at write on 8b4be94a)",
+      "expected": "recorded",
+      "actual": [],
+      "verdict": "record"
+    },
+    {
+      "cell": "U5: pre-round box empty at 20 h (12 h)",
+      "expected": "cleared",
+      "actual": "",
+      "verdict": "pass",
+      "req": "U5",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U5: Important Points gone at 20 h (12 h)",
+      "expected": "gone",
+      "actual": [],
+      "verdict": "pass",
+      "req": "U5",
+      "gate": "TFA-92590 (ready for qa)"
+    },
+    {
+      "cell": "U6: yesterday's encounter gone from the working column (18 h)",
+      "expected": "cleared",
+      "actual": "",
+      "verdict": "pass",
+      "req": "U6",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U6: yesterday's encounter listed as yesterday's transcript",
+      "expected": "in transcriptHistory",
+      "actual": "[{\"archivedAt\":\"2026-10-19T19:20:49.703Z\",\"entries\":[{\"speaker\":\"Dr\",\"text\":\"QA-ENC-DAY2 Breathing easier, plan oral diuretic.\",\"time\":\"\"}],\"label\":\"Oct 18 · Encounter notes\"}]",
+      "verdict": "pass",
+      "req": "U6",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U6: yesterday's note gone from the working column (18 h)",
+      "expected": "cleared",
+      "actual": "",
+      "verdict": "pass",
+      "req": "U6",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U7: vitals, labs, imaging, both meds and the open task still on the chart at 20 h",
+      "expected": "present",
+      "actual": {
+        "vitals": {
+          "bp": "128/76"
+        },
+        "labs": [
+          {
+            "name": "Cr",
+            "recordedAt": "2026-10-18T23:20:49.560Z",
+            "value": "1.1"
+          }
+        ],
+        "radiology": [
+          "QA-CXR-DAY2 chest X-ray: bilateral effusions"
+        ],
+        "meds": [
+          "Metoprolol tartrate 25 mg PO BID",
+          "Lisinopril 10 mg PO daily"
+        ],
+        "tasks": [
+          "QA-TASK-DAY2 BMP tomorrow AM"
+        ]
+      },
+      "verdict": "pass",
+      "req": "U7",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U12: the one-line summary is still on the chart (nextPreRoundSummary)",
+      "expected": "kept",
+      "actual": "QA-SUM-DAY2 CHF exacerbation improving on IV diuresis; plan oral diuretic.",
+      "verdict": "pass",
+      "req": "U12"
+    },
+    {
+      "cell": "the pasted prior note at 20 h (window not specified, Q15)",
+      "expected": "recorded",
+      "actual": 1,
+      "verdict": "record"
+    },
+    {
+      "cell": "U5 screen: no pre-round text in the Pre-Round box",
+      "expected": "not shown",
+      "actual": false,
+      "verdict": "pass",
+      "req": "U5",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U6 screen: yesterday's encounter not in the Encounter tab's working box",
+      "expected": "not in the working box",
+      "actual": null,
+      "verdict": "pass",
+      "req": "U6",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U6 screen: yesterday's note text viewable read-only as the previous note",
+      "expected": "note text visible somewhere on the chart",
+      "actual": false,
+      "verdict": "fail",
+      "req": "U6",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "Q1: whether yesterday's note is a Previous Notes entry or template",
+      "expected": "recorded",
+      "actual": [
+        "Note · Oct 11"
+      ],
+      "verdict": "record"
+    },
+    {
+      "cell": "U7 screen: BP shows its recorded date (day 1), not Today",
+      "expected": "128/76 with Oct 19",
+      "actual": "128/76\n",
+      "verdict": "pass",
+      "req": "U7",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U7 screen: Cr 1.1 shows its recorded date (day 1), not Today",
+      "expected": "Cr 1.1 with Oct 19",
+      "actual": "Cr\n\n1.1\n\nOct 19\n\nPRIOR NOTE LABS\n\nHistoric",
+      "verdict": "pass",
+      "req": "U7",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U7 screen: imaging and open task dates (per-item dates; PR #100 era)",
+      "expected": "recorded",
+      "actual": {
+        "imaging": "QA-CXR-DAY2 chest X-ray: bilateral effusions",
+        "task": "QA-TASK-DAY2 BMP tomorrow AM"
+      },
+      "verdict": "record"
+    },
+    {
+      "cell": "U7 screen: the active metoprolol row reads 'not mentioned today' (from 18 h)",
+      "expected": "label shown",
+      "actual": {
+        "found": true,
+        "label": true,
+        "text": "active\n\nMetoprolol tartrate 25 mg PO BID\n\nnot mentioned today"
+      },
+      "verdict": "pass",
+      "req": "U7",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U7 screen: the held lisinopril row is not labelled 'not mentioned today'",
+      "expected": "no label",
+      "actual": {
+        "found": true,
+        "label": false,
+        "text": "held\n\nLisinopril 10 mg PO daily\n\nHeld"
+      },
+      "verdict": "pass",
+      "req": "U7",
+      "gate": "blocked: TFA-94699 in progress"
+    },
+    {
+      "cell": "U12 screen: the one-line summary shows on A's Pre-Round with no upload ('Carried Forward from Last Finished Note')",
+      "expected": "card with the summary",
+      "actual": "CARRIED FORWARD FROM LAST FINISHED NOTE\n",
+      "verdict": "pass",
+      "req": "U12"
+    },
+    {
+      "cell": "3.4: every clinical term of the summary appears in yesterday's note (seeded here: not a model output)",
+      "expected": "recorded (both seeded)",
+      "actual": {
+        "summary": "QA-SUM-DAY2 CHF exacerbation improving on IV diuresis; plan oral diuretic."
+      },
+      "verdict": "record"
+    },
+    {
+      "cell": "B's Pre-Round shows none of A's summary",
+      "expected": "not shown",
+      "actual": false,
+      "verdict": "pass",
+      "req": "U12"
+    }
+  ]
+}

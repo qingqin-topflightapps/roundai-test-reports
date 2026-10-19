@@ -1,0 +1,18 @@
+{
+  "OAT-06/S10": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Per-day row: wrong-zone device and across the device's midnight (an2-oat06-s10-daily R3-R4)",
+    "bug": "B18",
+    "bugNow": "still",
+    "stated": "UAT 3.8 (server time)",
+    "detail": "R3: a device in Pacific/Kiritimati 3 days ahead files its rows under its own day (2026-10-23) instead of the server's 2026-10-20. R4: an encounter opened before the device's midnight and completed after it is filed over two days, untimed. completeEncounter is server-side now but still takes day: localDay() from the device (PostRoundTab.tsx:99-105). R1-R2 (Generate) not re-run locally.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s10-r3-r4.json"
+    ]
+  }
+}

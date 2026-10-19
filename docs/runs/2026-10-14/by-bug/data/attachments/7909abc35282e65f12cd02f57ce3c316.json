@@ -1,0 +1,559 @@
+{
+  "ref": "TC-07/S09",
+  "title": "TC-07/S09 Generate and Regenerate leave the stored tasks and the Task Export exactly as they were, in both contexts",
+  "dataset": "te-gen",
+  "target": "dev",
+  "at": "2026-10-19T19:50:18.318Z",
+  "cells": [
+    {
+      "name": "h9: given — three tasks (two open, one done)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000009101",
+          "text": "Repeat BMP in the morning",
+          "done": false,
+          "doneAt": null,
+          "doneVisit": null
+        },
+        {
+          "id": "1700000009102",
+          "text": "Order PT evaluation",
+          "done": true,
+          "doneAt": "2026-10-19T18:40:21.686Z",
+          "doneVisit": null
+        },
+        {
+          "id": "1700000009103",
+          "text": "Call daughter about discharge plan",
+          "done": false,
+          "doneAt": null,
+          "doneVisit": null
+        }
+      ]
+    },
+    {
+      "name": "h9: a note was generated",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "chars": 816
+      }
+    },
+    {
+      "name": "h9: after Generate the stored tasks are identical (ids, text, done, doneAt, doneVisit) — nothing added, closed, reopened or removed, though the text answers the open tasks",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": [
+          {
+            "id": "1700000009101",
+            "text": "Repeat BMP in the morning",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009102",
+            "text": "Order PT evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009103",
+            "text": "Call daughter about discharge plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ],
+        "after": [
+          {
+            "id": "1700000009101",
+            "text": "Repeat BMP in the morning",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009102",
+            "text": "Order PT evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009103",
+            "text": "Call daughter about discharge plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "h9: Task Export after Generate shows the same rows as before",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Repeat BMP in the morning",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Call daughter about discharge plan",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Order PT evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        },
+        "after": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Repeat BMP in the morning",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Call daughter about discharge plan",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Order PT evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "h9: Regenerate made a new note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "first": "2026-10-19T19:40:39.329Z",
+        "second": "2026-10-19T19:43:07.132Z"
+      }
+    },
+    {
+      "name": "h9: after Regenerate the stored tasks are still identical",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": [
+          {
+            "id": "1700000009101",
+            "text": "Repeat BMP in the morning",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009102",
+            "text": "Order PT evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009103",
+            "text": "Call daughter about discharge plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ],
+        "after": [
+          {
+            "id": "1700000009101",
+            "text": "Repeat BMP in the morning",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009102",
+            "text": "Order PT evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009103",
+            "text": "Call daughter about discharge plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "h9: Task Export after Regenerate shows the same rows",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Repeat BMP in the morning",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Call daughter about discharge plan",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Order PT evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        },
+        "after": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Repeat BMP in the morning",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Call daughter about discharge plan",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Hosp Lou Hart",
+              "text": "Order PT evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "n9: given — three tasks (two open, one done)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000009201",
+          "text": "Recheck INR Friday",
+          "done": false,
+          "doneAt": null,
+          "doneVisit": null
+        },
+        {
+          "id": "1700000009202",
+          "text": "PT re-evaluation",
+          "done": true,
+          "doneAt": "2026-10-19T18:40:21.686Z",
+          "doneVisit": null
+        },
+        {
+          "id": "1700000009203",
+          "text": "Update family on care plan",
+          "done": false,
+          "doneAt": null,
+          "doneVisit": null
+        }
+      ]
+    },
+    {
+      "name": "n9: a note was generated",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "chars": 829
+      }
+    },
+    {
+      "name": "n9: after Generate the stored tasks are identical (ids, text, done, doneAt, doneVisit) — nothing added, closed, reopened or removed, though the text answers the open tasks",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": [
+          {
+            "id": "1700000009201",
+            "text": "Recheck INR Friday",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009202",
+            "text": "PT re-evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009203",
+            "text": "Update family on care plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ],
+        "after": [
+          {
+            "id": "1700000009201",
+            "text": "Recheck INR Friday",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009202",
+            "text": "PT re-evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009203",
+            "text": "Update family on care plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "n9: Task Export after Generate shows the same rows as before",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Recheck INR Friday",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Update family on care plan",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Recheck INR",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Order TSH",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "PT re-evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        },
+        "after": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Recheck INR Friday",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Update family on care plan",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Recheck INR",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Order TSH",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "PT re-evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "n9: Regenerate made a new note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "first": "2026-10-19T19:45:36.911Z",
+        "second": "2026-10-19T19:48:01.162Z"
+      }
+    },
+    {
+      "name": "n9: after Regenerate the stored tasks are still identical",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": [
+          {
+            "id": "1700000009201",
+            "text": "Recheck INR Friday",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009202",
+            "text": "PT re-evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009203",
+            "text": "Update family on care plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ],
+        "after": [
+          {
+            "id": "1700000009201",
+            "text": "Recheck INR Friday",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009202",
+            "text": "PT re-evaluation",
+            "done": true,
+            "doneAt": "2026-10-19T18:40:21.686Z",
+            "doneVisit": null
+          },
+          {
+            "id": "1700000009203",
+            "text": "Update family on care plan",
+            "done": false,
+            "doneAt": null,
+            "doneVisit": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "n9: Task Export after Regenerate shows the same rows",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Recheck INR Friday",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Update family on care plan",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Recheck INR",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Order TSH",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "PT re-evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        },
+        "after": {
+          "pending": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Recheck INR Friday",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "Update family on care plan",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Recheck INR",
+              "when": ""
+            },
+            {
+              "who": "QA DS1-te-gen Resident Ida Novak",
+              "text": "Order TSH",
+              "when": ""
+            }
+          ],
+          "finished": [
+            {
+              "who": "QA DS1-te-gen Resident Mae Holt",
+              "text": "PT re-evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-07-S09-h9-after-generate.png",
+    "evidence/TC-07-S09-h9-after-regenerate.png",
+    "evidence/TC-07-S09-n9-after-generate.png",
+    "evidence/TC-07-S09-n9-after-regenerate.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-07-S09-h9-after-generate.png": 0,
+    "evidence/TC-07-S09-h9-after-regenerate.png": 0,
+    "evidence/TC-07-S09-n9-after-generate.png": 0,
+    "evidence/TC-07-S09-n9-after-regenerate.png": 0
+  }
+}

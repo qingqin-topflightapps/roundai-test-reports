@@ -1,0 +1,76 @@
+{
+  "ref": "TC-13/S13",
+  "title": "TC-13/S13 the one-line summary of the finished note reaches the next pre-round with no import",
+  "dataset": "pn-gen",
+  "target": "dev",
+  "at": "2026-10-19T19:29:55.670Z",
+  "cells": [
+    {
+      "name": "given: a note was generated on the chart (S26 ran first)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "noteChars": 408
+      }
+    },
+    {
+      "name": "AC 5: the finished note left a one-line summary for the next pre-round (nextPreRoundSummary)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "summary": "Oct 19: 74-year-old with shortness of breath reports improved breathing; continue diuresis",
+        "at": "2026-10-19T19:27:43.147Z"
+      }
+    },
+    {
+      "name": "AC 5: Pre-Round shows 'Carried Forward from Last Finished Note' with that summary, with no paste or photo",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "shown": "CARRIED FORWARD FROM LAST FINISHED NOTE Oct 19: 74-year-old with shortness of breath reports improved breathing; continue diuresis This one-line summary carries automatically. Full prior notes appear only after you paste or photograph them."
+      }
+    },
+    {
+      "name": "AC 6: the summary did not bring the stored (unmarked) prior note in: still no source, nothing extracted",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "source": null,
+          "extracted": false
+        }
+      ]
+    },
+    {
+      "name": "the summary of the import chart too (S26 chart)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "summary": "Oct 19: 74-year-old with HFrEF and CKD stage 3 admitted with volume overload; dyspnea improved on IV diuretics; continuing furosemide with daily creatinine monitoring"
+      }
+    },
+    {
+      "name": "3.4: the summary's words against the note (recorded; the judge is grading)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "summary": "Oct 19: 74-year-old with shortness of breath reports improved breathing; continue diuresis",
+        "noteHead": "Subjective\n\nThe patient reports breathing is easier.\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination not documented in today's dictation.\n\nTesting Results\n\nNot provided.\n\nAssessment\n\nPatient is a 74-year-old with shortness of breath. The patient reports improvement in breathing. Continue diuresis as the management approach.\n\nPlan\n\n1. Continue diuresis for shortness of breath management."
+      }
+    },
+    {
+      "name": "the summary is not shown on another chart (unless that chart's own)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "otherHasIt": false
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-13-S13-carry-forward.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-13-S13-carry-forward.png": 0
+  }
+}

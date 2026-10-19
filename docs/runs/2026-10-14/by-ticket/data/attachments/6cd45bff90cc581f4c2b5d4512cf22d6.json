@@ -1,0 +1,27 @@
+{
+  "TC-22/S10": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:28:50Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Long Save & Extract: a result after character 1,200",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. Same spec. Hospital passes (the whole 1,269 characters sent; BMP closes). Nursing Home FAILS: Save & Extract sends 1,200 of 1,269 characters, the result sentence at 1,214 is cut, 'follow up BMP' stays open with no message (N24; useSaveAndExtract.ts substring(0, 1200) unchanged).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s10-b43-snf.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s10-b43-rounding.json"
+    ],
+    "bug": {
+      "id": "N24",
+      "now": "still"
+    },
+    "scope": "P1",
+    "stated": {
+      "where": "ours: dictation length boundary",
+      "quote": null,
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

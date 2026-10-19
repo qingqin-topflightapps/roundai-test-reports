@@ -1,0 +1,17 @@
+{
+  "TC-16/S18": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:17:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "local Playwright spec newspec-c/tc16-day-boundaries.spec.ts -g S18",
+    "title": "Wrong device date (3.8), seeded: a phone one day ahead records a line between two writes from a correct device",
+    "detail": "B18 re-check on 8b4be94a: STILL, identical to 10-14: after device A today [A1, A2], device B a day ahead [B1], device A [A1, A2, A3], the Encounter tab shows 'Oct 20 (prior) 2 lines', 'Oct 21 (prior) 1 lines' (tomorrow) and 'Most Recent 3 lines'; A1 and A2 are listed twice. UAT 3.8: a wrong-date device shows the same state (one session, each line once, no row dated tomorrow). Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/rb2-logs/tc16.log",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s18.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s18-encounter.png"
+    ]
+  }
+}

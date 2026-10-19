@@ -1,0 +1,85 @@
+{
+  "ref": "TC-23/S25",
+  "mode": "scripted",
+  "status": "failed",
+  "detail": "Scripted far end, prepareSession stubbed; the recordings kept on the device are the shim's real audio (MediaRecorder). Recovery of the dropped take was failed at the socket so a kept recording exists when the physician signs out; (2b) is an ordinary dictation that landed and was not saved. 3/7 decided cells pass; failing: H (3) after sign-out: the dropped take's kept recording is gone (rows [{\"key\":\"rounding:kx73m4ewg5dhsjfzccq9rq5z7d8gkcfz:pre-round:note\",\"audioBytes\":51853,\"transcriptChars\":0,\"ageMin\":1}]); H (3) after sign-out: the landed, unsaved dictation's recording and transcript are gone (rows [{\"key\":\"rounding:kx7e6b4qegz869t0ckqvbxtbyn8gkj05:pre-round:note\",\"audioBytes\":137149,\"transcriptChars\":70,\"ageMin\":0}]); H (3) after sign-out: no row at all in round-ai-local-audio (rows [{\"key\":\"rounding:kx73m4ewg5dhsjfzccq9rq5z7d8gkcfz:pre-round:note\",\"audioBytes\":51853,\"transcriptChars\":0,\"ageMin\":1},{\"key\":\"rounding:kx7e6b4qegz869t0ckqvbxtbyn8gkj05:pre-round:note\",\"audioBytes\":137149,\"transcriptChars\":70,\"ageMin\":0}]); H (4) second physician: no row from the first physician on the device (rows from the first physician's charts [{\"key\":\"rounding:kx73m4ewg5dhsjfzccq9rq5z7d8gkcfz:pre-round:note\",\"audioBytes\":51853,\"transcriptChars\":0,\"ageMin\":1},{\"key\":\"rounding:kx7e6b4qegz869t0ckqvbxtbyn8gkj05:pre-round:note\",\"audioBytes\":137149,\"transcriptChars\":70,\"ageMin\":0}]); not decided here: 36 h cell (no row older than 36 h) needs the aging helper, not on main",
+  "productIssue": "Dictation audio stays on the device after sign-out. Hospital: an ordinary dictation that landed in the pre-round box and was not saved (its recording and its transcript; the Hospital editor says 'Audio backup is stored on this device until Save Note succeeds') and a dictation that was cut off and not yet recovered (its recording) stay in IndexedDB 'round-ai-local-audio' after the physician signs out, and are still on the device when a second physician signs in on the same browser. Sign-out (SettingsModal) clears only the drafts store and the kept rows carry no user. Breaks TFA-92570 AC 7 / TFA-94745 AC 7 (only the unsaved tail is kept and it is wiped on sign-out) and the UAT 3.6 retention claim.",
+  "cells": [
+    {
+      "id": "H (1) after Save Note: no row for that field",
+      "pass": true,
+      "detail": "landed=true; rows []"
+    },
+    {
+      "id": "H (2) dropped take: at most the one kept recording, keyed to its own patient and field",
+      "pass": true,
+      "detail": "rows [{\"key\":\"rounding:kx73m4ewg5dhsjfzccq9rq5z7d8gkcfz:pre-round:note\",\"audioBytes\":51853,\"transcriptChars\":0,\"ageMin\":0}]; notices [\"A local recording is waiting for transcription.\",\"Local recording recovery failed: [CONVEX A(ai/transcribe:transcribeAudio)] QA harness: recovery transcription not run (scripted mode) Called by client\"]"
+    },
+    {
+      "id": "H (2b) landed, unsaved dictation: what the device keeps (record-only)",
+      "pass": null,
+      "detail": "landed true; row for that field {\"key\":\"rounding:kx7e6b4qegz869t0ckqvbxtbyn8gkj05:pre-round:note\",\"audioBytes\":137149,\"transcriptChars\":70,\"ageMin\":0}; on screen [\"Audio backups stay on this device until the corresponding note or point is saved.\"]"
+    },
+    {
+      "id": "H (3) after sign-out: the dropped take's kept recording is gone",
+      "pass": false,
+      "detail": "rows [{\"key\":\"rounding:kx73m4ewg5dhsjfzccq9rq5z7d8gkcfz:pre-round:note\",\"audioBytes\":51853,\"transcriptChars\":0,\"ageMin\":1}]"
+    },
+    {
+      "id": "H (3) after sign-out: the landed, unsaved dictation's recording and transcript are gone",
+      "pass": false,
+      "detail": "rows [{\"key\":\"rounding:kx7e6b4qegz869t0ckqvbxtbyn8gkj05:pre-round:note\",\"audioBytes\":137149,\"transcriptChars\":70,\"ageMin\":0}]"
+    },
+    {
+      "id": "H (3) after sign-out: no row at all in round-ai-local-audio",
+      "pass": false,
+      "detail": "rows [{\"key\":\"rounding:kx73m4ewg5dhsjfzccq9rq5z7d8gkcfz:pre-round:note\",\"audioBytes\":51853,\"transcriptChars\":0,\"ageMin\":1},{\"key\":\"rounding:kx7e6b4qegz869t0ckqvbxtbyn8gkj05:pre-round:note\",\"audioBytes\":137149,\"transcriptChars\":70,\"ageMin\":0}]"
+    },
+    {
+      "id": "H (4) second physician: no Recover notice",
+      "pass": true,
+      "detail": "notices []; field \"\""
+    },
+    {
+      "id": "H (4) second physician: no row from the first physician on the device",
+      "pass": false,
+      "detail": "rows from the first physician's charts [{\"key\":\"rounding:kx73m4ewg5dhsjfzccq9rq5z7d8gkcfz:pre-round:note\",\"audioBytes\":51853,\"transcriptChars\":0,\"ageMin\":1},{\"key\":\"rounding:kx7e6b4qegz869t0ckqvbxtbyn8gkj05:pre-round:note\",\"audioBytes\":137149,\"transcriptChars\":70,\"ageMin\":0}]"
+    },
+    {
+      "id": "NH steps after the last decided cell",
+      "pass": null,
+      "detail": "not decided: harness error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  ],
+  "evidence": [
+    "raw/TC-23-S25.json",
+    "raw/TC-23-S25-steps.json",
+    "shots/S25-H-1-after-save.png",
+    "shots/S25-H-2-dropped-unsaved.png",
+    "shots/S25-H-2b-landed-unsaved.png",
+    "shots/S25-H-3-signed-out.png",
+    "shots/S25-H-4-other-physician.png"
+  ],
+  "pending": [
+    "36 h cell (no row older than 36 h) needs the aging helper, not on main"
+  ],
+  "at": "2026-10-19T20:22:29.770Z",
+  "meta": {
+    "commit": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "aiProvider": {
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "provider": "bedrock",
+      "transcription": "gpt-live",
+      "visionModel": "gemini-2.5-flash",
+      "visionProvider": "vertex"
+    },
+    "mode": "scripted"
+  },
+  "prepareSession": {
+    "requests": 3,
+    "stubbedAtSocket": 3,
+    "realOpenAIMints": 0,
+    "realFailed": 0,
+    "note": "stubbed at the Convex socket: nothing reached OpenAI"
+  }
+}

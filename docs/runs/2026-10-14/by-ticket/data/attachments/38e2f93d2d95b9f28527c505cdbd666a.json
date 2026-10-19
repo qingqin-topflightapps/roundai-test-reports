@@ -1,0 +1,202 @@
+{
+  "name": "ho-s03b",
+  "at": "2026-10-19T18:55:51.406Z",
+  "checks": [
+    {
+      "id": "S04: the list's Handoff control opens 'Handoff Summary'",
+      "ok": true,
+      "detail": "http://localhost:6473/snf/handoff"
+    },
+    {
+      "id": "one sheet lists every patient of the census",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "record (Q4): resident not In Today is on the sheet",
+      "ok": false,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "sheet shows the 'Active Issues' section for every card (four sections, AC 3)",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "id": "sheet shows the 'Discharge Barriers' section for every card (four sections, AC 3)",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "id": "sheet shows the 'Pending Results' section for every card (four sections, AC 3)",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "id": "sheet shows the 'To-Do / If-Then' section for every card (four sections, AC 3)",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "id": "S13: the sheet has no mailto: link and no email / share / forward control",
+      "ok": true,
+      "detail": "{\"mailtoLinks\":[],\"emailShareControls\":[],\"inputs\":[]}"
+    },
+    {
+      "id": "sheet Copy Text puts the plain-text sheet on the clipboard",
+      "ok": true,
+      "detail": "NURSING HOME HANDOFF\nTuesday, October 20, 2026 · 03:55 AM\n══════════════════════"
+    },
+    {
+      "id": "Copy is plain text (no markup)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "copied sheet: every card has the four headings in order",
+      "ok": true,
+      "detail": "[[\"activeIssues\",\"barriers\",\"pendingResults\",\"todo\"],[\"activeIssues\",\"barriers\",\"pendingResults\",\"todo\"],[\"activeIssues\",\"barriers\",\"pendingResults\",\"todo\"]]"
+    },
+    {
+      "id": "the editor holds every patient of the sheet",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "S13: the Send dialog has no mailto: link and no email / share / forward control (the email field only names an account, AC 10)",
+      "ok": true,
+      "detail": "{\"mailtoLinks\":[],\"emailShareControls\":[],\"inputs\":[{\"id\":\"handoff-text\",\"type\":null,\"label\":\"Handoff text — edit before sending\",\"placeholder\":null},{\"id\":\"handoff-recipient\",\"type\":\"email\",\"label\":\"Colleague’s email\",\"placeholder\":\"colleague@hospital.org\"}]}"
+    },
+    {
+      "id": "AC 10: no list of users is shown in the dialog before an email is typed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "AC 10: the server's old picker lists nobody",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the editor shows the edit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "AC 9: the dialog's Copy puts exactly the edited text on the clipboard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "AC 10: the physician confirms the recipient before sending ('Send to …?')",
+      "ok": true,
+      "detail": "Send to E2E-FRESH-F1770BFB-E39@ROUNDAI.TEST?"
+    },
+    {
+      "id": "no handoff row exists before the confirming tap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "no mailto / email / share appeared during the send",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "record (Q6): the sheet's Copy Text after the dialog closed carries the edit",
+      "ok": false,
+      "detail": "no: the sheet copies the generated text; the edit lived in the dialog",
+      "recordOnly": true
+    },
+    {
+      "id": "exactly one Sent record, addressed to the recipient by name, with a send time",
+      "ok": true,
+      "detail": "[{\"_id\":\"jn797vvjv33ks6tnrx92p473m18gkmyz\",\"counterpartName\":\"Dr. QA Recipient MA03\",\"kind\":\"handoff\",\"patientCount\":3,\"readAt\":null,\"sentAt\":\"2026-10-19T18:55:47.114Z\",\"title\":\"Nursing Home Handoff — Oct 20, 2026 — 3 residents\",\"variant\":\"snf\"}]"
+    },
+    {
+      "id": "the record's time is the send time (server, within the runner's window ±60 s)",
+      "ok": true,
+      "detail": "2026-10-19T18:55:47.114Z"
+    },
+    {
+      "id": "S13: Handoffs → Sent has no mailto / email / share control",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "sender's detail shows exactly the edited text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "sender's detail names the recipient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "no email / share / forward on the sender's detail",
+      "ok": true,
+      "detail": "{\"mailtoLinks\":[],\"emailShareControls\":[],\"inputs\":[]}"
+    },
+    {
+      "id": "recipient's Received names the sender with the send day and time",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "AC 4: the recipient reads exactly the edited text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the deleted line and the replaced word are gone, the replacement and the added line are there, every patient is there",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "S13: no email / share / forward on the recipient's detail",
+      "ok": true,
+      "detail": "{\"mailtoLinks\":[],\"emailShareControls\":[],\"inputs\":[]}"
+    },
+    {
+      "id": "API: the recipient's record names sender and recipient, same sentAt, text identical to the edited text",
+      "ok": true,
+      "detail": "{\"n\":1,\"from\":\"Dr. QA Newspec 1culo\",\"to\":\"Dr. QA Recipient MA03\"}"
+    },
+    {
+      "id": "the Nursing Home handoff carries no Hospital patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "no mailto: / outside address in any frame the sender's browser sent",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "S13.sendDialogInputs": {
+      "mailtoLinks": [],
+      "emailShareControls": [],
+      "inputs": [
+        {
+          "id": "handoff-text",
+          "type": null,
+          "label": "Handoff text — edit before sending",
+          "placeholder": null
+        },
+        {
+          "id": "handoff-recipient",
+          "type": "email",
+          "label": "Colleague’s email",
+          "placeholder": "colleague@hospital.org"
+        }
+      ]
+    },
+    "sentLabel": "Sent to E2E-FRESH-F1770BFB-E39@ROUNDAI.TEST",
+    "senderSentList": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Back\"\n- heading \"Handoffs\" [level=1]\n- button \"Received\"\n- button \"Sent\"\n- button \"Nursing Home Handoff — Oct 20, 2026 — 3 residents To Dr. QA Recipient MA03 · Tue, Oct 20, 3:55 AM 3\":\n  - paragraph: Nursing Home Handoff — Oct 20, 2026 — 3 residents\n  - paragraph: To Dr. QA Recipient MA03 · Tue, Oct 20, 3:55 AM\n  - text: \"3\"",
+    "aiCalls": [],
+    "ensureCalls": 1
+  }
+}

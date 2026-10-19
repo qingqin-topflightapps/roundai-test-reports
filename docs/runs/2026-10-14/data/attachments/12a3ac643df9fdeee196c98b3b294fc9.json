@@ -1,0 +1,20 @@
+{
+  "TC-24/S05": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:02:30Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "local Playwright spec newspec-c/vis-tc24-s23-s28-lists-delete.spec.ts (Nursing Home list part) + code read",
+    "title": "Nursing Home resident delete: the UI asks once and removes the resident; the server delete removes every row, keeps the trail and logs the removal",
+    "detail": "B24 re-check on 8b4be94a: STILL. The Nursing Home resident card has no delete control on any profile (evidence 'TC-24/S23 the Nursing Home card has a delete control': []); no screen calls snf.remove (src/data/snf.ts:36 defines remove, nothing in src/routes/snf or src/features/snf uses it). Stated: UAT TC-24 step 4 + 3.3 (both modes), TFA-94699 AC 4.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-iphone15.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-after-delete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-list.json",
+      "runs/2026-10-14-local/newspec-c/rb2-logs/s28.log"
+    ]
+  }
+}

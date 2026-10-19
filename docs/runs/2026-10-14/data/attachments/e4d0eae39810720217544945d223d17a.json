@@ -1,0 +1,75 @@
+{
+  "name": "pr-tc17-s08",
+  "at": "2026-10-19T19:18:40.200Z",
+  "checks": [
+    {
+      "id": "cp1 the Pre-Round tracker shows all six rows, the four tag+date strings and both reasons",
+      "ok": true,
+      "detail": "all present"
+    },
+    {
+      "id": "cp1 Atorvastatin (last mentioned 20 h ago): the tracker's 'not mentioned today' label (Q2, recorded)",
+      "ok": true,
+      "detail": "not mentioned today",
+      "recordOnly": true
+    },
+    {
+      "id": "cp2 the Encounter tab shows a medication tracker (Q2, recorded)",
+      "ok": false,
+      "detail": "no tracker rows on the Encounter tab",
+      "recordOnly": true
+    },
+    {
+      "id": "cp3 Post-Round meds shows all six rows, the four tag+date strings and both reasons",
+      "ok": true,
+      "detail": "all present"
+    },
+    {
+      "id": "cp3 no note or task text, no decoy from another patient or the resident",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp3 row checks: each row carries its own status tag, date and reason, and no other row's",
+      "ok": true,
+      "detail": "every row matches the tracker"
+    },
+    {
+      "id": "cp3 Atorvastatin 'not mentioned today' label on Post-Round (Q2, recorded)",
+      "ok": false,
+      "detail": "Atorvastatin 40 mg PO nightly active",
+      "recordOnly": true
+    },
+    {
+      "id": "guard: no model action reached the server",
+      "ok": true,
+      "detail": "12 socket calls"
+    }
+  ],
+  "data": {
+    "cp1": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S08 Hosp\n\nRoom QA3U · 70y · QA-3UAJ\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nPRE-ROUND NOTES\n📝\nTap to add today's pre-round notes\nEdit\nPREVIOUS NOTES\n0/3\nPaste\nPhotograph\n\nExplicitly paste or photograph a prior note, then review and save it. AI extracts its background, active issues, prior labs, imaging, and diagnostic tests as a starting point for today's note. Vitals are never imported.\n\nNo previous notes added yet.\n\nVITALS\nEdit\nNo vitals recorded yet.\nLABS\nEdit\nNo labs recorded yet.\nDIAGNOSTIC TESTING\n0\nEdit\n\nNo testing results yet.\n\nMEDICATIONS\n6\nEdit\nactive\n\nCeftriaxone 1 g IV daily\n\nheld\n\nLisinopril 10 mg PO daily\n\nHeld · Oct 12\n\nAKI\n\nchanged\n\nFurosemide 20 mg IV BID\n\nChanged · Oct 10\n\nwas 40 mg\n\ndiscontinued\n\nEnoxaparin 40 mg SC daily\n\nStopped · Oct 9\nsingle dose\n\nOndansetron 4 mg IV once\n\nGiven · Oct 8\nactive\n\nAtorvastatin 40 mg PO nightly\n\nnot mentioned today",
+    "cp3": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S08 Hosp\n\nRoom QA3U · 70y · QA-3UAJ\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\nMEDICATION TRACKER\n\nCeftriaxone 1 g IV daily\n\nactive\n\nLisinopril 10 mg PO daily\n\nHeld · Oct 12\n\n⚡ AKI\n\nheld\n\nFurosemide 20 mg IV BID\n\nChanged · Oct 10\n\n⚡ was 40 mg\n\nchanged\n\nEnoxaparin 40 mg SC daily\n\nStopped · Oct 9\ndiscontinued\n\nOndansetron 4 mg IV once\n\nGiven · Oct 8\nsingle-dose\n\nAtorvastatin 40 mg PO nightly\n\nactive\nMark Encounter Complete",
+    "cp3rows": {
+      "Ceftriaxone 1 g IV daily": "Ceftriaxone 1 g IV daily active",
+      "Lisinopril 10 mg PO daily": "Lisinopril 10 mg PO daily Held · Oct 12 ⚡ AKI held",
+      "Furosemide 20 mg IV BID": "Furosemide 20 mg IV BID Changed · Oct 10 ⚡ was 40 mg changed",
+      "Enoxaparin 40 mg SC daily": "Enoxaparin 40 mg SC daily Stopped · Oct 9 discontinued",
+      "Ondansetron 4 mg IV once": "Ondansetron 4 mg IV once Given · Oct 8 single-dose",
+      "Atorvastatin 40 mg PO nightly": "Atorvastatin 40 mg PO nightly active"
+    },
+    "socket": [
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded"
+    ]
+  }
+}

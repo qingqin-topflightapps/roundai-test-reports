@@ -1,0 +1,147 @@
+{
+  "name": "tc14-s26-snf",
+  "at": "2026-10-15T08:11:57.788Z",
+  "checks": [
+    {
+      "id": "setup: the first checkpoint was taken while the call was still held",
+      "ok": true,
+      "detail": "ms after press 948"
+    },
+    {
+      "id": "h1: while the call is held Post-Round shows a generating state, never only 'Complete the Encounter tab first'",
+      "ok": false,
+      "detail": "{\"generating\":null,\"completeFirst\":true,\"noNoteYet\":true,\"finalizingSpinner\":false}"
+    },
+    {
+      "id": "h2: 5 s after the release Post-Round shows the note (121/67)",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "f1: after the failure while away, Post-Round shows an explicit failure on return",
+      "ok": false,
+      "detail": "{\"failure\":null,\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 1\"}"
+    },
+    {
+      "id": "f1: Post-Round does not show the failed cell's values (119/65)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "f1: the note from cell H is shown as the current note with no sign that the new dictation was not turned into a note",
+      "ok": false,
+      "detail": "ASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.",
+      "recordOnly": true
+    },
+    {
+      "id": "f2: the failed cell's dictation is on the Encounter tab",
+      "ok": true,
+      "detail": "Ate lunch in the dining room, blood pressure 119 over 65, continue current plan."
+    },
+    {
+      "id": "f2: the Encounter tab shows the generation failure",
+      "ok": false,
+      "detail": "no failure message on the Encounter tab",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "h1-early": {
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Sage 7784\n\nMRN-RAT8FV · Cedar Wing · Room 2\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete"
+    },
+    "h1-timing": {
+      "msAfterPress": 948,
+      "callStillHeld": true
+    },
+    "h2-late": {
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Sage 7784\n\nMRN-RAT8FV · Cedar Wing · Room 2\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nAI-Generated Note\n\n5:11 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.\n\nEdit Note\nCopy to EMR\nMark Visit Complete"
+    },
+    "backend-after-H": {
+      "note": "ASSESSMENT AND PLAN\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.",
+      "noteGeneratedAt": "2026-10-15T08:11:04.070Z",
+      "status": "note-ready"
+    },
+    "cellF-call": {
+      "button": "Regenerate Note",
+      "answered": "fail"
+    },
+    "f1-post": {
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Sage 7784\n\nMRN-RAT8FV · Cedar Wing · Room 2\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nAI-Generated Note\n\n5:11 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.\n\nEdit Note\nCopy to EMR\nMark Visit Complete"
+    },
+    "f2-encounter": {
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Sage 7784\n\nMRN-RAT8FV · Cedar Wing · Room 2\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nNOTE FORMAT\nSNF admission\nSNF follow-up\nQA gen procedure note N ★\n\nQA: procedure / other note type, so no billing job is queued\n\nRegenerate Note"
+    },
+    "backend-after-F": {
+      "note": "ASSESSMENT AND PLAN\nQA S26 cell H mocked note (no model was called). Today: Joined the exercise group, blood pressure 121 over 67, continue therapy.",
+      "noteGeneratedAt": "2026-10-15T08:11:04.070Z",
+      "encounterNotes": "Ate lunch in the dining room, blood pressure 119 over 65, continue current plan.",
+      "status": "note-ready"
+    },
+    "calls": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "at": 1792051864076
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok",
+        "at": 1792051879258
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok",
+        "at": 1792051879259
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "at": 1792051886339
+      }
+    ]
+  }
+}

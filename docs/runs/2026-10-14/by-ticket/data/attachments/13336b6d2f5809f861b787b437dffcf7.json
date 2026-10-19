@@ -1,0 +1,19 @@
+{
+  "TC-08/S18": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local",
+    "title": "Handoff summaries failed: everyone listed, chart shown with Retry, no placeholders",
+    "detail": "Local 8b4be94a, fresh @roundai.test accounts; no model: handoff/persistence:ensure answered at the Convex socket (ts 0, nothing scheduled), every ai/* refused, charts carry stored stand-in summaries re-inserted with `convex import --append` (ho-support.ts); tripwire 'no model call' on every run. Charts stored with handoffStatus 'error'. Passed: all patients listed, banner '2 summaries couldn’t be generated — the chart is shown instead.' + Retry (Retry re-asks ensure), Send enabled, failed card keeps every open task once under To-Do, discharge task never under Pending Results, point under Active Issues, NH same; no email/share fallback. FAILED: a failed chart with no age and no diagnosis (H4) shows 'Room 4B-30 · ?y · undefined' on the card and '?yo admitted for undefined.' in the sheet and the copied/sent text (templateStruct / HandoffOverlay header). Recorded Q11: a failed card itself is not marked as chart-based (only the banner); Q2: failed card shows only Active Issues + To-Do.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s18.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s18-hosp-sheet.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s18-hosp-sheet.png"
+    ],
+    "stated": false,
+    "statedNote": "scope: the '?yo'/placeholder part is our extension (extraPart); stated part (3.5 clear message, retry, not stuck) passed"
+  }
+}

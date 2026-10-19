@@ -1,0 +1,17 @@
+{
+  "TC-13/S12": {
+    "status": "failed",
+    "ranAt": "2026-10-20T04:55:00+09:00",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pn",
+    "method": "PW",
+    "title": "Day 1 → reopen 20 h later (Hospital): the day-2 checklist",
+    "detail": "PARTIAL local run (new spec pn-tc13-s12-day2.spec.ts): day 1 seeded at now−20 h (note + one-line summary seeded with template procedure-other, no Generate, no model), lifecycle as on page load, then the tabs. 16 judged cells pass, 1 fails: yesterday's note text is not viewable read-only anywhere on the chart at 20 h (U6; UAT TC-13 'present as yesterday's transcript and previous note'; gate TFA-94699 in progress; same as S15 / B19). Pass: pre-round box empty, Important Points gone (TFA-92590), encounter archived as yesterday's transcript, vitals/labs/imaging/meds/task kept, BP and Cr show day-1 date, metoprolol 'not mentioned today', held lisinopril unlabelled, carried-forward summary on A and not on B. Also seen, recorded: imaging, medication rows and the open task show no recorded date (UAT: 'each showing its recorded date'; TFA-94699 AC 3 names vitals, labs, imaging); the archived transcript is labelled with the UTC day (Oct 18) for a 08:20 JST Oct 19 encounter. Not judged: summary words vs note (both seeded; Generate is dev-only and aging local-only).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/pn-runs/manual-evidence/TC-13-S12/cells-main.json",
+      "runs/2026-10-14-local/newspec-c/pn-runs/manual-evidence/TC-13-S12/screens.json",
+      "runs/2026-10-14-local/newspec-c/pn-runs/manual-evidence/TC-13-S12/20h-pre-round.png"
+    ]
+  }
+}

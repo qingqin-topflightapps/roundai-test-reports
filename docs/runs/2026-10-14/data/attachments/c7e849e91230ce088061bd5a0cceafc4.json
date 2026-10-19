@@ -1,0 +1,15 @@
+{
+  "TC-08/S07": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "lane A (e2e/api/handoffs.spec.ts, --project=api)",
+    "title": "Who can send to whom / who can read it",
+    "detail": "Local 8b4be94a: 'a recipient is found by exact email, never by listing accounts' (new title on #104: replaces the picker title), 'a handoff cannot go to yourself, to a non-account, or be empty', 'a handoff is invisible to anyone who is neither sender nor recipient', 'a mistyped handoff id reads as not available rather than failing': 4/4 passed; tripwire no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-laneA.log"
+    ]
+  }
+}

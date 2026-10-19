@@ -1,0 +1,18 @@
+{
+  "TC-17/S09": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Nursing Home Post-Round structure and each pending-task choice on two residents; Hospital patient untouched",
+    "detail": "pr-tc17-s04-s09-pending.spec.ts: 11/11 judged. NH Post-Round has Ask, note/tasks/meds toggles, Copy to EMR, Tomorrow's Pre-Round Summary and a complete button; note view only the note; Meds shows the three tracker rows with 'Held · Oct 12' / SBP 96; prompt lists R1's two open tasks only with three choices; Cancel nothing; Delete leaves only the done task, complete; R2 untouched, Keep -> complete with QA-R2 open after reload; Hospital patient with the same task text untouched. Recorded (Q3): the NH button reads 'Mark Visit Complete' / 'Visit Complete', not 'Mark Encounter Complete'.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s09.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s09-r1-note.png",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s09-r1-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s09-r1-after-delete.png"
+    ]
+  }
+}

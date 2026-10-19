@@ -1,0 +1,28 @@
+{
+  "TC-23/S08": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:56:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW (scripted dictation)",
+    "title": "Engine route × session outcome: retry, message, recovery",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-tc23-client.spec.ts -g S08 with rb1-harness.ts (scripted far end, prepareSession stubbed, every other ai/* action and the job-starting mutations answered at the socket). 7/9 decided cells pass. Failing: E-4 Nursing Home Pre-Round and Encounter — the channel closes after 'Creatinine 1.8, up from 1.2.', the take is recovered once (no second session, text kept), but the red 'Live dictation disconnected.' is still shown 8 s later (B27). Live-engine cells not decided.",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-dictation-rb1/raw/TC-23-S08.json",
+      "runs/2026-10-14-local/aicheck-dictation-rb1/shots/S08-E-4-nursing-home-Pre-Round.png",
+      "runs/2026-10-14-local/aicheck-dictation-rb1/shots/S08-E-4-nursing-home-Encounter.png"
+    ],
+    "bug": {
+      "id": "B27",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "TFA-94423 AC 1 + AC 7; TFA-94745 AC 4; UAT OAT-03 step 7 + ER 4",
+      "quote": "photo reading and transcription retry automatically; if they still fail, a clear message shows",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

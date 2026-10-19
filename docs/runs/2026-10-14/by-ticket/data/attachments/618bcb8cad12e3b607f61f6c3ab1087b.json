@@ -1,0 +1,91 @@
+{
+  "name": "ho-s18",
+  "at": "2026-10-19T19:39:07.554Z",
+  "checks": [
+    {
+      "id": "Hospital: all four patients on the sheet, '4 patients'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Hospital: a clear message that summaries could not be generated, with Retry (3.5)",
+      "ok": true,
+      "detail": "[\"2 summaries couldn’t be generated — the chart is shown instead.\\nRetry\"]"
+    },
+    {
+      "id": "Hospital: Send enabled (not stuck), no 'Generating'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Hospital: no '?yo' / 'undefined' / '?y ·' placeholders on the sheet",
+      "ok": false,
+      "detail": "- paragraph: Room 4B-30 · ?y · undefined | - paragraph: \"?yo admitted for undefined.\""
+    },
+    {
+      "id": "H3 (failed): every open task listed exactly once",
+      "ok": true,
+      "detail": "\n59yo admitted for Left leg cellulitis.\n\nACTIVE ISSUES:\n  • Left leg cellulitis — erythema receding\n\nTO-DO / IF-THEN:\n  • Wound culture pending\n  • Discharge pending IV-to-PO switch\n  • If fever recurs, then MRI left leg\n  • Call pharmacy re order QA-H3-6602\n\n──────────────────────────────────────────────────\n\n"
+    },
+    {
+      "id": "H3 (failed): its discharge task is not under Pending Results",
+      "ok": true,
+      "detail": "{\"activeIssues\":[\"Left leg cellulitis — erythema receding\"],\"todo\":[\"Wound culture pending\",\"Discharge pending IV-to-PO switch\",\"If fever recurs, then MRI left leg\",\"Call pharmacy re order QA-H3-6602\"]}"
+    },
+    {
+      "id": "H3 (failed): the if-then line under To-Do, the important point under Active Issues",
+      "ok": true,
+      "detail": "{\"activeIssues\":[\"Left leg cellulitis — erythema receding\"],\"todo\":[\"Wound culture pending\",\"Discharge pending IV-to-PO switch\",\"If fever recurs, then MRI left leg\",\"Call pharmacy re order QA-H3-6602\"]}"
+    },
+    {
+      "id": "H4 (failed, no age / diagnosis): its task listed once, no '?yo' or 'undefined' in its text",
+      "ok": false,
+      "detail": "4. QA HOSP KERR FVCA | Room 4B-30\n\n?yo admitted for undefined.\n\nTO-DO / IF-THEN:\n  • Recheck lactate at 18:00\n\n──────────────────────────────────────────────────\n"
+    },
+    {
+      "id": "record (Q11): a failed card is marked as chart-based on the card / in the copied text",
+      "ok": false,
+      "detail": "only the banner says 'the chart is shown instead'",
+      "recordOnly": true
+    },
+    {
+      "id": "record (Q2): sections the failed card shows",
+      "ok": true,
+      "detail": "[\"activeIssues\",\"todo\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "no email / share fallback on the failed sheet",
+      "ok": true,
+      "detail": "{\"mailtoLinks\":[],\"emailShareControls\":[],\"inputs\":[]}"
+    },
+    {
+      "id": "Retry asks the server again (one more ensure)",
+      "ok": true,
+      "detail": "1 → 2"
+    },
+    {
+      "id": "Nursing Home: all three residents, '1 summary couldn’t be generated' with Retry, Send enabled",
+      "ok": true,
+      "detail": "[\"1 summary couldn’t be generated — the chart is shown instead.\\nRetry\"]"
+    },
+    {
+      "id": "N2 (failed): every open task once, discharge task not under Pending Results, point under Active Issues",
+      "ok": true,
+      "detail": "\n83yo — COPD\n\nACTIVE ISSUES:\n  • COPD — on 2 L home oxygen\n\nTO-DO / IF-THEN:\n  • Discharge home once home oxygen is delivered\n  • Awaiting chest X-ray read\n  • If SpO2 < 88%, then increase to 3 L\n  • Call pharmacy re order QA-N2-5180\n\n──────────────────────────────────────────────────\n\n"
+    },
+    {
+      "id": "Nursing Home: no '?yo' / 'undefined' placeholders",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "data": {
+    "hospital.banner": [
+      "2 summaries couldn’t be generated — the chart is shown instead.\nRetry"
+    ],
+    "hospital.copy": "PATIENT HANDOFF\nTuesday, October 20, 2026 · 04:39 AM\n══════════════════════════════════════════════════\n\n1. QA HOSP HALL FVCA | Room 4B-12 | Community-acquired pneumonia\n\nCommunity-acquired pneumonia — QA stand-in summary.\n\nACTIVE ISSUES:\n  • CAP — improving on ceftriaxone\n\nDISCHARGE BARRIERS:\n  • Discharge home once PT clears him\n\nPENDING RESULTS:\n  • Follow up blood cultures (pending)\n\nTO-DO / IF-THEN:\n  • If temp > 38.5, then repeat blood cultures\n  • Call pharmacy re order QA-H1-7731\n\n──────────────────────────────────────────────────\n\n2. QA HOSP IQBAL FVCA | Room 5A-03 | CHF exacerbation\n\nCHF exacerbation — QA stand-in summary.\n\nACTIVE ISSUES:\n  • CHF — net −1.2 L on IV furosemide\n\nDISCHARGE BARRIERS:\n  • SNF placement — family deciding\n\nPENDING RESULTS:\n  • Awaiting echo read\n\nTO-DO / IF-THEN:\n  • If K < 3.5, then replete\n  • Call pharmacy re order QA-H2-3358\n\n──────────────────────────────────────────────────\n\n3. QA HOSP JANSEN FVCA | Room 6C-08 | Left leg cellulitis\n\n59yo admitted for Left leg cellulitis.\n\nACTIVE ISSUES:\n  • Left leg cellulitis — erythema receding\n\nTO-DO / IF-THEN:\n  • Wound culture pending\n  • Discharge pending IV-to-PO switch\n  • If fever recurs, then MRI left leg\n  • Call pharmacy re order QA-H3-6602\n\n──────────────────────────────────────────────────\n\n4. QA HOSP KERR FVCA | Room 4B-30\n\n?yo admitted for undefined.\n\nTO-DO / IF-THEN:\n  • Recheck lactate at 18:00\n\n──────────────────────────────────────────────────",
+    "snf.copy": "NURSING HOME HANDOFF\nTuesday, October 20, 2026 · 04:39 AM\n══════════════════════════════════════════════════\n\n1. QA RESIDENT KAUR FVCA | Unit Cedar 12 | Post-acute rehab after left hip ORIF\n\nPost-acute rehab after left hip ORIF — QA stand-in summary.\n\nACTIVE ISSUES:\n  • Hip fracture s/p ORIF — weight bearing as tolerated\n\nDISCHARGE BARRIERS:\n  • Family meeting Friday about discharge home\n\nPENDING RESULTS:\n  • Follow up outside-hospital pathology result\n\nTO-DO / IF-THEN:\n  • If pain > 6, then add oxycodone 2.5 mg\n  • Call pharmacy re order QA-N1-2264\n\n──────────────────────────────────────────────────\n\n2. QA RESIDENT LUND FVCA | Unit Cedar 3 | COPD\n\n83yo — COPD\n\nACTIVE ISSUES:\n  • COPD — on 2 L home oxygen\n\nTO-DO / IF-THEN:\n  • Discharge home once home oxygen is delivered\n  • Awaiting chest X-ray read\n  • If SpO2 < 88%, then increase to 3 L\n  • Call pharmacy re order QA-N2-5180\n\n──────────────────────────────────────────────────\n\n3. QA RESIDENT MOREAU FVCA | Unit Birch 9 | Chronic heart failure\n\nChronic heart failure — QA stand-in summary.\n\nACTIVE ISSUES:\n  • CHF — daily weights, furosemide 20 mg\n\nDISCHARGE BARRIERS:\n  • Discharge to assisted living once a bed opens\n\nPENDING RESULTS:\n  • BNP pending from this morning\n\nTO-DO / IF-THEN:\n  • If weight up more than 2 kg in a week, then increase furosemide to 40 mg\n  • Call pharmacy re order QA-N3-9043\n\n──────────────────────────────────────────────────",
+    "aiCalls": []
+  }
+}

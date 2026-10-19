@@ -1,0 +1,21 @@
+{
+  "EFS/S21": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW+INPROC",
+    "title": "Busy at once, then the failure; the 20 s cap; runs c/d (flt-efs-s21-*)",
+    "bug": "D8",
+    "bugNow": "still",
+    "stated": "Case then: 'never a spinner still running after 60 s' (UAT 3.5 target 30 s)",
+    "detail": "In-process on 8b4be94a: Ask AI with both models hanging gives up at 30.0 s; the pre-round summary at 62.5 s (16 attempts over 4 sub-calls), run c note at 20.0 s, run d fails at 21.0 s — same as before. Browser: Ask AI and Save Note show busy at once and end on a failure message with the text kept (Hospital and Nursing Home); Save Note still reads 'Saving & Updating…' 60 s after the tap in both contexts (failure at ~62.8 s). Runs c/d in the browser not re-run (Generate is a server job now).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-cap.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s21-save-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-efs-s21-save-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-efs-s21-n.json"
+    ]
+  }
+}

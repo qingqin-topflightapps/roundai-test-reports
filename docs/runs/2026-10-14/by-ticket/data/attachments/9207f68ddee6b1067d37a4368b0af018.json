@@ -1,0 +1,19 @@
+{
+  "TC-07/S16": {
+    "status": "passed",
+    "ranAt": "2026-10-19T19:33:54Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec, fresh @roundai.test physician(s), no model call (tripwire clean) (newspec-c/te-tc07-send.spec.ts), sender + a fresh recipient account",
+    "title": "Send the task list to a covering colleague in-app; both sides keep the record; recipient reads it read-only",
+    "detail": "Both contexts: Send to… → exact email → 'Send to <email>?' → 'Sent to <email>'; no mailto. Sender: one Sent record (kind tasks) naming the recipient with the send time; Handoffs → Sent 'To <recipient> · <time>' + 'Task list' badge. Recipient: one Received record naming the sender, same time; opens the same grouped text (pending groups + COMPLETED block); only Back and Copy on the page (read-only). Recipient's own lists and task views gain nothing. 19/19 judged. Not testable locally (Manual): the sent list 35 h / 37 h after sending (handoffs.send stamps server time; no aging helper; OAT-04 / Q7).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s16.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s16-rounding-sent.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s16-rounding-recipient-detail.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s16-snf-recipient-detail.png"
+    ],
+    "stated": "P0 mixed (35 h / 37 h part is ours, Manual)"
+  }
+}

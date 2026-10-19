@@ -1,0 +1,193 @@
+{
+  "name": "ip-tc12-s23",
+  "at": "2026-10-19T18:06:37.669Z",
+  "checks": [
+    {
+      "id": "minus48h Hospital: the point's clock is server time (createdAt within ±2 min of time:now), not the device's",
+      "ok": true,
+      "detail": "{\"createdAt\":\"2026-10-19T18:03:21.893Z\",\"serverNow\":\"2026-10-19T18:03:22.000Z\",\"deviceSkewH\":-48}"
+    },
+    {
+      "id": "minus48h Hospital: the point is stored after add, Save Note, open/close and reload in the wrong-clock browser, and shown after reload",
+      "ok": true,
+      "detail": "{\"signIn\":{\"signedOutByClock\":false,\"uiSignIn\":null},\"add\":{\"stored\":[\"QA-CLOCK check telemetry minus48h\"],\"createdAt\":1792433001893},\"save-note\":{\"stored\":[\"QA-CLOCK check telemetry minus48h\"],\"createdAt\":1792433001893},\"open-close\":{\"stored\":[\"QA-CLOCK check telemetry minus48h\"],\"createdAt\":1792433001893},\"reload\":{\"stored\":[\"QA-CLOCK check telemetry minus48h\"],\"createdAt\":1792433001893}}"
+    },
+    {
+      "id": "minus48h Hospital: the normal-clock browser shows the point",
+      "ok": true,
+      "detail": "[\"QA-CLOCK check telemetry minus48h\"]"
+    },
+    {
+      "id": "minus48h Nursing Home: the point's clock is server time (createdAt within ±2 min of time:now), not the device's",
+      "ok": true,
+      "detail": "{\"createdAt\":\"2026-10-19T18:03:24.660Z\",\"serverNow\":\"2026-10-19T18:03:24.768Z\",\"deviceSkewH\":-48}"
+    },
+    {
+      "id": "minus48h Nursing Home: the point is stored after add, Save Note, open/close and reload in the wrong-clock browser, and shown after reload",
+      "ok": true,
+      "detail": "{\"signIn\":{\"signedOutByClock\":false,\"uiSignIn\":null},\"add\":{\"stored\":[\"QA-CLOCK weigh Friday minus48h\"],\"createdAt\":1792433004660},\"save-note\":{\"stored\":[\"QA-CLOCK weigh Friday minus48h\"],\"createdAt\":1792433004660},\"open-close\":{\"stored\":[\"QA-CLOCK weigh Friday minus48h\"],\"createdAt\":1792433004660},\"reload\":{\"stored\":[\"QA-CLOCK weigh Friday minus48h\"],\"createdAt\":1792433004660}}"
+    },
+    {
+      "id": "minus48h Nursing Home: the normal-clock browser shows the point",
+      "ok": true,
+      "detail": "[\"QA-CLOCK weigh Friday minus48h\"]"
+    },
+    {
+      "id": "kiritimati-plus13h Hospital: the point's clock is server time (createdAt within ±2 min of time:now), not the device's",
+      "ok": true,
+      "detail": "{\"createdAt\":\"2026-10-19T18:03:57.810Z\",\"serverNow\":\"2026-10-19T18:03:57.921Z\",\"deviceSkewH\":13}"
+    },
+    {
+      "id": "kiritimati-plus13h Hospital: the point is stored after add, Save Note, open/close and reload in the wrong-clock browser, and shown after reload",
+      "ok": true,
+      "detail": "{\"signIn\":{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"},\"add\":{\"stored\":[\"QA-CLOCK check telemetry kiritimati-plus13h\"],\"createdAt\":1792433037810},\"save-note\":{\"stored\":[\"QA-CLOCK check telemetry kiritimati-plus13h\"],\"createdAt\":1792433037810},\"open-close\":{\"stored\":[\"QA-CLOCK check telemetry kiritimati-plus13h\"],\"createdAt\":1792433037810},\"reload\":{\"stored\":[\"QA-CLOCK check telemetry kiritimati-plus13h\"],\"createdAt\":1792433037810}}"
+    },
+    {
+      "id": "kiritimati-plus13h Hospital: the normal-clock browser shows the point",
+      "ok": true,
+      "detail": "[\"QA-CLOCK check telemetry kiritimati-plus13h\"]"
+    },
+    {
+      "id": "kiritimati-plus13h Nursing Home: the point's clock is server time (createdAt within ±2 min of time:now), not the device's",
+      "ok": true,
+      "detail": "{\"createdAt\":\"2026-10-19T18:04:30.977Z\",\"serverNow\":\"2026-10-19T18:04:31.085Z\",\"deviceSkewH\":13}"
+    },
+    {
+      "id": "kiritimati-plus13h Nursing Home: the point is stored after add, Save Note, open/close and reload in the wrong-clock browser, and shown after reload",
+      "ok": true,
+      "detail": "{\"signIn\":{\"signedOutByClock\":true,\"uiSignIn\":\"reached-app\"},\"add\":{\"stored\":[\"QA-CLOCK weigh Friday kiritimati-plus13h\"],\"createdAt\":1792433070977},\"save-note\":{\"stored\":[\"QA-CLOCK weigh Friday kiritimati-plus13h\"],\"createdAt\":1792433070977},\"open-close\":{\"stored\":[\"QA-CLOCK weigh Friday kiritimati-plus13h\"],\"createdAt\":1792433070977},\"reload\":{\"stored\":[\"QA-CLOCK weigh Friday kiritimati-plus13h\"],\"createdAt\":1792433070977}}"
+    },
+    {
+      "id": "kiritimati-plus13h Nursing Home: the normal-clock browser shows the point",
+      "ok": true,
+      "detail": "[\"QA-CLOCK weigh Friday kiritimati-plus13h\"]"
+    },
+    {
+      "id": "after two server sweeps (125 s) every wrong-clock point is still stored",
+      "ok": true,
+      "detail": "[{\"m\":\"hosp\",\"p\":\"QA-CLOCK check telemetry minus48h\",\"has\":true},{\"m\":\"snf\",\"p\":\"QA-CLOCK weigh Friday minus48h\",\"has\":true},{\"m\":\"hosp\",\"p\":\"QA-CLOCK check telemetry kiritimati-plus13h\",\"has\":true},{\"m\":\"snf\",\"p\":\"QA-CLOCK weigh Friday kiritimati-plus13h\",\"has\":true}]"
+    }
+  ],
+  "data": {
+    "minus48h Hospital steps": {
+      "signIn": {
+        "signedOutByClock": false,
+        "uiSignIn": null
+      },
+      "add": {
+        "stored": [
+          "QA-CLOCK check telemetry minus48h"
+        ],
+        "createdAt": 1792433001893
+      },
+      "save-note": {
+        "stored": [
+          "QA-CLOCK check telemetry minus48h"
+        ],
+        "createdAt": 1792433001893
+      },
+      "open-close": {
+        "stored": [
+          "QA-CLOCK check telemetry minus48h"
+        ],
+        "createdAt": 1792433001893
+      },
+      "reload": {
+        "stored": [
+          "QA-CLOCK check telemetry minus48h"
+        ],
+        "createdAt": 1792433001893
+      }
+    },
+    "minus48h Nursing Home steps": {
+      "signIn": {
+        "signedOutByClock": false,
+        "uiSignIn": null
+      },
+      "add": {
+        "stored": [
+          "QA-CLOCK weigh Friday minus48h"
+        ],
+        "createdAt": 1792433004660
+      },
+      "save-note": {
+        "stored": [
+          "QA-CLOCK weigh Friday minus48h"
+        ],
+        "createdAt": 1792433004660
+      },
+      "open-close": {
+        "stored": [
+          "QA-CLOCK weigh Friday minus48h"
+        ],
+        "createdAt": 1792433004660
+      },
+      "reload": {
+        "stored": [
+          "QA-CLOCK weigh Friday minus48h"
+        ],
+        "createdAt": 1792433004660
+      }
+    },
+    "kiritimati-plus13h Hospital steps": {
+      "signIn": {
+        "signedOutByClock": true,
+        "uiSignIn": "reached-app"
+      },
+      "add": {
+        "stored": [
+          "QA-CLOCK check telemetry kiritimati-plus13h"
+        ],
+        "createdAt": 1792433037810
+      },
+      "save-note": {
+        "stored": [
+          "QA-CLOCK check telemetry kiritimati-plus13h"
+        ],
+        "createdAt": 1792433037810
+      },
+      "open-close": {
+        "stored": [
+          "QA-CLOCK check telemetry kiritimati-plus13h"
+        ],
+        "createdAt": 1792433037810
+      },
+      "reload": {
+        "stored": [
+          "QA-CLOCK check telemetry kiritimati-plus13h"
+        ],
+        "createdAt": 1792433037810
+      }
+    },
+    "kiritimati-plus13h Nursing Home steps": {
+      "signIn": {
+        "signedOutByClock": true,
+        "uiSignIn": "reached-app"
+      },
+      "add": {
+        "stored": [
+          "QA-CLOCK weigh Friday kiritimati-plus13h"
+        ],
+        "createdAt": 1792433070977
+      },
+      "save-note": {
+        "stored": [
+          "QA-CLOCK weigh Friday kiritimati-plus13h"
+        ],
+        "createdAt": 1792433070977
+      },
+      "open-close": {
+        "stored": [
+          "QA-CLOCK weigh Friday kiritimati-plus13h"
+        ],
+        "createdAt": 1792433070977
+      },
+      "reload": {
+        "stored": [
+          "QA-CLOCK weigh Friday kiritimati-plus13h"
+        ],
+        "createdAt": 1792433070977
+      }
+    }
+  }
+}

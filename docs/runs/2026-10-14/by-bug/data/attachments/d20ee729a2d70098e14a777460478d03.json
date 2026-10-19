@@ -1,0 +1,18 @@
+{
+  "TC-15/S04": {
+    "status": "failed",
+    "ranAt": "2026-10-19T21:50:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U85 (scripts/dev/run-unit-plan.sh --plan cases/run-plan-dev-2026-10-15.json U85 2026-10-20-rb2): preset 'Any urgent pending tasks?' once per seeded chart (one open task flagged urgent, one open unflagged, one done); oracle verdict 'Pass' on its substring checks, judged on the answer text as on 10-14 (Quinn to confirm)",
+    "title": "Preset 'urgent pending tasks' with one flagged task (Hospital; NH variant)",
+    "detail": "N7 re-check on 8b4be94a (live Haiku): STILL. Nursing Home: the answer says 'there are two pending items, neither of which appears urgent: 1. Recheck weight Friday — a routine monitoring task …' although 'Recheck weight Friday' is the task flagged urgent. Hospital: 'Call ID re: blood cultures today' is called urgent and 'Repeat chest X-ray tomorrow' non-urgent, matching the flags only by inference from 'today' / 'tomorrow'. Cause unchanged: the Ask context sends pending tasks as text only, no urgent flag (src/features/rounding/patient/askContext.ts pending = tasks.filter(!done).map(text); the Nursing Home ask uses the same builder; no diff on that path since e02167f). Stated: UAT TC-15 step 1 + ER / TFA-92593 AC 4 ('Each preset returns a correct, patient-specific answer').",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U85.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u85/s04-n-tasks.md",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u85/s04-n-tasks.png",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u85/s04-h-tasks.md"
+    ]
+  }
+}

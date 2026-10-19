@@ -1,0 +1,18 @@
+{
+  "TC-17/S21": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Copy A&P on live generated notes, every built-in template",
+    "detail": "pr-tc17-dev.spec.ts D2 on dev 8b4be94a (live Haiku 4.5), one dictation per context, each built-in template generated in the app: soap, hp, consult, snf-progress, snf-admission, snf-consult -> Copy A&P enabled, clipboard starts at the Assessment heading ('Assessment', 'Assessment and Plan', 'Assessment of Active Medical Problems'), runs to the end of Plan / Recommendations / Care Plan, is a verbatim part of the shown note, holds the plan and nothing from Subjective/HPI/exam (6/6). discharge and snf-discharge -> no Copy A&P (2/2). The model tagged every A&P section correctly in all 8 notes. Cleanup: 0 rows left, no foreign change.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/pr-dev-2/evidence/pr-tc17-s21-dev.json",
+      "runs/2026-10-14-dev/newspec-c/pr-dev-2/evidence/s21-h-soap.png",
+      "runs/2026-10-14-dev/newspec-c/pr-dev-2/evidence/s21-n-snf-admission.png",
+      "runs/2026-10-14-dev/newspec-c/pr-dev-2/evidence/cleanup.json"
+    ]
+  }
+}

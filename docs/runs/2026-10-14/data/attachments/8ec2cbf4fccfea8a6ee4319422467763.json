@@ -1,0 +1,17 @@
+{
+  "TC-17/S22": {
+    "status": "record-only",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "CODEREVIEW",
+    "title": "Prototype parity (p72_HAIKU) and 'no EHR read or write' review",
+    "detail": "Code half (8b4be94a) passes: both Post-Round tabs copy through useCopyToEmr -> copyTextToClipboard (Capacitor Clipboard / navigator.clipboard / textarea fallback) and both now log the export (useLogExport, NH since b03d53c0 — the 10-14 failure 'NH writes no export record' is fixed); completeEncounter / completeVisit only patch the own chart + a usage event; no FHIR/HL7/Epic/Cerner/EHR code in src or convex. Layout half is a human side-by-side; differences found in code vs p72 for the reviewer: (1) Hospital Note tab renders the Billing Suggestion card BELOW 'Mark Encounter Complete' (p72: billing under the note, the button last; How it works 6 'at the bottom'); NH order matches p72; (2) NH button 'Mark Visit Complete' vs p72 'Mark Encounter Complete'; (3) Hospital task rows keep the urgent flag (retired in p72) and list done tasks struck through instead of p72's 'Pending (n)' list; (4) p72 has no Copy A&P (AC 4 added later).",
+    "evidence": [
+      "apps/web/src/features/rounding/patient/PostRoundTab.tsx",
+      "apps/web/src/features/snf/patient/PostRoundTab.tsx",
+      "handoff-docs/RoundCompanion_PLAYGROUND_p72_HAIKU.html:8371-8920"
+    ]
+  }
+}

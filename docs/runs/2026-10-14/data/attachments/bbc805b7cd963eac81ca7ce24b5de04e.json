@@ -1,0 +1,157 @@
+{
+  "ref": "TC-03/S08",
+  "title": "TC-03/S08 Status sort × every status, both contexts: same label stays together, ties in room order",
+  "dataset": "status",
+  "target": "local",
+  "at": "2026-10-19T18:43:52.504Z",
+  "cells": [
+    {
+      "name": "Hospital: cards with the same status label form one block (U2/U7)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "cards": 21,
+        "splitLabels": [
+          "Not Yet Prepped",
+          "Pre-Rounded"
+        ],
+        "blocks": [
+          "Not Yet Prepped ×5",
+          "Pre-Rounded ×1",
+          "Not Yet Prepped ×1",
+          "Pre-Rounded ×2",
+          "Seen ×5",
+          "Note Ready ×2",
+          "Complete ×5"
+        ]
+      }
+    },
+    {
+      "name": "Hospital: rooms ascend inside each block (U2/U7)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "violations": [
+          "Not Yet Prepped: 402 before 2"
+        ]
+      }
+    },
+    {
+      "name": "Hospital: block order",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        "Not Yet Prepped",
+        "Pre-Rounded",
+        "Not Yet Prepped",
+        "Pre-Rounded",
+        "Seen",
+        "Note Ready",
+        "Complete"
+      ],
+      "ref": "Q4"
+    },
+    {
+      "name": "NH Today's Visits: cards with the same status label form one block (U2/U7)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "cards": 19,
+        "splitLabels": [
+          "Pending",
+          "Pre-Rounded"
+        ],
+        "blocks": [
+          "Pending ×4",
+          "Pre-Rounded ×1",
+          "Pending ×1",
+          "Pre-Rounded ×1",
+          "Pending ×1",
+          "Pre-Rounded ×1",
+          "In Visit ×3",
+          "Note Ready ×2",
+          "Complete ×5"
+        ]
+      }
+    },
+    {
+      "name": "NH Today's Visits: rooms ascend inside each block (U2/U7)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "violations": []
+      }
+    },
+    {
+      "name": "NH Today's Visits: block order",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        "Pending",
+        "Pre-Rounded",
+        "Pending",
+        "Pre-Rounded",
+        "Pending",
+        "Pre-Rounded",
+        "In Visit",
+        "Note Ready",
+        "Complete"
+      ],
+      "ref": "Q4"
+    },
+    {
+      "name": "NH All Residents: cards with the same status label form one block (U2/U7)",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "cards": 22,
+        "splitLabels": [
+          "Pending",
+          "Pre-Rounded"
+        ],
+        "blocks": [
+          "Pending ×5",
+          "Pre-Rounded ×2",
+          "Pending ×1",
+          "Pre-Rounded ×1",
+          "Pending ×1",
+          "Pre-Rounded ×1",
+          "In Visit ×3",
+          "Note Ready ×2",
+          "Complete ×6"
+        ]
+      }
+    },
+    {
+      "name": "NH All Residents: rooms ascend inside each block (U2/U7)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "violations": []
+      }
+    },
+    {
+      "name": "NH All Residents: block order",
+      "kind": "record",
+      "ok": null,
+      "detail": [
+        "Pending",
+        "Pre-Rounded",
+        "Pending",
+        "Pre-Rounded",
+        "Pending",
+        "Pre-Rounded",
+        "In Visit",
+        "Note Ready",
+        "Complete"
+      ],
+      "ref": "Q4"
+    }
+  ],
+  "shots": [
+    "evidence/TC-03-S08-hosp-status.png",
+    "evidence/TC-03-S08-nh-today-status.png",
+    "evidence/TC-03-S08-nh-all-status.png"
+  ],
+  "error": "Error: TC-03/S08: judged cells that failed"
+}

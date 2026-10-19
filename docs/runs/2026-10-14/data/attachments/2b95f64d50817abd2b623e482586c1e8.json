@@ -1,0 +1,26 @@
+{
+  "TC-23/S24": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:40:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW (scripted dictation)",
+    "title": "A wrong device clock: dictation and sign-in",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-tc23-client.spec.ts -g S24 with prepareSession stubbed (expiresAt = host clock + 60 s, what the real call asks OpenAI for; the original passes realPrepare and would mint an OpenAI credential). Clock +70 s and +24 h: 'Live dictation couldn’t start.', nothing lands, both modes (B33; liveSession.ts unchanged). +24 h also opens on the sign-in screen and needs a UI sign-in. Clock +0, +50 s, −24 h and Honolulu: the take lands the same text as the control; the case's oracle still marks those cells failed only because it expects a prepareSession diagnostics row, which a socket stub does not write (runner artifact, not counted).",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-dictation-rb1/raw/TC-23-S24.json"
+    ],
+    "bug": {
+      "id": "B33",
+      "now": "still"
+    },
+    "scope": "P1",
+    "stated": {
+      "where": "ours: device clock skew (3.8 names time rules, not dictation)",
+      "quote": null,
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

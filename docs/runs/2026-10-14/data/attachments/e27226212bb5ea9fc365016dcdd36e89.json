@@ -1,0 +1,62 @@
+{
+  "name": "efs-s21-save-h",
+  "at": "2026-10-19T20:14:31.704Z",
+  "checks": [
+    {
+      "id": "h3: right after tapping Save Note the button shows 'Saving & Updating…' (U11)",
+      "ok": true,
+      "detail": "49 ms after the tap"
+    },
+    {
+      "id": "h4: never a spinner still running 60 s after the tap (the case's then; U11)",
+      "ok": false,
+      "detail": "still 'Saving & Updating…' 60010 ms after the tap (server gives up after 62519 ms)"
+    },
+    {
+      "id": "h4: the typed text is kept (U13)",
+      "ok": true,
+      "detail": "QA-EFS-21 BP 122/74, eating well."
+    },
+    {
+      "id": "h4: an explicit failure with a failure word (U11)",
+      "ok": true,
+      "detail": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry."
+    },
+    {
+      "id": "h4: a next step (U11)",
+      "ok": true,
+      "detail": "tap save note"
+    },
+    {
+      "id": "h4: tap-to-message within 30 s (UAT 3.5 target; a flag for Vikram / D8, not a verdict)",
+      "ok": false,
+      "detail": "62852 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: the summary call was held at the socket for the measured server time, then failed; no unscripted AI call",
+      "ok": true,
+      "detail": "[{\"udfPath\":\"ai/parsing:parsePreRoundNotes\",\"answered\":\"fail\",\"atMs\":677,\"conn\":1}]"
+    }
+  ],
+  "data": {
+    "h4": {
+      "measuredServerMs": {
+        "ms": 62519,
+        "source": "efs-s21-cap.json (2026-10-14T17:28:00.690Z)"
+      },
+      "settledWithin60s": false,
+      "tapToMessageMs": 62852,
+      "message": "Note saved, but the structured summary couldn’t be updated. Review the text and tap Save Note to retry.",
+      "box": "QA-EFS-21 BP 122/74, eating well."
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "fail",
+        "atMs": 677,
+        "conn": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "te-oat02-s11",
+  "at": "2026-10-19T18:21:05.201Z",
+  "checks": [
+    {
+      "id": "sheet: no mailto / sms link",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "id": "sheet: no 'Email Handoff', share, SMS, print or download control",
+      "ok": true,
+      "detail": "Send to… | ⎘ Copy Text"
+    },
+    {
+      "id": "Send dialog: the recipient is typed as an exact email (no list of accounts shown)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "after the send: confirmed on the button, no mailto, no email control",
+      "ok": true,
+      "detail": "Yes | No | Not sure | Skip | Sent to e2e-fresh-2a6ec74d-8d4@roundai.test | ⎘ Copy Text"
+    },
+    {
+      "id": "one Sent record, kind handoff, naming the colleague",
+      "ok": true,
+      "detail": "[{\"_id\":\"jn72qn3ydbdcmc6dp7khbz25d58gj722\",\"counterpartName\":\"Dr. QA TE Colleague tprr\",\"kind\":\"handoff\",\"patientCount\":2,\"readAt\":null,\"sentAt\":\"2026-10-19T18:21:04.231Z\",\"title\":\"Patient Handoff — Oct 20, 2026 — 2 patients\",\"variant\":\"rounding\"}]"
+    },
+    {
+      "id": "record: names the colleague and both patients; no mailto, no email control",
+      "ok": true,
+      "detail": "PATIENT HANDOFF\nTuesday, October 20, 2026 · 03:21 AM\n══════════════════════════════════════════════════\n\n1. QA TE-S11 ALMA TPRR | Room 21 | Cellulitis of the left leg\n\nQA canned summary: stable, plan "
+    },
+    {
+      "id": "harness: the summary request was answered in the page; no model action left the page",
+      "ok": true,
+      "detail": "{\"ensureAnswered\":1,\"aiFailed\":[],\"rowsPatched\":4}"
+    }
+  ],
+  "data": {
+    "modalButtons": [
+      "Close",
+      "⎘ Copy",
+      "Cancel",
+      "Send",
+      "Send to…",
+      "⎘ Copy Text"
+    ],
+    "sentRows": [
+      {
+        "_id": "jn72qn3ydbdcmc6dp7khbz25d58gj722",
+        "counterpartName": "Dr. QA TE Colleague tprr",
+        "kind": "handoff",
+        "patientCount": 2,
+        "readAt": null,
+        "sentAt": "2026-10-19T18:21:04.231Z",
+        "title": "Patient Handoff — Oct 20, 2026 — 2 patients",
+        "variant": "rounding"
+      }
+    ],
+    "socket": {
+      "ensureAnswered": 1,
+      "aiFailed": [],
+      "rowsPatched": 4
+    }
+  }
+}

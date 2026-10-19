@@ -1,0 +1,188 @@
+{
+  "name": "efs-s21-cap",
+  "at": "2026-10-19T20:20:06.984Z",
+  "checks": [
+    {
+      "id": "askChart, both models hang: the action rejects (no endless wait)",
+      "ok": true,
+      "detail": "rejected after 30001 ms; attempts Haiku cap 20000 ms @0 ms, Mistral cap 9997 ms @20003 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "askChart: the first attempt is capped at 20 s",
+      "ok": true,
+      "detail": "first attempt cap 20000 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "askChart: gives up within the 30 s budget (+2 s)",
+      "ok": true,
+      "detail": "30001 ms",
+      "recordOnly": true
+    },
+    {
+      "id": "parsePreRoundNotes, both models hang: the action rejects (no endless wait)",
+      "ok": true,
+      "detail": "rejected after 62508 ms; 16 attempts over 4 sub-calls",
+      "recordOnly": true
+    },
+    {
+      "id": "parsePreRoundNotes: gives up within the 30 s budget (+2 s)",
+      "ok": false,
+      "detail": "62508 ms",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "askChart": {
+      "outcome": {
+        "ok": false,
+        "ms": 30001,
+        "error": "ConvexError: {\"kind\":\"retryable\",\"name\":\"TimeoutError\",\"status\":null}"
+      },
+      "attempts": [
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 0,
+          "call": "text"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9997,
+          "at": 20003,
+          "call": "text"
+        }
+      ],
+      "diagnostics": [
+        {
+          "userId": "physician-1",
+          "fn": "assist.askChart",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": false,
+          "durationMs": 30001,
+          "providerMs": 30001,
+          "promptChars": 78,
+          "error": "timeout"
+        }
+      ]
+    },
+    "parsePreRoundNotes": {
+      "outcome": {
+        "ok": false,
+        "ms": 62508,
+        "error": "Error: [AI request failed (connection/provider): {\"kind\":\"retryable\",\"name\":\"TimeoutError\",\"status\":null}] — could not reach the AI service: connection/provider problem, NOT your dictation. Often a temporary rate limit; wait ~30 seconds and"
+      },
+      "attempts": [
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 1,
+          "call": "pre_round"
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 1,
+          "call": "pre_round_background"
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 1,
+          "call": "pre_round_diagnostics"
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 1,
+          "call": "pre_round_cleanup"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9997,
+          "at": 20004,
+          "call": "pre_round"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9997,
+          "at": 20004,
+          "call": "pre_round_background"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9997,
+          "at": 20004,
+          "call": "pre_round_diagnostics"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9997,
+          "at": 20004,
+          "call": "pre_round_cleanup"
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 32505,
+          "call": "pre_round"
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 32505,
+          "call": "pre_round_background"
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 32505,
+          "call": "pre_round_diagnostics"
+        },
+        {
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "timeoutMs": 20000,
+          "at": 32505,
+          "call": "pre_round_cleanup"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9999,
+          "at": 52507,
+          "call": "pre_round"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9998,
+          "at": 52507,
+          "call": "pre_round_background"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9998,
+          "at": 52507,
+          "call": "pre_round_diagnostics"
+        },
+        {
+          "model": "mistral.mistral-large-3-675b-instruct",
+          "timeoutMs": 9998,
+          "at": 52507,
+          "call": "pre_round_cleanup"
+        }
+      ],
+      "diagnostics": [
+        {
+          "userId": "physician-1",
+          "fn": "parsing.parsePreRoundNotes",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": false,
+          "durationMs": 62507,
+          "providerMs": 60004,
+          "promptChars": 53,
+          "error": "rate_limited"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "ref": "TC-12/S10",
+  "title": "TC-12/S10 AI Check Hospital: a shorthand point is stored exactly as typed after Save Note (5 charts)",
+  "dataset": "ip-dev-a",
+  "target": "dev",
+  "at": "2026-10-19T18:51:30.105Z",
+  "cells": [
+    {
+      "name": "H01: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "f/u K+ & Mg p IV repletion — ?d/c tele if NSR x24h",
+        "stored": [
+          "f/u K+ & Mg p IV repletion — ?d/c tele if NSR x24h"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5027,
+            "providerMs": 5022,
+            "appMs": 5,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H02: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "pt's dtr Maria calls @ 1500 re d/c plan",
+        "stored": [
+          "pt's dtr Maria calls @ 1500 re d/c plan"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 4049,
+            "providerMs": 4047,
+            "appMs": 2,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H03: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "chk wound vac seal; ↓ suction if bleeding",
+        "stored": [
+          "chk wound vac seal; ↓ suction if bleeding"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5391,
+            "providerMs": 5387,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H04: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "NPO after MN for EGD, hold AM glargine (1/2 dose??)",
+        "stored": [
+          "NPO after MN for EGD, hold AM glargine (1/2 dose??)"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5972,
+            "providerMs": 5968,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "H05: the point is stored byte-for-byte as typed and is the only point after Save Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "typed": "BCx 2/2 GPC → ID consult? DONT forget",
+        "stored": [
+          "BCx 2/2 GPC → ID consult? DONT forget"
+        ],
+        "ai": [
+          {
+            "fn": "parsing.parsePreRoundNotes",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 5896,
+            "providerMs": 5892,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "pool: 5/5 Hospital variants exact (S10 + S11 together make the 3.2 tally)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "key": "H01",
+          "ok": true,
+          "typed": "f/u K+ & Mg p IV repletion — ?d/c tele if NSR x24h",
+          "stored": [
+            "f/u K+ & Mg p IV repletion — ?d/c tele if NSR x24h"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 5027,
+              "providerMs": 5022,
+              "appMs": 5,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "H02",
+          "ok": true,
+          "typed": "pt's dtr Maria calls @ 1500 re d/c plan",
+          "stored": [
+            "pt's dtr Maria calls @ 1500 re d/c plan"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 4049,
+              "providerMs": 4047,
+              "appMs": 2,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "H03",
+          "ok": true,
+          "typed": "chk wound vac seal; ↓ suction if bleeding",
+          "stored": [
+            "chk wound vac seal; ↓ suction if bleeding"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 5391,
+              "providerMs": 5387,
+              "appMs": 4,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "H04",
+          "ok": true,
+          "typed": "NPO after MN for EGD, hold AM glargine (1/2 dose??)",
+          "stored": [
+            "NPO after MN for EGD, hold AM glargine (1/2 dose??)"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 5972,
+              "providerMs": 5968,
+              "appMs": 4,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        },
+        {
+          "key": "H05",
+          "ok": true,
+          "typed": "BCx 2/2 GPC → ID consult? DONT forget",
+          "stored": [
+            "BCx 2/2 GPC → ID consult? DONT forget"
+          ],
+          "ai": [
+            {
+              "fn": "parsing.parsePreRoundNotes",
+              "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+              "ok": true,
+              "durationMs": 5896,
+              "providerMs": 5892,
+              "appMs": 4,
+              "parseStatus": null,
+              "fellBackFrom": null,
+              "error": null,
+              "over30s": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "shots": [
+    "evidence/TC-12-S10-H01-editor-after-save.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-12-S10-H01-editor-after-save.png": 0
+  }
+}

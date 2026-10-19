@@ -1,0 +1,108 @@
+{
+  "name": "ho-s26",
+  "at": "2026-10-19T19:00:39.482Z",
+  "build": {
+    "sha": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-19T17:04:37Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "record (Q14): the open sheet, not reopened, 15 s after the change still shows the completed discharge task",
+      "ok": false,
+      "detail": "does not show the new task",
+      "record": true
+    },
+    {
+      "id": "record (Q14): the Send dialog opened on the stale sheet holds the completed discharge task",
+      "ok": false,
+      "detail": "no new task",
+      "record": true
+    },
+    {
+      "id": "(a) after reopening, H1's handoff lists the new task QA-NEW-H1",
+      "ok": true,
+      "detail": "\n68-year-old patient admitted with community-acquired pneumonia, currently improving on ceftriaxone therapy.\n\nACTIVE ISSUES:\n  • CAP — improving on ceftriaxone\n\nPENDING RESULTS:\n  • Follow up blood cultures\n\nTO-DO / IF-THEN:\n  • Follow up blood cultures (pending)\n  • If temp > 38.5, then repeat blood cultures\n  • Call pharmacy re order QA-H1-7731\n  • QA-NEW-H1 page ortho\n\n──────────────────────────────────────────────────\n\n"
+    },
+    {
+      "id": "(a) after reopening, H1's handoff no longer lists the completed discharge task",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "record: H1 Discharge Barriers after the change (nothing invented in its place)",
+      "ok": true,
+      "detail": "[]",
+      "record": true
+    },
+    {
+      "id": "(a) token QA-H1-7731 once on the reopened sheet",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "(a) token QA-H2-3358 once on the reopened sheet",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "id": "(a) token QA-H3-6602 once on the reopened sheet",
+      "ok": true,
+      "detail": "1"
+    }
+  ],
+  "data": {
+    "changedAt": "2026-10-19T19:00:15.625Z",
+    "reopen": {
+      "waitMs": 4879,
+      "enabled": true,
+      "banner": [],
+      "t0": 1792436433289
+    },
+    "aiCalls": [
+      {
+        "at": "2026-10-19T19:00:37.683Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 3608,
+        "durationMs": 3688,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T19:00:09.379Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2216,
+        "durationMs": 2295,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T19:00:09.295Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2399,
+        "durationMs": 2513,
+        "error": null
+      },
+      {
+        "at": "2026-10-19T19:00:09.186Z",
+        "fn": "handoff.summarize",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "fellBackFrom": null,
+        "providerMs": 2313,
+        "durationMs": 2476,
+        "error": null
+      }
+    ]
+  }
+}

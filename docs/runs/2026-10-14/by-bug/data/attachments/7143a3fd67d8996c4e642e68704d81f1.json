@@ -1,0 +1,18 @@
+{
+  "TC-24/S18": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:03:14.262Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "local Playwright spec (newspec-c/ip-*.spec.ts) on the QA stack at 8b4be94a, fresh @roundai.test physician, every ai/* call answered at the Convex socket (hostile parse whose important_points the physician never typed); tripwire: no model call on every run",
+    "title": "Important Points part only: two signed-in browsers; a deleted point is not written back by the other",
+    "detail": "Both modes: A deletes, B (no reload) adds; server, A and B show the new point and not the deleted one. Recorded (ours, P1+): if B is OFFLINE while A deletes and then adds a point, B's reconnect writes A's deleted point back (whole-list write). Judged checks 6/6.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc24-s18-hosp-b-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc24-s18-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc24-s18-snf-b-after.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc24-s18-snf.json"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "ip-tc12-s15-snf",
+  "at": "2026-10-19T18:21:26.099Z",
+  "checks": [
+    {
+      "id": "paste import: Important Points still hold only the physician's own point, id and createdAt unchanged",
+      "ok": true,
+      "detail": "[{\"id\":\"qa-own\",\"text\":\"QA own NH point: ask about dentures\",\"source\":\"manual\",\"createdAt\":1792423280640}]"
+    },
+    {
+      "id": "photo import: Important Points still hold only the physician's own point, id and createdAt unchanged",
+      "ok": true,
+      "detail": "[{\"id\":\"qa-own\",\"text\":\"QA own NH point: ask about dentures\",\"source\":\"manual\",\"createdAt\":1792423280640}]"
+    },
+    {
+      "id": "the editor shows only the physician's own point",
+      "ok": true,
+      "detail": "[\"QA own NH point: ask about dentures\"]"
+    },
+    {
+      "id": "setup: both imports went through the app's own path (the scripted photo read was used; no ai/* call refused)",
+      "ok": true,
+      "detail": "[\"ai/vision:scanPriorNote:ok\"]"
+    }
+  ],
+  "data": {
+    "after paste: previous notes count": 1,
+    "after photo: previous notes count": 2,
+    "ai calls": [
+      "ai/vision:scanPriorNote:ok"
+    ]
+  }
+}

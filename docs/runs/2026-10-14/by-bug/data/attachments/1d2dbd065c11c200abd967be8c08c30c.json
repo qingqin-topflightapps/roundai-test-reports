@@ -1,0 +1,351 @@
+{
+  "ref": "TC-01/S26",
+  "title": "TC-01/S26 Every card on a multi-patient list shows its own values, not a neighbour's (card-scoped)",
+  "dataset": "identity",
+  "target": "local",
+  "at": "2026-10-19T18:23:56.901Z",
+  "cells": [
+    {
+      "name": "Hospital h1: its own room/unit, age/sex, diagnosis",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "76F"
+        ]
+      }
+    },
+    {
+      "name": "Hospital h1: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "Hospital h1: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Hospital h2: its own room/unit, age/sex, diagnosis",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "81M"
+        ]
+      }
+    },
+    {
+      "name": "Hospital h2: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "Hospital h2: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Hospital h3: its own room/unit, age/sex, diagnosis",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "64F"
+        ]
+      }
+    },
+    {
+      "name": "Hospital h3: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "Hospital h3: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Hospital hx: its own room/unit, age/sex, diagnosis",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "Hospital hx: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "Hospital hx (age 72, no sex stored): no invented sex (3.4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "72y"
+    },
+    {
+      "name": "Hospital hx: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH today n1: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "87F"
+        ]
+      }
+    },
+    {
+      "name": "NH today n1: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH today n1: no stored diagnosis on a Nursing Home card (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "NH today n1: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH today n3: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "72F"
+        ]
+      }
+    },
+    {
+      "name": "NH today n3: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH today n3: no stored diagnosis on a Nursing Home card (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "NH today n3: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH today n4: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "90M"
+        ]
+      }
+    },
+    {
+      "name": "NH today n4: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH today n4: no stored diagnosis on a Nursing Home card (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "NH today n4: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH today nx: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "NH today nx: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH today nx (no unit stored): no invented room (3.4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH today nx: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH all n1: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "87F"
+        ]
+      }
+    },
+    {
+      "name": "NH all n1: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH all n1: no stored diagnosis on a Nursing Home card (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "NH all n1: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH all n3: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "72F"
+        ]
+      }
+    },
+    {
+      "name": "NH all n3: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH all n3: no stored diagnosis on a Nursing Home card (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "NH all n3: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH all n4: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "missing": [
+          "90M"
+        ]
+      }
+    },
+    {
+      "name": "NH all n4: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH all n4: no stored diagnosis on a Nursing Home card (U2)",
+      "kind": "judged",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "NH all n4: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH all nx: its own room/unit, age/sex",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "missing": []
+      }
+    },
+    {
+      "name": "NH all nx: none of its neighbours' values",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "leaks": []
+      }
+    },
+    {
+      "name": "NH all nx (no unit stored): no invented room (3.4)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "NH all nx: no 'undefined' / 'null' / 'NaN'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    "evidence/TC-01-S26-hospital-today.png",
+    "evidence/TC-01-S26-snf-today.png",
+    "evidence/TC-01-S26-snf-all.png"
+  ],
+  "error": "Error: TC-01/S26: judged cells that failed"
+}

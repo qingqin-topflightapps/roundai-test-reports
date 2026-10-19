@@ -55,7 +55,7 @@
 
     
     <script>
-      window.allureReportOptions = {"id":"awesome","reportName":"Round Companion UAT — dev + local, by bug","logo":"","theme":"light","reportLanguage":"en","createdAt":1792167685644,"reportUuid":"c67c8c8c-3902-423b-94c3-6ea576c2efab","groupBy":["Bug level","Bug","feature"],"cacheKey":"1792167685644","ci":{"type":"local","detected":true,"repoName":"","jobUid":"local","jobUrl":"","jobName":"","jobRunUid":"baf3f86b-22c3-4c87-8265-6ff344a368dd","jobRunUrl":"","jobRunName":"","jobRunBranch":"","pullRequestUrl":"","pullRequestName":""},"executor":{"name":"RoundAI QA agent","type":"dev+local","buildName":"2026-10-14-dev + 2026-10-14-local","reportName":"Round Companion UAT — dev 2026-10-14-dev + local 2026-10-14-local, by UAT item"},"runSummary":{"start":1791924562953,"stop":1792167642971,"duration":243080018},"runSummaryByEnv":{"default":{"start":1791924562953,"stop":1792167642971,"duration":243080018}},"layout":"base","allureVersion":"3.20.1","sections":["charts","timeline"],"defaultSection":""}
+      window.allureReportOptions = {"id":"awesome","reportName":"Round Companion UAT — dev + local, by bug","logo":"","theme":"light","reportLanguage":"en","createdAt":1792447630509,"reportUuid":"14630bed-ba21-4a5d-b15c-1c75ecb1b649","groupBy":["Bug severity","Bug","feature"],"cacheKey":"1792447630509","ci":{"type":"local","detected":true,"repoName":"","jobUid":"local","jobUrl":"","jobName":"","jobRunUid":"6b8ab17f-ad48-408f-9150-691502cb6a15","jobRunUrl":"","jobRunName":"","jobRunBranch":"","pullRequestUrl":"","pullRequestName":""},"executor":{"name":"RoundAI QA agent","type":"dev+local","buildName":"2026-10-14-dev + 2026-10-14-local","reportName":"Round Companion UAT — dev 2026-10-14-dev + local 2026-10-14-local, by UAT item"},"runSummary":{"start":1791924909770,"stop":1792447552458,"duration":522642688},"runSummaryByEnv":{"default":{"start":1791924909770,"stop":1792447552458,"duration":522642688}},"layout":"base","allureVersion":"3.20.1","sections":["charts","timeline"],"defaultSection":""}
     </script>
 <style data-roundai-i18n>
 .rc-lang{position:relative;display:inline-flex;align-items:center;flex:none;box-sizing:border-box;height:24px;margin-left:4px;border:1px solid var(--color-border-default,#d0d4dc);border-radius:4px;background:var(--color-control-bg-ghost,transparent);color:var(--color-text-primary,#1f2328);font-family:var(--font-family,system-ui,sans-serif);font-size:12px;line-height:1}
@@ -596,23 +596,28 @@ function readState(search, stored, cfg) {
   }
   const statuses = cfg.statuses;
   const issueOf = (v) => cfg.issues.find((i) => i.label === v || i.name === v || i.key === v)?.label ?? null;
-  const clean = (st) => ({ status: splitList(st.status).filter((s) => statuses.includes(s)), issue: splitList(st.issue).map(issueOf).filter((x, i, a) => x && a.indexOf(x) === i) });
-  if (sp.has(cfg.param.status) || sp.has(cfg.param.issue)) return { ...clean({ status: sp.getAll(cfg.param.status), issue: sp.getAll(cfg.param.issue) }), from: "url" };
+  const prios = cfg.prios ?? [];
+  const clean = (st) => ({ status: splitList(st.status).filter((s) => statuses.includes(s)), issue: splitList(st.issue).map(issueOf).filter((x, i, a) => x && a.indexOf(x) === i), prio: splitList(st.prio).filter((p) => prios.includes(p)) });
+  if (sp.has(cfg.param.status) || sp.has(cfg.param.issue) || sp.has(cfg.param.prio)) return { ...clean({ status: sp.getAll(cfg.param.status), issue: sp.getAll(cfg.param.issue), prio: sp.getAll(cfg.param.prio) }), from: "url" };
   const native = nativeState(sp, cfg);
-  if (native.status.length || native.issue.length) return { ...native, from: "allure" };
+  if (native.status.length || native.issue.length || native.prio.length) return { ...native, from: "allure" };
   let st = null;
   try {
     st = stored ? JSON.parse(stored) : null;
   } catch {
     st = null;
   }
-  if (st && typeof st === "object") return { ...clean(st), from: "stored" };
-  return { status: [], issue: [], from: "none" };
+  if (st && typeof st === "object") return { ...clean({ prio: [], ...st }), from: "stored" };
+  return { status: [], issue: [], prio: (cfg.defaultPrio ?? []).filter((p) => prios.includes(p)), from: "none" };
 }
 function nativeState(sp, cfg) {
-  const status = sp.getAll("tags").filter((t) => t.startsWith(cfg.tagPrefix)).map((t) => t.slice(cfg.tagPrefix.length)).filter((s, i, a) => cfg.statuses.includes(s) && a.indexOf(s) === i);
-  const issue = sp.getAll("categories").map((c) => cfg.issues.find((i) => i.name === c)?.label).filter((x, i, a) => x && a.indexOf(x) === i);
-  return { status, issue };
+  const tags = sp.getAll("tags");
+  const uniq = (x, i, a) => x && a.indexOf(x) === i;
+  const combos = tags.filter((t) => cfg.comboPrefix && t.startsWith(cfg.comboPrefix)).map((t) => t.slice(cfg.comboPrefix.length)).map((t) => [t.slice(0, t.lastIndexOf(" · ")), t.slice(t.lastIndexOf(" · ") + 3)]);
+  const status = [...tags.filter((t) => t.startsWith(cfg.tagPrefix)).map((t) => t.slice(cfg.tagPrefix.length)), ...combos.map((c) => c[0])].filter((s, i, a) => cfg.statuses.includes(s) && a.indexOf(s) === i);
+  const prio = [...tags.filter((t) => cfg.prioPrefix && t.startsWith(cfg.prioPrefix)).map((t) => t.slice(cfg.prioPrefix.length)), ...combos.map((c) => c[1])].filter((p, i, a) => (cfg.prios ?? []).includes(p) && a.indexOf(p) === i);
+  const issue = sp.getAll("categories").map((c) => cfg.issues.find((i) => i.name === c)?.label).filter(uniq);
+  return { status, issue, prio };
 }
 function writeSearch(search, state, cfg) {
   let sp;
@@ -622,44 +627,56 @@ function writeSearch(search, state, cfg) {
     sp = new URLSearchParams("");
   }
   const names = cfg.issues.map((i) => i.name);
-  const tags = sp.getAll("tags").filter((t) => !t.startsWith(cfg.tagPrefix));
+  const ours = (t) => t.startsWith(cfg.tagPrefix) || (cfg.prioPrefix && t.startsWith(cfg.prioPrefix)) || (cfg.comboPrefix && t.startsWith(cfg.comboPrefix));
+  const tags = sp.getAll("tags").filter((t) => !ours(t));
+  const prio = state.prio ?? [];
+  // status and priority both picked: the combined tags (OR over pairs = status AND priority)
+  const picked = state.status.length && prio.length ? state.status.flatMap((s) => prio.map((p) => cfg.comboPrefix + s + " · " + p)) : state.status.length ? state.status.map((s) => cfg.tagPrefix + s) : prio.map((p) => cfg.prioPrefix + p);
   const cats = sp.getAll("categories").filter((c) => !names.includes(c));
-  for (const k of ["tags", "categories", cfg.param.status, cfg.param.issue]) sp.delete(k);
-  for (const t of [...tags, ...state.status.map((s) => cfg.tagPrefix + s)]) sp.append("tags", t);
+  for (const k of ["tags", "categories", cfg.param.status, cfg.param.issue, cfg.param.prio]) sp.delete(k);
+  for (const t of [...tags, ...picked]) sp.append("tags", t);
   for (const c of [...cats, ...state.issue.map((l) => cfg.issues.find((i) => i.label === l)?.name).filter(Boolean)]) sp.append("categories", c);
-  const ours = [
+  const own = [
     state.status.length ? `${cfg.param.status}=${state.status.map(encodeURIComponent).join(",")}` : null,
     state.issue.length ? `${cfg.param.issue}=${state.issue.map(encodeURIComponent).join(",")}` : null,
+    prio.length ? `${cfg.param.prio}=${prio.map(encodeURIComponent).join(",")}` : null,
   ].filter(Boolean);
-  const q = [sp.toString(), ...ours].filter(Boolean).join("&");
+  const q = [sp.toString(), ...own].filter(Boolean).join("&");
   return q ? `?${q}` : "";
 }
-var sameState=(a, b) => a.status.join("\u0000") === b.status.join("\u0000") && a.issue.join("\u0000") === b.issue.join("\u0000");
+var sameState=(a, b) => a.status.join("\u0000") === b.status.join("\u0000") && a.issue.join("\u0000") === b.issue.join("\u0000") && (a.prio ?? []).join("\u0000") === (b.prio ?? []).join("\u0000");
 function chipCounts(data, state) {
   const sIdx = state.status.map((s) => data.statuses.indexOf(s));
   const iIdx = state.issue.map((l) => data.issues.findIndex((i) => i.label === l));
+  const pIdx = (state.prio ?? []).map((p) => (data.prios ?? []).indexOf(p));
   const okS = (r) => !sIdx.length || r[0].some((x) => sIdx.includes(x));
   const okI = (r) => !iIdx.length || iIdx.includes(r[1]);
+  const okP = (r) => !pIdx.length || pIdx.includes(r[3]);
   const status = data.statuses.map(() => ({ n: 0, f: 0 }));
   const issue = data.issues.map(() => ({ n: 0, f: 0 }));
+  const prio = (data.prios ?? []).map(() => ({ n: 0, f: 0 }));
   let total = 0;
   let failed = 0;
   for (const r of data.results) {
-    if (okI(r))
+    if (okI(r) && okP(r))
       for (const x of r[0]) {
         status[x].n += 1;
         status[x].f += r[2];
       }
-    if (okS(r) && r[1] >= 0) {
+    if (okS(r) && okP(r) && r[1] >= 0) {
       issue[r[1]].n += 1;
       issue[r[1]].f += r[2];
     }
-    if (okS(r) && okI(r)) {
+    if (okS(r) && okI(r) && r[3] >= 0 && prio[r[3]]) {
+      prio[r[3]].n += 1;
+      prio[r[3]].f += r[2];
+    }
+    if (okS(r) && okI(r) && okP(r)) {
       total += 1;
       failed += r[2];
     }
   }
-  return { status, issue, total, failed };
+  return { status, issue, prio, total, failed };
 }
 (function client(cfg, data) {
   const store = {
@@ -676,11 +693,11 @@ function chipCounts(data, state) {
       } catch {}
     },
   };
-  const C = { ...cfg, statuses: data.statuses, issues: data.issues };
+  const C = { ...cfg, statuses: data.statuses, issues: data.issues, prios: data.prios ?? [] };
   let state = readState(location.search, store.get(), C);
   let lastHash = location.hash;
   let writing = false;
-  const save = () => store.set(JSON.stringify({ status: state.status, issue: state.issue }));
+  const save = () => store.set(JSON.stringify({ status: state.status, issue: state.issue, prio: state.prio ?? [] }));
 
   // URL: ours + Allure's; Allure listens to these events (its router re-reads location on them)
   function writeUrl(notify) {
@@ -705,8 +722,8 @@ function chipCounts(data, state) {
     const native = nativeState(sp, C);
     const hashMoved = location.hash !== lastHash;
     lastHash = location.hash;
-    const lost = !native.status.length && !native.issue.length && !sp.has(C.param.status) && !sp.has(C.param.issue);
-    if (lost && hashMoved && (state.status.length || state.issue.length)) return writeUrl(true); // a navigation dropped the search
+    const lost = !native.status.length && !native.issue.length && !native.prio.length && !sp.has(C.param.status) && !sp.has(C.param.issue) && !sp.has(C.param.prio);
+    if (lost && hashMoved && (state.status.length || state.issue.length || (state.prio ?? []).length)) return writeUrl(true); // a navigation dropped the search
     if (!sameState(native, state)) state = { ...native, from: "allure" };
     save();
     writeUrl(true);
@@ -719,7 +736,7 @@ function chipCounts(data, state) {
   let btn = null;
   let panel = null;
   let fallbackDue = false;
-  const chips = { status: [], issue: [] };
+  const chips = { status: [], issue: [], prio: [] };
   const T = cfg.text;
   function chip(group, value, label, noTranslate) {
     const b = document.createElement("button");
@@ -743,9 +760,10 @@ function chipCounts(data, state) {
     b.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const list = state[group];
+      const list = state[group] ?? [];
       state = { ...state, [group]: list.includes(value) ? list.filter((x) => x !== value) : [...list, value] };
       if (group === "status") state.status = C.statuses.filter((s) => state.status.includes(s));
+      else if (group === "prio") state.prio = C.prios.filter((s) => state.prio.includes(s));
       else state.issue = C.issues.map((i) => i.label).filter((s) => state.issue.includes(s));
       save();
       writeUrl(true);
@@ -802,7 +820,7 @@ function chipCounts(data, state) {
     clear.textContent = T.clear;
     clear.addEventListener("click", (e) => {
       e.preventDefault();
-      state = { status: [], issue: [], from: "clear" };
+      state = { status: [], issue: [], prio: [], from: "clear" };
       save();
       writeUrl(true);
       paint();
@@ -813,6 +831,7 @@ function chipCounts(data, state) {
     note.textContent = T.note;
     panel.append(
       head,
+      ...(C.prios.length ? [section(T.prio, "prio", C.prios.map((p) => ({ value: p, label: T.prioNames?.[p] ?? p })))] : []),
       section(T.status, "status", C.statuses.map((s) => ({ value: s, label: s, noTranslate: s !== cfg.none }))),
       ...(C.issues.length ? [section(T.issue, "issue", C.issues.map((i) => ({ value: i.label, label: i.label })))] : []),
       note,
@@ -849,16 +868,16 @@ function chipCounts(data, state) {
   function paint() {
     if (!root) return;
     const c = chipCounts(data, state);
-    const active = state.status.length + state.issue.length;
+    const active = state.status.length + state.issue.length + (state.prio ?? []).length;
     btn.querySelector(".rc-filter-count").textContent = active ? String(active) : "";
     btn.classList.toggle("rc-on", active > 0);
-    btn.title = active ? `${T.status}: ${state.status.join(", ") || "—"} · ${T.issue}: ${state.issue.join(", ") || "—"}` : T.tip;
+    btn.title = active ? `${T.prio}: ${(state.prio ?? []).join(", ") || "—"} · ${T.status}: ${state.status.join(", ") || "—"} · ${T.issue}: ${state.issue.join(", ") || "—"}` : T.tip;
     root.querySelector(".rc-filter-total").textContent = `${c.total} ${c.total === 1 ? "result" : "results"}, ${c.failed} failed`;
     for (const [group, list] of Object.entries(chips))
       for (const b of list) {
-        const i = group === "status" ? C.statuses.indexOf(b.dataset.value) : C.issues.findIndex((x) => x.label === b.dataset.value);
+        const i = group === "status" ? C.statuses.indexOf(b.dataset.value) : group === "prio" ? C.prios.indexOf(b.dataset.value) : C.issues.findIndex((x) => x.label === b.dataset.value);
         const k = c[group][i] ?? { n: 0, f: 0 };
-        b.setAttribute("aria-pressed", String(state[group].includes(b.dataset.value)));
+        b.setAttribute("aria-pressed", String((state[group] ?? []).includes(b.dataset.value)));
         b.querySelector(".rc-chip-n").textContent = String(k.n);
         const f = b.querySelector(".rc-chip-f");
         f.textContent = k.f ? String(k.f) : "";
@@ -895,7 +914,7 @@ function chipCounts(data, state) {
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
   else start();
-})({"mark":"data-roundai-filter","storeKey":"roundai-report-filter","param":{"status":"ticketStatus","issue":"issue"},"tagPrefix":"Ticket status: ","none":"no ticket","text":{"button":"Filter","tip":"Filter by ticket status / issue type (pick several)","status":"Ticket status","issue":"Issue type","clear":"Clear","failedTip":"how many of them failed","note":"Several picks in one group = any of them; across the two groups = both must match. The counts use these two groups only (Allure's own status filter and search come on top); red = how many of them failed. The choice is kept in the URL and in this browser."}},{"statuses":["ready for qa","ready for pr","in progress","rejected by qa","development backlog","no ticket"],"issues":[{"key":"new-product","name":"Issue type: New product issue","label":"New product issue"},{"key":"known-product","name":"Issue type: Known product issue","label":"Known product issue"},{"key":"needs-decision","name":"Issue type: Needs a decision","label":"Needs a decision"},{"key":"accessibility","name":"Issue type: Suggestion · our own check","label":"Suggestion · our own check"},{"key":"ticket-not-ready","name":"Issue type: Ticket not ready for QA","label":"Ticket not ready for QA"},{"key":"test-issue","name":"Issue type: Test issue","label":"Test issue"},{"key":"duplicate","name":"Issue type: Duplicate (see the kept one)","label":"Duplicate"}],"results":[[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[0],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],0,1],[[0],-1,0],[[0],0,1],[[2,0],0,1],[[0],-1,0],[[0],0,1],[[2,0],2,1],[[0],3,1],[[2,0],-1,0],[[0],-1,0],[[2],-1,0],[[1,0],-1,0],[[0],1,1],[[0],-1,0],[[2],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2],-1,0],[[2,0],0,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[0],-1,0],[[2],-1,0],[[0],-1,0],[[2,0],3,1],[[2],-1,0],[[0],-1,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[4,2],-1,0],[[2],-1,0],[[2,1],-1,0],[[2],-1,0],[[2,1],-1,0],[[2],-1,0],[[2],-1,0],[[4,0],0,1],[[2],-1,0],[[2,1],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],-1,0],[[2,0],5,0],[[2,0],-1,0],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],5,0],[[2,0],5,0],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],0,1],[[2,0],-1,0],[[2,0],-1,0],[[0],0,1],[[0],0,1],[[0],-1,0],[[2,0],3,1],[[2,0],1,1],[[0],0,1],[[0],5,0],[[2,0],-1,0],[[2,0],5,0],[[2,0],-1,0],[[0],-1,0],[[2],4,1],[[4,2],-1,0],[[2],-1,0],[[2],4,1],[[2],-1,0],[[2],-1,0],[[2],4,1],[[2],4,1],[[2],-1,0],[[2],4,1],[[2],0,1],[[2],-1,0],[[2],4,1],[[2,0],4,1],[[2],-1,0],[[2],4,1],[[2],2,1],[[4,2],-1,0],[[2],-1,0],[[2],4,1],[[2],4,1],[[2],4,1],[[2,0],4,1],[[2],4,1],[[2],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[4,2,0],-1,0],[[2],-1,0],[[2,0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[4,2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[4,2],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],3,1],[[2],-1,0],[[0,3],-1,0],[[0,3],-1,0],[[0,3],-1,0],[[0,3],-1,0],[[0,3],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0,3],-1,0],[[0],-1,0],[[0,3],1,1],[[0],-1,0],[[0],3,1],[[0],3,1],[[0],-1,0],[[0],2,1],[[0],2,1],[[0],-1,0],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],1,1],[[0],1,1],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],3,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[3],0,1],[[3],0,1],[[3],-1,0],[[3],2,1],[[3],0,1],[[3],0,1],[[3],0,1],[[3],-1,0],[[3],2,1],[[3],2,1],[[3],-1,0],[[3],1,1],[[3],0,1],[[3],0,1],[[3],-1,0],[[0],-1,0],[[3],-1,0],[[3],-1,0],[[3],-1,0],[[0],-1,0],[[0,3],-1,0],[[3],0,1],[[3],-1,0],[[3],0,1],[[3],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],0,1],[[0],1,1],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],3,1],[[0],3,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],5,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[1],4,0],[[1],4,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],4,0],[[1],-1,0],[[1],4,0],[[1],4,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[0],0,1],[[0],0,1],[[0],0,0],[[0],1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[0],-1,0],[[0],5,0],[[0],-1,0],[[0],-1,0],[[0],3,1],[[0],-1,0],[[0],0,0],[[2,0],-1,0],[[2,0],0,1],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[2],4,1],[[5],1,1],[[2,0],3,1],[[2,0],-1,0],[[0],1,1],[[0],-1,0],[[0],0,1],[[0],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[0],2,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],2,1],[[0],2,1],[[0],0,1],[[0],-1,0],[[0],-1,0],[[5],-1,0],[[0],3,1],[[0],-1,0],[[0],-1,0],[[2,0],4,1],[[0],-1,0],[[0],-1,0],[[0],2,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],4,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],4,1],[[2],3,1],[[2],-1,0],[[2],1,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],4,1],[[2],4,1],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2],-1,0],[[2],5,0],[[2],-1,0],[[2],4,1],[[2],4,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2],3,1],[[2],-1,0],[[0],0,0],[[0],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],0,1],[[2],4,1],[[2,0],0,1],[[2,0],0,1],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[0],0,1],[[0],5,0],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],0,1],[[2,0],0,1],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[2,0],0,1],[[0],-1,0],[[0],2,1],[[0],3,1],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],0,1],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],2,1],[[0],-1,0],[[0],3,1],[[0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],5,0],[[0],-1,0],[[5],-1,0],[[0],-1,0],[[0],-1,0],[[0],5,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],2,0],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],3,1],[[0],-1,0],[[2],2,1],[[0],-1,0],[[0],2,0],[[0],2,1],[[0],2,1],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[1],-1,0],[[1],4,0],[[1],-1,0],[[1],-1,0],[[1],-1,0],[[0],-1,0],[[1,0],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,0],[[0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],0,1],[[0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2],-1,0],[[0],4,0],[[2,0],-1,1],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[0],1,1],[[0],-1,0],[[0],0,1],[[2,0],4,1],[[0],1,1],[[2,0],0,1],[[2,0],4,0],[[0],-1,0],[[2,0],0,1],[[0],-1,0],[[2,0],-1,0],[[2,0],1,1],[[2,0],2,1],[[0],3,1],[[0],1,1],[[2,0],-1,0],[[2,0],4,1],[[2,0],-1,0],[[2,0],0,1],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,0],[[0],-1,0],[[0],-1,0],[[0],1,0],[[0],1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[2,0],4,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[5],-1,0],[[0],3,1],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[1,0],2,1],[[5],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],-1,0],[[0],1,1],[[0],-1,0],[[2,0],4,0],[[1,0],-1,0],[[2,0],0,0],[[0],3,1],[[0],-1,0],[[0],1,1],[[0],-1,0],[[0],-1,0],[[0],1,0],[[0],-1,0],[[0],0,1],[[1,0],0,1],[[0],0,1],[[1,0],0,1],[[2,0],0,1],[[2,0],0,1],[[2,0],-1,1],[[2,0],0,1],[[0],0,1],[[0],0,1],[[0],0,1],[[1,0],-1,0],[[2,0],-1,0],[[2,0],-1,1],[[2,0],0,1],[[2,0],0,1],[[0],-1,0],[[5],-1,0],[[1,0],3,1],[[0],-1,0],[[0],-1,0],[[1,0],1,1],[[2,0],4,0],[[2,0],0,1],[[2,0],-1,0],[[0],-1,0],[[0],5,0],[[0],6,0],[[0],6,0],[[0],6,0],[[0],6,0],[[0],6,0],[[2,0],6,0],[[2,0],0,1],[[2,0],-1,0],[[2,0],0,1],[[2,0],6,0],[[2,0],6,0],[[2],6,0],[[2,0],6,0],[[0],2,1],[[0],2,0],[[0],6,0],[[0],3,1],[[2,0],-1,0],[[2,0],-1,0],[[0],-1,0],[[0],-1,0],[[2],2,1],[[2,0],0,1],[[0],0,1],[[2],-1,0],[[2],-1,0],[[2,0],1,1],[[2,0],-1,0],[[2,0],1,1],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[0],-1,0],[[2,0],-1,0],[[2],-1,0],[[2,0],0,1],[[2],-1,0],[[2],-1,0],[[2],4,0],[[2,0],-1,0],[[2],-1,0],[[2,0],-1,0],[[2,0],-1,0],[[2],-1,0],[[2],-1,0],[[2],-1,0],[[2,0],1,1],[[2,0],2,0],[[2,0],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2,0],0,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2,0],2,0],[[4,2],-1,0],[[4,2],-1,0],[[4,2],6,0],[[4,2],3,1],[[4,2,0],-1,0],[[4,2,0],-1,0],[[0],1,1],[[0],1,1],[[4,2],-1,0],[[2],-1,0],[[2,0],4,1],[[4,2,0],0,1],[[0],-1,0],[[5],-1,0],[[0],0,1],[[0],0,1],[[4,2],0,1]]});
+})({"mark":"data-roundai-filter","storeKey":"roundai-report-filter-v2","param":{"status":"ticketStatus","issue":"issue","prio":"casePriority"},"tagPrefix":"Ticket status: ","prioPrefix":"Case priority: ","comboPrefix":"Ticket status × case priority: ","defaultPrio":["P0"],"none":"no ticket","text":{"button":"Filter","tip":"Filter by case priority / ticket status / issue type (pick several)","prio":"Case priority","prioNames":{"P0":"P0 · in the UAT / ticket AC","P1":"P1 · our extension","P2":"P2 · extra","—":"— · not graded"},"status":"Ticket status","issue":"Issue type","clear":"Clear","failedTip":"how many of them failed","note":"Several picks in one group = any of them; across groups = all must match. The page opens on P0 cases (what the UAT or a ticket's AC states; a P0 failure is a QA bug); P1 / P2 are our own extensions and extras (a failure is a QA improvement). The counts use these three groups only (Allure's own status filter and search come on top); red = how many of them failed. The choice is kept in the URL and in this browser."}},{"statuses":["ready for qa","in progress","rejected by qa","development backlog","no ticket"],"issues":[{"key":"new-product","name":"Issue type: New product issue","label":"New product issue"},{"key":"known-product","name":"Issue type: Known product issue","label":"Known product issue"},{"key":"needs-decision","name":"Issue type: Needs a decision","label":"Needs a decision"},{"key":"accessibility","name":"Issue type: Suggestion · our own check","label":"Suggestion · our own check"},{"key":"ticket-not-ready","name":"Issue type: Ticket not ready for QA","label":"Ticket not ready for QA"},{"key":"test-issue","name":"Issue type: Test issue","label":"Test issue"},{"key":"duplicate","name":"Issue type: Duplicate (see the kept one)","label":"Duplicate"}],"prios":["P0","P1","P2","—"],"results":[[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1,0],0,1,0],[[0],-1,0,0],[[0],0,1,0],[[1,0],0,0,0],[[0],-1,0,0],[[0],0,1,0],[[1,0],2,1,0],[[0],3,1,2],[[1,0],-1,0,0],[[0],-1,0,0],[[1],-1,0,0],[[0],-1,0,0],[[0],1,1,1],[[0],-1,0,0],[[1],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1],-1,0,0],[[1,0],0,1,1],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,2],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,1],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[1],-1,0,0],[[0],-1,0,0],[[1,0],3,1,0],[[1],-1,0,1],[[0],-1,1,0],[[1],-1,0,0],[[1],-1,0,1],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[3,1],-1,0,0],[[1],-1,0,0],[[1,0],-1,0,0],[[1],-1,0,0],[[1,0],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[3,0],0,1,0],[[1],-1,0,0],[[1,0],-1,0,0],[[1],-1,0,0],[[1],-1,0,1],[[1],-1,0,0],[[1],-1,0,0],[[1,0],-1,0,0],[[1,0],5,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[0],5,0,0],[[1,0],5,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[1,0],-1,0,0],[[1,0],-1,0,1],[[0],0,1,0],[[0],0,1,0],[[0],-1,0,0],[[1,0],3,1,2],[[1,0],1,1,0],[[0],0,1,0],[[0],5,0,0],[[1,0],-1,0,0],[[1,0],5,0,0],[[1,0],-1,0,1],[[0],-1,0,0],[[1],4,1,0],[[3,1],-1,0,0],[[1],-1,0,0],[[1],4,1,0],[[1],-1,0,0],[[1],-1,0,0],[[1],4,1,0],[[1],4,1,0],[[1],-1,0,0],[[1],4,1,0],[[1],0,1,0],[[1],-1,0,0],[[1],4,1,0],[[1,0],4,1,1],[[1],-1,0,0],[[1],4,1,1],[[1],2,1,0],[[3,1],-1,0,0],[[1],-1,0,1],[[1],4,1,1],[[1],4,1,0],[[1],4,1,0],[[1,0],4,1,0],[[1],4,1,0],[[1],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[3,1,0],-1,0,0],[[1],-1,0,0],[[1,0],-1,0,0],[[0],2,1,0],[[0],-1,0,0],[[0],-1,0,0],[[3,1],-1,0,0],[[1,0],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[0],-1,0,0],[[3,1],-1,0,0],[[1,0],-1,0,1],[[1],-1,0,0],[[1],-1,0,0],[[1],-1,0,0],[[0],3,1,1],[[1],-1,0,0],[[0,2],-1,0,0],[[0,2],-1,0,0],[[0,2],-1,0,0],[[0,2],-1,0,0],[[0,2],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0,2],-1,0,1],[[0],-1,0,1],[[0,2],1,1,0],[[0],-1,0,0],[[0],3,1,2],[[0],3,1,2],[[0],-1,0,1],[[0],2,1,0],[[0],2,1,0],[[0],-1,0,0],[[0],1,1,0],[[0],1,1,0],[[0],-1,0,0],[[0],1,1,0],[[0],1,1,0],[[0],1,1,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,1],[[0],1,1,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,1],[[0],2,1,0],[[0],-1,0,2],[[0],3,1,2],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[2],0,1,0],[[2],0,1,0],[[2],-1,0,0],[[2],2,1,0],[[2],0,1,0],[[2],0,1,1],[[2],0,1,0],[[2],-1,0,0],[[2],2,1,0],[[2],2,1,0],[[2],-1,0,0],[[2],1,1,0],[[2],0,1,0],[[2],0,1,1],[[2],-1,0,1],[[0],-1,0,0],[[2],-1,0,2],[[2],-1,0,1],[[2],-1,0,0],[[0],-1,0,0],[[0,2],-1,0,0],[[2],0,1,0],[[2],-1,0,1],[[2],0,1,0],[[2],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],1,1,0],[[0],0,1,0],[[0],1,1,0],[[0],1,1,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,2],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,1],[[0],3,1,2],[[0],3,1,2],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],5,0,0],[[0],-1,0,2],[[0],-1,0,1],[[0],-1,0,1],[[0],2,1,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,1,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],0,1,1],[[0],-1,0,2],[[0],-1,0,2],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,0],[[0],0,1,1],[[0],0,1,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],2,1,0],[[0],1,1,0],[[0],-1,0,1],[[0],-1,0,2],[[0],-1,0,1],[[0],1,0,0],[[0],1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],4,0,0],[[0],4,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],4,1,1],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,0],[[0],0,1,1],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,2],[[0],-1,0,1],[[0],4,0,0],[[0],-1,0,1],[[0],0,0,1],[[0],1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,1],[[0],0,1,0],[[0],0,1,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,1],[[0],0,1,0],[[0],-1,0,1],[[0],1,0,1],[[0],-1,0,1],[[0],-1,0,2],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],0,1,0],[[0],0,1,1],[[0],0,0,1],[[0],1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],2,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],5,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],3,1,2],[[0],-1,0,1],[[0],0,0,1],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1],4,1,0],[[4],1,1,0],[[0],3,1,0],[[0],-1,0,0],[[0],1,1,0],[[0],-1,0,0],[[0],0,1,0],[[0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],2,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,0,1],[[0],2,1,0],[[0],2,1,0],[[0],0,1,0],[[0],-1,0,1],[[0],-1,0,0],[[4],-1,0,1],[[0],3,1,2],[[0],-1,0,1],[[0],-1,0,0],[[1,0],4,1,0],[[0],-1,0,1],[[0],-1,0,0],[[0],2,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[1,0],4,1,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[1,0],-1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[1,0],-1,0,1],[[0],1,0,0],[[0],3,1,2],[[1,0],-1,0,0],[[1,0],1,1,0],[[0],-1,0,0],[[1,0],0,1,0],[[0],-1,0,1],[[0],-1,0,1],[[0],1,0,0],[[1,0],4,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,1],[[0],0,1,1],[[0],-1,0,0],[[0],-1,0,0],[[1,0],4,1,0],[[1,0],5,0,0],[[1],-1,0,0],[[1,0],4,1,0],[[1],4,1,0],[[1,0],-1,0,0],[[1],-1,0,0],[[0],-1,0,1],[[0],-1,0,0],[[0],3,1,2],[[0],-1,0,1],[[0],0,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[1],4,1,0],[[1,0],0,1,0],[[1,0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],1,1,0],[[0],5,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[1,0],0,1,0],[[1,0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[1,0],0,1,0],[[0],-1,0,0],[[0],2,1,0],[[0],3,1,2],[[0],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[1,0],0,1,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],2,1,0],[[0],-1,0,0],[[0],3,1,2],[[0],-1,0,1],[[1,0],-1,0,0],[[1,0],-1,0,0],[[0],5,0,0],[[0],-1,0,0],[[4],-1,0,1],[[0],-1,0,1],[[0],-1,0,0],[[0],5,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[0],-1,0,1],[[0],2,0,1],[[0],-1,0,1],[[0],1,1,0],[[0],-1,0,0],[[0],3,1,2],[[0],-1,0,0],[[1],2,1,0],[[0],-1,0,0],[[0],2,0,1],[[0],2,1,1],[[0],2,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],4,0,0],[[0],-1,0,0],[[0],-1,0,2],[[0],1,1,1],[[0],-1,0,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],0,1,0],[[0],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],-1,0,2],[[0],-1,0,1],[[1],-1,0,0],[[0],4,0,0],[[1,0],-1,1,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[1,0],-1,0,0],[[0],1,1,0],[[0],-1,0,0],[[0],0,1,0],[[1,0],4,1,0],[[0],1,1,0],[[1,0],0,1,0],[[1,0],4,0,0],[[0],-1,0,0],[[1,0],0,1,0],[[0],-1,0,0],[[1,0],-1,0,0],[[1,0],1,1,0],[[1,0],2,1,0],[[0],3,1,2],[[0],1,0,1],[[1,0],-1,0,0],[[1,0],4,1,0],[[1,0],-1,0,1],[[1,0],1,0,0],[[0],1,1,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],1,0,0],[[0],1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[1,0],4,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,0],[[0],1,1,1],[[4],-1,0,0],[[0],3,1,2],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],2,1,0],[[4],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[0],-1,0,1],[[0],-1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],1,1,0],[[0],-1,0,0],[[1,0],4,0,0],[[0],-1,0,0],[[1,0],0,0,0],[[0],3,1,2],[[0],-1,0,1],[[0],1,0,1],[[0],-1,0,0],[[0],-1,0,0],[[0],1,0,0],[[0],-1,0,0],[[0],1,1,0],[[0],0,1,0],[[0],0,1,0],[[0],0,1,0],[[1,0],0,1,0],[[1,0],0,1,0],[[1,0],-1,1,0],[[1,0],0,1,0],[[0],0,1,1],[[0],0,1,1],[[0],0,1,1],[[0],-1,0,0],[[1,0],-1,0,1],[[1,0],-1,1,1],[[1,0],0,1,1],[[1,0],0,1,1],[[0],-1,0,0],[[4],-1,0,0],[[0],3,1,2],[[0],-1,0,1],[[0],-1,0,1],[[0],1,1,0],[[1,0],4,0,0],[[1,0],0,1,0],[[1,0],-1,0,0],[[0],-1,0,1],[[0],5,0,0],[[0],6,0,0],[[0],6,0,1],[[0],6,0,1],[[0],6,0,1],[[0],6,0,0],[[1,0],6,0,0],[[1,0],0,1,0],[[1,0],-1,0,0],[[1,0],0,1,1],[[1,0],6,0,1],[[1,0],6,0,1],[[1],6,0,1],[[1,0],6,0,1],[[0],2,1,0],[[0],2,0,0],[[0],6,0,2],[[0],3,1,2],[[1,0],-1,0,0],[[1,0],-1,0,0],[[0],-1,0,0],[[0],-1,0,0],[[1],2,1,0],[[1,0],0,1,1],[[0],0,1,0],[[1],-1,0,0],[[1],-1,0,0],[[1,0],1,1,0],[[1,0],-1,0,0],[[1,0],1,1,0],[[1],-1,0,0],[[1,0],-1,0,1],[[1,0],-1,0,0],[[0],-1,0,0],[[1,0],-1,0,0],[[1],-1,0,0],[[1,0],0,1,0],[[1,0],0,0,1],[[1,0],0,1,0],[[1,0],4,0,0],[[1,0],-1,0,0],[[1,0],-1,1,1],[[1,0],-1,0,2],[[1,0],-1,0,1],[[1],-1,0,0],[[1],-1,0,0],[[1,0],-1,0,1],[[1,0],1,1,2],[[1,0],2,0,0],[[1,0],-1,0,1],[[3,1],-1,0,0],[[3,1],-1,0,0],[[3,1],-1,0,0],[[3,1],-1,0,0],[[3,1],-1,0,0],[[3,1],-1,0,0],[[3,1],-1,0,0],[[3,1],-1,0,1],[[3,1],-1,0,0],[[3,1,0],1,0,0],[[3,1],-1,0,1],[[3,1],-1,0,1],[[3,1,0],2,0,0],[[3,1],-1,0,1],[[3,1],-1,0,1],[[3,1],6,0,2],[[3,1],3,1,2],[[3,1,0],-1,0,0],[[3,1,0],-1,0,0],[[0],1,1,0],[[0],1,0,0],[[3,1],-1,0,1],[[1],-1,0,0],[[1,0],4,1,0],[[3,1,0],0,1,1],[[0],-1,0,3],[[4],-1,0,3],[[0],0,1,3],[[0],0,1,3],[[3,1],0,1,3]]});
 })();
 </script>
 <style data-roundai-nav>
@@ -954,12 +973,12 @@ function chipCounts(data, state) {
     head.href = cfg.links.bug || "#";
     head.innerHTML = `<b>${s.bugs}</b> ${s.bugs === 1 ? "bug" : "bugs"}`;
     card.appendChild(head);
-    for (const p of ["P0", "P1", "P2", "P3"]) {
-      const n = s.byLevel[p] || 0;
+    for (const p of ["S0", "S1", "S2", "S3"]) {
+      const n = s.byLevel[p.replace("S", "P")] || 0;
       const a = document.createElement("a");
-      a.className = `rc-bugs-lv rc-${p.toLowerCase()}`;
+      a.className = `rc-bugs-lv rc-${p.replace("S", "p").toLowerCase()}`;
       a.textContent = `${p} ${n}`;
-      a.title = `Only the ${p} bugs`;
+      a.title = `Only the ${p} (severity) bugs`;
       if (cfg.links.bug) {
         a.href = cfg.links.bug;
         a.addEventListener("click", (ev) => {
@@ -1015,7 +1034,7 @@ function chipCounts(data, state) {
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
   else start();
-})({"views":[["uat","By UAT"],["ticket","By ticket"],["bug","By bug"]],"current":"bug","links":{"uat":".././","ticket":"../by-ticket/","bug":"../by-bug/"},"summary":{"byLevel":{"P0":6,"P1":14,"P2":8},"byType":{"new":15,"known":12,"new (partly known)":1},"bugs":28,"decisions":16,"excluded":5,"fixed":2,"suggestions":6,"candidates":39},"levelTag":"Bug level"});})();
+})({"views":[["uat","By UAT"],["ticket","By ticket"],["bug","By bug"]],"current":"bug","links":{"uat":".././","ticket":"../by-ticket/","bug":"../by-bug/"},"summary":{"byLevel":{"P0":5,"P1":14,"P2":8},"byType":{"new":14,"known":12,"new (partly known)":1},"bugs":27,"decisions":17,"fixed":7,"excluded":4,"suggestions":6,"candidates":47},"levelTag":"Bug severity"});})();
 </script>
 </head>
 <body>

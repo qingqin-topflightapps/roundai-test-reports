@@ -1,0 +1,29 @@
+{
+  "TC-18/S07": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:26:30Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Discharge: no time → one-tap prompt; a dictated time is coded",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). bil-tc18-dev.spec.ts D2a/D2b (rows 'QA TC18-BIL …', cleanup 14 deleted, 0 remaining). Passed: h-no-time (prompt, '> 30 min' → 99239 after a reload), n-no-time ('≤ 30 min' → 99315), h-over30 ('Over 30 minutes spent on discharge' now kept under 'Time Spent on Discharge' → 99239, failed on 43c38a4f), n-time ('Total discharge time 40 minutes' kept → 99316 without a prompt, failed on 43c38a4f). Still failing: h-time — 'Total discharge time 40 minutes.' dropped from the Hospital Discharge summary, billing stores not_documented and asks for the time (N13). One sample per leg.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/bil-d2/evidence/tc18-dev-d2-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/bil-d2/evidence/tc18-dev-d2b-legs.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/bil-d2/evidence/tc18-dev-s07-h-time.png",
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/bil-d2/evidence/cleanup.json"
+    ],
+    "bug": {
+      "id": "N13",
+      "now": "changed"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-18 step 2 + ER 6; TFA-92596 AC 5",
+      "quote": "Discharge: if time is in the note, the code is set from it; if not, a one-tap prompt sets it.",
+      "mixed": true,
+      "statedPart": "no-time prompt sets the code; dictated time kept in the note and coded with no prompt"
+    }
+  }
+}

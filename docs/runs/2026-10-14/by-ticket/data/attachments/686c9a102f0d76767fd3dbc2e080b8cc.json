@@ -1,0 +1,18 @@
+{
+  "TC-19/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:57:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev dataset rb2-gen (live), cells (c) Nursing Home and (d-reload) Hospital: the hold typed in the Encounter box, Generate, page reload the moment the note is stored, rows read after the job's own aiCallLog row; cells (a) (b) local (runs/2026-10-14-local)",
+    "title": "Medication changes are never silently lost: extraction or parse fails, or the physician reloads or leaves right after Generate (both modes)",
+    "detail": "B03 re-check on 8b4be94a: FIXED. (c) 'Hold metformin, poor intake.' -> reload when the note is stored -> metformin Held, reason 'Hold metformin, poor intake.'; (d-reload) 'Hold the apixaban, procedure tomorrow.' -> reload -> apixaban Held (both runs). The medication extraction now runs on the server after the note (convex/lib/noteFollowUps.ts), so a reload or a closed app no longer loses it. Both holds are dated 'Oct 19', the server's UTC day, while the physician's day is Oct 20 (accepted by the original check; candidate rb2-C1). Local cells (a) and (b) pass.",
+    "evidence": [
+      "runs/2026-10-14-dev/datasets-rb2/rb2-gen/evidence/TC-19-S27-c.json",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-gen/evidence/TC-19-S27-d-reload.json",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-gen/evidence/TC-19-S27-c-b03-c-after-reload.png",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-gen-run1/evidence/TC-19-S27.json"
+    ]
+  }
+}

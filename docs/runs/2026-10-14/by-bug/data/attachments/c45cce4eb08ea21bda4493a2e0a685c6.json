@@ -1,0 +1,237 @@
+{
+  "name": "te-tc07-s16",
+  "at": "2026-10-19T19:33:54.263Z",
+  "checks": [
+    {
+      "id": "Hospital: no email step anywhere in the send (no mailto, no mail client)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Hospital: sender has one Sent record naming the recipient, with the send time",
+      "ok": true,
+      "detail": "[{\"_id\":\"jn78r5xr2cn7acq83vvt7enza18gkscz\",\"counterpartName\":\"Dr. QA Covering mgm\",\"kind\":\"tasks\",\"patientCount\":2,\"readAt\":null,\"sentAt\":\"2026-10-19T19:33:39.220Z\",\"title\":\"Task Review — Oct 20, 2026 — 2 patients\",\"variant\":\"rounding\"}]"
+    },
+    {
+      "id": "Hospital: recipient has one Received record naming the sender, same time",
+      "ok": true,
+      "detail": "[{\"_id\":\"jn78r5xr2cn7acq83vvt7enza18gkscz\",\"counterpartName\":\"Dr. QA Newspec 3njl0\",\"kind\":\"tasks\",\"patientCount\":2,\"readAt\":null,\"sentAt\":\"2026-10-19T19:33:39.220Z\",\"title\":\"Task Review — Oct 20, 2026 — 2 patients\",\"variant\":\"rounding\"}]"
+    },
+    {
+      "id": "Hospital: sender's display name on the recipient's record",
+      "ok": true,
+      "detail": "{\"shown\":\"Dr. QA Newspec 3njl0\",\"me\":{\"name\":\"Dr. QA Newspec 3njl0\",\"email\":\"e2e-fresh-58218323-4cd@roundai.test\"}}",
+      "recordOnly": true
+    },
+    {
+      "id": "Hospital: Handoffs → Sent shows it 'To <recipient> · <time>' with the Task list badge",
+      "ok": true,
+      "detail": "[{\"title\":\"Task Review — Oct 20, 2026 — 2 patients\",\"meta\":\"To Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM\",\"badge\":\"|Task list|2\"}]"
+    },
+    {
+      "id": "Hospital: recipient's Handoffs → Received shows it 'From <sender> · <time>' with the Task list badge",
+      "ok": true,
+      "detail": "[{\"title\":\"Task Review — Oct 20, 2026 — 2 patients\",\"meta\":\"From Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM\",\"badge\":\"|Task list|2\"}]"
+    },
+    {
+      "id": "Hospital: recipient opens the same grouped list the sender sent",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera mgm — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nQA Hosp Ben Okafor mgm — Room 415:\n  • Order PT evaluation\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp B"
+    },
+    {
+      "id": "Hospital: read-only — no control to complete, edit or delete a task",
+      "ok": true,
+      "detail": "[\"Back\",\"⎘ Copy\"]"
+    },
+    {
+      "id": "Hospital: the sender can open the same record later",
+      "ok": true,
+      "detail": "Task listTo Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM"
+    },
+    {
+      "id": "Hospital: the recipient's own task view gains none of the sender's patients or tasks",
+      "ok": true,
+      "detail": "No tasks yet"
+    },
+    {
+      "id": "Nursing Home: no email step anywhere in the send (no mailto, no mail client)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Nursing Home: sender has one Sent record naming the recipient, with the send time",
+      "ok": true,
+      "detail": "[{\"_id\":\"jn75smmy092rf7r8fjzv8ed2xh8gjd30\",\"counterpartName\":\"Dr. QA Covering mgm\",\"kind\":\"tasks\",\"patientCount\":2,\"readAt\":null,\"sentAt\":\"2026-10-19T19:33:47.587Z\",\"title\":\"Task Review — Oct 20, 2026 — 2 residents\",\"variant\":\"snf\"}]"
+    },
+    {
+      "id": "Nursing Home: recipient has one Received record naming the sender, same time",
+      "ok": true,
+      "detail": "[{\"_id\":\"jn75smmy092rf7r8fjzv8ed2xh8gjd30\",\"counterpartName\":\"Dr. QA Newspec 3njl0\",\"kind\":\"tasks\",\"patientCount\":2,\"readAt\":null,\"sentAt\":\"2026-10-19T19:33:47.587Z\",\"title\":\"Task Review — Oct 20, 2026 — 2 residents\",\"variant\":\"snf\"}]"
+    },
+    {
+      "id": "Nursing Home: sender's display name on the recipient's record",
+      "ok": true,
+      "detail": "{\"shown\":\"Dr. QA Newspec 3njl0\",\"me\":{\"name\":\"Dr. QA Newspec 3njl0\",\"email\":\"e2e-fresh-58218323-4cd@roundai.test\"}}",
+      "recordOnly": true
+    },
+    {
+      "id": "Nursing Home: Handoffs → Sent shows it 'To <recipient> · <time>' with the Task list badge",
+      "ok": true,
+      "detail": "[{\"title\":\"Task Review — Oct 20, 2026 — 2 residents\",\"meta\":\"To Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM\",\"badge\":\"|Task list|2\"},{\"title\":\"Task Review — Oct 20, 2026 — 2 patients\",\"meta\":\"To Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM\",\"badge\":\"|Task list|2\"}]"
+    },
+    {
+      "id": "Nursing Home: recipient's Handoffs → Received shows it 'From <sender> · <time>' with the Task list badge",
+      "ok": true,
+      "detail": "[{\"title\":\"Task Review — Oct 20, 2026 — 2 residents\",\"meta\":\"From Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM\",\"badge\":\"|Task list|2\"},{\"title\":\"Task Review — Oct 20, 2026 — 2 patients\",\"meta\":\"From Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM\",\"badge\":\"|Task list|2\"}]"
+    },
+    {
+      "id": "Nursing Home: recipient opens the same grouped list the sender sent",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen mgm — Unit Cedar 12:\n  • Recheck INR Friday\n  • Wound check with nursing\n\nQA Resident Eli Brooks mgm — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n─────────────────────────────────────"
+    },
+    {
+      "id": "Nursing Home: read-only — no control to complete, edit or delete a task",
+      "ok": true,
+      "detail": "[\"Back\",\"⎘ Copy\"]"
+    },
+    {
+      "id": "Nursing Home: the sender can open the same record later",
+      "ok": true,
+      "detail": "Task listTo Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM"
+    },
+    {
+      "id": "Nursing Home: the recipient's own task view gains none of the sender's patients or tasks",
+      "ok": true,
+      "detail": "No tasks yet"
+    },
+    {
+      "id": "the recipient's own patient and resident lists are unchanged (nothing became theirs)",
+      "ok": true,
+      "detail": "{\"before\":[0,0],\"after\":[0,0]}"
+    },
+    {
+      "id": "not testable locally: the sent list 35 h / 37 h after sending (handoffs.send stamps server time; no aging helper) — Manual",
+      "ok": false,
+      "detail": "",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "rounding-records": {
+      "sent": [
+        {
+          "_id": "jn78r5xr2cn7acq83vvt7enza18gkscz",
+          "counterpartName": "Dr. QA Covering mgm",
+          "kind": "tasks",
+          "patientCount": 2,
+          "readAt": null,
+          "sentAt": "2026-10-19T19:33:39.220Z",
+          "title": "Task Review — Oct 20, 2026 — 2 patients",
+          "variant": "rounding"
+        }
+      ],
+      "inbox": [
+        {
+          "_id": "jn78r5xr2cn7acq83vvt7enza18gkscz",
+          "counterpartName": "Dr. QA Newspec 3njl0",
+          "kind": "tasks",
+          "patientCount": 2,
+          "readAt": null,
+          "sentAt": "2026-10-19T19:33:39.220Z",
+          "title": "Task Review — Oct 20, 2026 — 2 patients",
+          "variant": "rounding"
+        }
+      ]
+    },
+    "rounding-ui": {
+      "sUi": [
+        {
+          "title": "Task Review — Oct 20, 2026 — 2 patients",
+          "meta": "To Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM",
+          "badge": "|Task list|2"
+        }
+      ],
+      "rUi": [
+        {
+          "title": "Task Review — Oct 20, 2026 — 2 patients",
+          "meta": "From Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM",
+          "badge": "|Task list|2"
+        }
+      ]
+    },
+    "rounding-recipientDetail": {
+      "h1": "Task Review — Oct 20, 2026 — 2 patients",
+      "meta": "Task listFrom Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM",
+      "pre": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Hosp Ana Rivera mgm — Room 412:\n  • Repeat BMP in the morning\n  • Call daughter about discharge plan\n\nQA Hosp Ben Okafor mgm — Room 415:\n  • Order PT evaluation\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Hosp Ben Okafor mgm — Room 415:\n  ✓ Chest X-ray read — Oct 20",
+      "taskControls": 0,
+      "buttons": [
+        "Back",
+        "⎘ Copy"
+      ],
+      "mailto": 0
+    },
+    "snf-records": {
+      "sent": [
+        {
+          "_id": "jn75smmy092rf7r8fjzv8ed2xh8gjd30",
+          "counterpartName": "Dr. QA Covering mgm",
+          "kind": "tasks",
+          "patientCount": 2,
+          "readAt": null,
+          "sentAt": "2026-10-19T19:33:47.587Z",
+          "title": "Task Review — Oct 20, 2026 — 2 residents",
+          "variant": "snf"
+        }
+      ],
+      "inbox": [
+        {
+          "_id": "jn75smmy092rf7r8fjzv8ed2xh8gjd30",
+          "counterpartName": "Dr. QA Newspec 3njl0",
+          "kind": "tasks",
+          "patientCount": 2,
+          "readAt": null,
+          "sentAt": "2026-10-19T19:33:47.587Z",
+          "title": "Task Review — Oct 20, 2026 — 2 residents",
+          "variant": "snf"
+        }
+      ]
+    },
+    "snf-ui": {
+      "sUi": [
+        {
+          "title": "Task Review — Oct 20, 2026 — 2 residents",
+          "meta": "To Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM",
+          "badge": "|Task list|2"
+        },
+        {
+          "title": "Task Review — Oct 20, 2026 — 2 patients",
+          "meta": "To Dr. QA Covering mgm · Tue, Oct 20, 4:33 AM",
+          "badge": "|Task list|2"
+        }
+      ],
+      "rUi": [
+        {
+          "title": "Task Review — Oct 20, 2026 — 2 residents",
+          "meta": "From Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM",
+          "badge": "|Task list|2"
+        },
+        {
+          "title": "Task Review — Oct 20, 2026 — 2 patients",
+          "meta": "From Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM",
+          "badge": "|Task list|2"
+        }
+      ]
+    },
+    "snf-recipientDetail": {
+      "h1": "Task Review — Oct 20, 2026 — 2 residents",
+      "meta": "Task listFrom Dr. QA Newspec 3njl0 · Tue, Oct 20, 4:33 AM",
+      "pre": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen mgm — Unit Cedar 12:\n  • Recheck INR Friday\n  • Wound check with nursing\n\nQA Resident Eli Brooks mgm — Unit Birch 3:\n  • Ask family about care conference\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Resident Eli Brooks mgm — Unit Birch 3:\n  ✓ Weight check — Oct 20",
+      "taskControls": 0,
+      "buttons": [
+        "Back",
+        "⎘ Copy"
+      ],
+      "mailto": 0
+    }
+  }
+}

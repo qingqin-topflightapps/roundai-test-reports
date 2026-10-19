@@ -1,0 +1,45 @@
+{
+  "name": "rb1-tc22-s10-b43-rounding",
+  "at": "2026-10-19T18:28:48.886Z",
+  "checks": [
+    {
+      "id": "the whole dictation is saved as the encounter text",
+      "ok": true,
+      "detail": "1269 of 1269 characters stored"
+    },
+    {
+      "id": "U2/U8: the request carries the result sentence (it starts at character 1214)",
+      "ok": true,
+      "detail": "the request carries 1269 of 1269 characters, ending '…s back: sodium 138, potassium 4.0, creatinine 1.1.'"
+    },
+    {
+      "id": "U2/U8: 'follow up BMP' closes ('1 pending task')",
+      "ok": true,
+      "detail": "stored [\"[x] follow up BMP\",\"[ ] recheck weight in two weeks\"]; header 1"
+    },
+    {
+      "id": "U4: the weight task stays open, nothing added",
+      "ok": true,
+      "detail": "[\"[x] follow up BMP\",\"[ ] recheck weight in two weeks\"]"
+    }
+  ],
+  "data": {
+    "dictated": {
+      "chars": 1269,
+      "resultAt": 1214
+    },
+    "request": {
+      "chars": 1269,
+      "endsWith": "with standby assistance. BMP is back: sodium 138, potassium 4.0, creatinine 1.1.",
+      "hasResult": true
+    },
+    "after": {
+      "message": "✓ Tasks updated — 1 completed",
+      "stored": [
+        "[x] follow up BMP",
+        "[ ] recheck weight in two weeks"
+      ],
+      "encounterNotesChars": 1269
+    }
+  }
+}

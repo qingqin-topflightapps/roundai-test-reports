@@ -1,0 +1,21 @@
+{
+  "TC-10/S28": {
+    "status": "failed",
+    "ranAt": "2026-10-15T08:24:01.056Z",
+    "title": "A 1,507-character Hospital pre-round: every lab, drug and study kept; plan items after character 1,200 become tasks (app handling)",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-tc10-s28-long.spec.ts: every model call answered as a perfect model would (the summary returns all 12 labs, 7 drugs with doses and 3 studies; task extraction returns one task per plan item present in the text it was sent), so anything missing was lost by the app. Judged 2/5: Labs holds all 12 labs with values; Diagnostic Testing holds all 3 studies. Failed: (1) Medications stays 'No medications recorded yet.' — none of the 7 drugs is written; (2)+(3) neither plan item ('ask infectious disease about removing the PICC line', 'book a repeat echocardiogram for Friday') becomes a task. Causes, both in the client: (2)+(3) usePreRoundProcess.ts sends input.trim().substring(0, 1200) to ai/parsing:extractTasks — the request carried 1,200 of 1,507 characters, ending '…The PICC site was clean this morning with no', and the plan starts at character 1,404 (code read predicted this); (1) the pre-round medication merge drops a new row whose drug is 'mentioned only conditionally' (src/domain/medicationGuard.ts rcMedConditionalOnly), testing the whole sentence against RC_MODAL_RE, which includes 'as needed'; S28 dictates all 7 drugs in one sentence ending 'and acetaminophen 650 mg every 6 hours as needed', so every drug in it is dropped. Control (newspec-c/pre-tc10-s28-prn-control.spec.ts, recorded): the same 7 returned drugs give 0 rows with that sentence, 7 rows without 'as needed', 6 rows with the PRN drug in a sentence of its own (the PRN drug itself is never added). Whether a live model extracts all 12 labs, 7 drugs and 3 studies is AI: dev TC-10/S28.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s28-pre-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s28-pre-hosp-cp1-panels.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s28-pre-hosp-cp2-tasks.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s28-pre-prn-control.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s28-pre-prn-control-variant-A.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s28-pre-prn-control-variant-B.png"
+    ],
+    "method": "PW",
+    "productIssue": "(1) A medication list dictated in one sentence that includes one 'as needed' drug (here '…and acetaminophen 650 mg every 6 hours as needed.') puts none of its drugs on the Medications panel or the tracker after Save Note — scheduled ceftriaxone, azithromycin, enoxaparin, pantoprazole, metoprolol and atorvastatin all vanish. (2) In a pre-round longer than 1,200 characters, plan items after character 1,200 never become tasks (only the first 1,200 characters are sent to task extraction).",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

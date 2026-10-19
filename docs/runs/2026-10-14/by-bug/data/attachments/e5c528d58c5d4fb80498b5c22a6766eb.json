@@ -1,0 +1,1672 @@
+{
+  "ref": "TC-19/S11",
+  "title": "TC-19/S11 encounter / visit path edges: each fixture its own Pass/Fail (both contexts, earlier-day rows)",
+  "dataset": "rb2-meds-s11",
+  "target": "dev",
+  "at": "2026-10-19T18:06:50.267Z",
+  "cells": [
+    {
+      "name": "B-0 (hospital, encounter) [our addition: record only]: {\"rowCount\":0}",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Continue home meds.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 B-0 enc",
+            "ok": true,
+            "fails": [],
+            "before": [],
+            "after": [],
+            "tags": [],
+            "ui": {
+              "message": "✓ Notes saved — no new tasks or medication changes found",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3306,
+                "providerMs": 3287,
+                "appMs": 19,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3800,
+                "providerMs": 3782,
+                "appMs": 18,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "B-1-hold (hospital, encounter): {\"rowCount\":1,\"rows\":[{\"match\":\"lisinopril\",\"status\":\"held\",\"tag\":\"Held\",\"noteIncludes\":[\"creatinine\"]}]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Hold lisinopril, creatinine up to 1.9.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 B-1-hold enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 20",
+                "changedNote": "Hold lisinopril, creatinine up to 1.9"
+              }
+            ],
+            "tags": [
+              "Held · Oct 20"
+            ],
+            "ui": {
+              "message": "✓ Tasks updated — 1 added, 1 medication change",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1865,
+                "providerMs": 1863,
+                "appMs": 2,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2894,
+                "providerMs": 2891,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "B-1-dose (hospital, both): {\"rowCount\":1,\"rows\":[{\"match\":\"furosemide\",\"nameIncludes\":[\"20\"],\"noteIncludes\":[\"40\"],\"tag\":\"Changed\"}]}",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "dictation": "Furosemide down to 20 IV twice daily.",
+        "paths": [
+          {
+            "path": "preRound",
+            "chart": "QA DS1-rb2-meds-s11 B-1-dose pre",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Furosemide 40 mg IV BID",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Furosemide 20 milligrams IV twice daily",
+                "status": "changed",
+                "changeType": "changed",
+                "changeDate": "Oct 20",
+                "changedNote": "decreased from 40 to 20 IV twice daily"
+              }
+            ],
+            "tags": [
+              "Changed · Oct 20"
+            ],
+            "ai": [
+              {
+                "fn": "parsing.parsePreRoundNotes",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 4231,
+                "providerMs": 4227,
+                "appMs": 4,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.classifyAdmissionReason",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2061,
+                "providerMs": 2056,
+                "appMs": 5,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1992,
+                "providerMs": 1989,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          },
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 B-1-dose enc",
+            "ok": false,
+            "fails": [
+              "rows 'furosemide': Furosemide 40 mg IV BID: name lacks '20', reason lacks '40'"
+            ],
+            "before": [
+              {
+                "name": "Furosemide 40 mg IV BID",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Furosemide 40 mg IV BID",
+                "status": "changed",
+                "changeType": "changed",
+                "changeDate": "Oct 20",
+                "changedNote": "Furosemide decreased to 20 mg IV twice daily"
+              }
+            ],
+            "tags": [
+              "Changed · Oct 20"
+            ],
+            "ui": {
+              "message": "✓ Medications updated — 1 medication change",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2000,
+                "providerMs": 1996,
+                "appMs": 4,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2696,
+                "providerMs": 2692,
+                "appMs": 4,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "B-15 (hospital, encounter) [our addition: record only]: {\"rowCount\":15,\"rows\":[{\"match\":\"pantoprazole\",\"status\":\"discontinued\",\"tag\":\"Stopped\",\"noteIncludes\":[\"indication\"]}],\"untouched\":[\"Aspirin 81 mg daily\",\"Atorvastatin 80 mg nightly\",\"Metoprolol succinate 50 mg daily\",\"Lisinopril 10 mg daily\",\"Insulin glargine 18 units nightly\",\"Insulin lispro sliding scale\",\"Heparin 5000 units SC q8h\",\"Senna 8.6 mg nightly\",\"Docusate 100 mg BID\",\"Acetaminophen 650 mg q6h PRN\",\"Ondansetron 4 mg IV q8h PRN\",\"Tamsulosin 0.4 mg nightly\",\"Levothyroxine 75 mcg daily\",\"Sertraline 50 mg daily\"]}",
+      "kind": "record",
+      "ok": true,
+      "detail": {
+        "dictation": "Stop the pantoprazole, no GI indication.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 B-15 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Aspirin 81 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Atorvastatin 80 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Metoprolol succinate 50 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Pantoprazole 40 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Insulin glargine 18 units nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Insulin lispro sliding scale",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Heparin 5000 units SC q8h",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Senna 8.6 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Docusate 100 mg BID",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Acetaminophen 650 mg q6h PRN",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Ondansetron 4 mg IV q8h PRN",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Tamsulosin 0.4 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Levothyroxine 75 mcg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Sertraline 50 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Aspirin 81 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Atorvastatin 80 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Metoprolol succinate 50 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Pantoprazole 40 mg daily",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 20",
+                "changedNote": "Stop the pantoprazole, no GI indication"
+              },
+              {
+                "name": "Insulin glargine 18 units nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Insulin lispro sliding scale",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Heparin 5000 units SC q8h",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Senna 8.6 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Docusate 100 mg BID",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Acetaminophen 650 mg q6h PRN",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Ondansetron 4 mg IV q8h PRN",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Tamsulosin 0.4 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Levothyroxine 75 mcg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Sertraline 50 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "tags": [
+              null,
+              null,
+              null,
+              null,
+              "Stopped · Oct 20",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            "ui": {
+              "message": "✓ Tasks updated — 1 added, 1 medication change",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2175,
+                "providerMs": 2172,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2340,
+                "providerMs": 2337,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "B-2 (hospital, encounter): {\"rowCount\":3,\"rows\":[{\"match\":\"metoprolol\",\"status\":\"held\"},{\"match\":\"lisinopril\",\"status\":\"held\"},{\"match\":\"midodrine\",\"status\":\"active\",\"tag\":\"Started\"}]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Hold metoprolol and lisinopril for hypotension. Started midodrine 5 three times daily this morning.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 B-2 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Metoprolol tartrate 25 mg BID",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Metoprolol tartrate 25 mg BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 20",
+                "changedNote": "held for hypotension"
+              },
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 20",
+                "changedNote": "held for hypotension"
+              },
+              {
+                "name": "Midodrine 5",
+                "status": "active",
+                "changeType": "started",
+                "changeDate": "Oct 20",
+                "changedNote": "started three times daily this morning"
+              }
+            ],
+            "tags": [
+              "Held · Oct 20",
+              "Held · Oct 20",
+              "Started · Oct 20"
+            ],
+            "ui": {
+              "message": "✓ Tasks updated — 2 added, 3 medication changes",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1741,
+                "providerMs": 1739,
+                "appMs": 2,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2565,
+                "providerMs": 2562,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-stop (nursing-home, encounter): {\"rowCount\":2,\"rows\":[{\"match\":\"senna\",\"status\":\"discontinued\",\"tag\":\"Stopped\",\"noteIncludes\":[\"loose\"]}],\"untouched\":[\"Donepezil 10 mg nightly\"]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Stop the senna, loose stools.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 N-stop enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Senna 8.6 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Donepezil 10 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Senna 8.6 mg nightly",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 19",
+                "changedNote": "Stop the senna, loose stools."
+              },
+              {
+                "name": "Donepezil 10 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "tags": [
+              "Stopped · Oct 19",
+              null
+            ],
+            "ai": [
+              {
+                "fn": "notes.generateNote",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 6829,
+                "providerMs": 6224,
+                "appMs": 605,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "billing.suggestBilling",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3250,
+                "providerMs": 3098,
+                "appMs": 152,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-dose (nursing-home, encounter): {\"rowCount\":1,\"rows\":[{\"match\":\"amlodipine\",\"nameIncludes\":[\"10\"],\"noteIncludes\":[\"5\"],\"tag\":\"Changed\"}]}",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "dictation": "Amlodipine up to 10 daily.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 N-dose enc",
+            "ok": false,
+            "fails": [
+              "rows 'amlodipine': Amlodipine 5 mg daily: tag Started · Oct 19 ≠ Changed, name lacks '10', reason lacks '5'"
+            ],
+            "before": [
+              {
+                "name": "Amlodipine 5 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Amlodipine 5 mg daily",
+                "status": "active",
+                "changeType": "started",
+                "changeDate": "Oct 19",
+                "changedNote": "Amlodipine up to 10 daily"
+              }
+            ],
+            "tags": [
+              "Started · Oct 19"
+            ],
+            "ai": [
+              {
+                "fn": "notes.generateNote",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 7030,
+                "providerMs": 6380,
+                "appMs": 650,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "billing.suggestBilling",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 4775,
+                "providerMs": 4259,
+                "appMs": 516,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-given (nursing-home, encounter): {\"rowCount\":2,\"rows\":[{\"match\":\"ceftriaxone\",\"status\":\"single-dose\",\"tag\":\"Given\"}],\"untouched\":[\"Donepezil 10 mg nightly\"]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Gave one-time ceftriaxone 1 gram IM this morning.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 N-given enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Donepezil 10 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Donepezil 10 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              },
+              {
+                "name": "Ceftriaxone",
+                "status": "single-dose",
+                "changeType": "given",
+                "changeDate": "Oct 19",
+                "changedNote": "Gave one-time ceftriaxone 1 gram IM this morning"
+              }
+            ],
+            "tags": [
+              null,
+              "Given · Oct 19"
+            ],
+            "ai": [
+              {
+                "fn": "billing.suggestBilling",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3100,
+                "providerMs": 3015,
+                "appMs": 85,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "notes.generateNote",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 7310,
+                "providerMs": 6956,
+                "appMs": 354,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "N-start (nursing-home, encounter): {\"rowCount\":1,\"noRow\":[\"B12\",\"cyanocobalamin\"],\"untouched\":[\"Donepezil 10 mg nightly\"]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Let's start vitamin B12 1000 mcg daily.",
+        "paths": [
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 N-start enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Donepezil 10 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Donepezil 10 mg nightly",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "tags": [
+              null
+            ],
+            "ai": [
+              {
+                "fn": "notes.generateNote",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 7454,
+                "providerMs": 7138,
+                "appMs": 316,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "billing.suggestBilling",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3158,
+                "providerMs": 3060,
+                "appMs": 98,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "D-1 (hospital, both): {\"rowCount\":1,\"rows\":[{\"match\":\"lisinopril\",\"status\":\"held\",\"tag\":\"Held\",\"noteIncludes\":[\"AKI\"]}]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Held the lisinopril yesterday evening for AKI.",
+        "paths": [
+          {
+            "path": "preRound",
+            "chart": "QA DS1-rb2-meds-s11 D-1 pre",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 20",
+                "changedNote": "held yesterday evening for AKI"
+              }
+            ],
+            "tags": [
+              "Held · Oct 20"
+            ],
+            "recorded": {
+              "changeDate": {
+                "why": "{yesterday} if Q2 rules the dictated date wins; main stamps the save date",
+                "row": {
+                  "name": "Lisinopril 10 mg daily",
+                  "status": "held",
+                  "changeType": "held",
+                  "changeDate": "Oct 20",
+                  "changedNote": "held yesterday evening for AKI",
+                  "tag": "Held · Oct 20"
+                }
+              }
+            },
+            "ai": [
+              {
+                "fn": "parsing.parsePreRoundNotes",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 4221,
+                "providerMs": 4217,
+                "appMs": 4,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.classifyAdmissionReason",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1994,
+                "providerMs": 1989,
+                "appMs": 5,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1735,
+                "providerMs": 1732,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          },
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 D-1 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": null,
+                "changeDate": null,
+                "changedNote": null
+              }
+            ],
+            "after": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 20",
+                "changedNote": "Held yesterday evening for AKI"
+              }
+            ],
+            "tags": [
+              "Held · Oct 20"
+            ],
+            "recorded": {
+              "changeDate": {
+                "why": "{yesterday} if Q2 rules the dictated date wins; main stamps the save date",
+                "row": {
+                  "name": "Lisinopril 10 mg daily",
+                  "status": "held",
+                  "changeType": "held",
+                  "changeDate": "Oct 20",
+                  "changedNote": "Held yesterday evening for AKI",
+                  "tag": "Held · Oct 20"
+                }
+              }
+            },
+            "ui": {
+              "message": "✓ Medications updated — 1 medication change",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2616,
+                "providerMs": 2613,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2810,
+                "providerMs": 2808,
+                "appMs": 2,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "D-2 (nursing-home, both): {\"rowCount\":1,\"rows\":[{\"match\":\"lisinopril\",\"status\":\"active\",\"tag\":\"Started\",\"changeDate\":\"{today}\"}],\"mustNotInclude\":[\"Oct 10\"]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Restarted lisinopril this morning.",
+        "paths": [
+          {
+            "path": "preRound",
+            "chart": "QA DS1-rb2-meds-s11 D-2 pre",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 10",
+                "changedNote": "soft BP"
+              }
+            ],
+            "after": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": "resumed",
+                "changeDate": "Oct 20",
+                "changedNote": "restarted this morning"
+              }
+            ],
+            "tags": [
+              "Started · Oct 20"
+            ],
+            "ai": [
+              {
+                "fn": "parsing.parsePreRoundNotes",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3987,
+                "providerMs": 3984,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          },
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 D-2 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 10",
+                "changedNote": "soft BP"
+              }
+            ],
+            "after": [
+              {
+                "name": "Lisinopril 10 mg daily",
+                "status": "active",
+                "changeType": "resumed",
+                "changeDate": "Oct 19",
+                "changedNote": "Restarted this morning"
+              }
+            ],
+            "tags": [
+              "Started · Oct 19"
+            ],
+            "ai": [
+              {
+                "fn": "billing.suggestBilling",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3286,
+                "providerMs": 3196,
+                "appMs": 90,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "notes.generateNote",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 6994,
+                "providerMs": 6607,
+                "appMs": 387,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "R-1 (hospital, both): {\"unchanged\":true}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Hold the apixaban, procedure tomorrow.",
+        "paths": [
+          {
+            "path": "preRound",
+            "chart": "QA DS1-rb2-meds-s11 R-1 pre",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Apixaban 5 mg PO BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 11",
+                "changedNote": "held for procedure"
+              }
+            ],
+            "after": [
+              {
+                "name": "Apixaban 5 mg PO BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 11",
+                "changedNote": "held for procedure"
+              }
+            ],
+            "tags": [
+              "Held · Oct 11"
+            ],
+            "ai": [
+              {
+                "fn": "parsing.parsePreRoundNotes",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3996,
+                "providerMs": 3991,
+                "appMs": 5,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.classifyAdmissionReason",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2309,
+                "providerMs": 2303,
+                "appMs": 6,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1838,
+                "providerMs": 1834,
+                "appMs": 4,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          },
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 R-1 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Apixaban 5 mg PO BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 11",
+                "changedNote": "held for procedure"
+              }
+            ],
+            "after": [
+              {
+                "name": "Apixaban 5 mg PO BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 11",
+                "changedNote": "held for procedure"
+              }
+            ],
+            "tags": [
+              "Held · Oct 11"
+            ],
+            "ui": {
+              "message": "✓ Tasks updated — 1 added",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1739,
+                "providerMs": 1736,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2468,
+                "providerMs": 2465,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "R-2 (nursing-home, both): {\"rowCount\":1,\"rows\":[{\"match\":\"metformin\",\"status\":\"held\",\"tag\":\"Held\",\"changeDate\":\"Apr 12\"}]}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Hold the metformin, she is barely eating.",
+        "paths": [
+          {
+            "path": "preRound",
+            "chart": "QA DS1-rb2-meds-s11 R-2 pre",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Metformin 500 mg BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Apr 12",
+                "changedNote": "poor intake"
+              }
+            ],
+            "after": [
+              {
+                "name": "Metformin 500 mg BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Apr 12",
+                "changedNote": "poor intake"
+              }
+            ],
+            "tags": [
+              "Held · Apr 12"
+            ],
+            "recorded": {
+              "changedNote": {
+                "why": "kept 'poor intake' or replaced by the new words (Q13)",
+                "row": {
+                  "name": "Metformin 500 mg BID",
+                  "status": "held",
+                  "changeType": "held",
+                  "changeDate": "Apr 12",
+                  "changedNote": "poor intake",
+                  "tag": "Held · Apr 12"
+                }
+              }
+            },
+            "ai": [
+              {
+                "fn": "parsing.parsePreRoundNotes",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3882,
+                "providerMs": 3878,
+                "appMs": 4,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          },
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 R-2 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Metformin 500 mg BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Apr 12",
+                "changedNote": "poor intake"
+              }
+            ],
+            "after": [
+              {
+                "name": "Metformin 500 mg BID",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Apr 12",
+                "changedNote": "poor intake"
+              }
+            ],
+            "tags": [
+              "Held · Apr 12"
+            ],
+            "recorded": {
+              "changedNote": {
+                "why": "kept 'poor intake' or replaced by the new words (Q13)",
+                "row": {
+                  "name": "Metformin 500 mg BID",
+                  "status": "held",
+                  "changeType": "held",
+                  "changeDate": "Apr 12",
+                  "changedNote": "poor intake",
+                  "tag": "Held · Apr 12"
+                }
+              }
+            },
+            "ai": [
+              {
+                "fn": "notes.generateNote",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 6503,
+                "providerMs": 6177,
+                "appMs": 326,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "billing.suggestBilling",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 3482,
+                "providerMs": 3077,
+                "appMs": 405,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "R-3 (hospital, both): {\"unchanged\":true}",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "dictation": "Vancomycin level was high before we stopped it, creatinine improving.",
+        "paths": [
+          {
+            "path": "preRound",
+            "chart": "QA DS1-rb2-meds-s11 R-3 pre",
+            "ok": false,
+            "fails": [
+              "unchanged: the rows differ from the rows on file"
+            ],
+            "before": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 11",
+                "changedNote": "AKI"
+              }
+            ],
+            "after": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "held",
+                "changeType": "held",
+                "changeDate": "Oct 20",
+                "changedNote": "held due to high vancomycin level"
+              }
+            ],
+            "tags": [
+              "Held · Oct 20"
+            ],
+            "ai": [
+              {
+                "fn": "parsing.parsePreRoundNotes",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 4081,
+                "providerMs": 4076,
+                "appMs": 5,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.classifyAdmissionReason",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1979,
+                "providerMs": 1974,
+                "appMs": 5,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1701,
+                "providerMs": 1698,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          },
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 R-3 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 11",
+                "changedNote": "AKI"
+              }
+            ],
+            "after": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 11",
+                "changedNote": "AKI"
+              }
+            ],
+            "tags": [
+              "Stopped · Oct 11"
+            ],
+            "ui": {
+              "message": "✓ Notes saved — no new tasks or medication changes found",
+              "error": null
+            },
+            "ai": [
+              {
+                "fn": "parsing.extractTasks",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 1848,
+                "providerMs": 1845,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "parsing.extractMedicationEvents",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 2341,
+                "providerMs": 2338,
+                "appMs": 3,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "R-4 (nursing-home, both): {\"unchanged\":true}",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dictation": "Vancomycin level was high before we stopped it, creatinine improving.",
+        "paths": [
+          {
+            "path": "preRound",
+            "chart": "QA DS1-rb2-meds-s11 R-4 pre",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 11",
+                "changedNote": "AKI"
+              }
+            ],
+            "after": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 11",
+                "changedNote": "AKI"
+              }
+            ],
+            "tags": [
+              "Stopped · Oct 11"
+            ],
+            "ai": [
+              {
+                "fn": "parsing.parsePreRoundNotes",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 4245,
+                "providerMs": 4240,
+                "appMs": 5,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          },
+          {
+            "path": "encounter",
+            "chart": "QA DS1-rb2-meds-s11 R-4 enc",
+            "ok": true,
+            "fails": [],
+            "before": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 11",
+                "changedNote": "AKI"
+              }
+            ],
+            "after": [
+              {
+                "name": "Vancomycin 1.25 g IV q12h",
+                "status": "discontinued",
+                "changeType": "stopped",
+                "changeDate": "Oct 11",
+                "changedNote": "AKI"
+              }
+            ],
+            "tags": [
+              "Stopped · Oct 11"
+            ],
+            "ai": [
+              {
+                "fn": "notes.generateNote",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 6757,
+                "providerMs": 6517,
+                "appMs": 240,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              },
+              {
+                "fn": "billing.suggestBilling",
+                "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+                "ok": true,
+                "durationMs": 4012,
+                "providerMs": 3827,
+                "appMs": 185,
+                "parseStatus": null,
+                "fellBackFrom": null,
+                "error": null,
+                "over30s": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-19-S11-last-chart.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-19-S11-last-chart.png": 0
+  },
+  "error": "Error: TC-19/S11: judged cells that failed"
+}

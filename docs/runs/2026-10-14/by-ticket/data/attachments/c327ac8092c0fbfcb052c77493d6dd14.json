@@ -1,0 +1,186 @@
+{
+  "ref": "TC-13/S26",
+  "title": "TC-13/S26 today's note after an explicit import: the imported note is the template and nothing from it is presented as today's",
+  "dataset": "pn-gen",
+  "target": "dev",
+  "at": "2026-10-19T19:29:46.505Z",
+  "cells": [
+    {
+      "name": "given: no vitals and no labs on the import chart",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "vitals": null,
+        "labs": null
+      }
+    },
+    {
+      "name": "given: nothing imported before the run",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "variant given: one stored prior note, no source, date label 'Oct 11'",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "dateLabel": "Oct 11",
+          "source": null
+        }
+      ]
+    },
+    {
+      "name": "s26-imported: one prior note, source explicit-import, date label 'Oct 11'",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "dateLabel": "Oct 11",
+        "source": "explicit-import",
+        "extractedAt": "2026-10-19T19:25:08.042Z"
+      }
+    },
+    {
+      "name": "s26-imported: extraction error line, if any",
+      "kind": "record",
+      "ok": null,
+      "detail": ""
+    },
+    {
+      "name": "the generated note is stored",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "chars": 947
+      }
+    },
+    {
+      "name": "U3: the prior note's BP 142/88 is not in today's note",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "U3: the prior note's temperature 38.4 is not in today's note",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "then: the note says no vitals were dictated today ('not dictated' / 'no vitals')",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "Vital signs: not dictated today."
+      ]
+    },
+    {
+      "name": "U4/T5: a line with creatinine 1.1 also carries 'Oct 11', or 1.1 is absent (stored note)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "U4/T5: a line with BNP 1250 also carries 'Oct 11', or 1250 is absent (stored note)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Q14: an earlier-day value shown with its date",
+      "kind": "record",
+      "ok": null,
+      "detail": []
+    },
+    {
+      "name": "T1: no unit the prior note did not have (mg/dL)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "T1: no unit the prior note did not have (mmol)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "T1: no unit the prior note did not have (pg/mL)",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "T5: prior-note content carried into today's note (structure recorded only)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "renalUltrasound": true,
+        "effusion": true,
+        "furosemide": true,
+        "head": "Subjective\n\nThe patient reports breathing is easier.\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical examination not documented in today's dictation.\n\nTesting Results\n\nChest X-ray Oct 9: bilateral pleural effusions.\n\nTTE Oct 10: EF 30%.\n\nRenal ultrasound: pending.\n\nAssessment\n\nPatient is a 74-year-old man with a history of chronic kidney disease stage 3 and heart failure with reduced ejection fraction who presented with volume overload on Oct 9. He has been receiving intravenous diuretic therapy during this admission. Today he reports improved dyspnea, suggesting response to ongoing diuresis. Renal function and volume status remain the focus of management.\n\nPlan\n\n1. Continue intravenous furosemide for acute on chronic heart failure with reduced ejection fraction; monitor clinical response to diuresis.\n\n2. Chronic kidney disease stage 3 — trend creatinine daily.\n\n3. Renal ultrasound — pending; obtain result and review findings."
+      }
+    },
+    {
+      "name": "the imported note is still the explicit one when the note is generated",
+      "kind": "record",
+      "ok": null,
+      "detail": "explicit-import"
+    },
+    {
+      "name": "variant: the note is stored",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "chars": 408
+      }
+    },
+    {
+      "name": "variant: the stored note's BNP 1250 does not reach today's note",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "variant: the stored note's BP 142/88 does not reach today's note",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "variant: the stored note's pending renal ultrasound does not reach today's note",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "variant: other prior-note facts (a model could guess them from the chart)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "effusion": false,
+        "HFrEF": false,
+        "CKD": false
+      }
+    },
+    {
+      "name": "variant: the prior note stayed unmarked (the run did not extract it)",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        null
+      ]
+    }
+  ],
+  "shots": [
+    "evidence/TC-13-S26-imported.png",
+    "evidence/TC-13-S26-note.png",
+    "evidence/TC-13-S26-variant-note.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-13-S26-imported.png": 0,
+    "evidence/TC-13-S26-note.png": 0,
+    "evidence/TC-13-S26-variant-note.png": 0
+  }
+}

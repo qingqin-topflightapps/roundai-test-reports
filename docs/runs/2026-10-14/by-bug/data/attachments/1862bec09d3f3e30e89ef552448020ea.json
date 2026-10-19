@@ -1,0 +1,21 @@
+{
+  "TC-22/S03": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:59:51Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "DEV agent unit T22-S03 (run-plan-dev-2026-10-15-ext.json), live extractor; rows deleted after",
+    "title": "Nursing Home, UAT steps 2–3 (three tasks typed by hand): two close, third open, conditional task, no retraction task; closed ones shown with the visit",
+    "detail": "Save & Extract closed 'follow up BMP' and 'PT eval', 'recheck weight in two weeks' open, no glargine task; no diet task (N22 still) → '1 pending task'. Task Review: Finished 'follow up BMP', 'PT eval' each 'Done Oct 20' with NO visit (TFA-92585 AC 8, new resident without a ledger line; same as local).",
+    "evidence": [
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s03/verdict.json",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s03/notes.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s03/s03-n-after-extract.png",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s03/s03-n-task-export.png",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s03/backend/n-after.json"
+    ],
+    "bug": "N22",
+    "stated": "P0: UAT TC-22 ER (conditional task) + TFA-92585 AC 8"
+  }
+}

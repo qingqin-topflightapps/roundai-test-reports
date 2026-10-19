@@ -1,0 +1,26 @@
+{
+  "TC-14/S15": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:39:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "AICHECK",
+    "title": "Bedside checks stay reminders; doses already given documented as done (5 + 5)",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). Dataset rb1-gen-notes-b. 7/10 (43c38a4f: 6/10). H-15: 'Restart apixaban 5 mg PO BID …; restarted this morning' in the plan (N19). H-12 / H-14 fail the substring screen ('given' absent) although the note says 'treated with intravenous magnesium this morning' / 'Diuresis was initiated this morning with … furosemide 40 mg at 6:00 AM' — for the grader.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/rb1-gen-notes-b/evidence/TC-14-S15.json"
+    ],
+    "bug": {
+      "id": "N19",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-14 ER 6-7; TFA-92592 AC 7 + AC 8",
+      "quote": "A medication already given is documented as performed, not re-ordered.",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

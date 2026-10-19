@@ -1,0 +1,19 @@
+{
+  "TC-04/S27": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Assign at 17 h / 19 h after the last encounter edit (newspec-b tc04-s27)",
+    "bug": "B12",
+    "bugNow": "still",
+    "stated": "TFA-92582 / UAT 3.6 (18 h)",
+    "detail": "Part 1 still fails: at 19 h the box is appended to yesterday's encounter (today's encounter is not the box only; 'Day 1' is not archived as yesterday's transcript). quickDictation.assign (:151-156) appends without the lifecycle patch. Part 2 (device clock a day ahead) passes.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-b/evidence/tc04-s27/part1.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

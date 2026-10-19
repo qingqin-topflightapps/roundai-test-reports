@@ -1,0 +1,153 @@
+{
+  "name": "tc14-s26-hosp",
+  "at": "2026-10-15T08:11:00.506Z",
+  "checks": [
+    {
+      "id": "setup: the first checkpoint was taken while the call was still held",
+      "ok": true,
+      "detail": "ms after press 960"
+    },
+    {
+      "id": "h1: while the call is held Post-Round shows a generating state, never only 'Complete the Encounter tab first'",
+      "ok": false,
+      "detail": "{\"generating\":null,\"completeFirst\":true,\"noNoteYet\":true,\"finalizingSpinner\":true}"
+    },
+    {
+      "id": "h1 (B27): the finalize button reads 'Finalizing Encounter Data…' and spins",
+      "ok": false,
+      "detail": "finalizing spinner: true",
+      "recordOnly": true
+    },
+    {
+      "id": "h2: 5 s after the release Post-Round shows the note (129/73)",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "f1: after the failure while away, Post-Round shows an explicit failure on return",
+      "ok": false,
+      "detail": "{\"failure\":null,\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressu\"}"
+    },
+    {
+      "id": "f1: Post-Round does not show the failed cell's values (125/75)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "f1: the note from cell H is shown as the current note with no sign that the new dictation was not turned into a note",
+      "ok": false,
+      "detail": "ASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.",
+      "recordOnly": true
+    },
+    {
+      "id": "f2: the failed cell's dictation is on the Encounter tab",
+      "ok": true,
+      "detail": "Patient feels better, blood pressure 125 over 75, continue current treatment."
+    },
+    {
+      "id": "f2: the Encounter tab shows the generation failure",
+      "ok": false,
+      "detail": "no failure message on the Encounter tab",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "h1-early": {
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": true,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Paul AE60\n\nRoom 630 · 74y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nHeart failure exacerbation\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…"
+    },
+    "h1-timing": {
+      "msAfterPress": 960,
+      "callStillHeld": true
+    },
+    "h2-late": {
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Paul AE60\n\nRoom 630 · 74y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nHeart failure exacerbation\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n5:10 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.\n\nEdit Note\nCopy to EMR\nTOMORROW'S PRE-ROUND SUMMARY\nEdit\n\nOct 15: QA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.\n\nThis appears in pre-round tomorrow. Tap Edit to refine.\n\nMark Encounter Complete"
+    },
+    "backend-after-H": {
+      "note": "ASSESSMENT AND PLAN\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.",
+      "noteGeneratedAt": "2026-10-15T08:10:06.764Z",
+      "status": "note-ready"
+    },
+    "cellF-call": {
+      "button": "Regenerate Note",
+      "answered": "fail"
+    },
+    "f1-post": {
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Paul AE60\n\nRoom 630 · 74y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nHeart failure exacerbation\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n5:10 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.\n\nEdit Note\nCopy to EMR\nTOMORROW'S PRE-ROUND SUMMARY\nEdit\n\nOct 15: QA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.\n\nThis appears in pre-round tomorrow. Tap Edit to refine.\n\nMark Encounter Complete"
+    },
+    "f2-encounter": {
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Hosp Paul AE60\n\nRoom 630 · 74y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nHeart failure exacerbation\n\nPre-Round\nEncounter\nPost-Round\n\nTap the mic to capture the encounter\n\nTap to toggle\nHold to talk\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nTASKS\n0 pending\nDictate\nAdd\n\nNo pending tasks — tap Add or Dictate to create one.\n\nNOTE FORMAT\nH&P\nSOAP progress\nConsult note\nDischarge summary\nQA gen procedure note H ★\n\nQA: procedure / other note type, so no billing job is queued\n\nRegenerate Note"
+    },
+    "backend-after-F": {
+      "note": "ASSESSMENT AND PLAN\nQA S26 cell H mocked note (no model was called). Today: Walked to the window and back, blood pressure 129 over 73, continue current plan.",
+      "noteGeneratedAt": "2026-10-15T08:10:06.764Z",
+      "encounterNotes": "Patient feels better, blood pressure 125 over 75, continue current treatment.",
+      "status": "note-ready"
+    },
+    "calls": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "at": 1792051806773
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok",
+        "at": 1792051821887
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok",
+        "at": 1792051821887
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "fail",
+        "at": 1792051829042
+      }
+    ]
+  }
+}

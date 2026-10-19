@@ -1,0 +1,47 @@
+{
+  "name": "ip-tc12-s25-hosp",
+  "at": "2026-10-19T18:00:11.579Z",
+  "checks": [
+    {
+      "id": "TC-24 S22 (our WCAG 2.4.6 / 4.1.2 check, A1): repeated delete controls say which point they delete",
+      "ok": false,
+      "detail": "[\"Delete point\",\"Delete point\",\"Delete point\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "UAT TC-24 'Each delete asks for confirmation once' / TFA-94699 AC 6: one tap shows a confirmation and, after Cancel, the point is still listed",
+      "ok": false,
+      "detail": "{\"dialogs\":[],\"inPage\":0,\"stored\":[\"Delete-check two\",\"Delete-check three\"]}"
+    },
+    {
+      "id": "a double tap on Delete point removes at most one point (no delete-all)",
+      "ok": true,
+      "detail": "{\"before\":2,\"after\":[\"Delete-check three\"]}"
+    },
+    {
+      "id": "a blank (spaces only) point makes no card",
+      "ok": true,
+      "detail": "{\"saveDisabled\":true,\"stored\":[\"Delete-check three\"]}"
+    },
+    {
+      "id": "a double-clicked Save Point makes exactly one 'Double-tap check' card",
+      "ok": true,
+      "detail": "[\"Delete-check three\",\"Double-tap check\"]"
+    }
+  ],
+  "data": {
+    "delete control names on a list of three": [
+      "Delete point",
+      "Delete point",
+      "Delete point"
+    ],
+    "after one tap: native dialogs / in-page confirmations": {
+      "native": [],
+      "inPage": 0
+    },
+    "final stored list": [
+      "Delete-check three",
+      "Double-tap check"
+    ]
+  }
+}

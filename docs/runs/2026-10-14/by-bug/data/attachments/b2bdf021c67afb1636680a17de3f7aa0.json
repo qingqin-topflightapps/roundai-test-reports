@@ -1,0 +1,29 @@
+{
+  "TC-22/S09": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:28:40Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Counts and length: 0 / 1 / 12 open tasks; tasks after character 1,200",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-ext-tc22-s09-s10-length.spec.ts. C0 / C1 / C12 pass both modes. L1 Hospital FAILS: the pre-round task request carries the first 1,200 of 1,266 characters, so the three tasks dictated from character 1,214 never appear (header 0) (N24; usePreRoundProcess.ts substring(0, 1200) unchanged). Dev unit T22-S09 on 8b4be94a agrees: L1 'No tasks yet.' about 50 s after the Save Note (0 stored, 3 expected); C0 / C12 Nursing Home pass; C1 'Follow up BMP' left open by 'BMP came back' (known Q7); the 'occurs 2 times' failures are the oracle counting the two buttons of one row.",
+    "evidence": [
+      "runs/2026-10-20-rb1-dev/units/T22-S09.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s09-b43-l1-hospital.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s09-b43-counts-rounding.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc22-s09-b43-counts-snf.json"
+    ],
+    "bug": {
+      "id": "N24",
+      "now": "still"
+    },
+    "scope": "P1",
+    "stated": {
+      "where": "ours: task-count and 1,200-character boundaries",
+      "quote": null,
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "TC-08/S03b": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local (ho-tc08-local.spec.ts)",
+    "title": "Nursing Home: edit, Copy and send; colleague reads exactly the edited NH handoff",
+    "detail": "Local 8b4be94a, fresh @roundai.test accounts; no model: handoff/persistence:ensure answered at the Convex socket (ts 0, nothing scheduled), every ai/* refused, charts carry stored stand-in summaries re-inserted with `convex import --append` (ho-support.ts); tripwire 'no model call' on every run. Same 32 judged checks as S03a for three In-Today residents (edit: delete 'pain > 6', ORIF → QA-CHG-arthroplasty, add line): all passed; no Hospital patient in the delivered text. Recorded Q4: resident not In Today is not on the sheet; Q6 as S03a.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03b-sheet.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03b-recipient-detail.png"
+    ]
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "ref": "TC-14/S01",
+  "title": "TC-14/S01 Hospital journey: pre-round, Begin Encounter, Save & Extract, Generate, Post-Round (live models)",
+  "dataset": "rb1-gen-journeys",
+  "target": "dev",
+  "at": "2026-10-19T18:48:30.911Z",
+  "cells": [
+    {
+      "name": "U1: after Save Note the Pre-Round tab offers Begin Encounter",
+      "kind": "judged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cp1: Save & Extract message and rows",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "message": "✓ Tasks updated — 1 added, 1 medication change",
+        "tasks": [
+          {
+            "id": "1700000000101",
+            "text": "Follow up urinalysis",
+            "done": false
+          },
+          {
+            "id": "1700000000102",
+            "text": "PT evaluation",
+            "done": false
+          },
+          {
+            "id": "1792435686213",
+            "text": "Repeat chest X-ray tomorrow morning",
+            "done": false
+          }
+        ],
+        "metoprolol": {
+          "changeDate": "Oct 20",
+          "changeType": "resumed",
+          "changed": true,
+          "changedNote": "Restarted this morning",
+          "id": "m-meto",
+          "name": "Metoprolol tartrate 25 mg PO BID",
+          "status": "active",
+          "updatedAt": "2026-10-19T18:48:05.200Z"
+        },
+        "calls": [
+          {
+            "fn": "parsing.extractTasks",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2545,
+            "providerMs": 2542,
+            "appMs": 3,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.extractTasks",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 1665,
+            "providerMs": 1661,
+            "appMs": 4,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "parsing.extractMedicationEvents",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 2053,
+            "providerMs": 2051,
+            "appMs": 2,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "U2: 'Follow up urinalysis' closed, once",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000101",
+          "text": "Follow up urinalysis",
+          "done": false
+        },
+        {
+          "id": "1700000000102",
+          "text": "PT evaluation",
+          "done": false
+        },
+        {
+          "id": "1792435686213",
+          "text": "Repeat chest X-ray tomorrow morning",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "U2: 'PT evaluation' left open",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000101",
+          "text": "Follow up urinalysis",
+          "done": false
+        },
+        {
+          "id": "1700000000102",
+          "text": "PT evaluation",
+          "done": false
+        },
+        {
+          "id": "1792435686213",
+          "text": "Repeat chest X-ray tomorrow morning",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "U2 / Q4: exactly one chest X-ray task added",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000101",
+          "text": "Follow up urinalysis",
+          "done": false
+        },
+        {
+          "id": "1700000000102",
+          "text": "PT evaluation",
+          "done": false
+        },
+        {
+          "id": "1792435686213",
+          "text": "Repeat chest X-ray tomorrow morning",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "U8: metoprolol taken off Held, with today's change",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "changeDate": "Oct 20",
+        "changeType": "resumed",
+        "changed": true,
+        "changedNote": "Restarted this morning",
+        "id": "m-meto",
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "updatedAt": "2026-10-19T18:48:05.200Z"
+      }
+    },
+    {
+      "name": "Q3: a dysuria task",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "dysuriaTask": 0
+      },
+      "ref": "Q3"
+    },
+    {
+      "name": "no task for the medication already given",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "metoprololTasks": 0
+      }
+    },
+    {
+      "name": "U10: Generate opened Post-Round with the AI-Generated Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cp2: the note and the calls",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Subjective\n\nNot provided\n\nObjective\n\nVital Signs: Temperature afebrile. Blood pressure 128/76 mmHg. Heart rate not documented.\n\nPhysical Examination: Faint crackles at the right base. Urinalysis negative, no nitrites.\n\nTesting Results\n\nUrinalysis: negative, no nitrites.\n\nAssessment\n\nPatient is a 71-year-old female with no past medical history documented in the available records who presented with community-acquired pneumonia. She was admitted and is now on day 3 of ceftriaxone therapy, with afebrile status overnight and improving cough. Physical examination reveals faint crackles at the right base, consistent with resolving pneumonia. Urinalysis is negative. Overall clinical trajectory supports continued inpatient management with current antibiotic therapy and close monitoring for further improvement.\n\nPlan\n\n1. Continue intravenous ceftriaxone for community-acquired pneumonia; repeat chest X-ray tomorrow morning to assess interval improvement.\n2. Restart metoprolol tartrate 25 mg PO BID; blood pressure well controlled at 128/76 mmHg on current dose.\n3. Assess for dysuria at the afternoon visit; urinalysis already negative for infection.\n4. Monitor clinical response to antibiotics and reassess disposition as clinical improvement continues.",
+        "calls": [
+          {
+            "fn": "billing.suggestBilling",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3722,
+            "providerMs": 3572,
+            "appMs": 150,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 11217,
+            "providerMs": 10956,
+            "appMs": 261,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "cp2: the note keeps 'metoprolol' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps 'urinalysis' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps '/128\\s*(?:\\/|over)\\s*76/' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps 'crackles' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps 'x-ray|xray|x ray|cxr|radiograph' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: mustNotInclude restart metoprolol",
+      "kind": "judged",
+      "ok": false,
+      "detail": "in: Restart metoprolol tartrate 25 mg PO BID; blood pressure well controlled at 128/76 mmHg on current dose."
+    },
+    {
+      "name": "cp2: mustNotInclude resume metoprolol",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude reports dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude complains of dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude positive for dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude denies dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude no dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude without dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2 (U6): no placeholder token",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "cp2 (U5): no stock normal exam phrase",
+      "kind": "judged",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "name": "U3: Generate leaves the tasks as Save & Extract left them",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": [
+          {
+            "id": "1700000000101",
+            "text": "Follow up urinalysis",
+            "done": false
+          },
+          {
+            "id": "1700000000102",
+            "text": "PT evaluation",
+            "done": false
+          },
+          {
+            "id": "1792435686213",
+            "text": "Repeat chest X-ray tomorrow morning",
+            "done": false
+          }
+        ],
+        "after": [
+          {
+            "id": "1700000000101",
+            "text": "Follow up urinalysis",
+            "done": false
+          },
+          {
+            "id": "1700000000102",
+            "text": "PT evaluation",
+            "done": false
+          },
+          {
+            "id": "1792435686213",
+            "text": "Repeat chest X-ray tomorrow morning",
+            "done": false
+          }
+        ]
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-14-S01-s01-cp1.png",
+    "evidence/TC-14-S01-s01-cp2-note.png",
+    "evidence/TC-14-S01-s01-cp3-tasks.png",
+    "evidence/TC-14-S01-s01-cp4-meds.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-14-S01-s01-cp1.png": 0,
+    "evidence/TC-14-S01-s01-cp2-note.png": 0,
+    "evidence/TC-14-S01-s01-cp3-tasks.png": 0,
+    "evidence/TC-14-S01-s01-cp4-meds.png": 0
+  },
+  "error": "Error: TC-14/S01: judged cells that failed"
+}

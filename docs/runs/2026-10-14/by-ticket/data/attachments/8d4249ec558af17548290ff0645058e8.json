@@ -1,0 +1,18 @@
+{
+  "TC-12/S19": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:54:37.343Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "dev dataset lane (scripts/datasets/run.sh ip-dev-a / ip-dev-b, datasets/ip-dev-*.spec.ts) on <dev address> at 8b4be94a, account <dev account>, rows 'QA DS1-ip-dev-* ' deleted after (cleanup: 10 + 4 deleted, 0 remaining, 0 foreign changed), live model (Haiku 4.5, no fallback)",
+    "title": "Ten Save Note cycles with three points: timing, AI time and model logged, points unchanged",
+    "detail": "Judged: H-01 and N-01 three points identical (ids, text, order, createdAt) after each of 5 + 5 live cycles. Reported (UAT 3.5, not Pass/Fail): Save Note tap -> editor closed 8.4/8.4/10.4/12.4/10.4 s Hospital, 4.3/4.9/5.3/4.8/5.9 s Nursing Home: 10/10 within 15 s, none over 30 s; each cycle has a parsing.parsePreRoundNotes row with model (Haiku 4.5), durationMs and providerMs (app overhead 2-13 ms). Hospital's extra time is the post-parse steps the page runs before closing the editor. Judged cells 10/10.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-a/evidence/TC-12-S19.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-a/cleanup.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-a/pw.log"
+    ],
+    "bug": "B20"
+  }
+}

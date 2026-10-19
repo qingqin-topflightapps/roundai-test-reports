@@ -1,0 +1,86 @@
+{
+  "name": "te-tc07-s08-nh-a-matrix",
+  "at": "2026-10-19T19:33:26.864Z",
+  "checks": [
+    {
+      "id": "routing: the INR task is stored done",
+      "ok": true,
+      "detail": "[\"[x] Recheck INR\",\"[ ] Order TSH\"]"
+    },
+    {
+      "id": "U2: 'Recheck INR' under Finished Tasks with the resident; 'Order TSH' pending above with no visit label",
+      "ok": true,
+      "detail": "{\"p\":[{\"name\":\"QA Resident Ida Novak ke0\",\"location\":\"Unit Elm 4\",\"tasks\":[{\"text\":\"Order TSH\",\"when\":\"\"}]}],\"f\":[{\"name\":\"QA Resident Ida Novak ke0\",\"location\":\"Unit Elm 4\",\"tasks\":[{\"text\":\"Recheck INR\",\"when\":\"Done Oct 20\"}]}]}"
+    },
+    {
+      "id": "U5 / AC 8: the 'Recheck INR' row shows the visit it was closed on (Visit 2: one earlier visit, closed at today's)",
+      "ok": false,
+      "detail": "Done Oct 20; stored doneVisit undefined"
+    },
+    {
+      "id": "harness: no model action left the page",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "variant": "as the matrix seeds it: one earlier visit in snfVisitDates (7 days ago), no course ledger, Save & Extract straight away",
+    "beforeExtract": {
+      "course": null,
+      "snfVisitDates": [
+        "2026-10-12T19:33:24.581Z"
+      ]
+    },
+    "afterExtract": {
+      "message": "✓ Tasks updated — 1 completed",
+      "stored": [
+        {
+          "category": "plan",
+          "done": true,
+          "doneAt": "2026-10-19T19:33:25.227Z",
+          "id": "1700004045951",
+          "text": "Recheck INR",
+          "urgent": false
+        },
+        {
+          "category": "plan",
+          "done": false,
+          "doneAt": null,
+          "id": "1700004045952",
+          "text": "Order TSH",
+          "urgent": false
+        }
+      ],
+      "course": null,
+      "snfVisitDates": [
+        "2026-10-12T19:33:24.581Z"
+      ]
+    },
+    "screen": {
+      "pending": [
+        {
+          "name": "QA Resident Ida Novak ke0",
+          "location": "Unit Elm 4",
+          "tasks": [
+            {
+              "text": "Order TSH",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA Resident Ida Novak ke0",
+          "location": "Unit Elm 4",
+          "tasks": [
+            {
+              "text": "Recheck INR",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "ref": "TC-07/S21",
+  "profile": "iphone15",
+  "part": null,
+  "judged": [],
+  "recordOnly": "our own accessibility / layout extra (P2): recorded for Quinn, not a bug",
+  "unjudged": [
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,5×: .mb-3 > .flex-1 > p | div:nth-child(1) > .mb-2.gap-2.items-center > span:nth-child(3))",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "icon-only mark-done / undo toggles have an accessible name",
+      "pass": true,
+      "detail": "[\"Mark task done\",\"Mark task done\",\"Undo — move back to pending\"]",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "the toggle's name says which task it acts on",
+      "pass": false,
+      "detail": "[\"Call the outpatient  → Mark task done\",\"Repeat BMP → Mark task done\",\"Chest X-ray read → Undo — move back to pending\"]",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "done state exposed to assistive tech (aria-pressed / checked), not by colour / strike-through alone",
+      "pass": false,
+      "detail": "[null,null,null]",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "toggles are tap targets of at least 24 × 24 px",
+      "pass": false,
+      "detail": "[\"20×20\",\"20×20\",\"20×20\"]",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "Copy Text and Send are at least 24 px tall",
+      "pass": true,
+      "detail": "[{\"text\":\"Send to…\",\"w\":166,\"h\":44},{\"text\":\"⎘ Copy Text\",\"w\":170,\"h\":44}]",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "the 120-character task wraps; no horizontal page overflow",
+      "pass": true,
+      "detail": "{\"longWraps\":true,\"overflow\":false}",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "hospital-tasks-send-dialog"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,5×: .mb-3 > .flex-1 > p | div:nth-child(1) > .mb-2.gap-2.items-center > span:nth-child(3))",
+      "state": "nh-tasks"
+    },
+    {
+      "name": "icon-only mark-done / undo toggles have an accessible name",
+      "pass": true,
+      "detail": "[\"Mark task done\",\"Mark task done\",\"Undo — move back to pending\"]",
+      "state": "nh-tasks"
+    },
+    {
+      "name": "the toggle's name says which task it acts on",
+      "pass": false,
+      "detail": "[\"Call the outpatient  → Mark task done\",\"Repeat BMP → Mark task done\",\"Chest X-ray read → Undo — move back to pending\"]",
+      "state": "nh-tasks"
+    },
+    {
+      "name": "done state exposed to assistive tech (aria-pressed / checked), not by colour / strike-through alone",
+      "pass": false,
+      "detail": "[null,null,null]",
+      "state": "nh-tasks"
+    },
+    {
+      "name": "toggles are tap targets of at least 24 × 24 px",
+      "pass": false,
+      "detail": "[\"20×20\",\"20×20\",\"20×20\"]",
+      "state": "nh-tasks"
+    },
+    {
+      "name": "Copy Text and Send are at least 24 px tall",
+      "pass": true,
+      "detail": "[{\"text\":\"Send to…\",\"w\":166,\"h\":44},{\"text\":\"⎘ Copy Text\",\"w\":170,\"h\":44}]",
+      "state": "nh-tasks"
+    },
+    {
+      "name": "the 120-character task wraps; no horizontal page overflow",
+      "pass": true,
+      "detail": "{\"longWraps\":true,\"overflow\":false}",
+      "state": "nh-tasks"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": true,
+      "detail": "none",
+      "state": "nh-tasks-send-dialog"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "toggles",
+      "value": [
+        {
+          "title": "Mark task done",
+          "aria": null,
+          "pressed": null,
+          "w": 20,
+          "h": 20,
+          "task": "Call the outpatient cardiology clinic to confirm the echocardiogram slot and fax the discharge summary before Friday"
+        },
+        {
+          "title": "Mark task done",
+          "aria": null,
+          "pressed": null,
+          "w": 20,
+          "h": 20,
+          "task": "Repeat BMP"
+        },
+        {
+          "title": "Undo — move back to pending",
+          "aria": null,
+          "pressed": null,
+          "w": 20,
+          "h": 20,
+          "task": "Chest X-ray read"
+        }
+      ],
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "Copy Text read back on webkit (iphone15)",
+      "value": "READ FAILED: page.evaluate: NotAllowedError: The request is not allowed by the user agent or the platform in the current context, pos",
+      "state": "hospital-tasks"
+    },
+    {
+      "name": "toggles",
+      "value": [
+        {
+          "title": "Mark task done",
+          "aria": null,
+          "pressed": null,
+          "w": 20,
+          "h": 20,
+          "task": "Call the outpatient cardiology clinic to confirm the echocardiogram slot and fax the discharge summary before Friday"
+        },
+        {
+          "title": "Mark task done",
+          "aria": null,
+          "pressed": null,
+          "w": 20,
+          "h": 20,
+          "task": "Repeat BMP"
+        },
+        {
+          "title": "Undo — move back to pending",
+          "aria": null,
+          "pressed": null,
+          "w": 20,
+          "h": 20,
+          "task": "Chest X-ray read"
+        }
+      ],
+      "state": "nh-tasks"
+    },
+    {
+      "name": "Copy Text read back on webkit (iphone15)",
+      "value": "READ FAILED: page.evaluate: NotAllowedError: The request is not allowed by the user agent or the platform in the current context, pos",
+      "state": "nh-tasks"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-tasks",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-07_S21/iphone15--hospital-tasks.png",
+      "url": "/rounding/tasks",
+      "findings": 5,
+      "axe": [
+        "color-contrast/serious×5"
+      ]
+    },
+    {
+      "state": "hospital-tasks-send-dialog",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-07_S21/iphone15--hospital-tasks-send-dialog.png",
+      "url": "/rounding/tasks",
+      "findings": 5,
+      "axe": []
+    },
+    {
+      "state": "nh-tasks",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-07_S21/iphone15--nh-tasks.png",
+      "url": "/snf/tasks",
+      "findings": 5,
+      "axe": [
+        "color-contrast/serious×5"
+      ]
+    },
+    {
+      "state": "nh-tasks-send-dialog",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-07_S21/iphone15--nh-tasks-send-dialog.png",
+      "url": "/snf/tasks",
+      "findings": 5,
+      "axe": []
+    }
+  ]
+}

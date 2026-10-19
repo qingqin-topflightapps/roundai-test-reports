@@ -1,0 +1,15 @@
+{
+  "TC-11/S28": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "code read on 8b4be94a",
+    "title": "Timeline windows come from the retention config, not hard-coded values",
+    "detail": "D6 re-check: STILL (pending Q15). Neither display window reads a retention config: the Hospital timeline keeps today's and yesterday's labels (convex/lib/courseTimeline.ts:15-21 isRecentCourseLine, called from src/features/rounding/patient/panels/HospitalCoursePanel.tsx:37), the Nursing Home card shows SHOW_LAST = 3 (src/features/snf/patient/panels/CoursePanel.tsx:12), and the windows are constants in convex/lib/lifecycle.ts (HOSPITAL_RETENTION / SNF_RETENTION). Stated: UAT 3.6 'All windows are configuration values, not hard-coded'.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/TC-11-S28.json"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "TC-07/S11": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:39:56Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec, fresh @roundai.test physician(s), no model call (tripwire clean) (newspec-c/te-tc07-view.spec.ts), back-dated stamps written at seed time (rounding:add / snf:add)",
+    "title": "Retention edges on the task view: Hospital completed 16 h and open 36 h after last processing, ±1 h",
+    "detail": "Hospital: completed 15 h ago kept at the bottom ('Done Oct 19'); completed 17 h ago gone (16 h) — pass; open task on a chart processed 35 h ago shown — pass; open task 'Order outpatient sleep study' on a chart processed 37 h ago STILL listed (and stored): no Hospital open-task clear on 8b4be94a (convex/lib/lifecycle.ts only drops done tasks past doneTask 16 h). Nursing Home: open task shown (persist); recorded (Q4): completed 15 h kept, 17 h gone. Same as the matrix's expected result on main; unchanged since 25acd727.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s11.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s11-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s11-nursing-home.png"
+    ],
+    "stated": "P1 by the scope file (ours: boundary); the rule itself is UAT 3.6 'Open tasks: cleared 36 h after the chart was last processed'"
+  }
+}

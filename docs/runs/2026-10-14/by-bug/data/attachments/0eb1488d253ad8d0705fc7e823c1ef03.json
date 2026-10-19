@@ -1,0 +1,28 @@
+{
+  "TC-10/S29": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:01:40Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Save Note interrupted: reload, leave, device stores",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-pre-tc10-s29-interrupt.spec.ts. (a) Hospital passes ('…structured processing was interrupted. Tap Save Note to continue.'); recorded: its Encounter tab says 'still being processed. Wait for the panels' (disagrees). (a) Nursing Home FAILS: no interrupted message; the Encounter tab says 'The pre-round text was edited after it was last processed…' (B27). (b) passes both. (c) FAILS: a device draft of the whole text stays after a successful Save; the local audio store keeps a recording after sign-out (B02).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc10-s29-pre-a-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc10-s29-pre-a-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc10-s29-pre-c-stores.json"
+    ],
+    "bug": {
+      "id": "B27",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "TFA-94745 AC 3, AC 4, AC 7",
+      "quote": "No patient data is stored on the device to support offline use (minimal session cache only, per SOW)",
+      "mixed": true,
+      "statedPart": "(c) no device copy once the server has the text, (d) interrupted recording kept and handed over"
+    }
+  }
+}

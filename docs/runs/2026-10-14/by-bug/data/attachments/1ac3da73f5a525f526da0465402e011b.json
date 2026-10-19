@@ -1,0 +1,17 @@
+{
+  "TC-17/S25": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Web half of the clock check: wrong-clock browser shows the same Post-Round; summary edit stamped with server time",
+    "detail": "pr-tc17-s25-clock.spec.ts (native half stays manual, device-only). Browser with clock +24 h in Pacific/Kiritimati: same note, completion, tasks and Tomorrow's Pre-Round Summary as the right-clock browser, both modes (pass); its stored session was treated as expired and it had to sign in again (B33). Saving an edited Tomorrow's Pre-Round Summary there stores nextPreRoundSummaryAt = device time: skew +86400 s vs server, Hospital and NH (FAILED, UAT 3.8 'server time, not device time'; TomorrowPreRoundSummaryCard.tsx:131 and snf PostRoundTab.tsx:102 write new Date() / nowIso()). Same root cause family as B18.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s25.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s25-B-hospital.png",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s25-B-snf.png"
+    ]
+  }
+}

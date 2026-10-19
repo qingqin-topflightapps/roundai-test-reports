@@ -1,0 +1,114 @@
+{
+  "name": "te-tc07-s14",
+  "at": "2026-10-19T18:40:20.352Z",
+  "checks": [
+    {
+      "id": "Hospital 0 tasks: an empty state, no patient, no 'undefined'",
+      "ok": true,
+      "detail": "No tasks yet"
+    },
+    {
+      "id": "Hospital 0 tasks: the copy names no patient",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════"
+    },
+    {
+      "id": "Q9 (record): 0 tasks — Send disabled, Copy Text gives a header-only text",
+      "ok": true,
+      "detail": "{\"sendEnabled\":false,\"clip\":\"TASK REVIEW\\nTuesday, October 20\\n════════════════════════════════════════\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "Hospital 1 task: listed under its patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA TE-S14 Hosp 8fy\",\"location\":\"Room 14\",\"tasks\":[{\"text\":\"Order lipid panel\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "Hospital only completed: nothing pending, the task at the bottom under its patient",
+      "ok": true,
+      "detail": "{\"p\":[],\"f\":[{\"name\":\"QA TE-S14 Hosp 8fy\",\"location\":\"Room 14\",\"tasks\":[{\"text\":\"Order lipid panel\",\"when\":\"Done Oct 20\"}]}],\"empty\":\"All tasks complete!\"}"
+    },
+    {
+      "id": "Hospital only completed: Copy Text includes it as completed under the patient",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nCOMPLETED\n────────────────────────────────────────\n\nQA TE-S14 Hosp 8fy — Room 14:\n  ✓ Order lipid panel — Oct 20"
+    },
+    {
+      "id": "Nursing Home 0 tasks: an empty state, no patient, no 'undefined'",
+      "ok": true,
+      "detail": "No tasks yet"
+    },
+    {
+      "id": "Nursing Home 0 tasks: the copy names no patient",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════"
+    },
+    {
+      "id": "Q9 (record): 0 tasks — Send disabled, Copy Text gives a header-only text",
+      "ok": true,
+      "detail": "{\"sendEnabled\":false,\"clip\":\"TASK REVIEW\\nTuesday, October 20\\n════════════════════════════════════════\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "Nursing Home 1 task: listed under its patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA TE-S14 Resident 8fy\",\"location\":\"Unit C\",\"tasks\":[{\"text\":\"Order TSH\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "Nursing Home only completed: nothing pending, the task at the bottom under its patient",
+      "ok": true,
+      "detail": "{\"p\":[],\"f\":[{\"name\":\"QA TE-S14 Resident 8fy\",\"location\":\"Unit C\",\"tasks\":[{\"text\":\"Order TSH\",\"when\":\"Done Oct 20\"}]}],\"empty\":\"All tasks complete!\"}"
+    },
+    {
+      "id": "Nursing Home only completed: Copy Text includes it as completed under the patient",
+      "ok": true,
+      "detail": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nCOMPLETED\n────────────────────────────────────────\n\nQA TE-S14 Resident 8fy — Unit C:\n  ✓ Order TSH — Oct 20"
+    }
+  ],
+  "data": {
+    "rounding-0": {
+      "emptyState": "No tasks yet",
+      "clip": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════",
+      "sendEnabled": false
+    },
+    "rounding-only-completed": {
+      "pending": [],
+      "finished": [
+        {
+          "name": "QA TE-S14 Hosp 8fy",
+          "location": "Room 14",
+          "tasks": [
+            {
+              "text": "Order lipid panel",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ],
+      "emptyState": "All tasks complete!",
+      "clip": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nCOMPLETED\n────────────────────────────────────────\n\nQA TE-S14 Hosp 8fy — Room 14:\n  ✓ Order lipid panel — Oct 20"
+    },
+    "snf-0": {
+      "emptyState": "No tasks yet",
+      "clip": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════",
+      "sendEnabled": false
+    },
+    "snf-only-completed": {
+      "pending": [],
+      "finished": [
+        {
+          "name": "QA TE-S14 Resident 8fy",
+          "location": "Unit C",
+          "tasks": [
+            {
+              "text": "Order TSH",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ],
+      "emptyState": "All tasks complete!",
+      "clip": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nCOMPLETED\n────────────────────────────────────────\n\nQA TE-S14 Resident 8fy — Unit C:\n  ✓ Order TSH — Oct 20"
+    }
+  }
+}

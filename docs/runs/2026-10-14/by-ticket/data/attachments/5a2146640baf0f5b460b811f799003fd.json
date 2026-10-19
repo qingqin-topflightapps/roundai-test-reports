@@ -1,0 +1,39 @@
+{
+  "name": "ip-tc12-s17",
+  "at": "2026-10-19T18:00:03.303Z",
+  "checks": [
+    {
+      "id": "cp1 (NH before adding): Nursing Home shows only its own point",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "cp2 (back to Hospital): Hospital shows only its own point",
+      "ok": true,
+      "detail": "[\"QA-H-ONLY check drain output\"]"
+    },
+    {
+      "id": "cp2: the Hospital point is still there",
+      "ok": true,
+      "detail": "[\"QA-H-ONLY check drain output\"]"
+    },
+    {
+      "id": "cp3 (after Back): Nursing Home shows only its own point",
+      "ok": true,
+      "detail": "[\"QA-N-ONLY offload heels\"]"
+    },
+    {
+      "id": "cp4 (after reload): Nursing Home shows only its own point",
+      "ok": true,
+      "detail": "[\"QA-N-ONLY offload heels\"]"
+    },
+    {
+      "id": "server: each chart stores only its own point",
+      "ok": true,
+      "detail": "{\"h\":[\"QA-H-ONLY check drain output\"],\"n\":[\"QA-N-ONLY offload heels\"]}"
+    }
+  ],
+  "data": {
+    "after Back the page is": "/snf/m57eszegkzcac6374k4n01enhn8gjgmn"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "TC-07/S01": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:37:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec, fresh @roundai.test physician(s), no model call (tripwire clean) (newspec-c/te-tc07-view.spec.ts)",
+    "title": "Hospital: three patients' tasks, one completed, on one screen and in Copy Text, no email",
+    "detail": "Three patients + an NH probe; 'Follow up blood cultures' ticked on Task Review. Four open tasks each under its own patient (one group per patient with room); both completed tasks at the bottom under their patients, each 'Done Oct 20'/'Done <day>'; no Email/mailto/share; NH probe absent. Copy Text: pending groups, then a COMPLETED block grouped by patient with both completed tasks; no 'undefined'. Ticked task stored done with a server doneAt. 9/9 judged. Was 'known' on 25acd727 (completed block was PR #106): now passes.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s01.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s01-screen.png"
+    ],
+    "stated": "P0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "OAT-03/S18": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:09:30Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW (in-process)",
+    "title": "Photo census scan: a ```json-fenced vision reply gives no rows (both modes)",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-pl-b01-parse.spec.ts runs the real ai/vision scanCensusSheet handler of 8b4be94a in-process with only the provider stubbed: a ```json-fenced reply gives 0 rows in both modes (diagnostics row ok=true, the failure is silent), bare JSON gives all 3. convex/ai/vision.ts and convex/lib/modelJson.ts unchanged since 43c38a4f. Physician sees 'No patients found in the image. Try a clearer photo.' for a readable photo.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-pl-b01-parse.json"
+    ],
+    "bug": {
+      "id": "B01",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT OAT-03 step 7 + ER 4; UAT Empty & Failure States 'Photo capture'",
+      "quote": "photo reading and transcription retry automatically; if they still fail, a clear message shows",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

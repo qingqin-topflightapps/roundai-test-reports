@@ -1,0 +1,17 @@
+{
+  "TC-08/S04": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local, mocked copy (Tim's 4 browser titles open the sheet with patients → server model job; not run locally)",
+    "title": "Handoff opens from both lists; in-app send recorded; Copy records a clipboard export",
+    "detail": "Local 8b4be94a, fresh @roundai.test accounts; no model: handoff/persistence:ensure answered at the Convex socket (ts 0, nothing scheduled), every ai/* refused, charts carry stored stand-in summaries re-inserted with `convex import --append` (ho-support.ts); tripwire 'no model call' on every run. Covered by ho-s03a/ho-s03b (list Handoff control → 'Handoff Summary' in both contexts, send in-app with a Sent record, no mailto / 'Email Handoff') and ho-s27 (Copy Text → export row destination 'clipboard', count 2). Tim's titles 'every rounding-list navigation control…', 'the nursing-home hub reaches…', 'a handoff is sent to a colleague…', 'copying a handoff records an export disclosure' not run locally (each opens a sheet whose ensure starts a Bedrock call).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s27.json"
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "ref": "TC-03/S22",
+  "profile": "desktop",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,6×: .hover\\:bg-teal-700.bg-teal-600.py-2 | .mb-0\\.5); nested-interactive(serious,1×: .text-left)",
+      "state": "hospital-search-typed"
+    },
+    {
+      "name": "Clear search control exists and is named",
+      "pass": true,
+      "detail": "[\"Clear search\"]",
+      "state": "hospital-search-typed"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,5×: .hover\\:bg-teal-700.bg-teal-600.py-2 | .mb-0\\.5)",
+      "state": "hospital-no-match"
+    },
+    {
+      "name": "no-match message is a status message (role=status / aria-live)",
+      "pass": false,
+      "detail": "not in a live region",
+      "state": "hospital-no-match"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,2×: .bg-black.hover\\:bg-slate-700.h-8:nth-child(2) | .bg-black.hover\\:bg-slate-700.h-8:nth-child(4)); color-contrast(serious,5×: .py-1\\.5.transition.px-4 | .hover\\:bg-teal-700)",
+      "state": "nh-search-typed"
+    },
+    {
+      "name": "Clear search control exists and is named",
+      "pass": true,
+      "detail": "[\"Clear search\"]",
+      "state": "nh-search-typed"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,2×: .bg-black.hover\\:bg-slate-700.h-8:nth-child(2) | .bg-black.hover\\:bg-slate-700.h-8:nth-child(4)); color-contrast(serious,6×: .py-1\\.5.transition.px-4 | .hover\\:bg-teal-700)",
+      "state": "nh-no-match"
+    },
+    {
+      "name": "no-match message is a status message (role=status / aria-live)",
+      "pass": false,
+      "detail": "not in a live region",
+      "state": "nh-no-match"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,2×: .bg-black.hover\\:bg-slate-700.h-8:nth-child(2) | .bg-black.hover\\:bg-slate-700.h-8:nth-child(4)); color-contrast(serious,5×: .transition.px-4.py-1\\.5 | .hover\\:bg-teal-700); nested-interactive(serious,1×: .cursor-pointer)",
+      "state": "nh-all-residents"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "no-match message",
+      "value": "No patients match \"zz-no-match-zz\".",
+      "state": "hospital-no-match"
+    },
+    {
+      "name": "no-match message",
+      "value": "No residents match \"zz-no-match-zz\".",
+      "state": "nh-no-match"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-search-typed",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-03_S22/desktop--hospital-search-typed.png",
+      "url": "/rounding",
+      "findings": 1,
+      "axe": [
+        "color-contrast/serious×6",
+        "nested-interactive/serious×1"
+      ]
+    },
+    {
+      "state": "hospital-no-match",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-03_S22/desktop--hospital-no-match.png",
+      "url": "/rounding",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×5"
+      ]
+    },
+    {
+      "state": "nh-search-typed",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-03_S22/desktop--nh-search-typed.png",
+      "url": "/snf",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×5"
+      ]
+    },
+    {
+      "state": "nh-no-match",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-03_S22/desktop--nh-no-match.png",
+      "url": "/snf",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×6"
+      ]
+    },
+    {
+      "state": "nh-all-residents",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-03_S22/desktop--nh-all-residents.png",
+      "url": "/snf",
+      "findings": 0,
+      "axe": [
+        "button-name/critical×2",
+        "color-contrast/serious×5",
+        "nested-interactive/serious×1"
+      ]
+    }
+  ]
+}

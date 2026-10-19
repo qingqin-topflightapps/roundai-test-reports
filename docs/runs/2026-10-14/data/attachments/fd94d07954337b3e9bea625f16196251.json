@@ -1,0 +1,143 @@
+{
+  "name": "TC-13-S27",
+  "at": "2026-10-19T18:21:00.979Z",
+  "checks": [
+    {
+      "id": "(1) B during A's read: B's chart shows none of A's note (CKD, EF 30, pleural effusion, 142/88)",
+      "ok": true,
+      "detail": "found: "
+    },
+    {
+      "id": "(1) B during A's read: B's note box is not open with A's text",
+      "ok": true,
+      "detail": "B's Previous Notes box"
+    },
+    {
+      "id": "(1) B during A's read: nothing saved on B (previousNotes, radiology, background)",
+      "ok": true,
+      "detail": "{\"previousNotes\":null,\"radiology\":null}"
+    },
+    {
+      "id": "(1) B after A's read answered: still none of A's note on B, and B's box not filled",
+      "ok": true,
+      "detail": "found: "
+    },
+    {
+      "id": "whether the photo read started on A survives leaving A while Reading (not specified)",
+      "ok": false,
+      "detail": "read text lost; photographed again",
+      "recordOnly": true
+    },
+    {
+      "id": "(1) A after Save & Extract: A shows 'pleural effusion' and no vital from the note (142/88, 38.4)",
+      "ok": true,
+      "detail": "effusion true, vitals "
+    },
+    {
+      "id": "(2) A during B's extraction: A keeps its own (pleural effusion) and shows none of B's (lower lobe, consolidation, procalcitonin, 110/64, 142/88)",
+      "ok": true,
+      "detail": "found: "
+    },
+    {
+      "id": "(2) A after B's extraction answered (A open): still none of B's facts on A",
+      "ok": true,
+      "detail": "found: "
+    },
+    {
+      "id": "(2) B after its extraction: B shows its own imaging (lower lobe / consolidation)",
+      "ok": true,
+      "detail": "B page has consolidation: true"
+    },
+    {
+      "id": "(2) B after: none of A's facts on B (CKD, EF 30, pleural effusion) and no vital (110/64, 142/88)",
+      "ok": true,
+      "detail": "found: "
+    },
+    {
+      "id": "server: A's photographed note is saved once, dated 'Oct 11', and is the photo's text",
+      "ok": true,
+      "detail": "[\"Oct 11\"]"
+    },
+    {
+      "id": "server: B's note did not land on A, and A has none of B's imaging",
+      "ok": true,
+      "detail": "[\"Chest X-ray Oct 9: bilateral pleural effusions\",\"TTE Oct 10: EF 30%\"]"
+    },
+    {
+      "id": "server: B's pasted note is saved once, dated 'Oct 11', and A's text never reached B",
+      "ok": true,
+      "detail": "[\"Oct 11\"]"
+    },
+    {
+      "id": "server: B has its own imaging and none of A's (effusion)",
+      "ok": true,
+      "detail": "[\"Chest X-ray Oct 10: right lower lobe consolidation\"]"
+    },
+    {
+      "id": "server: no vital stored on either chart (142/88, 110/64, 38.4)",
+      "ok": true,
+      "detail": "{\"a\":null,\"b\":null}"
+    },
+    {
+      "id": "no ai/* call was forwarded to the backend",
+      "ok": true,
+      "detail": "socket answers"
+    }
+  ],
+  "data": {
+    "s27-b-during.scanCallsAnswered": [
+      "pending"
+    ],
+    "precondition (1): the read was still pending when B was checked": "pending",
+    "precondition (2): B's extraction was still pending when A was checked": "pending",
+    "server.A": {
+      "previousNotes": [
+        {
+          "dateLabel": "Oct 11",
+          "head": "Progress note Oct 11 (synthetic QA). 74-year-old man with CK"
+        }
+      ],
+      "radiology": [
+        "Chest X-ray Oct 9: bilateral pleural effusions",
+        "TTE Oct 10: EF 30%"
+      ],
+      "reason": "74-year-old man with CKD stage 3 and HFrEF admitted Oct 9 for volume overload.\n• Acute on chronic HFrEF\n• CKD stage 3",
+      "vitals": null
+    },
+    "server.B": {
+      "previousNotes": [
+        {
+          "dateLabel": "Oct 11",
+          "head": "Progress note Oct 11 (synthetic QA). 67F admitted with pneum"
+        }
+      ],
+      "radiology": [
+        "Chest X-ray Oct 10: right lower lobe consolidation"
+      ],
+      "reason": "67F admitted with pneumonia.\n• Pneumonia",
+      "vitals": null
+    },
+    "socket.calls": [
+      {
+        "udfPath": "ai/vision:scanPriorNote",
+        "answered": "ok",
+        "text": ""
+      },
+      {
+        "udfPath": "ai/vision:scanPriorNote",
+        "answered": "ok",
+        "text": ""
+      },
+      {
+        "udfPath": "ai/parsing:extractPriorNote",
+        "answered": "ok",
+        "text": "Progress note Oct 11 (synthetic QA). 74-"
+      },
+      {
+        "udfPath": "ai/parsing:extractPriorNote",
+        "answered": "ok",
+        "text": "Progress note Oct 11 (synthetic QA). 67F"
+      }
+    ]
+  }
+}

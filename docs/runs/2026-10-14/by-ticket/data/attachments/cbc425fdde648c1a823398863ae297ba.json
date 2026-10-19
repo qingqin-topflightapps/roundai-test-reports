@@ -1,0 +1,17 @@
+{
+  "TC-11/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:56:15Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev dataset rb2-gen (live), Hospital: Generate then straight to another chart; Regenerate with new text then straight to another chart; ledger read after each job's own aiCallLog row",
+    "title": "Double tap on Generate, and leaving the chart while the note and timeline are still being written",
+    "detail": "N3 re-check on 8b4be94a: FIXED (twice: runs 1 and 2). After Generate-and-leave the chart keeps a finished entry for the visit (not erased, no 'Encounter done'); after Regenerate-and-leave the entry is rewritten from the regenerated note (it names the 1 L / oral cefpodoxime facts only the second dictation had); the reopened chart shows the card; the other chart gained no note, course, encounter text or status. The course refresh now runs on the server after the note (convex/lib/noteFollowUps.ts), so leaving the page no longer matters. Seen in passing: the entry is filed under the server's UTC day next to the pre-round line still 'Encounter pending' (TC-11/S05, candidate rb2-C1). The double-tap half of the case was not re-run (it passed on 10-14). Case scope P1 (ours).",
+    "evidence": [
+      "runs/2026-10-14-dev/datasets-rb2/rb2-gen/evidence/TC-11-S12-hosp.json",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-gen/evidence/TC-11-S12-hosp-n3-h1-reopened.png",
+      "runs/2026-10-14-dev/datasets-rb2/rb2-gen-run1/evidence/TC-11-S12.json"
+    ]
+  }
+}

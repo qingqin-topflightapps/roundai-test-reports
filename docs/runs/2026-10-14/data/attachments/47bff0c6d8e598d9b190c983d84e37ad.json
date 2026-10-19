@@ -1,0 +1,15 @@
+{
+  "TC-13/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-20T04:55:00+09:00",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pn",
+    "method": "PW",
+    "title": "Two Hospital patients: a photo on one, a paste on the other, switching patient while 'Reading' or 'Extracting'",
+    "detail": "New spec pn-tc13-s27-switch.spec.ts, socket-delayed answers so each switch is inside the pending call: B never shows or stores A's read/extraction; A never gets B's; each chart has only its own note and imaging; no vitals stored. Recorded (not specified): leaving A while 'Reading…' loses the read text, the photo had to be taken again.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/TC-13-S27.json"
+    ]
+  }
+}

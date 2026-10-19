@@ -1,0 +1,108 @@
+{
+  "name": "te-tc07-s06",
+  "at": "2026-10-19T18:37:16.496Z",
+  "checks": [
+    {
+      "id": "Hospital: A (open) and D (done then undone) pending; B (Task Export) and C (chart) completed at the bottom",
+      "ok": true,
+      "detail": "{\"pend\":[\"Order lipid panel\",\"Page cardiology fellow\"],\"done\":[\"Call pharmacy about vancomycin trough\",\"Recheck orthostatic vitals\"]}"
+    },
+    {
+      "id": "Hospital: Copy Text follows the same table",
+      "ok": true,
+      "detail": "{\"cpPend\":[\"Order lipid panel\",\"Page cardiology fellow\"],\"cpDone\":[\"Call pharmacy about vancomycin trough\",\"Recheck orthostatic vitals\"]}"
+    },
+    {
+      "id": "Hospital: stored states match (D reopened has no done stamp)",
+      "ok": true,
+      "detail": "[[\"Order lipid panel\",false,null,null],[\"Call pharmacy about vancomycin trough\",true,\"2026-10-19T18:37:06.084Z\",null],[\"Recheck orthostatic vitals\",true,\"2026-10-19T18:37:08.565Z\",null],[\"Page cardiology fellow\",false,null,null]]"
+    },
+    {
+      "id": "Nursing Home: A (open) and D (done then undone) pending; B (Task Export) and C (chart) completed at the bottom",
+      "ok": true,
+      "detail": "{\"pend\":[\"Order TSH\",\"Update family on care plan\"],\"done\":[\"Call pharmacy about warfarin refill\",\"Check pressure-ulcer dressing\"]}"
+    },
+    {
+      "id": "Nursing Home: Copy Text follows the same table",
+      "ok": true,
+      "detail": "{\"cpPend\":[\"Order TSH\",\"Update family on care plan\"],\"cpDone\":[\"Call pharmacy about warfarin refill\",\"Check pressure-ulcer dressing\"]}"
+    },
+    {
+      "id": "Nursing Home: stored states match (D reopened has no done stamp)",
+      "ok": true,
+      "detail": "[[\"Order TSH\",false,null,null],[\"Call pharmacy about warfarin refill\",true,\"2026-10-19T18:37:11.831Z\",null],[\"Check pressure-ulcer dressing\",true,\"2026-10-19T18:37:14.277Z\",null],[\"Update family on care plan\",false,null,null]]"
+    }
+  ],
+  "data": {
+    "rounding": {
+      "pending": [
+        {
+          "name": "QA TE-S06 Hosp r28",
+          "location": "Room 330",
+          "tasks": [
+            {
+              "text": "Order lipid panel",
+              "when": ""
+            },
+            {
+              "text": "Page cardiology fellow",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA TE-S06 Hosp r28",
+          "location": "Room 330",
+          "tasks": [
+            {
+              "text": "Call pharmacy about vancomycin trough",
+              "when": "Done Oct 20"
+            },
+            {
+              "text": "Recheck orthostatic vitals",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ],
+      "clip": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA TE-S06 Hosp r28 — Room 330:\n  • Order lipid panel\n  • Page cardiology fellow\n\nCOMPLETED\n────────────────────────────────────────\n\nQA TE-S06 Hosp r28 — Room 330:\n  ✓ Call pharmacy about vancomycin trough — Oct 20\n  ✓ Recheck orthostatic vitals — Oct 20"
+    },
+    "snf": {
+      "pending": [
+        {
+          "name": "QA TE-S06 Resident r28",
+          "location": "Unit Oak 2",
+          "tasks": [
+            {
+              "text": "Order TSH",
+              "when": ""
+            },
+            {
+              "text": "Update family on care plan",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA TE-S06 Resident r28",
+          "location": "Unit Oak 2",
+          "tasks": [
+            {
+              "text": "Call pharmacy about warfarin refill",
+              "when": "Done Oct 20"
+            },
+            {
+              "text": "Check pressure-ulcer dressing",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ],
+      "clip": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA TE-S06 Resident r28 — Unit Oak 2:\n  • Order TSH\n  • Update family on care plan\n\nCOMPLETED\n────────────────────────────────────────\n\nQA TE-S06 Resident r28 — Unit Oak 2:\n  ✓ Call pharmacy about warfarin refill — Oct 20\n  ✓ Check pressure-ulcer dressing — Oct 20"
+    }
+  }
+}

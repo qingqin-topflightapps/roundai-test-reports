@@ -1,0 +1,75 @@
+{
+  "case": "TC-22-S03",
+  "title": "Nursing Home, UAT steps 2–3 in the app (three tasks typed by hand): two close, third open, conditional task, no retraction task; closed ones shown as finished",
+  "needs": [
+    "seed",
+    "oracle-count",
+    "oracle-order",
+    "oracle-regex",
+    "oracle-scope",
+    "oracle-record-only",
+    "backend-read"
+  ],
+  "verdict": "Fail",
+  "passed": false,
+  "checkpoints": [
+    {
+      "file": "s03-n-after-extract.md",
+      "verdict": "Fail",
+      "url": "/snf/jx7156enaaj1ypwq2svy496bbn8gk0bm",
+      "problems": [
+        "no match for /(clear|diet)[^\\n]*pain|pain[^\\n]*(clear|diet)/i (in from \"pending task\")",
+        "no match for /(clear|diet)[^\\n]*(\\b4\\b|four)|(\\b4\\b|four)[^\\n]*(clear|diet)/i (in from \"pending task\")",
+        "backend n-at-1 tasks has 3 items, expected 4"
+      ],
+      "known": [
+        "missing \"2 pending tasks\" (in from \"pending task\") — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)"
+      ],
+      "recorded": [
+        "(3.9: model and promptChars of the Save & Extract call (backend/diag-1.json)) pass: backend diag-1 [fn=parsing.extractTasks].promptChars exists"
+      ]
+    },
+    {
+      "file": "s03-n-task-export.md",
+      "verdict": "Fail",
+      "url": "/snf/tasks",
+      "problems": [
+        "scope not found: from \"Pending Tasks\" to \"Finished Tasks\"",
+        "scope not found: from \"Pending Tasks\" to \"Finished Tasks\""
+      ],
+      "known": [
+        "scope not found: from \"Pending Tasks\" to \"Finished Tasks\" — known: UAT TC-22 known gap: phrasing sensitivity, 'BMP came back' closed 3/10 in Run 7 (Q7)",
+        "/\\bvisit\\s*\\d+/i matches 0 times, expected at least 2 (in from \"Finished Tasks\") — known: TFA-92585 AC 8 — the visit on a closed task (doneVisit) is in open PR #106, not on main"
+      ],
+      "recorded": []
+    },
+    {
+      "file": "(backend)",
+      "verdict": "Pass",
+      "problems": [],
+      "known": [],
+      "recorded": []
+    }
+  ],
+  "forbiddenActions": [],
+  "nativeDialogs": 0,
+  "manual": [
+    "TFA-92585 AC 8: once PR #106 is in, the visit on each finished row (s03-n-task-export.png) is the resident's current visit; the chart header shows no visit number on main, so the run cannot fill {currentVisit}"
+  ],
+  "agent": {
+    "turns": 44,
+    "costUsd": 0.2355428,
+    "durationMs": 84227,
+    "isError": false
+  },
+  "target": "dev",
+  "build": {
+    "sha": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-19T17:04:37Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "generateAllowed": false
+}

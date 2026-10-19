@@ -1,0 +1,198 @@
+{
+  "ref": "TC-22/S20",
+  "profile": "iphone15",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .uppercase | .line-through)",
+      "state": "hospital-postround-tasks"
+    },
+    {
+      "name": "every task toggle's accessible name contains its task text",
+      "pass": true,
+      "detail": "[\"follow up BMP → \\\"Reopen task: follow up BMP\\\"\",\"recheck weight in two weeks → \\\"Complete task: recheck weight in two weeks\\\"\"]",
+      "state": "hospital-postround-tasks"
+    },
+    {
+      "name": "every task toggle exposes its done state (aria-pressed / aria-checked) matching the stored task",
+      "pass": true,
+      "detail": "[\"follow up BMP → true\",\"recheck weight in two weeks → false\"]",
+      "state": "hospital-postround-tasks"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "button-name(critical,5×: .-ml-1 | .px-3.gap-2.border:nth-child(1) > .flex-shrink-0.p-0\\.5); color-contrast(serious,2×: .uppercase | .line-through)",
+      "state": "nh-postround-tasks"
+    },
+    {
+      "name": "every task toggle's accessible name contains its task text",
+      "pass": false,
+      "detail": "[\"follow up BMP → \\\"\\\"\",\"recheck weight in two weeks → \\\"\\\"\"]",
+      "state": "nh-postround-tasks"
+    },
+    {
+      "name": "every task toggle exposes its done state (aria-pressed / aria-checked) matching the stored task",
+      "pass": false,
+      "detail": "[\"follow up BMP → null\",\"recheck weight in two weeks → null\"]",
+      "state": "nh-postround-tasks"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,5×: .mb-3 > .flex-1 > p | div:nth-child(1) > .mb-2.gap-2.items-center > .text-slate-400)",
+      "state": "hospital-task-export"
+    },
+    {
+      "name": "every task toggle's accessible name contains its task text",
+      "pass": false,
+      "detail": "[\"follow up BMP → \\\"Undo — move back to pending\\\"\",\"recheck weight in two weeks → \\\"Mark task done\\\"\"]",
+      "state": "hospital-task-export"
+    },
+    {
+      "name": "every task toggle exposes its done state (aria-pressed / aria-checked) matching the stored task",
+      "pass": false,
+      "detail": "[\"follow up BMP → null\",\"recheck weight in two weeks → null\"]",
+      "state": "hospital-task-export"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,3×: .mb-3 > .flex-1 > p | .line-through)",
+      "state": "nh-task-export"
+    },
+    {
+      "name": "every task toggle's accessible name contains its task text",
+      "pass": false,
+      "detail": "[\"follow up BMP → \\\"Undo — move back to pending\\\"\",\"recheck weight in two weeks → \\\"Mark task done\\\"\"]",
+      "state": "nh-task-export"
+    },
+    {
+      "name": "every task toggle exposes its done state (aria-pressed / aria-checked) matching the stored task",
+      "pass": false,
+      "detail": "[\"follow up BMP → null\",\"recheck weight in two weeks → null\"]",
+      "state": "nh-task-export"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "toggles",
+      "value": [
+        {
+          "task": "follow up BMP",
+          "name": "Reopen task: follow up BMP",
+          "state": "true",
+          "html": "<button class=\"inline-flex items-center justify-center gap-1.5 rounded-xl font-bold transi"
+        },
+        {
+          "task": "recheck weight in two weeks",
+          "name": "Complete task: recheck weight in two weeks",
+          "state": "false",
+          "html": "<button class=\"inline-flex items-center justify-center gap-1.5 rounded-xl font-bold transi"
+        }
+      ],
+      "state": "hospital-postround-tasks"
+    },
+    {
+      "name": "toggles",
+      "value": [
+        {
+          "task": "follow up BMP",
+          "name": "",
+          "state": null,
+          "html": "<button class=\"flex-shrink-0 p-0.5\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" hei"
+        },
+        {
+          "task": "recheck weight in two weeks",
+          "name": "",
+          "state": null,
+          "html": "<button class=\"flex-shrink-0 p-0.5\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17\" hei"
+        }
+      ],
+      "state": "nh-postround-tasks"
+    },
+    {
+      "name": "toggles",
+      "value": [
+        {
+          "task": "follow up BMP",
+          "name": "Undo — move back to pending",
+          "state": null,
+          "html": "<button title=\"Undo — move back to pending\" class=\"mt-0.5 flex h-5 w-5 flex-shrink-0 items"
+        },
+        {
+          "task": "recheck weight in two weeks",
+          "name": "Mark task done",
+          "state": null,
+          "html": "<button title=\"Mark task done\" class=\"mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justi"
+        }
+      ],
+      "state": "hospital-task-export"
+    },
+    {
+      "name": "toggles",
+      "value": [
+        {
+          "task": "follow up BMP",
+          "name": "Undo — move back to pending",
+          "state": null,
+          "html": "<button title=\"Undo — move back to pending\" class=\"mt-0.5 flex h-5 w-5 flex-shrink-0 items"
+        },
+        {
+          "task": "recheck weight in two weeks",
+          "name": "Mark task done",
+          "state": null,
+          "html": "<button title=\"Mark task done\" class=\"mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justi"
+        }
+      ],
+      "state": "nh-task-export"
+    },
+    {
+      "name": "done shown by colour / strike-through alone (WCAG 1.4.1)",
+      "value": "screenshot review by a person (vision-review findings, not judged)"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-postround-tasks",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-22_S20/iphone15--hospital-postround-tasks.png",
+      "url": "/rounding/kx71bswqdxs4pbpant0mj093j98gjb1g",
+      "findings": 16,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "nh-postround-tasks",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-22_S20/iphone15--nh-postround-tasks.png",
+      "url": "/snf/m577ka13e983gmzjwbv203gevd8gkey8",
+      "findings": 12,
+      "axe": [
+        "button-name/critical×5",
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "hospital-task-export",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-22_S20/iphone15--hospital-task-export.png",
+      "url": "/rounding/tasks",
+      "findings": 4,
+      "axe": [
+        "color-contrast/serious×5"
+      ]
+    },
+    {
+      "state": "nh-task-export",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/te/visual/TC-22_S20/iphone15--nh-task-export.png",
+      "url": "/snf/tasks",
+      "findings": 4,
+      "axe": [
+        "color-contrast/serious×3"
+      ]
+    }
+  ]
+}

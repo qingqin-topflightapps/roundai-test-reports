@@ -1,0 +1,19 @@
+{
+  "TC-22/S20": {
+    "status": "record-only",
+    "ranAt": "2026-10-19T19:37:46Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "Visual lane (qa-agent-tests/visual/encounter.spec.ts TC-22/S20, desktop/Pixel 7/iPhone 15), output runs/2026-10-14-local/newspec-c/te/visual",
+    "title": "Task toggles in both contexts are named with their task and expose done / not done; axe on the task screens",
+    "detail": "Same as 43c38a4f (A1, suggestion, P2): NH Post-Round toggles have no accessible name (axe button-name critical ×5); Task Review toggles are named 'Mark task done' / 'Undo — move back to pending' without the task; no toggle on the task screens exposes aria-pressed/checked (Hospital Post-Round does); color-contrast serious on all four screens. A1 still.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/te/visual/TC-22_S20/desktop.verdict.json",
+      "runs/2026-10-14-local/newspec-c/te/visual/TC-22_S20/pixel7.verdict.json",
+      "runs/2026-10-14-local/newspec-c/te/visual/TC-22_S20/iphone15.verdict.json"
+    ],
+    "stated": "P2",
+    "bug": "A1"
+  }
+}

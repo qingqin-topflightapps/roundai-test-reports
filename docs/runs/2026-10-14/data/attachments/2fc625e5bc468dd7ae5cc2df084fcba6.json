@@ -1,0 +1,33 @@
+{
+  "name": "ip-tc24-s18-snf",
+  "at": "2026-10-19T18:03:20.333Z",
+  "checks": [
+    {
+      "id": "server: the new point is there and the deleted one is not",
+      "ok": true,
+      "detail": "[\"Family meeting Thursday\",\"Recheck potassium at noon\"]"
+    },
+    {
+      "id": "A shows the new point and not the deleted one",
+      "ok": true,
+      "detail": "[\"Family meeting Thursday\",\"Recheck potassium at noon\"]"
+    },
+    {
+      "id": "B shows the new point and not the deleted one",
+      "ok": true,
+      "detail": "[\"Family meeting Thursday\",\"Recheck potassium at noon\"]"
+    },
+    {
+      "id": "our extension: B offline while A deletes a point, B then adds one and reconnects: the deleted point stays deleted",
+      "ok": false,
+      "detail": "[\"Family meeting Thursday\",\"Recheck potassium at noon\",\"Offline add on B\"]",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "B's editor before A's delete": [
+      "Monitor sacral pressure area",
+      "Family meeting Thursday"
+    ]
+  }
+}

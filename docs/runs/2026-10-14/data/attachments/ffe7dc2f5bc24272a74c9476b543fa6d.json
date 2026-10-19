@@ -1,0 +1,18 @@
+{
+  "TC-08/S03a": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local (ho-tc08-local.spec.ts)",
+    "title": "Hospital: edit, Copy, send by exact email; colleague reads exactly the edited text",
+    "detail": "Local 8b4be94a, fresh @roundai.test accounts; no model: handoff/persistence:ensure answered at the Convex socket (ts 0, nothing scheduled), every ai/* refused, charts carry stored stand-in summaries re-inserted with `convex import --append` (ho-support.ts); tripwire 'no model call' on every run. 33/33 judged checks: 3 cards each with the four sections in order; dialog Copy = exactly the edited text (AC 9); unknown email → 'No Round Companion account with this email', own email → refused, no list of users in the dialog, handoffs:recipients returns [] (AC 10); 'Send to <email>?' confirmation before the row exists; one Sent record naming the recipient, sentAt = server time; sender and recipient details show the edited text byte-for-byte (delete / replace / add); API get: from/to names, same sentAt (AC 4, AC 8); no mailto / email / share on sheet, dialog, Sent, both details (AC 6). Recorded Q6: the sheet's Copy Text after the dialog closed copies the generated text, not the edit (edits live only in the open dialog). Recorded: 'Sent to' label shows the email as typed (upper-case).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03a-sheet.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03a-sheet.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03a-recipient-detail.png"
+    ]
+  }
+}

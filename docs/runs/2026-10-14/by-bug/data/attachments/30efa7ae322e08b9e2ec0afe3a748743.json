@@ -1,0 +1,18 @@
+{
+  "TC-08/S13": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local",
+    "title": "No email / mailto / share path on any handoff screen",
+    "detail": "Local 8b4be94a, fresh @roundai.test accounts; no model: handoff/persistence:ensure answered at the Convex socket (ts 0, nothing scheduled), every ai/* refused, charts carry stored stand-in summaries re-inserted with `convex import --append` (ho-support.ts); tripwire 'no model call' on every run. Checked on Hospital and NH sheets, both Send dialogs, Handoffs → Sent and Received, sender and recipient details, the failed-summary sheet (S18) and after a failed send (S20): no mailto:/sms: link and no Email/Share/Forward control anywhere. Adapted to AC 10: the Send dialog now has a 'Colleague’s email' field (placeholder colleague@hospital.org) that only looks up an app account; the matrix's literal 'Email' / '@roundai.test' absence predates AC 10.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03b.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s18.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s20.json"
+    ]
+  }
+}

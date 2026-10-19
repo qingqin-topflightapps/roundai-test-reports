@@ -1,0 +1,233 @@
+{
+  "name": "tc09-s23",
+  "at": "2026-10-19T19:48:10.249Z",
+  "checks": [
+    {
+      "id": "todaysVisits: no serious or critical axe violations",
+      "ok": false,
+      "detail": "button-name(critical)x2: \"<button class=\"flex h-8 w-8 items-center justify-c\"; \"<button class=\"flex h-8 w-8 items-center justify-c\" | color-contrast(serious)x4: \"Nursing Home\" 3.66:1 (#ffffff on #009689); \"0/1 residents seen today\" 2.63:1 (#90a1b9 on #ffffff)",
+      "recordOnly": true
+    },
+    {
+      "id": "allResidents: no serious or critical axe violations",
+      "ok": false,
+      "detail": "button-name(critical)x2: \"<button class=\"flex h-8 w-8 items-center justify-c\"; \"<button class=\"flex h-8 w-8 items-center justify-c\" | color-contrast(serious)x4: \"Nursing Home\" 3.66:1 (#ffffff on #009689); \"0/1 residents seen today\" 2.63:1 (#90a1b9 on #ffffff) | nested-interactive(serious)x2: \"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"; \"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"",
+      "recordOnly": true
+    },
+    {
+      "id": "scanSheetEmpty: no serious or critical axe violations",
+      "ok": false,
+      "detail": "button-name(critical)x3: \"<button class=\"text-slate-400 hover:text-slate-700\"; \"<button class=\"flex h-8 w-8 items-center justify-c\" | color-contrast(serious)x5: \"Nursing Home\" 3.66:1 (#ffffff on #009689); \"Photo the nursing director's list — replaces today\" 2.63:1 (#90a1b9 on #ffffff) | nested-interactive(serious)x2: \"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"; \"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"",
+      "recordOnly": true
+    },
+    {
+      "id": "scanSheetResults: no serious or critical axe violations",
+      "ok": false,
+      "detail": "button-name(critical)x3: \"<button class=\"text-slate-400 hover:text-slate-700\"; \"<button class=\"flex h-8 w-8 items-center justify-c\" | color-contrast(serious)x6: \"Nursing Home\" 3.66:1 (#ffffff on #009689); \"Photo the nursing director's list — replaces today\" 2.63:1 (#90a1b9 on #ffffff) | nested-interactive(serious)x2: \"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"; \"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"",
+      "recordOnly": true
+    },
+    {
+      "id": "duplicateSheet: no serious or critical axe violations",
+      "ok": false,
+      "detail": "color-contrast(serious)x1: \"Decide later\" 2.63:1 (#90a1b9 on #ffffff)",
+      "recordOnly": true
+    },
+    {
+      "id": "addResident: no serious or critical axe violations",
+      "ok": false,
+      "detail": "color-contrast(serious)x3: \"Auto-generated if left blank\" 2.51:1 (#90a1b9 on #f8fafc); \"Admission summary, course, vitals, labs, and medic\" 2.51:1 (#90a1b9 on #f8fafc)",
+      "recordOnly": true
+    },
+    {
+      "id": "dashboard: no serious or critical axe violations",
+      "ok": false,
+      "detail": "color-contrast(serious)x3: \"All Residents\" 4.34:1 (#62748e on #f1f5f9); \"Cedar Wing · Room 18 · 0 tasks pending\" 2.63:1 (#90a1b9 on #ffffff)",
+      "recordOnly": true
+    },
+    {
+      "id": "each In Today toggle names its resident",
+      "ok": false,
+      "detail": "+ Today | In Today ✓",
+      "recordOnly": true
+    },
+    {
+      "id": "each In Today toggle exposes its on/off state (aria-pressed / aria-checked)",
+      "ok": false,
+      "detail": "[{\"name\":\"+ Today\",\"pressed\":null,\"checked\":null,\"role\":null},{\"name\":\"In Today ✓\",\"pressed\":null,\"checked\":null,\"role\":null}]",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "toggles": [
+      {
+        "name": "+ Today",
+        "pressed": null,
+        "checked": null,
+        "role": null
+      },
+      {
+        "name": "In Today ✓",
+        "pressed": null,
+        "checked": null,
+        "role": null
+      }
+    ],
+    "axe": {
+      "todaysVisits": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "count": 2,
+          "nodes": [
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\"",
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\""
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "count": 4,
+          "nodes": [
+            "\"Nursing Home\" 3.66:1 (#ffffff on #009689)",
+            "\"0/1 residents seen today\" 2.63:1 (#90a1b9 on #ffffff)",
+            "\"All Residents\" 4.34:1 (#62748e on #f1f5f9)",
+            "\"Residents\" 3.63:1 (#009689 on #fefefe)"
+          ]
+        }
+      ],
+      "allResidents": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "count": 2,
+          "nodes": [
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\"",
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\""
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "count": 4,
+          "nodes": [
+            "\"Nursing Home\" 3.66:1 (#ffffff on #009689)",
+            "\"0/1 residents seen today\" 2.63:1 (#90a1b9 on #ffffff)",
+            "\"Today's Visits\" 4.34:1 (#62748e on #f1f5f9)",
+            "\"Residents\" 3.63:1 (#009689 on #fefefe)"
+          ]
+        },
+        {
+          "id": "nested-interactive",
+          "impact": "serious",
+          "count": 2,
+          "nodes": [
+            "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"",
+            "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\""
+          ]
+        }
+      ],
+      "scanSheetEmpty": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "count": 3,
+          "nodes": [
+            "\"<button class=\"text-slate-400 hover:text-slate-700\"",
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\"",
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\""
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "count": 5,
+          "nodes": [
+            "\"Nursing Home\" 3.66:1 (#ffffff on #009689)",
+            "\"Photo the nursing director's list — replaces today\" 2.63:1 (#90a1b9 on #ffffff)",
+            "\"0/1 residents seen today\" 2.63:1 (#90a1b9 on #ffffff)",
+            "\"Today's Visits\" 4.34:1 (#62748e on #f1f5f9)",
+            "\"Residents\" 3.63:1 (#009689 on #fefefe)"
+          ]
+        },
+        {
+          "id": "nested-interactive",
+          "impact": "serious",
+          "count": 2,
+          "nodes": [
+            "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"",
+            "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\""
+          ]
+        }
+      ],
+      "scanSheetResults": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "count": 3,
+          "nodes": [
+            "\"<button class=\"text-slate-400 hover:text-slate-700\"",
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\"",
+            "\"<button class=\"flex h-8 w-8 items-center justify-c\""
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "count": 6,
+          "nodes": [
+            "\"Nursing Home\" 3.66:1 (#ffffff on #009689)",
+            "\"Photo the nursing director's list — replaces today\" 2.63:1 (#90a1b9 on #ffffff)",
+            "\"Add 2 to Today's Visits\" 3.66:1 (#ffffff on #009689)",
+            "\"0/1 residents seen today\" 2.63:1 (#90a1b9 on #ffffff)",
+            "\"Today's Visits\" 4.34:1 (#62748e on #f1f5f9)",
+            "\"Residents\" 3.63:1 (#009689 on #fefefe)"
+          ]
+        },
+        {
+          "id": "nested-interactive",
+          "impact": "serious",
+          "count": 2,
+          "nodes": [
+            "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\"",
+            "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open c\""
+          ]
+        }
+      ],
+      "duplicateSheet": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "count": 1,
+          "nodes": [
+            "\"Decide later\" 2.63:1 (#90a1b9 on #ffffff)"
+          ]
+        }
+      ],
+      "addResident": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "count": 3,
+          "nodes": [
+            "\"Auto-generated if left blank\" 2.51:1 (#90a1b9 on #f8fafc)",
+            "\"Admission summary, course, vitals, labs, and medic\" 2.51:1 (#90a1b9 on #f8fafc)",
+            "\"<button class=\"inline-flex items-ce...\" type=\"subm\" 3.66:1 (#ffffff on #009689)"
+          ]
+        }
+      ],
+      "dashboard": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "count": 3,
+          "nodes": [
+            "\"All Residents\" 4.34:1 (#62748e on #f1f5f9)",
+            "\"Cedar Wing · Room 18 · 0 tasks pending\" 2.63:1 (#90a1b9 on #ffffff)",
+            "\"Not Yet Prepped\" 4.34:1 (#62748e on #f1f5f9)"
+          ]
+        }
+      ]
+    },
+    "scanCalls": 1
+  }
+}

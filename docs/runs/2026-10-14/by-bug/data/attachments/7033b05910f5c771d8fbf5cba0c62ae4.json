@@ -1,0 +1,206 @@
+{
+  "name": "rb3-tc17-s19",
+  "at": "2026-10-19T19:42:41.585Z",
+  "checks": [
+    {
+      "id": "setup (Hospital): Generate Note & Finish is enabled on the seeded chart",
+      "ok": true,
+      "detail": "Generate Note & Finish"
+    },
+    {
+      "id": "cp1: the right chart (page header)",
+      "ok": true,
+      "detail": "QA TC17-S19 Hosp uwtq"
+    },
+    {
+      "id": "cp1: Post-Round explains there is no note (T8b; wording is D7)",
+      "ok": true,
+      "detail": "Note | No note generated yet."
+    },
+    {
+      "id": "cp1: Post-Round says 'not generated' (D7 / Q5 wording)",
+      "ok": false,
+      "detail": "No note generated yet.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp1: Post-Round names a retry (D7 / Q5 wording and place)",
+      "ok": false,
+      "detail": "Post-Round says only: 'Complete the Encounter tab first.'",
+      "recordOnly": true
+    },
+    {
+      "id": "cp1: no note shown (T8b)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1: nothing to copy (T8b)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp1: no endless 'Finalizing Encounter Data…' once settled (T8b; B27 when it spins)",
+      "ok": false,
+      "detail": "still shown 10 s after the failure; spinners: Finalizing Encounter Data…"
+    },
+    {
+      "id": "cp1: 'Mark Encounter Complete' is offered (Q13)",
+      "ok": false,
+      "detail": "not shown",
+      "recordOnly": true
+    },
+    {
+      "id": "cp1: no note stored from the failed generation (T8b / U10)",
+      "ok": true,
+      "detail": "(empty)"
+    },
+    {
+      "id": "cp2: the typed dictation is on Encounter after a reload (T8a)",
+      "ok": true,
+      "detail": "QA-DICT-8 Cough improving, afebrile overnight. Continue ceftriaxone, day 3 of 5. Repeat BMP in the morning."
+    },
+    {
+      "id": "cp2: the dictation is stored, not only on screen (T8a)",
+      "ok": true,
+      "detail": "QA-DICT-8 Cough improving, afebrile overnight. Continue ceftriaxone, day 3 of 5. Repeat BMP in the morning."
+    },
+    {
+      "id": "setup (Nursing Home): Generate Note & Finish is enabled on the seeded chart",
+      "ok": true,
+      "detail": "Generate Note & Finish"
+    },
+    {
+      "id": "cp3: the dictation is kept (T8a)",
+      "ok": true,
+      "detail": "QA-DICT-N8 Walking 50 feet with a walker. Continue PT twice daily."
+    },
+    {
+      "id": "cp3: a failure message with a retry (T8a)",
+      "ok": false,
+      "detail": "(no message)"
+    },
+    {
+      "id": "cp3: 'not generated' on the Encounter tab (D7 wording)",
+      "ok": false,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "cp4: Post-Round explains there is no note (T8b; wording is D7)",
+      "ok": true,
+      "detail": "Note | No note generated yet."
+    },
+    {
+      "id": "cp4: Post-Round says 'not generated' (D7 / Q5 wording)",
+      "ok": false,
+      "detail": "No note generated yet.",
+      "recordOnly": true
+    },
+    {
+      "id": "cp4: Post-Round names a retry (D7 / Q5 wording and place)",
+      "ok": false,
+      "detail": "Post-Round says only: 'Complete the Encounter tab first.'",
+      "recordOnly": true
+    },
+    {
+      "id": "cp4: no note shown (T8b)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4: nothing to copy (T8b)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4: no endless 'Finalizing Encounter Data…' once settled (T8b)",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4: nothing of the Hospital chart",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "id": "cp4: the complete button (Q13)",
+      "ok": true,
+      "detail": "'Mark Visit Complete' shown, disabled=true",
+      "recordOnly": true
+    },
+    {
+      "id": "cp4: no note stored from the failed generation (T8b / U10)",
+      "ok": true,
+      "detail": "(empty)"
+    },
+    {
+      "id": "cp5: the typed dictation is on Encounter after a reload (T8a)",
+      "ok": true,
+      "detail": "QA-DICT-N8 Walking 50 feet with a walker. Continue PT twice daily."
+    },
+    {
+      "id": "cp5: the dictation is stored, not only on screen (T8a)",
+      "ok": true,
+      "detail": "QA-DICT-N8 Walking 50 feet with a walker. Continue PT twice daily."
+    },
+    {
+      "id": "RG-DIAG (rb3): how the failure was forced on 8b4be94a — Generate's request (noteJobs:request) refused at the socket, so no server job ran; the job's own failure state (noteJob failed) is not reached locally",
+      "ok": true,
+      "detail": "[\"noteJobs:request\",\"noteJobs:request\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "cp1-h-failed-post": {
+      "encounterMessage": "",
+      "postRound": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA TC17-S19 Hosp uwtq\n\nRoom 412 · 70y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…\n",
+      "spinners": [
+        "Finalizing Encounter Data…"
+      ],
+      "server": {
+        "note": null,
+        "status": "seen"
+      }
+    },
+    "cp2-h-enc-reload": {
+      "box": "QA-DICT-8 Cough improving, afebrile overnight. Continue ceftriaxone, day 3 of 5. Repeat BMP in the morning.",
+      "serverEncounterNotes": "QA-DICT-8 Cough improving, afebrile overnight. Continue ceftriaxone, day 3 of 5. Repeat BMP in the morning."
+    },
+    "cp3-n-failed-enc": {
+      "message": "",
+      "box": "QA-DICT-N8 Walking 50 feet with a walker. Continue PT twice daily."
+    },
+    "cp4-n-failed-post": {
+      "postRound": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA TC17-S19 Resident uwtq\n\nMRN-SL5WA7 · Cedar Wing · Room 12\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete\n",
+      "spinners": [],
+      "server": {
+        "note": null,
+        "status": "pre-rounded"
+      }
+    },
+    "cp5-n-enc-reload": {
+      "box": "QA-DICT-N8 Walking 50 feet with a walker. Continue PT twice daily.",
+      "serverEncounterNotes": "QA-DICT-N8 Walking 50 feet with a walker. Continue PT twice daily."
+    },
+    "socket": [
+      {
+        "udfPath": "noteJobs:request",
+        "answered": "refused-mutation",
+        "atMs": 2139,
+        "conn": 1
+      },
+      {
+        "udfPath": "noteJobs:request",
+        "answered": "refused-mutation",
+        "atMs": 75827,
+        "conn": 3
+      }
+    ]
+  }
+}

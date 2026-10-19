@@ -1,0 +1,117 @@
+{
+  "name": "te-tc07-s11",
+  "at": "2026-10-19T18:39:56.059Z",
+  "checks": [
+    {
+      "id": "Hospital: completed 15 h ago is kept at the bottom",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Hosp Ivy Chen gy1\",\"location\":\"Room 610\",\"tasks\":[{\"text\":\"Repeat lactate\",\"when\":\"Done Oct 19\"}]}]"
+    },
+    {
+      "id": "Hospital: completed 17 h ago is gone (16 h)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "Hospital: open task on a chart processed 35 h ago is shown",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Hosp Ivy Chen gy1\",\"location\":\"Room 610\",\"tasks\":[{\"text\":\"Arrange cardiology follow-up\",\"when\":\"\"}]},{\"name\":\"QA Hosp Jon Park gy1\",\"location\":\"Room 611\",\"tasks\":[{\"text\":\"Order outpatient sleep study\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "Hospital: open task on a chart processed 37 h ago is gone (3.6: open tasks cleared 36 h after the chart was last processed)",
+      "ok": false,
+      "detail": "[{\"name\":\"QA Hosp Ivy Chen gy1\",\"location\":\"Room 610\",\"tasks\":[{\"text\":\"Arrange cardiology follow-up\",\"when\":\"\"}]},{\"name\":\"QA Hosp Jon Park gy1\",\"location\":\"Room 611\",\"tasks\":[{\"text\":\"Order outpatient sleep study\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "Nursing Home: the open task is shown (persist until changed)",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Kai Ross gy1\",\"location\":\"Unit Oak 9\",\"tasks\":[{\"text\":\"Check pressure-ulcer dressing\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "Q4 (record): Nursing Home completed 15 h ago shown",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Kai Ross gy1\",\"location\":\"Unit Oak 9\",\"tasks\":[{\"text\":\"Recheck potassium\",\"when\":\"Done Oct 19\"}]}]",
+      "recordOnly": true
+    },
+    {
+      "id": "Q4 (record): Nursing Home completed 17 h ago gone",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "hospital": {
+      "pending": [
+        {
+          "name": "QA Hosp Ivy Chen gy1",
+          "location": "Room 610",
+          "tasks": [
+            {
+              "text": "Arrange cardiology follow-up",
+              "when": ""
+            }
+          ]
+        },
+        {
+          "name": "QA Hosp Jon Park gy1",
+          "location": "Room 611",
+          "tasks": [
+            {
+              "text": "Order outpatient sleep study",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA Hosp Ivy Chen gy1",
+          "location": "Room 610",
+          "tasks": [
+            {
+              "text": "Repeat lactate",
+              "when": "Done Oct 19"
+            }
+          ]
+        }
+      ]
+    },
+    "jonStored": [
+      {
+        "category": "plan",
+        "createdAt": "2026-10-18T05:39:47.811Z",
+        "done": false,
+        "id": "1700001878694",
+        "text": "Order outpatient sleep study",
+        "urgent": false
+      }
+    ],
+    "nursingHome": {
+      "pending": [
+        {
+          "name": "QA Resident Kai Ross gy1",
+          "location": "Unit Oak 9",
+          "tasks": [
+            {
+              "text": "Check pressure-ulcer dressing",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA Resident Kai Ross gy1",
+          "location": "Unit Oak 9",
+          "tasks": [
+            {
+              "text": "Recheck potassium",
+              "when": "Done Oct 19"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "TC-10/S02": {
+    "status": "failed",
+    "ranAt": "2026-10-15T08:10:00.317Z",
+    "title": "Nursing Home typed pre-round → Save Note → panels (app handling, model mocked)",
+    "detail": "Local QA stack on main 43c38a4f (round-companion-wt-qa, web :6473, Convex :4510); fresh @roundai.test physician per test; every ai/* action the page sent was answered or refused at the browser socket (pre-support.ts aiSocket: anything unscripted is refused), so no model ran; tripwire around every batch: 'no model call'. Spec newspec-c/pre-tc10-s01-s02-flow.spec.ts (Nursing Home test). The summary call was answered with S02's values, including the study 'Left hip X-ray: hardware in good position'. Judged 20/21: the editor shows the notes box with 'Important points (manual)' / 'Kept exactly as you say it' and fills the viewport (AC 11); Save Note commits and the stored text equals the typed text (AC 5); the Admission Summary shows the one-liner and the course has the overnight confusion; Vitals 138/76, 82, 37.2 (not °F), 95% read 'Today'; Labs hemoglobin 9.8, potassium 3.4; Medications acetaminophen 650 mg / enoxaparin 40 mg with doses. Failed 1: Diagnostic Testing stays 'No studies recorded yet.' although the extraction returned the hip X-ray — the Nursing Home Save Note never writes studies (useSnfPreRoundProcess.ts builds no radiology patch). The case's oracle calls this a Fail under UAT 3.3 unless Q5 says Nursing Home needs no Diagnostic Testing from the pre-round. Recorded (Q5): the Nursing Home Save Note makes no task-extraction call, so its plan items never become tasks. Recorded (TFA-92590, todo): no Important Point added. AI content is judged on dev (results.pre.json in runs/2026-10-14-dev).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s02-pre-nh.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s02-pre-nh-cp1-editor-open.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s02-pre-nh-cp2-preround-saved.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc10-s02-pre-nh-cp3-encounter.png"
+    ],
+    "method": "PW",
+    "productIssue": "Nursing Home: a study the physician dictates in the pre-round (here 'Left hip X-ray shows the hardware in good position') never reaches the Diagnostic Testing panel — it keeps reading 'No studies recorded yet.' after Save Note, while Hospital fills the same panel. Pending Q5 (does Nursing Home need Diagnostic Testing from the pre-round?).",
+    "build": "43c38a4f",
+    "supersedes": true,
+    "pkg": "pre"
+  }
+}

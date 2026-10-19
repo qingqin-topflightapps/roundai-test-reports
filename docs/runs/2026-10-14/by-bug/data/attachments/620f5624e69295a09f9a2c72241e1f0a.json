@@ -1,0 +1,140 @@
+{
+  "name": "te-tc07-s02",
+  "at": "2026-10-19T18:37:03.983Z",
+  "checks": [
+    {
+      "id": "U1: every open task is listed once, under its own patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Dora Nguyen 87l\",\"location\":\"Unit Cedar 12\",\"tasks\":[{\"text\":\"Recheck INR Friday\",\"when\":\"\"},{\"text\":\"Wound check with nursing\",\"when\":\"\"}]},{\"name\":\"QA Resident Eli Brooks 87l\",\"location\":\"Unit Birch 3\",\"tasks\":[{\"text\":\"Ask family about care conference\",\"when\":\"\"}]},{\"name\":\"QA Resident Fay Mendes 87l\",\"location\":\"Unit Cedar 5\",\"tasks\":[{\"text\":\"Repeat CBC next week\",\"when\":\"\"}]}]"
+    },
+    {
+      "id": "U2: one group per patient, each with its location",
+      "ok": true,
+      "detail": "[\"QA Resident Dora Nguyen 87l | Unit Cedar 12\",\"QA Resident Eli Brooks 87l | Unit Birch 3\",\"QA Resident Fay Mendes 87l | Unit Cedar 5\"]"
+    },
+    {
+      "id": "U2: completed tasks at the bottom (below every pending row), each under its own patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Eli Brooks 87l\",\"location\":\"Unit Birch 3\",\"tasks\":[{\"text\":\"PT re-evaluation\",\"when\":\"Done Oct 20\"}]},{\"name\":\"QA Resident Fay Mendes 87l\",\"location\":\"Unit Cedar 5\",\"tasks\":[{\"text\":\"Weight check\",\"when\":\"Done Oct 20\"}]}]"
+    },
+    {
+      "id": "U5-lite: each completed row says when it was closed ('Done <day>')",
+      "ok": true,
+      "detail": "[[\"Done Oct 20\"],[\"Done Oct 20\"]]"
+    },
+    {
+      "id": "U9: no Email control, no mailto, no share",
+      "ok": true,
+      "detail": "email 0, mailto 0, share 0"
+    },
+    {
+      "id": "U10/no bleed: the other context's patient and task are absent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "U3: Copy Text has every open task under its own patient, in groups",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Dora Nguyen 87l\",\"location\":\"Unit Cedar 12\",\"tasks\":[\"Recheck INR Friday\",\"Wound check with nursing\"]},{\"name\":\"QA Resident Eli Brooks 87l\",\"location\":\"Unit Birch 3\",\"tasks\":[\"Ask family about care conference\"]},{\"name\":\"QA Resident Fay Mendes 87l\",\"location\":\"Unit Cedar 5\",\"tasks\":[\"Repeat CBC next week\"]}]"
+    },
+    {
+      "id": "U3: Copy Text has the completed tasks in a COMPLETED block after the pending groups, each under its patient",
+      "ok": true,
+      "detail": "[{\"name\":\"QA Resident Eli Brooks 87l\",\"location\":\"Unit Birch 3\",\"tasks\":[\"PT re-evaluation — Oct 20\"]},{\"name\":\"QA Resident Fay Mendes 87l\",\"location\":\"Unit Cedar 5\",\"tasks\":[\"Weight check — Oct 20\"]}]"
+    },
+    {
+      "id": "G3: no 'undefined' / 'null', no other-context patient in the copy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the ticked task is stored done, stamped by the server at the tick",
+      "ok": true,
+      "detail": "{\"category\":\"plan\",\"createdAt\":\"2026-10-19T15:37:01.188Z\",\"done\":true,\"doneAt\":\"2026-10-19T18:37:02.544Z\",\"id\":\"1700000212411\",\"text\":\"PT re-evaluation\",\"urgent\":false}"
+    }
+  ],
+  "data": {
+    "screen": {
+      "heading": "Task Review",
+      "subtitle": "4 tasks across 3 residents · Tue, Oct 20",
+      "pending": [
+        {
+          "name": "QA Resident Dora Nguyen 87l",
+          "location": "Unit Cedar 12",
+          "tasks": [
+            {
+              "text": "Recheck INR Friday",
+              "when": ""
+            },
+            {
+              "text": "Wound check with nursing",
+              "when": ""
+            }
+          ]
+        },
+        {
+          "name": "QA Resident Eli Brooks 87l",
+          "location": "Unit Birch 3",
+          "tasks": [
+            {
+              "text": "Ask family about care conference",
+              "when": ""
+            }
+          ]
+        },
+        {
+          "name": "QA Resident Fay Mendes 87l",
+          "location": "Unit Cedar 5",
+          "tasks": [
+            {
+              "text": "Repeat CBC next week",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA Resident Eli Brooks 87l",
+          "location": "Unit Birch 3",
+          "tasks": [
+            {
+              "text": "PT re-evaluation",
+              "when": "Done Oct 20"
+            }
+          ]
+        },
+        {
+          "name": "QA Resident Fay Mendes 87l",
+          "location": "Unit Cedar 5",
+          "tasks": [
+            {
+              "text": "Weight check",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ],
+      "finishedCount": 2,
+      "pendingAboveFinished": true,
+      "emailControls": 0,
+      "mailto": 0,
+      "shareControls": 0,
+      "emptyState": null,
+      "sendEnabled": true
+    },
+    "clipboard": "TASK REVIEW\nTuesday, October 20\n════════════════════════════════════════\n\nQA Resident Dora Nguyen 87l — Unit Cedar 12:\n  • Recheck INR Friday\n  • Wound check with nursing\n\nQA Resident Eli Brooks 87l — Unit Birch 3:\n  • Ask family about care conference\n\nQA Resident Fay Mendes 87l — Unit Cedar 5:\n  • Repeat CBC next week\n\nCOMPLETED\n────────────────────────────────────────\n\nQA Resident Eli Brooks 87l — Unit Birch 3:\n  ✓ PT re-evaluation — Oct 20\n\nQA Resident Fay Mendes 87l — Unit Cedar 5:\n  ✓ Weight check — Oct 20",
+    "tickedStored": {
+      "stored": {
+        "category": "plan",
+        "createdAt": "2026-10-19T15:37:01.188Z",
+        "done": true,
+        "doneAt": "2026-10-19T18:37:02.544Z",
+        "id": "1700000212411",
+        "text": "PT re-evaluation",
+        "urgent": false
+      },
+      "tickAt": 1792435022492
+    }
+  }
+}

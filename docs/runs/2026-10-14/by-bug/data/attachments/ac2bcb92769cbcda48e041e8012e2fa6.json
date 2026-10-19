@@ -1,0 +1,27 @@
+{
+  "TC-14/S19": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:17:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "AICHECK",
+    "title": "Undictated sections read 'Not dictated'; nothing supplied (one fixture per template)",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). Dataset rb1-gen-notes-c (S19 only). 4/11 (43c38a4f: 5/11). Invented content (N15): H-27 'consistent with community-acquired pneumonia'; N-27 'concerning for possible dysphagia or aspiration risk'. Also H-23 / N-24 / N-28 '— dose not specified in dictation', H-24 drops the dictated 70.2; H-21 / H-23 / H-24 use 'Not provided' instead of 'Not dictated' (wording, Q1/Q16). The TC-18/S07 discharge notes again add 'Discharge Condition: Stable per physician assessment.'",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/rb1-gen-notes-c/evidence/TC-14-S19.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/bil-d2/evidence/tc18-dev-d2-legs.json"
+    ],
+    "bug": {
+      "id": "N15",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT 3.4; UAT TC-14 ER 4; TFA-92592 AC 5",
+      "quote": "The note reflects only what was dictated; undictated sections read \"Not dictated.\"",
+      "mixed": true,
+      "statedPart": "undictated sections read 'Not dictated', nothing supplied, every dictated fact kept"
+    }
+  }
+}

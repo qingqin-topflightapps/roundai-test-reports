@@ -1,0 +1,18 @@
+{
+  "TC-07/S19": {
+    "status": "passed",
+    "ranAt": "2026-10-19T19:18:14Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec, fresh @roundai.test physician(s), no model call (tripwire clean) (newspec-c/te-tc07-send.spec.ts)",
+    "title": "Send, then change a task and send again: two records, the first unchanged",
+    "detail": "Both contexts: two records on each side with their own times; the first still shows the later-ticked task pending (text identical to what was sent), the second shows it in the COMPLETED block; both open for the recipient and the older is unchanged after a reload. 8/8 judged.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s19.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s19-rounding-older-after-reload.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s19-snf-older-after-reload.png"
+    ],
+    "stated": "P1"
+  }
+}

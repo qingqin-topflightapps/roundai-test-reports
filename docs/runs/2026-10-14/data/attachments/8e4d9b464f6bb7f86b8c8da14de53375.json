@@ -1,0 +1,296 @@
+{
+  "ref": "TC-13/S07",
+  "title": "TC-13/S07 extraction edges: 0 labs (only pending), 1 lab, 20 labs, serial values",
+  "dataset": "pn-extract",
+  "target": "dev",
+  "at": "2026-10-19T18:32:56.762Z",
+  "cells": [
+    {
+      "name": "B-0: every check holds",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "80-year-old female admitted with urinary tract infection, currently on ceftriaxone therapy. Morning laboratory studies were drawn on October 11 with results pending at the time of documentation.",
+          "imaging": [],
+          "key_issues": [
+            "Urinary tract infection on ceftriaxone therapy",
+            "Morning labs pending results"
+          ],
+          "labs": []
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "B-1: every check holds",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "55-year-old male admitted with alcohol withdrawal.",
+          "imaging": [],
+          "key_issues": [
+            "Alcohol withdrawal"
+          ],
+          "labs": [
+            {
+              "name": "Lactate",
+              "trend": "",
+              "value": "2.1"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "B-20: every check holds",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "Lab summary from October 10 (synthetic QA). No admission reason, history, or clinical context provided in the source note.",
+          "imaging": [],
+          "key_issues": [],
+          "labs": [
+            {
+              "name": "Na",
+              "trend": "",
+              "value": "138"
+            },
+            {
+              "name": "K",
+              "trend": "",
+              "value": "4.4"
+            },
+            {
+              "name": "Cl",
+              "trend": "",
+              "value": "101"
+            },
+            {
+              "name": "CO2",
+              "trend": "",
+              "value": "26"
+            },
+            {
+              "name": "BUN",
+              "trend": "",
+              "value": "18"
+            },
+            {
+              "name": "Cr",
+              "trend": "",
+              "value": "0.9"
+            },
+            {
+              "name": "glucose",
+              "trend": "",
+              "value": "98"
+            },
+            {
+              "name": "Ca",
+              "trend": "",
+              "value": "9.1"
+            },
+            {
+              "name": "Mg",
+              "trend": "",
+              "value": "2.0"
+            },
+            {
+              "name": "Phos",
+              "trend": "",
+              "value": "3.4"
+            },
+            {
+              "name": "albumin",
+              "trend": "",
+              "value": "3.2"
+            },
+            {
+              "name": "AST",
+              "trend": "",
+              "value": "28"
+            },
+            {
+              "name": "ALT",
+              "trend": "",
+              "value": "31"
+            },
+            {
+              "name": "alk phos",
+              "trend": "",
+              "value": "90"
+            },
+            {
+              "name": "T bili",
+              "trend": "",
+              "value": "0.8"
+            },
+            {
+              "name": "WBC",
+              "trend": "",
+              "value": "7.6"
+            },
+            {
+              "name": "Hgb",
+              "trend": "",
+              "value": "12.9"
+            },
+            {
+              "name": "Plt",
+              "trend": "",
+              "value": "245"
+            },
+            {
+              "name": "INR",
+              "trend": "",
+              "value": "1.0"
+            },
+            {
+              "name": "TSH",
+              "trend": "",
+              "value": "2.1"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "B-serial: every check holds",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fails": [],
+        "extraction": {
+          "background_narrative": "Patient presented with acute kidney injury. Creatinine has been trending downward with fluid resuscitation, improving from 1.8 on Oct 9 to 1.4 on Oct 10 and 1.1 on Oct 11.",
+          "imaging": [],
+          "key_issues": [
+            "Acute kidney injury with improving renal function on fluid resuscitation"
+          ],
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "improving with fluids; 1.8 on Oct 9, 1.4 on Oct 10",
+              "value": "1.1"
+            }
+          ]
+        },
+        "error": null
+      }
+    },
+    {
+      "name": "B-0: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2234,
+        "providerMs": 2231,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "B-1: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 1794,
+        "providerMs": 1790,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "B-20: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 3483,
+        "providerMs": 3480,
+        "appMs": 3,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "B-serial: one parsing.extractPriorNote diagnostics row with model, durationMs and providerMs (3.9, 3.9)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "fn": "parsing.extractPriorNote",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2430,
+        "providerMs": 2426,
+        "appMs": 4,
+        "parseStatus": null,
+        "fellBackFrom": null,
+        "error": null,
+        "over30s": false
+      }
+    },
+    {
+      "name": "timing (3.5: no target for the extraction, Q10; over 30 s listed for review)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "durationMs": [
+          2234,
+          1794,
+          3483,
+          2430
+        ],
+        "providerMs": [
+          2231,
+          1790,
+          3480,
+          2426
+        ],
+        "uiMs": [
+          3335,
+          2830,
+          4843,
+          3832
+        ],
+        "models": [
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "us.anthropic.claude-haiku-4-5-20251001-v1:0"
+        ],
+        "fellBackFrom": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "over30sForReview": []
+      }
+    }
+  ],
+  "shots": []
+}

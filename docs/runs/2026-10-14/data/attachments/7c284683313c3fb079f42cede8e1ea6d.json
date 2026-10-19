@@ -1,0 +1,16 @@
+{
+  "TC-12/S08": {
+    "status": "passed",
+    "ranAt": "2026-10-19T19:58:18.252Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "Tim's lane-A specs (e2e/*.spec.ts, -g titles) on the local QA stack at 8b4be94a under the lock + tripwire",
+    "title": "Tim's specs: add, edit, delete Important Points persist",
+    "detail": "Tim's 10 titles on 8b4be94a, main config project chromium, local stack, 10/10 passed: important-points.spec.ts x7 (nested in the editor; failed point save keeps the draft x2; three cards keep exact text through note saves/edit/delete/reload x2; failed note processing leaves points and draft x2), chart.spec 'Add Point saves a point and it can be deleted', rounding-workflows 'an important point can be edited in place', prior-note-import 'preserves checklist points'. All model calls in them are mocked by Tim's action-observer; tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/ip-logs/s08-tim.log",
+      "runs/2026-10-14-local/newspec-c/ip-logs/s08-tim.json"
+    ]
+  }
+}

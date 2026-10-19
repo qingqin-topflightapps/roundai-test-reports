@@ -1,0 +1,21 @@
+{
+  "TC-12/S25": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:00:11.579Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "local Playwright spec (newspec-c/ip-*.spec.ts) on the QA stack at 8b4be94a, fresh @roundai.test physician, every ai/* call answered at the Convex socket (hostile parse whose important_points the physician never typed); tripwire: no model call on every run",
+    "title": "Delete asks once and Cancel keeps; double tap removes one; blank / double-clicked Save Point (both modes)",
+    "detail": "Both modes: one tap on 'Delete point' deletes at once, no confirmation (native or in-page) — fails UAT TC-24 'Each delete asks for confirmation once' / TFA-94699 AC 6 (in progress). Passes: a double tap removes at most one; a blank point makes no card (Save Point disabled); a double-clicked Save Point makes one card. Judged checks 6/8.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s25-hosp-after-one-tap.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s25-hosp-final.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s25-hosp.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s25-snf-after-one-tap.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s25-snf-final.png",
+      "runs/2026-10-14-local/newspec-c/evidence/ip-tc12-s25-snf.json"
+    ],
+    "stated": "UAT TC-24 ER 6 'Each delete asks for confirmation once. No bulk delete.'; TFA-94699 AC 6 (ticket in progress)"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "TC-07/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:40:03Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec, fresh @roundai.test physician(s), no model call (tripwire clean) (newspec-c/te-tc07-view.spec.ts)",
+    "title": "Which patients' open tasks are in the view: Nursing Home on vs off Today's Visits; Hospital encounter complete",
+    "detail": "Resident on Today's Visits: listed; taken off Today's Visits (inTodaysSession false via snf.update with the physician's own JWT, as the list's toggle writes): still listed (8b4be94a routes/snf/Tasks.tsx lists every resident with an open task — Q1 now answered in code); back on: listed once; Hospital patient post-rounded with an open task: listed. 4/4 judged. Was expected to fail on main (Q1); now passes.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s12.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s12-snf-off-today.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s12-hospital-complete.png"
+    ],
+    "stated": "P0"
+  }
+}

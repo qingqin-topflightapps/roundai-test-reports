@@ -1,0 +1,73 @@
+{
+  "name": "te-tc07-s08-hospital",
+  "at": "2026-10-19T19:16:55.045Z",
+  "checks": [
+    {
+      "id": "routing: the extractor's answer closed the BMP task in the store (done, server doneAt)",
+      "ok": true,
+      "detail": "[\"[x] Repeat BMP in the morning\",\"[ ] Order PT evaluation\"]"
+    },
+    {
+      "id": "U5/U2: the closed task is under Finished Tasks at the bottom, with its patient; 'Order PT evaluation' stays pending above",
+      "ok": true,
+      "detail": "{\"p\":[{\"name\":\"QA Hosp Hana Mori 1o9\",\"location\":\"Room 318\",\"tasks\":[{\"text\":\"Order PT evaluation\",\"when\":\"\"}]}],\"f\":[{\"name\":\"QA Hosp Hana Mori 1o9\",\"location\":\"Room 318\",\"tasks\":[{\"text\":\"Repeat BMP in the morning\",\"when\":\"Done Oct 20\"}]}]}"
+    },
+    {
+      "id": "U5 (AC 8, Hospital reading of Q3 = the day): the closed row shows the server's closing day",
+      "ok": true,
+      "detail": "Done Oct 20"
+    },
+    {
+      "id": "harness: no model action left the page",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "stored": [
+      {
+        "category": "plan",
+        "done": true,
+        "doneAt": "2026-10-19T19:16:53.515Z",
+        "id": "1700004128771",
+        "text": "Repeat BMP in the morning",
+        "urgent": false
+      },
+      {
+        "category": "plan",
+        "done": false,
+        "doneAt": null,
+        "id": "1700004128772",
+        "text": "Order PT evaluation",
+        "urgent": false
+      }
+    ],
+    "message": "✓ Tasks updated — 1 completed",
+    "screen": {
+      "pending": [
+        {
+          "name": "QA Hosp Hana Mori 1o9",
+          "location": "Room 318",
+          "tasks": [
+            {
+              "text": "Order PT evaluation",
+              "when": ""
+            }
+          ]
+        }
+      ],
+      "finished": [
+        {
+          "name": "QA Hosp Hana Mori 1o9",
+          "location": "Room 318",
+          "tasks": [
+            {
+              "text": "Repeat BMP in the morning",
+              "when": "Done Oct 20"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

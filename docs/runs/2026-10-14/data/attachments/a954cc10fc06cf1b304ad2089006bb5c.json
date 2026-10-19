@@ -1,0 +1,228 @@
+{
+  "name": "tc14-s07-snf",
+  "at": "2026-10-15T08:09:22.360Z",
+  "checks": [
+    {
+      "id": "c1: R2's Post-Round right after opening it shows nothing of R1's dictation",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Iris BDRZ\n\nMRN-XHR6SW · Elm Wing · Room 6\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre"
+    },
+    {
+      "id": "c2: 45 s later R2's Post-Round says 'No note generated yet' and shows nothing of R1",
+      "ok": true,
+      "detail": "{\"noteShown\":false,\"noteText\":\"\",\"noNoteYet\":true,\"completeFirst\":true,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "c3: R2's Encounter tab shows nothing of R1's dictation",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Iris BDRZ\n\nMRN-XHR6SW · Elm Wing · Room 6\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre"
+    },
+    {
+      "id": "c3 backend: R2 has no note, no noteGeneratedAt, and none of R1's text",
+      "ok": true,
+      "detail": "{\"note\":null,\"noteGeneratedAt\":null,\"encounterNotes\":null,\"status\":null}"
+    },
+    {
+      "id": "c4: right after returning R1's Post-Round shows the note, a generating state or the failure, never only 'Complete the Encounter tab first'",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "c5: 30 s later R1's Post-Round shows this cell's note (127/69) or an explicit failure",
+      "ok": true,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "c6: R1's Encounter tab still holds the dictation",
+      "ok": true,
+      "detail": "Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy."
+    },
+    {
+      "id": "cell C backend: R1's note carries 127/69 and was generated after the press",
+      "ok": true,
+      "detail": "noteGeneratedAt 2026-10-15T08:07:16.771Z vs press 2026-10-15T08:07:16.764Z"
+    },
+    {
+      "id": "d3: 45 s after Regenerate and closing the tab, R1's Post-Round shows this cell's note (133/71) or an explicit failure",
+      "ok": false,
+      "detail": "{\"noteShown\":true,\"noteText\":\"ASSESSMENT AND PLAN\\n\\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.\",\"noNoteYet\":false,\"completeFirst\":false,\"finalizingSpinner\":false,\"generatingMarker\":false,\"generatingText\":\"\",\"failure\":false,\"failureText\":\"\"}"
+    },
+    {
+      "id": "d3: the previous note (127/69) is what Post-Round shows, with no sign that the regenerate was lost",
+      "ok": false,
+      "detail": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, ",
+      "recordOnly": true
+    },
+    {
+      "id": "d4: the cell-D dictation is still on the Encounter tab after the tab was closed",
+      "ok": true,
+      "detail": "Sat in the day room all morning, blood pressure 133 over 71, continue therapy."
+    }
+  ],
+  "data": {
+    "c1-second-resident": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Iris BDRZ\n\nMRN-XHR6SW · Elm Wing · Room 6\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete"
+    },
+    "c2-second-resident-late": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": true,
+        "completeFirst": true,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Iris BDRZ\n\nMRN-XHR6SW · Elm Wing · Room 6\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete"
+    },
+    "c3-second-resident-encounter": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Iris BDRZ\n\nMRN-XHR6SW · Elm Wing · Room 6\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nNOTE FORMAT\nSNF admission\nSNF follow-up\nQA gen procedure note N ★\n\nSkilled nursing facility progress note — 99307–99310\n\nGenerate Note & Finish"
+    },
+    "backend-r2-c3": {
+      "note": null,
+      "noteGeneratedAt": null,
+      "encounterNotes": null,
+      "status": null
+    },
+    "c4-return-early": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Pearl BDRZ\n\nMRN-5Y8RLN · Elm Wing · Room 4\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nAI-Generated Note\n\n5:07 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.\n\nEdit Note\nCopy to EMR\nMark Visit Complete"
+    },
+    "c5-return-late": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Pearl BDRZ\n\nMRN-5Y8RLN · Elm Wing · Room 4\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nAI-Generated Note\n\n5:07 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.\n\nEdit Note\nCopy to EMR\nMark Visit Complete"
+    },
+    "c6-encounter": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Pearl BDRZ\n\nMRN-5Y8RLN · Elm Wing · Room 4\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nNOTE FORMAT\nSNF admission\nSNF follow-up\nQA gen procedure note N ★\n\nQA: procedure / other note type, so no billing job is queued\n\nRegenerate Note"
+    },
+    "backend-r1-c": {
+      "note": "ASSESSMENT AND PLAN\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.",
+      "noteGeneratedAt": "2026-10-15T08:07:16.771Z",
+      "encounterNotes": "Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.",
+      "status": "note-ready"
+    },
+    "cellD-snf": {
+      "regenerateButton": "Regenerate Note",
+      "closedOldTabMsAfterPress": 489
+    },
+    "d3-snf-new-tab": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": true,
+        "noteText": "ASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Pearl BDRZ\n\nMRN-5Y8RLN · Elm Wing · Room 4\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\n\nAI-Generated Note\n\n5:07 PM · Oct 15\n\nASSESSMENT AND PLAN\n\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.\n\nEdit Note\nCopy to EMR\nMark Visit Complete"
+    },
+    "d4-snf-encounter": {
+      "url": "http://localhost:6473/snf/<id>",
+      "state": {
+        "noteShown": false,
+        "noteText": "",
+        "noNoteYet": false,
+        "completeFirst": false,
+        "finalizingSpinner": false,
+        "generatingMarker": false,
+        "generatingText": "",
+        "failure": false,
+        "failureText": ""
+      },
+      "text": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA Resident Pearl BDRZ\n\nMRN-5Y8RLN · Elm Wing · Room 4\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About Pre-Round Info or Labs\nENCOUNTER NOTES\nFull screen\nDictate\nSave & Extract\nNOTE FORMAT\nSNF admission\nSNF follow-up\nQA gen procedure note N ★\n\nSkilled nursing facility progress note — 99307–99310\n\nRegenerate Note"
+    },
+    "backend-r1-d": {
+      "note": "ASSESSMENT AND PLAN\nQA S07 call 1 mocked note (no model was called). Today: Ate all of breakfast, walked to the dining room twice, blood pressure 127 over 69, continue therapy.",
+      "noteGeneratedAt": "2026-10-15T08:07:16.771Z",
+      "encounterNotes": "Sat in the day room all morning, blood pressure 133 over 71, continue therapy.",
+      "status": "note-ready"
+    },
+    "calls": [
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "at": 1792051636781
+      },
+      {
+        "udfPath": "ai/parsing:extractMedicationEvents",
+        "answered": "ok",
+        "at": 1792051644905
+      },
+      {
+        "udfPath": "ai/notes:refreshCourseAndBackground",
+        "answered": "ok",
+        "at": 1792051644906
+      },
+      {
+        "udfPath": "ai/notes:generateNote",
+        "answered": "ok",
+        "at": 1792051715938
+      }
+    ]
+  }
+}

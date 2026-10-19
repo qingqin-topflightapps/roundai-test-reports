@@ -1,0 +1,87 @@
+{
+  "ref": "TC-20/S18",
+  "profile": "desktop",
+  "part": null,
+  "judged": [
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,2×: .text-slate-400 | .px-2\\.5)",
+      "state": "hospital-dashboard"
+    },
+    {
+      "name": "the element holding Total/Pending/In Progress/Complete is a live region (aria-live polite or role=status) with the numbers inside",
+      "pass": true,
+      "detail": "aria-live=polite; numbers inside: 4",
+      "state": "hospital-dashboard"
+    },
+    {
+      "name": "each patient row is a button named with the patient's name",
+      "pass": true,
+      "detail": "1 button(s) named with QA Hosp IZY3P",
+      "state": "hospital-dashboard"
+    },
+    {
+      "name": "axe serious/critical = 0",
+      "pass": false,
+      "detail": "color-contrast(serious,3×: .flex-1.py-2.transition-colors:nth-child(2) | .text-slate-400)",
+      "state": "nh-dashboard"
+    },
+    {
+      "name": "the element holding Total/Pending/In Progress/Complete is a live region (aria-live polite or role=status) with the numbers inside",
+      "pass": true,
+      "detail": "aria-live=polite; numbers inside: 4",
+      "state": "nh-dashboard"
+    },
+    {
+      "name": "each patient row is a button named with the patient's name",
+      "pass": true,
+      "detail": "1 button(s) named with QA Resident IZY3P",
+      "state": "nh-dashboard"
+    }
+  ],
+  "recorded": [
+    {
+      "name": "tile labels",
+      "value": [
+        "Total",
+        "Pending",
+        "In Progress",
+        "Done"
+      ],
+      "state": "hospital-dashboard"
+    },
+    {
+      "name": "tile labels",
+      "value": [
+        "Total",
+        "Pending",
+        "In Progress",
+        "Done"
+      ],
+      "state": "nh-dashboard"
+    }
+  ],
+  "notes": [],
+  "error": null,
+  "captures": [
+    {
+      "state": "hospital-dashboard",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-20_S18/desktop--hospital-dashboard.png",
+      "url": "/rounding/dashboard",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×2"
+      ]
+    },
+    {
+      "state": "nh-dashboard",
+      "screenshot": "tools/qa-agent/runs/2026-10-14-local/visual/rb3/evidence/TC-20_S18/desktop--nh-dashboard.png",
+      "url": "/snf/dashboard",
+      "findings": 0,
+      "axe": [
+        "color-contrast/serious×3"
+      ]
+    }
+  ]
+}

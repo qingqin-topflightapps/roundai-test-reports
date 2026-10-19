@@ -1,0 +1,18 @@
+{
+  "TC-17/S04": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Two Hospital patients: Cancel (meds), Delete (note) on A, Keep (tasks) on B; Ask opens",
+    "detail": "pr-tc17-s04-s09-pending.spec.ts (scripted PW, DB reads; replaces the unbuilt agent case). 17/17 judged: Ask sheet opens from the top of Post-Round; from Meds the prompt lists A's open tasks, not done ones, none of B's, three choices; Cancel changes nothing; from Note Delete Pending Tasks & Complete -> post-rounded, only the done task left; B untouched (DB + screen, '2 pending tasks', own note); B Keep from Tasks -> 'Encounter Complete' on tasks and meds, both open tasks still open, also after reload (AC 7 all three toggles, AC 8). Recorded (Q11): A's task carried over from yesterday is listed in the prompt and deleted by Delete. Tripwire clean.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s04.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s04-a-meds-prompt.png",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s04-a-after-delete.png",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s04-b-kept-tasks.png"
+    ]
+  }
+}

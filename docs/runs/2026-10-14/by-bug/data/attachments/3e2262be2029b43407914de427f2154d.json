@@ -1,0 +1,119 @@
+{
+  "name": "rb1-tc10-s29-pre-c-stores",
+  "at": "2026-10-19T20:01:44.313Z",
+  "checks": [
+    {
+      "id": "(c) T8: no device draft for the chart once the server has the text",
+      "ok": false,
+      "detail": "[{\"id\":\"jd7e60jj8yd9t8xk9kajj7rttx8gj875:kx7cpqpw55xy144agy58xmrfhd8gkxm2:preRoundNotes\",\"text\":\"Pre-round review for today. 72-year-old \"}]"
+    },
+    {
+      "id": "(c) T8: the drafts store is empty after sign-out",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "id": "(c) T8: the local audio store is empty after sign-out",
+      "ok": false,
+      "detail": "[{\"id\":\"qa-rec-kx7cpqpw55xy144agy58xmrfhd8gkxm2\",\"channel\":\"note\"}]"
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "c": {
+      "afterSave": {
+        "databases": [
+          "round-ai-local-audio",
+          "roundcompanion-session-drafts"
+        ],
+        "roundcompanion-session-drafts": {
+          "drafts": [
+            {
+              "id": "jd7e60jj8yd9t8xk9kajj7rttx8gj875:kx7cpqpw55xy144agy58xmrfhd8gkxm2:preRoundNotes",
+              "text": "Pre-round review for today. 72-year-old "
+            }
+          ]
+        },
+        "round-ai-local-audio": {
+          "pending-recordings": []
+        }
+      },
+      "afterReopen": {
+        "databases": [
+          "round-ai-local-audio",
+          "roundcompanion-session-drafts"
+        ],
+        "roundcompanion-session-drafts": {
+          "drafts": [
+            {
+              "id": "jd7e60jj8yd9t8xk9kajj7rttx8gj875:kx7cpqpw55xy144agy58xmrfhd8gkxm2:preRoundNotes",
+              "text": "Pre-round review for today. 72-year-old "
+            }
+          ]
+        },
+        "round-ai-local-audio": {
+          "pending-recordings": []
+        }
+      },
+      "seededBeforeSignOut": {
+        "databases": [
+          "round-ai-local-audio",
+          "roundcompanion-session-drafts"
+        ],
+        "roundcompanion-session-drafts": {
+          "drafts": [
+            {
+              "id": "jd7e60jj8yd9t8xk9kajj7rttx8gj875:kx7cpqpw55xy144agy58xmrfhd8gkxm2:preRoundNotes",
+              "text": "Pre-round review for today. 72-year-old "
+            },
+            {
+              "id": "qa-tail-kx7cpqpw55xy144agy58xmrfhd8gkxm2",
+              "text": "QA unsaved tail"
+            }
+          ]
+        },
+        "round-ai-local-audio": {
+          "pending-recordings": [
+            {
+              "id": "qa-rec-kx7cpqpw55xy144agy58xmrfhd8gkxm2",
+              "channel": "note"
+            }
+          ]
+        }
+      },
+      "afterSignOut": {
+        "databases": [
+          "round-ai-local-audio",
+          "roundcompanion-session-drafts"
+        ],
+        "roundcompanion-session-drafts": {
+          "drafts": []
+        },
+        "round-ai-local-audio": {
+          "pending-recordings": [
+            {
+              "id": "qa-rec-kx7cpqpw55xy144agy58xmrfhd8gkxm2",
+              "channel": "note"
+            }
+          ]
+        }
+      }
+    },
+    "socket": [
+      {
+        "udfPath": "ai/parsing:parsePreRoundNotes",
+        "answered": "ok",
+        "atMs": 557
+      },
+      {
+        "udfPath": "ai/parsing:extractTasks",
+        "answered": "ok",
+        "atMs": 614
+      }
+    ]
+  }
+}

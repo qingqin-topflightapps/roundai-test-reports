@@ -1,0 +1,15 @@
+{
+  "OAT-04/S26": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "code read against the 10-14 retention-lane run (not re-run, same reason as OAT-04/S15)",
+    "title": "Course timeline keeps today and yesterday only: lines dated D-3, D-2, D-1 and D0",
+    "detail": "B19 re-check on 8b4be94a: STILL. No course-line purge: convex/lib/lifecycle.ts never touches admissionSummary.course; the Hospital panel only hides lines older than yesterday (convex/lib/courseTimeline.ts isRecentCourseLine), they stay in storage. Stated: UAT 3.6 ('Course timeline and prior transcripts therefore show today and yesterday only') + OAT-04 ER 2.",
+    "evidence": [
+      "runs/2026-10-14-local/retention/evidence/OAT-04-S26.json"
+    ]
+  }
+}

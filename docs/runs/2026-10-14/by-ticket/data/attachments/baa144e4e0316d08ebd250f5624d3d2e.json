@@ -1,0 +1,16 @@
+{
+  "TC-16/S11": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:33:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "dev agent unit U26 (scripts/dev/run-unit.sh U26 2026-10-20-rb2), seeded Nursing Home visits, oracle verdict 'Fail'",
+    "title": "Nursing Home keeps the last two visits, seeded: three archived visits plus one that rotates when the list opens",
+    "detail": "B35 re-check on 8b4be94a: STILL. s11-n-collapsed: with three archived visits plus one that rotates on open, the Encounter tab still lists the oldest kept visit ('Tue Oct 06 2026 · Visit notes'): three earlier visits shown instead of two (UAT 3.6 / TFA-92594 AC 2: 'Nursing Home shows the last two visits'); s11-n-latest-open passes. One constant, SNF_RETENTION.transcriptVisits = 3 (convex/lib/lifecycle.ts, unchanged). The unit's other scenarios (TC-16/S05, S06, S09) pass.",
+    "evidence": [
+      "runs/2026-10-20-rb2-dev/units/U26.verdict.json",
+      "runs/2026-10-20-rb2-dev/generateddev/20261020rb2dev/u26"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "OAT-05/S11": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "STATIC",
+    "title": "Live dictation route (decision Q2)",
+    "bug": "D1",
+    "bugNow": "still",
+    "stated": "decision D1 (Daniela)",
+    "detail": "Route table unchanged at 8b4be94a: prepareSession (transcribe.ts:47) is signed-in only and mints a 60 s OpenAI client secret (:74-75); the browser posts its SDP / audio straight to api.openai.com (liveSession.ts:391); recovery / whisper go through the server. Still waits on D1.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/OAT-05-S11.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

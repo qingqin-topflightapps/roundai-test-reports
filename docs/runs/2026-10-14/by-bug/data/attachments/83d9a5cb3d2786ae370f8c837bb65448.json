@@ -1,0 +1,15 @@
+{
+  "TC-19/S28": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:20:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "Tim's lane-A test e2e/medication-detection.spec.ts 'dose changes and resumes are visible in the medication tracker after reload' (chromium, local; extraction answered by his own socket mock), read as the matrix's reportAs says",
+    "title": "Existing spec that asserts the opposite of ER 4: 'dose changes and resumes are visible in the medication tracker after reload'",
+    "detail": "B06 re-check on 8b4be94a: STILL. The test is green, and green means the row was NOT renamed: it finds the furosemide row by its old name 'Furosemide 80 mg IV' with 'Changed · …' and the reason 'decreased from 80 mg to 40 mg'. UAT TC-19 ER 4 / TFA-92597 R7: 'A dose change renames the row and keeps history' (Save & Extract merge convex/lib/medications.ts mergeMedEventsIntoList keeps out[idx].name). Same on dev: TC-19/S07 and S11 on 8b4be94a. Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/rb2-logs/s28tim.log"
+    ]
+  }
+}

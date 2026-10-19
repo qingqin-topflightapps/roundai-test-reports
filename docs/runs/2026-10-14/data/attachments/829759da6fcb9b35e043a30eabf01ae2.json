@@ -1,0 +1,133 @@
+{
+  "S07 n-no-time": {
+    "picked": {
+      "value": "jh73qdc7r4trjhphbmfj9354zx8gj60h",
+      "label": "QA TC18-BIL SNF discharge ★"
+    },
+    "templateType": "snf-discharge",
+    "before": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: none yet — select the time on discharge\nLEVEL: —\nTime on discharge:\n≤ 30 min\n> 30 min",
+    "noteHasTime": false,
+    "noteExcerpt": "AI-Generated Note\n\n3:26 AM · Oct 20\n\nCourse During Facility Stay\n\nThe resident completed rehabilitation following left hip open reduction internal fixation. Ambulation progressed to independent walking with a cane.\n\nCondition at Discharge\n\nThe resident is ambulating independently with a cane and is ready for discharge to home.\n\nDisposition\n\nDischarged home with daughter today.\n\nFollow-up Care\n\nHome health physical therapy has been ordered.\n\nEdit Note\nCopy to EMR",
+    "prompt": true,
+    "afterTap": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99315\nLEVEL: —\nTime on discharge: ≤ 30 min — time selected by the physician",
+    "afterReload": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99315\nLEVEL: —\nTime on discharge: ≤ 30 min — time selected by the physician",
+    "stored": {
+      "family": "snf-discharge",
+      "code": "99315",
+      "time": "physician",
+      "frozen": "snf-discharge"
+    },
+    "diag": [
+      {
+        "at": "2026-10-19T18:26:16.586Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2449,
+        "providerMs": 2285,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S07 n-time": {
+    "picked": {
+      "value": "jh73qdc7r4trjhphbmfj9354zx8gj60h",
+      "label": "QA TC18-BIL SNF discharge ★"
+    },
+    "templateType": "snf-discharge",
+    "before": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99316\nLEVEL: —\nTime on discharge: > 30 min — documented in the note\nN12: \"Total time spent on discharge planning and coordination: 40 minutes.\"",
+    "noteHasTime": true,
+    "noteExcerpt": "AI-Generated Note\n\n3:26 AM · Oct 20\n\nCourse During Facility Stay\n\nThe resident completed rehabilitation following left hip open reduction internal fixation. Functional progress was demonstrated with ambulation achieved using a cane.\n\nCondition at Discharge\n\nThe resident is discharged in stable condition, ambulating with a cane.\n\nDisposition\n\nThe resident is discharged home with her daughter.\n\nFollow-up Care and Instructions\n\nHome health physical therapy has been ordered. The resident should continue ambulation with assistive device as tolerated and follow up with her primary care physician as needed.\n\nTime Spent on Discharge\n\nTotal time spent on discharge planning and coordination: 40 minutes.\n\nEdit Note\nCopy to EMR",
+    "stored": {
+      "family": "snf-discharge",
+      "code": "99316",
+      "time": "over_30",
+      "frozen": "snf-discharge"
+    },
+    "diag": [
+      {
+        "at": "2026-10-19T18:26:32.691Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2127,
+        "providerMs": 2057,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S10 inflight-hospital": {
+    "analyzingWhenEditTapped": true,
+    "cardWhileEditing": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN9: \"Patient is admitted with community-acquired pneumonia.\"\nN10: \"Cough is improving and no fever overnight.\"\nN11: \"Currently on day 3 of a planned 5-day course of intravenous ceftriaxone and azithromycin with good clinical response.\"\nN13: \"1. Continue intravenous ceftriaxone and azithromycin, day 3 of 5 for community-acquired pneumonia.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nPrescription drug management\nN13: \"1. Continue intravenous ceftriaxone and azithromycin, day 3 of 5 for community-acquired pneumonia.\"",
+    "cardAfterReload": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN9: \"Patient is admitted with community-acquired pneumonia.\"\nN10: \"Cough is improving and no fever overnight.\"\nN11: \"Currently on day 3 of a planned 5-day course of intravenous ceftriaxone and azithromycin with good clinical response.\"\nN13: \"1. Continue intravenous ceftriaxone and azithromycin, day 3 of 5 for community-acquired pneumonia.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nPrescription drug management\nN13: \"1. Continue intravenous ceftriaxone and azithromycin, day 3 of 5 for community-acquired pneumonia.\"",
+    "markerKept": true,
+    "frozenNoteHasMarker": false,
+    "billedForNote": true,
+    "billingJob": {
+      "attempt": 1,
+      "failures": 0,
+      "scheduledId": "kc23ysp9xxzyx64wn68qs4eef58gk18s",
+      "started": true
+    },
+    "diag": [
+      {
+        "at": "2026-10-19T18:26:47.339Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2890,
+        "providerMs": 2827,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S10 inflight-snf": {
+    "analyzingWhenEditTapped": true,
+    "cardWhileEditing": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99308\nLEVEL: Low Complexity\nPROBLEMS — Low\nStable chronic illness\nN8: \"Hip pain: controlled on scheduled acetaminophen.\"\nN13: \"Hip pain is controlled on the current acetaminophen regimen with ongoing physical therapy participation.\"\nN14: \"1. Continue acetaminophen as scheduled for hip pain management.\"\nDATA — Minimal\n(none)\nRISK — Low\nLow risk of morbidity from additional diagnostic testing or treatment\nN14: \"1. Continue acetaminophen as scheduled for hip pain management.\"\nMinimal risk of morbidity from additional diagnostic testing or treatment\nN15: \"2. Continue physical therapy twice daily.\"",
+    "cardAfterReload": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99308\nLEVEL: Low Complexity\nPROBLEMS — Low\nStable chronic illness\nN8: \"Hip pain: controlled on scheduled acetaminophen.\"\nN13: \"Hip pain is controlled on the current acetaminophen regimen with ongoing physical therapy participation.\"\nN14: \"1. Continue acetaminophen as scheduled for hip pain management.\"\nDATA — Minimal\n(none)\nRISK — Low\nLow risk of morbidity from additional diagnostic testing or treatment\nN14: \"1. Continue acetaminophen as scheduled for hip pain management.\"\nMinimal risk of morbidity from additional diagnostic testing or treatment\nN15: \"2. Continue physical therapy twice daily.\"",
+    "markerKept": true,
+    "frozenNoteHasMarker": false,
+    "billedForNote": true,
+    "billingJob": {
+      "attempt": 1,
+      "failures": 0,
+      "scheduledId": "kc20ym0eejce70kfrn1w3qtva58gk6hp",
+      "started": true
+    },
+    "diag": [
+      {
+        "at": "2026-10-19T18:27:07.171Z",
+        "fn": "billing.suggestBilling",
+        "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "ok": true,
+        "durationMs": 2560,
+        "providerMs": 2495,
+        "fellBackFrom": null,
+        "error": null
+      }
+    ]
+  },
+  "S12 leave-hospital": {
+    "leftAfterMs": 248,
+    "noteSaved": true,
+    "billedForNote": true,
+    "family": "hospital-subsequent",
+    "code": "99231",
+    "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99231\nLEVEL: Low Complexity\nPROBLEMS — Low\nAcute, uncomplicated illness or injury requiring hospital inpatient or observation level care\nN10: \"Patient is a [age]-year-old with a history of community-acquired pneumonia who presented on this admission.\"\nN11: \"Now on day 3 of hospitalization with clinical improvement: cough improving, afebrile overnight, and leukocytosis trending downward.\"\nN12: \"Will continue inpatient management with transition to oral therapy as clinical status permits.\"\nDATA — Minimal\nTest result reviewed\nN8: \"White blood cell count 11 (down from 14).\"\nRISK — Moderate\nPrescription drug management\nN14: \"1. Continue intravenous ceftriaxone and azithromycin; transition to oral cefpodoxime tomorrow if patient remains afebrile.\"",
+    "billingRowsBeforeReturn": 1,
+    "billingRowsAfterReturn": 1
+  },
+  "S12 leave-snf": {
+    "leftAfterMs": 189,
+    "noteSaved": true,
+    "billedForNote": true,
+    "family": "snf-subsequent",
+    "code": "99309",
+    "card": "BILLING SUGGESTION · PHYSICIAN VERIFY BEFORE SUBMITTING\nCODE: 99309\nLEVEL: Moderate Complexity\nPROBLEMS — Moderate\nStable chronic illness\nN8: \"1. Left hip pain: controlled on scheduled acetaminophen 650 mg every 6 hours.\"\nN14: \"Left hip pain is controlled on scheduled acetaminophen.\"\nN15: \"Continue acetaminophen 650 mg every 6 hours.\"\nN16: \"Monitor pain control and adjust as needed.\"\nAcute, uncomplicated illness or injury\nN9: \"2. Constipation: onset Monday; senna 8.6 mg at bedtime initiated today.\"\nN17: \"Constipation began Monday.\"\nN18: \"Initiated senna 8.6 mg at bedtime today.\"\nN19: \"Monitor bowel function and response to therapy.\"\nStable chronic illness\nN10: \"3. Thromboembolism prophylaxis: continuing enoxaparin 40 mg daily.\"\nN20: \"Thromboembolism prophylaxis continues.\"\nN21: \"Continue enoxaparin 40 mg daily.\"\nDATA — Minimal\n(none)\nRISK — Moderate\nLow risk of morbidity from additional diagnostic testing or treatment\nN15: \"Continue acetaminophen 650 mg every 6 hours.\"\nLow risk of morbidity from additional diagnostic testing or treatment\nN18: \"Initiated senna 8.6 mg at bedtime today.\"\nPrescription drug management\nN21: \"Continue enoxaparin 40 mg daily.\"",
+    "billingRowsBeforeReturn": 1,
+    "billingRowsAfterReturn": 1
+  }
+}

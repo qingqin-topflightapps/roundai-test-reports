@@ -1,0 +1,71 @@
+{
+  "state": "hospital-list",
+  "screenshot": "tools/qa-agent/runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-pixel7-hospital-list.png",
+  "findings": [
+    {
+      "check": "covered",
+      "detail": "\"CHF exacerbation with volume overload\" is under button \"Dashboard\" (a fixed/sticky layer — may just need scrolling)",
+      "severity": "low",
+      "target": "CHF exacerbation with volume overload"
+    },
+    {
+      "check": "covered",
+      "detail": "\"Not Yet Prepped\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+      "severity": "low",
+      "target": "Not Yet Prepped"
+    },
+    {
+      "check": "covered",
+      "detail": "\"Follow-up\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+      "severity": "low",
+      "target": "Follow-up"
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Remove QA TC24 Vis 82EF Alpha from the rounding list\" is 28×28 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Remove QA TC24 Vis 82EF Alpha from the rounding list\""
+    },
+    {
+      "check": "tap",
+      "detail": "button \"Remove QA TC24 Vis 82EF Bravo from the rounding list\" is 28×28 (< 44 pt, Apple HIG)",
+      "severity": "low",
+      "target": "button \"Remove QA TC24 Vis 82EF Bravo from the rounding list\""
+    }
+  ],
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "count": 4,
+      "targets": [
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.cursor-pointer[role=\"button\"] > .mb-2.items-start.justify-between > .gap-2\\.5.flex.items-center > div:nth-child(2) > .flex-wrap.gap-1\\.5.flex > .text-\\[10px\\].bg-teal-500.px-1\\.5",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.cursor-pointer[role=\"button\"] > .justify-between.flex.items-center > .flex-wrap.gap-1\\.5.flex > .px-2\\.5.text-slate-500.py-0\\.5",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.cursor-pointer[role=\"button\"] > .mb-2.items-start.justify-between > .gap-2\\.5.flex.items-center > div:nth-child(2) > .flex-wrap.gap-1\\.5.flex > .text-\\[10px\\].bg-teal-500.px-1\\.5",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.cursor-pointer[role=\"button\"] > .justify-between.flex.items-center > .flex-wrap.gap-1\\.5.flex > .px-2\\.5.text-slate-500.py-0\\.5"
+      ],
+      "nodes": [
+        "\"New today\" 2.42:1 (#ffffff on #00bba7, 7.5pt (10px); needs 4.5:1)",
+        "\"Not Yet Prepped\" 4.34:1 (#62748e on #f1f5f9, 9.0pt (12px); needs 4.5:1)",
+        "\"New today\" 2.42:1 (#ffffff on #00bba7, 7.5pt (10px); needs 4.5:1)",
+        "\"Not Yet Prepped\" 4.34:1 (#62748e on #f1f5f9, 9.0pt (12px); needs 4.5:1)"
+      ]
+    },
+    {
+      "id": "nested-interactive",
+      "impact": "serious",
+      "help": "Interactive controls must not be nested",
+      "count": 2,
+      "targets": [
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.cursor-pointer[role=\"button\"]",
+        ".shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.cursor-pointer[role=\"button\"]"
+      ],
+      "nodes": [
+        "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for Q\" <div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for QA TC24 Vis 82EF Alpha\" class=\"w-full text-left p-4 cursor-po",
+        "\"<div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for Q\" <div role=\"button\" tabindex=\"0\" aria-label=\"Open chart for QA TC24 Vis 82EF Bravo\" class=\"w-full text-left p-4 cursor-po"
+      ]
+    }
+  ],
+  "url": "/rounding"
+}

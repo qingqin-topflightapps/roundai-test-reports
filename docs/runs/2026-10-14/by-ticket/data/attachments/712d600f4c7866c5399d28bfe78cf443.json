@@ -1,0 +1,18 @@
+{
+  "OAT-02/S16": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW (EFS/S20 cp6/cp7)",
+    "title": "Device storage after sign-out: no patient text or audio left",
+    "bug": "B02",
+    "bugNow": "still",
+    "stated": "OAT-02 S16 then / TFA-92570 AC 7",
+    "detail": "No runner of its own (dev unit set aside: microphone + DevTools). The same read is EFS/S20 cp6/cp7 on 8b4be94a: after sign-out IndexedDB round-ai-local-audio keeps 1 pending recording, after account deletion 2. Real-phone part stays Manual.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s20-kept-dictation.json"
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "ref": "TC-11/S12",
+  "title": "TC-11/S12 N3 re-check Hospital: Generate / Regenerate and leaving at once keep today's entry, from the latest note (live AI)",
+  "dataset": "rb2-gen",
+  "target": "dev",
+  "at": "2026-10-19T18:13:41.630Z",
+  "cells": [
+    {
+      "name": "clock at start",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "tz": "Asia/Tokyo",
+        "device": "Oct 20",
+        "utc": "Oct 19",
+        "serverIso": "2026-10-19T18:12:47.933Z"
+      }
+    },
+    {
+      "name": "after Generate-and-leave: stored ledger, note start",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "course": [
+          "Oct 20: Community-acquired pneumonia stable overnight, afebrile on supplemental oxygen. Continue antibiotics.. ⏳ Encounter pending.",
+          "Oct 19: 71-year-old male with community-acquired pneumonia improving clinically; afebrile on 3 L nasal cannula with decreased dyspnea. Continuing IV ceftriaxone and azithromycin; incentive spirometry initiated"
+        ],
+        "note": "Subjective\n\nThe patient reports less shortness of breath. Cough remains productive.\n\nObjective\n\nVital Signs: Afebrile on 3 L nasal cannula, oxygen saturation maintained.\n\nPhysical Examination: Patient noted to be less short of breath on examination.\n\nTesting Results\n\nWhite blood cell count 14 (today).\n\nAssessment\n\nPatient is a 71-year-old male with no past medical history documented in the availab",
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 11393,
+          "providerMs": 11111,
+          "appMs": 282,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    },
+    {
+      "name": "N3 Generate-and-leave: the chart keeps a finished entry for today (not erased, not 'Encounter done')",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "course": [
+          "Oct 20: Community-acquired pneumonia stable overnight, afebrile on supplemental oxygen. Continue antibiotics.. ⏳ Encounter pending.",
+          "Oct 19: 71-year-old male with community-acquired pneumonia improving clinically; afebrile on 3 L nasal cannula with decreased dyspnea. Continuing IV ceftriaxone and azithromycin; incentive spirometry initiated"
+        ]
+      }
+    },
+    {
+      "name": "after Regenerate-and-leave: stored ledger, note start",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "course": [
+          "Oct 20: Community-acquired pneumonia stable overnight, afebrile on supplemental oxygen. Continue antibiotics.. ⏳ Encounter pending.",
+          "Oct 19: Community-acquired pneumonia improving; afebrile, weaning supplemental oxygen from 3 L to 1 L nasal cannula. Transitioning to oral cefpodoxime tomorrow if stable"
+        ],
+        "note": "Subjective\n\nThe patient reports breathing is easier and cough is improving.\n\nObjective\n\nVital Signs: Afebrile, oxygen saturation on 1 liter nasal cannula, breathing easier.\n\nPhysical Examination: Not documented in today's dictation.\n\nTesting Results\n\nWhite blood cell count: 14.\n\nAssessment\n\nPatient is a 71-year-old male with no past medical history documented in the available records who presented",
+        "diag": {
+          "fn": "notes.generateNote",
+          "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+          "ok": true,
+          "durationMs": 10852,
+          "providerMs": 10596,
+          "appMs": 256,
+          "parseStatus": null,
+          "fellBackFrom": null,
+          "error": null,
+          "over30s": false
+        }
+      }
+    },
+    {
+      "name": "N3 Regenerate-and-leave: today's entry is still there",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "course": [
+          "Oct 20: Community-acquired pneumonia stable overnight, afebrile on supplemental oxygen. Continue antibiotics.. ⏳ Encounter pending.",
+          "Oct 19: Community-acquired pneumonia improving; afebrile, weaning supplemental oxygen from 3 L to 1 L nasal cannula. Transitioning to oral cefpodoxime tomorrow if stable"
+        ]
+      }
+    },
+    {
+      "name": "N3 Regenerate-and-leave: today's entry was rewritten from the regenerated note (differs from the first note's entry)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "first": "Oct 19: 71-year-old male with community-acquired pneumonia improving clinically; afebrile on 3 L nasal cannula with decreased dyspnea. Continuing IV ceftriaxone and azithromycin; incentive spirometry initiated",
+        "afterRegenerate": "Oct 19: Community-acquired pneumonia improving; afebrile, weaning supplemental oxygen from 3 L to 1 L nasal cannula. Transitioning to oral cefpodoxime tomorrow if stable"
+      }
+    },
+    {
+      "name": "does the entry name a fact only the regenerated dictation has (1 L / weaned / cefpodoxime / oral)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "hit": true,
+        "entry": "Oct 19: Community-acquired pneumonia improving; afebrile, weaning supplemental oxygen from 3 L to 1 L nasal cannula. Transitioning to oral cefpodoxime tomorrow if stable"
+      }
+    },
+    {
+      "name": "N3: the reopened chart shows a Course Timeline card for today",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cards": [
+          "Oct 20: Community-acquired pneumonia stable overnight, afebrile on supplemental oxygen. Continue antibiotics",
+          "Oct 19: Community-acquired pneumonia improving; afebrile, weaning supplemental oxygen from 3 L to 1 L nasal cannula. Transitioning to oral cefpodoxime tomorrow if stable"
+        ]
+      }
+    },
+    {
+      "name": "N3: the other chart gained no note, course, encounter text or status change",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": {
+          "note": false,
+          "course": ""
+        },
+        "after": {
+          "note": false,
+          "course": ""
+        }
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-11-S12-n3-h1-reopened.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-11-S12-n3-h1-reopened.png": 0
+  }
+}

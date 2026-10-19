@@ -1,0 +1,16 @@
+{
+  "OAT-02/S13": {
+    "status": "passed",
+    "ranAt": "2026-10-19T18:00:46Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "Tim's titles on the local stack (playwright --project=chromium,api -g …), tripwire clean; report runs/2026-10-14-local/newspec-c/te/laneA.json",
+    "title": "An email address is refused as a handoff recipient (and self, empty text)",
+    "detail": "api/handoffs.spec.ts 'a handoff cannot go to yourself, to a non-account, or be empty' passed; also 'a recipient is found by exact email, never by listing accounts', 'a handoff is invisible to anyone who is neither sender nor recipient', 'a handoff sent in-app reaches the recipient…' passed. On 8b4be94a the client sends toEmail; the server resolves it to an account or refuses ('No Round Companion account with this email'); te-tc07-send S17 saw the same refusal in the UI for someone@example.com.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/te/laneA.json"
+    ],
+    "stated": "P0 mixed (email refused = TFA-92586 AC 7; self / empty = ours)"
+  }
+}

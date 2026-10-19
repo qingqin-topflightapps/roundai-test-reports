@@ -1,0 +1,57 @@
+{
+  "name": "ip-tc12-s07",
+  "at": "2026-10-19T18:01:42.959Z",
+  "checks": [
+    {
+      "id": "Hospital: after edit + delete the list is [\"Recheck lactate at 2 pm\",\"Daughter visits at 6 pm\"]",
+      "ok": true,
+      "detail": "[\"Recheck lactate at 2 pm\",\"Daughter visits at 6 pm\"]"
+    },
+    {
+      "id": "Hospital: editing kept the point's id and its original clock (an edit never extends the 12 h life)",
+      "ok": true,
+      "detail": "{\"id\":\"qa-s07-0\",\"text\":\"Recheck lactate at 2 pm\",\"source\":\"manual\",\"createdAt\":1792432899654}"
+    },
+    {
+      "id": "Hospital: after reload the editor shows the edit and not the deleted point",
+      "ok": true,
+      "detail": "[\"Recheck lactate at 2 pm\",\"Daughter visits at 6 pm\"]"
+    },
+    {
+      "id": "Hospital: after Save Note the edit is not reverted and the deleted point is absent",
+      "ok": true,
+      "detail": "[\"Recheck lactate at 2 pm\",\"Daughter visits at 6 pm\"]"
+    },
+    {
+      "id": "Hospital: the editor still shows exactly [\"Recheck lactate at 2 pm\",\"Daughter visits at 6 pm\"]",
+      "ok": true,
+      "detail": "[\"Recheck lactate at 2 pm\",\"Daughter visits at 6 pm\"]"
+    },
+    {
+      "id": "Nursing Home: after edit + delete the list is [\"Weigh Mon and Thu\",\"Skin check: left heel\"]",
+      "ok": true,
+      "detail": "[\"Weigh Mon and Thu\",\"Skin check: left heel\"]"
+    },
+    {
+      "id": "Nursing Home: editing kept the point's id and its original clock (an edit never extends the 12 h life)",
+      "ok": true,
+      "detail": "{\"id\":\"qa-s07-0\",\"text\":\"Weigh Mon and Thu\",\"source\":\"manual\",\"createdAt\":1792432901539}"
+    },
+    {
+      "id": "Nursing Home: after reload the editor shows the edit and not the deleted point",
+      "ok": true,
+      "detail": "[\"Weigh Mon and Thu\",\"Skin check: left heel\"]"
+    },
+    {
+      "id": "Nursing Home: after Save Note the edit is not reverted and the deleted point is absent",
+      "ok": true,
+      "detail": "[\"Weigh Mon and Thu\",\"Skin check: left heel\"]"
+    },
+    {
+      "id": "Nursing Home: the editor still shows exactly [\"Weigh Mon and Thu\",\"Skin check: left heel\"]",
+      "ok": true,
+      "detail": "[\"Weigh Mon and Thu\",\"Skin check: left heel\"]"
+    }
+  ],
+  "data": {}
+}

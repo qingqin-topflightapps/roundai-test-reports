@@ -1,0 +1,16 @@
+{
+  "TC-17/S01": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Existing specs: Post-Round note/task edit, SNF note/task edit, billing card per code family",
+    "detail": "Lane A on 8b4be94a under the lock + tripwire (no model call): rounding-workflows 'the post-round note and task controls remain fully editable', longitudinal-workflows 'the SNF note and task list can be edited from post-round' and billing-suggestion 'each Hospital and Nursing Home template shows its family's code, never the badge's' (the matrix title 'the visible card shows each Hospital and Nursing Home code family' was renamed on this commit; same test, seeded suggestion with billingForNoteAt = noteGeneratedAt, so no billing job) — 3/3 expected. Tim's new TFA-92595 specs post-round-snf.spec.ts and copy-assessment-plan.spec.ts were NOT run locally: they seed noteGeneratedAt without a stored suggestion, which queues a live Bedrock billing job; their checks are covered by our mocked copies (S09, S21).",
+    "evidence": [
+      "runs/2026-10-14-local/matrix/TC-17.results.json",
+      "runs/2026-10-14-local/newspec-c/pr/s01-billing-card.json"
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "name": "te-oat02-s18",
+  "at": "2026-10-19T18:21:07.035Z",
+  "checks": [
+    {
+      "id": "sheet lists the In Today resident and not the Hospital patient",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "dialog: recipients are not listed at all; one 'Colleague’s email' box for an app account (AC 13 of TFA-92585 / TFA-92586)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "1-sheet: no mailto / sms link, no email / share / SMS / print / download control, no address offered",
+      "ok": true,
+      "detail": "{\"mailto\":0,\"emails\":[],\"flagged\":[]}"
+    },
+    {
+      "id": "2-dialog: no mailto / sms link, no email / share / SMS / print / download control, no address offered",
+      "ok": true,
+      "detail": "{\"mailto\":0,\"emails\":[],\"flagged\":[]}"
+    },
+    {
+      "id": "3-closed: no mailto / sms link, no email / share / SMS / print / download control, no address offered",
+      "ok": true,
+      "detail": "{\"mailto\":0,\"emails\":[],\"flagged\":[]}"
+    },
+    {
+      "id": "4-reloaded: no mailto / sms link, no email / share / SMS / print / download control, no address offered",
+      "ok": true,
+      "detail": "{\"mailto\":0,\"emails\":[],\"flagged\":[]}"
+    },
+    {
+      "id": "nothing was sent",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "harness: the summary request was answered in the page; no model action left the page",
+      "ok": true,
+      "detail": "{\"ensureAnswered\":2,\"aiFailed\":[],\"rowsPatched\":4}"
+    }
+  ],
+  "data": {
+    "states": {
+      "1-sheet": {
+        "mailto": 0,
+        "buttons": [
+          "Send to…",
+          "⎘ Copy Text"
+        ],
+        "emailsShown": []
+      },
+      "2-dialog": {
+        "mailto": 0,
+        "buttons": [
+          "Close",
+          "⎘ Copy",
+          "Cancel",
+          "Send",
+          "Send to…",
+          "⎘ Copy Text"
+        ],
+        "emailsShown": []
+      },
+      "3-closed": {
+        "mailto": 0,
+        "buttons": [
+          "Send to…",
+          "⎘ Copy Text"
+        ],
+        "emailsShown": []
+      },
+      "4-reloaded": {
+        "mailto": 0,
+        "buttons": [
+          "Send to…",
+          "⎘ Copy Text"
+        ],
+        "emailsShown": []
+      }
+    },
+    "socket": {
+      "ensureAnswered": 2,
+      "aiFailed": [],
+      "rowsPatched": 4
+    }
+  }
+}

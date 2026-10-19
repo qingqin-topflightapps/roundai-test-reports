@@ -1,0 +1,118 @@
+{
+  "ref": "TC-23/S10",
+  "mode": "scripted",
+  "status": "failed",
+  "detail": "Scripted far end: every cell here is the app's own state handling. 12/13 decided cells pass; failing: (a) hospital pre-round: nothing says 'Listening…' until the microphone is live; a wait message shows (5 samples over 113 ms before the mic was enabled; header said 'Listening…' in 5; Hearing line then: [\"Hearing:Preparing dictation……\"]; headers: [\"Listening…\"]); not decided here: (a) 'every word after ready is in the box' needs the live engine; (c) on Hospital Important Points, encounter notes, 'Start bedside recording' and NH Encounter not built in this pass",
+  "productIssue": "Tapping Dictate in the hospital pre-round editor shows 'Listening…' in the header at once, while the microphone is still muted and the Hearing line says 'Preparing dictation…'; words spoken on 'Listening…' before the session is ready are not recorded. Breaks the S10 (a) oracle (no 'Listening…' until the microphone is live) — UAT 3.5 'never left waiting with nothing' / TFA-94423 AC 8; open question Q15.",
+  "cells": [
+    {
+      "id": "(a) hospital pre-round: nothing says 'Listening…' until the microphone is live; a wait message shows",
+      "pass": false,
+      "detail": "5 samples over 113 ms before the mic was enabled; header said 'Listening…' in 5; Hearing line then: [\"Hearing:Preparing dictation……\"]; headers: [\"Listening…\"]"
+    },
+    {
+      "id": "(a) nursing-home Pre-Round: nothing says 'Listening…' until the microphone is live; a wait message shows",
+      "pass": true,
+      "detail": "5 samples over 115 ms before the mic was enabled; header said 'Listening…' in 0; Hearing line then: [\"Hearing:Preparing dictation……\"]; headers: [\"\"]"
+    },
+    {
+      "id": "(b) hospital pre-round: H-03 then H-05 in one box — both once, in order, first unchanged",
+      "pass": true,
+      "detail": "field \"Creatinine 1.8, up from 1.2. Potassium 5.6, sodium 131, magnesium 1.9. Piperacillin-tazobactam 4.5 grams every 6 hours. Lactate 2.3, white count 14.6.\"; second take ran; notices []"
+    },
+    {
+      "id": "(b) nursing-home Pre-Round: N-03 then H-05 in one box — both once, in order, first unchanged",
+      "pass": true,
+      "detail": "field \"Hemoglobin A1c 8.2. Glipizide 5 milligrams before breakfast, hold metformin 1000 milligrams. Piperacillin-tazobactam 4.5 grams every 6 hours. Lactate 2.3, white count 14.6.\"; second take ran; notices []"
+    },
+    {
+      "id": "(b) nursing-home Encounter: N-03 then H-05 in one box — both once, in order, first unchanged",
+      "pass": true,
+      "detail": "field \"Hemoglobin A1c 8.2. Glipizide 5 milligrams before breakfast, hold metformin 1000 milligrams. Piperacillin-tazobactam 4.5 grams every 6 hours. Lactate 2.3, white count 14.6.\"; second take ran; notices []"
+    },
+    {
+      "id": "(c) hospital pre-round: Stop on H-04, open another chart while 'Transcribing…', come back",
+      "pass": true,
+      "detail": "saw 'Transcribing…' true; on return the take is in the box ×1 (via Recover); other chart holds take words []; home Important Points unchanged true; notices []"
+    },
+    {
+      "id": "(c) nursing-home Pre-Round: Stop on N-03, open another chart while 'Transcribing…', come back",
+      "pass": true,
+      "detail": "saw 'Transcribing…' true; on return the take is in the box ×1 (via Recover); other chart holds take words []; home Important Points unchanged true; notices []"
+    },
+    {
+      "id": "(d) hospital: Dictate point while the pre-round box listens — at most one live session, text only where dictated",
+      "pass": true,
+      "detail": "'Dictate point' disabled while listening: true; open peer connections then 1; pre-round got the take true; points draft \"\""
+    },
+    {
+      "id": "(e) hospital pre-round: switch to Nursing Home while 'Transcribing…' H-04",
+      "pass": true,
+      "detail": "saw 'Transcribing…' true; back in its own chart ×1 (via Recover); Nursing Home charts hold take words []"
+    },
+    {
+      "id": "(e) nursing-home Pre-Round: switch to Hospital while 'Transcribing…' N-03",
+      "pass": true,
+      "detail": "saw 'Transcribing…' true; back in its own chart ×1 (via Recover); Hospital charts hold take words []"
+    },
+    {
+      "id": "(f) hospital: double-tap Dictate — never a second session (≤ 1 prepareSession call, ≤ 1 peer connection)",
+      "pass": true,
+      "detail": "4 s after the double tap the box was idle (Dictate shown); header \"Pre-round notes\"; prepareSession calls 1 (stub); peer connections created 0, open 0; microphone enabled false"
+    },
+    {
+      "id": "(f) hospital: double-tap Dictate — exactly one live session (record-only until Quinn decides whether a double tap may cancel)",
+      "pass": null,
+      "detail": "4 s after the double tap the box was idle (Dictate shown); header \"Pre-round notes\"; prepareSession calls 1 (stub); peer connections created 0, open 0; microphone enabled false; one live session: false"
+    },
+    {
+      "id": "(g) hospital: Stop before the session is ready — no crash, no text, Dictate usable again",
+      "pass": true,
+      "detail": "mic enabled before Stop false; tab alive true; field unchanged true; next take landed true; notices []"
+    },
+    {
+      "id": "(h) hospital: 10 quick Dictate/Stop pairs — tab alive, no orphan RTCPeerConnection, microphone released",
+      "pass": true,
+      "detail": "10 pairs; tab alive true; peer connections created 10, still open 0; mic tracks 10, live 0; field unchanged true"
+    }
+  ],
+  "evidence": [
+    "raw/TC-23-S10.json",
+    "shots/S10-a-hospital-pre-round.png",
+    "shots/S10-a-nursing-home-Pre-Round.png",
+    "shots/S10-b-hospital-pre-round.png",
+    "shots/S10-b-nursing-home-Pre-Round.png",
+    "shots/S10-b-nursing-home-Encounter.png",
+    "shots/S10-c-hospital-pre-round.png",
+    "shots/S10-c-nursing-home-Pre-Round.png",
+    "shots/S10-d-hospital.png",
+    "shots/S10-e-hospital-pre-round.png",
+    "shots/S10-e-nursing-home-Pre-Round.png",
+    "shots/S10-f-hospital.png",
+    "shots/S10-g-hospital.png",
+    "shots/S10-h-hospital.png"
+  ],
+  "pending": [
+    "(a) 'every word after ready is in the box' needs the live engine",
+    "(c) on Hospital Important Points, encounter notes, 'Start bedside recording' and NH Encounter not built in this pass"
+  ],
+  "at": "2026-10-19T20:51:29.163Z",
+  "meta": {
+    "commit": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "aiProvider": {
+      "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "provider": "bedrock",
+      "transcription": "gpt-live",
+      "visionModel": "gemini-2.5-flash",
+      "visionProvider": "vertex"
+    },
+    "mode": "scripted"
+  },
+  "prepareSession": {
+    "requests": 26,
+    "stubbedAtSocket": 26,
+    "realOpenAIMints": 0,
+    "realFailed": 0,
+    "note": "stubbed at the Convex socket: nothing reached OpenAI"
+  }
+}

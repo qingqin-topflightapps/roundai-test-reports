@@ -1,0 +1,26 @@
+{
+  "TC-23/S10": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:51:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW (scripted dictation)",
+    "title": "Live states: 'Listening…' before the microphone is open",
+    "detail": "Local stack 8b4be94a (round-companion-wt-qa), under runs/.local-stack.lock and the AI tripwire ('no model call'); every ai/* action answered at the Convex socket. rb1-tc23-client.spec.ts -g S10 with rb1-harness.ts. 12/13 decided cells pass. Hospital pre-round: the header says 'Listening…' in 5 samples over 113 ms before the microphone is enabled (B09). Nursing Home pre-round: passed this time (on 43c38a4f both modes failed). A first S10 run at 05:28 JST was voided by the tripwire (see notes).",
+    "evidence": [
+      "runs/2026-10-14-local/aicheck-dictation-rb1/raw/TC-23-S10.json"
+    ],
+    "bug": {
+      "id": "B09",
+      "now": "changed"
+    },
+    "scope": "P1",
+    "stated": {
+      "where": "ours: timing / double tap / switching while transcribing",
+      "quote": null,
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

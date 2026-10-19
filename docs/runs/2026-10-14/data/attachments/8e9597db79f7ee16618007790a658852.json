@@ -1,0 +1,26 @@
+{
+  "TC-14/S05": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:49:20Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Save & Extract outcome table on the live model, both modes",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). Dataset rb1-gen-journeys. Both modes: 'Blood cultures still pending' closes 'Follow up blood cultures' (N20); the conditional diet order and 'Monitor her potassium daily' add no task (N22). Passed: BMP and PT closed, wound care and weight stay open, urine culture added once, no task for the retraction or the given metoprolol.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/rb1-gen-journeys/evidence/TC-14-S05.json"
+    ],
+    "bug": {
+      "id": "N20",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "TFA-92592 AC 2, 3, 7, 8; UAT TC-22 ER",
+      "quote": "Conditional orders ... and monitoring-phrased physician orders are extracted as tasks; retractions (\"leave glargine at 20\") are not",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

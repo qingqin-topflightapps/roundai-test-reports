@@ -1,0 +1,280 @@
+{
+  "name": "tc24-s23-s28-desktop",
+  "at": "2026-10-19T18:02:25.338Z",
+  "checks": [
+    {
+      "id": "TC-01/S23 Hospital cards: no truncated / covered / overflow text",
+      "ok": true,
+      "detail": "\"QT\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); \"New today\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); \"Room 4B-12 · 81y\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); \"CHF exacerbation with volume overload\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 card shows name, room and diagnosis (QA TC24 Vis 7YKH Alpha)",
+      "ok": true,
+      "detail": "QT QA TC24 Vis 7YKH Alpha NEW TODAY Room 4B-11 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 card shows a hospital day (B23: not on main)",
+      "ok": false,
+      "detail": "QT QA TC24 Vis 7YKH Alpha NEW TODAY Room 4B-11 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 card shows name, room and diagnosis (QA TC24 Vis 7YKH Bravo)",
+      "ok": true,
+      "detail": "QT QA TC24 Vis 7YKH Bravo NEW TODAY Room 4B-12 · 81y CHF exacerbation with volume overload Not Yet Prepped Follow-up",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 card shows a hospital day (B23: not on main)",
+      "ok": false,
+      "detail": "QT QA TC24 Vis 7YKH Bravo NEW TODAY Room 4B-12 · 81y CHF exacerbation with volume overload Not Yet Prepped Follow-up",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S23 trash icon >= 24×24 CSS px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "28×28",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S23 trash icon >= 44 pt (Apple HIG, phones)",
+      "ok": false,
+      "detail": "28×28",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S23 trash icon not covered (the topmost element at its centre)",
+      "ok": true,
+      "detail": "visible and on top",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S23 trash icon does not overlap the card's open-chart target (A3: it sits inside it)",
+      "ok": false,
+      "detail": "inside the card's tap area: true; nested in the role=button card: true",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S23 tapping the trash does not open the chart",
+      "ok": true,
+      "detail": "http://localhost:6473/rounding → http://localhost:6473/rounding",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S28 the delete confirmation is an in-page dialog (not the browser's native confirm)",
+      "ok": false,
+      "detail": "native confirm(): \"Remove QA TC24 Vis 7YKH Alpha from the rounding list? /  / This will delete all notes, vitals, and encounter data for this patient.\""
+    },
+    {
+      "id": "TC-24/S28 Cancel keeps the patient (list and server)",
+      "ok": true,
+      "detail": "listed: true; server: true",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S28 a 'deleted' message shows after OK (announced as a status / live region)",
+      "ok": false,
+      "detail": "no message on screen within 4 s of OK"
+    },
+    {
+      "id": "TC-24/S28 OK deletes only that patient",
+      "ok": true,
+      "detail": "server row after OK: gone",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 Nursing Home cards: no truncated / covered / overflow text",
+      "ok": true,
+      "detail": "\"Pending\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); \"Follow-up\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 card shows a visit number (B23: not on main)",
+      "ok": false,
+      "detail": "QT QA TC24 Resident 7YKH Alpha Cedar 11 · DOB 1940-02-03 Post-acute rehab after hip fracture Pending Follow-up",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 card shows a visit number (B23: not on main)",
+      "ok": false,
+      "detail": "QT QA TC24 Resident 7YKH Bravo Cedar 12 · DOB 1938-11-20 Deconditioning after sepsis Pending Follow-up",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-24/S23 the Nursing Home card has a delete control (none on main: B24 / Q7)",
+      "ok": false,
+      "detail": "[]",
+      "recordOnly": true
+    },
+    {
+      "id": "TC-01/S23 All Residents cards: no truncated / covered / overflow text",
+      "ok": true,
+      "detail": "\"Cedar 12 · DOB 1938-11-20\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling); \"Deconditioning after sepsis\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "profile": {
+      "name": "desktop",
+      "engine": "chromium 151.0.7922.34",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
+    },
+    "findings.hospital-list.cards": [
+      {
+        "check": "covered",
+        "detail": "\"QT\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "QT"
+      },
+      {
+        "check": "covered",
+        "detail": "\"New today\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "New today"
+      },
+      {
+        "check": "covered",
+        "detail": "\"Room 4B-12 · 81y\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "Room 4B-12 · 81y"
+      },
+      {
+        "check": "covered",
+        "detail": "\"CHF exacerbation with volume overload\" is under div \"Patients Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "CHF exacerbation with volume overload"
+      }
+    ],
+    "card.QA TC24 Vis 7YKH Alpha": "QT QA TC24 Vis 7YKH Alpha NEW TODAY Room 4B-11 · 72y Community-acquired pneumonia Not Yet Prepped Follow-up",
+    "card.QA TC24 Vis 7YKH Bravo": "QT QA TC24 Vis 7YKH Bravo NEW TODAY Room 4B-12 · 81y CHF exacerbation with volume overload Not Yet Prepped Follow-up",
+    "trash": {
+      "box": {
+        "w": 28,
+        "h": 28,
+        "x": 748,
+        "y": 541
+      },
+      "onTop": true,
+      "detail": "visible and on top",
+      "cardBox": {
+        "x": 468,
+        "y": 525,
+        "width": 347,
+        "height": 157.75
+      },
+      "insideCardTapArea": true,
+      "nestedInCardButton": true
+    },
+    "cancel": {
+      "dialogs": [
+        {
+          "type": "confirm",
+          "message": "Remove QA TC24 Vis 7YKH Alpha from the rounding list?\n\nThis will delete all notes, vitals, and encounter data for this patient.",
+          "handled": "dismiss",
+          "at": "2026-10-19T18:02:17.601Z"
+        }
+      ],
+      "urlBefore": "http://localhost:6473/rounding",
+      "afterCancelUrl": "http://localhost:6473/rounding",
+      "stillListed": true,
+      "serverHasPatient": true
+    },
+    "accept": {
+      "dialogs": [
+        {
+          "type": "confirm",
+          "message": "Remove QA TC24 Vis 7YKH Alpha from the rounding list?\n\nThis will delete all notes, vitals, and encounter data for this patient.",
+          "handled": "dismiss",
+          "at": "2026-10-19T18:02:17.601Z"
+        },
+        {
+          "type": "confirm",
+          "message": "Remove QA TC24 Vis 7YKH Alpha from the rounding list?\n\nThis will delete all notes, vitals, and encounter data for this patient.",
+          "handled": "accept",
+          "at": "2026-10-19T18:02:18.934Z"
+        }
+      ],
+      "msAfterOk": 4829,
+      "message": "",
+      "messageLive": null,
+      "serverHasPatient": false,
+      "neighbourListed": true,
+      "axe": "color-contrast(serious,6×: .hover\\:bg-teal-700.bg-teal-600.py-2 | .mb-0\\.5); nested-interactive(serious,1×: .text-left)"
+    },
+    "aria.after-delete": "- text: This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\n- button \"Hospital\"\n- button \"Nursing Home\"\n- paragraph: \"Before you start: a 2-minute baseline survey\"\n- paragraph: How rounding works for you today, so the pilot can measure what changes.\n- button \"Start survey\"\n- button \"Not now\"\n- paragraph: Tuesday, October 20, 2026\n- heading \"Morning Rounds\" [level=1]\n- text: 0/1\n- button \"Handoff\"\n- button \"Inbox\"\n- button \"Open quick dictation\"\n- button \"Scan patient list from photo\"\n- button \"Add patient\"\n- paragraph: 1 patient remaining\n- textbox \"Search patients\":\n  - /placeholder: Search by name, room, MRN, or diagnosis…\n- text: My Patients\n- combobox \"Sort patients\":\n  - 'option \"Sort: Room number\" [selected]'\n  - 'option \"Sort: Name A–Z\"'\n  - 'option \"Sort: Status (to-do first)\"'\n- button \"Dashboard\"\n- button \"Open chart for QA TC24 Vis 7YKH Bravo\":\n  - text: QT QA TC24 Vis 7YKH Bravo New today\n  - paragraph: Room 4B-12 · 81y\n  - button \"Remove QA TC24 Vis 7YKH Bravo from the rounding list\"\n  - paragraph: CHF exacerbation with volume overload\n  - text: Not Yet Prepped Follow-up\n- button \"Add New Patient\"\n- button \"Task Export\"\n- button \"Patients\"\n- button \"Dashboard\"\n- button \"Settings\"",
+    "findings.nh-list.cards": [
+      {
+        "check": "covered",
+        "detail": "\"Pending\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "Pending"
+      },
+      {
+        "check": "covered",
+        "detail": "\"Follow-up\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "Follow-up"
+      }
+    ],
+    "card.QA TC24 Resident 7YKH Alpha": "QT QA TC24 Resident 7YKH Alpha Cedar 11 · DOB 1940-02-03 Post-acute rehab after hip fracture Pending Follow-up",
+    "card.QA TC24 Resident 7YKH Bravo": "QT QA TC24 Resident 7YKH Bravo Cedar 12 · DOB 1938-11-20 Deconditioning after sepsis Pending Follow-up",
+    "nh.controlsInsideCard": [],
+    "findings.nh-all-residents.cards": [
+      {
+        "check": "covered",
+        "detail": "\"Cedar 12 · DOB 1938-11-20\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "Cedar 12 · DOB 1938-11-20"
+      },
+      {
+        "check": "covered",
+        "detail": "\"Deconditioning after sepsis\" is under div \"Residents Handoff Dashboard Settings\" (a fixed/sticky layer — may just need scrolling)",
+        "severity": "low",
+        "target": "Deconditioning after sepsis"
+      }
+    ],
+    "nh.inTodayToggle": {
+      "ok": true,
+      "detail": "visible and on top",
+      "w": 85,
+      "h": 28,
+      "x": 689,
+      "y": 496,
+      "vw": 1280,
+      "vh": 800
+    },
+    "captures": [
+      {
+        "state": "hospital-list",
+        "screenshot": "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-hospital-list.png",
+        "axe": "color-contrast(serious,4×: .shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.cursor-pointer[role=\"button\"] > .mb-2.items-start.justify-between > .gap-2\\.5.flex.items-center > div:nth-child(2) > .flex-wrap.gap-1\\.5.flex > .text-\\[10px\\].bg-teal-500.px-1\\.5 | .shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.cursor-pointer[role=\"button\"] > .justify-between.flex.items-center > .flex-wrap.gap-1\\.5.flex > .px-2\\.5.text-slate-500.py-0\\.5); nested-interactive(serious,2×: .shadow-sm.border-l-4.border-l-slate-200:nth-child(3) > .text-left.cursor-pointer[role=\"button\"] | .shadow-sm.border-l-4.border-l-slate-200:nth-child(4) > .text-left.cursor-pointer[role=\"button\"])",
+        "findings": 4
+      },
+      {
+        "state": "after-delete",
+        "screenshot": "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-after-delete.png",
+        "axe": "color-contrast(serious,6×: .hover\\:bg-teal-700.bg-teal-600.py-2 | .mb-0\\.5); nested-interactive(serious,1×: .text-left)",
+        "findings": 1
+      },
+      {
+        "state": "nh-list",
+        "screenshot": "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-list.png",
+        "axe": "none",
+        "findings": 2
+      },
+      {
+        "state": "nh-all-residents",
+        "screenshot": "runs/2026-10-14-local/newspec-c/evidence/tc24-s23-s28-desktop-nh-all-residents.png",
+        "axe": "nested-interactive(serious,2×: .overflow-hidden.border-l-4.border-l-teal-400:nth-child(2) > .cursor-pointer.text-left[role=\"button\"] | .overflow-hidden.border-l-4.border-l-teal-400:nth-child(3) > .cursor-pointer.text-left[role=\"button\"])",
+        "findings": 2
+      }
+    ],
+    "pageTextAfterDelete": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nHospital\nNursing Home\n\nBefore you start: a 2-minute baseline survey\n\nHow rounding works for you today, so the pilot",
+    "aiCalls": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "rb1-tc22-s02-b43-nh-preround",
+  "at": "2026-10-19T20:21:04.048Z",
+  "checks": [
+    {
+      "id": "premise: no tasks before the pre-round save",
+      "ok": true,
+      "detail": "0 tasks"
+    },
+    {
+      "id": "U1/U8: '3 pending tasks' after the Nursing Home pre-round save (not 'No tasks yet.')",
+      "ok": false,
+      "detail": "header says 0; 'No tasks yet.' shown: true"
+    },
+    {
+      "id": "U1/U8: BMP, PT and weight each stored once",
+      "ok": false,
+      "detail": "[]"
+    },
+    {
+      "id": "Q3 evidence: the Nursing Home pre-round save makes a task request",
+      "ok": false,
+      "detail": "model calls after Save Note: [\"ai/parsing:parsePreRoundNotes\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "no model call left the page unanswered by the script",
+      "ok": true,
+      "detail": "[]"
+    }
+  ],
+  "data": {
+    "afterPreRound": {
+      "stored": [],
+      "rows": [],
+      "modelCalls": [
+        "ai/parsing:parsePreRoundNotes"
+      ]
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "ho-s27",
+  "at": "2026-10-19T19:49:14.849Z",
+  "checks": [
+    {
+      "id": "record (Q15): Copy Text before the list has loaded is disabled",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    },
+    {
+      "id": "while a card is 'Generating', Copy Text and Send are disabled (no stand-ins copied)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "the copied sheet is plain text (no markup)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "no frame sent during the copy carries a patient name or task text",
+      "ok": true,
+      "detail": "{\"type\":\"Mutation\",\"requestId\":7,\"udfPath\":\"access:logExport\",\"args\":[{\"context\":\"rounding.handoff\",\"count\":2,\"destination\":\"clipboard\",\"resourceType\":\"rounding"
+    },
+    {
+      "id": "an export row is written for the copy, destination clipboard, with a count",
+      "ok": true,
+      "detail": "[{\"context\":\"rounding.handoff\",\"count\":2,\"destination\":\"clipboard\",\"scope\":\"export\"}]"
+    },
+    {
+      "id": "no export row holds a patient name, task text or the copied text",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "record (Q15): Copy Text and Copy to EMR both go through copyTextToClipboard (src/lib/clipboard.ts); confirmations '✓ Copied!' vs the note's",
+      "ok": true,
+      "detail": "Copy to EMR not exercised locally: a stored note would queue a billing job",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "exportRows": [
+      {
+        "action": "PHI_READ",
+        "resource_type": "roundingPatients",
+        "metadata": {
+          "context": "rounding.handoff",
+          "count": 2,
+          "destination": "clipboard",
+          "scope": "export"
+        }
+      }
+    ],
+    "aiCalls": []
+  }
+}

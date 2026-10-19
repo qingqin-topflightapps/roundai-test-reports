@@ -1,0 +1,18 @@
+{
+  "TC-07/S17": {
+    "status": "failed",
+    "ranAt": "2026-10-19T19:34:34Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "local Playwright spec, fresh @roundai.test physician(s), no model call (tripwire clean) (newspec-c/te-tc07-send.spec.ts, run twice), sender + recipient + outsider accounts",
+    "title": "Send cannot leak: no address or email in the flow, never to yourself, one delivery per tap, no outsider access",
+    "detail": "Pass: no mailto / SMS / share, no list of accounts (an exact-email box is the stated design, TFA-92585 AC 13 — the matrix's 'no email field' is superseded); own email refused ('That's your own email…'); someone@example.com refused ('No Round Companion account with this email'); outsider opening /handoffs/<id> sees 'This handoff isn’t available to you.' and nothing of the list, API read null, no inbox row; recipient cannot read or change the sender's charts through the API. FAIL (2/2 runs): Hospital — two taps on the final Send within the same moment (two click events back to back) create TWO records on each side (sender Sent +2, recipient inbox 2). Nursing Home with a Playwright dblclick (two clicks a few ms apart): 1 record. The button is disabled only after React re-renders with sending=true, so a second tap before that sends again.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s17.json",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s17-rounding-outsider.png",
+      "runs/2026-10-14-local/newspec-c/evidence/te-tc07-s17-snf-outsider.png"
+    ],
+    "stated": "P1 (ours: double tap)"
+  }
+}

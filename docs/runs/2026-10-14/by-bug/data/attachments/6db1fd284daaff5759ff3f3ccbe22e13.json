@@ -1,0 +1,15 @@
+{
+  "TC-17/S23": {
+    "status": "record-only",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Retention windows after completion (seeded-timestamp probe, no aging helper)",
+    "detail": "pr-tc17-s23-retention.spec.ts, record only (windows belong to TFA-94699 / bug B19). Done task 15 h kept, 17 h gone; note 17 h shown and Copy to EMR copies it, 19 h gone and no Copy to EMR; held med 35 h kept; kept open task 35 h kept; open task 37 h after processing STILL shown (no Hospital open-task 36 h rule in lifecycle.ts — B19). The 37 h held-med cell is invalid (the seeded note stamp 2 h ago restarts a held row's clock by design). NH last-two-visits rule not probed (B19: code keeps 3).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/pr-tc17-s23.json"
+    ]
+  }
+}

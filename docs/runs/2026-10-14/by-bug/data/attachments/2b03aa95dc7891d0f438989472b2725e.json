@@ -1,0 +1,27 @@
+{
+  "TC-14/S01": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:48:40Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "PW",
+    "title": "Hospital journey: pre-round, Begin Encounter, Save & Extract, Generate, Post-Round (live)",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). Dataset rb1-gen-journeys (copy of gen-journeys). The note's plan reads 'Restart metoprolol tartrate 25 mg PO BID; blood pressure well controlled at 128/76' for 'Restarted metoprolol this morning' (N19). 'Urinalysis came back negative' left 'Follow up urinalysis' open (N20). Passed: Begin Encounter, one chest X-ray task, metoprolol off Held with today's change, note keeps every dictated fact, no stock exam phrase, Generate leaves tasks unchanged.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/rb1-gen-journeys/evidence/TC-14-S01.json",
+      "runs/2026-10-14-dev/newspec-c/evidence/rb1/rb1-gen-journeys/evidence/TC-14-S01-s01-cp2-note.png"
+    ],
+    "bug": {
+      "id": "N19",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-14 steps 1-4 + ER; TFA-92592 AC 2, 7, 8, 11",
+      "quote": "Save & Extract closes matching open tasks and records medication events. Generate does not run task extraction again",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

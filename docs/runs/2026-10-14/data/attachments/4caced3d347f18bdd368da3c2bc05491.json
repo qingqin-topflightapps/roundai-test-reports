@@ -1,0 +1,369 @@
+{
+  "ref": "TC-14/S02",
+  "title": "TC-14/S02 Nursing Home journey: Encounter tab, Save & Extract, Generate, Post-Round (live models)",
+  "dataset": "rb1-gen-journeys",
+  "target": "dev",
+  "at": "2026-10-19T18:49:07.946Z",
+  "cells": [
+    {
+      "name": "cp1: Save & Extract message and rows",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "message": "✓ Tasks updated — 1 added",
+        "tasks": [
+          {
+            "id": "1700000000201",
+            "text": "Recheck INR",
+            "done": false
+          },
+          {
+            "id": "1700000000202",
+            "text": "PT evaluation",
+            "done": false
+          },
+          {
+            "id": "1792435724664",
+            "text": "Ask pharmacy to review the warfarin dose",
+            "done": false
+          }
+        ],
+        "metoprolol": {
+          "changeDate": "Tue Oct 06 2026",
+          "changeType": "held",
+          "changedNote": "soft BP",
+          "id": "m-meto",
+          "name": "Metoprolol tartrate 25 mg PO BID",
+          "status": "held",
+          "updatedAt": "2026-10-05T18:47:46.052Z"
+        },
+        "calls": [
+          {
+            "fn": "parsing.extractTasks",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 1910,
+            "providerMs": 1908,
+            "appMs": 2,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "U2: 'Recheck INR' closed, once",
+      "kind": "judged",
+      "ok": false,
+      "detail": [
+        {
+          "id": "1700000000201",
+          "text": "Recheck INR",
+          "done": false
+        },
+        {
+          "id": "1700000000202",
+          "text": "PT evaluation",
+          "done": false
+        },
+        {
+          "id": "1792435724664",
+          "text": "Ask pharmacy to review the warfarin dose",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "U2: 'PT evaluation' left open",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000201",
+          "text": "Recheck INR",
+          "done": false
+        },
+        {
+          "id": "1700000000202",
+          "text": "PT evaluation",
+          "done": false
+        },
+        {
+          "id": "1792435724664",
+          "text": "Ask pharmacy to review the warfarin dose",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "U2: one pharmacy task added",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        {
+          "id": "1700000000201",
+          "text": "Recheck INR",
+          "done": false
+        },
+        {
+          "id": "1700000000202",
+          "text": "PT evaluation",
+          "done": false
+        },
+        {
+          "id": "1792435724664",
+          "text": "Ask pharmacy to review the warfarin dose",
+          "done": false
+        }
+      ]
+    },
+    {
+      "name": "Q13: metoprolol after the Nursing Home Save & Extract (tasks only on main)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "changeDate": "Tue Oct 06 2026",
+        "changeType": "held",
+        "changedNote": "soft BP",
+        "id": "m-meto",
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "held",
+        "updatedAt": "2026-10-05T18:47:46.052Z"
+      },
+      "ref": "Q13"
+    },
+    {
+      "name": "Q3: a dysuria task",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "dysuriaTask": 0
+      },
+      "ref": "Q3"
+    },
+    {
+      "name": "U10: Generate opened Post-Round with the AI-Generated Note",
+      "kind": "judged",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cp2: the note and the calls",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "note": "Interval Changes Since Last Visit\n\nINR therapeutic at 2.4. Metoprolol restarted this morning after being held for low blood pressure.\n\nCurrent Vitals and Weight Trend\n\nBlood pressure 124/72 mmHg. Vital signs: not dictated today for heart rate, temperature, respiratory rate, oxygen saturation, or weight.\n\nFunctional Status Update\n\nResident ambulated 100 feet with walker.\n\nActive Medical Problems\n\n1. Anticoagulation — INR 2.4, therapeutic on warfarin. Metoprolol restarted this morning; blood pressure 124/72 mmHg.\n\n2. Fall recovery — resident ambulating with walker, 100 feet tolerated.\n\nMedication Changes\n\nMetoprolol tartrate 25 mg PO BID — restarted this morning.\n\nAssessment and Plan\n\nResident is a rehabilitation patient recovering from a fall, now ambulating with assistive device. INR is therapeutic; metoprolol has been restarted given adequate blood pressure control on examination.\n\n1. Continue warfarin; ask pharmacy to review warfarin dose.\n\n2. Continue metoprolol tartrate 25 mg PO BID.\n\n3. Monitor for dysuria at next visit.\n\n4. Continue ambulation and physical therapy as tolerated.",
+        "calls": [
+          {
+            "fn": "notes.generateNote",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 8580,
+            "providerMs": 8092,
+            "appMs": 488,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          },
+          {
+            "fn": "billing.suggestBilling",
+            "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            "ok": true,
+            "durationMs": 3360,
+            "providerMs": 3299,
+            "appMs": 61,
+            "parseStatus": null,
+            "fellBackFrom": null,
+            "error": null,
+            "over30s": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "cp2: the note keeps 'metoprolol' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps '/\\b2\\.4\\b/' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps '/124\\s*(?:\\/|over)\\s*72/' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps '/100\\s*(?:feet|foot|ft)\\b/' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: the note keeps 'warfarin' (T4: no dictated fact disappears)",
+      "kind": "judged",
+      "ok": true,
+      "detail": "present"
+    },
+    {
+      "name": "cp2: mustNotInclude restart metoprolol",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude resume metoprolol",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude reports dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude complains of dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude positive for dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude denies dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude no dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2: mustNotInclude without dysuria",
+      "kind": "judged",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "name": "cp2 (U6): no placeholder token",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "cp2 (U5): no stock normal exam phrase",
+      "kind": "judged",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "name": "cp2 (U9): no signature or date line, no 'yesterday'",
+      "kind": "judged",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "U3: Generate leaves the tasks as Save & Extract left them",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "before": [
+          {
+            "id": "1700000000201",
+            "text": "Recheck INR",
+            "done": false
+          },
+          {
+            "id": "1700000000202",
+            "text": "PT evaluation",
+            "done": false
+          },
+          {
+            "id": "1792435724664",
+            "text": "Ask pharmacy to review the warfarin dose",
+            "done": false
+          }
+        ],
+        "after": [
+          {
+            "id": "1700000000201",
+            "text": "Recheck INR",
+            "done": false
+          },
+          {
+            "id": "1700000000202",
+            "text": "PT evaluation",
+            "done": false
+          },
+          {
+            "id": "1792435724664",
+            "text": "Ask pharmacy to review the warfarin dose",
+            "done": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "U8: after the visit metoprolol is no longer Held (recorded after Generate in Nursing Home, Q13)",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "changeDate": "Oct 19",
+        "changeType": "resumed",
+        "changed": true,
+        "changedNote": "Restarted this morning",
+        "id": "m-meto",
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "updatedAt": "2026-10-19T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "metoprolol changeDate after Generate",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "meto": {
+          "changeDate": "Oct 19",
+          "changeType": "resumed",
+          "changed": true,
+          "changedNote": "Restarted this morning",
+          "id": "m-meto",
+          "name": "Metoprolol tartrate 25 mg PO BID",
+          "status": "active",
+          "updatedAt": "2026-10-19T12:00:00.000Z"
+        },
+        "today": [
+          "Oct 20",
+          "Tue Oct 20 2026"
+        ]
+      }
+    }
+  ],
+  "shots": [
+    "evidence/TC-14-S02-s02-cp1.png",
+    "evidence/TC-14-S02-s02-cp2-note.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-14-S02-s02-cp1.png": 0,
+    "evidence/TC-14-S02-s02-cp2-note.png": 0
+  },
+  "error": "Error: TC-14/S02: judged cells that failed"
+}

@@ -1,0 +1,19 @@
+{
+  "EFS/S28": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Kept drafts vs the device clock (probes efs-s28-draft-clock.spec.ts)",
+    "bug": "B18",
+    "bugNow": "still",
+    "stated": "UAT 3.8 (server time) / TFA-94745 draft restore",
+    "detail": "(a) clock 2 h behind: the tail written after the session ended is restored although it predates the server's save; (b) clock 2 h ahead: the stale tail overwrites/joins the newer text from the other session; (c) 19 h / 37 h (Hospital) and 13 h (Nursing Home) old tails are silently put into today's Encounter box. Same as before.",
+    "evidence": [
+      "runs/2026-10-14-local/probes/evidence/efs-s28",
+      "runs/2026-10-14-local/probes/rb3-efs-s28.json"
+    ]
+  }
+}

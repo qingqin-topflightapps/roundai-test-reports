@@ -1,0 +1,17 @@
+{
+  "TC-16/S26": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:17:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "local Playwright spec newspec-c/tc16-day-boundaries.spec.ts -g S26",
+    "title": "Hospital next-day activity before 18 h: yesterday's typed notes are neither merged into today's row nor lost",
+    "detail": "D11 re-check on 8b4be94a: STILL (decision pending). The day-1 note is never lost and both left the working box, but day 1 and day 2 are archived as one row dated by the last edit ('Oct 18 · Encounter notes', 1 entry); the matrix reports a merged row as a Fail with Q13 attached. Scope P1 (ours).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/rb2-logs/tc16.log",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s26.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc16-s26-after-rotation.png"
+    ]
+  }
+}

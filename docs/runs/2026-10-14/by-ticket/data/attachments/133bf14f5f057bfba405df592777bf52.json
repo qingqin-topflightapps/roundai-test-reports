@@ -1,0 +1,19 @@
+{
+  "TC-22/S12": {
+    "status": "passed",
+    "ranAt": "2026-10-19T19:59:29Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "te",
+    "method": "DEV agent unit T22-S12 (run-plan-dev-2026-10-15-ext.json, permission generate), live Generate (server note job); rows deleted after",
+    "title": "Generate after Save & Extract runs no second task extraction and leaves the stored tasks exactly as they were (PR #50)",
+    "detail": "Hospital and Nursing Home: tasks after Generate Note & Finish identical to before (2 pending, the same 4 tasks in the same states); no parsing.extractTasks call in the run window; oracle Pass on all 4 checkpoints + backend. Recorded: NH Post-Round task toggles have no accessible name (A1).",
+    "evidence": [
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s12/verdict.json",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s12/notes.md",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s12/s12-h-b.png",
+      "runs/2026-10-14-dev/generateddev/20261014dev/t22s12/s12-n-d.png"
+    ],
+    "stated": "P0"
+  }
+}

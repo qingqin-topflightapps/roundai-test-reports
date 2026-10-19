@@ -1,0 +1,19 @@
+{
+  "TC-04/S16": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "DEV-UNIT U30",
+    "title": "Quick Dictation vs a stale chart tab",
+    "bug": "B10",
+    "bugNow": "still",
+    "stated": "TFA-92582 (text placed by Quick Dictation stays on the chart)",
+    "detail": "Dev 8b4be94a, unit U30: the stale tab's reload/autosave erased 'Bed 415, afebrile since 4 am.' and its Save & Extract erased 'Bed 415. Recheck BMP in the morning.' (screen and backend encounterNotes). Code: the Encounter tab still saves the whole field from its own copy (useEncounterCapture.ts:131-147), the server patches with no version check (rounding.ts:308).",
+    "evidence": [
+      "runs/2026-10-20-rb3-dev/units/U30.verdict.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

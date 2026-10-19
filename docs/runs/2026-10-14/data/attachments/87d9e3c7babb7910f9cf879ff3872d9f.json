@@ -1,0 +1,61 @@
+{
+  "name": "tc10-s28-pre-prn-control",
+  "at": "2026-10-15T08:45:20.619Z",
+  "checks": [
+    {
+      "id": "variant A: rows written for the 7 returned drugs",
+      "ok": false,
+      "detail": "0 row(s): []",
+      "recordOnly": true
+    },
+    {
+      "id": "variant B: rows written for the 7 returned drugs",
+      "ok": true,
+      "detail": "7 row(s): [\"Ceftriaxone 2 g IV daily\",\"Azithromycin 500 mg daily\",\"Enoxaparin 40 mg subcutaneous daily\",\"Pantoprazole 40 mg daily\",\"Metoprolol tartrate 25 mg twice daily\",\"Atorvastatin 40 mg nightly\",\"Acetaminophen 650 mg every 6 hours as needed\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "variant C: rows written for the 7 returned drugs",
+      "ok": false,
+      "detail": "6 row(s): [\"Ceftriaxone 2 g IV daily\",\"Azithromycin 500 mg daily\",\"Enoxaparin 40 mg subcutaneous daily\",\"Pantoprazole 40 mg daily\",\"Metoprolol tartrate 25 mg twice daily\",\"Atorvastatin 40 mg nightly\"]",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: no unscripted AI call (nothing reached a model)",
+      "ok": true,
+      "detail": "none"
+    }
+  ],
+  "data": {
+    "A": {
+      "text": "Pre-round review for today, written from the morning list before rounds. Hospital day 5 for community-acquired pneumonia. Medications: ceftriaxone 2 g IV daily, azithromycin 500 mg daily, enoxaparin 40 mg subcutaneous daily, pantoprazole 40 mg daily, metoprolol tartrate 25 mg twice daily, atorvastatin 40 mg nightly, and acetaminophen 650 mg every 6 hours as needed. Plan: continue current antibiotics.",
+      "rows": [],
+      "panel": "MEDICATIONS | 0 | Edit |  | No medications recorded yet."
+    },
+    "B": {
+      "text": "Pre-round review for today, written from the morning list before rounds. Hospital day 5 for community-acquired pneumonia. Medications: ceftriaxone 2 g IV daily, azithromycin 500 mg daily, enoxaparin 40 mg subcutaneous daily, pantoprazole 40 mg daily, metoprolol tartrate 25 mg twice daily, atorvastatin 40 mg nightly, and acetaminophen 650 mg every 6 hours. Plan: continue current antibiotics.",
+      "rows": [
+        "Ceftriaxone 2 g IV daily",
+        "Azithromycin 500 mg daily",
+        "Enoxaparin 40 mg subcutaneous daily",
+        "Pantoprazole 40 mg daily",
+        "Metoprolol tartrate 25 mg twice daily",
+        "Atorvastatin 40 mg nightly",
+        "Acetaminophen 650 mg every 6 hours as needed"
+      ],
+      "panel": "MEDICATIONS | 7 | Edit | active |  | Ceftriaxone 2 g IV daily |  | active |  | Azithromycin 500 mg daily |  | active |  | Enoxaparin 40 mg subcutaneous daily |  | active |  | Pantoprazole 40 mg daily |  | active |  | Metoprolol tartrate 25 mg twice daily |  | active |  | Atorvastatin 40 mg nightly |  | active |  | Acetaminophen 650 mg every 6 hours as needed"
+    },
+    "C": {
+      "text": "Pre-round review for today, written from the morning list before rounds. Hospital day 5 for community-acquired pneumonia. Medications: ceftriaxone 2 g IV daily, azithromycin 500 mg daily, enoxaparin 40 mg subcutaneous daily, pantoprazole 40 mg daily, metoprolol tartrate 25 mg twice daily, atorvastatin 40 mg nightly. Acetaminophen 650 mg every 6 hours as needed. Plan: continue current antibiotics.",
+      "rows": [
+        "Ceftriaxone 2 g IV daily",
+        "Azithromycin 500 mg daily",
+        "Enoxaparin 40 mg subcutaneous daily",
+        "Pantoprazole 40 mg daily",
+        "Metoprolol tartrate 25 mg twice daily",
+        "Atorvastatin 40 mg nightly"
+      ],
+      "panel": "MEDICATIONS | 6 | Edit | active |  | Ceftriaxone 2 g IV daily |  | active |  | Azithromycin 500 mg daily |  | active |  | Enoxaparin 40 mg subcutaneous daily |  | active |  | Pantoprazole 40 mg daily |  | active |  | Metoprolol tartrate 25 mg twice daily |  | active |  | Atorvastatin 40 mg nightly"
+    }
+  }
+}

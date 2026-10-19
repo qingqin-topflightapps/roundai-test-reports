@@ -1,0 +1,18 @@
+{
+  "TC-24/S17": {
+    "status": "failed",
+    "ranAt": "2026-10-19T18:00:57Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb2",
+    "method": "local Playwright spec newspec-c/an2-tc24-s17-double-delete.spec.ts (Hospital Encounter tab, five fixture tasks)",
+    "title": "Delete at the edges: double tap, two tasks with the same text, a delete while a note is generating, and the last patient",
+    "detail": "N2 re-check on 8b4be94a: STILL. A double tap on 'Delete task: Recheck BMP in AM' wrote two task_deleted rows and deleted two tasks: the second tap hit 'PT eval before discharge', which had slid into the tapped spot; no confirmation (0 dialogs), no undo. Left: Call daughter re: goals of care, Repeat CBC, Repeat CBC; a single delete of the second 'Repeat CBC' then wrote one row. The spec's cells are record-only (the run 'passed'), the finding is unchanged. Only the task cell (1) ran; the case's stated part (cells 4-5: last patient asks once, empty state) is not in this spec. The double tap is our extension (scope P1 part), not stated; data is lost, so it met Quinn's bar on 10-14. Tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s17-an2.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s17-an2-after-double-tap.png",
+      "runs/2026-10-14-local/newspec-c/evidence/tc24-s17-an2-after-single-delete.png",
+      "runs/2026-10-14-local/newspec-c/rb2-logs/s17.log"
+    ]
+  }
+}

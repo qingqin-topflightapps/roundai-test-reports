@@ -1,0 +1,15 @@
+{
+  "TC-08/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local",
+    "title": "Copy at its edges; export rows and frames carry no handoff text",
+    "detail": "Local 8b4be94a, fresh @roundai.test accounts; no model: handoff/persistence:ensure answered at the Convex socket (ts 0, nothing scheduled), every ai/* refused, charts carry stored stand-in summaries re-inserted with `convex import --append` (ho-support.ts); tripwire 'no model call' on every run. Copy Text disabled before the list loads and while a card is 'Generating' (no stand-ins can be copied); after: plain text (no markup); the only frame during the copy is access:logExport {context, count 2, destination clipboard} with no name/task text; export row metadata {context, count, destination, scope} only. Q15 recorded: Copy to EMR not exercised locally (a stored note queues a billing job); both use copyTextToClipboard.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s27.json"
+    ]
+  }
+}

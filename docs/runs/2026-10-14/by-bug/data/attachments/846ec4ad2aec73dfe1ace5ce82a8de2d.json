@@ -1,0 +1,110 @@
+{
+  "name": "pr-tc17-s09",
+  "at": "2026-10-19T20:02:35.630Z",
+  "checks": [
+    {
+      "id": "cp1 R1 Post-Round has the Hospital structure: Ask, note/tasks/meds toggles, Copy to EMR, Tomorrow's Pre-Round Summary, a complete button",
+      "ok": true,
+      "detail": "{\"ask\":true,\"toggles\":true,\"copy\":true,\"tomorrow\":true,\"completeText\":\"Mark Visit Complete\"}"
+    },
+    {
+      "id": "cp1 the Nursing Home complete button says 'Mark Encounter Complete' (TC-17 wording; Q3, recorded)",
+      "ok": false,
+      "detail": "'Mark Visit Complete'",
+      "recordOnly": true
+    },
+    {
+      "id": "cp1 the note view shows the note only (no task or medication text)",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S09 Resident R1\n\nQA-BVGO · Cedar BV\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nAI-Generated Note\n\n5:02 AM · Oct"
+    },
+    {
+      "id": "cp2 R1 meds toggle: the three tracker rows, Lisinopril 'Held · Oct 12' with 'SBP 96', no note or task text",
+      "ok": true,
+      "detail": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA PR-S09 Resident R1\n\nQA-BVGO · Cedar BV\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\nMEDICATION TRACKER\n\nAcetaminophen 650 mg PO q6h\n\nactive\n\nLisinopril 10 mg PO daily\n\nHeld · Oct 12\n\n⚡ SBP 96\n\nheld\n\nSenna 8.6 mg PO ni"
+    },
+    {
+      "id": "cp3 R1 prompt lists QA-N1 and QA-N2, not the done QA-N3, with the three choices",
+      "ok": true,
+      "detail": "Pending Tasks 2 tasks still pending QA-N1 family meeting Friday QA-N2 weekly weight What would you like to do with these pending tasks? Delete Pending Tasks & Complete Keep Tasks & Mark Complete Cancel — go back"
+    },
+    {
+      "id": "cp4 R1 Cancel completes nothing (database: status note-ready, two open tasks)",
+      "ok": true,
+      "detail": "note-ready; QA-N1 family meeting Friday | QA-N2 weekly weight | QA-N3 PT evaluation [done]"
+    },
+    {
+      "id": "cp5 R1 after Delete: complete, only QA-N3 left (database and screen)",
+      "ok": true,
+      "detail": "complete; QA-N3 PT evaluation [done]"
+    },
+    {
+      "id": "cp6 R2 untouched by R1's delete: QA-R2 open, complete button present",
+      "ok": true,
+      "detail": "note-ready; QA-R2 swallow eval"
+    },
+    {
+      "id": "R2 prompt lists QA-R2 only",
+      "ok": true,
+      "detail": "Pending Tasks 1 task still pending QA-R2 swallow eval What would you like to do with these pending tasks? Delete Pending Tasks & Complete Keep Tasks & Mark Complete Cancel — go back"
+    },
+    {
+      "id": "cp7 R2 after Keep + reload: complete, QA-R2 still open",
+      "ok": true,
+      "detail": "complete; QA-R2 swallow eval"
+    },
+    {
+      "id": "cp8 Hospital H: the same-text task is still open and H still has Mark Encounter Complete",
+      "ok": true,
+      "detail": "note-ready; QA-N1 family meeting Friday"
+    },
+    {
+      "id": "guard: no model action reached the server",
+      "ok": true,
+      "detail": "28 socket calls"
+    }
+  ],
+  "data": {
+    "r1Structure": {
+      "ask": true,
+      "toggles": true,
+      "copy": true,
+      "tomorrow": true,
+      "completeText": "Mark Visit Complete"
+    },
+    "r1Prompt": "Pending Tasks 2 tasks still pending QA-N1 family meeting Friday QA-N2 weekly weight What would you like to do with these pending tasks? Delete Pending Tasks & Complete Keep Tasks & Mark Complete Cancel — go back",
+    "r1AfterDelete": [
+      "QA-N3 PT evaluation [done]"
+    ],
+    "socket": [
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation settings:update forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation snf:completeVisit forwarded",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation snf:completeVisit forwarded",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation settings:update forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "TC-17/S19": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Forced note failure on charts with no note (rb3-tc17-s19-note-fail.spec.ts)",
+    "bug": "B27",
+    "bugNow": "still",
+    "stated": "TFA-94745 state 4 (Post-Round explains, never spins forever)",
+    "detail": "Failure forced at the request on 8b4be94a (noteJobs:request refused at the socket; the server job's own failed state cannot be reached without a live model or AI_STUBS=1). Still B27: Hospital Post-Round shows the disabled 'Finalizing Encounter Data…' spinner 10 s after the failure (chart status 'seen'; PostRoundTab shows it whenever status != note-ready). Passes: 'No note generated yet.', no note, nothing to copy, dictation kept after reload (both contexts); Nursing Home Encounter shows 'The visit dictation is saved, but the note couldn’t be requested… tap Generate Note & Finish to retry.' (the spec's text filter missed the new wording: checked on the screenshot).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-tc17-s19.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-tc17-s19-h-failed-post.png",
+      "runs/2026-10-14-local/newspec-c/evidence/rb3-tc17-s19-n-failed-enc.png"
+    ]
+  }
+}

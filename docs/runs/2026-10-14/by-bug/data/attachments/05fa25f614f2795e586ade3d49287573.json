@@ -1,0 +1,72 @@
+{
+  "ref": "TC-01/S05",
+  "title": "TC-01/S05 Hospital day: day source × entry date (decision table)",
+  "dataset": "identity",
+  "target": "local",
+  "at": "2026-10-19T18:23:45.248Z",
+  "cells": [
+    {
+      "name": "h3: Day 1 (admit date today, manual add)",
+      "kind": "judged",
+      "ok": false,
+      "detail": "no day on the card"
+    },
+    {
+      "name": "h3: not 'Day 0' (Q2)",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "h1: Day 3 (admit date 2 d ago)",
+      "kind": "judged",
+      "ok": false,
+      "detail": "no day on the card"
+    },
+    {
+      "name": "h2: Day 6 (admit date 5 d ago, stale stored Day 1)",
+      "kind": "judged",
+      "ok": false,
+      "detail": "no day on the card"
+    },
+    {
+      "name": "h4: Day 3 (Day 1 entered 2 d ago, no admit date (Q11))",
+      "kind": "judged",
+      "ok": false,
+      "detail": "no day on the card"
+    },
+    {
+      "name": "h7 shows the same day as h3 (same as h3 (census-scan stored 1))",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "h7": null,
+        "h3": null
+      }
+    },
+    {
+      "name": "h5: admit date and entered day disagree (Q11)",
+      "kind": "record",
+      "ok": null,
+      "detail": "no day on the card",
+      "ref": "Q11"
+    },
+    {
+      "name": "h6: neither (Q2)",
+      "kind": "record",
+      "ok": null,
+      "detail": "no day on the card",
+      "ref": "Q2"
+    },
+    {
+      "name": "h6: no 'undefined' / 'NaN' / 'null'",
+      "kind": "judged",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "shots": [
+    "evidence/TC-01-S05-hosp.png"
+  ],
+  "error": "Error: TC-01/S05: judged cells that failed"
+}

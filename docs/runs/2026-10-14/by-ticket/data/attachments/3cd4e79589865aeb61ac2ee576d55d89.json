@@ -1,0 +1,673 @@
+{
+  "name": "pr-tc17-s21-dev",
+  "at": "2026-10-19T20:11:16.540Z",
+  "build": {
+    "sha": "8b4be94a061a1cd5baf60e2ffa3059523e03cdb7",
+    "workflow": "Deploy Convex",
+    "createdAt": "2026-10-19T17:04:37Z",
+    "branch": "main",
+    "event": "push",
+    "source": "gh run list --workflow deploy.yml: newest successful Deploy Convex run to development"
+  },
+  "checks": [
+    {
+      "id": "h-soap: Copy A&P is offered and copies (AC 4)",
+      "ok": true,
+      "detail": "button enabled; not-found false"
+    },
+    {
+      "id": "h-soap: the copy starts at the Assessment / Impression heading",
+      "ok": true,
+      "detail": "Assessment"
+    },
+    {
+      "id": "h-soap: the copy is a part of the note as shown (nothing added)",
+      "ok": true,
+      "detail": "Assessment\n\nPatient is a 68-year-old male with a history of systolic heart failure who presented with acute decompensation. He has improved with diuretic therap"
+    },
+    {
+      "id": "h-soap: the copy holds the plan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "h-soap: nothing above the Assessment heading is copied (no subjective / HPI / exam text)",
+      "ok": true,
+      "detail": "Assessment\n\nPatient is a 68-year-old male with a history of systolic heart failure who presented with acute decompensation. He has improved with diuretic therapy, now reporting decreased dyspnea and a"
+    },
+    {
+      "id": "h-soap: the copy runs from the Assessment heading to the end of the note's A&P part (heading-based reading of AC 4)",
+      "ok": true,
+      "detail": "note after heading 853 chars, copy 853 chars",
+      "record": true
+    },
+    {
+      "id": "h-hp: Copy A&P is offered and copies (AC 4)",
+      "ok": true,
+      "detail": "button enabled; not-found false"
+    },
+    {
+      "id": "h-hp: the copy starts at the Assessment / Impression heading",
+      "ok": true,
+      "detail": "Assessment"
+    },
+    {
+      "id": "h-hp: the copy is a part of the note as shown (nothing added)",
+      "ok": true,
+      "detail": "Assessment\n\nPatient is a 68-year-old man with a history of systolic heart failure who presented with acute exacerbation of congestive heart failure. He is showi"
+    },
+    {
+      "id": "h-hp: the copy holds the plan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "h-hp: nothing above the Assessment heading is copied (no subjective / HPI / exam text)",
+      "ok": true,
+      "detail": "Assessment\n\nPatient is a 68-year-old man with a history of systolic heart failure who presented with acute exacerbation of congestive heart failure. He is showing clinical improvement with diuresis, e"
+    },
+    {
+      "id": "h-hp: the copy runs from the Assessment heading to the end of the note's A&P part (heading-based reading of AC 4)",
+      "ok": true,
+      "detail": "note after heading 919 chars, copy 919 chars",
+      "record": true
+    },
+    {
+      "id": "h-consult: Copy A&P is offered and copies (AC 4)",
+      "ok": true,
+      "detail": "button enabled; not-found false"
+    },
+    {
+      "id": "h-consult: the copy starts at the Assessment / Impression heading",
+      "ok": true,
+      "detail": "Assessment"
+    },
+    {
+      "id": "h-consult: the copy is a part of the note as shown (nothing added)",
+      "ok": true,
+      "detail": "Assessment\n\nPatient is a 68-year-old man with acute on chronic systolic heart failure who presented with exacerbation. He is improving with diuretic therapy. To"
+    },
+    {
+      "id": "h-consult: the copy holds the plan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "h-consult: nothing above the Assessment heading is copied (no subjective / HPI / exam text)",
+      "ok": true,
+      "detail": "Assessment\n\nPatient is a 68-year-old man with acute on chronic systolic heart failure who presented with exacerbation. He is improving with diuretic therapy. Today he reports decreased dyspnea and abi"
+    },
+    {
+      "id": "h-consult: the copy runs from the Assessment heading to the end of the note's A&P part (heading-based reading of AC 4)",
+      "ok": true,
+      "detail": "note after heading 824 chars, copy 824 chars",
+      "record": true
+    },
+    {
+      "id": "h-discharge: a discharge template offers no Copy A&P (AC 4 'Hidden for templates without A&P')",
+      "ok": true,
+      "detail": "button absent"
+    },
+    {
+      "id": "n-snf-progress: Copy A&P is offered and copies (AC 4)",
+      "ok": true,
+      "detail": "button enabled; not-found false"
+    },
+    {
+      "id": "n-snf-progress: the copy starts at the Assessment / Impression heading",
+      "ok": true,
+      "detail": "Assessment and Plan"
+    },
+    {
+      "id": "n-snf-progress: the copy is a part of the note as shown (nothing added)",
+      "ok": true,
+      "detail": "Assessment and Plan\n\nLeft hip fracture status post ORIF: The resident is progressing appropriately with physical and occupational therapy. Incision remains clea"
+    },
+    {
+      "id": "n-snf-progress: the copy holds the plan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "n-snf-progress: nothing above the Assessment heading is copied (no subjective / HPI / exam text)",
+      "ok": true,
+      "detail": "Assessment and Plan\n\nLeft hip fracture status post ORIF: The resident is progressing appropriately with physical and occupational therapy. Incision remains clean and dry with stable vital signs. Will "
+    },
+    {
+      "id": "n-snf-progress: the copy runs from the Assessment heading to the end of the note's A&P part (heading-based reading of AC 4)",
+      "ok": true,
+      "detail": "note after heading 616 chars, copy 616 chars",
+      "record": true
+    },
+    {
+      "id": "n-snf-admission: Copy A&P is offered and copies (AC 4)",
+      "ok": true,
+      "detail": "button enabled; not-found false"
+    },
+    {
+      "id": "n-snf-admission: the copy starts at the Assessment / Impression heading",
+      "ok": true,
+      "detail": "Assessment of Active Medical Problems"
+    },
+    {
+      "id": "n-snf-admission: the copy is a part of the note as shown (nothing added)",
+      "ok": true,
+      "detail": "Assessment of Active Medical Problems\n\nLeft hip fracture status post ORIF: The patient is progressing well with therapy. Incision is clean and dry. Vital signs "
+    },
+    {
+      "id": "n-snf-admission: the copy holds the plan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "n-snf-admission: nothing above the Assessment heading is copied (no subjective / HPI / exam text)",
+      "ok": true,
+      "detail": "Assessment of Active Medical Problems\n\nLeft hip fracture status post ORIF: The patient is progressing well with therapy. Incision is clean and dry. Vital signs stable: blood pressure 124/72 mmHg, hear"
+    },
+    {
+      "id": "n-snf-admission: the copy runs from the Assessment heading to the end of the note's A&P part (heading-based reading of AC 4)",
+      "ok": true,
+      "detail": "note after heading 494 chars, copy 494 chars",
+      "record": true
+    },
+    {
+      "id": "n-snf-consult: Copy A&P is offered and copies (AC 4)",
+      "ok": true,
+      "detail": "button enabled; not-found false"
+    },
+    {
+      "id": "n-snf-consult: the copy starts at the Assessment / Impression heading",
+      "ok": true,
+      "detail": "Assessment"
+    },
+    {
+      "id": "n-snf-consult: the copy is a part of the note as shown (nothing added)",
+      "ok": true,
+      "detail": "Assessment\n\nThe resident is an 84-year-old woman progressing well in post-acute rehabilitation following left hip ORIF. She is ambulating with assistive device,"
+    },
+    {
+      "id": "n-snf-consult: the copy holds the plan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "n-snf-consult: nothing above the Assessment heading is copied (no subjective / HPI / exam text)",
+      "ok": true,
+      "detail": "Assessment\n\nThe resident is an 84-year-old woman progressing well in post-acute rehabilitation following left hip ORIF. She is ambulating with assistive device, pain is well controlled, the surgical i"
+    },
+    {
+      "id": "n-snf-consult: the copy runs from the Assessment heading to the end of the note's A&P part (heading-based reading of AC 4)",
+      "ok": true,
+      "detail": "note after heading 688 chars, copy 688 chars",
+      "record": true
+    },
+    {
+      "id": "n-snf-discharge: a discharge template offers no Copy A&P (AC 4 'Hidden for templates without A&P')",
+      "ok": true,
+      "detail": "button absent"
+    }
+  ],
+  "data": {
+    "h-soap": {
+      "template": "soap",
+      "present": true,
+      "enabled": true,
+      "notFound": false,
+      "clip": "Assessment\n\nPatient is a 68-year-old male with a history of systolic heart failure who presented with acute decompensation. He has improved with diuretic therapy, now reporting decreased dyspnea and able to sleep flat. Current examination reveals persistent bibasilar crackles and mild peripheral edema, consistent with ongoing volume overload but trending toward resolution. Creatinine remains stable at 1.3. The clinical picture supports acute on chronic systolic heart failure, responding to inpatient diuresis. Cardiology consultation is planned for today to guide ongoing management.\n\nPlan\n\n1. Continue intravenous furosemide 40 mg twice daily for diuresis.\n2. Obtain basic metabolic panel in the morning to monitor renal function and electrolytes.\n3. Maintain strict daily weights and intake and output monitoring.\n4. Cardiology to evaluate today.",
+      "sections": [
+        {
+          "heading": "Subjective",
+          "part": "narrative",
+          "chars": 77
+        },
+        {
+          "heading": "Objective",
+          "part": "narrative",
+          "chars": 166
+        },
+        {
+          "heading": "Testing Results",
+          "part": "narrative",
+          "chars": 15
+        },
+        {
+          "heading": "Assessment",
+          "part": "assessmentAndPlan",
+          "chars": 576
+        },
+        {
+          "heading": "Plan",
+          "part": "assessmentAndPlan",
+          "chars": 257
+        }
+      ],
+      "note": "Subjective\n\nThe patient reports feeling less short of breath and sleeping flat overnight.\n\nObjective\n\nVital Signs: Blood pressure 132/78 mmHg, heart rate 84 beats per minute, oxygen saturation 96% on room air.\n\nPhysical Examination: Bibasilar crackles, 1+ ankle edema.\n\nTesting Results\n\nCreatinine 1.3.\n\nAssessment\n\nPatient is a 68-year-old male with a history of systolic heart failure who presented with acute decompensation. He has improved with diuretic therapy, now reporting decreased dyspnea and able to sleep flat. Current examination reveals persistent bibasilar crackles and mild peripheral edema, consistent with ongoing volume overload but trending toward resolution. Creatinine remains stable at 1.3. The clinical picture supports acute on chronic systolic heart failure, responding to inpatient diuresis. Cardiology consultation is planned for today to guide ongoing management.\n\nPlan\n\n1. Continue intravenous furosemide 40 mg twice daily for diuresis.\n2. Obtain basic metabolic panel in the morning to monitor renal function and electrolytes.\n3. Maintain strict daily weights and intake and output monitoring.\n4. Cardiology to evaluate today.",
+      "apHeadingLine": "Assessment",
+      "diagnostics": []
+    },
+    "h-hp": {
+      "template": "hp",
+      "present": true,
+      "enabled": true,
+      "notFound": false,
+      "clip": "Assessment\n\nPatient is a 68-year-old man with a history of systolic heart failure who presented with acute exacerbation of congestive heart failure. He is showing clinical improvement with diuresis, evidenced by decreased dyspnea and ability to sleep flat. Current examination reveals persistent bibasilar crackles and mild ankle edema. Creatinine remains at 1.3. The clinical picture is consistent with acute on chronic systolic heart failure responding to intravenous diuretic therapy. Management will continue with IV diuretics, daily monitoring of weight and fluid balance, and cardiology evaluation today.\n\nPlan\n\n1. Continue intravenous furosemide 40 mg twice daily for acute on chronic systolic heart failure exacerbation.\n2. Obtain basic metabolic panel in the morning to monitor electrolytes and renal function.\n3. Maintain strict intake and output monitoring and daily weights.\n4. Cardiology to evaluate today.",
+      "sections": [
+        {
+          "heading": "Chief Complaint",
+          "part": "narrative",
+          "chars": 40
+        },
+        {
+          "heading": "History of Present Illness",
+          "part": "narrative",
+          "chars": 312
+        },
+        {
+          "heading": "Past Medical History",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Medications",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Allergies",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Social History",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Family History",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Review of Systems",
+          "part": "narrative",
+          "chars": 36
+        },
+        {
+          "heading": "Physical Examination",
+          "part": "narrative",
+          "chars": 173
+        },
+        {
+          "heading": "Testing Results",
+          "part": "narrative",
+          "chars": 15
+        },
+        {
+          "heading": "Assessment",
+          "part": "assessmentAndPlan",
+          "chars": 598
+        },
+        {
+          "heading": "Plan",
+          "part": "assessmentAndPlan",
+          "chars": 301
+        }
+      ],
+      "note": "Chief Complaint\n\nShortness of breath and volume overload.\n\nHistory of Present Illness\n\nPatient is a 68-year-old man with a history of systolic heart failure who presented with acute exacerbation of congestive heart failure. He reports feeling less short of breath today and reports having slept flat overnight, indicating clinical improvement. He is currently receiving intravenous diuretic therapy.\n\nPast Medical History\n\nNot provided\n\nMedications\n\nNot provided\n\nAllergies\n\nNot provided\n\nSocial History\n\nNot provided\n\nFamily History\n\nNot provided\n\nReview of Systems\n\nNot documented in today's dictation.\n\nPhysical Examination\n\nVital Signs: Blood pressure 132/78 mmHg, heart rate 84 beats per minute, oxygen saturation 96% on room air.\n\nGeneral: Bibasilar crackles noted.\n\nExtremities: 1+ ankle edema.\n\nTesting Results\n\nCreatinine 1.3.\n\nAssessment\n\nPatient is a 68-year-old man with a history of systolic heart failure who presented with acute exacerbation of congestive heart failure. He is showing clinical improvement with diuresis, evidenced by decreased dyspnea and ability to sleep flat. Current examination reveals persistent bibasilar crackles and mild ankle edema. Creatinine remains at 1.3. The clinical picture is consistent with acute on chronic systolic heart failure responding to intravenous diuretic therapy. Management will continue with IV diuretics, daily monitoring of weight and fluid balance, and cardiology evaluation today.\n\nPlan\n\n1. Continue intravenous furosemide 40 mg twice daily for acute on chronic systolic heart failure exacerbation.\n2. Obtain basic metabolic panel in the morning to monitor electrolytes and renal function.\n3. Maintain strict intake and output monitoring and daily weights.\n4. Cardiology to evaluate today.",
+      "apHeadingLine": "Assessment",
+      "diagnostics": []
+    },
+    "h-consult": {
+      "template": "consult",
+      "present": true,
+      "enabled": true,
+      "notFound": false,
+      "clip": "Assessment\n\nPatient is a 68-year-old man with acute on chronic systolic heart failure who presented with exacerbation. He is improving with diuretic therapy. Today he reports decreased dyspnea and ability to sleep flat. Physical examination reveals persistent bibasilar crackles and mild ankle edema. Renal function remains stable with creatinine 1.3. The clinical picture is consistent with ongoing volume overload responding to inpatient management.\n\nRecommendations\n\n1. Continue intravenous furosemide 40 mg twice daily for diuresis.\n2. Monitor daily weights and maintain strict intake and output records.\n3. Obtain basic metabolic panel in the morning.\n4. Cardiology to see patient today for continued management and assessment.\n\nWe will continue to follow. Thank you for allowing us to participate in this patient care.",
+      "sections": [
+        {
+          "heading": "Consulting Service and Requesting Provider",
+          "part": "narrative",
+          "chars": 64
+        },
+        {
+          "heading": "Reason for Consultation",
+          "part": "narrative",
+          "chars": 82
+        },
+        {
+          "heading": "History of Present Illness",
+          "part": "narrative",
+          "chars": 151
+        },
+        {
+          "heading": "Past Medical History",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Medications",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Allergies",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Social History",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Family History",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Review of Systems",
+          "part": "narrative",
+          "chars": 36
+        },
+        {
+          "heading": "Physical Examination",
+          "part": "narrative",
+          "chars": 124
+        },
+        {
+          "heading": "Testing Results",
+          "part": "narrative",
+          "chars": 15
+        },
+        {
+          "heading": "Assessment",
+          "part": "assessmentAndPlan",
+          "chars": 439
+        },
+        {
+          "heading": "Recommendations",
+          "part": "assessmentAndPlan",
+          "chars": 354
+        }
+      ],
+      "note": "Consulting Service and Requesting Provider\n\nConsulting Service: Cardiology\nRequesting Provider: Not provided\n\nReason for Consultation\n\nEvaluation and management of acute on chronic systolic heart failure exacerbation.\n\nHistory of Present Illness\n\nPatient is a 68-year-old man admitted with CHF exacerbation. He reports feeling less short of breath today and slept flat overnight. Creatinine is 1.3.\n\nPast Medical History\n\nNot provided\n\nMedications\n\nNot provided\n\nAllergies\n\nNot provided\n\nSocial History\n\nNot provided\n\nFamily History\n\nNot provided\n\nReview of Systems\n\nNot documented in today's dictation.\n\nPhysical Examination\n\nVital Signs: BP 132/78, HR 84, SpO2 96% on room air.\nCardiopulmonary: Bibasilar crackles noted.\nExtremities: 1+ ankle edema.\n\nTesting Results\n\nCreatinine: 1.3\n\nAssessment\n\nPatient is a 68-year-old man with acute on chronic systolic heart failure who presented with exacerbation. He is improving with diuretic therapy. Today he reports decreased dyspnea and ability to sleep flat. Physical examination reveals persistent bibasilar crackles and mild ankle edema. Renal function remains stable with creatinine 1.3. The clinical picture is consistent with ongoing volume overload responding to inpatient management.\n\nRecommendations\n\n1. Continue intravenous furosemide 40 mg twice daily for diuresis.\n2. Monitor daily weights and maintain strict intake and output records.\n3. Obtain basic metabolic panel in the morning.\n4. Cardiology to see patient today for continued management and assessment.\n\nWe will continue to follow. Thank you for allowing us to participate in this patient care.",
+      "apHeadingLine": "Assessment",
+      "diagnostics": []
+    },
+    "h-discharge": {
+      "template": "discharge",
+      "present": false,
+      "enabled": false,
+      "notFound": false,
+      "clip": null,
+      "sections": [
+        {
+          "heading": "Admission Date",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Principal Diagnosis",
+          "part": "narrative",
+          "chars": 64
+        },
+        {
+          "heading": "Reason for Admission",
+          "part": "narrative",
+          "chars": 40
+        },
+        {
+          "heading": "Hospital Course",
+          "part": "narrative",
+          "chars": 356
+        },
+        {
+          "heading": "Discharge Condition",
+          "part": "narrative",
+          "chars": 31
+        },
+        {
+          "heading": "Discharge Medications",
+          "part": "narrative",
+          "chars": 66
+        },
+        {
+          "heading": "Follow-up Instructions",
+          "part": "narrative",
+          "chars": 156
+        },
+        {
+          "heading": "Return Precautions",
+          "part": "narrative",
+          "chars": 162
+        }
+      ],
+      "note": "Admission Date\n\nNot provided\n\nPrincipal Diagnosis\n\nAcute on chronic systolic heart failure, improving with diuresis\n\nReason for Admission\n\nExacerbation of congestive heart failure\n\nHospital Course\n\nThe patient was admitted with congestive heart failure exacerbation. During the hospitalization, he has responded well to diuretic therapy. On examination today, he reports feeling less short of breath and sleeping flat. Physical examination reveals bibasilar crackles and 1+ ankle edema. Creatinine is 1.3. He continues to improve with ongoing management.\n\nDischarge Condition\n\nStable per physician assessment\n\nDischarge Medications\n\nFurosemide 40 mg — dose and route not fully specified in dictation\n\nFollow-up Instructions\n\nCardiology to see patient today. Daily weights and strict intake and output monitoring to be maintained. Basic metabolic panel to be checked in the morning.\n\nReturn Precautions\n\nReturn to the emergency department or call 911 if the patient experiences worsening shortness of breath, chest pain, severe swelling, or any other acute symptoms.",
+      "apHeadingLine": null,
+      "diagnostics": []
+    },
+    "n-snf-progress": {
+      "template": "snf-progress",
+      "present": true,
+      "enabled": true,
+      "notFound": false,
+      "clip": "Assessment and Plan\n\nLeft hip fracture status post ORIF: The resident is progressing appropriately with physical and occupational therapy. Incision remains clean and dry with stable vital signs. Will continue physical therapy and occupational therapy twice daily, weight bearing as tolerated. Family meeting scheduled for Friday regarding discharge home planning.\n\nConstipation: Resolved. Continue senna nightly.\n\nPlan:\n\n1. Continue physical therapy and occupational therapy twice daily.\n2. Continue weight bearing as tolerated.\n3. Continue senna nightly.\n4. Schedule family meeting Friday to discuss discharge home.",
+      "sections": [
+        {
+          "heading": "Interval Changes Since Last Visit",
+          "part": "narrative",
+          "chars": 14
+        },
+        {
+          "heading": "Current Vitals and Weight Trend",
+          "part": "narrative",
+          "chars": 56
+        },
+        {
+          "heading": "Functional Status Update",
+          "part": "narrative",
+          "chars": 80
+        },
+        {
+          "heading": "Active Medical Problems",
+          "part": "narrative",
+          "chars": 202
+        },
+        {
+          "heading": "Medication Changes",
+          "part": "narrative",
+          "chars": 14
+        },
+        {
+          "heading": "Assessment and Plan",
+          "part": "assessmentAndPlan",
+          "chars": 595
+        }
+      ],
+      "note": "Interval Changes Since Last Visit\n\nNot documented\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today. Weight: not documented.\n\nFunctional Status Update\n\nThe resident walked 80 feet with a rolling walker today. Pain level 3 out of 10.\n\nActive Medical Problems\n\nLeft hip fracture status post open reduction internal fixation (ORIF): The resident is progressing with therapy. Incision is clean and dry. Blood pressure 124/72, heart rate 70.\n\nConstipation: Resolved.\n\nMedication Changes\n\nNot documented\n\nAssessment and Plan\n\nLeft hip fracture status post ORIF: The resident is progressing appropriately with physical and occupational therapy. Incision remains clean and dry with stable vital signs. Will continue physical therapy and occupational therapy twice daily, weight bearing as tolerated. Family meeting scheduled for Friday regarding discharge home planning.\n\nConstipation: Resolved. Continue senna nightly.\n\nPlan:\n\n1. Continue physical therapy and occupational therapy twice daily.\n2. Continue weight bearing as tolerated.\n3. Continue senna nightly.\n4. Schedule family meeting Friday to discuss discharge home.",
+      "apHeadingLine": "Assessment and Plan",
+      "diagnostics": []
+    },
+    "n-snf-admission": {
+      "template": "snf-admission",
+      "present": true,
+      "enabled": true,
+      "notFound": false,
+      "clip": "Assessment of Active Medical Problems\n\nLeft hip fracture status post ORIF: The patient is progressing well with therapy. Incision is clean and dry. Vital signs stable: blood pressure 124/72 mmHg, heart rate 70 beats per minute.\n\nConstipation: Resolved.\n\nCare Plan\n\n1. Continue physical therapy and occupational therapy twice daily.\n2. Continue weight bearing as tolerated.\n3. Continue senna nightly for bowel management.\n4. Family meeting scheduled for Friday regarding discharge planning home.",
+      "sections": [
+        {
+          "heading": "Reason for SNF Admission",
+          "part": "narrative",
+          "chars": 116
+        },
+        {
+          "heading": "Medical History and Active Comorbidities",
+          "part": "narrative",
+          "chars": 14
+        },
+        {
+          "heading": "Current Medications",
+          "part": "narrative",
+          "chars": 14
+        },
+        {
+          "heading": "Allergies",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Functional Status at Admission",
+          "part": "narrative",
+          "chars": 114
+        },
+        {
+          "heading": "Rehabilitation Goals",
+          "part": "narrative",
+          "chars": 54
+        },
+        {
+          "heading": "Assessment of Active Medical Problems",
+          "part": "assessmentAndPlan",
+          "chars": 213
+        },
+        {
+          "heading": "Care Plan",
+          "part": "assessmentAndPlan",
+          "chars": 229
+        }
+      ],
+      "note": "Reason for SNF Admission\n\n84-year-old woman admitted for post-acute rehabilitation following left hip open reduction internal fixation (ORIF).\n\nMedical History and Active Comorbidities\n\nNot documented\n\nCurrent Medications\n\nNot documented\n\nAllergies\n\nNot dictated\n\nFunctional Status at Admission\n\nThe patient ambulates 80 feet with a rolling walker. Weight bearing status: as tolerated. Pain level: 3 out of 10.\n\nRehabilitation Goals\n\nPhysical therapy and occupational therapy twice daily.\n\nAssessment of Active Medical Problems\n\nLeft hip fracture status post ORIF: The patient is progressing well with therapy. Incision is clean and dry. Vital signs stable: blood pressure 124/72 mmHg, heart rate 70 beats per minute.\n\nConstipation: Resolved.\n\nCare Plan\n\n1. Continue physical therapy and occupational therapy twice daily.\n2. Continue weight bearing as tolerated.\n3. Continue senna nightly for bowel management.\n4. Family meeting scheduled for Friday regarding discharge planning home.",
+      "apHeadingLine": "Assessment of Active Medical Problems",
+      "diagnostics": []
+    },
+    "n-snf-consult": {
+      "template": "snf-consult",
+      "present": true,
+      "enabled": true,
+      "notFound": false,
+      "clip": "Assessment\n\nThe resident is an 84-year-old woman progressing well in post-acute rehabilitation following left hip ORIF. She is ambulating with assistive device, pain is well controlled, the surgical incision is healing without signs of infection, and constipation has resolved. She is tolerating therapy and advancing as expected.\n\nRecommendations\n\n1. Continue physical therapy and occupational therapy twice daily. 2. Continue weight bearing as tolerated. 3. Continue senna nightly for bowel management. 4. Family meeting scheduled for Friday to discuss discharge planning and transition home. We will continue to follow. Thank you for allowing us to participate in this resident's care.",
+      "sections": [
+        {
+          "heading": "Consulting Service and Requesting Provider",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Reason for Consultation",
+          "part": "narrative",
+          "chars": 96
+        },
+        {
+          "heading": "History of Present Illness",
+          "part": "narrative",
+          "chars": 273
+        },
+        {
+          "heading": "Past Medical History and Active Comorbidities",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Current Medications",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Allergies",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Functional Status",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Physical Examination",
+          "part": "narrative",
+          "chars": 106
+        },
+        {
+          "heading": "Testing Results",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Assessment",
+          "part": "assessmentAndPlan",
+          "chars": 318
+        },
+        {
+          "heading": "Recommendations",
+          "part": "assessmentAndPlan",
+          "chars": 339
+        }
+      ],
+      "note": "Consulting Service and Requesting Provider\n\nNot provided\n\nReason for Consultation\n\nPost-acute rehabilitation assessment following left hip open reduction internal fixation (ORIF).\n\nHistory of Present Illness\n\nThe resident is an 84-year-old woman admitted to skilled nursing facility for post-acute rehabilitation following left hip ORIF. Today she ambulated 80 feet with a rolling walker. Pain is rated 3 out of 10. The surgical incision is clean and dry. Constipation has resolved.\n\nPast Medical History and Active Comorbidities\n\nNot provided\n\nCurrent Medications\n\nNot provided\n\nAllergies\n\nNot provided\n\nFunctional Status\n\nNot dictated\n\nPhysical Examination\n\nVital signs: blood pressure 124/72 mmHg, heart rate 70 beats per minute. Surgical incision: clean and dry.\n\nTesting Results\n\nNot provided\n\nAssessment\n\nThe resident is an 84-year-old woman progressing well in post-acute rehabilitation following left hip ORIF. She is ambulating with assistive device, pain is well controlled, the surgical incision is healing without signs of infection, and constipation has resolved. She is tolerating therapy and advancing as expected.\n\nRecommendations\n\n1. Continue physical therapy and occupational therapy twice daily. 2. Continue weight bearing as tolerated. 3. Continue senna nightly for bowel management. 4. Family meeting scheduled for Friday to discuss discharge planning and transition home. We will continue to follow. Thank you for allowing us to participate in this resident's care.",
+      "apHeadingLine": "Assessment",
+      "diagnostics": []
+    },
+    "n-snf-discharge": {
+      "template": "snf-discharge",
+      "present": false,
+      "enabled": false,
+      "notFound": false,
+      "clip": null,
+      "sections": [
+        {
+          "heading": "Admission Date",
+          "part": "narrative",
+          "chars": 14
+        },
+        {
+          "heading": "Reason for SNF Stay",
+          "part": "narrative",
+          "chars": 85
+        },
+        {
+          "heading": "Course of Stay",
+          "part": "narrative",
+          "chars": 274
+        },
+        {
+          "heading": "Condition at Discharge",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Functional Status at Discharge",
+          "part": "narrative",
+          "chars": 137
+        },
+        {
+          "heading": "Discharge Medications",
+          "part": "narrative",
+          "chars": 26
+        },
+        {
+          "heading": "Discharge Disposition",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Follow-up Instructions",
+          "part": "narrative",
+          "chars": 85
+        },
+        {
+          "heading": "Return Precautions",
+          "part": "narrative",
+          "chars": 12
+        },
+        {
+          "heading": "Time Spent on Discharge",
+          "part": "narrative",
+          "chars": 12
+        }
+      ],
+      "note": "Admission Date\n\nNot documented\n\nReason for SNF Stay\n\nPost-acute rehabilitation following left hip open reduction internal fixation (ORIF).\n\nCourse of Stay\n\nThe resident has been progressing with physical and occupational therapy. Ambulation has improved, with the resident walking 80 feet with a rolling walker today. Pain has been well controlled. Constipation, which was an initial concern, has resolved with medical management.\n\nCondition at Discharge\n\nNot dictated\n\nFunctional Status at Discharge\n\nThe resident is ambulating 80 feet with a rolling walker. Pain is 3 out of 10. Incision is clean and dry. Weight bearing is as tolerated.\n\nDischarge Medications\n\nSenna — nightly, continued\n\nDischarge Disposition\n\nNot dictated\n\nFollow-up Instructions\n\nFamily meeting scheduled for Friday regarding discharge planning and transition home.\n\nReturn Precautions\n\nNot dictated\n\nTime Spent on Discharge\n\nNot dictated",
+      "apHeadingLine": null,
+      "diagnostics": []
+    }
+  }
+}

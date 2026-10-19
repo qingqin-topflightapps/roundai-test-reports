@@ -1,0 +1,17 @@
+{
+  "TC-21/S18": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:30:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ho",
+    "method": "PW local (delivery) + dev (content)",
+    "title": "Handoff in both contexts: same four sections, empty stays empty, in-app delivery of the edited text with a record on both sides",
+    "detail": "Local 8b4be94a (ho-s03a / ho-s03b, no model): both contexts show the same four section headings in the same order, only their own context's patients; edited text delivered exactly; Sent / Received rows with names and server time on both sides; no mailto anywhere. Dev 8b4be94a (live Haiku, ho-s15): sparse patient (no tasks) and sparse resident get empty Discharge Barriers / Pending Results (nothing invented in the sections). Note: the sparse Hospital intro narrates 'Vitals and recent clinical course not documented.' (TC-08 S15).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03a.json",
+      "runs/2026-10-14-local/newspec-c/evidence/ho-s03b.json",
+      "runs/2026-10-14-dev/newspec-c/ho-052035-S15/evidence/ho-s15.json"
+    ]
+  }
+}

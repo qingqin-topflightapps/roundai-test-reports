@@ -1,0 +1,22 @@
+{
+  "TC-12/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-19T19:55:37.357Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "ip",
+    "method": "dev dataset lane (scripts/datasets/run.sh ip-dev-a / ip-dev-b, datasets/ip-dev-*.spec.ts) on <dev address> at 8b4be94a, account <dev account>, rows 'QA DS1-ip-dev-* ' deleted after (cleanup: 10 + 4 deleted, 0 remaining, 0 foreign changed), live model (Haiku 4.5, no fallback)",
+    "title": "A private reminder is never listed as a diagnosis in the generated note or the handoff (both modes)",
+    "detail": "Note (server job) and handoff summary (server job) generated live. Hospital: the note never mentions 'QA-PRIVATE call dtr re SNF bed'; handoff Active Issues = the heart failure only. Nursing Home: handoff Active Issues = 'Alzheimer dementia', 'CKD stage 3'. The runner's note cell for Nursing Home reported false because its heuristic counts every numbered line: the hit is the plan line '3. Contact daughter regarding SNF bed status as needed.' — an action, not a diagnosis or finding; reviewed by the package agent as not a diagnosis (Quinn to confirm). Recorded for Q8 (points as private reminders vs note/handoff inputs): the reminder reached the NH note as a plan item and both handoffs as a Discharge Barrier 'SNF bed placement pending' (an invented status: the reminder says call the daughter about an SNF bed, nothing about placement pending), plus Hospital To-Do 'Call daughter regarding SNF bed'. Judged cells 3/4.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-b/evidence/TC-12-S27-HP-handoff.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-b/evidence/TC-12-S27-HP-note.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-b/evidence/TC-12-S27-NP-handoff.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-b/evidence/TC-12-S27-NP-note.png",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-b/evidence/TC-12-S27.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-b/cleanup.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-ip/ip-dev-b/pw.log"
+    ],
+    "stated": "P1 (ours; nearest UAT 3.4); Q8 open"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "te-tc07-s13",
+  "at": "2026-10-19T18:40:12.774Z",
+  "checks": [
+    {
+      "id": "Hospital selected, /rounding/tasks typed: page not blank and never both contexts' tasks on one screen",
+      "ok": true,
+      "detail": "{\"url\":\"/rounding/tasks\",\"showsH\":true,\"showsN\":false}"
+    },
+    {
+      "id": "Hospital selected, /rounding/tasks typed: a screen that shows a task shows only the URL's own context",
+      "ok": true,
+      "detail": "{\"url\":\"/rounding/tasks\",\"showsH\":true,\"showsN\":false}"
+    },
+    {
+      "id": "Hospital selected, /snf/tasks typed: page not blank and never both contexts' tasks on one screen",
+      "ok": true,
+      "detail": "{\"url\":\"/snf/tasks\",\"showsH\":false,\"showsN\":true}"
+    },
+    {
+      "id": "Hospital selected, /snf/tasks typed: a screen that shows a task shows only the URL's own context",
+      "ok": true,
+      "detail": "{\"url\":\"/snf/tasks\",\"showsH\":false,\"showsN\":true}"
+    },
+    {
+      "id": "Nursing Home selected, /rounding/tasks typed: page not blank and never both contexts' tasks on one screen",
+      "ok": true,
+      "detail": "{\"url\":\"/rounding/tasks\",\"showsH\":true,\"showsN\":false}"
+    },
+    {
+      "id": "Nursing Home selected, /rounding/tasks typed: a screen that shows a task shows only the URL's own context",
+      "ok": true,
+      "detail": "{\"url\":\"/rounding/tasks\",\"showsH\":true,\"showsN\":false}"
+    },
+    {
+      "id": "Nursing Home selected, /snf/tasks typed: page not blank and never both contexts' tasks on one screen",
+      "ok": true,
+      "detail": "{\"url\":\"/snf/tasks\",\"showsH\":false,\"showsN\":true}"
+    },
+    {
+      "id": "Nursing Home selected, /snf/tasks typed: a screen that shows a task shows only the URL's own context",
+      "ok": true,
+      "detail": "{\"url\":\"/snf/tasks\",\"showsH\":false,\"showsN\":true}"
+    }
+  ],
+  "data": {
+    "rounding->rounding": {
+      "url": "/rounding/tasks",
+      "showsH": true,
+      "showsN": false,
+      "len": 218
+    },
+    "rounding->snf": {
+      "url": "/snf/tasks",
+      "showsH": false,
+      "showsN": true,
+      "len": 217
+    },
+    "snf->rounding": {
+      "url": "/rounding/tasks",
+      "showsH": true,
+      "showsN": false,
+      "len": 218
+    },
+    "snf->snf": {
+      "url": "/snf/tasks",
+      "showsH": false,
+      "showsN": true,
+      "len": 217
+    }
+  }
+}

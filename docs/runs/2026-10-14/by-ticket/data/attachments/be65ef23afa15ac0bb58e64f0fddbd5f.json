@@ -1,0 +1,16 @@
+{
+  "TC-13/S02": {
+    "status": "passed",
+    "ranAt": "2026-10-20T04:55:00+09:00",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pn",
+    "method": "PW",
+    "title": "Paste a prior note on a Hospital chart: live extraction updates the chart and takes no vitals",
+    "detail": "Dev, live Haiku (3.3 s). Before: no note/imaging/background. After Save & Extract: 'Note · Oct 11' saved once (source explicit-import), CXR effusions + TTE + renal US on Diagnostic Testing, background + issues on Hospital Course, no 142/88 / 38.4 anywhere (page, editor, vitals, IPs, stored extraction), physician's IP kept, no issue written into Important Points (Q2 now: issues are bullets under the background). Prior labs in the new 'Prior Note Labs' panel dated 'Prior note · Oct 11'.",
+    "evidence": [
+      "runs/2026-10-14-dev/newspec-c/datasets-pn/pn-extract/evidence/TC-13-S02.json",
+      "runs/2026-10-14-dev/newspec-c/datasets-pn/pn-extract/evidence/TC-13-S02-after.png"
+    ]
+  }
+}

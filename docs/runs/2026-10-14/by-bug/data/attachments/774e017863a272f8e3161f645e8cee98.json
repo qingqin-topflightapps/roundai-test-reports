@@ -1,0 +1,47 @@
+{
+  "name": "tc16-s26",
+  "at": "2026-10-19T18:18:15.171Z",
+  "checks": [
+    {
+      "id": "cp1: the day-1 note is still in the box on day 2",
+      "ok": true,
+      "detail": "QA16-D1-NOTE Day 1: lungs clear, continue antibiotics. eoruo"
+    },
+    {
+      "id": "the day-1 note is never lost (in the box or a row)",
+      "ok": true,
+      "detail": "\nQA16-D1-NOTE Day 1: lungs clear, continue antibiotics. eoruo\nQA16-D2-NOTE Day 2: afebrile overnight. eoruo"
+    },
+    {
+      "id": "cp2: both notes left the working box",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "cp3/cp4: day 1 and day 2 are separate rows (a merged row fails, Q13)",
+      "ok": false,
+      "detail": "[{\"label\":\"Oct 18 · Encounter notes\",\"lines\":1}]"
+    }
+  ],
+  "data": {
+    "server": {
+      "encounterNotes": "",
+      "history": [
+        {
+          "archivedAt": "2026-10-19T18:18:14.961Z",
+          "entries": [
+            {
+              "speaker": "Dr",
+              "text": "QA16-D1-NOTE Day 1: lungs clear, continue antibiotics. eoruo\nQA16-D2-NOTE Day 2: afebrile overnight. eoruo",
+              "time": ""
+            }
+          ],
+          "label": "Oct 18 · Encounter notes"
+        }
+      ]
+    },
+    "panel": [
+      "Oct 18 · Encounter notes 1 lines"
+    ]
+  }
+}
