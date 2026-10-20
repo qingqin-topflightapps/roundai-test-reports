@@ -1,0 +1,23 @@
+{
+  "OAT-04/S12": {
+    "status": "failed",
+    "title": "'Last refreshed' = a new value: saves without a new value do not restart the 36 h clock (B04 re-test: vitals, labs, imaging after a pre-round Save Note with no values)",
+    "detail": "B04 on 8b4be94a: CHANGED (fixed by #100 for a parse that returns nothing; still re-dates whatever the parse echoes). (a) nothing returned: vitalsRecordedAt, labs[].recordedAt, vitalsUpdatedAt, labsUpdatedAt, radiologyUpdatedAt unchanged, panel shows 'Oct 19' under every value, Hospital clears BP/HR/temp/SpO2, Cr/K and the X-ray line at +18 h (T0 38 h): PASS, both contexts. (b) parse echoes yesterday's BP/HR/temp/SpO2 and Cr/K unchanged, or (c) with today's date: every echoed value is stamped now and the panel reads 'Today' under all four vitals and both labs; vitalsUpdatedAt / labsUpdatedAt move to now, so in Hospital yesterday's values survive +18 h and clear only 36 h after the echo (usePreRoundProcess.ts:182-202, 230-270; useSnfPreRoundProcess.ts:239-251, 265-275: any non-empty parsed value is written and stamped, there is no check that today's dictation names it or that it differs from the value on file, unlike the panel save vitalsSavePatch / labsSavePatch in convex/lib/objectiveDates.ts:147-214). Imaging: an echoed X-ray line is dropped by scrubUnnamedStudies (usePreRoundProcess.ts:305-308) and radiologyUpdatedAt never moves: PASS in all variants (Nursing Home Save Note does not merge imaging). (d) an invented BP (dictation names none) is accepted and stamped today, HR/temp/SpO2 keep 'Oct 19'; (e) dictated BP 128/76 stamped today, others keep yesterday: PASS. Recorded (our observation, not judged): one column clock per block (vitalsUpdatedAt), so a new BP keeps yesterday's HR/temp/SpO2 on the chart past 36 h (dated 'Oct 19'). Nursing Home has no hour window for vitals / labs (recorded). UAT 3.6 / 3.7, TFA-94699 AC 2.",
+    "ranAt": "2026-10-20T09:04:04Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "b04",
+    "method": "local Playwright spec manual/b04-local.spec.ts (browser timezoneId UTC, TZ=UTC; based on rb2-tc19-s12-hospital-med-retention.spec.ts): per context 5 charts seeded with yesterday's (previous UTC day) BP/HR/temp/SpO2, creatinine/K, a chest X-ray line, magnesium Given once, lisinopril held, vancomycin stopped, metoprolol active; one pre-round Save Note through the app with a dictation naming none of them; parsePreRoundNotes answered at the Convex socket (a nothing / b echo unchanged / c echo with today's date / d one invented BP / e control: dictated BP); stamps read before/after, panel labels read from the page, then stamps moved back 18 h and 37 h and the app's lifecycle applied; Nursing Home also a visit-count probe. noteJobs:request and handoff/persistence:ensure refused at the socket. Lock + tripwire: no model call.",
+    "evidence": [
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/cells-b04-hosp.json",
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/cells-b04-snf.json",
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/hosp-all.json",
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/snf-all.json",
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/hosp-b-after.png",
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/hosp-a-after.png",
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/snf-b-after.png",
+      "runs/2026-10-14-local/manual-b04/evidence/TC-19-S12/snf-a-after.png",
+      "runs/2026-10-14-local/manual-b04/run2.log"
+    ]
+  }
+}

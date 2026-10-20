@@ -1,0 +1,1243 @@
+{
+  "ref": "TC-19/S12",
+  "part": "b04-hosp",
+  "at": "2026-10-20T09:05:32.540Z",
+  "liveCalls": "none: every ai/* answered at the socket",
+  "T0": "2026-10-19T13:04:06.215Z",
+  "yesterday": "Oct 19",
+  "today": "Oct 20",
+  "cells": [
+    {
+      "cell": "Hospital a: vitals not dictated keep yesterday's recorded time (bp/hr/temp/o2)",
+      "expected": "vitalsRecordedAt unchanged for those keys",
+      "actual": {
+        "before": {
+          "bp": "2026-10-19T13:04:06.215Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "after": {
+          "bp": "2026-10-19T13:04:06.215Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "values": {
+          "bp": "136/84",
+          "hr": "78",
+          "o2": "95% RA",
+          "temp": "37.4"
+        }
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: vitalsUpdatedAt (the 36 h clock) not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-19T13:04:06.215Z",
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: creatinine / potassium keep yesterday's value and recorded time",
+      "expected": "labs unchanged",
+      "actual": {
+        "before": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ],
+        "after": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: labsUpdatedAt not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-19T13:04:06.215Z",
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: imaging line and radiologyUpdatedAt not moved",
+      "expected": "unchanged",
+      "actual": {
+        "before": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ],
+        "after": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: yesterday's magnesium stays one row 'Given · Oct 19', updatedAt unchanged",
+      "expected": "Given · Oct 19, updatedAt 2026-10-19T13:04:06.215Z",
+      "actual": [
+        {
+          "name": "Magnesium sulfate 2 g IV once",
+          "status": "single-dose",
+          "changeType": "given",
+          "changeDate": "Oct 19",
+          "changedNote": null,
+          "updatedAt": "2026-10-19T13:04:06.215Z"
+        }
+      ],
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a; TFA-92597 rule 2"
+    },
+    {
+      "cell": "Hospital a: held lisinopril keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Lisinopril 10 mg PO daily\",\"status\":\"held\",\"changeType\":\"held\",\"changeDate\":\"Oct 19\",\"changedNote\":\"soft BP\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Lisinopril 10 mg PO daily",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 19",
+        "changedNote": "soft BP",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: stopped vancomycin keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Vancomycin 1 g IV q12h\",\"status\":\"discontinued\",\"changeType\":\"stopped\",\"changeDate\":\"Oct 19\",\"changedNote\":\"AKI\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Vancomycin 1 g IV q12h",
+        "status": "discontinued",
+        "changeType": "stopped",
+        "changeDate": "Oct 19",
+        "changedNote": "AKI",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: active metoprolol keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Metoprolol tartrate 25 mg PO BID\",\"status\":\"active\",\"changeType\":null,\"changeDate\":null,\"changedNote\":null,\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "changeType": null,
+        "changeDate": null,
+        "changedNote": null,
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: panel: no value not dictated today reads 'Today'",
+      "expected": "only a value written today reads Today",
+      "actual": [
+        "Blood Pressure 136/84 Oct 19",
+        "Heart Rate 78 Oct 19",
+        "O₂ Sat 95% RA Oct 19",
+        "Temperature 37.4 Oct 19",
+        "Creatinine 1.4 Oct 19",
+        "Potassium 3.6 Oct 19"
+      ],
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: panel: magnesium tag reads 'Given · Oct 19'",
+      "expected": "Given · Oct 19",
+      "actual": "single dose Magnesium sulfate 2 g IV once Given · Oct 19 not mentioned today",
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse a"
+    },
+    {
+      "cell": "Hospital a: +18 h after the Save Note (T0 ≥ 38 h old): yesterday's values and doses gone (bp, creatinine, potassium, imaging, mag, met)",
+      "expected": "gone",
+      "actual": {
+        "bp": null,
+        "hr": null,
+        "temp": null,
+        "o2": null,
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": true,
+        "van": true,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "UAT 3.6 / 3.7; TFA-94699 AC 2; TFA-92597 rule 6"
+    },
+    {
+      "cell": "Hospital a: +18 h: held and stopped rows kept (36 h from the last processing)",
+      "expected": "kept",
+      "actual": {
+        "lis": true,
+        "van": true
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital a: +37 h: everything gone",
+      "expected": "all gone",
+      "actual": {
+        "bp": null,
+        "hr": null,
+        "temp": null,
+        "o2": null,
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": false,
+        "van": false,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital b: vitals not dictated keep yesterday's recorded time (bp/hr/temp/o2)",
+      "expected": "vitalsRecordedAt unchanged for those keys",
+      "actual": {
+        "before": {
+          "bp": "2026-10-19T13:04:06.215Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "after": {
+          "bp": "2026-10-20T09:04:31.962Z",
+          "hr": "2026-10-20T09:04:31.962Z",
+          "o2": "2026-10-20T09:04:31.962Z",
+          "temp": "2026-10-20T09:04:31.962Z"
+        },
+        "values": {
+          "bp": "136/84",
+          "hr": "78",
+          "o2": "95% RA",
+          "temp": "37.4"
+        }
+      },
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: vitalsUpdatedAt (the 36 h clock) not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-20T09:04:31.962Z",
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: creatinine / potassium keep yesterday's value and recorded time",
+      "expected": "labs unchanged",
+      "actual": {
+        "before": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ],
+        "after": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-20T09:04:31.962Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-20T09:04:31.962Z"
+          }
+        ]
+      },
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: labsUpdatedAt not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-20T09:04:31.962Z",
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: imaging line and radiologyUpdatedAt not moved",
+      "expected": "unchanged",
+      "actual": {
+        "before": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ],
+        "after": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: yesterday's magnesium stays one row 'Given · Oct 19', updatedAt unchanged",
+      "expected": "Given · Oct 19, updatedAt 2026-10-19T13:04:06.215Z",
+      "actual": [
+        {
+          "name": "Magnesium sulfate 2 g IV once",
+          "status": "single-dose",
+          "changeType": "given",
+          "changeDate": "Oct 20",
+          "changedNote": "",
+          "updatedAt": "2026-10-20T09:04:32.029Z"
+        }
+      ],
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse b; TFA-92597 rule 2"
+    },
+    {
+      "cell": "Hospital b: held lisinopril keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Lisinopril 10 mg PO daily\",\"status\":\"held\",\"changeType\":\"held\",\"changeDate\":\"Oct 19\",\"changedNote\":\"soft BP\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Lisinopril 10 mg PO daily",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 19",
+        "changedNote": "soft BP",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: stopped vancomycin keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Vancomycin 1 g IV q12h\",\"status\":\"discontinued\",\"changeType\":\"stopped\",\"changeDate\":\"Oct 19\",\"changedNote\":\"AKI\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Vancomycin 1 g IV q12h",
+        "status": "discontinued",
+        "changeType": "stopped",
+        "changeDate": "Oct 19",
+        "changedNote": "AKI",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: active metoprolol keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Metoprolol tartrate 25 mg PO BID\",\"status\":\"active\",\"changeType\":null,\"changeDate\":null,\"changedNote\":null,\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "changeType": null,
+        "changeDate": null,
+        "changedNote": null,
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: panel: no value not dictated today reads 'Today'",
+      "expected": "only a value written today reads Today",
+      "actual": [
+        "Blood Pressure 136/84 Today",
+        "Heart Rate 78 Today",
+        "O₂ Sat 95% RA Today",
+        "Temperature 37.4 Today",
+        "Creatinine 1.4 Today",
+        "Potassium 3.6 Today"
+      ],
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: panel: magnesium tag reads 'Given · Oct 19'",
+      "expected": "Given · Oct 19",
+      "actual": "single dose Magnesium sulfate 2 g IV once Given · Oct 20",
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse b"
+    },
+    {
+      "cell": "Hospital b: +18 h after the Save Note (T0 ≥ 38 h old): yesterday's values and doses gone (bp, creatinine, potassium, imaging, mag, met)",
+      "expected": "gone",
+      "actual": {
+        "bp": "136/84",
+        "hr": "78",
+        "temp": "37.4",
+        "o2": "95% RA",
+        "creatinine": true,
+        "potassium": true,
+        "imaging": 0,
+        "met": false,
+        "lis": true,
+        "van": true,
+        "mag": true
+      },
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "UAT 3.6 / 3.7; TFA-94699 AC 2; TFA-92597 rule 6"
+    },
+    {
+      "cell": "Hospital b: +18 h: held and stopped rows kept (36 h from the last processing)",
+      "expected": "kept",
+      "actual": {
+        "lis": true,
+        "van": true
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital b: +37 h: everything gone",
+      "expected": "all gone",
+      "actual": {
+        "bp": null,
+        "hr": null,
+        "temp": null,
+        "o2": null,
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": false,
+        "van": false,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital c: vitals not dictated keep yesterday's recorded time (bp/hr/temp/o2)",
+      "expected": "vitalsRecordedAt unchanged for those keys",
+      "actual": {
+        "before": {
+          "bp": "2026-10-19T13:04:06.215Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "after": {
+          "bp": "2026-10-20T09:04:49.096Z",
+          "hr": "2026-10-20T09:04:49.096Z",
+          "o2": "2026-10-20T09:04:49.096Z",
+          "temp": "2026-10-20T09:04:49.096Z"
+        },
+        "values": {
+          "bp": "136/84 (Oct 20)",
+          "hr": "78 (Oct 20)",
+          "o2": "95% RA (Oct 20)",
+          "temp": "37.4 (Oct 20)"
+        }
+      },
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: vitalsUpdatedAt (the 36 h clock) not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-20T09:04:49.096Z",
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: creatinine / potassium keep yesterday's value and recorded time",
+      "expected": "labs unchanged",
+      "actual": {
+        "before": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ],
+        "after": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "Oct 20",
+            "date": null,
+            "recordedAt": "2026-10-20T09:04:49.096Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "Oct 20",
+            "date": null,
+            "recordedAt": "2026-10-20T09:04:49.096Z"
+          }
+        ]
+      },
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: labsUpdatedAt not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-20T09:04:49.096Z",
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: imaging line and radiologyUpdatedAt not moved",
+      "expected": "unchanged",
+      "actual": {
+        "before": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ],
+        "after": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: yesterday's magnesium stays one row 'Given · Oct 19', updatedAt unchanged",
+      "expected": "Given · Oct 19, updatedAt 2026-10-19T13:04:06.215Z",
+      "actual": [
+        {
+          "name": "Magnesium sulfate 2 g IV once",
+          "status": "single-dose",
+          "changeType": "given",
+          "changeDate": "Oct 20",
+          "changedNote": "given Oct 20",
+          "updatedAt": "2026-10-20T09:04:49.166Z"
+        }
+      ],
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse c; TFA-92597 rule 2"
+    },
+    {
+      "cell": "Hospital c: held lisinopril keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Lisinopril 10 mg PO daily\",\"status\":\"held\",\"changeType\":\"held\",\"changeDate\":\"Oct 19\",\"changedNote\":\"soft BP\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Lisinopril 10 mg PO daily",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 19",
+        "changedNote": "soft BP",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: stopped vancomycin keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Vancomycin 1 g IV q12h\",\"status\":\"discontinued\",\"changeType\":\"stopped\",\"changeDate\":\"Oct 19\",\"changedNote\":\"AKI\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Vancomycin 1 g IV q12h",
+        "status": "discontinued",
+        "changeType": "stopped",
+        "changeDate": "Oct 19",
+        "changedNote": "AKI",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: active metoprolol keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Metoprolol tartrate 25 mg PO BID\",\"status\":\"active\",\"changeType\":null,\"changeDate\":null,\"changedNote\":null,\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "changeType": null,
+        "changeDate": null,
+        "changedNote": null,
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: panel: no value not dictated today reads 'Today'",
+      "expected": "only a value written today reads Today",
+      "actual": [
+        "Blood Pressure 136/84 (Oct 20) Today",
+        "Heart Rate 78 (Oct 20) Today",
+        "O₂ Sat 95% RA (Oct 20) Today",
+        "Temperature 37.4 (Oct 20) Today",
+        "Creatinine 1.4 Oct 20 Today",
+        "Potassium 3.6 Oct 20 Today"
+      ],
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: panel: magnesium tag reads 'Given · Oct 19'",
+      "expected": "Given · Oct 19",
+      "actual": "single dose Magnesium sulfate 2 g IV once Given · Oct 20 given Oct 20",
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "parse c"
+    },
+    {
+      "cell": "Hospital c: +18 h after the Save Note (T0 ≥ 38 h old): yesterday's values and doses gone (bp, creatinine, potassium, imaging, mag, met)",
+      "expected": "gone",
+      "actual": {
+        "bp": "136/84 (Oct 20)",
+        "hr": "78 (Oct 20)",
+        "temp": "37.4 (Oct 20)",
+        "o2": "95% RA (Oct 20)",
+        "creatinine": true,
+        "potassium": true,
+        "imaging": 0,
+        "met": false,
+        "lis": true,
+        "van": true,
+        "mag": true
+      },
+      "verdict": "fail",
+      "req": "U14a",
+      "note": "UAT 3.6 / 3.7; TFA-94699 AC 2; TFA-92597 rule 6"
+    },
+    {
+      "cell": "Hospital c: +18 h: held and stopped rows kept (36 h from the last processing)",
+      "expected": "kept",
+      "actual": {
+        "lis": true,
+        "van": true
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital c: +37 h: everything gone",
+      "expected": "all gone",
+      "actual": {
+        "bp": null,
+        "hr": null,
+        "temp": null,
+        "o2": null,
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": false,
+        "van": false,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital d: vitals not dictated keep yesterday's recorded time (hr/temp/o2)",
+      "expected": "vitalsRecordedAt unchanged for those keys",
+      "actual": {
+        "before": {
+          "bp": "2026-10-19T13:04:06.215Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "after": {
+          "bp": "2026-10-20T09:05:06.229Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "values": {
+          "bp": "128/76",
+          "hr": "78",
+          "o2": "95% RA",
+          "temp": "37.4"
+        }
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: a BP the dictation never named (invented by the parse)",
+      "expected": "recorded",
+      "actual": {
+        "bp": "128/76",
+        "at": "2026-10-20T09:05:06.229Z",
+        "save": "2026-10-20T09:05:06.229Z"
+      },
+      "verdict": "record",
+      "req": "U14a",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: creatinine / potassium keep yesterday's value and recorded time",
+      "expected": "labs unchanged",
+      "actual": {
+        "before": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ],
+        "after": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: labsUpdatedAt not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-19T13:04:06.215Z",
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: imaging line and radiologyUpdatedAt not moved",
+      "expected": "unchanged",
+      "actual": {
+        "before": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ],
+        "after": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: yesterday's magnesium stays one row 'Given · Oct 19', updatedAt unchanged",
+      "expected": "Given · Oct 19, updatedAt 2026-10-19T13:04:06.215Z",
+      "actual": [
+        {
+          "name": "Magnesium sulfate 2 g IV once",
+          "status": "single-dose",
+          "changeType": "given",
+          "changeDate": "Oct 19",
+          "changedNote": null,
+          "updatedAt": "2026-10-19T13:04:06.215Z"
+        }
+      ],
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse d; TFA-92597 rule 2"
+    },
+    {
+      "cell": "Hospital d: held lisinopril keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Lisinopril 10 mg PO daily\",\"status\":\"held\",\"changeType\":\"held\",\"changeDate\":\"Oct 19\",\"changedNote\":\"soft BP\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Lisinopril 10 mg PO daily",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 19",
+        "changedNote": "soft BP",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: stopped vancomycin keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Vancomycin 1 g IV q12h\",\"status\":\"discontinued\",\"changeType\":\"stopped\",\"changeDate\":\"Oct 19\",\"changedNote\":\"AKI\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Vancomycin 1 g IV q12h",
+        "status": "discontinued",
+        "changeType": "stopped",
+        "changeDate": "Oct 19",
+        "changedNote": "AKI",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: active metoprolol keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Metoprolol tartrate 25 mg PO BID\",\"status\":\"active\",\"changeType\":null,\"changeDate\":null,\"changedNote\":null,\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "changeType": null,
+        "changeDate": null,
+        "changedNote": null,
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: panel: no value not dictated today reads 'Today'",
+      "expected": "only a value written today reads Today",
+      "actual": [
+        "Blood Pressure 128/76 Today",
+        "Heart Rate 78 Oct 19",
+        "O₂ Sat 95% RA Oct 19",
+        "Temperature 37.4 Oct 19",
+        "Creatinine 1.4 Oct 19",
+        "Potassium 3.6 Oct 19"
+      ],
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: panel: magnesium tag reads 'Given · Oct 19'",
+      "expected": "Given · Oct 19",
+      "actual": "single dose Magnesium sulfate 2 g IV once Given · Oct 19 not mentioned today",
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse d"
+    },
+    {
+      "cell": "Hospital d: +18 h after the Save Note (T0 ≥ 38 h old): yesterday's values and doses gone (creatinine, potassium, imaging, mag, met)",
+      "expected": "gone",
+      "actual": {
+        "bp": "128/76",
+        "hr": "78",
+        "temp": "37.4",
+        "o2": "95% RA",
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": true,
+        "van": true,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "UAT 3.6 / 3.7; TFA-94699 AC 2; TFA-92597 rule 6"
+    },
+    {
+      "cell": "Hospital d: +18 h: held and stopped rows kept (36 h from the last processing)",
+      "expected": "kept",
+      "actual": {
+        "lis": true,
+        "van": true
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital d: +18 h: HR / temp / SpO2 from yesterday kept alive by the BP's column clock (vitalsUpdatedAt)",
+      "expected": "recorded",
+      "actual": {
+        "hr": "78",
+        "temp": "37.4",
+        "o2": "95% RA"
+      },
+      "verdict": "record",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital d: +37 h: everything gone",
+      "expected": "all gone",
+      "actual": {
+        "bp": null,
+        "hr": null,
+        "temp": null,
+        "o2": null,
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": false,
+        "van": false,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital e: vitals not dictated keep yesterday's recorded time (hr/temp/o2)",
+      "expected": "vitalsRecordedAt unchanged for those keys",
+      "actual": {
+        "before": {
+          "bp": "2026-10-19T13:04:06.215Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "after": {
+          "bp": "2026-10-20T09:05:23.345Z",
+          "hr": "2026-10-19T13:04:06.215Z",
+          "o2": "2026-10-19T13:04:06.215Z",
+          "temp": "2026-10-19T13:04:06.215Z"
+        },
+        "values": {
+          "bp": "128/76",
+          "hr": "78",
+          "o2": "95% RA",
+          "temp": "37.4"
+        }
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: the dictated BP 128/76 is stamped now (positive control)",
+      "expected": "bp 128/76, vitalsRecordedAt.bp = the save time",
+      "actual": {
+        "bp": "128/76",
+        "at": "2026-10-20T09:05:23.345Z",
+        "save": "2026-10-20T09:05:23.345Z"
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: creatinine / potassium keep yesterday's value and recorded time",
+      "expected": "labs unchanged",
+      "actual": {
+        "before": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ],
+        "after": [
+          {
+            "name": "Creatinine",
+            "value": "1.4",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          },
+          {
+            "name": "Potassium",
+            "value": "3.6",
+            "trend": "",
+            "date": null,
+            "recordedAt": "2026-10-19T13:04:06.215Z"
+          }
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: labsUpdatedAt not moved",
+      "expected": "2026-10-19T13:04:06.215Z",
+      "actual": "2026-10-19T13:04:06.215Z",
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: imaging line and radiologyUpdatedAt not moved",
+      "expected": "unchanged",
+      "actual": {
+        "before": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ],
+        "after": [
+          [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "2026-10-19T13:04:06.215Z"
+        ]
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: yesterday's magnesium stays one row 'Given · Oct 19', updatedAt unchanged",
+      "expected": "Given · Oct 19, updatedAt 2026-10-19T13:04:06.215Z",
+      "actual": [
+        {
+          "name": "Magnesium sulfate 2 g IV once",
+          "status": "single-dose",
+          "changeType": "given",
+          "changeDate": "Oct 19",
+          "changedNote": null,
+          "updatedAt": "2026-10-19T13:04:06.215Z"
+        }
+      ],
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e; TFA-92597 rule 2"
+    },
+    {
+      "cell": "Hospital e: held lisinopril keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Lisinopril 10 mg PO daily\",\"status\":\"held\",\"changeType\":\"held\",\"changeDate\":\"Oct 19\",\"changedNote\":\"soft BP\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Lisinopril 10 mg PO daily",
+        "status": "held",
+        "changeType": "held",
+        "changeDate": "Oct 19",
+        "changedNote": "soft BP",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: stopped vancomycin keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Vancomycin 1 g IV q12h\",\"status\":\"discontinued\",\"changeType\":\"stopped\",\"changeDate\":\"Oct 19\",\"changedNote\":\"AKI\",\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Vancomycin 1 g IV q12h",
+        "status": "discontinued",
+        "changeType": "stopped",
+        "changeDate": "Oct 19",
+        "changedNote": "AKI",
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: active metoprolol keeps status, date, reason and updatedAt",
+      "expected": "{\"name\":\"Metoprolol tartrate 25 mg PO BID\",\"status\":\"active\",\"changeType\":null,\"changeDate\":null,\"changedNote\":null,\"updatedAt\":\"2026-10-19T13:04:06.215Z\"}",
+      "actual": {
+        "name": "Metoprolol tartrate 25 mg PO BID",
+        "status": "active",
+        "changeType": null,
+        "changeDate": null,
+        "changedNote": null,
+        "updatedAt": "2026-10-19T13:04:06.215Z"
+      },
+      "verdict": "pass",
+      "req": "U8",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: panel: no value not dictated today reads 'Today'",
+      "expected": "only a value written today reads Today",
+      "actual": [
+        "Blood Pressure 128/76 Today",
+        "Heart Rate 78 Oct 19",
+        "O₂ Sat 95% RA Oct 19",
+        "Temperature 37.4 Oct 19",
+        "Creatinine 1.4 Oct 19",
+        "Potassium 3.6 Oct 19"
+      ],
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: panel: magnesium tag reads 'Given · Oct 19'",
+      "expected": "Given · Oct 19",
+      "actual": "single dose Magnesium sulfate 2 g IV once Given · Oct 19 not mentioned today",
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "parse e"
+    },
+    {
+      "cell": "Hospital e: +18 h after the Save Note (T0 ≥ 38 h old): yesterday's values and doses gone (creatinine, potassium, imaging, mag, met)",
+      "expected": "gone",
+      "actual": {
+        "bp": "128/76",
+        "hr": "78",
+        "temp": "37.4",
+        "o2": "95% RA",
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": true,
+        "van": true,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a",
+      "note": "UAT 3.6 / 3.7; TFA-94699 AC 2; TFA-92597 rule 6"
+    },
+    {
+      "cell": "Hospital e: +18 h: held and stopped rows kept (36 h from the last processing)",
+      "expected": "kept",
+      "actual": {
+        "lis": true,
+        "van": true
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital e: +18 h: the BP written today kept",
+      "expected": "kept",
+      "actual": "128/76",
+      "verdict": "pass",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital e: +18 h: HR / temp / SpO2 from yesterday kept alive by the BP's column clock (vitalsUpdatedAt)",
+      "expected": "recorded",
+      "actual": {
+        "hr": "78",
+        "temp": "37.4",
+        "o2": "95% RA"
+      },
+      "verdict": "record",
+      "req": "U14a"
+    },
+    {
+      "cell": "Hospital e: +37 h: everything gone",
+      "expected": "all gone",
+      "actual": {
+        "bp": null,
+        "hr": null,
+        "temp": null,
+        "o2": null,
+        "creatinine": false,
+        "potassium": false,
+        "imaging": 0,
+        "met": false,
+        "lis": false,
+        "van": false,
+        "mag": false
+      },
+      "verdict": "pass",
+      "req": "U14a"
+    }
+  ]
+}

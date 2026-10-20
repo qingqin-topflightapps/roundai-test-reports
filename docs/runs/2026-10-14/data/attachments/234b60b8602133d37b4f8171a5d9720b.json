@@ -1,0 +1,20 @@
+{
+  "OAT-06/S22": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "STATIC",
+    "title": "Analytics hand-off doc, field names, NH removal, end-of-pilot survey",
+    "bug": "B24",
+    "bugNow": "still",
+    "stated": "TFA-94514 AC 1 / AC 9",
+    "detail": "At 8b4be94a: no hand-off doc for Vikram (docs/ has only billing + mobile files; aiCallLog ok / httpStatus / promptChars / responseChars / error described nowhere); no Nursing Home screen calls snf.remove (data/snf.ts:36 unused), so no NH patient_removed (B24). New: note_marked_complete is now written on the server (rounding.ts:265, snf.ts:285). srv-oat06-s22-code-read.spec.ts re-run (it reads 43c38a4f) plus a re-read at 8b4be94a.",
+    "evidence": [
+      "runs/2026-10-14-local/code-review/OAT-06-S22.json",
+      "runs/2026-10-14-local/newspec-c/evidence/oat06-s22-srv-code-read.json",
+      "runs/2026-10-14-local/code-review/rb3-static-8b4be94a.json"
+    ]
+  }
+}

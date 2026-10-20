@@ -1,0 +1,151 @@
+{
+  "name": "pr-efs-s27-h",
+  "at": "2026-10-19T19:50:10.683Z",
+  "checks": [
+    {
+      "id": "h1: the typed pre-round is kept",
+      "ok": true,
+      "detail": "QA-EFS-27 BP 118/72. Creatinine 1.6."
+    },
+    {
+      "id": "h1 (U3b): yesterday's 150/90 is absent or shown with its own day while today's summary has failed",
+      "ok": true,
+      "detail": "Blood Pressure | 150/90 | Oct 19 → Oct 19"
+    },
+    {
+      "id": "h1 (U3b): yesterday's 1.2 is absent or shown with its own day while today's summary has failed",
+      "ok": true,
+      "detail": "1.2 | Oct 19 → Oct 19"
+    },
+    {
+      "id": "h2: today's 118/72 shows as Today after the retry",
+      "ok": true,
+      "detail": "Blood Pressure | 118/72 | Today → Today"
+    },
+    {
+      "id": "h2: today's 1.6 shows as Today after the retry",
+      "ok": true,
+      "detail": "1.6 | Today → Today"
+    },
+    {
+      "id": "h2 (U3b): yesterday's 150/90 is absent or shown with its own day after the retry",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "h2 (U3b): yesterday's 1.2 is absent or shown with its own day after the retry",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "h3 (U4b recorded: the request was refused at the socket, not a server-job failure): the Note tab shows an explicit 'not generated' failure, not the empty card",
+      "ok": false,
+      "detail": "No note generated yet. | Complete the Encounter tab first.",
+      "recordOnly": true
+    },
+    {
+      "id": "h3 (U4b recorded: the request was refused at the socket, not a server-job failure): yesterday's note is not in the current-note slot",
+      "ok": true,
+      "detail": "(empty)",
+      "recordOnly": true
+    },
+    {
+      "id": "h3: no note was stored from the failed generation",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "h4 (U4b recorded: the request was refused at the socket, not a server-job failure): plain chart's Note tab shows 'not generated', not the empty card",
+      "ok": false,
+      "detail": "No note generated yet. | Complete the Encounter tab first.",
+      "recordOnly": true
+    },
+    {
+      "id": "guard: no model action and no Generate job reached the server",
+      "ok": true,
+      "detail": "27 socket calls"
+    },
+    {
+      "id": "unscripted ai/* actions the guard refused",
+      "ok": false,
+      "detail": "ai/parsing:parsePreRoundNotes",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "h0-before": {
+      "tiles": [
+        {
+          "text": "Blood Pressure | 150/90 | Oct 19",
+          "date": "Oct 19"
+        },
+        {
+          "text": "1.2 | Oct 19",
+          "date": "Oct 19"
+        }
+      ]
+    },
+    "h1": {
+      "kept": "QA-EFS-27 BP 118/72. Creatinine 1.6.",
+      "tiles": [
+        {
+          "text": "Blood Pressure | 150/90 | Oct 19",
+          "date": "Oct 19"
+        },
+        {
+          "text": "1.2 | Oct 19",
+          "date": "Oct 19"
+        }
+      ]
+    },
+    "h2": {
+      "tiles": [
+        {
+          "text": "Blood Pressure | 118/72 | Today",
+          "date": "Today"
+        },
+        {
+          "text": "1.6 | Today",
+          "date": "Today"
+        }
+      ]
+    },
+    "h3": {
+      "encounterError": "The encounter dictation is saved, but the note couldn’t be requested. Check your connection and tap Generate Note & Finish to retry.",
+      "noteTab": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-S27 Hosp Prior ptle\n\nRoom 4B-18 · 74y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…\n",
+      "storedNote": ""
+    },
+    "h4": {
+      "noteTab": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-S27 Hosp Plain ptle\n\nRoom 4B-12 · 72y · —\n\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\n\nCommunity-acquired pneumonia\n\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nFinalizing Encounter Data…\n"
+    },
+    "socket": [
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation rounding:update forwarded",
+      "Action ai/parsing:parsePreRoundNotes fail",
+      "Mutation rounding:update forwarded",
+      "Mutation rounding:update forwarded",
+      "Mutation rounding:update forwarded",
+      "Mutation rounding:update forwarded",
+      "Action ai/parsing:parsePreRoundNotes ok",
+      "Mutation rounding:update forwarded",
+      "Action ai/parsing:extractTasks ok",
+      "Mutation rounding:update forwarded",
+      "Mutation rounding:update forwarded",
+      "Mutation noteJobs:request fail",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation rounding:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation rounding:update forwarded",
+      "Mutation rounding:update forwarded",
+      "Mutation noteJobs:request fail"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "TC-21/S28": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "failed",
+    "known": true,
+    "ranAt": "2026-10-16T10:06:26.937Z",
+    "title": "NH Save & Extract and Generate: the 'generating' state while the physician moves on",
+    "detail": "Local 25acd727, 10 cycles, Nursing Home only, fresh residents per cycle. Save & Extract answered at the socket at once; Generate answered with an injected failure after 8 s (on this build a stored note queues the server billing job, so a successful local Generate is not allowed); the note save is refused at the socket too. Each cycle: Save & Extract, Generate Note & Finish, open the second resident at once, come back to the first ~2.4 s after Generate (model still 'working'), then wait past the failure. Save & Extract worked 10/10 (U9). 'Generating Note…' shows before leaving (10/10, recorded), but on return it is gone 0/10 (Encounter idle, Post-Round 'No note generated yet.'), and after the failure no error is shown 0/10: the generating state and the failure live in the unmounted tab. Known: candidate N17 (generation is not on the server; TFA-92592 AC 'generation runs on the server … on return the note is there, or an explicit failure shows'). The generation code is unchanged from 43c38a4f (no diff in useNoteGeneration.ts / snf EncounterTab.tsx).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s28.json",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s28-c1-encounter-after-failure.aria.txt",
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s28-c1-encounter-after-failure.png"
+    ],
+    "productIssue": "A physician who taps Generate on a resident and moves to the next one finds no 'generating' state when coming back, and if the note failed no error is shown: the visit just looks like it was never generated (N17).",
+    "pkg": "ctx"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "TC-09/S17": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Same-day re-scan creates nothing twice",
+    "bug": "B01",
+    "bugNow": "still",
+    "stated": "TFA-92587 AC 3",
+    "detail": "rst-tc09-scans.spec.ts on 8b4be94a with ai/vision:scanCensusSheet answered at the socket (the photo read itself is not exercised). B01 re-check in-process (pl-b01-parse.spec.ts, real scanCensusSheet handler): a ```json-fenced reply still gives 0 rows (both modes, diagnostics row ok=true), bare JSON 3 rows; vision.ts / modelJson.ts / vertex.ts unchanged since 25acd727. The case stays tied to B01 until a real photo is read on dev.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc09-s17.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pl-b01-parse.json"
+    ]
+  }
+}

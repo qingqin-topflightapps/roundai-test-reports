@@ -1,0 +1,15 @@
+{
+  "TC-21/S17": {
+    "build": "25acd727",
+    "supersedes": true,
+    "method": "PW",
+    "status": "blocked",
+    "ranAt": "2026-10-16T10:23:52.701Z",
+    "title": "Retention by context x item x age (3.6/3.7, NH persistence, last two visits)",
+    "detail": "Todo: every cell belongs to TFA-94699 (in progress) — TFA-92599's retention AC points at it — and the aging helper is still not on main. Recorded with a seeded-timestamp probe (no aging helper; rows created with old item stamps, then the list opened so the route's lifecycle runs): NH chronic medication at 37 h still present, NH open task at 37 h still present (the two key S17 cells hold); NH pre-round text at 13 h, Hospital pre-round text at 13 h, a Hospital Important Point at 13 h and a Hospital open task 37 h after processing were all still there (B19, excluded: 94699 in progress). convex/lib/lifecycle.ts is unchanged from 43c38a4f: SNF keeps 3 visits (transcriptVisits / previousNotes / medicationVisits = 3, UAT says 2), Hospital Important Points 18 h (UAT 12 h).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/tc21-s17-probe.json"
+    ],
+    "pkg": "ctx"
+  }
+}

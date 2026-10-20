@@ -1,0 +1,27 @@
+{
+  "TC-10/S02": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:29:00Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb1",
+    "method": "AGENT",
+    "title": "Nursing Home pre-round summary through the live Save Note",
+    "detail": "Dev <dev address> (main 8b4be94a, deployed 2026-10-20 02:04 JST), live models, under runs/.dev.lock; only prefixed rows created and all deleted (0 remaining, 0 changes to other rows). Unit P02 (run-plan-dev-2026-10-15-pre.json, run-id 2026-10-20-rb1-dev). The dictated hip X-ray never reaches Diagnostic Testing: the panel still reads 'No studies recorded yet.' (N28; useSnfPreRoundProcess.ts writes no radiology). Also local (rb1-pre-tc10-s01-s02-flow.spec.ts, model mocked): same. Checkpoint 1 also misses the old Important Points labels ('Important points (manual)', 'Kept exactly as you say it'): the box was redone by TFA-92590 (package ip), not counted here.",
+    "evidence": [
+      "runs/2026-10-20-rb1-dev/units/P02.verdict.json",
+      "runs/2026-10-14-local/newspec-c/evidence/rb1-tc10-s02-pre-nh.json"
+    ],
+    "bug": {
+      "id": "N28",
+      "now": "still"
+    },
+    "scope": "P0",
+    "stated": {
+      "where": "UAT TC-10 ER 1-2; UAT 3.3; TFA-92588 How it works 1",
+      "quote": "Structured summary correctly extracts/formats Background, Vitals, Labs, Imaging/Diagnostic Testing, Medications, and Tasks",
+      "mixed": false,
+      "statedPart": null
+    }
+  }
+}

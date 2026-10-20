@@ -1,0 +1,100 @@
+{
+  "name": "pl-b01-parse",
+  "at": "2026-10-19T18:00:58.416Z",
+  "checks": [
+    {
+      "id": "rounding fenced: the 3 rows of the reply come back from scanCensusSheet (TC-02 then: the photo's rows are listed)",
+      "ok": false,
+      "detail": "rows=0"
+    },
+    {
+      "id": "rounding fenced: the diagnostics row records ok=true for the empty result (the failure is silent)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"model\":\"vertex-configured-model\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "rounding bare: the 3 rows of the reply come back from scanCensusSheet (TC-02 then: the photo's rows are listed)",
+      "ok": true,
+      "detail": "rows=3"
+    },
+    {
+      "id": "snf fenced: the 3 rows of the reply come back from scanCensusSheet (TC-02 then: the photo's rows are listed)",
+      "ok": false,
+      "detail": "rows=0"
+    },
+    {
+      "id": "snf fenced: the diagnostics row records ok=true for the empty result (the failure is silent)",
+      "ok": true,
+      "detail": "{\"ok\":true,\"model\":\"vertex-configured-model\"}",
+      "recordOnly": true
+    },
+    {
+      "id": "snf bare: the 3 rows of the reply come back from scanCensusSheet (TC-02 then: the photo's rows are listed)",
+      "ok": true,
+      "detail": "rows=3"
+    },
+    {
+      "id": "client (code read, 25acd727): an empty list shows 'No patients found in the image. Try a clearer photo.' (useCensusScan.ts) / 'No residents found. Try a clearer photo.' (useResidentListScan.ts)",
+      "ok": true,
+      "detail": "",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "calls": [
+      {
+        "mode": "rounding",
+        "wrap": "fenced",
+        "vendorCalls": 1,
+        "rows": 0,
+        "error": "",
+        "diagnostics": {
+          "fn": "vision.scanCensusSheet",
+          "model": "vertex-configured-model",
+          "ok": true
+        },
+        "replyHead": "```json\n{\n  \"patients\": [\n    {\n      \"n"
+      },
+      {
+        "mode": "rounding",
+        "wrap": "bare",
+        "vendorCalls": 1,
+        "rows": 3,
+        "error": "",
+        "diagnostics": {
+          "fn": "vision.scanCensusSheet",
+          "model": "vertex-configured-model",
+          "ok": true
+        },
+        "replyHead": "{\"patients\":[{\"name\":\"QA PL Alder\",\"age\""
+      },
+      {
+        "mode": "snf",
+        "wrap": "fenced",
+        "vendorCalls": 1,
+        "rows": 0,
+        "error": "",
+        "diagnostics": {
+          "fn": "vision.scanCensusSheet",
+          "model": "vertex-configured-model",
+          "ok": true
+        },
+        "replyHead": "```json\n{\n  \"residents\": [\n    {\n      \""
+      },
+      {
+        "mode": "snf",
+        "wrap": "bare",
+        "vendorCalls": 1,
+        "rows": 3,
+        "error": "",
+        "diagnostics": {
+          "fn": "vision.scanCensusSheet",
+          "model": "vertex-configured-model",
+          "ok": true
+        },
+        "replyHead": "{\"residents\":[{\"name\":\"QA PL Juniper\",\"d"
+      }
+    ]
+  }
+}

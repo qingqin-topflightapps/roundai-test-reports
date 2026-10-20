@@ -1,0 +1,20 @@
+{
+  "EFS/S17": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Microphone blocked / no microphone in every Dictate box (vis-efs-s17-mic-blocked.spec.ts)",
+    "bug": "B27",
+    "bugNow": "still",
+    "stated": "TFA-94745 state 8 (microphone blocked: explain how to enable it)",
+    "detail": "Oracle cells pass in both runs (NotAllowedError and NotFoundError): every box explains how to allow the microphone and keeps the typed line. Still B27: in the Hospital pre-round editor the yellow 'Dictation done — review before saving' shows together with the red microphone message although nothing was dictated. Recorded: the no-microphone wording still says 'blocked'; the editor's message has no live region.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-mic-permission-denied.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-no-capture-device.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s17-mic-permission-denied-cp1-hosp-preround.png"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "EFS/S20": {
+    "status": "failed",
+    "ranAt": "2026-10-19T20:55:41.421Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "rb3",
+    "method": "PW",
+    "title": "Kept dictation per patient / physician; device stores wiped on sign-out and deletion (vis-efs-s20-kept-dictation.spec.ts)",
+    "bug": "B02",
+    "bugNow": "still",
+    "stated": "TFA-94745 / TFA-92570 AC 7 (nothing of a patient left on the device after sign-out)",
+    "detail": "18/20 judged passed, the 2 failures are B02: after sign-out IndexedDB round-ai-local-audio still holds 1 pending recording, after account deletion 2 (the drafts store is empty). Physician 2 sees no Recover prompt (passes).",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s20-kept-dictation.json",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s20-cp6-signed-out.png",
+      "runs/2026-10-14-local/newspec-c/evidence/efs-s20-cp7-deleted.png"
+    ]
+  }
+}

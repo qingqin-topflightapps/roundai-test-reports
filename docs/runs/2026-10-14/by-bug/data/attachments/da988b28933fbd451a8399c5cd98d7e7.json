@@ -1,0 +1,97 @@
+{
+  "name": "rb3-tc09-s04-point",
+  "at": "2026-10-19T18:18:08.060Z",
+  "checks": [
+    {
+      "id": "setup: both seeded points are stored",
+      "ok": true,
+      "detail": "[{\"createdAt\":1792433883684,\"id\":\"qa-alder-1\",\"source\":\"manual\",\"text\":\"QA point Alder\"}]"
+    },
+    {
+      "id": "backend (U3): Alder keeps its Important Point after the scan",
+      "ok": true,
+      "detail": "[{\"createdAt\":1792433883684,\"id\":\"qa-alder-1\",\"source\":\"manual\",\"text\":\"QA point Alder\"}]"
+    },
+    {
+      "id": "backend (U2/U3): Alder is In Today, unit Oak 1A kept",
+      "ok": true,
+      "detail": "{\"inToday\":true,\"unit\":\"Oak 1A\"}"
+    },
+    {
+      "id": "chart (U3): Alder's Pre-Round editor shows the point card 'QA point Alder'",
+      "ok": true,
+      "detail": "{\"cards\":[\"QA point Alder\"],\"pageText\":false}"
+    },
+    {
+      "id": "control (recorded): an unscanned resident's point shows in the editor panel the same way",
+      "ok": true,
+      "detail": "{\"cards\":[\"QA point Control\"],\"pageText\":false}",
+      "recordOnly": true
+    },
+    {
+      "id": "layout (recorded): the point text is not on the chart page outside the editor (TFA-92590 layout: bottom box of the Pre-Round fullscreen editor)",
+      "ok": true,
+      "detail": "{\"alderPage\":false,\"controlPage\":false}",
+      "recordOnly": true
+    },
+    {
+      "id": "setup: one scripted read; nothing else reached a model",
+      "ok": true,
+      "detail": "[\"ai/vision:scanCensusSheet\"]"
+    }
+  ],
+  "data": {
+    "backend-before": {
+      "alder": [
+        {
+          "createdAt": 1792433883684,
+          "id": "qa-alder-1",
+          "source": "manual",
+          "text": "QA point Alder"
+        }
+      ],
+      "control": [
+        {
+          "createdAt": 1792433883733,
+          "id": "qa-control-1",
+          "source": "manual",
+          "text": "QA point Control"
+        }
+      ]
+    },
+    "backend-after": {
+      "alder": [
+        {
+          "createdAt": 1792433883684,
+          "id": "qa-alder-1",
+          "source": "manual",
+          "text": "QA point Alder"
+        }
+      ],
+      "alderInToday": true,
+      "alderUnit": "Oak 1A",
+      "names": [
+        "QA RB3-TC09S04 Alder 3NQS",
+        "QA RB3-TC09S04 Control 3NQS"
+      ]
+    },
+    "ui": {
+      "alder": {
+        "cards": [
+          "QA point Alder"
+        ],
+        "pageText": false
+      },
+      "control": {
+        "cards": [
+          "QA point Control"
+        ],
+        "pageText": false
+      }
+    },
+    "cleanup": {
+      "hospital": 0,
+      "nursingHome": 2
+    }
+  }
+}

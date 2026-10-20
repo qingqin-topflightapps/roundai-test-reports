@@ -1,0 +1,18 @@
+{
+  "EFS/S27": {
+    "status": "passed",
+    "ranAt": "2026-10-19T20:13:19Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "pr",
+    "method": "PW",
+    "title": "Stale content after a failure, both contexts (U3b judged; U4b not testable on this build)",
+    "detail": "pr-efs-s27-stale.spec.ts (copy of pre-efs-s27-stale.spec.ts for 8b4be94a; noteJobs:request refused at the socket so no server job / no model). U3b 7/7 per mode: while today's summary has failed yesterday's BP and creatinine/albumin show under 'Oct 19', never 'Today'; after the retry today's values read 'Today' and yesterday's are gone; typed pre-round kept. U4b (TFA-92595 AC 9) not testable: the explicit failure state belongs to the server note job, which cannot fail locally without a model call (no AI_STUBS on the local backend) nor be forced on dev. Code: NoteJobEmptyState shows 'Note not generated.' + reason and NoteJobBanner 'The new note wasn't generated. This is the earlier note.' Recorded with the request itself refused: Note tab shows 'No note generated yet' (Hospital also the 'Finalizing Encounter Data…' spinner, B27), the Encounter tab says the note couldn't be requested.",
+    "evidence": [
+      "runs/2026-10-14-local/newspec-c/evidence/pr-efs-s27-h.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-efs-s27-n.json",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-efs-s27-h-h1-failed-panels.png",
+      "runs/2026-10-14-local/newspec-c/evidence/pr-efs-s27-n-n3-notetab-prior.png"
+    ]
+  }
+}

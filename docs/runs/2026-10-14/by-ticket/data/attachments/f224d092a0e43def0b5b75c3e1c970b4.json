@@ -1,0 +1,155 @@
+{
+  "name": "pr-efs-s27-n",
+  "at": "2026-10-19T20:02:52.241Z",
+  "checks": [
+    {
+      "id": "n1: the typed pre-round is kept",
+      "ok": true,
+      "detail": "QA-EFS-27 BP 126/76. Albumin 3.4."
+    },
+    {
+      "id": "n1 (U3b): yesterday's 140/88 is absent or shown with its own day while today's summary has failed",
+      "ok": true,
+      "detail": "Blood Pressure | 140/88 | Oct 19 → Oct 19"
+    },
+    {
+      "id": "n1 (U3b): yesterday's 3.1 is absent or shown with its own day while today's summary has failed",
+      "ok": true,
+      "detail": "3.1 | Oct 19 → Oct 19"
+    },
+    {
+      "id": "n2: today's 126/76 shows as Today after the retry",
+      "ok": true,
+      "detail": "Blood Pressure | 126/76 | Today → Today"
+    },
+    {
+      "id": "n2: today's 3.4 shows as Today after the retry",
+      "ok": true,
+      "detail": "3.4 | Today → Today"
+    },
+    {
+      "id": "n2 (U3b): yesterday's 140/88 is absent or shown with its own day after the retry",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "n2 (U3b): yesterday's 3.1 is absent or shown with its own day after the retry",
+      "ok": true,
+      "detail": "absent"
+    },
+    {
+      "id": "n3 (U4b recorded: the request was refused at the socket, not a server-job failure): the Note tab shows an explicit 'not generated' failure, not the empty card",
+      "ok": false,
+      "detail": "No note generated yet. | Complete the Encounter tab first.",
+      "recordOnly": true
+    },
+    {
+      "id": "n3 (U4b recorded: the request was refused at the socket, not a server-job failure): yesterday's note is not in the current-note slot",
+      "ok": true,
+      "detail": "(empty)",
+      "recordOnly": true
+    },
+    {
+      "id": "n3: no note was stored from the failed generation",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "n4 (U4b recorded: the request was refused at the socket, not a server-job failure): plain chart's Note tab shows 'not generated', not the empty card",
+      "ok": false,
+      "detail": "No note generated yet. | Complete the Encounter tab first.",
+      "recordOnly": true
+    },
+    {
+      "id": "guard: no model action and no Generate job reached the server",
+      "ok": true,
+      "detail": "31 socket calls"
+    },
+    {
+      "id": "unscripted ai/* actions the guard refused",
+      "ok": false,
+      "detail": "ai/parsing:parsePreRoundNotes",
+      "recordOnly": true
+    }
+  ],
+  "data": {
+    "n0-before": {
+      "tiles": [
+        {
+          "text": "Blood Pressure | 140/88 | Oct 19",
+          "date": "Oct 19"
+        },
+        {
+          "text": "3.1 | Oct 19",
+          "date": "Oct 19"
+        }
+      ]
+    },
+    "n1": {
+      "kept": "QA-EFS-27 BP 126/76. Albumin 3.4.",
+      "tiles": [
+        {
+          "text": "Blood Pressure | 140/88 | Oct 19",
+          "date": "Oct 19"
+        },
+        {
+          "text": "3.1 | Oct 19",
+          "date": "Oct 19"
+        }
+      ]
+    },
+    "n2": {
+      "tiles": [
+        {
+          "text": "Blood Pressure | 126/76 | Today",
+          "date": "Today"
+        },
+        {
+          "text": "3.4 | Today",
+          "date": "Today"
+        }
+      ]
+    },
+    "n3": {
+      "encounterError": "The pre-round note was saved, but its nursing-home summary couldn’t be updated.",
+      "noteTab": "The pre-round note was saved, but its nursing-home summary couldn’t be updated.\nThis preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-S27 Resident Prior 0lx3\n\nMRN-PKPON8 · Cedar Wing · Room 27\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete\n",
+      "storedNote": ""
+    },
+    "n4": {
+      "noteTab": "This preview is not HIPAA compliant. Do not enter or store real patient data or PHI.\nQA EFS-S27 Resident Plain 0lx3\n\nMRN-U4HFWI · Cedar Wing · Room 21\n\nNursing Home\nFollow-up\n▾\nNew Admission\nFollow-up\nConsult\nPre-Round\nEncounter\nPost-Round\nAsk About the Encounter or Patient\nNote\nTasks\nMeds\n\nNo note generated yet.\n\nComplete the Encounter tab first.\n\nMark Visit Complete\n"
+    },
+    "socket": [
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Action ai/parsing:parsePreRoundNotes fail",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Action ai/parsing:parsePreRoundNotes ok",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation noteJobs:request fail",
+      "Mutation time:now forwarded",
+      "Mutation time:now forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation access:logChartAccess forwarded",
+      "Mutation snf:applyLifecycle forwarded",
+      "Mutation usage:record forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation snf:update forwarded",
+      "Mutation noteJobs:request fail"
+    ]
+  }
+}
