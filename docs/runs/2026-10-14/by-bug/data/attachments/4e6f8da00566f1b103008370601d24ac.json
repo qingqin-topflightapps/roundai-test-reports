@@ -1,0 +1,146 @@
+{
+ "fixture": "HL-N2",
+ "arm": "B",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "encounter": "Weight 61.2 kg, down from 63.0 kg two weeks ago. Eating about 25 percent of meals. He takes metformin. HR 104 after therapy this morning, 88 at rest. Speech therapy saw him, thin liquids are fine. Discuss hospice with the family at the care conference Friday. Quiet, answers questions, says he is not hungry. Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care."
+ },
+ "note": "Interval Changes Since Last Visit\n\nWeight decreased from 63.0 kg two weeks ago to 61.2 kg today. Oral intake remains limited; resident eating approximately 25 percent of meals. Resident reports he is not hungry. Speech therapy evaluation completed; thin liquids cleared.\n\nCurrent Vitals and Weight Trend\n\nWeight: 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago). Heart rate: 104 beats per minute after therapy this morning, 88 beats per minute at rest. Vital signs: not dictated today beyond heart rate.\n\nFunctional Status Update\n\nResident is quiet and oriented, answering questions appropriately. Speech therapy cleared thin liquids. Therapy participation documented this morning with elevated heart rate response noted.\n\nActive Medical Problems\n\nDeconditioning after pneumonia: Resident remains deconditioned with limited oral intake and weight loss. Heart rate elevation noted with activity. Resident denies hunger. Goals-of-care discussion planned with family at care conference Friday. Hospice discussion to be initiated.\n\nMedication Changes\n\nMetformin continued. Nutrition supplement added twice daily.\n\nAssessment and Plan\n\nDeconditioning after pneumonia with progressive weight loss and poor oral intake. Resident is quiet and interactive but reports anorexia. Speech therapy has cleared thin liquids. Heart rate elevation with activity is expected in the context of deconditioning. Family meeting scheduled Friday to discuss goals of care and hospice options.\n\n1. Continue metformin as prescribed.\n2. Add nutrition supplement twice daily to support oral intake and weight maintenance.\n3. Obtain weekly weights to monitor trend.\n4. Facilitate goals-of-care and hospice discussion with family at care conference Friday.\n5. Continue speech therapy recommendations; thin liquids cleared.\n6. Monitor heart rate response to activity and resident comfort.",
+ "noteSections": [
+  {
+   "body": "Weight decreased from 63.0 kg two weeks ago to 61.2 kg today. Oral intake remains limited; resident eating approximately 25 percent of meals. Resident reports he is not hungry. Speech therapy evaluation completed; thin liquids cleared.",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Weight: 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago). Heart rate: 104 beats per minute after therapy this morning, 88 beats per minute at rest. Vital signs: not dictated today beyond heart rate.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Resident is quiet and oriented, answering questions appropriately. Speech therapy cleared thin liquids. Therapy participation documented this morning with elevated heart rate response noted.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "Deconditioning after pneumonia: Resident remains deconditioned with limited oral intake and weight loss. Heart rate elevation noted with activity. Resident denies hunger. Goals-of-care discussion planned with family at care conference Friday. Hospice discussion to be initiated.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "Metformin continued. Nutrition supplement added twice daily.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Deconditioning after pneumonia with progressive weight loss and poor oral intake. Resident is quiet and interactive but reports anorexia. Speech therapy has cleared thin liquids. Heart rate elevation with activity is expected in the context of deconditioning. Family meeting scheduled Friday to discuss goals of care and hospice options.\n\n1. Continue metformin as prescribed.\n2. Add nutrition supplement twice daily to support oral intake and weight maintenance.\n3. Obtain weekly weights to monitor trend.\n4. Facilitate goals-of-care and hospice discussion with family at care conference Friday.\n5. Continue speech therapy recommendations; thin liquids cleared.\n6. Monitor heart rate response to activity and resident comfort.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 9721,
+    "providerMs": 9491,
+    "appMs": 230,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 9721,
+    "providerMs": 9491,
+    "appMs": 230,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4381,
+    "providerMs": 4202,
+    "appMs": 179,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N2-a": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Hospice discussion to be initiated.",
+     "Family meeting scheduled Friday to discuss goals of care and hospice options."
+    ],
+    "why": "kept as dictated"
+   }
+  },
+  "HL-N2-b": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Metformin continued.",
+     "Continue metformin as prescribed."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N2-c": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Heart rate: 104 beats per minute after therapy this morning, 88 beats per minute at rest."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "61\\.2",
+   "present": true
+  },
+  {
+   "fact": "63(\\.0)?",
+   "present": true
+  },
+  {
+   "fact": "25\\s*(%|percent)",
+   "present": true
+  },
+  {
+   "fact": "metformin",
+   "present": true
+  },
+  {
+   "fact": "104",
+   "present": true
+  },
+  {
+   "fact": "88",
+   "present": true
+  },
+  {
+   "fact": "supplement",
+   "present": true
+  }
+ ],
+ "ms": 30223
+}

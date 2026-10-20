@@ -1,0 +1,210 @@
+{
+ "fixture": "HL-N5",
+ "arm": "A",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "preRound": "Creatinine 3.1, stable from last month. Potassium 5.2. Denies fever. Eating well, weight 80.1 kg. Nephrology follows him; he might need dialysis in the future. Continue the low-potassium diet.",
+  "encounter": "No edema, lungs clear. Repeat a BMP in two weeks and send the results to nephrology."
+ },
+ "note": "Interval Changes Since Last Visit\n\nCreatinine stable at 3.1 from last month. Potassium 5.2. Resident denies fever. Continues to eat well.\n\nCurrent Vitals and Weight Trend\n\nWeight 80.1 kg. Vital signs: not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nChronic kidney disease stage 4 — Creatinine 3.1, stable from last month. Potassium 5.2. Resident followed by nephrology; dialysis may be required in the future. Currently on low-potassium diet. Physical examination today reveals no edema and clear lungs.\n\nMedication Changes\n\nNo changes. Continue low-potassium diet.\n\nAssessment and Plan\n\nChronic kidney disease stage 4 — Creatinine remains stable at 3.1 with potassium 5.2. Resident tolerating low-potassium diet well and eating adequately. Will continue current management with nephrology follow-up.\n\n1. Continue low-potassium diet.\n2. Repeat basic metabolic panel in two weeks and send results to nephrology.",
+ "noteSections": [
+  {
+   "body": "Creatinine stable at 3.1 from last month. Potassium 5.2. Resident denies fever. Continues to eat well.",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Weight 80.1 kg. Vital signs: not dictated today.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Not dictated.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "Chronic kidney disease stage 4 — Creatinine 3.1, stable from last month. Potassium 5.2. Resident followed by nephrology; dialysis may be required in the future. Currently on low-potassium diet. Physical examination today reveals no edema and clear lungs.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "No changes. Continue low-potassium diet.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Chronic kidney disease stage 4 — Creatinine remains stable at 3.1 with potassium 5.2. Resident tolerating low-potassium diet well and eating adequately. Will continue current management with nephrology follow-up.\n\n1. Continue low-potassium diet.\n2. Repeat basic metabolic panel in two weeks and send results to nephrology.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 7440,
+    "providerMs": 7091,
+    "appMs": 349,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 7440,
+    "providerMs": 7091,
+    "appMs": 349,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3228,
+    "providerMs": 3138,
+    "appMs": 90,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4498,
+    "providerMs": 4494,
+    "appMs": 4,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N5-a": {
+   "summary": {
+    "verdict": "unclear",
+    "quotes": [
+     "monitor for dialysis need.."
+    ],
+    "why": "a sentence naming the subject without the hedge / negation / condition, while another sentence keeps it (a person reads it)"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• CKD stage 4 — Creatinine 3.1 (stable from last month), potassium 5.2, on low-potassium diet, may require dialysis in future per nephrology"
+    ],
+    "why": "kept as dictated"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "dialysis may be required in the future."
+    ],
+    "why": "kept as dictated"
+   }
+  },
+  "HL-N5-b": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Visit 1 · Oct 20: CKD stage 4 stable with creatinine 3.1 and potassium 5.2.",
+     "• CKD stage 4 — Creatinine 3.1 (stable from last month), potassium 5.2, on low-potassium diet, may require dialysis in future per nephrology"
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Visit 1 · Oct 20: CKD stage 4 stable with creatinine 3.1, potassium 5.2.",
+     "• CKD stage 4 — Creatinine 3.1 (stable from last month), potassium 5.2, on low-potassium diet, may require dialysis in future per nephrology"
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Potassium 5.2.",
+     "Potassium 5.2."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N5-c": {
+   "summary": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   },
+   "after": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Resident denies fever."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "3\\.1",
+   "present": true
+  },
+  {
+   "fact": "5\\.2",
+   "present": true
+  },
+  {
+   "fact": "80\\.1",
+   "present": true
+  },
+  {
+   "fact": "nephrology",
+   "present": true
+  },
+  {
+   "fact": "low[- ]potassium",
+   "present": true
+  },
+  {
+   "fact": "two weeks|2 weeks",
+   "present": true
+  }
+ ],
+ "ms": 39615,
+ "summary": {
+  "admissionSummary.course": "Visit 1 · Oct 20: CKD stage 4 stable with creatinine 3.1 and potassium 5.2. Continue low-potassium diet; monitor for dialysis need..",
+  "admissionSummary.reason": "Patient with CKD stage 4 followed by nephrology, currently stable\n• CKD stage 4 — Creatinine 3.1 (stable from last month), potassium 5.2, on low-potassium diet, may require dialysis in future per nephrology\n• Nutrition — eating well, weight 80.1 kg",
+  "trackerRows": "Low-potassium diet [active] (continue).",
+  "labs": "Creatinine: 3.1 (stable from last month).\nPotassium: 5.2.",
+  "vitals": "wt: 80.1 kg."
+ },
+ "after": {
+  "admissionSummary.course": "Visit 1 · Oct 20: CKD stage 4 stable with creatinine 3.1, potassium 5.2. Continue low-potassium diet; nephrology follow-up and repeat BMP in two weeks",
+  "admissionSummary.reason": "Patient with CKD stage 4 followed by nephrology, currently stable\n• CKD stage 4 — Creatinine 3.1 (stable from last month), potassium 5.2, on low-potassium diet, may require dialysis in future per nephrology\n• Nutrition — eating well, weight 80.1 kg",
+  "trackerRows": "Low-potassium diet [active] (continue).",
+  "labs": "Creatinine: 3.1 (stable from last month).\nPotassium: 5.2.",
+  "vitals": "wt: 80.1 kg."
+ }
+}

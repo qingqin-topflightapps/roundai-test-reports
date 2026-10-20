@@ -1,0 +1,131 @@
+{
+ "fixture": "HL-H1",
+ "arm": "B",
+ "mode": "hospital",
+ "template": "soap",
+ "dictations": {
+  "encounter": "Day 3 of IV cefazolin for the left lower leg cellulitis. Redness is receding inside the marked border. Afebrile overnight, Tmax 37.4. He is on a statin at home and we are continuing it. BP 124/78, heart rate 82. WBC 9.8, down from 13.1. Leg is less warm and less tender, redness now about 2 cm inside the line. Walking in the hall. Plan to switch to oral cephalexin tomorrow if the redness keeps improving. Consider a CT of the leg only if it stops improving."
+ },
+ "note": "Subjective\n\nNot provided\n\nObjective\n\nVital Signs: Afebrile overnight with Tmax 37.4. Blood pressure 124/78 mmHg, heart rate 82 beats per minute.\n\nPhysical Examination: Left lower leg cellulitis with redness receding inside the marked border. Leg is less warm and less tender compared to prior assessment, with redness now approximately 2 cm inside the line. Patient is ambulatory, walking in the hall.\n\nTesting Results\n\nWhite blood cell count 9.8, down from 13.1 on prior assessment.\n\nAssessment\n\nPatient is a 67-year-old admitted with left lower leg cellulitis. He is on day 3 of intravenous cefazolin therapy. Clinical examination demonstrates improvement with receding erythema inside the marked border, decreased warmth and tenderness, and normalization of temperature. White blood cell count is trending downward. Overall clinical trajectory supports continued response to current antibiotic therapy with consideration for transition to oral therapy if improvement continues.\n\nPlan\n\n1. Continue intravenous cefazolin for left lower leg cellulitis; plan to transition to oral cephalexin tomorrow if redness continues to improve.\n2. Consider computed tomography of the leg if clinical improvement plateaus or worsens.\n3. Continue home statin therapy.\n4. Monitor clinical response and leg appearance daily.",
+ "noteSections": [
+  {
+   "body": "Not provided",
+   "heading": "Subjective",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital Signs: Afebrile overnight with Tmax 37.4. Blood pressure 124/78 mmHg, heart rate 82 beats per minute.\n\nPhysical Examination: Left lower leg cellulitis with redness receding inside the marked border. Leg is less warm and less tender compared to prior assessment, with redness now approximately 2 cm inside the line. Patient is ambulatory, walking in the hall.",
+   "heading": "Objective",
+   "part": "narrative"
+  },
+  {
+   "body": "White blood cell count 9.8, down from 13.1 on prior assessment.",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 67-year-old admitted with left lower leg cellulitis. He is on day 3 of intravenous cefazolin therapy. Clinical examination demonstrates improvement with receding erythema inside the marked border, decreased warmth and tenderness, and normalization of temperature. White blood cell count is trending downward. Overall clinical trajectory supports continued response to current antibiotic therapy with consideration for transition to oral therapy if improvement continues.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue intravenous cefazolin for left lower leg cellulitis; plan to transition to oral cephalexin tomorrow if redness continues to improve.\n2. Consider computed tomography of the leg if clinical improvement plateaus or worsens.\n3. Continue home statin therapy.\n4. Monitor clinical response and leg appearance daily.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 12486,
+    "providerMs": 12039,
+    "appMs": 447,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3957,
+    "providerMs": 3869,
+    "appMs": 88,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 12486,
+    "providerMs": 12039,
+    "appMs": 447,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H1-a": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Continue home statin therapy."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H1-b": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Blood pressure 124/78 mmHg, heart rate 82 beats per minute."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H1-c": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Consider computed tomography of the leg if clinical improvement plateaus or worsens."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "cefazolin",
+   "present": true
+  },
+  {
+   "fact": "37\\.4",
+   "present": true
+  },
+  {
+   "fact": "9\\.8",
+   "present": true
+  },
+  {
+   "fact": "cephalexin",
+   "present": true
+  },
+  {
+   "fact": "124\\s*/\\s*78|124 over 78",
+   "present": true
+  }
+ ],
+ "ms": 30521
+}

@@ -1,0 +1,212 @@
+{
+ "fixture": "HL-N3",
+ "arm": "A",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "preRound": "BP 124/78, weight 72.4 kg, stable from last week. 1+ ankle edema, lungs clear. No chest pain per nursing. On lisinopril 10 daily and furosemide 20 daily. Hold lisinopril if SBP is under 100.",
+  "encounter": "Pleasant, oriented to self. Eating well per staff. Continue current medications and a weekly weight."
+ },
+ "note": "Interval Changes Since Last Visit\n\nResident remains pleasant and oriented to self. Weight stable at 72.4 kg from last week. Blood pressure 124/78 mmHg today. Ankle edema remains 1+ bilateral. Lungs clear, no chest pain reported by nursing staff. Resident eating well per staff.\n\nCurrent Vitals and Weight Trend\n\nBlood pressure 124/78 mmHg. Weight 72.4 kg, stable from last week. Vital signs stable.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\n1. Hypertension — Blood pressure 124/78 mmHg on lisinopril 10 daily. Well controlled. Continue current antihypertensive regimen.\n\n2. Ankle edema — 1+ bilateral edema noted. On furosemide 20 daily. Continue diuretic therapy.\n\n3. Dementia — Resident oriented to self, pleasant affect. Continue current management.\n\nMedication Changes\n\nNo medication changes made today.\n\nAssessment and Plan\n\nLong-term care resident with dementia presenting with stable vital signs and weight. Blood pressure well controlled on current antihypertensive therapy. Ankle edema stable on diuretic regimen. Resident tolerating oral intake well and maintaining baseline functional status.\n\n1. Continue lisinopril 10 daily for hypertension; hold if systolic blood pressure falls below 100 mmHg.\n\n2. Continue furosemide 20 daily for ankle edema.\n\n3. Obtain weekly weight to monitor fluid status.\n\n4. Continue current management and monitor for any acute changes.",
+ "noteSections": [
+  {
+   "body": "Resident remains pleasant and oriented to self. Weight stable at 72.4 kg from last week. Blood pressure 124/78 mmHg today. Ankle edema remains 1+ bilateral. Lungs clear, no chest pain reported by nursing staff. Resident eating well per staff.",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Blood pressure 124/78 mmHg. Weight 72.4 kg, stable from last week. Vital signs stable.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Not dictated.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "1. Hypertension — Blood pressure 124/78 mmHg on lisinopril 10 daily. Well controlled. Continue current antihypertensive regimen.\n\n2. Ankle edema — 1+ bilateral edema noted. On furosemide 20 daily. Continue diuretic therapy.\n\n3. Dementia — Resident oriented to self, pleasant affect. Continue current management.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "No medication changes made today.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Long-term care resident with dementia presenting with stable vital signs and weight. Blood pressure well controlled on current antihypertensive therapy. Ankle edema stable on diuretic regimen. Resident tolerating oral intake well and maintaining baseline functional status.\n\n1. Continue lisinopril 10 daily for hypertension; hold if systolic blood pressure falls below 100 mmHg.\n\n2. Continue furosemide 20 daily for ankle edema.\n\n3. Obtain weekly weight to monitor fluid status.\n\n4. Continue current management and monitor for any acute changes.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 8463,
+    "providerMs": 8169,
+    "appMs": 294,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 8463,
+    "providerMs": 8169,
+    "appMs": 294,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3804,
+    "providerMs": 3637,
+    "appMs": 167,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4558,
+    "providerMs": 4555,
+    "appMs": 3,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N3-a": {
+   "summary": {
+    "verdict": "invented",
+    "quotes": [
+     "continue current antihypertensive and diuretic regimen with SBP monitoring.."
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "after": {
+    "verdict": "invented",
+    "quotes": [
+     "Visit 1 · Oct 20: 88-year-old long-term care resident with dementia remains stable with well-controlled hypertension on lisinopril and mild bilateral ankle edema on furosemide;"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "Hypertension — Blood pressure 124/78 mmHg on lisinopril 10 daily.",
+     "Continue current antihypertensive regimen.",
+     "Blood pressure well controlled on current antihypertensive therapy.",
+     "Continue lisinopril 10 daily for hypertension;"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   }
+  },
+  "HL-N3-b": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Blood pressure — 124/78, on lisinopril 10 daily (hold if SBP <100)",
+     "Lisinopril 10 daily [active] (hold if SBP under 100)."
+    ],
+    "why": "kept as dictated"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Blood pressure — 124/78, on lisinopril 10 daily (hold if SBP <100)",
+     "Lisinopril 10 daily [active] (hold if SBP under 100)."
+    ],
+    "why": "kept as dictated"
+   },
+   "note": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   }
+  },
+  "HL-N3-c": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Lungs — clear, no chest pain"
+    ],
+    "why": "kept as dictated"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Lungs — clear, no chest pain"
+    ],
+    "why": "kept as dictated"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Lungs clear, no chest pain reported by nursing staff."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "124\\s*/\\s*78|124 over 78",
+   "present": true
+  },
+  {
+   "fact": "100",
+   "present": true
+  },
+  {
+   "fact": "72\\.4",
+   "present": true
+  },
+  {
+   "fact": "1\\+|trace|ankle edema",
+   "present": true
+  },
+  {
+   "fact": "lisinopril",
+   "present": true
+  },
+  {
+   "fact": "furosemide|lasix",
+   "present": true
+  }
+ ],
+ "ms": 39240,
+ "summary": {
+  "admissionSummary.course": "Visit 1 · Oct 20: Long-term care resident with dementia, stable BP and weight. Mild ankle edema noted; continue current antihypertensive and diuretic regimen with SBP monitoring..",
+  "admissionSummary.reason": "Long-term care resident with dementia\n• Blood pressure — 124/78, on lisinopril 10 daily (hold if SBP <100)\n• Ankle edema — 1+ bilateral\n• Weight — 72.4 kg, stable from last week\n• Diuretic therapy — on furosemide 20 daily\n• Lungs — clear, no chest pain",
+  "trackerRows": "Lisinopril 10 daily [active] (hold if SBP under 100).\nFurosemide 20 daily [active].",
+  "vitals": "bp: 124/78.\nwt: 72.4 kg."
+ },
+ "after": {
+  "admissionSummary.course": "Visit 1 · Oct 20: 88-year-old long-term care resident with dementia remains stable with well-controlled hypertension on lisinopril and mild bilateral ankle edema on furosemide; continue current regimen with weekly weight monitoring",
+  "admissionSummary.reason": "Long-term care resident with dementia\n• Blood pressure — 124/78, on lisinopril 10 daily (hold if SBP <100)\n• Ankle edema — 1+ bilateral\n• Weight — 72.4 kg, stable from last week\n• Diuretic therapy — on furosemide 20 daily\n• Lungs — clear, no chest pain",
+  "trackerRows": "Lisinopril 10 daily [active] (hold if SBP under 100).\nFurosemide 20 daily [active].",
+  "vitals": "bp: 124/78.\nwt: 72.4 kg."
+ }
+}

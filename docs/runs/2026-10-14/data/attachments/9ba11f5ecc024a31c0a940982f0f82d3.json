@@ -1,0 +1,224 @@
+{
+ "fixture": "HL-H5",
+ "arm": "A",
+ "mode": "hospital",
+ "template": "soap",
+ "dictations": {
+  "preRound": "Fell at home yesterday, tripped on a rug. Hip X-ray negative for fracture. Head CT negative. She uses an albuterol inhaler as needed. BMI 31. Not on anticoagulation. Pain 4 out of 10 in the left hip.",
+  "encounter": "Bruising over the left hip, full range of motion. Walked 40 feet with a walker with PT. Acetaminophen 650 every 6 hours as needed. PT and OT to follow, likely discharge home with home health."
+ },
+ "note": "Subjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical Examination: Bruising over the left hip. Full range of motion of the left hip. Patient walked 40 feet with a walker with physical therapy.\n\nTesting Results\n\nHip X-ray: negative for fracture.\n\nHead CT: negative.\n\nAssessment\n\nPatient is a 78-year-old female with a history of asthma/reactive airway disease and obesity who was admitted after a fall at home yesterday, having tripped on a rug. Imaging workup including hip X-ray and head CT were obtained and are negative for fracture or intracranial injury. She has left hip pain rated 4 out of 10 with bruising over the left hip but maintains full range of motion. She ambulated 40 feet with a walker during physical therapy evaluation today. The clinical picture is consistent with a contusion of the left hip without fracture. She is not on anticoagulation. Pain is being managed with acetaminophen. Physical therapy and occupational therapy are engaged and anticipate discharge to home with home health services.\n\nPlan\n\n1. Continue acetaminophen 650 every 6 hours as needed for left hip pain.\n2. Physical therapy and occupational therapy to continue; coordinate discharge planning with home health services.\n3. Likely discharge home with home health support.",
+ "noteSections": [
+  {
+   "body": "Not provided",
+   "heading": "Subjective",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital signs: not dictated today.\n\nPhysical Examination: Bruising over the left hip. Full range of motion of the left hip. Patient walked 40 feet with a walker with physical therapy.",
+   "heading": "Objective",
+   "part": "narrative"
+  },
+  {
+   "body": "Hip X-ray: negative for fracture.\n\nHead CT: negative.",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 78-year-old female with a history of asthma/reactive airway disease and obesity who was admitted after a fall at home yesterday, having tripped on a rug. Imaging workup including hip X-ray and head CT were obtained and are negative for fracture or intracranial injury. She has left hip pain rated 4 out of 10 with bruising over the left hip but maintains full range of motion. She ambulated 40 feet with a walker during physical therapy evaluation today. The clinical picture is consistent with a contusion of the left hip without fracture. She is not on anticoagulation. Pain is being managed with acetaminophen. Physical therapy and occupational therapy are engaged and anticipate discharge to home with home health services.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue acetaminophen 650 every 6 hours as needed for left hip pain.\n2. Physical therapy and occupational therapy to continue; coordinate discharge planning with home health services.\n3. Likely discharge home with home health support.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 11668,
+    "providerMs": 11177,
+    "appMs": 491,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3682,
+    "providerMs": 3547,
+    "appMs": 135,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 11668,
+    "providerMs": 11177,
+    "appMs": 491,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4789,
+    "providerMs": 4785,
+    "appMs": 4,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.classifyAdmissionReason",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 1824,
+    "providerMs": 1819,
+    "appMs": 5,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.extractTasks",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 1446,
+    "providerMs": 1441,
+    "appMs": 5,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H5-a": {
+   "summary": {
+    "verdict": "invented",
+    "quotes": [
+     "• Asthma/reactive airway — uses albuterol inhaler as needed"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "after": {
+    "verdict": "invented",
+    "quotes": [
+     "78-year-old female with history of asthma/reactive airway disease and obesity admitted with fall at home, now with left hip contusion and pain managed with acetaminophen.",
+     "• Asthma/reactive airway disease — stable"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "Patient is a 78-year-old female with a history of asthma/reactive airway disease and obesity who was admitted after a fall at home yesterday, having tripped on a rug."
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   }
+  },
+  "HL-H5-b": {
+   "summary": {
+    "verdict": "invented",
+    "quotes": [
+     "• Obesity — BMI 31"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "after": {
+    "verdict": "invented",
+    "quotes": [
+     "78-year-old female with history of asthma/reactive airway disease and obesity admitted with fall at home, now with left hip contusion and pain managed with acetaminophen.",
+     "• Obesity — noted"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "Patient is a 78-year-old female with a history of asthma/reactive airway disease and obesity who was admitted after a fall at home yesterday, having tripped on a rug."
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   }
+  },
+  "HL-H5-c": {
+   "summary": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   },
+   "after": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "She is not on anticoagulation."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "albuterol|inhaler",
+   "present": false
+  },
+  {
+   "fact": "31",
+   "present": false
+  },
+  {
+   "fact": "4\\s*(out of|/)\\s*10",
+   "present": true
+  },
+  {
+   "fact": "40 (feet|ft)",
+   "present": true
+  },
+  {
+   "fact": "acetaminophen|tylenol",
+   "present": true
+  },
+  {
+   "fact": "650",
+   "present": true
+  }
+ ],
+ "ms": 49376,
+ "summary": {
+  "admissionSummary.course": "Oct 20: Patient admitted after fall at home yesterday; imaging negative. Left hip pain 4/10, no fracture. Assess for delayed injuries.. ⏳ Encounter pending.",
+  "admissionSummary.reason": "78-year-old female admitted with fall at home, now with left hip pain (4/10), hip X-ray and head CT negative for fracture or intracranial injury\n• Fall at home — tripped on rug yesterday, hip and head imaging negative\n• Left hip pain — 4/10, X-ray negative for fracture\n• Obesity — BMI 31\n• Asthma/reactive airway — uses albuterol inhaler as needed",
+  "radiology": "Hip X-ray: negative for fracture\nHead CT: negative"
+ },
+ "after": {
+  "admissionSummary.course": "Oct 20: 78-year-old female with left hip contusion post-fall; imaging negative. Pain 4/10, ambulating with walker. Continuing acetaminophen; PT/OT engaged; discharge to home with home health planned",
+  "admissionSummary.reason": "78-year-old female with history of asthma/reactive airway disease and obesity admitted with fall at home, now with left hip contusion and pain managed with acetaminophen.\n• Left hip contusion with pain (4/10) — managed with acetaminophen; PT/OT engaged for mobility and discharge planning\n• Asthma/reactive airway disease — stable\n• Obesity — noted",
+  "radiology": "Hip X-ray: negative for fracture\nHead CT: negative"
+ }
+}

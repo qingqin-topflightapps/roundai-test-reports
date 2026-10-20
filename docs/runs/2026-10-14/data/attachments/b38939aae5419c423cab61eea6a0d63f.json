@@ -1,0 +1,215 @@
+{
+ "fixture": "HL-N1",
+ "arm": "A",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "preRound": "Temp 38.1 last night, runny nose and a dry cough, likely viral. Lungs clear. She is on levothyroxine. Walked 150 feet with the walker today. Staples are out, incision clean. Pain 3 out of 10 on acetaminophen.",
+  "encounter": "Feels tired but eating well. Encourage fluids, recheck her temperature this evening, continue therapy as tolerated."
+ },
+ "note": "Interval Changes Since Last Visit\n\nResident admitted for rehabilitation following left hip fracture repair. Ambulation has progressed to 150 feet with walker. Surgical incision is clean with staples removed. Pain is controlled at 3 out of 10 on acetaminophen. Resident developed fever 38.1°C last night with runny nose and dry cough, consistent with likely viral illness. Lungs are clear on examination.\n\nCurrent Vitals and Weight Trend\n\nTemperature 38.1°C recorded last night. Current weight not dictated today.\n\nFunctional Status Update\n\nResident ambulating 150 feet with walker. Eating well. Fatigued but tolerating activity.\n\nActive Medical Problems\n\nLeft hip fracture status post repair: Incision clean, staples removed, pain controlled at 3 out of 10 on acetaminophen. Ambulation progressing with walker.\n\nLikely viral illness: Fever 38.1°C, runny nose, dry cough. Lungs clear. Resident fatigued but eating well.\n\nHypothyroidism: On levothyroxine.\n\nMedication Changes\n\nNo medication changes made today.\n\nAssessment and Plan\n\nLeft hip fracture status post repair: Resident progressing well with ambulation and pain control. Incision healing appropriately. Continue current pain management with acetaminophen. Continue physical therapy as tolerated.\n\nLikely viral illness: Resident with fever, upper respiratory symptoms, and fatigue. Lungs clear, no respiratory distress. Encourage increased fluid intake. Recheck temperature this evening. Monitor for worsening symptoms or respiratory changes.\n\nHypothyroidism: Continue levothyroxine.",
+ "noteSections": [
+  {
+   "body": "Resident admitted for rehabilitation following left hip fracture repair. Ambulation has progressed to 150 feet with walker. Surgical incision is clean with staples removed. Pain is controlled at 3 out of 10 on acetaminophen. Resident developed fever 38.1°C last night with runny nose and dry cough, consistent with likely viral illness. Lungs are clear on examination.",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Temperature 38.1°C recorded last night. Current weight not dictated today.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Resident ambulating 150 feet with walker. Eating well. Fatigued but tolerating activity.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "Left hip fracture status post repair: Incision clean, staples removed, pain controlled at 3 out of 10 on acetaminophen. Ambulation progressing with walker.\n\nLikely viral illness: Fever 38.1°C, runny nose, dry cough. Lungs clear. Resident fatigued but eating well.\n\nHypothyroidism: On levothyroxine.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "No medication changes made today.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Left hip fracture status post repair: Resident progressing well with ambulation and pain control. Incision healing appropriately. Continue current pain management with acetaminophen. Continue physical therapy as tolerated.\n\nLikely viral illness: Resident with fever, upper respiratory symptoms, and fatigue. Lungs clear, no respiratory distress. Encourage increased fluid intake. Recheck temperature this evening. Monitor for worsening symptoms or respiratory changes.\n\nHypothyroidism: Continue levothyroxine.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 9416,
+    "providerMs": 9131,
+    "appMs": 285,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 9416,
+    "providerMs": 9131,
+    "appMs": 285,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3763,
+    "providerMs": 3575,
+    "appMs": 188,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4871,
+    "providerMs": 4860,
+    "appMs": 11,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N1-a": {
+   "summary": {
+    "verdict": "invented",
+    "quotes": [
+     "• Hypothyroidism — on levothyroxine"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "after": {
+    "verdict": "invented",
+    "quotes": [
+     "• Hypothyroidism — on levothyroxine"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "Hypothyroidism: On levothyroxine.",
+     "Hypothyroidism: Continue levothyroxine."
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   }
+  },
+  "HL-N1-b": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Likely viral illness — fever 38.1°C last night, runny nose, dry cough, lungs clear",
+     "temp: 38.1."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "developed likely viral URI with fever 38.1°C, managed supportively with monitoring",
+     "• Likely viral illness — fever 38.1°C last night, runny nose, dry cough, lungs clear"
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Resident developed fever 38.1°C last night with runny nose and dry cough, consistent with likely viral illness.",
+     "Temperature 38.1°C recorded last night."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N1-c": {
+   "summary": {
+    "verdict": "unclear",
+    "quotes": [
+     "Visit 1 · Oct 20: Viral URI with low-grade fever;"
+    ],
+    "why": "a sentence naming the subject without the hedge / negation / condition, while another sentence keeps it (a person reads it)"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "developed likely viral URI with fever 38.1°C, managed supportively with monitoring",
+     "• Likely viral illness — fever 38.1°C last night, runny nose, dry cough, lungs clear"
+    ],
+    "why": "kept as dictated"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Resident developed fever 38.1°C last night with runny nose and dry cough, consistent with likely viral illness.",
+     "Likely viral illness: Fever 38.1°C, runny nose, dry cough."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "38\\.1",
+   "present": true
+  },
+  {
+   "fact": "levothyroxine|synthroid",
+   "present": true
+  },
+  {
+   "fact": "150 (feet|ft)",
+   "present": true
+  },
+  {
+   "fact": "staples",
+   "present": true
+  },
+  {
+   "fact": "3\\s*(out of|/)\\s*10",
+   "present": true
+  },
+  {
+   "fact": "acetaminophen|tylenol",
+   "present": true
+  }
+ ],
+ "ms": 44322,
+ "summary": {
+  "admissionSummary.course": "Visit 1 · Oct 20: Viral URI with low-grade fever; post-op hip repair progressing well with staples removed, incision clean, pain controlled, ambulating 150 feet with walker..",
+  "admissionSummary.reason": "Patient admitted for rehab after left hip fracture repair, now ambulating 150 feet with walker, incision healing well with staples removed, pain controlled.\n• Left hip fracture s/p repair — ambulating 150 feet with walker, incision clean, staples out, pain 3/10 on acetaminophen\n• Likely viral illness — fever 38.1°C last night, runny nose, dry cough, lungs clear\n• Hypothyroidism — on levothyroxine",
+  "trackerRows": "Levothyroxine [active].\nAcetaminophen [active].",
+  "vitals": "temp: 38.1."
+ },
+ "after": {
+  "admissionSummary.course": "Visit 1 · Oct 20: 84F post-op day unknown from left hip fracture repair progressing with ambulation 150 feet, incision healing well; developed likely viral URI with fever 38.1°C, managed supportively with monitoring",
+  "admissionSummary.reason": "Patient admitted for rehab after left hip fracture repair, now ambulating 150 feet with walker, incision healing well with staples removed, pain controlled.\n• Left hip fracture s/p repair — ambulating 150 feet with walker, incision clean, staples out, pain 3/10 on acetaminophen\n• Likely viral illness — fever 38.1°C last night, runny nose, dry cough, lungs clear\n• Hypothyroidism — on levothyroxine",
+  "trackerRows": "Levothyroxine [active].\nAcetaminophen [active].",
+  "vitals": "temp: 38.1."
+ }
+}

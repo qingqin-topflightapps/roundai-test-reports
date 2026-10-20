@@ -1,0 +1,277 @@
+{
+ "fixture": "HL-H4",
+ "arm": "A",
+ "mode": "hospital",
+ "template": "hp",
+ "dictations": {
+  "preRound": "71-year-old woman admitted overnight after passing out at home. She takes apixaban. Troponin negative twice. A1c 6.1. Orthostatic vitals positive, BP dropped from 132 to 104 standing. Rule out PE, a CT angiogram of the chest is ordered.",
+  "encounter": "Feels lightheaded when she stands quickly. No head injury. Telemetry overnight without events. Echo is pending. Give a 1 liter normal saline bolus and repeat orthostatics this afternoon."
+ },
+ "note": "Chief Complaint\n\nSyncope\n\nHistory of Present Illness\n\nPatient is a 71-year-old woman who presented after passing out at home. She reports feeling lightheaded when she stands quickly. On admission, orthostatic vital signs were positive with blood pressure dropping from 132 mmHg to 104 mmHg on standing. Telemetry overnight has been without events. Troponin has been negative on two occasions. An echocardiogram is pending. A CT angiogram of the chest has been ordered to rule out pulmonary embolism.\n\nPast Medical History\n\nNot provided\n\nMedications\n\nApixaban — active\n\nAllergies\n\nNot provided\n\nSocial History\n\nNot provided\n\nFamily History\n\nNot provided\n\nReview of Systems\n\nNot documented in today's dictation\n\nPhysical Examination\n\nVital Signs: Blood pressure 132/104 mmHg standing (orthostatic drop noted on admission).\n\nNo head injury noted.\n\nTesting Results\n\nTroponin: negative × 2.\n\nA1c: 6.1.\n\nCT angiogram of the chest: ordered.\n\nAssessment\n\nPatient is a 71-year-old woman who presented with syncope and orthostatic hypotension. On examination, she reports lightheadedness with position changes, and orthostatic vital signs are positive with a blood pressure drop from 132 to 104 mmHg on standing. Cardiac etiology has been largely excluded with negative troponin on two measurements and telemetry without events overnight. Pulmonary embolism remains on the differential and is being evaluated with CT angiogram. The clinical picture is most consistent with orthostatic hypotension, likely related to volume depletion or autonomic dysfunction. An echocardiogram is pending to further evaluate cardiac structure and function.\n\nPlan\n\n1. Syncope and orthostatic hypotension — administer 1 liter normal saline bolus and repeat orthostatic vital signs this afternoon to assess response.\n\n2. Rule out pulmonary embolism — continue CT angiogram of the chest as ordered.\n\n3. Cardiac evaluation — echocardiogram pending; continue telemetry monitoring.\n\n4. Anticoagulation — continue apixaban.",
+ "noteSections": [
+  {
+   "body": "Syncope",
+   "heading": "Chief Complaint",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 71-year-old woman who presented after passing out at home. She reports feeling lightheaded when she stands quickly. On admission, orthostatic vital signs were positive with blood pressure dropping from 132 mmHg to 104 mmHg on standing. Telemetry overnight has been without events. Troponin has been negative on two occasions. An echocardiogram is pending. A CT angiogram of the chest has been ordered to rule out pulmonary embolism.",
+   "heading": "History of Present Illness",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Past Medical History",
+   "part": "narrative"
+  },
+  {
+   "body": "Apixaban — active",
+   "heading": "Medications",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Allergies",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Social History",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Family History",
+   "part": "narrative"
+  },
+  {
+   "body": "Not documented in today's dictation",
+   "heading": "Review of Systems",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital Signs: Blood pressure 132/104 mmHg standing (orthostatic drop noted on admission).\n\nNo head injury noted.",
+   "heading": "Physical Examination",
+   "part": "narrative"
+  },
+  {
+   "body": "Troponin: negative × 2.\n\nA1c: 6.1.\n\nCT angiogram of the chest: ordered.",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 71-year-old woman who presented with syncope and orthostatic hypotension. On examination, she reports lightheadedness with position changes, and orthostatic vital signs are positive with a blood pressure drop from 132 to 104 mmHg on standing. Cardiac etiology has been largely excluded with negative troponin on two measurements and telemetry without events overnight. Pulmonary embolism remains on the differential and is being evaluated with CT angiogram. The clinical picture is most consistent with orthostatic hypotension, likely related to volume depletion or autonomic dysfunction. An echocardiogram is pending to further evaluate cardiac structure and function.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Syncope and orthostatic hypotension — administer 1 liter normal saline bolus and repeat orthostatic vital signs this afternoon to assess response.\n\n2. Rule out pulmonary embolism — continue CT angiogram of the chest as ordered.\n\n3. Cardiac evaluation — echocardiogram pending; continue telemetry monitoring.\n\n4. Anticoagulation — continue apixaban.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 15478,
+    "providerMs": 15068,
+    "appMs": 410,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4736,
+    "providerMs": 4571,
+    "appMs": 165,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 15478,
+    "providerMs": 15068,
+    "appMs": 410,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4687,
+    "providerMs": 4684,
+    "appMs": 3,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.classifyAdmissionReason",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 1729,
+    "providerMs": 1725,
+    "appMs": 4,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.extractTasks",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 1560,
+    "providerMs": 1557,
+    "appMs": 3,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H4-a": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Anticoagulation — on apixaban",
+     "Apixaban [active]."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Anticoagulation — apixaban continued",
+     "Apixaban [active]."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Apixaban — active",
+     "Anticoagulation — continue apixaban."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H4-b": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Glucose — A1c 6.1",
+     "A1c: 6.1."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "A1c: 6.1."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "A1c: 6.1."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H4-c": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "CT angiogram ordered to rule out PE..",
+     "PE workup in progress with CT angiogram ordered."
+    ],
+    "why": "kept as dictated"
+   },
+   "after": {
+    "verdict": "unclear",
+    "quotes": [
+     "71-year-old woman admitted with syncope, now with orthostatic hypotension (BP 132→104 standing), negative troponin (×2), and PE workup in progress."
+    ],
+    "why": "a sentence naming the subject without the hedge / negation / condition, while another sentence keeps it (a person reads it)"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "A CT angiogram of the chest has been ordered to rule out pulmonary embolism.",
+     "Pulmonary embolism remains on the differential and is being evaluated with CT angiogram."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "apixaban",
+   "present": true
+  },
+  {
+   "fact": "6\\.1",
+   "present": true
+  },
+  {
+   "fact": "132",
+   "present": true
+  },
+  {
+   "fact": "104",
+   "present": true
+  },
+  {
+   "fact": "troponin",
+   "present": true
+  },
+  {
+   "fact": "echo",
+   "present": true
+  },
+  {
+   "fact": "saline|bolus",
+   "present": true
+  }
+ ],
+ "ms": 52347,
+ "summary": {
+  "admissionSummary.course": "Oct 20: 71-year-old admitted with syncope; orthostatic vitals positive. Troponin negative twice. CT angiogram ordered to rule out PE.. ⏳ Encounter pending.",
+  "admissionSummary.reason": "71-year-old woman admitted with syncope, now with orthostatic hypotension (BP 132→104 standing) and negative troponin (×2); PE workup in progress with CT angiogram ordered.\n• Syncope — orthostatic vitals positive, BP dropped 132 to 104 standing\n• Troponin — negative twice\n• Glucose — A1c 6.1\n• Anticoagulation — on apixaban\n• PE — rule out, CT angiogram of chest ordered",
+  "trackerRows": "Apixaban [active].",
+  "labs": "Troponin: negative x2.\nA1c: 6.1.",
+  "vitals": "bp: 132/104 standing (orthostatic drop).",
+  "radiology": "Troponin (negative twice)\nCT angiogram of the chest (ordered)"
+ },
+ "after": {
+  "admissionSummary.course": "Oct 20: 71-year-old woman with syncope and orthostatic hypotension (BP 132→104 standing); cardiac etiology largely excluded with negative troponin ×2 and telemetry without events. Receiving 1 L NS bolus; PE workup ongoing with CT angiogram ordered; echocardiogram pending",
+  "admissionSummary.reason": "71-year-old woman admitted with syncope, now with orthostatic hypotension (BP 132→104 standing), negative troponin (×2), and PE workup in progress.\n• Syncope and orthostatic hypotension — likely related to volume depletion or autonomic dysfunction; receiving 1 L NS bolus with repeat orthostatic vitals planned this afternoon\n• Pulmonary embolism — on differential; CT angiogram of chest ordered\n• Cardiac evaluation — telemetry without events overnight, troponin negative ×2; echocardiogram pending to evaluate cardiac structure and function\n• Anticoagulation — apixaban continued",
+  "trackerRows": "Apixaban [active].\nNormal saline [single-dose, given] (1 liter bolus given).",
+  "labs": "Troponin: negative x2.\nA1c: 6.1.",
+  "vitals": "bp: 132/104 standing (orthostatic drop).",
+  "radiology": "Troponin (negative twice)\nCT angiogram of the chest (ordered)"
+ }
+}

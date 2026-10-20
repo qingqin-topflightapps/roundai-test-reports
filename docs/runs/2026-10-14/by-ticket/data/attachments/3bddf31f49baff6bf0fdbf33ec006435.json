@@ -1,0 +1,1201 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-20T10:22:12.288Z",
+  "capture": "runs/2026-10-14-dev/newspec-c/evidence/hallu/hallu-nh/grading/TC-14-S46-HL-N1-A.capture.json",
+  "captureSha256": "907357b7b05a02801fa5dd2dd3149af78ec0433fbef098d833c42904449d819b",
+  "captureContentSha256": "2c68826f3902d017147815bd9ec3b4b312b736549b1a21a2dc8965d3269a5a4f",
+  "scenario": {
+    "raw": "TC-14 S46 HL-N1 A",
+    "tc": "TC-14",
+    "id": "S46",
+    "fixture": "HL-N1"
+  },
+  "outputType": "note",
+  "mode": "Nursing Home",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "8b4be94a",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N4",
+                  "N5",
+                  "N6",
+                  "N7"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "kit (the interim reading is the kit's list for notes)",
+    "sent": [
+      "dictations",
+      "storedPanels",
+      "trackerRows",
+      "priorNote",
+      "today"
+    ],
+    "notSent": [
+      "storedPanelsNote"
+    ],
+    "notes": [
+      "tracker rows are read as after Generate (GK10)"
+    ]
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7"
+    ],
+    "sha256": "f73c9c4297d51ae5d0c5f900e97f218989efeb233d671e8666ad7a6c74953d65",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nDICTATIONS:\n{\n  \"preRound\": \"Temp 38.1 last night, runny nose and a dry cough, likely viral. Lungs clear. She is on levothyroxine. Walked 150 feet with the walker today. Staples are out, incision clean. Pain 3 out of 10 on acetaminophen.\",\n  \"encounter\": \"Feels tired but eating well. Encourage fluids, recheck her temperature this evening, continue therapy as tolerated.\"\n}\n\nSTORED PANELS:\n{\n  \"chart\": {\n    \"name\": \"QA DS1-hallu-nh HL-N1A Res Ingram\",\n    \"age\": 84,\n    \"sex\": \"F\",\n    \"diagnosis\": \"Rehab after left hip fracture repair\",\n    \"noteTemplate\": \"snf-progress\"\n  }\n}\n\nTRACKER ROWS (with status):\n[\n  {\n    \"changeDay\": null,\n    \"changed\": false,\n    \"changedNote\": \"\",\n    \"name\": \"Levothyroxine\",\n    \"status\": \"active\",\n    \"updatedAt\": \"2026-10-20T10:15:34.160Z\"\n  },\n  {\n    \"changeDay\": null,\n    \"changed\": false,\n    \"changedNote\": \"\",\n    \"name\": \"Acetaminophen\",\n    \"status\": \"active\",\n    \"updatedAt\": \"2026-10-20T10:15:34.161Z\"\n  }\n]\n\nPRIOR NOTE:\nNone\n\nTODAY'S DATE:\n2026-10-20\n</sources>\n\nOUTPUT TO GRADE (note, Nursing Home):\n<output>\nInterval Changes Since Last Visit\n\nResident admitted for rehabilitation following left hip fracture repair. Ambulation has progressed to 150 feet with walker. Surgical incision is clean with staples removed. Pain is controlled at 3 out of 10 on acetaminophen. Resident developed fever 38.1°C last night with runny nose and dry cough, consistent with likely viral illness. Lungs are clear on examination.\n\nCurrent Vitals and Weight Trend\n\nTemperature 38.1°C recorded last night. Current weight not dictated today.\n\nFunctional Status Update\n\nResident ambulating 150 feet with walker. Eating well. Fatigued but tolerating activity.\n\nActive Medical Problems\n\nLeft hip fracture status post repair: Incision clean, staples removed, pain controlled at 3 out of 10 on acetaminophen. Ambulation progressing with walker.\n\nLikely viral illness: Fever 38.1°C, runny nose, dry cough. Lungs clear. Resident fatigued but eating well.\n\nHypothyroidism: On levothyroxine.\n\nMedication Changes\n\nNo medication changes made today.\n\nAssessment and Plan\n\nLeft hip fracture status post repair: Resident progressing well with ambulation and pain control. Incision healing appropriately. Continue current pain management with acetaminophen. Continue physical therapy as tolerated.\n\nLikely viral illness: Resident with fever, upper respiratory symptoms, and fatigue. Lungs clear, no respiratory distress. Encourage increased fluid intake. Recheck temperature this evening. Monitor for worsening symptoms or respiratory changes.\n\nHypothyroidism: Continue levothyroxine.\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nN1: Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.\nN2: A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).\nN3: No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.\nN4: A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").\nN5: A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).\nN6: A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording). N6 accepts either wording: 'Not dictated' or 'Not provided'.\nN7: Nursing Home only: no signature or date line, and the note never says \"yesterday.\"\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-20T10:21:42.065Z",
+      "durationMs": 24547,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":22464,\"stop_reason\":\"tool_use\",\"session_id\":\"f255d674-b7a8-47f7-a045-afb92b90815f\",\"total_cost_usd\":0.075152,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":3668,\"cache_read_input_tokens\":0,\"output_tokens\":2290,\"output_tokens_details\":{\"thinking_tokens\":934},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":3668,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2290,\"cache_read_input_tokens\":0,\"cache_creation_input_tokens\":3668,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":3668},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2290,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":3668,\"webSearchRequests\":0,\"costUSD\":0.075152,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":934,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Lungs clear, no respiratory distress. ... Monitor for worsening symptoms or respiratory changes.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The sources never mention 'no respiratory distress'. The monitoring plan was also never dictated. Other unsupported additions: 'tolerating activity', 'physical therapy' (dictation says only 'therapy') and 'Incision healing appropriately'.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Hypothyroidism: On levothyroxine.\\\",\\\"source_quote\\\":\\\"She is on levothyroxine.\\\",\\\"why\\\":\\\"The hypothyroidism diagnosis was inferred from the drug. No source states it.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Temperature 38.1°C ... 150 feet ... 3 out of 10\\\",\\\"source_quote\\\":\\\"Temp 38.1 ... 150 feet ... Pain 3 out of 10\\\",\\\"why\\\":\\\"Every number matches the source.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"38.1°C\\\",\\\"source_quote\\\":\\\"Temp 38.1\\\",\\\"why\\\":\\\"A temperature of 38.1 can only be Celsius, so no ambiguous unit was guessed. No weights or drips appear.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"No medication changes made today.\\\",\\\"source_quote\\\":\\\"Levothyroxine active; Acetaminophen active\\\",\\\"why\\\":\\\"Both drugs are shown as active/continued, matching the tracker.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"fever 38.1°C last night\\\",\\\"source_quote\\\":\\\"Temp 38.1 last night\\\",\\\"why\\\":\\\"The earlier-time fact is labeled 'last night', so it is not presented as today's.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Recheck temperature this evening.\\\",\\\"source_quote\\\":\\\"recheck her temperature this evening\\\",\\\"why\\\":\\\"Planned items stay planned.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Current weight not dictated today.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"This line is an acceptable 'not dictated' label for an empty item, not documentation narration. There is no false PMH statement.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Encourage increased fluid intake. Recheck temperature this evening.\\\",\\\"source_quote\\\":\\\"Encourage fluids, recheck her temperature this evening, continue therapy as tolerated.\\\",\\\"why\\\":\\\"Every dictated fact and instruction appears in the note.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Likely viral illness\\\",\\\"source_quote\\\":\\\"likely viral\\\",\\\"why\\\":\\\"The hedge 'likely' is kept.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Lungs clear, no respiratory distress.\\\",\\\"source_quote\\\":\\\"Lungs clear.\\\",\\\"why\\\":\\\"The note invents a normal exam finding ('no respiratory distress') that was not dictated.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Recheck temperature this evening.\\\",\\\"source_quote\\\":\\\"recheck her temperature this evening\\\",\\\"why\\\":\\\"The bedside check stays a reminder.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No drug given today is re-ordered in the Plan.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Current weight not dictated today.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The undictated weight is labeled 'not dictated'.\\\"},{\\\"id\\\":\\\"N7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No signature or date line, and the note never says 'yesterday'.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"Lungs clear, no respiratory distress. ... Monitor for worsening symptoms or respiratory changes.\",\"source_quote\":\"no source\",\"why\":\"The sources never mention 'no respiratory distress'. The monitoring plan was also never dictated. Other unsupported additions: 'tolerating activity', 'physical therapy' (dictation says only 'therapy') and 'Incision healing appropriately'.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Hypothyroidism: On levothyroxine.\",\"source_quote\":\"She is on levothyroxine.\",\"why\":\"The hypothyroidism diagnosis was inferred from the drug. No source states it.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Temperature 38.1°C ... 150 feet ... 3 out of 10\",\"source_quote\":\"Temp 38.1 ... 150 feet ... Pain 3 out of 10\",\"why\":\"Every number matches the source.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"38.1°C\",\"source_quote\":\"Temp 38.1\",\"why\":\"A temperature of 38.1 can only be Celsius, so no ambiguous unit was guessed. No weights or drips appear.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"No medication changes made today.\",\"source_quote\":\"Levothyroxine active; Acetaminophen active\",\"why\":\"Both drugs are shown as active/continued, matching the tracker.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"fever 38.1°C last night\",\"source_quote\":\"Temp 38.1 last night\",\"why\":\"The earlier-time fact is labeled 'last night', so it is not presented as today's.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"Recheck temperature this evening.\",\"source_quote\":\"recheck her temperature this evening\",\"why\":\"Planned items stay planned.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"Current weight not dictated today.\",\"source_quote\":\"\",\"why\":\"This line is an acceptable 'not dictated' label for an empty item, not documentation narration. There is no false PMH statement.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Encourage increased fluid intake. Recheck temperature this evening.\",\"source_quote\":\"Encourage fluids, recheck her temperature this evening, continue therapy as tolerated.\",\"why\":\"Every dictated fact and instruction appears in the note.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"Likely viral illness\",\"source_quote\":\"likely viral\",\"why\":\"The hedge 'likely' is kept.\"},{\"id\":\"N3\",\"verdict\":\"FAIL\",\"output_quote\":\"Lungs clear, no respiratory distress.\",\"source_quote\":\"Lungs clear.\",\"why\":\"The note invents a normal exam finding ('no respiratory distress') that was not dictated.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"Recheck temperature this evening.\",\"source_quote\":\"recheck her temperature this evening\",\"why\":\"The bedside check stays a reminder.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No drug given today is re-ordered in the Plan.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Current weight not dictated today.\",\"source_quote\":\"\",\"why\":\"The undictated weight is labeled 'not dictated'.\"},{\"id\":\"N7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No signature or date line, and the note never says 'yesterday'.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":12776,\"type\":\"result\",\"duration_ms\":22705,\"uuid\":\"2557689b-6694-4797-816c-822b2450e734\",\"ttft_stream_ms\":2777,\"time_to_request_ms\":248,\"first_content_frame_ms\":2778,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-20T10:21:42.071Z",
+      "durationMs": 30212,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":28197,\"stop_reason\":\"tool_use\",\"session_id\":\"9b4fa81e-09a9-45fa-84ca-72ca9ec4b4dc\",\"total_cost_usd\":0.079112,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":3673,\"cache_read_input_tokens\":0,\"output_tokens\":2486,\"output_tokens_details\":{\"thinking_tokens\":1093},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":3673,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2486,\"cache_read_input_tokens\":0,\"cache_creation_input_tokens\":3673,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":3673},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2486,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":3673,\"webSearchRequests\":0,\"costUSD\":0.079112,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":1093,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Lungs clear, no respiratory distress.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The sources never mention 'no respiratory distress', so this finding is invented. 'Hypothyroidism' is also never dictated. Other unsupported additions: 'Monitor for worsening symptoms or respiratory changes' and 'tolerating activity'.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Hypothyroidism: On levothyroxine.\\\",\\\"source_quote\\\":\\\"She is on levothyroxine.\\\",\\\"why\\\":\\\"The note adds a diagnosis label (hypothyroidism) based only on the drug. The source never states this diagnosis.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Temperature 38.1°C ... 150 feet ... 3 out of 10\\\",\\\"source_quote\\\":\\\"Temp 38.1 ... 150 feet ... Pain 3 out of 10\\\",\\\"why\\\":\\\"All numbers match the source exactly.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"38.1°C\\\",\\\"source_quote\\\":\\\"Temp 38.1 last night\\\",\\\"why\\\":\\\"A temperature of 38.1 can only be Celsius in a living patient, so the value is not ambiguous. No other units were added.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue current pain management with acetaminophen... Continue levothyroxine.\\\",\\\"source_quote\\\":\\\"Levothyroxine active; Acetaminophen active\\\",\\\"why\\\":\\\"Both drugs read as active and unchanged, matching the tracker.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Temperature 38.1°C recorded last night.\\\",\\\"source_quote\\\":\\\"Temp 38.1 last night\\\",\\\"why\\\":\\\"The fever is attributed to last night, as dictated.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Recheck temperature this evening.\\\",\\\"source_quote\\\":\\\"recheck her temperature this evening\\\",\\\"why\\\":\\\"The recheck stays a plan item. Nothing planned is written as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders are present.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Current weight not dictated today.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"This sentence narrates about the documentation inside a section that has other content, like the rule's 'dose not specified in dictation' example.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Encourage increased fluid intake. Recheck temperature this evening.\\\",\\\"source_quote\\\":\\\"Encourage fluids, recheck her temperature this evening, continue therapy as tolerated.\\\",\\\"why\\\":\\\"Every dictated fact and instruction appears in the note.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Likely viral illness\\\",\\\"source_quote\\\":\\\"likely viral\\\",\\\"why\\\":\\\"The hedge 'likely' is kept.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Lungs clear, no respiratory distress.\\\",\\\"source_quote\\\":\\\"Lungs clear.\\\",\\\"why\\\":\\\"A partial exam was dictated, but the note invents an extra normal finding (no respiratory distress).\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Recheck temperature this evening.\\\",\\\"source_quote\\\":\\\"recheck her temperature this evening\\\",\\\"why\\\":\\\"The temperature check stays a reminder.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No drug given today is re-ordered in the Plan.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"No medication changes made today.\\\",\\\"source_quote\\\":\\\"changed: false\\\",\\\"why\\\":\\\"Every section has content supported by the sources. No section is entirely empty.\\\"},{\\\"id\\\":\\\"N7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no signature or date line, and the note never says 'yesterday'.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"Lungs clear, no respiratory distress.\",\"source_quote\":\"no source\",\"why\":\"The sources never mention 'no respiratory distress', so this finding is invented. 'Hypothyroidism' is also never dictated. Other unsupported additions: 'Monitor for worsening symptoms or respiratory changes' and 'tolerating activity'.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Hypothyroidism: On levothyroxine.\",\"source_quote\":\"She is on levothyroxine.\",\"why\":\"The note adds a diagnosis label (hypothyroidism) based only on the drug. The source never states this diagnosis.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Temperature 38.1°C ... 150 feet ... 3 out of 10\",\"source_quote\":\"Temp 38.1 ... 150 feet ... Pain 3 out of 10\",\"why\":\"All numbers match the source exactly.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"38.1°C\",\"source_quote\":\"Temp 38.1 last night\",\"why\":\"A temperature of 38.1 can only be Celsius in a living patient, so the value is not ambiguous. No other units were added.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"Continue current pain management with acetaminophen... Continue levothyroxine.\",\"source_quote\":\"Levothyroxine active; Acetaminophen active\",\"why\":\"Both drugs read as active and unchanged, matching the tracker.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"Temperature 38.1°C recorded last night.\",\"source_quote\":\"Temp 38.1 last night\",\"why\":\"The fever is attributed to last night, as dictated.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"Recheck temperature this evening.\",\"source_quote\":\"recheck her temperature this evening\",\"why\":\"The recheck stays a plan item. Nothing planned is written as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders are present.\"},{\"id\":\"U9\",\"verdict\":\"FAIL\",\"output_quote\":\"Current weight not dictated today.\",\"source_quote\":\"no source\",\"why\":\"This sentence narrates about the documentation inside a section that has other content, like the rule's 'dose not specified in dictation' example.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Encourage increased fluid intake. Recheck temperature this evening.\",\"source_quote\":\"Encourage fluids, recheck her temperature this evening, continue therapy as tolerated.\",\"why\":\"Every dictated fact and instruction appears in the note.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"Likely viral illness\",\"source_quote\":\"likely viral\",\"why\":\"The hedge 'likely' is kept.\"},{\"id\":\"N3\",\"verdict\":\"FAIL\",\"output_quote\":\"Lungs clear, no respiratory distress.\",\"source_quote\":\"Lungs clear.\",\"why\":\"A partial exam was dictated, but the note invents an extra normal finding (no respiratory distress).\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"Recheck temperature this evening.\",\"source_quote\":\"recheck her temperature this evening\",\"why\":\"The temperature check stays a reminder.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No drug given today is re-ordered in the Plan.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"No medication changes made today.\",\"source_quote\":\"changed: false\",\"why\":\"Every section has content supported by the sources. No section is entirely empty.\"},{\"id\":\"N7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no signature or date line, and the note never says 'yesterday'.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":18251,\"type\":\"result\",\"duration_ms\":28262,\"uuid\":\"ec9cb8b4-fba7-43f0-a682-24ea2db3fbd6\",\"ttft_stream_ms\":8336,\"time_to_request_ms\":70,\"first_content_frame_ms\":8336,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 22705,
+        "total_cost_usd": 0.075152,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 3668,
+        "cacheReadInputTokens": 0,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 28262,
+        "total_cost_usd": 0.079112,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 3673,
+        "cacheReadInputTokens": 0,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Lungs clear, no respiratory distress. ... Monitor for worsening symptoms or respiratory changes.",
+          "source_quote": "no source",
+          "why": "The sources never mention 'no respiratory distress'. The monitoring plan was also never dictated. Other unsupported additions: 'tolerating activity', 'physical therapy' (dictation says only 'therapy') and 'Incision healing appropriately'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "no source",
+          "why": "The sources never mention 'no respiratory distress', so this finding is invented. 'Hypothyroidism' is also never dictated. Other unsupported additions: 'Monitor for worsening symptoms or respiratory changes' and 'tolerating activity'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Hypothyroidism: On levothyroxine.",
+          "source_quote": "She is on levothyroxine.",
+          "why": "The hypothyroidism diagnosis was inferred from the drug. No source states it.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Hypothyroidism: On levothyroxine.",
+          "source_quote": "She is on levothyroxine.",
+          "why": "The note adds a diagnosis label (hypothyroidism) based only on the drug. The source never states this diagnosis.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": []
+    },
+    {
+      "id": "N3",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "Lungs clear.",
+          "why": "The note invents a normal exam finding ('no respiratory distress') that was not dictated.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "Lungs clear.",
+          "why": "A partial exam was dictated, but the note invents an extra normal finding (no respiratory distress).",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ]
+    }
+  ],
+  "kitOnlyFails": [],
+  "kitOnlyUnsure": [],
+  "needsPerson": [
+    {
+      "id": "U9",
+      "severity": "defect",
+      "deciding": true,
+      "why": "judges disagree (run 1 PASS, run 2 FAIL): a person decides"
+    }
+  ],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Lungs clear, no respiratory distress. ... Monitor for worsening symptoms or respiratory changes.",
+          "source_quote": "no source",
+          "why": "The sources never mention 'no respiratory distress'. The monitoring plan was also never dictated. Other unsupported additions: 'tolerating activity', 'physical therapy' (dictation says only 'therapy') and 'Incision healing appropriately'."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "no source",
+          "why": "The sources never mention 'no respiratory distress', so this finding is invented. 'Hypothyroidism' is also never dictated. Other unsupported additions: 'Monitor for worsening symptoms or respiratory changes' and 'tolerating activity'."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Lungs clear, no respiratory distress. ... Monitor for worsening symptoms or respiratory changes.",
+          "source_quote": "no source",
+          "why": "The sources never mention 'no respiratory distress'. The monitoring plan was also never dictated. Other unsupported additions: 'tolerating activity', 'physical therapy' (dictation says only 'therapy') and 'Incision healing appropriately'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "no source",
+          "why": "The sources never mention 'no respiratory distress', so this finding is invented. 'Hypothyroidism' is also never dictated. Other unsupported additions: 'Monitor for worsening symptoms or respiratory changes' and 'tolerating activity'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "The sources never mention 'no respiratory distress'. The monitoring plan was also never dictated. Other unsupported additions: 'tolerating activity', 'physical therapy' (dictation says only 'therapy') and 'Incision healing appropriately'."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Hypothyroidism: On levothyroxine.",
+          "source_quote": "She is on levothyroxine.",
+          "why": "The hypothyroidism diagnosis was inferred from the drug. No source states it."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Hypothyroidism: On levothyroxine.",
+          "source_quote": "She is on levothyroxine.",
+          "why": "The note adds a diagnosis label (hypothyroidism) based only on the drug. The source never states this diagnosis."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Hypothyroidism: On levothyroxine.",
+          "source_quote": "She is on levothyroxine.",
+          "why": "The hypothyroidism diagnosis was inferred from the drug. No source states it.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Hypothyroidism: On levothyroxine.",
+          "source_quote": "She is on levothyroxine.",
+          "why": "The note adds a diagnosis label (hypothyroidism) based only on the drug. The source never states this diagnosis.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The hypothyroidism diagnosis was inferred from the drug. No source states it."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Temperature 38.1°C ... 150 feet ... 3 out of 10",
+          "source_quote": "Temp 38.1 ... 150 feet ... Pain 3 out of 10",
+          "why": "Every number matches the source."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Temperature 38.1°C ... 150 feet ... 3 out of 10",
+          "source_quote": "Temp 38.1 ... 150 feet ... Pain 3 out of 10",
+          "why": "All numbers match the source exactly."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Every number matches the source."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "38.1°C",
+          "source_quote": "Temp 38.1",
+          "why": "A temperature of 38.1 can only be Celsius, so no ambiguous unit was guessed. No weights or drips appear."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "38.1°C",
+          "source_quote": "Temp 38.1 last night",
+          "why": "A temperature of 38.1 can only be Celsius in a living patient, so the value is not ambiguous. No other units were added."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "A temperature of 38.1 can only be Celsius, so no ambiguous unit was guessed. No weights or drips appear."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "No medication changes made today.",
+          "source_quote": "Levothyroxine active; Acetaminophen active",
+          "why": "Both drugs are shown as active/continued, matching the tracker."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue current pain management with acetaminophen... Continue levothyroxine.",
+          "source_quote": "Levothyroxine active; Acetaminophen active",
+          "why": "Both drugs read as active and unchanged, matching the tracker."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "Both drugs are shown as active/continued, matching the tracker."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "fever 38.1°C last night",
+          "source_quote": "Temp 38.1 last night",
+          "why": "The earlier-time fact is labeled 'last night', so it is not presented as today's."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Temperature 38.1°C recorded last night.",
+          "source_quote": "Temp 38.1 last night",
+          "why": "The fever is attributed to last night, as dictated."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "The earlier-time fact is labeled 'last night', so it is not presented as today's."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Recheck temperature this evening.",
+          "source_quote": "recheck her temperature this evening",
+          "why": "Planned items stay planned."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Recheck temperature this evening.",
+          "source_quote": "recheck her temperature this evening",
+          "why": "The recheck stays a plan item. Nothing planned is written as done."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Planned items stay planned."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders are present."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "UNSURE",
+      "kitVerdict": "UNSURE",
+      "differs": false,
+      "judgesDisagree": true,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Current weight not dictated today.",
+          "source_quote": "",
+          "why": "This line is an acceptable 'not dictated' label for an empty item, not documentation narration. There is no false PMH statement."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Current weight not dictated today.",
+          "source_quote": "no source",
+          "why": "This sentence narrates about the documentation inside a section that has other content, like the rule's 'dose not specified in dictation' example."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Current weight not dictated today.",
+          "source_quote": "no source",
+          "why": "This sentence narrates about the documentation inside a section that has other content, like the rule's 'dose not specified in dictation' example.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "judges disagree (run 1 PASS, run 2 FAIL): a person decides"
+    },
+    {
+      "id": "N1",
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Encourage increased fluid intake. Recheck temperature this evening.",
+          "source_quote": "Encourage fluids, recheck her temperature this evening, continue therapy as tolerated.",
+          "why": "Every dictated fact and instruction appears in the note."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Encourage increased fluid intake. Recheck temperature this evening.",
+          "source_quote": "Encourage fluids, recheck her temperature this evening, continue therapy as tolerated.",
+          "why": "Every dictated fact and instruction appears in the note."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "Every dictated fact and instruction appears in the note."
+    },
+    {
+      "id": "N2",
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Likely viral illness",
+          "source_quote": "likely viral",
+          "why": "The hedge 'likely' is kept."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Likely viral illness",
+          "source_quote": "likely viral",
+          "why": "The hedge 'likely' is kept."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The hedge 'likely' is kept."
+    },
+    {
+      "id": "N3",
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "Lungs clear.",
+          "why": "The note invents a normal exam finding ('no respiratory distress') that was not dictated."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "Lungs clear.",
+          "why": "A partial exam was dictated, but the note invents an extra normal finding (no respiratory distress)."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "Lungs clear.",
+          "why": "The note invents a normal exam finding ('no respiratory distress') that was not dictated.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Lungs clear, no respiratory distress.",
+          "source_quote": "Lungs clear.",
+          "why": "A partial exam was dictated, but the note invents an extra normal finding (no respiratory distress).",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK14"
+        ],
+        "rule": "Nursing Home: the templates have no exam section, so N3 is N/A unless a judge FAILs it (both runs FAIL = FAIL, one run = UNSURE, a person decides)"
+      },
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ],
+      "why": "The note invents a normal exam finding ('no respiratory distress') that was not dictated."
+    },
+    {
+      "id": "N4",
+      "check": "A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Recheck temperature this evening.",
+          "source_quote": "recheck her temperature this evening",
+          "why": "The bedside check stays a reminder."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Recheck temperature this evening.",
+          "source_quote": "recheck her temperature this evening",
+          "why": "The temperature check stays a reminder."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "The bedside check stays a reminder."
+    },
+    {
+      "id": "N5",
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No drug given today is re-ordered in the Plan."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No drug given today is re-ordered in the Plan."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ],
+      "why": "No drug given today is re-ordered in the Plan."
+    },
+    {
+      "id": "N6",
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Current weight not dictated today.",
+          "source_quote": "",
+          "why": "The undictated weight is labeled 'not dictated'."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "No medication changes made today.",
+          "source_quote": "changed: false",
+          "why": "Every section has content supported by the sources. No section is entirely empty."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK2"
+        ],
+        "rule": "either 'Not dictated' or 'Not provided' passes (the kit's interim, L3); the wording used is recorded"
+      },
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ],
+      "why": "The undictated weight is labeled 'not dictated'."
+    },
+    {
+      "id": "N7",
+      "check": "Nursing Home only: no signature or date line, and the note never says \"yesterday.\"",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No signature or date line, and the note never says 'yesterday'."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no signature or date line, and the note never says 'yesterday'."
+        }
+      ],
+      "code": {
+        "id": "N7",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no signature or date line, no \"yesterday\"",
+        "details": {
+          "signatureLines": [],
+          "dateLines": [],
+          "yesterdayInOutput": 0,
+          "yesterdayInDictations": 0
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK5"
+        ],
+        "rule": "the date-of-service line the code writes passes; 'yesterday' fails only when no dictation says it"
+      },
+      "openQuestions": [
+        "GK5",
+        "GK13"
+      ],
+      "why": "code: no signature or date line, no \"yesterday\""
+    }
+  ],
+  "n6Wording": {
+    "notDictated": 1,
+    "notProvided": 0
+  },
+  "openQuestions": [
+    "GK14",
+    "GK3",
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,227 @@
+{
+ "fixture": "HL-N4",
+ "arm": "A",
+ "mode": "nursing-home",
+ "template": "snf-admission",
+ "dictations": {
+  "preRound": "Admitted today from the hospital for rehab after urosepsis; he finished IV antibiotics there. Possible pneumonia on the hospital chest X-ray, no antibiotics for it now. He takes tamsulosin. New soft systolic murmur, ask cardiology to see him. Walks 50 feet with a walker, needs one assist for transfers. Weight 58.0 kg.",
+  "encounter": "Alert and oriented. Faint crackles at the left base. PT and OT five days a week, incentive spirometer, repeat chest X-ray in one week."
+ },
+ "note": "Reason for SNF Admission\n\nThe patient is admitted for rehabilitation following urosepsis treated with intravenous antibiotics at an outside hospital. The patient has completed the antibiotic course and is transferred to skilled nursing facility for continued recovery and rehabilitation.\n\nMedical History and Active Comorbidities\n\nUrosepsis — treated with intravenous antibiotics at outside hospital, course completed.\nPossible pneumonia — noted on hospital chest X-ray.\nNew systolic murmur — identified on examination, cardiology evaluation requested.\nBenign prostatic hyperplasia.\n\nCurrent Medications\n\nTamsulosin — active\n\nAllergies\n\nNot dictated.\n\nFunctional Status at Admission\n\nThe patient is alert and oriented. Ambulation: 50 feet with walker. Transfers: requires one assist.\n\nRehabilitation Goals\n\nPhysical therapy and occupational therapy five days per week. Incentive spirometer use.\n\nAssessment of Active Medical Problems\n\nUrosepsis: The patient completed intravenous antibiotic therapy at the outside hospital and is admitted for rehabilitation. Clinical status stable.\n\nPossible pneumonia: Noted on hospital chest X-ray. On examination today, faint crackles are present at the left base. No antibiotics are currently prescribed.\n\nNew systolic murmur: A soft systolic murmur has been identified. Cardiology evaluation is pending.\n\nBenign prostatic hyperplasia: The patient is on tamsulosin.\n\nCare Plan\n\n1. Continue tamsulosin for benign prostatic hyperplasia.\n2. Obtain repeat chest X-ray in one week to reassess possible pneumonia.\n3. Physical therapy and occupational therapy five days per week.\n4. Incentive spirometer daily.\n5. Cardiology evaluation for new systolic murmur.",
+ "noteSections": [
+  {
+   "body": "The patient is admitted for rehabilitation following urosepsis treated with intravenous antibiotics at an outside hospital. The patient has completed the antibiotic course and is transferred to skilled nursing facility for continued recovery and rehabilitation.",
+   "heading": "Reason for SNF Admission",
+   "part": "narrative"
+  },
+  {
+   "body": "Urosepsis — treated with intravenous antibiotics at outside hospital, course completed.\nPossible pneumonia — noted on hospital chest X-ray.\nNew systolic murmur — identified on examination, cardiology evaluation requested.\nBenign prostatic hyperplasia.",
+   "heading": "Medical History and Active Comorbidities",
+   "part": "narrative"
+  },
+  {
+   "body": "Tamsulosin — active",
+   "heading": "Current Medications",
+   "part": "narrative"
+  },
+  {
+   "body": "Not dictated.",
+   "heading": "Allergies",
+   "part": "narrative"
+  },
+  {
+   "body": "The patient is alert and oriented. Ambulation: 50 feet with walker. Transfers: requires one assist.",
+   "heading": "Functional Status at Admission",
+   "part": "narrative"
+  },
+  {
+   "body": "Physical therapy and occupational therapy five days per week. Incentive spirometer use.",
+   "heading": "Rehabilitation Goals",
+   "part": "narrative"
+  },
+  {
+   "body": "Urosepsis: The patient completed intravenous antibiotic therapy at the outside hospital and is admitted for rehabilitation. Clinical status stable.\n\nPossible pneumonia: Noted on hospital chest X-ray. On examination today, faint crackles are present at the left base. No antibiotics are currently prescribed.\n\nNew systolic murmur: A soft systolic murmur has been identified. Cardiology evaluation is pending.\n\nBenign prostatic hyperplasia: The patient is on tamsulosin.",
+   "heading": "Assessment of Active Medical Problems",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue tamsulosin for benign prostatic hyperplasia.\n2. Obtain repeat chest X-ray in one week to reassess possible pneumonia.\n3. Physical therapy and occupational therapy five days per week.\n4. Incentive spirometer daily.\n5. Cardiology evaluation for new systolic murmur.",
+   "heading": "Care Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 9870,
+    "providerMs": 9521,
+    "appMs": 349,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 9870,
+    "providerMs": 9521,
+    "appMs": 349,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3950,
+    "providerMs": 3866,
+    "appMs": 84,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 5339,
+    "providerMs": 5336,
+    "appMs": 3,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N4-a": {
+   "summary": {
+    "verdict": "invented",
+    "quotes": [
+     "• Benign prostatic hyperplasia — on tamsulosin"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "after": {
+    "verdict": "invented",
+    "quotes": [
+     "• Benign prostatic hyperplasia — on tamsulosin"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "Benign prostatic hyperplasia.",
+     "Benign prostatic hyperplasia: The patient is on tamsulosin.",
+     "Continue tamsulosin for benign prostatic hyperplasia."
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   }
+  },
+  "HL-N4-b": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Possible pneumonia on prior imaging, currently not treated..",
+     "Patient admitted for rehabilitation after urosepsis, completed IV antibiotics at outside hospital, now with possible pneumonia on prior imaging and new cardiac murmur requiring evaluation."
+    ],
+    "why": "kept as dictated"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Possible pneumonia on imaging with faint crackles;",
+     "Patient admitted for rehabilitation after urosepsis, completed IV antibiotics at outside hospital, now with possible pneumonia on prior imaging and new cardiac murmur requiring evaluation."
+    ],
+    "why": "kept as dictated"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Possible pneumonia — noted on hospital chest X-ray.",
+     "Possible pneumonia: Noted on hospital chest X-ray."
+    ],
+    "why": "kept as dictated"
+   }
+  },
+  "HL-N4-c": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "New systolic murmur noted;",
+     "cardiology consulted."
+    ],
+    "why": "kept as dictated"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "New systolic murmur identified, cardiology consulted.",
+     "Patient admitted for rehabilitation after urosepsis, completed IV antibiotics at outside hospital, now with possible pneumonia on prior imaging and new cardiac murmur requiring evaluation."
+    ],
+    "why": "kept as dictated"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "New systolic murmur — identified on examination, cardiology evaluation requested.",
+     "New systolic murmur: A soft systolic murmur has been identified."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "tamsulosin|flomax",
+   "present": true
+  },
+  {
+   "fact": "murmur",
+   "present": true
+  },
+  {
+   "fact": "50 (feet|ft)",
+   "present": true
+  },
+  {
+   "fact": "58(\\.0)?",
+   "present": false
+  },
+  {
+   "fact": "incentive spirometer",
+   "present": true
+  },
+  {
+   "fact": "one week|1 week",
+   "present": true
+  }
+ ],
+ "ms": 44661,
+ "summary": {
+  "admissionSummary.course": "Visit 1 · Oct 20: Admitted to rehab post-urosepsis after completing IV antibiotics. New systolic murmur noted; cardiology consulted. Possible pneumonia on prior imaging, currently not treated..",
+  "admissionSummary.reason": "Patient admitted for rehabilitation after urosepsis, completed IV antibiotics at outside hospital, now with possible pneumonia on prior imaging and new cardiac murmur requiring evaluation.\n• Urosepsis — completed IV antibiotics at outside hospital, transferred for rehabilitation\n• Possible pneumonia — noted on hospital chest X-ray, no antibiotics currently\n• New systolic murmur — cardiology evaluation requested\n• Functional status — ambulates 50 feet with walker, requires one assist for transfers\n• Benign prostatic hyperplasia — on tamsulosin",
+  "trackerRows": "Tamsulosin [active].",
+  "vitals": "wt: 58.0 kg."
+ },
+ "after": {
+  "admissionSummary.course": "Visit 1 · Oct 20: 82M admitted post-urosepsis after completing IV antibiotics; stable. New systolic murmur identified, cardiology consulted. Possible pneumonia on imaging with faint crackles; repeat CXR planned in one week",
+  "admissionSummary.reason": "Patient admitted for rehabilitation after urosepsis, completed IV antibiotics at outside hospital, now with possible pneumonia on prior imaging and new cardiac murmur requiring evaluation.\n• Urosepsis — completed IV antibiotics at outside hospital, transferred for rehabilitation\n• Possible pneumonia — noted on hospital chest X-ray, no antibiotics currently\n• New systolic murmur — cardiology evaluation requested\n• Functional status — ambulates 50 feet with walker, requires one assist for transfers\n• Benign prostatic hyperplasia — on tamsulosin",
+  "trackerRows": "Tamsulosin [active].",
+  "vitals": "wt: 58.0 kg."
+ }
+}

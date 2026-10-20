@@ -1,0 +1,322 @@
+{
+  "ref": "TC-19/S12-b04-H4",
+  "title": "TC-19/S12-b04-H4 Hospital pre-round Save Note (no vitals / labs / doses) on yesterday's chart (live AI)",
+  "dataset": "b04-hosp",
+  "target": "dev",
+  "at": "2026-10-20T09:50:51.018Z",
+  "cells": [
+    {
+      "name": "chart",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "key": "H4",
+        "ctx": "hosp",
+        "dictation": "Feels better, appetite improving, tolerated a regular diet at breakfast. Left leg redness receding from the marked line, less warmth. Plan: keep the leg elevated, wound care to see him, continue the current plan.",
+        "newValues": false,
+        "T0": "2026-10-19T13:50:23.333Z",
+        "yesterday": "Oct 19",
+        "today": "Oct 20",
+        "saveAt": "2026-10-20T09:50:24.513Z"
+      }
+    },
+    {
+      "name": "stamps before / after",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "before": {
+          "notesProcessedAt": "2026-10-19T13:50:23.333Z",
+          "vitals": {
+            "bp": "136/84",
+            "hr": "78",
+            "o2": "95% RA",
+            "temp": "37.4"
+          },
+          "vitalsRecordedAt": {
+            "bp": "2026-10-19T13:50:23.333Z",
+            "hr": "2026-10-19T13:50:23.333Z",
+            "o2": "2026-10-19T13:50:23.333Z",
+            "temp": "2026-10-19T13:50:23.333Z"
+          },
+          "vitalsUpdatedAt": "2026-10-19T13:50:23.333Z",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "value": "1.4",
+              "trend": "",
+              "date": null,
+              "recordedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Potassium",
+              "value": "3.6",
+              "trend": "",
+              "date": null,
+              "recordedAt": "2026-10-19T13:50:23.333Z"
+            }
+          ],
+          "labsUpdatedAt": "2026-10-19T13:50:23.333Z",
+          "radiology": [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "radiologyUpdatedAt": "2026-10-19T13:50:23.333Z",
+          "medications": [
+            {
+              "name": "Metoprolol tartrate 25 mg PO BID",
+              "status": "active",
+              "changeType": null,
+              "changeDate": null,
+              "changedNote": null,
+              "updatedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Lisinopril 10 mg PO daily",
+              "status": "held",
+              "changeType": "held",
+              "changeDate": "Oct 19",
+              "changedNote": "soft BP",
+              "updatedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Vancomycin 1 g IV q12h",
+              "status": "discontinued",
+              "changeType": "stopped",
+              "changeDate": "Oct 19",
+              "changedNote": "AKI",
+              "updatedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Magnesium sulfate 2 g IV once",
+              "status": "single-dose",
+              "changeType": "given",
+              "changeDate": "Oct 19",
+              "changedNote": null,
+              "updatedAt": "2026-10-19T13:50:23.333Z"
+            }
+          ],
+          "medicationsUpdatedAt": "2026-10-19T13:50:23.333Z"
+        },
+        "after": {
+          "notesProcessedAt": "2026-10-20T09:50:27.802Z",
+          "vitals": {
+            "bp": "136/84",
+            "hr": "78",
+            "o2": "95% RA",
+            "temp": "37.4"
+          },
+          "vitalsRecordedAt": {
+            "bp": "2026-10-19T13:50:23.333Z",
+            "hr": "2026-10-19T13:50:23.333Z",
+            "o2": "2026-10-19T13:50:23.333Z",
+            "temp": "2026-10-19T13:50:23.333Z"
+          },
+          "vitalsUpdatedAt": "2026-10-19T13:50:23.333Z",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "value": "1.4",
+              "trend": "",
+              "date": null,
+              "recordedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Potassium",
+              "value": "3.6",
+              "trend": "",
+              "date": null,
+              "recordedAt": "2026-10-19T13:50:23.333Z"
+            }
+          ],
+          "labsUpdatedAt": "2026-10-19T13:50:23.333Z",
+          "radiology": [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "radiologyUpdatedAt": "2026-10-19T13:50:23.333Z",
+          "medications": [
+            {
+              "name": "Metoprolol tartrate 25 mg PO BID",
+              "status": "active",
+              "changeType": null,
+              "changeDate": null,
+              "changedNote": null,
+              "updatedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Lisinopril 10 mg PO daily",
+              "status": "held",
+              "changeType": "held",
+              "changeDate": "Oct 19",
+              "changedNote": "soft BP",
+              "updatedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Vancomycin 1 g IV q12h",
+              "status": "discontinued",
+              "changeType": "stopped",
+              "changeDate": "Oct 19",
+              "changedNote": "AKI",
+              "updatedAt": "2026-10-19T13:50:23.333Z"
+            },
+            {
+              "name": "Magnesium sulfate 2 g IV once",
+              "status": "single-dose",
+              "changeType": "given",
+              "changeDate": "Oct 20",
+              "changedNote": "",
+              "updatedAt": "2026-10-20T09:50:33.154Z"
+            }
+          ],
+          "medicationsUpdatedAt": "2026-10-20T09:50:27.802Z"
+        }
+      }
+    },
+    {
+      "name": "parse answer (tapped off the socket, unchanged)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "calls": 1,
+        "parse": {
+          "background": "72-year-old admitted with community-acquired pneumonia, now with improving symptoms and resolving left leg cellulitis\n• Community-acquired pneumonia — symptoms improving, tolerating regular diet\n• Left leg cellulitis — redness and warmth receding, leg elevated, wound care ongoing",
+          "cleaned_notes": "Feels better, appetite improving, tolerated a regular diet at breakfast. Left leg redness receding from the marked line, less warmth. Plan: keep the leg elevated, wound care to see him, continue the current plan.",
+          "course_entry": "CAP improving with appetite return and regular diet tolerance. Left leg cellulitis receding; continue elevation and wound care.",
+          "important_points": [
+            "Community-acquired pneumonia — assess respiratory status and tolerance of diet",
+            "Left leg cellulitis — assess redness, warmth, and response to elevation and wound care"
+          ],
+          "labs": [],
+          "labs_stable": false,
+          "medications": [
+            {
+              "name": "Metoprolol tartrate 25 mg PO BID",
+              "note": "",
+              "status": "active"
+            },
+            {
+              "name": "Lisinopril 10 mg PO daily",
+              "note": "",
+              "status": "active"
+            },
+            {
+              "name": "Vancomycin 1 g IV q12h",
+              "note": "",
+              "status": "active"
+            },
+            {
+              "name": "Magnesium sulfate 2 g IV once",
+              "note": "",
+              "status": "single-dose"
+            }
+          ],
+          "radiology": [],
+          "vitals": {
+            "bp": "",
+            "hr": "",
+            "io": "",
+            "o2": "",
+            "rr": "",
+            "temp": "",
+            "wt": ""
+          },
+          "vitals_stable": false
+        }
+      }
+    },
+    {
+      "name": "classification",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "bp": "kept",
+        "hr": "kept",
+        "temp": "kept",
+        "o2": "kept",
+        "Creatinine": "kept",
+        "Potassium": "kept",
+        "imaging": "kept",
+        "met": "echoed",
+        "lis": "echoed",
+        "van": "echoed",
+        "mag": "re-dated",
+        "vitalsUpdatedAt": "kept",
+        "labsUpdatedAt": "kept"
+      }
+    },
+    {
+      "name": "panel after",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "dated": [
+          "Blood Pressure 136/84 Oct 19",
+          "Heart Rate 78 Oct 19",
+          "O₂ Sat 95% RA Oct 19",
+          "Temperature 37.4 Oct 19",
+          "Creatinine 1.4 Oct 19",
+          "Potassium 3.6 Oct 19"
+        ],
+        "meds": {
+          "met": "active Metoprolol tartrate 25 mg PO BID not mentioned today",
+          "lis": "held Lisinopril 10 mg PO daily Held · Oct 19 soft BP",
+          "van": "discontinued Vancomycin 1 g IV q12h Stopped · Oct 19 AKI",
+          "mag": "single dose Magnesium sulfate 2 g IV once Given · Oct 20"
+        }
+      }
+    },
+    {
+      "name": "B04: no value, dose or stamp re-dated, changed or invented by a Save Note that names none",
+      "kind": "judged",
+      "ok": false,
+      "detail": {
+        "bad": [
+          [
+            "mag",
+            "re-dated"
+          ]
+        ],
+        "cls": {
+          "bp": "kept",
+          "hr": "kept",
+          "temp": "kept",
+          "o2": "kept",
+          "Creatinine": "kept",
+          "Potassium": "kept",
+          "imaging": "kept",
+          "met": "echoed",
+          "lis": "echoed",
+          "van": "echoed",
+          "mag": "re-dated",
+          "vitalsUpdatedAt": "kept",
+          "labsUpdatedAt": "kept"
+        }
+      }
+    },
+    {
+      "name": "B04: panel shows no 'Today' on a value not dictated today",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "Blood Pressure 136/84 Oct 19",
+        "Heart Rate 78 Oct 19",
+        "O₂ Sat 95% RA Oct 19",
+        "Temperature 37.4 Oct 19",
+        "Creatinine 1.4 Oct 19",
+        "Potassium 3.6 Oct 19"
+      ]
+    },
+    {
+      "name": "B04: magnesium tag still 'Given · Oct 19'",
+      "kind": "judged",
+      "ok": false,
+      "detail": "single dose Magnesium sulfate 2 g IV once Given · Oct 20"
+    }
+  ],
+  "shots": [
+    "evidence/TC-19-S12-b04-H4-H4-after.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-19-S12-b04-H4-H4-after.png": 0
+  },
+  "error": "Error: TC-19/S12-b04-H4: judged cells that failed"
+}

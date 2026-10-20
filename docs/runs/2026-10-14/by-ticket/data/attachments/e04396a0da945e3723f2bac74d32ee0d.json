@@ -1,0 +1,142 @@
+{
+ "fixture": "HL-N5",
+ "arm": "B",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "encounter": "Creatinine 3.1, stable from last month. Potassium 5.2. Denies fever. Eating well, weight 80.1 kg. Nephrology follows him; he might need dialysis in the future. Continue the low-potassium diet. No edema, lungs clear. Repeat a BMP in two weeks and send the results to nephrology."
+ },
+ "note": "Interval Changes Since Last Visit\n\nCreatinine stable at 3.1, unchanged from last month. Potassium 5.2. Resident denies fever. Eating well.\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today. Weight 80.1 kg.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nChronic kidney disease stage 4: Creatinine 3.1, stable. Nephrology follows. Resident counseled regarding potential future dialysis need. Low-potassium diet continued. No edema noted. Lungs clear on examination.\n\nMedication Changes\n\nNo medication changes dictated.\n\nAssessment and Plan\n\nChronic kidney disease stage 4 with stable renal function. Creatinine 3.1 and potassium 5.2 reflect chronic kidney disease; no acute decompensation. Resident tolerating current diet and management well. Nephrology involved in ongoing care with consideration for future dialysis initiation.\n\n1. Continue low-potassium diet.\n2. Repeat basic metabolic panel in two weeks and send results to nephrology.\n3. Continue current medications as prescribed.\n4. Monitor for signs of volume overload or uremic symptoms.",
+ "noteSections": [
+  {
+   "body": "Creatinine stable at 3.1, unchanged from last month. Potassium 5.2. Resident denies fever. Eating well.",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital signs: not dictated today. Weight 80.1 kg.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Not dictated.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "Chronic kidney disease stage 4: Creatinine 3.1, stable. Nephrology follows. Resident counseled regarding potential future dialysis need. Low-potassium diet continued. No edema noted. Lungs clear on examination.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "No medication changes dictated.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Chronic kidney disease stage 4 with stable renal function. Creatinine 3.1 and potassium 5.2 reflect chronic kidney disease; no acute decompensation. Resident tolerating current diet and management well. Nephrology involved in ongoing care with consideration for future dialysis initiation.\n\n1. Continue low-potassium diet.\n2. Repeat basic metabolic panel in two weeks and send results to nephrology.\n3. Continue current medications as prescribed.\n4. Monitor for signs of volume overload or uremic symptoms.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 7535,
+    "providerMs": 7227,
+    "appMs": 308,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 7535,
+    "providerMs": 7227,
+    "appMs": 308,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3916,
+    "providerMs": 3600,
+    "appMs": 316,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N5-a": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Resident counseled regarding potential future dialysis need.",
+     "Nephrology involved in ongoing care with consideration for future dialysis initiation."
+    ],
+    "why": "kept as dictated"
+   }
+  },
+  "HL-N5-b": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Potassium 5.2.",
+     "Creatinine 3.1 and potassium 5.2 reflect chronic kidney disease;"
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N5-c": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Resident denies fever."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "3\\.1",
+   "present": true
+  },
+  {
+   "fact": "5\\.2",
+   "present": true
+  },
+  {
+   "fact": "80\\.1",
+   "present": true
+  },
+  {
+   "fact": "nephrology",
+   "present": true
+  },
+  {
+   "fact": "low[- ]potassium",
+   "present": true
+  },
+  {
+   "fact": "two weeks|2 weeks",
+   "present": true
+  }
+ ],
+ "ms": 28628
+}

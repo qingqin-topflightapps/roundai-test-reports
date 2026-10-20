@@ -1,0 +1,1311 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-20T10:22:07.213Z",
+  "capture": "runs/2026-10-14-dev/newspec-c/evidence/hallu/hallu-nh/grading/TC-14-S46-HL-N2-A.capture.json",
+  "captureSha256": "5cd683838ae1611371859c74f0cdbefd0f0d422ba42a265f4a86f488f3d7e369",
+  "captureContentSha256": "2f0e2621de4388e6d9ebf67de470a61c445340d99d4573b6fa0bdc06822e264d",
+  "scenario": {
+    "raw": "TC-14 S46 HL-N2 A",
+    "tc": "TC-14",
+    "id": "S46",
+    "fixture": "HL-N2"
+  },
+  "outputType": "note",
+  "mode": "Nursing Home",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "8b4be94a",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N4",
+                  "N5",
+                  "N6",
+                  "N7"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "kit (the interim reading is the kit's list for notes)",
+    "sent": [
+      "dictations",
+      "storedPanels",
+      "trackerRows",
+      "priorNote",
+      "today"
+    ],
+    "notSent": [
+      "storedPanelsNote"
+    ],
+    "notes": [
+      "tracker rows are read as after Generate (GK10)"
+    ]
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7"
+    ],
+    "sha256": "c9ce5c7272a75625980cbebed8e190b9db78d68ade1307446f9e7c607ce5f07d",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nDICTATIONS:\n{\n  \"preRound\": \"Weight 61.2 kg, down from 63.0 kg two weeks ago. Eating about 25 percent of meals. He takes metformin. HR 104 after therapy this morning, 88 at rest. Speech therapy saw him, thin liquids are fine. Discuss hospice with the family at the care conference Friday.\",\n  \"encounter\": \"Quiet, answers questions, says he is not hungry. Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care.\"\n}\n\nSTORED PANELS:\n{\n  \"chart\": {\n    \"name\": \"QA DS1-hallu-nh HL-N2A Res Jablonski\",\n    \"age\": 79,\n    \"sex\": \"M\",\n    \"diagnosis\": \"Deconditioning after pneumonia\",\n    \"noteTemplate\": \"snf-progress\"\n  }\n}\n\nTRACKER ROWS (with status):\n[\n  {\n    \"changeDay\": null,\n    \"changed\": false,\n    \"changedNote\": \"\",\n    \"name\": \"Metformin\",\n    \"status\": \"active\",\n    \"updatedAt\": \"2026-10-20T10:16:46.979Z\"\n  }\n]\n\nPRIOR NOTE:\nNone\n\nTODAY'S DATE:\n2026-10-20\n</sources>\n\nOUTPUT TO GRADE (note, Nursing Home):\n<output>\nInterval Changes Since Last Visit\n\nWeight 61.2 kg today, down from 63.0 kg two weeks ago. Oral intake remains poor at approximately 25% of meals. Resting heart rate 88 beats per minute; heart rate rises to 104 beats per minute after therapy. Speech therapy has cleared thin liquids. Resident remains quiet and oriented, denies hunger.\n\nCurrent Vitals and Weight Trend\n\nHeart rate 88 beats per minute at rest, 104 beats per minute after therapy. Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago). Vital signs otherwise not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nDeconditioning after pneumonia: Resident remains deconditioned with elevated heart rate response to therapy and progressive weight loss. Poor oral intake at 25% of meals contributes to ongoing weight decline. Thin liquids tolerated per speech therapy evaluation. Goals of care discussion requested by daughter; hospice discussion planned at care conference Friday.\n\nMedication Changes\n\nMetformin — active, dose not specified in dictation. Nutrition supplement added twice daily.\n\nAssessment and Plan\n\nDeconditioning after pneumonia with poor oral intake and progressive weight loss. Resident is quiet and interactive but reports no hunger. Heart rate elevation with activity is consistent with deconditioning. Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake. Goals of care and possible hospice transition are being discussed with family.\n\n1. Continue metformin as prescribed.\n2. Add nutrition supplement twice daily to support caloric intake.\n3. Obtain weekly weights to monitor nutritional status and deconditioning trend.\n4. Continue thin-liquid diet per speech therapy clearance.\n5. Facilitate goals-of-care discussion with daughter and family at care conference Friday, including hospice discussion as appropriate.\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nN1: Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.\nN2: A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).\nN3: No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.\nN4: A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").\nN5: A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).\nN6: A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording). N6 accepts either wording: 'Not dictated' or 'Not provided'.\nN7: Nursing Home only: no signature or date line, and the note never says \"yesterday.\"\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-20T10:21:42.064Z",
+      "durationMs": 25143,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":23117,\"stop_reason\":\"tool_use\",\"session_id\":\"177b5480-b55f-45bb-affe-bd7fe94e6f6b\",\"total_cost_usd\":0.08546,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":3734,\"cache_read_input_tokens\":0,\"output_tokens\":2779,\"output_tokens_details\":{\"thinking_tokens\":1267},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":3734,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2779,\"cache_read_input_tokens\":0,\"cache_creation_input_tokens\":3734,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":3734},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2779,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":3734,\"webSearchRequests\":0,\"costUSD\":0.08546,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":1267,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Resident remains quiet and oriented, denies hunger.\\\",\\\"source_quote\\\":\\\"Quiet, answers questions, says he is not hungry.\\\",\\\"why\\\":\\\"The source never says 'oriented'. 'Answers questions' does not establish orientation, so this finding is invented.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The note assigns a cause to the weight loss, and to the heart rate rise ('consistent with deconditioning'). The dictation states neither cause.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago)\\\",\\\"source_quote\\\":\\\"Weight 61.2 kg, down from 63.0 kg two weeks ago. Eating about 25 percent of meals. ... HR 104 after therapy this morning, 88 at rest.\\\",\\\"why\\\":\\\"Every number matches the source, and the 1.8 kg difference is calculated correctly.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Weight 61.2 kg\\\",\\\"source_quote\\\":\\\"Weight 61.2 kg\\\",\\\"why\\\":\\\"Weights stay in kg, and no unit is guessed.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Metformin — active ... Continue metformin as prescribed.\\\",\\\"source_quote\\\":\\\"\\\\\\\"name\\\\\\\": \\\\\\\"Metformin\\\\\\\", \\\\\\\"status\\\\\\\": \\\\\\\"active\\\\\\\"\\\",\\\"why\\\":\\\"Metformin is active in both the tracker and the note. The supplement is a new order dictated today, not a tracker drug being restarted.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"down from 63.0 kg two weeks ago\\\",\\\"source_quote\\\":\\\"down from 63.0 kg two weeks ago\\\",\\\"why\\\":\\\"The earlier weight keeps its time reference.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Goals of care and possible hospice transition are being discussed with family.\\\",\\\"source_quote\\\":\\\"Discuss hospice with the family at the care conference Friday.\\\",\\\"why\\\":\\\"A discussion planned for Friday is written as already happening, and 'transition' is added.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The note contains no placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Metformin — active, dose not specified in dictation.\\\",\\\"source_quote\\\":\\\"He takes metformin.\\\",\\\"why\\\":\\\"This is narration about the documentation, and it is the exact example the rule forbids. 'Vital signs otherwise not dictated today' is similar narration.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Add nutrition supplement twice daily ... Obtain weekly weights ... care conference Friday\\\",\\\"source_quote\\\":\\\"Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care.\\\",\\\"why\\\":\\\"Every dictated statement appears in the note.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The dictation contains no hedges to keep.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Resident remains quiet and oriented\\\",\\\"source_quote\\\":\\\"Quiet, answers questions\\\",\\\"why\\\":\\\"No exam was dictated, yet the note adds a normal mental-status finding ('oriented').\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside checks were dictated, so none were turned into findings.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Add nutrition supplement twice daily\\\",\\\"source_quote\\\":\\\"Add a nutrition supplement twice a day\\\",\\\"why\\\":\\\"The supplement is a new order today, not a drug already given being re-ordered.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Functional Status Update\\\\n\\\\nNot dictated.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The section with nothing dictated is labeled 'Not dictated.'\\\"},{\\\"id\\\":\\\"N7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The note has no signature or date line and never says 'yesterday'.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"Resident remains quiet and oriented, denies hunger.\",\"source_quote\":\"Quiet, answers questions, says he is not hungry.\",\"why\":\"The source never says 'oriented'. 'Answers questions' does not establish orientation, so this finding is invented.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.\",\"source_quote\":\"no source\",\"why\":\"The note assigns a cause to the weight loss, and to the heart rate rise ('consistent with deconditioning'). The dictation states neither cause.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago)\",\"source_quote\":\"Weight 61.2 kg, down from 63.0 kg two weeks ago. Eating about 25 percent of meals. ... HR 104 after therapy this morning, 88 at rest.\",\"why\":\"Every number matches the source, and the 1.8 kg difference is calculated correctly.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"Weight 61.2 kg\",\"source_quote\":\"Weight 61.2 kg\",\"why\":\"Weights stay in kg, and no unit is guessed.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"Metformin — active ... Continue metformin as prescribed.\",\"source_quote\":\"\\\"name\\\": \\\"Metformin\\\", \\\"status\\\": \\\"active\\\"\",\"why\":\"Metformin is active in both the tracker and the note. The supplement is a new order dictated today, not a tracker drug being restarted.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"down from 63.0 kg two weeks ago\",\"source_quote\":\"down from 63.0 kg two weeks ago\",\"why\":\"The earlier weight keeps its time reference.\"},{\"id\":\"U7\",\"verdict\":\"FAIL\",\"output_quote\":\"Goals of care and possible hospice transition are being discussed with family.\",\"source_quote\":\"Discuss hospice with the family at the care conference Friday.\",\"why\":\"A discussion planned for Friday is written as already happening, and 'transition' is added.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The note contains no placeholders.\"},{\"id\":\"U9\",\"verdict\":\"FAIL\",\"output_quote\":\"Metformin — active, dose not specified in dictation.\",\"source_quote\":\"He takes metformin.\",\"why\":\"This is narration about the documentation, and it is the exact example the rule forbids. 'Vital signs otherwise not dictated today' is similar narration.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Add nutrition supplement twice daily ... Obtain weekly weights ... care conference Friday\",\"source_quote\":\"Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care.\",\"why\":\"Every dictated statement appears in the note.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The dictation contains no hedges to keep.\"},{\"id\":\"N3\",\"verdict\":\"FAIL\",\"output_quote\":\"Resident remains quiet and oriented\",\"source_quote\":\"Quiet, answers questions\",\"why\":\"No exam was dictated, yet the note adds a normal mental-status finding ('oriented').\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside checks were dictated, so none were turned into findings.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"Add nutrition supplement twice daily\",\"source_quote\":\"Add a nutrition supplement twice a day\",\"why\":\"The supplement is a new order today, not a drug already given being re-ordered.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Functional Status Update\\n\\nNot dictated.\",\"source_quote\":\"\",\"why\":\"The section with nothing dictated is labeled 'Not dictated.'\"},{\"id\":\"N7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The note has no signature or date line and never says 'yesterday'.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":12431,\"type\":\"result\",\"duration_ms\":23191,\"uuid\":\"326bbd76-c897-41a4-a542-ac4b624d659c\",\"ttft_stream_ms\":1120,\"time_to_request_ms\":76,\"first_content_frame_ms\":1121,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-20T10:21:42.066Z",
+      "durationMs": 23900,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":22048,\"stop_reason\":\"tool_use\",\"session_id\":\"fdb5323f-6a9d-41d9-99b9-8ad758723702\",\"total_cost_usd\":0.0835,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":3729,\"cache_read_input_tokens\":0,\"output_tokens\":2683,\"output_tokens_details\":{\"thinking_tokens\":1208},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":3729,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2683,\"cache_read_input_tokens\":0,\"cache_creation_input_tokens\":3729,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":3729},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2683,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":3729,\"webSearchRequests\":0,\"costUSD\":0.0835,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":1208,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Resident remains quiet and oriented, denies hunger.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The dictation says 'Quiet, answers questions'. It never says he is oriented, so that finding is invented.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The note names a cause for the weight loss (inadequate caloric intake), and so does 'Poor oral intake ... contributes to ongoing weight decline'. No source states this cause.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago)\\\",\\\"source_quote\\\":\\\"Weight 61.2 kg, down from 63.0 kg two weeks ago.\\\",\\\"why\\\":\\\"All numbers (61.2, 63.0, 25%, 88, 104) match the source. The 1.8 kg drop is calculated correctly.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Weight 61.2 kg\\\",\\\"source_quote\\\":\\\"Weight 61.2 kg\\\",\\\"why\\\":\\\"Units are kept as dictated, and no units are guessed.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"1. Continue metformin as prescribed.\\\",\\\"source_quote\\\":\\\"\\\\\\\"name\\\\\\\": \\\\\\\"Metformin\\\\\\\", \\\\\\\"status\\\\\\\": \\\\\\\"active\\\\\\\"\\\",\\\"why\\\":\\\"Metformin is active in the tracker and is continued. The supplement was ordered in the encounter dictation.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"down from 63.0 kg two weeks ago\\\",\\\"source_quote\\\":\\\"down from 63.0 kg two weeks ago\\\",\\\"why\\\":\\\"The earlier weight keeps its time reference. There is no prior note.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Goals of care and possible hospice transition are being discussed with family.\\\",\\\"source_quote\\\":\\\"Discuss hospice with the family at the care conference Friday.\\\",\\\"why\\\":\\\"The hospice discussion is planned for Friday's care conference, but the Assessment says it is already happening.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders found.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Metformin — active, dose not specified in dictation.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"This is narration about documentation, which the rule bans. 'Vital signs otherwise not dictated today' is also narration.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Add nutrition supplement twice daily ... Obtain weekly weights ... care conference Friday, including hospice discussion\\\",\\\"source_quote\\\":\\\"Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care.\\\",\\\"why\\\":\\\"Every dictated fact and instruction appears in the note.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No hedges were dictated.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Resident remains quiet and oriented\\\",\\\"source_quote\\\":\\\"Quiet, answers questions\\\",\\\"why\\\":\\\"No exam was dictated, but the note adds a normal mental-status finding ('oriented').\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside check is turned into a finding.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"2. Add nutrition supplement twice daily\\\",\\\"source_quote\\\":\\\"Add a nutrition supplement twice a day\\\",\\\"why\\\":\\\"The supplement is a new order today, not a drug already given, so it belongs in the Plan.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Functional Status Update\\\\n\\\\nNot dictated.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The empty section is labeled 'Not dictated'.\\\"},{\\\"id\\\":\\\"N7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no signature or date line, and the note never says 'yesterday'.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"Resident remains quiet and oriented, denies hunger.\",\"source_quote\":\"no source\",\"why\":\"The dictation says 'Quiet, answers questions'. It never says he is oriented, so that finding is invented.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.\",\"source_quote\":\"no source\",\"why\":\"The note names a cause for the weight loss (inadequate caloric intake), and so does 'Poor oral intake ... contributes to ongoing weight decline'. No source states this cause.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago)\",\"source_quote\":\"Weight 61.2 kg, down from 63.0 kg two weeks ago.\",\"why\":\"All numbers (61.2, 63.0, 25%, 88, 104) match the source. The 1.8 kg drop is calculated correctly.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"Weight 61.2 kg\",\"source_quote\":\"Weight 61.2 kg\",\"why\":\"Units are kept as dictated, and no units are guessed.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"1. Continue metformin as prescribed.\",\"source_quote\":\"\\\"name\\\": \\\"Metformin\\\", \\\"status\\\": \\\"active\\\"\",\"why\":\"Metformin is active in the tracker and is continued. The supplement was ordered in the encounter dictation.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"down from 63.0 kg two weeks ago\",\"source_quote\":\"down from 63.0 kg two weeks ago\",\"why\":\"The earlier weight keeps its time reference. There is no prior note.\"},{\"id\":\"U7\",\"verdict\":\"FAIL\",\"output_quote\":\"Goals of care and possible hospice transition are being discussed with family.\",\"source_quote\":\"Discuss hospice with the family at the care conference Friday.\",\"why\":\"The hospice discussion is planned for Friday's care conference, but the Assessment says it is already happening.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders found.\"},{\"id\":\"U9\",\"verdict\":\"FAIL\",\"output_quote\":\"Metformin — active, dose not specified in dictation.\",\"source_quote\":\"no source\",\"why\":\"This is narration about documentation, which the rule bans. 'Vital signs otherwise not dictated today' is also narration.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Add nutrition supplement twice daily ... Obtain weekly weights ... care conference Friday, including hospice discussion\",\"source_quote\":\"Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care.\",\"why\":\"Every dictated fact and instruction appears in the note.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No hedges were dictated.\"},{\"id\":\"N3\",\"verdict\":\"FAIL\",\"output_quote\":\"Resident remains quiet and oriented\",\"source_quote\":\"Quiet, answers questions\",\"why\":\"No exam was dictated, but the note adds a normal mental-status finding ('oriented').\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside check is turned into a finding.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"2. Add nutrition supplement twice daily\",\"source_quote\":\"Add a nutrition supplement twice a day\",\"why\":\"The supplement is a new order today, not a drug already given, so it belongs in the Plan.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Functional Status Update\\n\\nNot dictated.\",\"source_quote\":\"\",\"why\":\"The empty section is labeled 'Not dictated'.\"},{\"id\":\"N7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no signature or date line, and the note never says 'yesterday'.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":12023,\"type\":\"result\",\"duration_ms\":22105,\"uuid\":\"7e886f3d-e966-4858-94ab-0d3943bfc47f\",\"ttft_stream_ms\":748,\"time_to_request_ms\":62,\"first_content_frame_ms\":748,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 23191,
+        "total_cost_usd": 0.08546,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 3734,
+        "cacheReadInputTokens": 0,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 22105,
+        "total_cost_usd": 0.0835,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 3729,
+        "cacheReadInputTokens": 0,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6",
+      "N7"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Resident remains quiet and oriented, denies hunger.",
+          "source_quote": "Quiet, answers questions, says he is not hungry.",
+          "why": "The source never says 'oriented'. 'Answers questions' does not establish orientation, so this finding is invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Resident remains quiet and oriented, denies hunger.",
+          "source_quote": "no source",
+          "why": "The dictation says 'Quiet, answers questions'. It never says he is oriented, so that finding is invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.",
+          "source_quote": "no source",
+          "why": "The note assigns a cause to the weight loss, and to the heart rate rise ('consistent with deconditioning'). The dictation states neither cause.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.",
+          "source_quote": "no source",
+          "why": "The note names a cause for the weight loss (inadequate caloric intake), and so does 'Poor oral intake ... contributes to ongoing weight decline'. No source states this cause.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": []
+    },
+    {
+      "id": "U7",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Goals of care and possible hospice transition are being discussed with family.",
+          "source_quote": "Discuss hospice with the family at the care conference Friday.",
+          "why": "A discussion planned for Friday is written as already happening, and 'transition' is added.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Goals of care and possible hospice transition are being discussed with family.",
+          "source_quote": "Discuss hospice with the family at the care conference Friday.",
+          "why": "The hospice discussion is planned for Friday's care conference, but the Assessment says it is already happening.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": []
+    },
+    {
+      "id": "N3",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Resident remains quiet and oriented",
+          "source_quote": "Quiet, answers questions",
+          "why": "No exam was dictated, yet the note adds a normal mental-status finding ('oriented').",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Resident remains quiet and oriented",
+          "source_quote": "Quiet, answers questions",
+          "why": "No exam was dictated, but the note adds a normal mental-status finding ('oriented').",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ]
+    }
+  ],
+  "kitOnlyFails": [
+    {
+      "id": "U9",
+      "severity": "defect",
+      "verdict": "PASS",
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Metformin — active, dose not specified in dictation.",
+          "source_quote": "He takes metformin.",
+          "why": "This is narration about the documentation, and it is the exact example the rule forbids. 'Vital signs otherwise not dictated today' is similar narration.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Metformin — active, dose not specified in dictation.",
+          "source_quote": "no source",
+          "why": "This is narration about documentation, which the rule bans. 'Vital signs otherwise not dictated today' is also narration.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3"
+      ]
+    }
+  ],
+  "kitOnlyUnsure": [],
+  "needsPerson": [],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Resident remains quiet and oriented, denies hunger.",
+          "source_quote": "Quiet, answers questions, says he is not hungry.",
+          "why": "The source never says 'oriented'. 'Answers questions' does not establish orientation, so this finding is invented."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Resident remains quiet and oriented, denies hunger.",
+          "source_quote": "no source",
+          "why": "The dictation says 'Quiet, answers questions'. It never says he is oriented, so that finding is invented."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Resident remains quiet and oriented, denies hunger.",
+          "source_quote": "Quiet, answers questions, says he is not hungry.",
+          "why": "The source never says 'oriented'. 'Answers questions' does not establish orientation, so this finding is invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Resident remains quiet and oriented, denies hunger.",
+          "source_quote": "no source",
+          "why": "The dictation says 'Quiet, answers questions'. It never says he is oriented, so that finding is invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "The source never says 'oriented'. 'Answers questions' does not establish orientation, so this finding is invented."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.",
+          "source_quote": "no source",
+          "why": "The note assigns a cause to the weight loss, and to the heart rate rise ('consistent with deconditioning'). The dictation states neither cause."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.",
+          "source_quote": "no source",
+          "why": "The note names a cause for the weight loss (inadequate caloric intake), and so does 'Poor oral intake ... contributes to ongoing weight decline'. No source states this cause."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.",
+          "source_quote": "no source",
+          "why": "The note assigns a cause to the weight loss, and to the heart rate rise ('consistent with deconditioning'). The dictation states neither cause.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake.",
+          "source_quote": "no source",
+          "why": "The note names a cause for the weight loss (inadequate caloric intake), and so does 'Poor oral intake ... contributes to ongoing weight decline'. No source states this cause.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The note assigns a cause to the weight loss, and to the heart rate rise ('consistent with deconditioning'). The dictation states neither cause."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago)",
+          "source_quote": "Weight 61.2 kg, down from 63.0 kg two weeks ago. Eating about 25 percent of meals. ... HR 104 after therapy this morning, 88 at rest.",
+          "why": "Every number matches the source, and the 1.8 kg difference is calculated correctly."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago)",
+          "source_quote": "Weight 61.2 kg, down from 63.0 kg two weeks ago.",
+          "why": "All numbers (61.2, 63.0, 25%, 88, 104) match the source. The 1.8 kg drop is calculated correctly."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Every number matches the source, and the 1.8 kg difference is calculated correctly."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Weight 61.2 kg",
+          "source_quote": "Weight 61.2 kg",
+          "why": "Weights stay in kg, and no unit is guessed."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Weight 61.2 kg",
+          "source_quote": "Weight 61.2 kg",
+          "why": "Units are kept as dictated, and no units are guessed."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "Weights stay in kg, and no unit is guessed."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Metformin — active ... Continue metformin as prescribed.",
+          "source_quote": "\"name\": \"Metformin\", \"status\": \"active\"",
+          "why": "Metformin is active in both the tracker and the note. The supplement is a new order dictated today, not a tracker drug being restarted."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "1. Continue metformin as prescribed.",
+          "source_quote": "\"name\": \"Metformin\", \"status\": \"active\"",
+          "why": "Metformin is active in the tracker and is continued. The supplement was ordered in the encounter dictation."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "Metformin is active in both the tracker and the note. The supplement is a new order dictated today, not a tracker drug being restarted."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "down from 63.0 kg two weeks ago",
+          "source_quote": "down from 63.0 kg two weeks ago",
+          "why": "The earlier weight keeps its time reference."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "down from 63.0 kg two weeks ago",
+          "source_quote": "down from 63.0 kg two weeks ago",
+          "why": "The earlier weight keeps its time reference. There is no prior note."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "The earlier weight keeps its time reference."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Goals of care and possible hospice transition are being discussed with family.",
+          "source_quote": "Discuss hospice with the family at the care conference Friday.",
+          "why": "A discussion planned for Friday is written as already happening, and 'transition' is added."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Goals of care and possible hospice transition are being discussed with family.",
+          "source_quote": "Discuss hospice with the family at the care conference Friday.",
+          "why": "The hospice discussion is planned for Friday's care conference, but the Assessment says it is already happening."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Goals of care and possible hospice transition are being discussed with family.",
+          "source_quote": "Discuss hospice with the family at the care conference Friday.",
+          "why": "A discussion planned for Friday is written as already happening, and 'transition' is added.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Goals of care and possible hospice transition are being discussed with family.",
+          "source_quote": "Discuss hospice with the family at the care conference Friday.",
+          "why": "The hospice discussion is planned for Friday's care conference, but the Assessment says it is already happening.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "A discussion planned for Friday is written as already happening, and 'transition' is added."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The note contains no placeholders."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders found."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "FAIL",
+      "differs": true,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "PASS",
+          "carveOut": "GK3",
+          "output_quote": "Metformin — active, dose not specified in dictation.",
+          "source_quote": "He takes metformin.",
+          "why": "This is narration about the documentation, and it is the exact example the rule forbids. 'Vital signs otherwise not dictated today' is similar narration."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "PASS",
+          "carveOut": "GK3",
+          "output_quote": "Metformin — active, dose not specified in dictation.",
+          "source_quote": "no source",
+          "why": "This is narration about documentation, which the rule bans. 'Vital signs otherwise not dictated today' is also narration."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "Metformin — active, dose not specified in dictation.",
+          "source_quote": "He takes metformin.",
+          "why": "This is narration about the documentation, and it is the exact example the rule forbids. 'Vital signs otherwise not dictated today' is similar narration.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "Metformin — active, dose not specified in dictation.",
+          "source_quote": "no source",
+          "why": "This is narration about documentation, which the rule bans. 'Vital signs otherwise not dictated today' is also narration.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "judge FAIL explained by the interim reading (GK3): a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+    },
+    {
+      "id": "N1",
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Add nutrition supplement twice daily ... Obtain weekly weights ... care conference Friday",
+          "source_quote": "Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care.",
+          "why": "Every dictated statement appears in the note."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Add nutrition supplement twice daily ... Obtain weekly weights ... care conference Friday, including hospice discussion",
+          "source_quote": "Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care.",
+          "why": "Every dictated fact and instruction appears in the note."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "Every dictated statement appears in the note."
+    },
+    {
+      "id": "N2",
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The dictation contains no hedges to keep."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No hedges were dictated."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The dictation contains no hedges to keep."
+    },
+    {
+      "id": "N3",
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Resident remains quiet and oriented",
+          "source_quote": "Quiet, answers questions",
+          "why": "No exam was dictated, yet the note adds a normal mental-status finding ('oriented')."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Resident remains quiet and oriented",
+          "source_quote": "Quiet, answers questions",
+          "why": "No exam was dictated, but the note adds a normal mental-status finding ('oriented')."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Resident remains quiet and oriented",
+          "source_quote": "Quiet, answers questions",
+          "why": "No exam was dictated, yet the note adds a normal mental-status finding ('oriented').",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Resident remains quiet and oriented",
+          "source_quote": "Quiet, answers questions",
+          "why": "No exam was dictated, but the note adds a normal mental-status finding ('oriented').",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK14"
+        ],
+        "rule": "Nursing Home: the templates have no exam section, so N3 is N/A unless a judge FAILs it (both runs FAIL = FAIL, one run = UNSURE, a person decides)"
+      },
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ],
+      "why": "No exam was dictated, yet the note adds a normal mental-status finding ('oriented')."
+    },
+    {
+      "id": "N4",
+      "check": "A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside checks were dictated, so none were turned into findings."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside check is turned into a finding."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "No bedside checks were dictated, so none were turned into findings."
+    },
+    {
+      "id": "N5",
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Add nutrition supplement twice daily",
+          "source_quote": "Add a nutrition supplement twice a day",
+          "why": "The supplement is a new order today, not a drug already given being re-ordered."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "2. Add nutrition supplement twice daily",
+          "source_quote": "Add a nutrition supplement twice a day",
+          "why": "The supplement is a new order today, not a drug already given, so it belongs in the Plan."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ],
+      "why": "The supplement is a new order today, not a drug already given being re-ordered."
+    },
+    {
+      "id": "N6",
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Functional Status Update\n\nNot dictated.",
+          "source_quote": "",
+          "why": "The section with nothing dictated is labeled 'Not dictated.'"
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Functional Status Update\n\nNot dictated.",
+          "source_quote": "",
+          "why": "The empty section is labeled 'Not dictated'."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK2"
+        ],
+        "rule": "either 'Not dictated' or 'Not provided' passes (the kit's interim, L3); the wording used is recorded"
+      },
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ],
+      "why": "The section with nothing dictated is labeled 'Not dictated.'"
+    },
+    {
+      "id": "N7",
+      "check": "Nursing Home only: no signature or date line, and the note never says \"yesterday.\"",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The note has no signature or date line and never says 'yesterday'."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no signature or date line, and the note never says 'yesterday'."
+        }
+      ],
+      "code": {
+        "id": "N7",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no signature or date line, no \"yesterday\"",
+        "details": {
+          "signatureLines": [],
+          "dateLines": [],
+          "yesterdayInOutput": 0,
+          "yesterdayInDictations": 0
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK5"
+        ],
+        "rule": "the date-of-service line the code writes passes; 'yesterday' fails only when no dictation says it"
+      },
+      "openQuestions": [
+        "GK5",
+        "GK13"
+      ],
+      "why": "code: no signature or date line, no \"yesterday\""
+    }
+  ],
+  "n6Wording": {
+    "notDictated": 2,
+    "notProvided": 0
+  },
+  "openQuestions": [
+    "GK14",
+    "GK3",
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

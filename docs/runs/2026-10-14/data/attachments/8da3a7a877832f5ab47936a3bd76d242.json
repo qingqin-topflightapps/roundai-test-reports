@@ -1,0 +1,217 @@
+{
+ "fixture": "HL-N2",
+ "arm": "A",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "preRound": "Weight 61.2 kg, down from 63.0 kg two weeks ago. Eating about 25 percent of meals. He takes metformin. HR 104 after therapy this morning, 88 at rest. Speech therapy saw him, thin liquids are fine. Discuss hospice with the family at the care conference Friday.",
+  "encounter": "Quiet, answers questions, says he is not hungry. Add a nutrition supplement twice a day and weekly weights. His daughter wants to talk about goals of care."
+ },
+ "note": "Interval Changes Since Last Visit\n\nWeight 61.2 kg today, down from 63.0 kg two weeks ago. Oral intake remains poor at approximately 25% of meals. Resting heart rate 88 beats per minute; heart rate rises to 104 beats per minute after therapy. Speech therapy has cleared thin liquids. Resident remains quiet and oriented, denies hunger.\n\nCurrent Vitals and Weight Trend\n\nHeart rate 88 beats per minute at rest, 104 beats per minute after therapy. Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago). Vital signs otherwise not dictated today.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nDeconditioning after pneumonia: Resident remains deconditioned with elevated heart rate response to therapy and progressive weight loss. Poor oral intake at 25% of meals contributes to ongoing weight decline. Thin liquids tolerated per speech therapy evaluation. Goals of care discussion requested by daughter; hospice discussion planned at care conference Friday.\n\nMedication Changes\n\nMetformin — active, dose not specified in dictation. Nutrition supplement added twice daily.\n\nAssessment and Plan\n\nDeconditioning after pneumonia with poor oral intake and progressive weight loss. Resident is quiet and interactive but reports no hunger. Heart rate elevation with activity is consistent with deconditioning. Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake. Goals of care and possible hospice transition are being discussed with family.\n\n1. Continue metformin as prescribed.\n2. Add nutrition supplement twice daily to support caloric intake.\n3. Obtain weekly weights to monitor nutritional status and deconditioning trend.\n4. Continue thin-liquid diet per speech therapy clearance.\n5. Facilitate goals-of-care discussion with daughter and family at care conference Friday, including hospice discussion as appropriate.",
+ "noteSections": [
+  {
+   "body": "Weight 61.2 kg today, down from 63.0 kg two weeks ago. Oral intake remains poor at approximately 25% of meals. Resting heart rate 88 beats per minute; heart rate rises to 104 beats per minute after therapy. Speech therapy has cleared thin liquids. Resident remains quiet and oriented, denies hunger.",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Heart rate 88 beats per minute at rest, 104 beats per minute after therapy. Weight 61.2 kg (down 1.8 kg from 63.0 kg two weeks ago). Vital signs otherwise not dictated today.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Not dictated.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "Deconditioning after pneumonia: Resident remains deconditioned with elevated heart rate response to therapy and progressive weight loss. Poor oral intake at 25% of meals contributes to ongoing weight decline. Thin liquids tolerated per speech therapy evaluation. Goals of care discussion requested by daughter; hospice discussion planned at care conference Friday.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "Metformin — active, dose not specified in dictation. Nutrition supplement added twice daily.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Deconditioning after pneumonia with poor oral intake and progressive weight loss. Resident is quiet and interactive but reports no hunger. Heart rate elevation with activity is consistent with deconditioning. Weight loss of 1.8 kg over two weeks reflects inadequate caloric intake. Goals of care and possible hospice transition are being discussed with family.\n\n1. Continue metformin as prescribed.\n2. Add nutrition supplement twice daily to support caloric intake.\n3. Obtain weekly weights to monitor nutritional status and deconditioning trend.\n4. Continue thin-liquid diet per speech therapy clearance.\n5. Facilitate goals-of-care discussion with daughter and family at care conference Friday, including hospice discussion as appropriate.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 10331,
+    "providerMs": 9962,
+    "appMs": 369,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 10331,
+    "providerMs": 9962,
+    "appMs": 369,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4635,
+    "providerMs": 4556,
+    "appMs": 79,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 5099,
+    "providerMs": 5096,
+    "appMs": 3,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N2-a": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Hospice discussion planned Friday..",
+     "• Advance care planning — hospice discussion planned with family at care conference Friday"
+    ],
+    "why": "kept as dictated"
+   },
+   "after": {
+    "verdict": "invented",
+    "quotes": [
+     "nutrition supplement initiated, goals-of-care and hospice discussion planned"
+    ],
+    "why": "an escalation / definite wording in a sentence naming the subject"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "hospice discussion planned at care conference Friday.",
+     "Goals of care and possible hospice transition are being discussed with family."
+    ],
+    "why": "kept as dictated"
+   }
+  },
+  "HL-N2-b": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Metformin [active]."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Metformin [active]."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Metformin — active, dose not specified in dictation.",
+     "Continue metformin as prescribed."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N2-c": {
+   "summary": {
+    "verdict": "unclear",
+    "quotes": [
+     "Tachycardic with exertion."
+    ],
+    "why": "a near-label (a person reads it)"
+   },
+   "after": {
+    "verdict": "unclear",
+    "quotes": [
+     "Visit 1 · Oct 20: 79-year-old male with deconditioning post-pneumonia, poor oral intake (25% meals), progressive weight loss (1.8 kg over 2 weeks), tachycardia with exertion;"
+    ],
+    "why": "a near-label (a person reads it)"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "heart rate rises to 104 beats per minute after therapy.",
+     "Heart rate 88 beats per minute at rest, 104 beats per minute after therapy."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "61\\.2",
+   "present": true
+  },
+  {
+   "fact": "63(\\.0)?",
+   "present": true
+  },
+  {
+   "fact": "25\\s*(%|percent)",
+   "present": true
+  },
+  {
+   "fact": "metformin",
+   "present": true
+  },
+  {
+   "fact": "104",
+   "present": true
+  },
+  {
+   "fact": "88",
+   "present": true
+  },
+  {
+   "fact": "supplement",
+   "present": true
+  }
+ ],
+ "ms": 42999,
+ "summary": {
+  "admissionSummary.course": "Visit 1 · Oct 20: Deconditioned post-pneumonia with poor intake (25% meals), 1.8 kg weight loss over 2 weeks. Tachycardic with exertion. Swallowing cleared for thin liquids. Hospice discussion planned Friday..",
+  "admissionSummary.reason": "Patient admitted with deconditioning after pneumonia, now with poor oral intake and elevated resting heart rate\n• Deconditioning after pneumonia — HR 104 post-therapy, 88 at rest, weight loss 61.2 kg (down from 63.0 kg two weeks ago)\n• Poor oral intake — eating approximately 25% of meals\n• Speech and swallow — thin liquids tolerated per speech therapy\n• Advance care planning — hospice discussion planned with family at care conference Friday",
+  "trackerRows": "Metformin [active].",
+  "vitals": "hr: 104 after therapy, 88 at rest.\nwt: 61.2 kg."
+ },
+ "after": {
+  "admissionSummary.course": "Visit 1 · Oct 20: 79-year-old male with deconditioning post-pneumonia, poor oral intake (25% meals), progressive weight loss (1.8 kg over 2 weeks), tachycardia with exertion; nutrition supplement initiated, goals-of-care and hospice discussion planned",
+  "admissionSummary.reason": "Patient admitted with deconditioning after pneumonia, now with poor oral intake and elevated resting heart rate\n• Deconditioning after pneumonia — HR 104 post-therapy, 88 at rest, weight loss 61.2 kg (down from 63.0 kg two weeks ago)\n• Poor oral intake — eating approximately 25% of meals\n• Speech and swallow — thin liquids tolerated per speech therapy\n• Advance care planning — hospice discussion planned with family at care conference Friday",
+  "trackerRows": "Metformin [active].",
+  "vitals": "hr: 104 after therapy, 88 at rest.\nwt: 61.2 kg."
+ }
+}

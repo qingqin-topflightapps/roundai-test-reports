@@ -1,0 +1,152 @@
+{
+ "fixture": "HL-N4",
+ "arm": "B",
+ "mode": "nursing-home",
+ "template": "snf-admission",
+ "dictations": {
+  "encounter": "Admitted today from the hospital for rehab after urosepsis; he finished IV antibiotics there. Possible pneumonia on the hospital chest X-ray, no antibiotics for it now. He takes tamsulosin. New soft systolic murmur, ask cardiology to see him. Walks 50 feet with a walker, needs one assist for transfers. Weight 58.0 kg. Alert and oriented. Faint crackles at the left base. PT and OT five days a week, incentive spirometer, repeat chest X-ray in one week."
+ },
+ "note": "Reason for SNF Admission\n\nThe resident was admitted today from the hospital for rehabilitation following urosepsis. Intravenous antibiotics were completed during the hospital stay.\n\nMedical History and Active Comorbidities\n\nNot documented in the encounter notes.\n\nCurrent Medications\n\nTamsulosin — dose not specified in dictation.\n\nAllergies\n\nNot dictated.\n\nFunctional Status at Admission\n\nThe resident is alert and oriented. He ambulates 50 feet with a walker and requires one assist for transfers. Weight 58.0 kg.\n\nRehabilitation Goals\n\nPhysical therapy and occupational therapy five days a week. Incentive spirometer use.\n\nAssessment of Active Medical Problems\n\nUrosepsis — completed IV antibiotic course during hospitalization; admitted for rehabilitation.\n\nPossible pneumonia — noted on hospital chest X-ray; no antibiotics currently prescribed. Faint crackles present at the left base on examination.\n\nNew systolic murmur — soft systolic murmur noted on examination; cardiology consultation requested.\n\nCare Plan\n\n1. Continue current medications as listed.\n2. Obtain repeat chest X-ray in one week to reassess possible pneumonia.\n3. Arrange cardiology consultation for evaluation of new systolic murmur.\n4. Physical therapy and occupational therapy five days per week.\n5. Incentive spirometer use as tolerated.",
+ "noteSections": [
+  {
+   "body": "The resident was admitted today from the hospital for rehabilitation following urosepsis. Intravenous antibiotics were completed during the hospital stay.",
+   "heading": "Reason for SNF Admission",
+   "part": "narrative"
+  },
+  {
+   "body": "Not documented in the encounter notes.",
+   "heading": "Medical History and Active Comorbidities",
+   "part": "narrative"
+  },
+  {
+   "body": "Tamsulosin — dose not specified in dictation.",
+   "heading": "Current Medications",
+   "part": "narrative"
+  },
+  {
+   "body": "Not dictated.",
+   "heading": "Allergies",
+   "part": "narrative"
+  },
+  {
+   "body": "The resident is alert and oriented. He ambulates 50 feet with a walker and requires one assist for transfers. Weight 58.0 kg.",
+   "heading": "Functional Status at Admission",
+   "part": "narrative"
+  },
+  {
+   "body": "Physical therapy and occupational therapy five days a week. Incentive spirometer use.",
+   "heading": "Rehabilitation Goals",
+   "part": "narrative"
+  },
+  {
+   "body": "Urosepsis — completed IV antibiotic course during hospitalization; admitted for rehabilitation.\n\nPossible pneumonia — noted on hospital chest X-ray; no antibiotics currently prescribed. Faint crackles present at the left base on examination.\n\nNew systolic murmur — soft systolic murmur noted on examination; cardiology consultation requested.",
+   "heading": "Assessment of Active Medical Problems",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue current medications as listed.\n2. Obtain repeat chest X-ray in one week to reassess possible pneumonia.\n3. Arrange cardiology consultation for evaluation of new systolic murmur.\n4. Physical therapy and occupational therapy five days per week.\n5. Incentive spirometer use as tolerated.",
+   "heading": "Care Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 8645,
+    "providerMs": 8389,
+    "appMs": 256,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3385,
+    "providerMs": 3258,
+    "appMs": 127,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 8645,
+    "providerMs": 8389,
+    "appMs": 256,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N4-a": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Tamsulosin — dose not specified in dictation."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N4-b": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Possible pneumonia — noted on hospital chest X-ray;",
+     "Obtain repeat chest X-ray in one week to reassess possible pneumonia."
+    ],
+    "why": "kept as dictated"
+   }
+  },
+  "HL-N4-c": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "New systolic murmur — soft systolic murmur noted on examination;",
+     "cardiology consultation requested."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "tamsulosin|flomax",
+   "present": true
+  },
+  {
+   "fact": "murmur",
+   "present": true
+  },
+  {
+   "fact": "50 (feet|ft)",
+   "present": true
+  },
+  {
+   "fact": "58(\\.0)?",
+   "present": true
+  },
+  {
+   "fact": "incentive spirometer",
+   "present": true
+  },
+  {
+   "fact": "one week|1 week",
+   "present": true
+  }
+ ],
+ "ms": 27117
+}

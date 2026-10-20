@@ -1,0 +1,1179 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-20T10:19:32.709Z",
+  "capture": "runs/2026-10-14-dev/newspec-c/evidence/hallu/hallu-hosp/grading/TC-14-S46-HL-H5-A.capture.json",
+  "captureSha256": "7e865e03d490987b82eff7ad4de89c97a31984d473c2170718dff31e3154b7f4",
+  "captureContentSha256": "76181c424bd9c1065ce83f173770b1d3995e4fca6f06f410104c3b8222d92fd2",
+  "scenario": {
+    "raw": "TC-14 S46 HL-H5 A",
+    "tc": "TC-14",
+    "id": "S46",
+    "fixture": "HL-H5"
+  },
+  "outputType": "note",
+  "mode": "Hospital",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "8b4be94a",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N4",
+                  "N5",
+                  "N6"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "kit (the interim reading is the kit's list for notes)",
+    "sent": [
+      "dictations",
+      "storedPanels",
+      "trackerRows",
+      "priorNote",
+      "today"
+    ],
+    "notSent": [
+      "storedPanelsNote"
+    ],
+    "notes": []
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "sha256": "67dfb7aadafc3954b717df75b1a8c5863f6e51b70a45c1e2d46a694de872f5e3",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nDICTATIONS:\n{\n  \"preRound\": \"Fell at home yesterday, tripped on a rug. Hip X-ray negative for fracture. Head CT negative. She uses an albuterol inhaler as needed. BMI 31. Not on anticoagulation. Pain 4 out of 10 in the left hip.\",\n  \"encounter\": \"Bruising over the left hip, full range of motion. Walked 40 feet with a walker with PT. Acetaminophen 650 every 6 hours as needed. PT and OT to follow, likely discharge home with home health.\"\n}\n\nSTORED PANELS:\n{\n  \"chart\": {\n    \"name\": \"QA DS1-hallu-hosp HL-H5A Hosp Halvorsen\",\n    \"age\": 78,\n    \"sex\": \"F\",\n    \"diagnosis\": \"Fall at home\",\n    \"noteTemplate\": \"soap\"\n  }\n}\n\nTRACKER ROWS (with status):\n(none)\n\nPRIOR NOTE:\nNone\n\nTODAY'S DATE:\n2026-10-20\n</sources>\n\nOUTPUT TO GRADE (note, Hospital):\n<output>\nSubjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical Examination: Bruising over the left hip. Full range of motion of the left hip. Patient walked 40 feet with a walker with physical therapy.\n\nTesting Results\n\nHip X-ray: negative for fracture.\n\nHead CT: negative.\n\nAssessment\n\nPatient is a 78-year-old female with a history of asthma/reactive airway disease and obesity who was admitted after a fall at home yesterday, having tripped on a rug. Imaging workup including hip X-ray and head CT were obtained and are negative for fracture or intracranial injury. She has left hip pain rated 4 out of 10 with bruising over the left hip but maintains full range of motion. She ambulated 40 feet with a walker during physical therapy evaluation today. The clinical picture is consistent with a contusion of the left hip without fracture. She is not on anticoagulation. Pain is being managed with acetaminophen. Physical therapy and occupational therapy are engaged and anticipate discharge to home with home health services.\n\nPlan\n\n1. Continue acetaminophen 650 every 6 hours as needed for left hip pain.\n2. Physical therapy and occupational therapy to continue; coordinate discharge planning with home health services.\n3. Likely discharge home with home health support.\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nN1: Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.\nN2: A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).\nN3: No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.\nN4: A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").\nN5: A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).\nN6: A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording). N6 accepts either wording: 'Not dictated' or 'Not provided'.\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-20T10:19:06.649Z",
+      "durationMs": 26055,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":20799,\"stop_reason\":\"tool_use\",\"session_id\":\"ba90df33-57f4-4588-8de9-079c0c0a846c\",\"total_cost_usd\":0.0520082,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":442,\"cache_read_input_tokens\":2921,\"output_tokens\":2394,\"output_tokens_details\":{\"thinking_tokens\":852},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":442,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2394,\"cache_read_input_tokens\":2921,\"cache_creation_input_tokens\":442,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":442},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2394,\"cacheReadInputTokens\":2921,\"cacheCreationInputTokens\":442,\"webSearchRequests\":0,\"costUSD\":0.0520082,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":852,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"with a history of asthma/reactive airway disease and obesity\\\",\\\"source_quote\\\":\\\"She uses an albuterol inhaler as needed. BMI 31.\\\",\\\"why\\\":\\\"The sources never state asthma, reactive airway disease, or obesity as diagnoses. These were inferred from albuterol use and the BMI.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"The clinical picture is consistent with a contusion of the left hip without fracture.\\\",\\\"source_quote\\\":\\\"Bruising over the left hip, full range of motion. ... Hip X-ray negative for fracture.\\\",\\\"why\\\":\\\"The diagnosis label 'contusion' was added, and so were the PMH labels asthma/reactive airway disease and obesity. None of them is stated in the source.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue acetaminophen 650 every 6 hours as needed\\\",\\\"source_quote\\\":\\\"Acetaminophen 650 every 6 hours as needed.\\\",\\\"why\\\":\\\"Age 78, 40 feet, pain 4/10 and 650 q6h all match the source.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"acetaminophen 650 every 6 hours as needed\\\",\\\"source_quote\\\":\\\"Acetaminophen 650 every 6 hours as needed.\\\",\\\"why\\\":\\\"No unit was guessed or added.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue acetaminophen 650 every 6 hours as needed for left hip pain.\\\",\\\"source_quote\\\":\\\"Acetaminophen 650 every 6 hours as needed.\\\",\\\"why\\\":\\\"There are no tracker rows. The only medication action matches the dictated order, and nothing is started or stopped.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"admitted after a fall at home yesterday\\\",\\\"source_quote\\\":\\\"Fell at home yesterday\\\",\\\"why\\\":\\\"The fall is correctly dated as yesterday. No earlier-day fact is presented as today's.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Physical therapy and occupational therapy to continue\\\",\\\"source_quote\\\":\\\"PT and OT to follow, likely discharge home with home health.\\\",\\\"why\\\":\\\"Discharge stays a likely future event. PT ambulation was dictated as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders appear.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Vital signs: not dictated today.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"This only labels an empty item. There is no narration about missing doses and no 'no PMH documented' statement.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"with a history of asthma/reactive airway disease and obesity\\\",\\\"source_quote\\\":\\\"She uses an albuterol inhaler as needed. BMI 31.\\\",\\\"why\\\":\\\"The drug name albuterol and the value BMI 31 are both missing from the note. Each was replaced by an inferred label.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Likely discharge home with home health support.\\\",\\\"source_quote\\\":\\\"likely discharge home with home health\\\",\\\"why\\\":\\\"The hedge 'likely' is kept.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Physical Examination: Bruising over the left hip. Full range of motion of the left hip.\\\",\\\"source_quote\\\":\\\"Bruising over the left hip, full range of motion.\\\",\\\"why\\\":\\\"The exam was dictated. No normal findings or 'denies' statements were invented.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside reminders were dictated, so none was turned into a finding.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue acetaminophen 650 every 6 hours as needed\\\",\\\"source_quote\\\":\\\"Acetaminophen 650 every 6 hours as needed.\\\",\\\"why\\\":\\\"This is a standing PRN order, not a dose already given that was re-ordered.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Subjective\\\\n\\\\nNot provided\\\",\\\"source_quote\\\":\\\"Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.\\\",\\\"why\\\":\\\"Subjective content (fall mechanism, pain 4/10) was dictated, yet the section is labeled 'Not provided'. The section was not actually empty.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"with a history of asthma/reactive airway disease and obesity\",\"source_quote\":\"She uses an albuterol inhaler as needed. BMI 31.\",\"why\":\"The sources never state asthma, reactive airway disease, or obesity as diagnoses. These were inferred from albuterol use and the BMI.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"The clinical picture is consistent with a contusion of the left hip without fracture.\",\"source_quote\":\"Bruising over the left hip, full range of motion. ... Hip X-ray negative for fracture.\",\"why\":\"The diagnosis label 'contusion' was added, and so were the PMH labels asthma/reactive airway disease and obesity. None of them is stated in the source.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Continue acetaminophen 650 every 6 hours as needed\",\"source_quote\":\"Acetaminophen 650 every 6 hours as needed.\",\"why\":\"Age 78, 40 feet, pain 4/10 and 650 q6h all match the source.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"acetaminophen 650 every 6 hours as needed\",\"source_quote\":\"Acetaminophen 650 every 6 hours as needed.\",\"why\":\"No unit was guessed or added.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"Continue acetaminophen 650 every 6 hours as needed for left hip pain.\",\"source_quote\":\"Acetaminophen 650 every 6 hours as needed.\",\"why\":\"There are no tracker rows. The only medication action matches the dictated order, and nothing is started or stopped.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"admitted after a fall at home yesterday\",\"source_quote\":\"Fell at home yesterday\",\"why\":\"The fall is correctly dated as yesterday. No earlier-day fact is presented as today's.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"Physical therapy and occupational therapy to continue\",\"source_quote\":\"PT and OT to follow, likely discharge home with home health.\",\"why\":\"Discharge stays a likely future event. PT ambulation was dictated as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders appear.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"Vital signs: not dictated today.\",\"source_quote\":\"no source\",\"why\":\"This only labels an empty item. There is no narration about missing doses and no 'no PMH documented' statement.\"},{\"id\":\"N1\",\"verdict\":\"FAIL\",\"output_quote\":\"with a history of asthma/reactive airway disease and obesity\",\"source_quote\":\"She uses an albuterol inhaler as needed. BMI 31.\",\"why\":\"The drug name albuterol and the value BMI 31 are both missing from the note. Each was replaced by an inferred label.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"Likely discharge home with home health support.\",\"source_quote\":\"likely discharge home with home health\",\"why\":\"The hedge 'likely' is kept.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"Physical Examination: Bruising over the left hip. Full range of motion of the left hip.\",\"source_quote\":\"Bruising over the left hip, full range of motion.\",\"why\":\"The exam was dictated. No normal findings or 'denies' statements were invented.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside reminders were dictated, so none was turned into a finding.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"Continue acetaminophen 650 every 6 hours as needed\",\"source_quote\":\"Acetaminophen 650 every 6 hours as needed.\",\"why\":\"This is a standing PRN order, not a dose already given that was re-ordered.\"},{\"id\":\"N6\",\"verdict\":\"FAIL\",\"output_quote\":\"Subjective\\n\\nNot provided\",\"source_quote\":\"Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.\",\"why\":\"Subjective content (fall mechanism, pain 4/10) was dictated, yet the section is labeled 'Not provided'. The section was not actually empty.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":12604,\"type\":\"result\",\"duration_ms\":23679,\"uuid\":\"f145c18f-90b8-4332-91ca-cab35b39843d\",\"ttft_stream_ms\":3889,\"time_to_request_ms\":2877,\"first_content_frame_ms\":3889,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-20T10:19:06.652Z",
+      "durationMs": 23763,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":19008,\"stop_reason\":\"tool_use\",\"session_id\":\"0ac66d38-6f82-4f47-97a8-1f1dc0c7ca78\",\"total_cost_usd\":0.0648164,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":2584,\"cache_read_input_tokens\":782,\"output_tokens\":2199,\"output_tokens_details\":{\"thinking_tokens\":966},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":2584,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2199,\"cache_read_input_tokens\":782,\"cache_creation_input_tokens\":2584,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":2584},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2199,\"cacheReadInputTokens\":782,\"cacheCreationInputTokens\":2584,\"webSearchRequests\":0,\"costUSD\":0.0648164,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":966,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"with a history of asthma/reactive airway disease and obesity\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"No source states asthma, reactive airway disease, or obesity as history. The note infers them from the inhaler and the BMI.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"The clinical picture is consistent with a contusion of the left hip without fracture.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"Contusion is a diagnosis no source gives; dictation only says 'Bruising over the left hip'. Asthma/reactive airway disease and obesity are also added labels, inferred from 'albuterol inhaler as needed' and 'BMI 31'.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"78, 4 out of 10, 40 feet, 650 and every 6 hours all match the source.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No unit is guessed. Acetaminophen 650 is left without a unit.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There are no tracker rows. Acetaminophen as dictated is the only drug, and nothing else is started or stopped.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no prior note, and the fall keeps its dictated timing ('yesterday').\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Discharge stays likely and planned. Nothing planned is written as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no narration about documentation and no invented 'no PMH' statement. 'Vital signs: not dictated today' is an acceptable empty-section label.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"with a history of asthma/reactive airway disease and obesity\\\",\\\"source_quote\\\":\\\"She uses an albuterol inhaler as needed. BMI 31.\\\",\\\"why\\\":\\\"The drug name albuterol and the value BMI 31 never appear in the note. They are replaced by inferred diagnoses.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The hedge 'likely discharge home' is kept in Plan item 3.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"An exam was dictated, and the note adds no normal findings or 'denies' statements.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside checks were dictated.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No drug was dictated as already given and then re-ordered in the Plan.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Subjective\\\\n\\\\nNot provided\\\",\\\"source_quote\\\":\\\"Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.\\\",\\\"why\\\":\\\"Subjective content was dictated (the fall history and pain 4/10), but the Subjective section is labeled empty.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"with a history of asthma/reactive airway disease and obesity\",\"source_quote\":\"no source\",\"why\":\"No source states asthma, reactive airway disease, or obesity as history. The note infers them from the inhaler and the BMI.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"The clinical picture is consistent with a contusion of the left hip without fracture.\",\"source_quote\":\"no source\",\"why\":\"Contusion is a diagnosis no source gives; dictation only says 'Bruising over the left hip'. Asthma/reactive airway disease and obesity are also added labels, inferred from 'albuterol inhaler as needed' and 'BMI 31'.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"78, 4 out of 10, 40 feet, 650 and every 6 hours all match the source.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No unit is guessed. Acetaminophen 650 is left without a unit.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There are no tracker rows. Acetaminophen as dictated is the only drug, and nothing else is started or stopped.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no prior note, and the fall keeps its dictated timing ('yesterday').\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Discharge stays likely and planned. Nothing planned is written as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no narration about documentation and no invented 'no PMH' statement. 'Vital signs: not dictated today' is an acceptable empty-section label.\"},{\"id\":\"N1\",\"verdict\":\"FAIL\",\"output_quote\":\"with a history of asthma/reactive airway disease and obesity\",\"source_quote\":\"She uses an albuterol inhaler as needed. BMI 31.\",\"why\":\"The drug name albuterol and the value BMI 31 never appear in the note. They are replaced by inferred diagnoses.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The hedge 'likely discharge home' is kept in Plan item 3.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"An exam was dictated, and the note adds no normal findings or 'denies' statements.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside checks were dictated.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No drug was dictated as already given and then re-ordered in the Plan.\"},{\"id\":\"N6\",\"verdict\":\"FAIL\",\"output_quote\":\"Subjective\\n\\nNot provided\",\"source_quote\":\"Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.\",\"why\":\"Subjective content was dictated (the fall history and pain 4/10), but the Subjective section is labeled empty.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":12264,\"type\":\"result\",\"duration_ms\":21439,\"uuid\":\"6e11194e-e868-4889-b330-679bc39fee19\",\"ttft_stream_ms\":3087,\"time_to_request_ms\":2428,\"first_content_frame_ms\":3087,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 23679,
+        "total_cost_usd": 0.0520082,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 442,
+        "cacheReadInputTokens": 2921,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 21439,
+        "total_cost_usd": 0.0648164,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 2584,
+        "cacheReadInputTokens": 782,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The sources never state asthma, reactive airway disease, or obesity as diagnoses. These were inferred from albuterol use and the BMI.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "no source",
+          "why": "No source states asthma, reactive airway disease, or obesity as history. The note infers them from the inhaler and the BMI.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "The clinical picture is consistent with a contusion of the left hip without fracture.",
+          "source_quote": "Bruising over the left hip, full range of motion. ... Hip X-ray negative for fracture.",
+          "why": "The diagnosis label 'contusion' was added, and so were the PMH labels asthma/reactive airway disease and obesity. None of them is stated in the source.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "The clinical picture is consistent with a contusion of the left hip without fracture.",
+          "source_quote": "no source",
+          "why": "Contusion is a diagnosis no source gives; dictation only says 'Bruising over the left hip'. Asthma/reactive airway disease and obesity are also added labels, inferred from 'albuterol inhaler as needed' and 'BMI 31'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: source quote not found in SOURCES"
+      ],
+      "openQuestions": []
+    },
+    {
+      "id": "N1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The drug name albuterol and the value BMI 31 are both missing from the note. Each was replaced by an inferred label.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The drug name albuterol and the value BMI 31 never appear in the note. They are replaced by inferred diagnoses.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK13"
+      ]
+    },
+    {
+      "id": "N6",
+      "severity": "defect",
+      "deciding": true,
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.",
+          "why": "Subjective content (fall mechanism, pain 4/10) was dictated, yet the section is labeled 'Not provided'. The section was not actually empty.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.",
+          "why": "Subjective content was dictated (the fall history and pain 4/10), but the Subjective section is labeled empty.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ]
+    }
+  ],
+  "kitOnlyFails": [],
+  "kitOnlyUnsure": [],
+  "needsPerson": [],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The sources never state asthma, reactive airway disease, or obesity as diagnoses. These were inferred from albuterol use and the BMI."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "no source",
+          "why": "No source states asthma, reactive airway disease, or obesity as history. The note infers them from the inhaler and the BMI."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The sources never state asthma, reactive airway disease, or obesity as diagnoses. These were inferred from albuterol use and the BMI.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "no source",
+          "why": "No source states asthma, reactive airway disease, or obesity as history. The note infers them from the inhaler and the BMI.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "The sources never state asthma, reactive airway disease, or obesity as diagnoses. These were inferred from albuterol use and the BMI."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "The clinical picture is consistent with a contusion of the left hip without fracture.",
+          "source_quote": "Bruising over the left hip, full range of motion. ... Hip X-ray negative for fracture.",
+          "why": "The diagnosis label 'contusion' was added, and so were the PMH labels asthma/reactive airway disease and obesity. None of them is stated in the source."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "The clinical picture is consistent with a contusion of the left hip without fracture.",
+          "source_quote": "no source",
+          "why": "Contusion is a diagnosis no source gives; dictation only says 'Bruising over the left hip'. Asthma/reactive airway disease and obesity are also added labels, inferred from 'albuterol inhaler as needed' and 'BMI 31'."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "The clinical picture is consistent with a contusion of the left hip without fracture.",
+          "source_quote": "Bruising over the left hip, full range of motion. ... Hip X-ray negative for fracture.",
+          "why": "The diagnosis label 'contusion' was added, and so were the PMH labels asthma/reactive airway disease and obesity. None of them is stated in the source.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "The clinical picture is consistent with a contusion of the left hip without fracture.",
+          "source_quote": "no source",
+          "why": "Contusion is a diagnosis no source gives; dictation only says 'Bruising over the left hip'. Asthma/reactive airway disease and obesity are also added labels, inferred from 'albuterol inhaler as needed' and 'BMI 31'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: source quote not found in SOURCES"
+      ],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The diagnosis label 'contusion' was added, and so were the PMH labels asthma/reactive airway disease and obesity. None of them is stated in the source."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue acetaminophen 650 every 6 hours as needed",
+          "source_quote": "Acetaminophen 650 every 6 hours as needed.",
+          "why": "Age 78, 40 feet, pain 4/10 and 650 q6h all match the source."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "78, 4 out of 10, 40 feet, 650 and every 6 hours all match the source."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Age 78, 40 feet, pain 4/10 and 650 q6h all match the source."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "acetaminophen 650 every 6 hours as needed",
+          "source_quote": "Acetaminophen 650 every 6 hours as needed.",
+          "why": "No unit was guessed or added."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No unit is guessed. Acetaminophen 650 is left without a unit."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "No unit was guessed or added."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue acetaminophen 650 every 6 hours as needed for left hip pain.",
+          "source_quote": "Acetaminophen 650 every 6 hours as needed.",
+          "why": "There are no tracker rows. The only medication action matches the dictated order, and nothing is started or stopped."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There are no tracker rows. Acetaminophen as dictated is the only drug, and nothing else is started or stopped."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "There are no tracker rows. The only medication action matches the dictated order, and nothing is started or stopped."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "admitted after a fall at home yesterday",
+          "source_quote": "Fell at home yesterday",
+          "why": "The fall is correctly dated as yesterday. No earlier-day fact is presented as today's."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no prior note, and the fall keeps its dictated timing ('yesterday')."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "The fall is correctly dated as yesterday. No earlier-day fact is presented as today's."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Physical therapy and occupational therapy to continue",
+          "source_quote": "PT and OT to follow, likely discharge home with home health.",
+          "why": "Discharge stays a likely future event. PT ambulation was dictated as done."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Discharge stays likely and planned. Nothing planned is written as done."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Discharge stays a likely future event. PT ambulation was dictated as done."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders appear."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Vital signs: not dictated today.",
+          "source_quote": "no source",
+          "why": "This only labels an empty item. There is no narration about missing doses and no 'no PMH documented' statement."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no narration about documentation and no invented 'no PMH' statement. 'Vital signs: not dictated today' is an acceptable empty-section label."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "This only labels an empty item. There is no narration about missing doses and no 'no PMH documented' statement."
+    },
+    {
+      "id": "N1",
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The drug name albuterol and the value BMI 31 are both missing from the note. Each was replaced by an inferred label."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The drug name albuterol and the value BMI 31 never appear in the note. They are replaced by inferred diagnoses."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The drug name albuterol and the value BMI 31 are both missing from the note. Each was replaced by an inferred label.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "with a history of asthma/reactive airway disease and obesity",
+          "source_quote": "She uses an albuterol inhaler as needed. BMI 31.",
+          "why": "The drug name albuterol and the value BMI 31 never appear in the note. They are replaced by inferred diagnoses.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "The drug name albuterol and the value BMI 31 are both missing from the note. Each was replaced by an inferred label."
+    },
+    {
+      "id": "N2",
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Likely discharge home with home health support.",
+          "source_quote": "likely discharge home with home health",
+          "why": "The hedge 'likely' is kept."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The hedge 'likely discharge home' is kept in Plan item 3."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The hedge 'likely' is kept."
+    },
+    {
+      "id": "N3",
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Physical Examination: Bruising over the left hip. Full range of motion of the left hip.",
+          "source_quote": "Bruising over the left hip, full range of motion.",
+          "why": "The exam was dictated. No normal findings or 'denies' statements were invented."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "An exam was dictated, and the note adds no normal findings or 'denies' statements."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ],
+      "why": "The exam was dictated. No normal findings or 'denies' statements were invented."
+    },
+    {
+      "id": "N4",
+      "check": "A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside reminders were dictated, so none was turned into a finding."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside checks were dictated."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "No bedside reminders were dictated, so none was turned into a finding."
+    },
+    {
+      "id": "N5",
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue acetaminophen 650 every 6 hours as needed",
+          "source_quote": "Acetaminophen 650 every 6 hours as needed.",
+          "why": "This is a standing PRN order, not a dose already given that was re-ordered."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No drug was dictated as already given and then re-ordered in the Plan."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ],
+      "why": "This is a standing PRN order, not a dose already given that was re-ordered."
+    },
+    {
+      "id": "N6",
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.",
+          "why": "Subjective content (fall mechanism, pain 4/10) was dictated, yet the section is labeled 'Not provided'. The section was not actually empty."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.",
+          "why": "Subjective content was dictated (the fall history and pain 4/10), but the Subjective section is labeled empty."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.",
+          "why": "Subjective content (fall mechanism, pain 4/10) was dictated, yet the section is labeled 'Not provided'. The section was not actually empty.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "Fell at home yesterday, tripped on a rug. ... Pain 4 out of 10 in the left hip.",
+          "why": "Subjective content was dictated (the fall history and pain 4/10), but the Subjective section is labeled empty.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK2"
+        ],
+        "rule": "either 'Not dictated' or 'Not provided' passes (the kit's interim, L3); the wording used is recorded"
+      },
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ],
+      "why": "Subjective content (fall mechanism, pain 4/10) was dictated, yet the section is labeled 'Not provided'. The section was not actually empty."
+    }
+  ],
+  "n6Wording": {
+    "notDictated": 1,
+    "notProvided": 1
+  },
+  "openQuestions": [
+    "GK13",
+    "GK2",
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

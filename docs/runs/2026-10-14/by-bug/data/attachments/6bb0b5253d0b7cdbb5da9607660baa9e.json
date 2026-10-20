@@ -1,0 +1,147 @@
+{
+ "fixture": "HL-N1",
+ "arm": "B",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "encounter": "Temp 38.1 last night, runny nose and a dry cough, likely viral. Lungs clear. She is on levothyroxine. Walked 150 feet with the walker today. Staples are out, incision clean. Pain 3 out of 10 on acetaminophen. Feels tired but eating well. Encourage fluids, recheck her temperature this evening, continue therapy as tolerated."
+ },
+ "note": "Interval Changes Since Last Visit\n\nNot documented\n\nCurrent Vitals and Weight Trend\n\nVital signs: not dictated today. Temperature 38.1°F recorded last night.\n\nFunctional Status Update\n\nResident walked 150 feet with walker today. Eating well. Reports fatigue but tolerating activity.\n\nActive Medical Problems\n\n1. Left hip fracture status post repair: Surgical incision clean, staples removed. Pain 3 out of 10 on acetaminophen. Tolerating therapy.\n\n2. Acute viral illness: Temperature 38.1°F last night, runny nose, dry cough. Lungs clear on examination. Likely viral etiology.\n\nMedication Changes\n\nNo medication changes documented.\n\nAssessment and Plan\n\nLeft hip fracture status post repair: Incision healing well with staples removed and clean wound. Pain controlled on acetaminophen. Resident ambulating with walker and tolerating physical therapy. Continue therapy as tolerated. Monitor wound for signs of infection or drainage.\n\nAcute viral illness: Resident presents with fever, rhinorrhea, and dry cough with clear lungs on examination, consistent with viral upper respiratory infection. Continue supportive care with fluids and acetaminophen for fever and pain management. Recheck temperature this evening. Monitor for worsening respiratory symptoms or signs of secondary bacterial infection.\n\nPlan\n\n1. Continue acetaminophen for pain and fever management.\n2. Continue levothyroxine as prescribed.\n3. Continue physical therapy as tolerated.\n4. Encourage oral fluid intake.\n5. Recheck temperature this evening.\n6. Monitor surgical incision for signs of infection, drainage, or dehiscence.\n7. Monitor respiratory status and cough; report any worsening symptoms.",
+ "noteSections": [
+  {
+   "body": "Not documented",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital signs: not dictated today. Temperature 38.1°F recorded last night.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Resident walked 150 feet with walker today. Eating well. Reports fatigue but tolerating activity.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "1. Left hip fracture status post repair: Surgical incision clean, staples removed. Pain 3 out of 10 on acetaminophen. Tolerating therapy.\n\n2. Acute viral illness: Temperature 38.1°F last night, runny nose, dry cough. Lungs clear on examination. Likely viral etiology.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "No medication changes documented.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Left hip fracture status post repair: Incision healing well with staples removed and clean wound. Pain controlled on acetaminophen. Resident ambulating with walker and tolerating physical therapy. Continue therapy as tolerated. Monitor wound for signs of infection or drainage.\n\nAcute viral illness: Resident presents with fever, rhinorrhea, and dry cough with clear lungs on examination, consistent with viral upper respiratory infection. Continue supportive care with fluids and acetaminophen for fever and pain management. Recheck temperature this evening. Monitor for worsening respiratory symptoms or signs of secondary bacterial infection.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue acetaminophen for pain and fever management.\n2. Continue levothyroxine as prescribed.\n3. Continue physical therapy as tolerated.\n4. Encourage oral fluid intake.\n5. Recheck temperature this evening.\n6. Monitor surgical incision for signs of infection, drainage, or dehiscence.\n7. Monitor respiratory status and cough; report any worsening symptoms.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 8946,
+    "providerMs": 8617,
+    "appMs": 329,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 8946,
+    "providerMs": 8617,
+    "appMs": 329,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3855,
+    "providerMs": 3777,
+    "appMs": 78,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N1-a": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Continue levothyroxine as prescribed."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N1-b": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Temperature 38.1°F recorded last night.",
+     "Acute viral illness: Temperature 38.1°F last night, runny nose, dry cough."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-N1-c": {
+   "note": {
+    "verdict": "unclear",
+    "quotes": [
+     "Acute viral illness: Temperature 38.1°F last night, runny nose, dry cough.",
+     "Acute viral illness: Resident presents with fever, rhinorrhea, and dry cough with clear lungs on examination, consistent with viral upper respiratory infection."
+    ],
+    "why": "a sentence naming the subject without the hedge / negation / condition, while another sentence keeps it (a person reads it)"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "38\\.1",
+   "present": true
+  },
+  {
+   "fact": "levothyroxine|synthroid",
+   "present": true
+  },
+  {
+   "fact": "150 (feet|ft)",
+   "present": true
+  },
+  {
+   "fact": "staples",
+   "present": true
+  },
+  {
+   "fact": "3\\s*(out of|/)\\s*10",
+   "present": true
+  },
+  {
+   "fact": "acetaminophen|tylenol",
+   "present": true
+  }
+ ],
+ "ms": 29282
+}

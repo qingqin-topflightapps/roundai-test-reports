@@ -1,0 +1,136 @@
+{
+ "fixture": "HL-H2",
+ "arm": "B",
+ "mode": "hospital",
+ "template": "soap",
+ "dictations": {
+  "encounter": "Admitted last night with cough and fever. Chest X-ray shows a right lower lobe opacity, possible pneumonia. Started ceftriaxone and azithromycin. SpO2 92% on 3 liters nasal cannula. No chest pain. If he needs more than 6 liters, call the ICU. Still coughing, some rust-colored sputum. Crackles at the right base. Sputum culture and blood cultures pending. Continue current antibiotics and wean oxygen as tolerated."
+ },
+ "note": "Subjective\n\nNot provided\n\nObjective\n\nVital Signs: SpO2 92% on 3 liters nasal cannula.\n\nPhysical Examination: Crackles at the right base. No chest pain.\n\nTesting Results\n\nChest X-ray: right lower lobe opacity, possible pneumonia.\n\nSputum culture and blood cultures: pending.\n\nAssessment\n\nPatient is a 74-year-old admitted last night with cough and fever. Chest imaging reveals a right lower lobe opacity consistent with possible pneumonia. Physical examination demonstrates crackles at the right base, and the patient reports no chest pain. He is currently receiving intravenous antibiotics (ceftriaxone and azithromycin) with sputum and blood cultures pending to guide further therapy. Oxygen saturation is 92% on 3 liters nasal cannula, and he continues to expectorate rust-colored sputum. The clinical picture is consistent with community-acquired pneumonia, likely bacterial; management will continue with current antimicrobial therapy and supportive care while awaiting culture results.\n\nPlan\n\n1. Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia.\n2. Monitor sputum and blood culture results; adjust antibiotics based on sensitivities when available.\n3. Wean supplemental oxygen as tolerated; escalate to ICU if oxygen requirement exceeds 6 liters.",
+ "noteSections": [
+  {
+   "body": "Not provided",
+   "heading": "Subjective",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital Signs: SpO2 92% on 3 liters nasal cannula.\n\nPhysical Examination: Crackles at the right base. No chest pain.",
+   "heading": "Objective",
+   "part": "narrative"
+  },
+  {
+   "body": "Chest X-ray: right lower lobe opacity, possible pneumonia.\n\nSputum culture and blood cultures: pending.",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 74-year-old admitted last night with cough and fever. Chest imaging reveals a right lower lobe opacity consistent with possible pneumonia. Physical examination demonstrates crackles at the right base, and the patient reports no chest pain. He is currently receiving intravenous antibiotics (ceftriaxone and azithromycin) with sputum and blood cultures pending to guide further therapy. Oxygen saturation is 92% on 3 liters nasal cannula, and he continues to expectorate rust-colored sputum. The clinical picture is consistent with community-acquired pneumonia, likely bacterial; management will continue with current antimicrobial therapy and supportive care while awaiting culture results.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia.\n2. Monitor sputum and blood culture results; adjust antibiotics based on sensitivities when available.\n3. Wean supplemental oxygen as tolerated; escalate to ICU if oxygen requirement exceeds 6 liters.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 12585,
+    "providerMs": 12138,
+    "appMs": 447,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4696,
+    "providerMs": 4594,
+    "appMs": 102,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 12585,
+    "providerMs": 12138,
+    "appMs": 447,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H2-a": {
+   "note": {
+    "verdict": "unclear",
+    "quotes": [
+     "Continue intravenous ceftriaxone and azithromycin for community-acquired pneumonia."
+    ],
+    "why": "a sentence naming the subject without the hedge / negation / condition, while another sentence keeps it (a person reads it)"
+   }
+  },
+  "HL-H2-b": {
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "escalate to ICU if oxygen requirement exceeds 6 liters."
+    ],
+    "why": "an escalation / definite wording in a sentence naming the subject"
+   }
+  },
+  "HL-H2-c": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "No chest pain.",
+     "Physical examination demonstrates crackles at the right base, and the patient reports no chest pain."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "ceftriaxone",
+   "present": true
+  },
+  {
+   "fact": "azithromycin",
+   "present": true
+  },
+  {
+   "fact": "92\\s*%",
+   "present": true
+  },
+  {
+   "fact": "3 (liters|L)|3L",
+   "present": true
+  },
+  {
+   "fact": "crackles",
+   "present": true
+  },
+  {
+   "fact": "sputum culture|cultures",
+   "present": true
+  }
+ ],
+ "ms": 31590
+}

@@ -1,0 +1,358 @@
+{
+  "ref": "TC-19/S12-b04-HC2",
+  "title": "TC-19/S12-b04-HC2 Hospital pre-round Save Note (control: new BP and creatinine) on yesterday's chart (live AI)",
+  "dataset": "b04-hosp",
+  "target": "dev",
+  "at": "2026-10-20T09:52:13.146Z",
+  "cells": [
+    {
+      "name": "chart",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "key": "HC2",
+        "ctx": "hosp",
+        "dictation": "Walking in the hallway, cough looser. Blood pressure this morning 128/76, creatinine improved to 1.1 on today's draw. Plan: discharge planning, likely home tomorrow.",
+        "newValues": true,
+        "T0": "2026-10-19T13:51:46.194Z",
+        "yesterday": "Oct 19",
+        "today": "Oct 20",
+        "saveAt": "2026-10-20T09:51:48.216Z"
+      }
+    },
+    {
+      "name": "stamps before / after",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "before": {
+          "notesProcessedAt": "2026-10-19T13:51:46.194Z",
+          "vitals": {
+            "bp": "136/84",
+            "hr": "78",
+            "o2": "95% RA",
+            "temp": "37.4"
+          },
+          "vitalsRecordedAt": {
+            "bp": "2026-10-19T13:51:46.194Z",
+            "hr": "2026-10-19T13:51:46.194Z",
+            "o2": "2026-10-19T13:51:46.194Z",
+            "temp": "2026-10-19T13:51:46.194Z"
+          },
+          "vitalsUpdatedAt": "2026-10-19T13:51:46.194Z",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "value": "1.4",
+              "trend": "",
+              "date": null,
+              "recordedAt": "2026-10-19T13:51:46.194Z"
+            },
+            {
+              "name": "Potassium",
+              "value": "3.6",
+              "trend": "",
+              "date": null,
+              "recordedAt": "2026-10-19T13:51:46.194Z"
+            }
+          ],
+          "labsUpdatedAt": "2026-10-19T13:51:46.194Z",
+          "radiology": [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "radiologyUpdatedAt": "2026-10-19T13:51:46.194Z",
+          "medications": [
+            {
+              "name": "Metoprolol tartrate 25 mg PO BID",
+              "status": "active",
+              "changeType": null,
+              "changeDate": null,
+              "changedNote": null,
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            },
+            {
+              "name": "Lisinopril 10 mg PO daily",
+              "status": "held",
+              "changeType": "held",
+              "changeDate": "Oct 19",
+              "changedNote": "soft BP",
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            },
+            {
+              "name": "Vancomycin 1 g IV q12h",
+              "status": "discontinued",
+              "changeType": "stopped",
+              "changeDate": "Oct 19",
+              "changedNote": "AKI",
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            },
+            {
+              "name": "Magnesium sulfate 2 g IV once",
+              "status": "single-dose",
+              "changeType": "given",
+              "changeDate": "Oct 19",
+              "changedNote": null,
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            }
+          ],
+          "medicationsUpdatedAt": "2026-10-19T13:51:46.194Z"
+        },
+        "after": {
+          "notesProcessedAt": "2026-10-20T09:51:52.015Z",
+          "vitals": {
+            "bp": "128/76",
+            "hr": "78",
+            "o2": "95% RA",
+            "temp": "37.4"
+          },
+          "vitalsRecordedAt": {
+            "bp": "2026-10-20T09:51:52.015Z",
+            "hr": "2026-10-19T13:51:46.194Z",
+            "o2": "2026-10-19T13:51:46.194Z",
+            "temp": "2026-10-19T13:51:46.194Z"
+          },
+          "vitalsUpdatedAt": "2026-10-20T09:51:52.015Z",
+          "labs": [
+            {
+              "name": "Creatinine",
+              "value": "1.1",
+              "trend": "improved from 1.4",
+              "date": null,
+              "recordedAt": "2026-10-20T09:51:52.015Z"
+            },
+            {
+              "name": "Potassium",
+              "value": "3.6",
+              "trend": "",
+              "date": null,
+              "recordedAt": "2026-10-19T13:51:46.194Z"
+            }
+          ],
+          "labsUpdatedAt": "2026-10-20T09:51:52.015Z",
+          "radiology": [
+            "Chest X-ray: small left pleural effusion"
+          ],
+          "radiologyUpdatedAt": "2026-10-19T13:51:46.194Z",
+          "medications": [
+            {
+              "name": "Metoprolol tartrate 25 mg PO BID",
+              "status": "active",
+              "changeType": null,
+              "changeDate": null,
+              "changedNote": null,
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            },
+            {
+              "name": "Lisinopril 10 mg PO daily",
+              "status": "held",
+              "changeType": "held",
+              "changeDate": "Oct 19",
+              "changedNote": "soft BP",
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            },
+            {
+              "name": "Vancomycin 1 g IV q12h",
+              "status": "discontinued",
+              "changeType": "stopped",
+              "changeDate": "Oct 19",
+              "changedNote": "AKI",
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            },
+            {
+              "name": "Magnesium sulfate 2 g IV once",
+              "status": "single-dose",
+              "changeType": "given",
+              "changeDate": "Oct 19",
+              "changedNote": null,
+              "updatedAt": "2026-10-19T13:51:46.194Z"
+            }
+          ],
+          "medicationsUpdatedAt": "2026-10-20T09:51:52.015Z"
+        }
+      }
+    },
+    {
+      "name": "parse answer (tapped off the socket, unchanged)",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "calls": 1,
+        "parse": {
+          "background": "72-year-old admitted with community-acquired pneumonia, now improving with looser cough, BP 128/76, creatinine improved to 1.1, discharge planning for likely home tomorrow\n• Community-acquired pneumonia — cough loosening, improving, discharge planning\n• Renal function — creatinine improved to 1.1",
+          "cleaned_notes": "Walking in the hallway, cough looser. Blood pressure this morning 128/76, creatinine improved to 1.1 on today's draw. Plan: discharge planning, likely home tomorrow.",
+          "course_entry": "Community-acquired pneumonia improving clinically with looser cough. Renal function improved. Discharge planning underway; likely discharge tomorrow.",
+          "important_points": [
+            "Community-acquired pneumonia — assess respiratory status and readiness for discharge",
+            "Creatinine improved — monitor renal function"
+          ],
+          "labs": [
+            {
+              "name": "Creatinine",
+              "trend": "improved from 1.4",
+              "value": "1.1"
+            }
+          ],
+          "labs_stable": false,
+          "medications": [
+            {
+              "name": "Metoprolol tartrate 25 mg PO BID",
+              "note": "",
+              "status": "active"
+            },
+            {
+              "name": "Lisinopril 10 mg PO daily",
+              "note": "",
+              "status": "active"
+            },
+            {
+              "name": "Vancomycin 1 g IV q12h",
+              "note": "",
+              "status": "active"
+            },
+            {
+              "name": "Magnesium sulfate 2 g IV once",
+              "note": "",
+              "status": "active"
+            }
+          ],
+          "radiology": [],
+          "vitals": {
+            "bp": "128/76",
+            "hr": "",
+            "io": "",
+            "o2": "",
+            "rr": "",
+            "temp": "",
+            "wt": ""
+          },
+          "vitals_stable": false
+        }
+      }
+    },
+    {
+      "name": "classification",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "bp": "changed",
+        "hr": "kept",
+        "temp": "kept",
+        "o2": "kept",
+        "Creatinine": "changed",
+        "Potassium": "kept",
+        "imaging": "kept",
+        "met": "echoed",
+        "lis": "echoed",
+        "van": "echoed",
+        "mag": "echoed",
+        "vitalsUpdatedAt": "moved",
+        "labsUpdatedAt": "moved"
+      }
+    },
+    {
+      "name": "panel after",
+      "kind": "record",
+      "ok": null,
+      "detail": {
+        "dated": [
+          "Blood Pressure 128/76 Today",
+          "Heart Rate 78 Oct 19",
+          "O₂ Sat 95% RA Oct 19",
+          "Temperature 37.4 Oct 19",
+          "Creatinine 1.1 improved from 1.4 Today",
+          "Potassium 3.6 Oct 19"
+        ],
+        "meds": {
+          "met": "active Metoprolol tartrate 25 mg PO BID not mentioned today",
+          "lis": "held Lisinopril 10 mg PO daily Held · Oct 19 soft BP",
+          "van": "discontinued Vancomycin 1 g IV q12h Stopped · Oct 19 AKI",
+          "mag": "single dose Magnesium sulfate 2 g IV once Given · Oct 19 not mentioned today"
+        }
+      }
+    },
+    {
+      "name": "control: the dictated BP 128/76 is written and stamped today",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "bp": "128/76",
+        "at": "2026-10-20T09:51:52.015Z",
+        "today": "Oct 20"
+      }
+    },
+    {
+      "name": "control: the dictated creatinine 1.1 is written and stamped today",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "cr": {
+          "name": "Creatinine",
+          "value": "1.1",
+          "trend": "improved from 1.4",
+          "date": null,
+          "recordedAt": "2026-10-20T09:51:52.015Z"
+        },
+        "today": "Oct 20"
+      }
+    },
+    {
+      "name": "control: HR / temp / SpO2 and potassium (not dictated) keep yesterday's stamp",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "bp": "changed",
+        "hr": "kept",
+        "temp": "kept",
+        "o2": "kept",
+        "Creatinine": "changed",
+        "Potassium": "kept",
+        "imaging": "kept",
+        "met": "echoed",
+        "lis": "echoed",
+        "van": "echoed",
+        "mag": "echoed",
+        "vitalsUpdatedAt": "moved",
+        "labsUpdatedAt": "moved"
+      }
+    },
+    {
+      "name": "control: medication rows (none dictated) keep their dates and stamps",
+      "kind": "judged",
+      "ok": true,
+      "detail": {
+        "bp": "changed",
+        "hr": "kept",
+        "temp": "kept",
+        "o2": "kept",
+        "Creatinine": "changed",
+        "Potassium": "kept",
+        "imaging": "kept",
+        "met": "echoed",
+        "lis": "echoed",
+        "van": "echoed",
+        "mag": "echoed",
+        "vitalsUpdatedAt": "moved",
+        "labsUpdatedAt": "moved"
+      }
+    },
+    {
+      "name": "control: panel shows 'Today' on BP and creatinine only",
+      "kind": "judged",
+      "ok": true,
+      "detail": [
+        "Blood Pressure 128/76 Today",
+        "Heart Rate 78 Oct 19",
+        "O₂ Sat 95% RA Oct 19",
+        "Temperature 37.4 Oct 19",
+        "Creatinine 1.1 improved from 1.4 Today",
+        "Potassium 3.6 Oct 19"
+      ]
+    }
+  ],
+  "shots": [
+    "evidence/TC-19-S12-b04-HC2-HC2-after.png"
+  ],
+  "maskedElements": {
+    "evidence/TC-19-S12-b04-HC2-HC2-after.png": 0
+  }
+}

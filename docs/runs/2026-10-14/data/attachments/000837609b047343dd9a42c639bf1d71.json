@@ -1,0 +1,238 @@
+{
+ "fixture": "HL-H3",
+ "arm": "A",
+ "mode": "hospital",
+ "template": "soap",
+ "dictations": {
+  "preRound": "Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight. On IV fluids at 75 mL an hour. He takes tamsulosin at home. Renal ultrasound is pending. He might need dialysis if the creatinine keeps rising.",
+  "encounter": "Mucous membranes dry. No edema. Bladder scan 90 mL after voiding. Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast."
+ },
+ "note": "Subjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\n\nTesting Results\n\nCreatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.\n\nRenal ultrasound: pending.\n\nAssessment\n\nPatient is a 69-year-old male admitted with acute kidney injury, now with worsening renal function. Creatinine has risen from 1.9 to 2.4 over 24 hours, and serum potassium is elevated at 5.2. Urine output overnight was 600 mL. He is currently receiving intravenous hydration at 75 mL per hour. Physical examination reveals dry mucous membranes and no edema; bladder scan shows 90 mL post-void residual. Renal ultrasound is pending to evaluate for obstruction or other structural abnormality. The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far, though ongoing deterioration in creatinine raises concern for progression and possible need for dialysis if renal function continues to decline.\n\nPlan\n\n1. Continue intravenous fluids at 75 mL per hour and monitor urine output closely.\n2. Recheck basic metabolic panel this afternoon to reassess creatinine and potassium trends.\n3. Obtain renal ultrasound as planned to evaluate for obstruction or structural renal disease.\n4. Avoid nonsteroidal anti-inflammatory drugs and contrast agents.\n5. Continue home tamsulosin.\n6. Reassess need for dialysis if creatinine continues to rise; consider nephrology consultation if renal function does not stabilize.",
+ "noteSections": [
+  {
+   "body": "Not provided",
+   "heading": "Subjective",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital signs: not dictated today.\n\nPhysical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.",
+   "heading": "Objective",
+   "part": "narrative"
+  },
+  {
+   "body": "Creatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.\n\nRenal ultrasound: pending.",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 69-year-old male admitted with acute kidney injury, now with worsening renal function. Creatinine has risen from 1.9 to 2.4 over 24 hours, and serum potassium is elevated at 5.2. Urine output overnight was 600 mL. He is currently receiving intravenous hydration at 75 mL per hour. Physical examination reveals dry mucous membranes and no edema; bladder scan shows 90 mL post-void residual. Renal ultrasound is pending to evaluate for obstruction or other structural abnormality. The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far, though ongoing deterioration in creatinine raises concern for progression and possible need for dialysis if renal function continues to decline.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue intravenous fluids at 75 mL per hour and monitor urine output closely.\n2. Recheck basic metabolic panel this afternoon to reassess creatinine and potassium trends.\n3. Obtain renal ultrasound as planned to evaluate for obstruction or structural renal disease.\n4. Avoid nonsteroidal anti-inflammatory drugs and contrast agents.\n5. Continue home tamsulosin.\n6. Reassess need for dialysis if creatinine continues to rise; consider nephrology consultation if renal function does not stabilize.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 13304,
+    "providerMs": 12436,
+    "appMs": 868,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 4492,
+    "providerMs": 4367,
+    "appMs": 125,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 13304,
+    "providerMs": 12436,
+    "appMs": 868,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 5144,
+    "providerMs": 5140,
+    "appMs": 4,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.classifyAdmissionReason",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 1833,
+    "providerMs": 1828,
+    "appMs": 5,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.extractTasks",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 1646,
+    "providerMs": 1642,
+    "appMs": 4,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H3-a": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "dialysis consideration if creatinine continues to rise..",
+     "69-year-old male admitted with acute kidney injury, now with rising creatinine (1.9→2.4), pending renal ultrasound and possible dialysis"
+    ],
+    "why": "kept as dictated"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "dialysis consideration if creatinine continues rising",
+     "69-year-old male admitted with acute kidney injury, now with rising creatinine (1.9→2.4) and hyperkalemia (5.2), pending renal ultrasound and possible dialysis."
+    ],
+    "why": "kept as dictated"
+   },
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "consider nephrology consultation if renal function does not stabilize."
+    ],
+    "why": "a decision or finding the dictation does not contain"
+   }
+  },
+  "HL-H3-b": {
+   "summary": {
+    "verdict": "invented",
+    "quotes": [
+     "hyperkalemia at 5.2."
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "after": {
+    "verdict": "invented",
+    "quotes": [
+     "creatinine 2.4 (up from 1.9), hyperkalemia 5.2.",
+     "69-year-old male admitted with acute kidney injury, now with rising creatinine (1.9→2.4) and hyperkalemia (5.2), pending renal ultrasound and possible dialysis.",
+     "• Hyperkalemia (potassium 5.2) — monitoring with metabolic panel recheck planned"
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Potassium 5.2.",
+     "Creatinine has risen from 1.9 to 2.4 over 24 hours, and serum potassium is elevated at 5.2."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H3-c": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Tamsulosin [active] (home medication)."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "unclear",
+    "quotes": [
+     "ultrasound to evaluate for obstruction or structural abnormality"
+    ],
+    "why": "a near-label (a person reads it)"
+   },
+   "note": {
+    "verdict": "unclear",
+    "quotes": [
+     "Renal ultrasound is pending to evaluate for obstruction or other structural abnormality.",
+     "Obtain renal ultrasound as planned to evaluate for obstruction or structural renal disease."
+    ],
+    "why": "a near-label (a person reads it)"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "2\\.4",
+   "present": true
+  },
+  {
+   "fact": "1\\.9",
+   "present": true
+  },
+  {
+   "fact": "600",
+   "present": true
+  },
+  {
+   "fact": "75",
+   "present": true
+  },
+  {
+   "fact": "ultrasound",
+   "present": true
+  },
+  {
+   "fact": "90",
+   "present": true
+  }
+ ],
+ "ms": 52084,
+ "summary": {
+  "admissionSummary.course": "Oct 20: Creatinine rising to 2.4; hyperkalemia at 5.2. Renal ultrasound pending. IV hydration ongoing; dialysis consideration if creatinine continues to rise.. ⏳ Encounter pending.",
+  "admissionSummary.reason": "69-year-old male admitted with acute kidney injury, now with rising creatinine (1.9→2.4), pending renal ultrasound and possible dialysis\n• Acute kidney injury — creatinine 2.4 (up from 1.9), potassium 5.2, urine output 600 mL overnight, on IV fluids 75 mL/hr, renal ultrasound pending, may require dialysis if creatinine continues rising",
+  "trackerRows": "Tamsulosin [active] (home medication).\nIV fluids 75 mL per hour [active].",
+  "labs": "Creatinine: 2.4 (up from 1.9 yesterday).\nPotassium: 5.2.",
+  "vitals": "io: 600 mL overnight.",
+  "radiology": "Renal ultrasound: pending"
+ },
+ "after": {
+  "admissionSummary.course": "Oct 20: Acute kidney injury with worsening renal function; creatinine 2.4 (up from 1.9), hyperkalemia 5.2. IV hydration ongoing; renal ultrasound pending; dialysis consideration if creatinine continues rising",
+  "admissionSummary.reason": "69-year-old male admitted with acute kidney injury, now with rising creatinine (1.9→2.4) and hyperkalemia (5.2), pending renal ultrasound and possible dialysis.\n• Acute kidney injury with worsening renal function — creatinine rising to 2.4; IV hydration ongoing, renal ultrasound pending, dialysis consideration if further deterioration\n• Hyperkalemia (potassium 5.2) — monitoring with metabolic panel recheck planned\n• Possible prerenal etiology — IV hydration ongoing; ultrasound to evaluate for obstruction or structural abnormality",
+  "trackerRows": "Tamsulosin [active] (home medication).\nIV fluids 75 mL per hour [active].",
+  "labs": "Creatinine: 2.4 (up from 1.9 yesterday).\nPotassium: 5.2.",
+  "vitals": "io: 600 mL overnight.",
+  "radiology": "Renal ultrasound: pending"
+ }
+}

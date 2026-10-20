@@ -1,0 +1,1046 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-20T10:19:34.405Z",
+  "capture": "runs/2026-10-14-dev/newspec-c/evidence/hallu/hallu-hosp/grading/TC-14-S46-HL-H1-A.capture.json",
+  "captureSha256": "1a432d9aeba8e9bcc584fe2d0da47f44c322d2277553a23f222e0886389d1a7b",
+  "captureContentSha256": "78f68771ba1108e3d2cee5b21b89cd4010a022e8c126c49e7d04699629c04afc",
+  "scenario": {
+    "raw": "TC-14 S46 HL-H1 A",
+    "tc": "TC-14",
+    "id": "S46",
+    "fixture": "HL-H1"
+  },
+  "outputType": "note",
+  "mode": "Hospital",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "8b4be94a",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N4",
+                  "N5",
+                  "N6"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "kit (the interim reading is the kit's list for notes)",
+    "sent": [
+      "dictations",
+      "storedPanels",
+      "trackerRows",
+      "priorNote",
+      "today"
+    ],
+    "notSent": [
+      "storedPanelsNote"
+    ],
+    "notes": []
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "sha256": "61285bd1eb30506012ca635c0a942cc3bc6d681bb873d6fdcfedc198e8144671",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nDICTATIONS:\n{\n  \"preRound\": \"Day 3 of IV cefazolin for the left lower leg cellulitis. Redness is receding inside the marked border. Afebrile overnight, Tmax 37.4. He is on a statin at home and we are continuing it. BP 124/78, heart rate 82. WBC 9.8, down from 13.1.\",\n  \"encounter\": \"Leg is less warm and less tender, redness now about 2 cm inside the line. Walking in the hall. Plan to switch to oral cephalexin tomorrow if the redness keeps improving. Consider a CT of the leg only if it stops improving.\"\n}\n\nSTORED PANELS:\n{\n  \"chart\": {\n    \"name\": \"QA DS1-hallu-hosp HL-H1A Hosp Abernathy\",\n    \"age\": 67,\n    \"sex\": \"M\",\n    \"diagnosis\": \"Left lower leg cellulitis\",\n    \"noteTemplate\": \"soap\"\n  }\n}\n\nTRACKER ROWS (with status):\n[\n  {\n    \"changeDay\": null,\n    \"changed\": false,\n    \"changedNote\": \"day 3 of therapy for left lower leg cellulitis\",\n    \"name\": \"Cefazolin IV\",\n    \"status\": \"active\",\n    \"updatedAt\": \"2026-10-20T10:08:16.251Z\"\n  },\n  {\n    \"changeDay\": null,\n    \"changed\": false,\n    \"changedNote\": \"continuing home medication\",\n    \"name\": \"Statin — name and dose not specified in dictation\",\n    \"status\": \"active\",\n    \"updatedAt\": \"2026-10-20T10:08:16.251Z\"\n  }\n]\n\nPRIOR NOTE:\nNone\n\nTODAY'S DATE:\n2026-10-20\n</sources>\n\nOUTPUT TO GRADE (note, Hospital):\n<output>\nSubjective\n\nNot provided\n\nObjective\n\nVital Signs: Blood pressure 124/78 mmHg, heart rate 82 bpm, temperature 37.4°C.\n\nPhysical Examination: Leg is less warm and less tender, redness now approximately 2 cm inside the marked line. Patient ambulating in the hall.\n\nTesting Results\n\nWhite blood cell count 9.8 (down from 13.1 on admission).\n\nAssessment\n\nPatient is a 67-year-old male with no past medical history documented in the available records who presented with left lower leg cellulitis. He is now on day 3 of intravenous cefazolin with receding erythema, afebrile, and improving leukocytosis. The clinical picture is consistent with resolving cellulitis with good response to antibiotic therapy. Plan is to transition to oral therapy as the infection continues to improve.\n\nPlan\n\n1. Left lower leg cellulitis — continue intravenous cefazolin; plan to switch to oral cephalexin tomorrow if redness continues to improve; consider computed tomography of the leg only if redness stops improving.\n\n2. Continue home statin (dose not specified in dictation).\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nN1: Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.\nN2: A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).\nN3: No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.\nN4: A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").\nN5: A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).\nN6: A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording). N6 accepts either wording: 'Not dictated' or 'Not provided'.\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-20T10:19:06.649Z",
+      "durationMs": 25576,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":21920,\"stop_reason\":\"tool_use\",\"session_id\":\"7beb2ac4-577a-4357-af1f-ebc6f865fd97\",\"total_cost_usd\":0.07802,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":3534,\"cache_read_input_tokens\":0,\"output_tokens\":2487,\"output_tokens_details\":{\"thinking_tokens\":1209},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":3534,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2487,\"cache_read_input_tokens\":0,\"cache_creation_input_tokens\":3534,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":3534},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2487,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":3534,\"webSearchRequests\":0,\"costUSD\":0.07802,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":1209,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"White blood cell count 9.8 (down from 13.1 on admission).\\\",\\\"source_quote\\\":\\\"WBC 9.8, down from 13.1.\\\",\\\"why\\\":\\\"The dictation never says when the 13.1 value was drawn, so 'on admission' is invented. Also, the note lists 'temperature 37.4°C' as a current vital sign, but the source only gives it as 'Tmax 37.4' overnight.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The diagnosis stays as dictated: 'left lower leg cellulitis'. No subtype or cause is added, and no label contradicts its number.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"124/78, 82, 37.4, 9.8, 13.1, 2 cm, day 3 and age 67 all match the source exactly.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"37.4 can only be Celsius, and mmHg and bpm are standard units. No ambiguous value is given a guessed unit.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Cefazolin and the statin are both active in the tracker and are continued in the note. The cephalexin switch stays conditional.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The earlier WBC value is shown as a comparison, not as today's result. The invented timing is graded under U1.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The cephalexin switch and the CT stay future and conditional. Neither is written as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The note contains no placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Continue home statin (dose not specified in dictation).\\\",\\\"source_quote\\\":\\\"He is on a statin at home and we are continuing it.\\\",\\\"why\\\":\\\"This is narration about the documentation. The note also says 'no past medical history documented in the available records' when the past medical history simply was not dictated.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Every dictated statement appears in the note: day 3 of cefazolin, receding redness, afebrile with Tmax, statin, vital signs, WBC trend, exam findings, ambulation, the cephalexin switch and the conditional CT.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The hedges are kept: 'if redness continues to improve' and 'only if redness stops improving'.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"An exam was dictated, and the note does not invent any normal findings or 'denies' statements.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside checks were dictated, so none could be turned into findings.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The dictation mentions no one-time drug doses already given, so nothing was wrongly re-ordered in the Plan.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The Subjective section had nothing dictated and is correctly labeled 'Not provided'.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"White blood cell count 9.8 (down from 13.1 on admission).\",\"source_quote\":\"WBC 9.8, down from 13.1.\",\"why\":\"The dictation never says when the 13.1 value was drawn, so 'on admission' is invented. Also, the note lists 'temperature 37.4°C' as a current vital sign, but the source only gives it as 'Tmax 37.4' overnight.\"},{\"id\":\"U2\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The diagnosis stays as dictated: 'left lower leg cellulitis'. No subtype or cause is added, and no label contradicts its number.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"124/78, 82, 37.4, 9.8, 13.1, 2 cm, day 3 and age 67 all match the source exactly.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"37.4 can only be Celsius, and mmHg and bpm are standard units. No ambiguous value is given a guessed unit.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Cefazolin and the statin are both active in the tracker and are continued in the note. The cephalexin switch stays conditional.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The earlier WBC value is shown as a comparison, not as today's result. The invented timing is graded under U1.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The cephalexin switch and the CT stay future and conditional. Neither is written as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The note contains no placeholders.\"},{\"id\":\"U9\",\"verdict\":\"FAIL\",\"output_quote\":\"Continue home statin (dose not specified in dictation).\",\"source_quote\":\"He is on a statin at home and we are continuing it.\",\"why\":\"This is narration about the documentation. The note also says 'no past medical history documented in the available records' when the past medical history simply was not dictated.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Every dictated statement appears in the note: day 3 of cefazolin, receding redness, afebrile with Tmax, statin, vital signs, WBC trend, exam findings, ambulation, the cephalexin switch and the conditional CT.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The hedges are kept: 'if redness continues to improve' and 'only if redness stops improving'.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"An exam was dictated, and the note does not invent any normal findings or 'denies' statements.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside checks were dictated, so none could be turned into findings.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The dictation mentions no one-time drug doses already given, so nothing was wrongly re-ordered in the Plan.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The Subjective section had nothing dictated and is correctly labeled 'Not provided'.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":14412,\"type\":\"result\",\"duration_ms\":23284,\"uuid\":\"f14807ab-f776-4706-9906-cf8a3e8d4ab1\",\"ttft_stream_ms\":2599,\"time_to_request_ms\":1363,\"first_content_frame_ms\":2599,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-20T10:19:06.651Z",
+      "durationMs": 27750,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":22570,\"stop_reason\":\"tool_use\",\"session_id\":\"6fea613b-d276-4c3b-bfec-48a393f7dcbe\",\"total_cost_usd\":0.051846,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":440,\"cache_read_input_tokens\":3090,\"output_tokens\":2385,\"output_tokens_details\":{\"thinking_tokens\":963},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":440,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2385,\"cache_read_input_tokens\":3090,\"cache_creation_input_tokens\":440,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":440},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2385,\"cacheReadInputTokens\":3090,\"cacheCreationInputTokens\":440,\"webSearchRequests\":0,\"costUSD\":0.051846,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":963,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"White blood cell count 9.8 (down from 13.1 on admission).\\\",\\\"source_quote\\\":\\\"WBC 9.8, down from 13.1.\\\",\\\"why\\\":\\\"The source never says the 13.1 value was from admission. That timing is invented.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"The clinical picture is consistent with resolving cellulitis\\\",\\\"source_quote\\\":\\\"Day 3 of IV cefazolin for the left lower leg cellulitis.\\\",\\\"why\\\":\\\"The diagnosis stays as dictated. No subtype or cause is added.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Blood pressure 124/78 mmHg, heart rate 82 bpm, temperature 37.4°C.\\\",\\\"source_quote\\\":\\\"BP 124/78, heart rate 82... Tmax 37.4\\\",\\\"why\\\":\\\"All numbers (124/78, 82, 37.4, 9.8, 13.1, 2 cm, day 3) match the source.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"temperature 37.4°C\\\",\\\"source_quote\\\":\\\"Tmax 37.4\\\",\\\"why\\\":\\\"37.4 can only be Celsius, so the unit is not a guess. No other value gets a unit.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"continue intravenous cefazolin... Continue home statin\\\",\\\"source_quote\\\":\\\"Cefazolin IV status active; Statin status active\\\",\\\"why\\\":\\\"Both drugs are active in the tracker and read as continued. Cephalexin is written as conditional for tomorrow, not as started.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No earlier-day fact is presented as today's. The invented 'on admission' label is graded under U1.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"plan to switch to oral cephalexin tomorrow if redness continues to improve\\\",\\\"source_quote\\\":\\\"Plan to switch to oral cephalexin tomorrow if the redness keeps improving.\\\",\\\"why\\\":\\\"The switch to oral antibiotics and the CT stay as plans.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders found.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Continue home statin (dose not specified in dictation).\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"This is narration about documentation. The note also says 'with no past medical history documented in the available records', which is forbidden when PMH simply was not dictated.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Leg is less warm and less tender, redness now approximately 2 cm inside the marked line. Patient ambulating in the hall.\\\",\\\"source_quote\\\":\\\"Leg is less warm and less tender, redness now about 2 cm inside the line. Walking in the hall.\\\",\\\"why\\\":\\\"Every dictated value, drug, finding, and plan item appears in the note.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"consider computed tomography of the leg only if redness stops improving\\\",\\\"source_quote\\\":\\\"Consider a CT of the leg only if it stops improving.\\\",\\\"why\\\":\\\"The plan keeps both conditional hedges.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Physical Examination: Leg is less warm and less tender\\\",\\\"source_quote\\\":\\\"Leg is less warm and less tender\\\",\\\"why\\\":\\\"An exam was dictated. The note invents no normal findings and no 'denies' statements.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside check was dictated.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No already-given dose is re-ordered in the Plan.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Subjective\\\\n\\\\nNot provided\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No subjective complaints were dictated, and the section is labeled 'Not provided', which N6 accepts.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"White blood cell count 9.8 (down from 13.1 on admission).\",\"source_quote\":\"WBC 9.8, down from 13.1.\",\"why\":\"The source never says the 13.1 value was from admission. That timing is invented.\"},{\"id\":\"U2\",\"verdict\":\"PASS\",\"output_quote\":\"The clinical picture is consistent with resolving cellulitis\",\"source_quote\":\"Day 3 of IV cefazolin for the left lower leg cellulitis.\",\"why\":\"The diagnosis stays as dictated. No subtype or cause is added.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Blood pressure 124/78 mmHg, heart rate 82 bpm, temperature 37.4°C.\",\"source_quote\":\"BP 124/78, heart rate 82... Tmax 37.4\",\"why\":\"All numbers (124/78, 82, 37.4, 9.8, 13.1, 2 cm, day 3) match the source.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"temperature 37.4°C\",\"source_quote\":\"Tmax 37.4\",\"why\":\"37.4 can only be Celsius, so the unit is not a guess. No other value gets a unit.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"continue intravenous cefazolin... Continue home statin\",\"source_quote\":\"Cefazolin IV status active; Statin status active\",\"why\":\"Both drugs are active in the tracker and read as continued. Cephalexin is written as conditional for tomorrow, not as started.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No earlier-day fact is presented as today's. The invented 'on admission' label is graded under U1.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"plan to switch to oral cephalexin tomorrow if redness continues to improve\",\"source_quote\":\"Plan to switch to oral cephalexin tomorrow if the redness keeps improving.\",\"why\":\"The switch to oral antibiotics and the CT stay as plans.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders found.\"},{\"id\":\"U9\",\"verdict\":\"FAIL\",\"output_quote\":\"Continue home statin (dose not specified in dictation).\",\"source_quote\":\"no source\",\"why\":\"This is narration about documentation. The note also says 'with no past medical history documented in the available records', which is forbidden when PMH simply was not dictated.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Leg is less warm and less tender, redness now approximately 2 cm inside the marked line. Patient ambulating in the hall.\",\"source_quote\":\"Leg is less warm and less tender, redness now about 2 cm inside the line. Walking in the hall.\",\"why\":\"Every dictated value, drug, finding, and plan item appears in the note.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"consider computed tomography of the leg only if redness stops improving\",\"source_quote\":\"Consider a CT of the leg only if it stops improving.\",\"why\":\"The plan keeps both conditional hedges.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"Physical Examination: Leg is less warm and less tender\",\"source_quote\":\"Leg is less warm and less tender\",\"why\":\"An exam was dictated. The note invents no normal findings and no 'denies' statements.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside check was dictated.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No already-given dose is re-ordered in the Plan.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Subjective\\n\\nNot provided\",\"source_quote\":\"\",\"why\":\"No subjective complaints were dictated, and the section is labeled 'Not provided', which N6 accepts.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":15802,\"type\":\"result\",\"duration_ms\":25450,\"uuid\":\"c51dae0e-2132-4eb0-94d2-cf3eb6304804\",\"ttft_stream_ms\":5897,\"time_to_request_ms\":2875,\"first_content_frame_ms\":5897,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 23284,
+        "total_cost_usd": 0.07802,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 3534,
+        "cacheReadInputTokens": 0,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 25450,
+        "total_cost_usd": 0.051846,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 440,
+        "cacheReadInputTokens": 3090,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "White blood cell count 9.8 (down from 13.1 on admission).",
+          "source_quote": "WBC 9.8, down from 13.1.",
+          "why": "The dictation never says when the 13.1 value was drawn, so 'on admission' is invented. Also, the note lists 'temperature 37.4°C' as a current vital sign, but the source only gives it as 'Tmax 37.4' overnight.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "White blood cell count 9.8 (down from 13.1 on admission).",
+          "source_quote": "WBC 9.8, down from 13.1.",
+          "why": "The source never says the 13.1 value was from admission. That timing is invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    }
+  ],
+  "kitOnlyFails": [
+    {
+      "id": "U9",
+      "severity": "defect",
+      "verdict": "PASS",
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Continue home statin (dose not specified in dictation).",
+          "source_quote": "He is on a statin at home and we are continuing it.",
+          "why": "This is narration about the documentation. The note also says 'no past medical history documented in the available records' when the past medical history simply was not dictated.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Continue home statin (dose not specified in dictation).",
+          "source_quote": "no source",
+          "why": "This is narration about documentation. The note also says 'with no past medical history documented in the available records', which is forbidden when PMH simply was not dictated.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3"
+      ]
+    }
+  ],
+  "kitOnlyUnsure": [],
+  "needsPerson": [],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "White blood cell count 9.8 (down from 13.1 on admission).",
+          "source_quote": "WBC 9.8, down from 13.1.",
+          "why": "The dictation never says when the 13.1 value was drawn, so 'on admission' is invented. Also, the note lists 'temperature 37.4°C' as a current vital sign, but the source only gives it as 'Tmax 37.4' overnight."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "White blood cell count 9.8 (down from 13.1 on admission).",
+          "source_quote": "WBC 9.8, down from 13.1.",
+          "why": "The source never says the 13.1 value was from admission. That timing is invented."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "White blood cell count 9.8 (down from 13.1 on admission).",
+          "source_quote": "WBC 9.8, down from 13.1.",
+          "why": "The dictation never says when the 13.1 value was drawn, so 'on admission' is invented. Also, the note lists 'temperature 37.4°C' as a current vital sign, but the source only gives it as 'Tmax 37.4' overnight.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "White blood cell count 9.8 (down from 13.1 on admission).",
+          "source_quote": "WBC 9.8, down from 13.1.",
+          "why": "The source never says the 13.1 value was from admission. That timing is invented.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "The dictation never says when the 13.1 value was drawn, so 'on admission' is invented. Also, the note lists 'temperature 37.4°C' as a current vital sign, but the source only gives it as 'Tmax 37.4' overnight."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The diagnosis stays as dictated: 'left lower leg cellulitis'. No subtype or cause is added, and no label contradicts its number."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "The clinical picture is consistent with resolving cellulitis",
+          "source_quote": "Day 3 of IV cefazolin for the left lower leg cellulitis.",
+          "why": "The diagnosis stays as dictated. No subtype or cause is added."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The diagnosis stays as dictated: 'left lower leg cellulitis'. No subtype or cause is added, and no label contradicts its number."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "124/78, 82, 37.4, 9.8, 13.1, 2 cm, day 3 and age 67 all match the source exactly."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Blood pressure 124/78 mmHg, heart rate 82 bpm, temperature 37.4°C.",
+          "source_quote": "BP 124/78, heart rate 82... Tmax 37.4",
+          "why": "All numbers (124/78, 82, 37.4, 9.8, 13.1, 2 cm, day 3) match the source."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "124/78, 82, 37.4, 9.8, 13.1, 2 cm, day 3 and age 67 all match the source exactly."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "37.4 can only be Celsius, and mmHg and bpm are standard units. No ambiguous value is given a guessed unit."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "temperature 37.4°C",
+          "source_quote": "Tmax 37.4",
+          "why": "37.4 can only be Celsius, so the unit is not a guess. No other value gets a unit."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "37.4 can only be Celsius, and mmHg and bpm are standard units. No ambiguous value is given a guessed unit."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Cefazolin and the statin are both active in the tracker and are continued in the note. The cephalexin switch stays conditional."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "continue intravenous cefazolin... Continue home statin",
+          "source_quote": "Cefazolin IV status active; Statin status active",
+          "why": "Both drugs are active in the tracker and read as continued. Cephalexin is written as conditional for tomorrow, not as started."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "Cefazolin and the statin are both active in the tracker and are continued in the note. The cephalexin switch stays conditional."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The earlier WBC value is shown as a comparison, not as today's result. The invented timing is graded under U1."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No earlier-day fact is presented as today's. The invented 'on admission' label is graded under U1."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "The earlier WBC value is shown as a comparison, not as today's result. The invented timing is graded under U1."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The cephalexin switch and the CT stay future and conditional. Neither is written as done."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "plan to switch to oral cephalexin tomorrow if redness continues to improve",
+          "source_quote": "Plan to switch to oral cephalexin tomorrow if the redness keeps improving.",
+          "why": "The switch to oral antibiotics and the CT stay as plans."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The cephalexin switch and the CT stay future and conditional. Neither is written as done."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The note contains no placeholders."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders found."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "FAIL",
+      "differs": true,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "PASS",
+          "carveOut": "GK3",
+          "output_quote": "Continue home statin (dose not specified in dictation).",
+          "source_quote": "He is on a statin at home and we are continuing it.",
+          "why": "This is narration about the documentation. The note also says 'no past medical history documented in the available records' when the past medical history simply was not dictated."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "PASS",
+          "carveOut": "GK3",
+          "output_quote": "Continue home statin (dose not specified in dictation).",
+          "source_quote": "no source",
+          "why": "This is narration about documentation. The note also says 'with no past medical history documented in the available records', which is forbidden when PMH simply was not dictated."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "Continue home statin (dose not specified in dictation).",
+          "source_quote": "He is on a statin at home and we are continuing it.",
+          "why": "This is narration about the documentation. The note also says 'no past medical history documented in the available records' when the past medical history simply was not dictated.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "Continue home statin (dose not specified in dictation).",
+          "source_quote": "no source",
+          "why": "This is narration about documentation. The note also says 'with no past medical history documented in the available records', which is forbidden when PMH simply was not dictated.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "judge FAIL explained by the interim reading (GK3): a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+    },
+    {
+      "id": "N1",
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Every dictated statement appears in the note: day 3 of cefazolin, receding redness, afebrile with Tmax, statin, vital signs, WBC trend, exam findings, ambulation, the cephalexin switch and the conditional CT."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Leg is less warm and less tender, redness now approximately 2 cm inside the marked line. Patient ambulating in the hall.",
+          "source_quote": "Leg is less warm and less tender, redness now about 2 cm inside the line. Walking in the hall.",
+          "why": "Every dictated value, drug, finding, and plan item appears in the note."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "Every dictated statement appears in the note: day 3 of cefazolin, receding redness, afebrile with Tmax, statin, vital signs, WBC trend, exam findings, ambulation, the cephalexin switch and the conditional CT."
+    },
+    {
+      "id": "N2",
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The hedges are kept: 'if redness continues to improve' and 'only if redness stops improving'."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "consider computed tomography of the leg only if redness stops improving",
+          "source_quote": "Consider a CT of the leg only if it stops improving.",
+          "why": "The plan keeps both conditional hedges."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The hedges are kept: 'if redness continues to improve' and 'only if redness stops improving'."
+    },
+    {
+      "id": "N3",
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "An exam was dictated, and the note does not invent any normal findings or 'denies' statements."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Physical Examination: Leg is less warm and less tender",
+          "source_quote": "Leg is less warm and less tender",
+          "why": "An exam was dictated. The note invents no normal findings and no 'denies' statements."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ],
+      "why": "An exam was dictated, and the note does not invent any normal findings or 'denies' statements."
+    },
+    {
+      "id": "N4",
+      "check": "A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside checks were dictated, so none could be turned into findings."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside check was dictated."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "No bedside checks were dictated, so none could be turned into findings."
+    },
+    {
+      "id": "N5",
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The dictation mentions no one-time drug doses already given, so nothing was wrongly re-ordered in the Plan."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No already-given dose is re-ordered in the Plan."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ],
+      "why": "The dictation mentions no one-time drug doses already given, so nothing was wrongly re-ordered in the Plan."
+    },
+    {
+      "id": "N6",
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The Subjective section had nothing dictated and is correctly labeled 'Not provided'."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "",
+          "why": "No subjective complaints were dictated, and the section is labeled 'Not provided', which N6 accepts."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK2"
+        ],
+        "rule": "either 'Not dictated' or 'Not provided' passes (the kit's interim, L3); the wording used is recorded"
+      },
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ],
+      "why": "The Subjective section had nothing dictated and is correctly labeled 'Not provided'."
+    }
+  ],
+  "n6Wording": {
+    "notDictated": 0,
+    "notProvided": 1
+  },
+  "openQuestions": [
+    "GK3",
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

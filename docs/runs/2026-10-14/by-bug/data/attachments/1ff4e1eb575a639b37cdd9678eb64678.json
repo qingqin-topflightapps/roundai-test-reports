@@ -1,0 +1,147 @@
+{
+ "fixture": "HL-N3",
+ "arm": "B",
+ "mode": "nursing-home",
+ "template": "snf-progress",
+ "dictations": {
+  "encounter": "BP 124/78, weight 72.4 kg, stable from last week. 1+ ankle edema, lungs clear. No chest pain per nursing. On lisinopril 10 daily and furosemide 20 daily. Hold lisinopril if SBP is under 100. Pleasant, oriented to self. Eating well per staff. Continue current medications and a weekly weight."
+ },
+ "note": "Interval Changes Since Last Visit\n\nResident remains stable. Blood pressure 124/78 today, weight 72.4 kg, stable from last week. Ankle edema 1+. Lungs clear. No chest pain reported by nursing staff.\n\nCurrent Vitals and Weight Trend\n\nVital signs: BP 124/78, weight 72.4 kg, stable from last week.\n\nFunctional Status Update\n\nNot dictated.\n\nActive Medical Problems\n\nHypertension: Blood pressure 124/78 on lisinopril 10 daily and furosemide 20 daily. Responding well to current regimen.\n\nDementia: Resident pleasant and oriented to self. No acute behavioral or cognitive changes noted.\n\nAnkle edema: 1+ edema noted on examination. Stable on current diuretic therapy.\n\nMedication Changes\n\nNo changes made today. Continue lisinopril 10 daily and furosemide 20 daily. Hold lisinopril if systolic blood pressure falls below 100.\n\nAssessment and Plan\n\nHypertension: Resident's blood pressure is well controlled on current antihypertensive regimen. Will continue lisinopril 10 daily and furosemide 20 daily with instruction to hold lisinopril if systolic blood pressure drops below 100. Monitor blood pressure weekly and obtain weekly weights to assess fluid status and medication efficacy.\n\nDementia: Resident remains pleasant and oriented to self with no acute changes. Continue current management and monitor cognitive and behavioral status.\n\nAnkle edema: Mild edema present, stable on current diuretic therapy. Continue furosemide and monitor for progression.\n\nPlan\n\n1. Continue lisinopril 10 daily; hold if systolic blood pressure is under 100.\n2. Continue furosemide 20 daily.\n3. Obtain weekly weights and blood pressure checks.\n4. Monitor for any changes in mental status, behavior, or edema.\n5. Continue current diet and activity as tolerated.",
+ "noteSections": [
+  {
+   "body": "Resident remains stable. Blood pressure 124/78 today, weight 72.4 kg, stable from last week. Ankle edema 1+. Lungs clear. No chest pain reported by nursing staff.",
+   "heading": "Interval Changes Since Last Visit",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital signs: BP 124/78, weight 72.4 kg, stable from last week.",
+   "heading": "Current Vitals and Weight Trend",
+   "part": "narrative"
+  },
+  {
+   "body": "Not dictated.",
+   "heading": "Functional Status Update",
+   "part": "narrative"
+  },
+  {
+   "body": "Hypertension: Blood pressure 124/78 on lisinopril 10 daily and furosemide 20 daily. Responding well to current regimen.\n\nDementia: Resident pleasant and oriented to self. No acute behavioral or cognitive changes noted.\n\nAnkle edema: 1+ edema noted on examination. Stable on current diuretic therapy.",
+   "heading": "Active Medical Problems",
+   "part": "narrative"
+  },
+  {
+   "body": "No changes made today. Continue lisinopril 10 daily and furosemide 20 daily. Hold lisinopril if systolic blood pressure falls below 100.",
+   "heading": "Medication Changes",
+   "part": "narrative"
+  },
+  {
+   "body": "Hypertension: Resident's blood pressure is well controlled on current antihypertensive regimen. Will continue lisinopril 10 daily and furosemide 20 daily with instruction to hold lisinopril if systolic blood pressure drops below 100. Monitor blood pressure weekly and obtain weekly weights to assess fluid status and medication efficacy.\n\nDementia: Resident remains pleasant and oriented to self with no acute changes. Continue current management and monitor cognitive and behavioral status.\n\nAnkle edema: Mild edema present, stable on current diuretic therapy. Continue furosemide and monitor for progression.",
+   "heading": "Assessment and Plan",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue lisinopril 10 daily; hold if systolic blood pressure is under 100.\n2. Continue furosemide 20 daily.\n3. Obtain weekly weights and blood pressure checks.\n4. Monitor for any changes in mental status, behavior, or edema.\n5. Continue current diet and activity as tolerated.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 10936,
+    "providerMs": 10291,
+    "appMs": 645,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 10936,
+    "providerMs": 10291,
+    "appMs": 645,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3884,
+    "providerMs": 3787,
+    "appMs": 97,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-N3-a": {
+   "note": {
+    "verdict": "invented",
+    "quotes": [
+     "Hypertension: Blood pressure 124/78 on lisinopril 10 daily and furosemide 20 daily.",
+     "Hypertension: Resident's blood pressure is well controlled on current antihypertensive regimen."
+    ],
+    "why": "a diagnosis word the dictation does not contain"
+   }
+  },
+  "HL-N3-b": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Hold lisinopril if systolic blood pressure falls below 100.",
+     "Will continue lisinopril 10 daily and furosemide 20 daily with instruction to hold lisinopril if systolic blood pressure drops below 100."
+    ],
+    "why": "kept as dictated"
+   }
+  },
+  "HL-N3-c": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "No chest pain reported by nursing staff."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "124\\s*/\\s*78|124 over 78",
+   "present": true
+  },
+  {
+   "fact": "100",
+   "present": true
+  },
+  {
+   "fact": "72\\.4",
+   "present": true
+  },
+  {
+   "fact": "1\\+|trace|ankle edema",
+   "present": true
+  },
+  {
+   "fact": "lisinopril",
+   "present": true
+  },
+  {
+   "fact": "furosemide|lasix",
+   "present": true
+  }
+ ],
+ "ms": 31588
+}

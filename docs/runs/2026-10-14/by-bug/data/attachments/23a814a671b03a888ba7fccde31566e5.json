@@ -1,0 +1,1175 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-20T10:19:29.444Z",
+  "capture": "runs/2026-10-14-dev/newspec-c/evidence/hallu/hallu-hosp/grading/TC-14-S46-HL-H5-B.capture.json",
+  "captureSha256": "83d5f03660da66c1a278ab4510176323e820179197beab730ac246a1df18cd81",
+  "captureContentSha256": "749fc4ffae9891f6e6d150d8d2756e628453f673f243c5af8361ca31fe90a850",
+  "scenario": {
+    "raw": "TC-14 S46 HL-H5 B",
+    "tc": "TC-14",
+    "id": "S46",
+    "fixture": "HL-H5"
+  },
+  "outputType": "note",
+  "mode": "Hospital",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "8b4be94a",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N4",
+                  "N5",
+                  "N6"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "kit (the interim reading is the kit's list for notes)",
+    "sent": [
+      "dictations",
+      "storedPanels",
+      "trackerRows",
+      "priorNote",
+      "today"
+    ],
+    "notSent": [
+      "storedPanelsNote"
+    ],
+    "notes": []
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "sha256": "883ea9315fb9ee39ffae78a32b70144e9bd3cd93b213071368126889200c69f2",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nDICTATIONS:\n{\n  \"encounter\": \"Fell at home yesterday, tripped on a rug. Hip X-ray negative for fracture. Head CT negative. She uses an albuterol inhaler as needed. BMI 31. Not on anticoagulation. Pain 4 out of 10 in the left hip. Bruising over the left hip, full range of motion. Walked 40 feet with a walker with PT. Acetaminophen 650 every 6 hours as needed. PT and OT to follow, likely discharge home with home health.\"\n}\n\nSTORED PANELS:\n{\n  \"chart\": {\n    \"name\": \"QA DS1-hallu-hosp HL-H5B Hosp Halvorsen\",\n    \"age\": 78,\n    \"sex\": \"F\",\n    \"diagnosis\": \"Fall at home\",\n    \"noteTemplate\": \"soap\"\n  }\n}\n\nTRACKER ROWS (with status):\n(none)\n\nPRIOR NOTE:\nNone\n\nTODAY'S DATE:\n2026-10-20\n</sources>\n\nOUTPUT TO GRADE (note, Hospital):\n<output>\nSubjective\n\nThe patient reports falling at home yesterday after tripping on a rug. She has pain rated 4 out of 10 in the left hip. She uses an albuterol inhaler as needed.\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical Examination: Bruising noted over the left hip. Full range of motion in the left hip. Patient ambulated 40 feet with a walker with physical therapy assistance.\n\nTesting Results\n\nHip X-ray: negative for fracture.\n\nHead CT: negative.\n\nAssessment\n\nPatient is a 78-year-old who presented with a fall at home yesterday after tripping on a rug. Hip X-ray and head CT were both negative for acute injury. She has mild left hip pain and bruising but maintains full range of motion and is ambulatory with assistive device and physical therapy support. Her presentation is consistent with a mechanical fall without fracture or intracranial injury. She will benefit from continued physical and occupational therapy to optimize mobility and safety prior to discharge.\n\nPlan\n\n1. Continue acetaminophen 650 every 6 hours as needed for pain.\n2. Continue physical therapy and occupational therapy; patient to follow up with both services.\n3. Discharge home with home health services once physical and occupational therapy clearance is obtained.\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nN1: Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.\nN2: A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).\nN3: No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.\nN4: A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").\nN5: A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).\nN6: A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording). N6 accepts either wording: 'Not dictated' or 'Not provided'.\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-20T10:19:06.648Z",
+      "durationMs": 22792,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":17316,\"stop_reason\":\"tool_use\",\"session_id\":\"b4e404f5-428b-4207-b04a-9173f20c08ae\",\"total_cost_usd\":0.0420842,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":442,\"cache_read_input_tokens\":2901,\"output_tokens\":1898,\"output_tokens_details\":{\"thinking_tokens\":677},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":442,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":1898,\"cache_read_input_tokens\":2901,\"cache_creation_input_tokens\":442,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":442},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":1898,\"cacheReadInputTokens\":2901,\"cacheCreationInputTokens\":442,\"webSearchRequests\":0,\"costUSD\":0.0420842,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":677,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"She has mild left hip pain\\\",\\\"source_quote\\\":\\\"Pain 4 out of 10 in the left hip.\\\",\\\"why\\\":\\\"The severity label 'mild' has no source. The dictation gives only a 4/10 score, and 4/10 is usually graded as moderate, not mild.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Her presentation is consistent with a mechanical fall without fracture or intracranial injury.\\\",\\\"source_quote\\\":\\\"Fell at home yesterday, tripped on a rug.\\\",\\\"why\\\":\\\"The note adds the subtype label 'mechanical fall'. The source says she tripped on a rug but never uses that label, and the stored diagnosis is just 'Fall at home'.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"All numbers match the source: 4/10, 40 feet, 650 every 6 hours, age 78.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No unit is guessed. Acetaminophen 650 is written without a unit, as dictated.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There are no tracker rows. Acetaminophen is dictated as an as-needed order, and no drug is started, stopped or held against a tracker.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no prior note, so no earlier-day facts appear.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Nothing planned is written as already done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders appear.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The only 'not dictated' label is the allowed empty-section label for vital signs. There is no other narration about documentation.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"no source\\\",\\\"source_quote\\\":\\\"BMI 31. Not on anticoagulation.\\\",\\\"why\\\":\\\"Two dictated statements are missing from the note: BMI 31 and 'not on anticoagulation'. The anticoagulation status matters clinically after a fall with a head CT.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Discharge home with home health services once physical and occupational therapy clearance is obtained.\\\",\\\"source_quote\\\":\\\"likely discharge home with home health\\\",\\\"why\\\":\\\"The physician's hedge 'likely' is dropped, so a probable discharge reads as a firm plan.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"An exam was dictated (bruising, range of motion), and the note invents no normal findings or 'denies' statements.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside checks were dictated.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No drug is recorded as already given and then re-ordered.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Vital signs: not dictated today.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Vital signs were not dictated, and the section is labeled 'not dictated'.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"She has mild left hip pain\",\"source_quote\":\"Pain 4 out of 10 in the left hip.\",\"why\":\"The severity label 'mild' has no source. The dictation gives only a 4/10 score, and 4/10 is usually graded as moderate, not mild.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Her presentation is consistent with a mechanical fall without fracture or intracranial injury.\",\"source_quote\":\"Fell at home yesterday, tripped on a rug.\",\"why\":\"The note adds the subtype label 'mechanical fall'. The source says she tripped on a rug but never uses that label, and the stored diagnosis is just 'Fall at home'.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"All numbers match the source: 4/10, 40 feet, 650 every 6 hours, age 78.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No unit is guessed. Acetaminophen 650 is written without a unit, as dictated.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There are no tracker rows. Acetaminophen is dictated as an as-needed order, and no drug is started, stopped or held against a tracker.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no prior note, so no earlier-day facts appear.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Nothing planned is written as already done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders appear.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The only 'not dictated' label is the allowed empty-section label for vital signs. There is no other narration about documentation.\"},{\"id\":\"N1\",\"verdict\":\"FAIL\",\"output_quote\":\"no source\",\"source_quote\":\"BMI 31. Not on anticoagulation.\",\"why\":\"Two dictated statements are missing from the note: BMI 31 and 'not on anticoagulation'. The anticoagulation status matters clinically after a fall with a head CT.\"},{\"id\":\"N2\",\"verdict\":\"FAIL\",\"output_quote\":\"Discharge home with home health services once physical and occupational therapy clearance is obtained.\",\"source_quote\":\"likely discharge home with home health\",\"why\":\"The physician's hedge 'likely' is dropped, so a probable discharge reads as a firm plan.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"An exam was dictated (bruising, range of motion), and the note invents no normal findings or 'denies' statements.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside checks were dictated.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No drug is recorded as already given and then re-ordered.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Vital signs: not dictated today.\",\"source_quote\":\"\",\"why\":\"Vital signs were not dictated, and the section is labeled 'not dictated'.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":11397,\"type\":\"result\",\"duration_ms\":20377,\"uuid\":\"44f6ba94-76e3-4c81-ae48-84521f8c638a\",\"ttft_stream_ms\":5234,\"time_to_request_ms\":3045,\"first_content_frame_ms\":5234,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-20T10:19:06.651Z",
+      "durationMs": 19744,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":15110,\"stop_reason\":\"tool_use\",\"session_id\":\"a0e98dce-44ec-4f60-91bb-4aaeeb30af20\",\"total_cost_usd\":0.055520400000000004,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":2562,\"cache_read_input_tokens\":782,\"output_tokens\":1743,\"output_tokens_details\":{\"thinking_tokens\":610},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":2562,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":1743,\"cache_read_input_tokens\":782,\"cache_creation_input_tokens\":2562,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":2562},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":1743,\"cacheReadInputTokens\":782,\"cacheCreationInputTokens\":2562,\"webSearchRequests\":0,\"costUSD\":0.055520400000000004,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":610,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"She has mild left hip pain and bruising\\\",\\\"source_quote\\\":\\\"Pain 4 out of 10 in the left hip.\\\",\\\"why\\\":\\\"The note adds the severity label 'mild', which the source does not give. The dictation states only a 4/10 score.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Her presentation is consistent with a mechanical fall without fracture or intracranial injury.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The note adds the diagnostic label 'mechanical fall'. The source states only 'Fall at home' and 'tripped on a rug'.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The numbers 78, 4/10, 40 feet, 650 and every 6 hours all match the source.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No unit is guessed. Acetaminophen 650 is left without a unit.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There are no tracker rows. The acetaminophen order matches the dictation, and no drug is started, stopped or held without support.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no prior-day data. 'Yesterday' is kept as dictated.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Discharge is still written as a future event.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders are present.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The only meta-statement is the section label 'not dictated', which N6 allows. No invented PMH statement appears.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"BMI 31. Not on anticoagulation.\\\",\\\"why\\\":\\\"The note leaves out the dictated BMI 31 and 'Not on anticoagulation'.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Discharge home with home health services once physical and occupational therapy clearance is obtained.\\\",\\\"source_quote\\\":\\\"likely discharge home with home health\\\",\\\"why\\\":\\\"The physician's hedge 'likely' is dropped, so the discharge reads as definite.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The exam was dictated and is reported without invented normal findings or 'denies' statements.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside checks were dictated.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No already-given drug is re-ordered in the Plan.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Vital signs: not dictated today.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The vitals section had nothing dictated and is labeled 'not dictated'.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"She has mild left hip pain and bruising\",\"source_quote\":\"Pain 4 out of 10 in the left hip.\",\"why\":\"The note adds the severity label 'mild', which the source does not give. The dictation states only a 4/10 score.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"Her presentation is consistent with a mechanical fall without fracture or intracranial injury.\",\"source_quote\":\"no source\",\"why\":\"The note adds the diagnostic label 'mechanical fall'. The source states only 'Fall at home' and 'tripped on a rug'.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The numbers 78, 4/10, 40 feet, 650 and every 6 hours all match the source.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No unit is guessed. Acetaminophen 650 is left without a unit.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There are no tracker rows. The acetaminophen order matches the dictation, and no drug is started, stopped or held without support.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no prior-day data. 'Yesterday' is kept as dictated.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Discharge is still written as a future event.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders are present.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The only meta-statement is the section label 'not dictated', which N6 allows. No invented PMH statement appears.\"},{\"id\":\"N1\",\"verdict\":\"FAIL\",\"output_quote\":\"\",\"source_quote\":\"BMI 31. Not on anticoagulation.\",\"why\":\"The note leaves out the dictated BMI 31 and 'Not on anticoagulation'.\"},{\"id\":\"N2\",\"verdict\":\"FAIL\",\"output_quote\":\"Discharge home with home health services once physical and occupational therapy clearance is obtained.\",\"source_quote\":\"likely discharge home with home health\",\"why\":\"The physician's hedge 'likely' is dropped, so the discharge reads as definite.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The exam was dictated and is reported without invented normal findings or 'denies' statements.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside checks were dictated.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No already-given drug is re-ordered in the Plan.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Vital signs: not dictated today.\",\"source_quote\":\"\",\"why\":\"The vitals section had nothing dictated and is labeled 'not dictated'.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":9127,\"type\":\"result\",\"duration_ms\":17379,\"uuid\":\"adcf85ad-9efa-4597-aa13-865dc1bf6f87\",\"ttft_stream_ms\":3010,\"time_to_request_ms\":2262,\"first_content_frame_ms\":3010,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 20377,
+        "total_cost_usd": 0.0420842,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 442,
+        "cacheReadInputTokens": 2901,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 17379,
+        "total_cost_usd": 0.055520400000000004,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 2562,
+        "cacheReadInputTokens": 782,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "She has mild left hip pain",
+          "source_quote": "Pain 4 out of 10 in the left hip.",
+          "why": "The severity label 'mild' has no source. The dictation gives only a 4/10 score, and 4/10 is usually graded as moderate, not mild.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "She has mild left hip pain and bruising",
+          "source_quote": "Pain 4 out of 10 in the left hip.",
+          "why": "The note adds the severity label 'mild', which the source does not give. The dictation states only a 4/10 score.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Her presentation is consistent with a mechanical fall without fracture or intracranial injury.",
+          "source_quote": "Fell at home yesterday, tripped on a rug.",
+          "why": "The note adds the subtype label 'mechanical fall'. The source says she tripped on a rug but never uses that label, and the stored diagnosis is just 'Fall at home'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Her presentation is consistent with a mechanical fall without fracture or intracranial injury.",
+          "source_quote": "no source",
+          "why": "The note adds the diagnostic label 'mechanical fall'. The source states only 'Fall at home' and 'tripped on a rug'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": []
+    },
+    {
+      "id": "N1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "no source",
+          "source_quote": "BMI 31. Not on anticoagulation.",
+          "why": "Two dictated statements are missing from the note: BMI 31 and 'not on anticoagulation'. The anticoagulation status matters clinically after a fall with a head CT.",
+          "carveOut": null,
+          "check": {
+            "output": "not found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "",
+          "source_quote": "BMI 31. Not on anticoagulation.",
+          "why": "The note leaves out the dictated BMI 31 and 'Not on anticoagulation'.",
+          "carveOut": null,
+          "check": {
+            "output": "missing",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: output quote not found in the output"
+      ],
+      "openQuestions": [
+        "GK13"
+      ]
+    },
+    {
+      "id": "N2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+          "source_quote": "likely discharge home with home health",
+          "why": "The physician's hedge 'likely' is dropped, so a probable discharge reads as a firm plan.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+          "source_quote": "likely discharge home with home health",
+          "why": "The physician's hedge 'likely' is dropped, so the discharge reads as definite.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": []
+    }
+  ],
+  "kitOnlyFails": [],
+  "kitOnlyUnsure": [],
+  "needsPerson": [],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "She has mild left hip pain",
+          "source_quote": "Pain 4 out of 10 in the left hip.",
+          "why": "The severity label 'mild' has no source. The dictation gives only a 4/10 score, and 4/10 is usually graded as moderate, not mild."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "She has mild left hip pain and bruising",
+          "source_quote": "Pain 4 out of 10 in the left hip.",
+          "why": "The note adds the severity label 'mild', which the source does not give. The dictation states only a 4/10 score."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "She has mild left hip pain",
+          "source_quote": "Pain 4 out of 10 in the left hip.",
+          "why": "The severity label 'mild' has no source. The dictation gives only a 4/10 score, and 4/10 is usually graded as moderate, not mild.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "She has mild left hip pain and bruising",
+          "source_quote": "Pain 4 out of 10 in the left hip.",
+          "why": "The note adds the severity label 'mild', which the source does not give. The dictation states only a 4/10 score.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "The severity label 'mild' has no source. The dictation gives only a 4/10 score, and 4/10 is usually graded as moderate, not mild."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Her presentation is consistent with a mechanical fall without fracture or intracranial injury.",
+          "source_quote": "Fell at home yesterday, tripped on a rug.",
+          "why": "The note adds the subtype label 'mechanical fall'. The source says she tripped on a rug but never uses that label, and the stored diagnosis is just 'Fall at home'."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Her presentation is consistent with a mechanical fall without fracture or intracranial injury.",
+          "source_quote": "no source",
+          "why": "The note adds the diagnostic label 'mechanical fall'. The source states only 'Fall at home' and 'tripped on a rug'."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Her presentation is consistent with a mechanical fall without fracture or intracranial injury.",
+          "source_quote": "Fell at home yesterday, tripped on a rug.",
+          "why": "The note adds the subtype label 'mechanical fall'. The source says she tripped on a rug but never uses that label, and the stored diagnosis is just 'Fall at home'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Her presentation is consistent with a mechanical fall without fracture or intracranial injury.",
+          "source_quote": "no source",
+          "why": "The note adds the diagnostic label 'mechanical fall'. The source states only 'Fall at home' and 'tripped on a rug'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The note adds the subtype label 'mechanical fall'. The source says she tripped on a rug but never uses that label, and the stored diagnosis is just 'Fall at home'."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "All numbers match the source: 4/10, 40 feet, 650 every 6 hours, age 78."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The numbers 78, 4/10, 40 feet, 650 and every 6 hours all match the source."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "All numbers match the source: 4/10, 40 feet, 650 every 6 hours, age 78."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No unit is guessed. Acetaminophen 650 is written without a unit, as dictated."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No unit is guessed. Acetaminophen 650 is left without a unit."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "No unit is guessed. Acetaminophen 650 is written without a unit, as dictated."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There are no tracker rows. Acetaminophen is dictated as an as-needed order, and no drug is started, stopped or held against a tracker."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There are no tracker rows. The acetaminophen order matches the dictation, and no drug is started, stopped or held without support."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "There are no tracker rows. Acetaminophen is dictated as an as-needed order, and no drug is started, stopped or held against a tracker."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no prior note, so no earlier-day facts appear."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no prior-day data. 'Yesterday' is kept as dictated."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "There is no prior note, so no earlier-day facts appear."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Nothing planned is written as already done."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Discharge is still written as a future event."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Nothing planned is written as already done."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders appear."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders are present."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The only 'not dictated' label is the allowed empty-section label for vital signs. There is no other narration about documentation."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The only meta-statement is the section label 'not dictated', which N6 allows. No invented PMH statement appears."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "The only 'not dictated' label is the allowed empty-section label for vital signs. There is no other narration about documentation."
+    },
+    {
+      "id": "N1",
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "no source",
+          "source_quote": "BMI 31. Not on anticoagulation.",
+          "why": "Two dictated statements are missing from the note: BMI 31 and 'not on anticoagulation'. The anticoagulation status matters clinically after a fall with a head CT."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "BMI 31. Not on anticoagulation.",
+          "why": "The note leaves out the dictated BMI 31 and 'Not on anticoagulation'."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "no source",
+          "source_quote": "BMI 31. Not on anticoagulation.",
+          "why": "Two dictated statements are missing from the note: BMI 31 and 'not on anticoagulation'. The anticoagulation status matters clinically after a fall with a head CT.",
+          "carveOut": null,
+          "check": {
+            "output": "not found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "",
+          "source_quote": "BMI 31. Not on anticoagulation.",
+          "why": "The note leaves out the dictated BMI 31 and 'Not on anticoagulation'.",
+          "carveOut": null,
+          "check": {
+            "output": "missing",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: output quote not found in the output"
+      ],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "Two dictated statements are missing from the note: BMI 31 and 'not on anticoagulation'. The anticoagulation status matters clinically after a fall with a head CT."
+    },
+    {
+      "id": "N2",
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+          "source_quote": "likely discharge home with home health",
+          "why": "The physician's hedge 'likely' is dropped, so a probable discharge reads as a firm plan."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+          "source_quote": "likely discharge home with home health",
+          "why": "The physician's hedge 'likely' is dropped, so the discharge reads as definite."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+          "source_quote": "likely discharge home with home health",
+          "why": "The physician's hedge 'likely' is dropped, so a probable discharge reads as a firm plan.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+          "source_quote": "likely discharge home with home health",
+          "why": "The physician's hedge 'likely' is dropped, so the discharge reads as definite.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The physician's hedge 'likely' is dropped, so a probable discharge reads as a firm plan."
+    },
+    {
+      "id": "N3",
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "An exam was dictated (bruising, range of motion), and the note invents no normal findings or 'denies' statements."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The exam was dictated and is reported without invented normal findings or 'denies' statements."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ],
+      "why": "An exam was dictated (bruising, range of motion), and the note invents no normal findings or 'denies' statements."
+    },
+    {
+      "id": "N4",
+      "check": "A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside checks were dictated."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside checks were dictated."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "No bedside checks were dictated."
+    },
+    {
+      "id": "N5",
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No drug is recorded as already given and then re-ordered."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No already-given drug is re-ordered in the Plan."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ],
+      "why": "No drug is recorded as already given and then re-ordered."
+    },
+    {
+      "id": "N6",
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Vital signs: not dictated today.",
+          "source_quote": "",
+          "why": "Vital signs were not dictated, and the section is labeled 'not dictated'."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Vital signs: not dictated today.",
+          "source_quote": "",
+          "why": "The vitals section had nothing dictated and is labeled 'not dictated'."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK2"
+        ],
+        "rule": "either 'Not dictated' or 'Not provided' passes (the kit's interim, L3); the wording used is recorded"
+      },
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ],
+      "why": "Vital signs were not dictated, and the section is labeled 'not dictated'."
+    }
+  ],
+  "n6Wording": {
+    "notDictated": 1,
+    "notProvided": 0
+  },
+  "openQuestions": [
+    "GK13",
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,131 @@
+{
+ "fixture": "HL-H5",
+ "arm": "B",
+ "mode": "hospital",
+ "template": "soap",
+ "dictations": {
+  "encounter": "Fell at home yesterday, tripped on a rug. Hip X-ray negative for fracture. Head CT negative. She uses an albuterol inhaler as needed. BMI 31. Not on anticoagulation. Pain 4 out of 10 in the left hip. Bruising over the left hip, full range of motion. Walked 40 feet with a walker with PT. Acetaminophen 650 every 6 hours as needed. PT and OT to follow, likely discharge home with home health."
+ },
+ "note": "Subjective\n\nThe patient reports falling at home yesterday after tripping on a rug. She has pain rated 4 out of 10 in the left hip. She uses an albuterol inhaler as needed.\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical Examination: Bruising noted over the left hip. Full range of motion in the left hip. Patient ambulated 40 feet with a walker with physical therapy assistance.\n\nTesting Results\n\nHip X-ray: negative for fracture.\n\nHead CT: negative.\n\nAssessment\n\nPatient is a 78-year-old who presented with a fall at home yesterday after tripping on a rug. Hip X-ray and head CT were both negative for acute injury. She has mild left hip pain and bruising but maintains full range of motion and is ambulatory with assistive device and physical therapy support. Her presentation is consistent with a mechanical fall without fracture or intracranial injury. She will benefit from continued physical and occupational therapy to optimize mobility and safety prior to discharge.\n\nPlan\n\n1. Continue acetaminophen 650 every 6 hours as needed for pain.\n2. Continue physical therapy and occupational therapy; patient to follow up with both services.\n3. Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+ "noteSections": [
+  {
+   "body": "The patient reports falling at home yesterday after tripping on a rug. She has pain rated 4 out of 10 in the left hip. She uses an albuterol inhaler as needed.",
+   "heading": "Subjective",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital signs: not dictated today.\n\nPhysical Examination: Bruising noted over the left hip. Full range of motion in the left hip. Patient ambulated 40 feet with a walker with physical therapy assistance.",
+   "heading": "Objective",
+   "part": "narrative"
+  },
+  {
+   "body": "Hip X-ray: negative for fracture.\n\nHead CT: negative.",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 78-year-old who presented with a fall at home yesterday after tripping on a rug. Hip X-ray and head CT were both negative for acute injury. She has mild left hip pain and bruising but maintains full range of motion and is ambulatory with assistive device and physical therapy support. Her presentation is consistent with a mechanical fall without fracture or intracranial injury. She will benefit from continued physical and occupational therapy to optimize mobility and safety prior to discharge.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Continue acetaminophen 650 every 6 hours as needed for pain.\n2. Continue physical therapy and occupational therapy; patient to follow up with both services.\n3. Discharge home with home health services once physical and occupational therapy clearance is obtained.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 12092,
+    "providerMs": 11631,
+    "appMs": 461,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3758,
+    "providerMs": 3672,
+    "appMs": 86,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 12092,
+    "providerMs": 11631,
+    "appMs": 461,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H5-a": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "She uses an albuterol inhaler as needed."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H5-b": {
+   "note": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   }
+  },
+  "HL-H5-c": {
+   "note": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "albuterol|inhaler",
+   "present": true
+  },
+  {
+   "fact": "31",
+   "present": false
+  },
+  {
+   "fact": "4\\s*(out of|/)\\s*10",
+   "present": true
+  },
+  {
+   "fact": "40 (feet|ft)",
+   "present": true
+  },
+  {
+   "fact": "acetaminophen|tylenol",
+   "present": true
+  },
+  {
+   "fact": "650",
+   "present": true
+  }
+ ],
+ "ms": 31231
+}

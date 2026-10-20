@@ -1,0 +1,36 @@
+{
+  "TC-19/S12": {
+    "status": "failed",
+    "ranAt": "2026-10-20T10:03:30Z",
+    "build": "8b4be94a",
+    "supersedes": true,
+    "pkg": "b04",
+    "method": "dev dataset lane (scripts/datasets/run.sh b04-hosp, b04-nh; specs web/qa-agent-tests/datasets/b04-hosp.spec.ts, b04-nh.spec.ts, b04-lib.ts; datasets cases/datasets/b04-hosp.json, b04-nh.json, prefixes 'QA DS1-b04-hosp ' / 'QA DS1-b04-nh '), live model, page timezoneId UTC, TZ=UTC: 10 charts (5 Hospital H1-H5 + 5 Nursing Home N1-N5) seeded with yesterday's (previous UTC day, T0 = now-20 h) BP/HR/temp/SpO2, creatinine/K, a chest X-ray line, magnesium Given once, lisinopril held, vancomycin stopped, metoprolol active; one real pre-round Save Note per chart through the app with a varied dictation naming no vitals, labs, imaging or drug; the parse's own answer read by a pass-through socket tap; row read back after it settled and every field classed kept / echoed (model returned it, merge dropped it) / re-dated / changed / invented / cleared; plus 3 control charts (HC1, HC2, NC1) dictating BP 128/76 and creatinine 1.1. No retention probe on dev (stamps are never moved on dev; the retention effect is read from the stamps). Cleanup: b04-hosp 8 rows deleted, b04-nh 7 deleted, 0 left, 0 other rows changed.",
+    "title": "Hospital retention: day 2, the 18 h label and the 36 h clear (±1 h), held clock refreshed by processing (B04 re-test on dev, live model: one-time dose and held/stopped/active rows after a Save Note with no doses)",
+    "detail": "B04 on dev 8b4be94a, live model: STILL for the one-time dose, Hospital only. Magnesium re-dated 3/10 charts (Hospital 3/5: H2, H4, H5; Nursing Home 0/5): the live parse returned 'Magnesium sulfate 2 g IV once' with status 'single-dose' (the row's own status) although the dictation never named it, and the merge stamped it: changeDate 'Oct 19' -> 'Oct 20', updatedAt = the save time (+~9 s), panel tag 'Given · Oct 19' -> 'Given · Oct 20' (screenshot H2). In H1 / H3 the model echoed magnesium as 'active' and the merge dropped it ('Given · Oct 19 · not mentioned today' kept). The Nursing Home parse returned no medication list at all in 5/5, so nothing could be re-dated there. Because the dose's updatedAt is the save time, its 36 h clock restarts at the echo (the same code path the local probe aged: still on the chart at +18 h, leaves 36 h after the echo). Held lisinopril / stopped vancomycin / active metoprolol: kept 10/10 (status, changeDate, changedNote, updatedAt unchanged); in all 5 Hospital charts the model echoed all four drugs (held and stopped ones as 'active') and the merge dropped them. Controls 3/3: no medication row moved. Code: apps/web/convex/lib/medications.ts:363-456 mergePreRoundMedications (371-372 singleDoseRow match, 437/447/455 re-stamp; the 'not dictated, no news' guard at 402-409 covers only status 'active'). UAT TC-19 ER 8 / ER 10, TFA-92597 rules 2 and 6, UAT 3.6.",
+    "evidence": [
+      "runs/2026-10-14-dev/datasets-b04/results.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/pw.log",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/pw.log",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/cleanup.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/cleanup.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-H1.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-H2.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-H3.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-H4.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-H5.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-HC1.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-HC2.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/evidence/TC-19-S12-b04-N1.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/evidence/TC-19-S12-b04-N2.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/evidence/TC-19-S12-b04-N3.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/evidence/TC-19-S12-b04-N4.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/evidence/TC-19-S12-b04-N5.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/evidence/TC-19-S12-b04-NC1.json",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-H2-H2-after.png",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-H1-H1-after.png",
+      "runs/2026-10-14-dev/datasets-b04/b04-nh/evidence/TC-19-S12-b04-N1-N1-after.png",
+      "runs/2026-10-14-dev/datasets-b04/b04-hosp/evidence/TC-19-S12-b04-HC1-HC1-after.png"
+    ]
+  }
+}

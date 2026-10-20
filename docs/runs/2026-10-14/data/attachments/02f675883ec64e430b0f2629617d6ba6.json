@@ -1,0 +1,177 @@
+{
+ "fixture": "HL-H4",
+ "arm": "B",
+ "mode": "hospital",
+ "template": "hp",
+ "dictations": {
+  "encounter": "71-year-old woman admitted overnight after passing out at home. She takes apixaban. Troponin negative twice. A1c 6.1. Orthostatic vitals positive, BP dropped from 132 to 104 standing. Rule out PE, a CT angiogram of the chest is ordered. Feels lightheaded when she stands quickly. No head injury. Telemetry overnight without events. Echo is pending. Give a 1 liter normal saline bolus and repeat orthostatics this afternoon."
+ },
+ "note": "Chief Complaint\n\nSyncope\n\nHistory of Present Illness\n\nPatient is a 71-year-old woman who presented after passing out at home overnight. She reports feeling lightheaded when she stands quickly. On examination, orthostatic vitals are positive with blood pressure dropping from 132 mmHg to 104 mmHg upon standing. Telemetry overnight was without events. Troponin has been negative on two occasions. Hemoglobin A1c is 6.1. Evaluation for pulmonary embolism is underway with a CT angiogram of the chest ordered. Echocardiography is pending.\n\nPast Medical History\n\nNot provided\n\nMedications\n\nApixaban — dose not specified in dictation\n\nAllergies\n\nNot provided\n\nSocial History\n\nNot provided\n\nFamily History\n\nNot provided\n\nReview of Systems\n\nNot documented in today's dictation\n\nPhysical Examination\n\nVital Signs: Orthostatic vitals positive, blood pressure dropped from 132 mmHg to 104 mmHg upon standing.\n\nGeneral: No head injury.\n\nTesting Results\n\nTroponin: negative on two occasions.\n\nHemoglobin A1c: 6.1.\n\nImaging: CT angiogram of the chest ordered. Echocardiography pending.\n\nAssessment\n\nPatient is a 71-year-old woman who presented with syncope at home and is found to have orthostatic hypotension. She has negative cardiac biomarkers and is on apixaban. The clinical picture is most consistent with orthostatic syncope, though pulmonary embolism remains on the differential and is being evaluated with CT angiography. Echocardiography is pending to assess for structural cardiac disease. Management will focus on volume repletion and monitoring.\n\nPlan\n\n1. Administer 1 liter normal saline bolus for volume repletion.\n2. Repeat orthostatic vital signs this afternoon.\n3. Obtain CT angiogram of the chest to rule out pulmonary embolism.\n4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+ "noteSections": [
+  {
+   "body": "Syncope",
+   "heading": "Chief Complaint",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 71-year-old woman who presented after passing out at home overnight. She reports feeling lightheaded when she stands quickly. On examination, orthostatic vitals are positive with blood pressure dropping from 132 mmHg to 104 mmHg upon standing. Telemetry overnight was without events. Troponin has been negative on two occasions. Hemoglobin A1c is 6.1. Evaluation for pulmonary embolism is underway with a CT angiogram of the chest ordered. Echocardiography is pending.",
+   "heading": "History of Present Illness",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Past Medical History",
+   "part": "narrative"
+  },
+  {
+   "body": "Apixaban — dose not specified in dictation",
+   "heading": "Medications",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Allergies",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Social History",
+   "part": "narrative"
+  },
+  {
+   "body": "Not provided",
+   "heading": "Family History",
+   "part": "narrative"
+  },
+  {
+   "body": "Not documented in today's dictation",
+   "heading": "Review of Systems",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital Signs: Orthostatic vitals positive, blood pressure dropped from 132 mmHg to 104 mmHg upon standing.\n\nGeneral: No head injury.",
+   "heading": "Physical Examination",
+   "part": "narrative"
+  },
+  {
+   "body": "Troponin: negative on two occasions.\n\nHemoglobin A1c: 6.1.\n\nImaging: CT angiogram of the chest ordered. Echocardiography pending.",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 71-year-old woman who presented with syncope at home and is found to have orthostatic hypotension. She has negative cardiac biomarkers and is on apixaban. The clinical picture is most consistent with orthostatic syncope, though pulmonary embolism remains on the differential and is being evaluated with CT angiography. Echocardiography is pending to assess for structural cardiac disease. Management will focus on volume repletion and monitoring.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Administer 1 liter normal saline bolus for volume repletion.\n2. Repeat orthostatic vital signs this afternoon.\n3. Obtain CT angiogram of the chest to rule out pulmonary embolism.\n4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 13339,
+    "providerMs": 12935,
+    "appMs": 404,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 5354,
+    "providerMs": 5276,
+    "appMs": 78,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 13339,
+    "providerMs": 12935,
+    "appMs": 404,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H4-a": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Apixaban — dose not specified in dictation",
+     "She has negative cardiac biomarkers and is on apixaban."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H4-b": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Hemoglobin A1c is 6.1.",
+     "Hemoglobin A1c: 6.1."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H4-c": {
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Evaluation for pulmonary embolism is underway with a CT angiogram of the chest ordered.",
+     "The clinical picture is most consistent with orthostatic syncope, though pulmonary embolism remains on the differential and is being evaluated with CT angiography."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "apixaban",
+   "present": true
+  },
+  {
+   "fact": "6\\.1",
+   "present": true
+  },
+  {
+   "fact": "132",
+   "present": true
+  },
+  {
+   "fact": "104",
+   "present": true
+  },
+  {
+   "fact": "troponin",
+   "present": true
+  },
+  {
+   "fact": "echo",
+   "present": true
+  },
+  {
+   "fact": "saline|bolus",
+   "present": true
+  }
+ ],
+ "ms": 33508
+}

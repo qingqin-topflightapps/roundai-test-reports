@@ -1,0 +1,1044 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-20T10:19:30.652Z",
+  "capture": "runs/2026-10-14-dev/newspec-c/evidence/hallu/hallu-hosp/grading/TC-14-S46-HL-H3-A.capture.json",
+  "captureSha256": "f380bda04be28328e23a7e7874458cbc5eed4fecbbd0adf1129f8a3f491bdd5c",
+  "captureContentSha256": "99013e1487a33a0f7eb4f3a07ccd1ad868347ed2efd096729bf9deb8b91aafa4",
+  "scenario": {
+    "raw": "TC-14 S46 HL-H3 A",
+    "tc": "TC-14",
+    "id": "S46",
+    "fixture": "HL-H3"
+  },
+  "outputType": "note",
+  "mode": "Hospital",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "8b4be94a",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N4",
+                  "N5",
+                  "N6"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "kit (the interim reading is the kit's list for notes)",
+    "sent": [
+      "dictations",
+      "storedPanels",
+      "trackerRows",
+      "priorNote",
+      "today"
+    ],
+    "notSent": [
+      "storedPanelsNote"
+    ],
+    "notes": []
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "sha256": "b9b76b830e2c6f39a9941c9824a1f0c26c710e0a945fcfdfb1fa292492988e68",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nDICTATIONS:\n{\n  \"preRound\": \"Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight. On IV fluids at 75 mL an hour. He takes tamsulosin at home. Renal ultrasound is pending. He might need dialysis if the creatinine keeps rising.\",\n  \"encounter\": \"Mucous membranes dry. No edema. Bladder scan 90 mL after voiding. Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast.\"\n}\n\nSTORED PANELS:\n{\n  \"chart\": {\n    \"name\": \"QA DS1-hallu-hosp HL-H3A Hosp Fairweather\",\n    \"age\": 69,\n    \"sex\": \"M\",\n    \"diagnosis\": \"Acute kidney injury\",\n    \"noteTemplate\": \"soap\"\n  }\n}\n\nTRACKER ROWS (with status):\n[\n  {\n    \"changeDay\": null,\n    \"changed\": false,\n    \"changedNote\": \"home medication\",\n    \"name\": \"Tamsulosin\",\n    \"status\": \"active\",\n    \"updatedAt\": \"2026-10-20T10:11:00.030Z\"\n  },\n  {\n    \"changeDay\": null,\n    \"changed\": false,\n    \"changedNote\": \"\",\n    \"name\": \"IV fluids 75 mL per hour\",\n    \"status\": \"active\",\n    \"updatedAt\": \"2026-10-20T10:11:00.031Z\"\n  }\n]\n\nPRIOR NOTE:\nNone\n\nTODAY'S DATE:\n2026-10-20\n</sources>\n\nOUTPUT TO GRADE (note, Hospital):\n<output>\nSubjective\n\nNot provided\n\nObjective\n\nVital signs: not dictated today.\n\nPhysical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\n\nTesting Results\n\nCreatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.\n\nRenal ultrasound: pending.\n\nAssessment\n\nPatient is a 69-year-old male admitted with acute kidney injury, now with worsening renal function. Creatinine has risen from 1.9 to 2.4 over 24 hours, and serum potassium is elevated at 5.2. Urine output overnight was 600 mL. He is currently receiving intravenous hydration at 75 mL per hour. Physical examination reveals dry mucous membranes and no edema; bladder scan shows 90 mL post-void residual. Renal ultrasound is pending to evaluate for obstruction or other structural abnormality. The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far, though ongoing deterioration in creatinine raises concern for progression and possible need for dialysis if renal function continues to decline.\n\nPlan\n\n1. Continue intravenous fluids at 75 mL per hour and monitor urine output closely.\n2. Recheck basic metabolic panel this afternoon to reassess creatinine and potassium trends.\n3. Obtain renal ultrasound as planned to evaluate for obstruction or structural renal disease.\n4. Avoid nonsteroidal anti-inflammatory drugs and contrast agents.\n5. Continue home tamsulosin.\n6. Reassess need for dialysis if creatinine continues to rise; consider nephrology consultation if renal function does not stabilize.\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nN1: Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.\nN2: A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).\nN3: No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.\nN4: A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").\nN5: A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).\nN6: A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording). N6 accepts either wording: 'Not dictated' or 'Not provided'.\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-20T10:19:06.649Z",
+      "durationMs": 24000,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":19266,\"stop_reason\":\"tool_use\",\"session_id\":\"57992f7d-f18b-41d2-8c9b-c3160677b64b\",\"total_cost_usd\":0.0478448,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":443,\"cache_read_input_tokens\":3264,\"output_tokens\":2182,\"output_tokens_details\":{\"thinking_tokens\":646},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":443,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2182,\"cache_read_input_tokens\":3264,\"cache_creation_input_tokens\":443,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":443},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2182,\"cacheReadInputTokens\":3264,\"cacheCreationInputTokens\":443,\"webSearchRequests\":0,\"costUSD\":0.0478448,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":646,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"likely prerenal given the response to hydration thus far ... consider nephrology consultation if renal function does not stabilize.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The note adds facts no source contains: a response to hydration, a nephrology consult plan, ultrasound indications ('to evaluate for obstruction or other structural abnormality') and 'monitor urine output closely'.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far\\\",\\\"source_quote\\\":\\\"diagnosis: \\\\\\\"Acute kidney injury\\\\\\\"; \\\\\\\"Creatinine 2.4 this morning, up from 1.9 yesterday.\\\\\\\"\\\",\\\"why\\\":\\\"The note adds a cause ('prerenal') that the source never states. It also cites a 'response to hydration' while creatinine is rising, which contradicts the source.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Creatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.\\\",\\\"source_quote\\\":\\\"Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight.\\\",\\\"why\\\":\\\"The dictated numbers (2.4, 1.9, 5.2, 600, 75, 90) match the source. 'Over 24 hours' paraphrases 'yesterday' and is covered under U1.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue intravenous fluids at 75 mL per hour\\\",\\\"source_quote\\\":\\\"On IV fluids at 75 mL an hour.\\\",\\\"why\\\":\\\"The units match the dictation and none were guessed.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue home tamsulosin.\\\",\\\"source_quote\\\":\\\"Tamsulosin status active; IV fluids 75 mL per hour status active\\\",\\\"why\\\":\\\"Both drugs stay active, as the tracker shows.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"up from 1.9 yesterday\\\",\\\"source_quote\\\":\\\"up from 1.9 yesterday\\\",\\\"why\\\":\\\"The earlier value carries its date.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Renal ultrasound: pending.\\\",\\\"source_quote\\\":\\\"Renal ultrasound is pending.\\\",\\\"why\\\":\\\"The ultrasound stays pending and is not written as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Vital signs: not dictated today.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"This only labels an empty field. It does not narrate about the documentation.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Avoid nonsteroidal anti-inflammatory drugs and contrast agents.\\\",\\\"source_quote\\\":\\\"Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast.\\\",\\\"why\\\":\\\"Every dictated value, drug and instruction appears in the note.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"possible need for dialysis if renal function continues to decline\\\",\\\"source_quote\\\":\\\"He might need dialysis if the creatinine keeps rising.\\\",\\\"why\\\":\\\"The hedge is kept.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Physical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\\\",\\\"source_quote\\\":\\\"Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\\\",\\\"why\\\":\\\"An exam was dictated, and the note does not invent any normal findings.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Bladder scan 90 mL after voiding.\\\",\\\"source_quote\\\":\\\"Bladder scan 90 mL after voiding.\\\",\\\"why\\\":\\\"The bladder scan has a dictated result, and no reminder was turned into a finding.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No drug was dictated as already given.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Subjective\\\\n\\\\nNot provided\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The empty section is labeled with an accepted wording.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"likely prerenal given the response to hydration thus far ... consider nephrology consultation if renal function does not stabilize.\",\"source_quote\":\"no source\",\"why\":\"The note adds facts no source contains: a response to hydration, a nephrology consult plan, ultrasound indications ('to evaluate for obstruction or other structural abnormality') and 'monitor urine output closely'.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far\",\"source_quote\":\"diagnosis: \\\"Acute kidney injury\\\"; \\\"Creatinine 2.4 this morning, up from 1.9 yesterday.\\\"\",\"why\":\"The note adds a cause ('prerenal') that the source never states. It also cites a 'response to hydration' while creatinine is rising, which contradicts the source.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Creatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.\",\"source_quote\":\"Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight.\",\"why\":\"The dictated numbers (2.4, 1.9, 5.2, 600, 75, 90) match the source. 'Over 24 hours' paraphrases 'yesterday' and is covered under U1.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"Continue intravenous fluids at 75 mL per hour\",\"source_quote\":\"On IV fluids at 75 mL an hour.\",\"why\":\"The units match the dictation and none were guessed.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"Continue home tamsulosin.\",\"source_quote\":\"Tamsulosin status active; IV fluids 75 mL per hour status active\",\"why\":\"Both drugs stay active, as the tracker shows.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"up from 1.9 yesterday\",\"source_quote\":\"up from 1.9 yesterday\",\"why\":\"The earlier value carries its date.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"Renal ultrasound: pending.\",\"source_quote\":\"Renal ultrasound is pending.\",\"why\":\"The ultrasound stays pending and is not written as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"Vital signs: not dictated today.\",\"source_quote\":\"\",\"why\":\"This only labels an empty field. It does not narrate about the documentation.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Avoid nonsteroidal anti-inflammatory drugs and contrast agents.\",\"source_quote\":\"Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast.\",\"why\":\"Every dictated value, drug and instruction appears in the note.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"possible need for dialysis if renal function continues to decline\",\"source_quote\":\"He might need dialysis if the creatinine keeps rising.\",\"why\":\"The hedge is kept.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"Physical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\",\"source_quote\":\"Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\",\"why\":\"An exam was dictated, and the note does not invent any normal findings.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"Bladder scan 90 mL after voiding.\",\"source_quote\":\"Bladder scan 90 mL after voiding.\",\"why\":\"The bladder scan has a dictated result, and no reminder was turned into a finding.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No drug was dictated as already given.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Subjective\\n\\nNot provided\",\"source_quote\":\"\",\"why\":\"The empty section is labeled with an accepted wording.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":10915,\"type\":\"result\",\"duration_ms\":21872,\"uuid\":\"f2e470ad-bf6b-4e74-b43e-13636830f40d\",\"ttft_stream_ms\":5443,\"time_to_request_ms\":2606,\"first_content_frame_ms\":5444,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-20T10:19:06.652Z",
+      "durationMs": 20449,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":17085,\"stop_reason\":\"tool_use\",\"session_id\":\"21dc3734-c494-4c90-9d72-5d791627758d\",\"total_cost_usd\":0.070744,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":3702,\"cache_read_input_tokens\":0,\"output_tokens\":2056,\"output_tokens_details\":{\"thinking_tokens\":657},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":3702,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2056,\"cache_read_input_tokens\":0,\"cache_creation_input_tokens\":3702,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":3702},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2056,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":3702,\"webSearchRequests\":0,\"costUSD\":0.070744,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":657,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"consider nephrology consultation if renal function does not stabilize\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The note adds a nephrology consult, which was never dictated. It also adds 'monitor urine output closely' and 'to evaluate for obstruction or other structural abnormality', which have no source either.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"likely prerenal given the response to hydration thus far\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The note adds a cause ('prerenal') that the source never states. It also claims a 'response to hydration', which contradicts the source: creatinine rose from 1.9 to 2.4 while on fluids.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Creatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.\\\",\\\"source_quote\\\":\\\"Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight.\\\",\\\"why\\\":\\\"All numbers match the source exactly.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue intravenous fluids at 75 mL per hour\\\",\\\"source_quote\\\":\\\"On IV fluids at 75 mL an hour.\\\",\\\"why\\\":\\\"The unit was dictated; nothing was guessed.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Continue home tamsulosin.\\\",\\\"source_quote\\\":\\\"\\\\\\\"name\\\\\\\": \\\\\\\"Tamsulosin\\\\\\\", \\\\\\\"status\\\\\\\": \\\\\\\"active\\\\\\\"\\\",\\\"why\\\":\\\"Tamsulosin and IV fluids are both active in the tracker and are continued in the note.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"up from 1.9 yesterday\\\",\\\"source_quote\\\":\\\"up from 1.9 yesterday\\\",\\\"why\\\":\\\"The earlier value is labeled as yesterday's.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Renal ultrasound: pending.\\\",\\\"source_quote\\\":\\\"Renal ultrasound is pending.\\\",\\\"why\\\":\\\"The ultrasound stays pending; it is not written as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Vital signs: not dictated today.\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"This is an empty-field label, not narration about documentation, and there is no false PMH statement.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Avoid nonsteroidal anti-inflammatory drugs and contrast agents.\\\",\\\"source_quote\\\":\\\"Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast.\\\",\\\"why\\\":\\\"Every dictated statement appears in the note.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"possible need for dialysis if renal function continues to decline\\\",\\\"source_quote\\\":\\\"He might need dialysis if the creatinine keeps rising.\\\",\\\"why\\\":\\\"The physician's hedge is kept.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Physical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\\\",\\\"source_quote\\\":\\\"Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\\\",\\\"why\\\":\\\"An exam was dictated and is reported as dictated, with no invented findings.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No bedside-check reminders were dictated, so none could be turned into findings.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"No drug was dictated as already given.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Subjective\\\\n\\\\nNot provided\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The empty section is labeled with an accepted wording.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"consider nephrology consultation if renal function does not stabilize\",\"source_quote\":\"no source\",\"why\":\"The note adds a nephrology consult, which was never dictated. It also adds 'monitor urine output closely' and 'to evaluate for obstruction or other structural abnormality', which have no source either.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"likely prerenal given the response to hydration thus far\",\"source_quote\":\"no source\",\"why\":\"The note adds a cause ('prerenal') that the source never states. It also claims a 'response to hydration', which contradicts the source: creatinine rose from 1.9 to 2.4 while on fluids.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"Creatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.\",\"source_quote\":\"Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight.\",\"why\":\"All numbers match the source exactly.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"Continue intravenous fluids at 75 mL per hour\",\"source_quote\":\"On IV fluids at 75 mL an hour.\",\"why\":\"The unit was dictated; nothing was guessed.\"},{\"id\":\"U5\",\"verdict\":\"PASS\",\"output_quote\":\"Continue home tamsulosin.\",\"source_quote\":\"\\\"name\\\": \\\"Tamsulosin\\\", \\\"status\\\": \\\"active\\\"\",\"why\":\"Tamsulosin and IV fluids are both active in the tracker and are continued in the note.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"up from 1.9 yesterday\",\"source_quote\":\"up from 1.9 yesterday\",\"why\":\"The earlier value is labeled as yesterday's.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"Renal ultrasound: pending.\",\"source_quote\":\"Renal ultrasound is pending.\",\"why\":\"The ultrasound stays pending; it is not written as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No placeholders.\"},{\"id\":\"U9\",\"verdict\":\"PASS\",\"output_quote\":\"Vital signs: not dictated today.\",\"source_quote\":\"\",\"why\":\"This is an empty-field label, not narration about documentation, and there is no false PMH statement.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Avoid nonsteroidal anti-inflammatory drugs and contrast agents.\",\"source_quote\":\"Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast.\",\"why\":\"Every dictated statement appears in the note.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"possible need for dialysis if renal function continues to decline\",\"source_quote\":\"He might need dialysis if the creatinine keeps rising.\",\"why\":\"The physician's hedge is kept.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"Physical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\",\"source_quote\":\"Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.\",\"why\":\"An exam was dictated and is reported as dictated, with no invented findings.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No bedside-check reminders were dictated, so none could be turned into findings.\"},{\"id\":\"N5\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"No drug was dictated as already given.\"},{\"id\":\"N6\",\"verdict\":\"PASS\",\"output_quote\":\"Subjective\\n\\nNot provided\",\"source_quote\":\"\",\"why\":\"The empty section is labeled with an accepted wording.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":8627,\"type\":\"result\",\"duration_ms\":18185,\"uuid\":\"9896c30d-e920-4bcf-803e-b6fc07ed53c2\",\"ttft_stream_ms\":2617,\"time_to_request_ms\":1097,\"first_content_frame_ms\":2617,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 21872,
+        "total_cost_usd": 0.0478448,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 443,
+        "cacheReadInputTokens": 3264,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 18185,
+        "total_cost_usd": 0.070744,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 3702,
+        "cacheReadInputTokens": 0,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "likely prerenal given the response to hydration thus far ... consider nephrology consultation if renal function does not stabilize.",
+          "source_quote": "no source",
+          "why": "The note adds facts no source contains: a response to hydration, a nephrology consult plan, ultrasound indications ('to evaluate for obstruction or other structural abnormality') and 'monitor urine output closely'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "consider nephrology consultation if renal function does not stabilize",
+          "source_quote": "no source",
+          "why": "The note adds a nephrology consult, which was never dictated. It also adds 'monitor urine output closely' and 'to evaluate for obstruction or other structural abnormality', which have no source either.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far",
+          "source_quote": "diagnosis: \"Acute kidney injury\"; \"Creatinine 2.4 this morning, up from 1.9 yesterday.\"",
+          "why": "The note adds a cause ('prerenal') that the source never states. It also cites a 'response to hydration' while creatinine is rising, which contradicts the source.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "likely prerenal given the response to hydration thus far",
+          "source_quote": "no source",
+          "why": "The note adds a cause ('prerenal') that the source never states. It also claims a 'response to hydration', which contradicts the source: creatinine rose from 1.9 to 2.4 while on fluids.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: source quote not found in SOURCES"
+      ],
+      "openQuestions": []
+    }
+  ],
+  "kitOnlyFails": [],
+  "kitOnlyUnsure": [],
+  "needsPerson": [],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "likely prerenal given the response to hydration thus far ... consider nephrology consultation if renal function does not stabilize.",
+          "source_quote": "no source",
+          "why": "The note adds facts no source contains: a response to hydration, a nephrology consult plan, ultrasound indications ('to evaluate for obstruction or other structural abnormality') and 'monitor urine output closely'."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "consider nephrology consultation if renal function does not stabilize",
+          "source_quote": "no source",
+          "why": "The note adds a nephrology consult, which was never dictated. It also adds 'monitor urine output closely' and 'to evaluate for obstruction or other structural abnormality', which have no source either."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "likely prerenal given the response to hydration thus far ... consider nephrology consultation if renal function does not stabilize.",
+          "source_quote": "no source",
+          "why": "The note adds facts no source contains: a response to hydration, a nephrology consult plan, ultrasound indications ('to evaluate for obstruction or other structural abnormality') and 'monitor urine output closely'.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "consider nephrology consultation if renal function does not stabilize",
+          "source_quote": "no source",
+          "why": "The note adds a nephrology consult, which was never dictated. It also adds 'monitor urine output closely' and 'to evaluate for obstruction or other structural abnormality', which have no source either.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "The note adds facts no source contains: a response to hydration, a nephrology consult plan, ultrasound indications ('to evaluate for obstruction or other structural abnormality') and 'monitor urine output closely'."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far",
+          "source_quote": "diagnosis: \"Acute kidney injury\"; \"Creatinine 2.4 this morning, up from 1.9 yesterday.\"",
+          "why": "The note adds a cause ('prerenal') that the source never states. It also cites a 'response to hydration' while creatinine is rising, which contradicts the source."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "likely prerenal given the response to hydration thus far",
+          "source_quote": "no source",
+          "why": "The note adds a cause ('prerenal') that the source never states. It also claims a 'response to hydration', which contradicts the source: creatinine rose from 1.9 to 2.4 while on fluids."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "The clinical picture is consistent with acute kidney injury, likely prerenal given the response to hydration thus far",
+          "source_quote": "diagnosis: \"Acute kidney injury\"; \"Creatinine 2.4 this morning, up from 1.9 yesterday.\"",
+          "why": "The note adds a cause ('prerenal') that the source never states. It also cites a 'response to hydration' while creatinine is rising, which contradicts the source.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "likely prerenal given the response to hydration thus far",
+          "source_quote": "no source",
+          "why": "The note adds a cause ('prerenal') that the source never states. It also claims a 'response to hydration', which contradicts the source: creatinine rose from 1.9 to 2.4 while on fluids.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: source quote not found in SOURCES"
+      ],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The note adds a cause ('prerenal') that the source never states. It also cites a 'response to hydration' while creatinine is rising, which contradicts the source."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Creatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.",
+          "source_quote": "Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight.",
+          "why": "The dictated numbers (2.4, 1.9, 5.2, 600, 75, 90) match the source. 'Over 24 hours' paraphrases 'yesterday' and is covered under U1."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Creatinine 2.4 (up from 1.9 yesterday). Potassium 5.2. Urine output 600 mL overnight.",
+          "source_quote": "Creatinine 2.4 this morning, up from 1.9 yesterday. Potassium 5.2. Urine output 600 mL overnight.",
+          "why": "All numbers match the source exactly."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The dictated numbers (2.4, 1.9, 5.2, 600, 75, 90) match the source. 'Over 24 hours' paraphrases 'yesterday' and is covered under U1."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue intravenous fluids at 75 mL per hour",
+          "source_quote": "On IV fluids at 75 mL an hour.",
+          "why": "The units match the dictation and none were guessed."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue intravenous fluids at 75 mL per hour",
+          "source_quote": "On IV fluids at 75 mL an hour.",
+          "why": "The unit was dictated; nothing was guessed."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "The units match the dictation and none were guessed."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue home tamsulosin.",
+          "source_quote": "Tamsulosin status active; IV fluids 75 mL per hour status active",
+          "why": "Both drugs stay active, as the tracker shows."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Continue home tamsulosin.",
+          "source_quote": "\"name\": \"Tamsulosin\", \"status\": \"active\"",
+          "why": "Tamsulosin and IV fluids are both active in the tracker and are continued in the note."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "Both drugs stay active, as the tracker shows."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "up from 1.9 yesterday",
+          "source_quote": "up from 1.9 yesterday",
+          "why": "The earlier value carries its date."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "up from 1.9 yesterday",
+          "source_quote": "up from 1.9 yesterday",
+          "why": "The earlier value is labeled as yesterday's."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "The earlier value carries its date."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Renal ultrasound: pending.",
+          "source_quote": "Renal ultrasound is pending.",
+          "why": "The ultrasound stays pending and is not written as done."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Renal ultrasound: pending.",
+          "source_quote": "Renal ultrasound is pending.",
+          "why": "The ultrasound stays pending; it is not written as done."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The ultrasound stays pending and is not written as done."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No placeholders."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Vital signs: not dictated today.",
+          "source_quote": "",
+          "why": "This only labels an empty field. It does not narrate about the documentation."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Vital signs: not dictated today.",
+          "source_quote": "",
+          "why": "This is an empty-field label, not narration about documentation, and there is no false PMH statement."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "This only labels an empty field. It does not narrate about the documentation."
+    },
+    {
+      "id": "N1",
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Avoid nonsteroidal anti-inflammatory drugs and contrast agents.",
+          "source_quote": "Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast.",
+          "why": "Every dictated value, drug and instruction appears in the note."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Avoid nonsteroidal anti-inflammatory drugs and contrast agents.",
+          "source_quote": "Continue fluids, recheck a BMP this afternoon, avoid NSAIDs and contrast.",
+          "why": "Every dictated statement appears in the note."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "Every dictated value, drug and instruction appears in the note."
+    },
+    {
+      "id": "N2",
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "possible need for dialysis if renal function continues to decline",
+          "source_quote": "He might need dialysis if the creatinine keeps rising.",
+          "why": "The hedge is kept."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "possible need for dialysis if renal function continues to decline",
+          "source_quote": "He might need dialysis if the creatinine keeps rising.",
+          "why": "The physician's hedge is kept."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The hedge is kept."
+    },
+    {
+      "id": "N3",
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Physical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.",
+          "source_quote": "Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.",
+          "why": "An exam was dictated, and the note does not invent any normal findings."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Physical Examination: Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.",
+          "source_quote": "Mucous membranes dry. No edema. Bladder scan 90 mL after voiding.",
+          "why": "An exam was dictated and is reported as dictated, with no invented findings."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ],
+      "why": "An exam was dictated, and the note does not invent any normal findings."
+    },
+    {
+      "id": "N4",
+      "check": "A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Bladder scan 90 mL after voiding.",
+          "source_quote": "Bladder scan 90 mL after voiding.",
+          "why": "The bladder scan has a dictated result, and no reminder was turned into a finding."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No bedside-check reminders were dictated, so none could be turned into findings."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "The bladder scan has a dictated result, and no reminder was turned into a finding."
+    },
+    {
+      "id": "N5",
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No drug was dictated as already given."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "No drug was dictated as already given."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ],
+      "why": "No drug was dictated as already given."
+    },
+    {
+      "id": "N6",
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "",
+          "why": "The empty section is labeled with an accepted wording."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Subjective\n\nNot provided",
+          "source_quote": "",
+          "why": "The empty section is labeled with an accepted wording."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK2"
+        ],
+        "rule": "either 'Not dictated' or 'Not provided' passes (the kit's interim, L3); the wording used is recorded"
+      },
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ],
+      "why": "The empty section is labeled with an accepted wording."
+    }
+  ],
+  "n6Wording": {
+    "notDictated": 1,
+    "notProvided": 1
+  },
+  "openQuestions": [
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

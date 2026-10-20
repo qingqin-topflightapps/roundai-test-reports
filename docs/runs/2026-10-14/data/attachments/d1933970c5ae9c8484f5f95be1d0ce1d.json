@@ -1,0 +1,1325 @@
+{
+  "grader": "scripts/grade.mjs",
+  "kit": "RoundAI Grading Kit: Written Outputs and Tracker Gate",
+  "gradedAt": "2026-10-20T10:19:32.021Z",
+  "capture": "runs/2026-10-14-dev/newspec-c/evidence/hallu/hallu-hosp/grading/TC-14-S46-HL-H4-B.capture.json",
+  "captureSha256": "d7d25d69e1b74fe4cb8f744a603ede2a6761f4d29e0a69da31e8fc37721a45f6",
+  "captureContentSha256": "b36bdd586718424dc338eaccb3f0d08fbddee20b2263b2047b8a48482dcccb10",
+  "scenario": {
+    "raw": "TC-14 S46 HL-H4 B",
+    "tc": "TC-14",
+    "id": "S46",
+    "fixture": "HL-H4"
+  },
+  "outputType": "note",
+  "mode": "Hospital",
+  "outputModel": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "build": "8b4be94a",
+  "calibration": "uncalibrated: until Preston signs off on the 10 samples, report these verdicts as uncalibrated, never as Pass/Fail",
+  "judge": {
+    "cli": "claude -p",
+    "model": "claude-opus-5-5",
+    "pinned": "claude-opus-5-5",
+    "offPin": false,
+    "runs": 2,
+    "temperature": "not settable with claude -p; two runs must agree item by item",
+    "cliVersion": "2.1.285 (Claude Code)",
+    "systemPrompt": "You grade one output from a hospital rounding app against a fixed checklist, using only the text in the user's message. Give your answer only as the structured JSON output; use no other tool.",
+    "tools": "none (--tools \"\")",
+    "permissionMode": "dontAsk",
+    "disallowedTools": [
+      "Bash",
+      "BashOutput",
+      "KillShell",
+      "Edit",
+      "MultiEdit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "LS",
+      "NotebookEdit",
+      "NotebookRead",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "Agent",
+      "TodoWrite",
+      "Skill",
+      "SlashCommand",
+      "ExitPlanMode",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "Monitor",
+      "ToolSearch",
+      "SendMessage",
+      "ListAgents",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "EnterWorktree",
+      "ExitWorktree",
+      "TaskStop",
+      "Artifact",
+      "PushNotification"
+    ],
+    "env": "minimal (judgeEnv: basics, proxy/CA, Claude's own variables; no API key)",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "scenario_verdict"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "verdict",
+              "output_quote",
+              "source_quote",
+              "why"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "U1",
+                  "U2",
+                  "U3",
+                  "U4",
+                  "U5",
+                  "U6",
+                  "U7",
+                  "U8",
+                  "U9",
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N4",
+                  "N5",
+                  "N6"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "UNSURE"
+                ]
+              },
+              "output_quote": {
+                "type": "string"
+              },
+              "source_quote": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scenario_verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NEEDS_PERSON"
+          ]
+        }
+      }
+    },
+    "reused": false
+  },
+  "sources": {
+    "reading": "kit (the interim reading is the kit's list for notes)",
+    "sent": [
+      "dictations",
+      "storedPanels",
+      "trackerRows",
+      "priorNote",
+      "today"
+    ],
+    "notSent": [
+      "storedPanelsNote"
+    ],
+    "notes": []
+  },
+  "prompt": {
+    "template": "cases/grading/judge-prompt.txt",
+    "templateSha256": "58dad5ba70eca1ba502245b87df16e1e796d2b5cfb5137088f4ce16969579b36",
+    "n6Sentence": "N6 accepts either wording: 'Not dictated' or 'Not provided'.",
+    "judgedItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "sha256": "fcce494077bbbec835f4549bda2f94fde9d50dd93fcaef84dfadfb13dc1bdb3d",
+    "text": "You are grading one output from a hospital rounding app against a fixed checklist.\nYou are strict. You give no benefit of the doubt.\n\nSOURCES (the only facts that exist for this patient):\n<sources>\nDICTATIONS:\n{\n  \"encounter\": \"71-year-old woman admitted overnight after passing out at home. She takes apixaban. Troponin negative twice. A1c 6.1. Orthostatic vitals positive, BP dropped from 132 to 104 standing. Rule out PE, a CT angiogram of the chest is ordered. Feels lightheaded when she stands quickly. No head injury. Telemetry overnight without events. Echo is pending. Give a 1 liter normal saline bolus and repeat orthostatics this afternoon.\"\n}\n\nSTORED PANELS:\n{\n  \"chart\": {\n    \"name\": \"QA DS1-hallu-hosp HL-H4B Hosp Gallagher\",\n    \"age\": 71,\n    \"sex\": \"F\",\n    \"diagnosis\": \"Syncope\",\n    \"noteTemplate\": \"hp\"\n  }\n}\n\nTRACKER ROWS (with status):\n[\n  {\n    \"changeDate\": \"Oct 20\",\n    \"changeType\": \"given\",\n    \"changed\": true,\n    \"changedNote\": \"1 liter bolus given\",\n    \"name\": \"Normal saline\",\n    \"status\": \"single-dose\",\n    \"updatedAt\": \"2026-10-20T12:00:00.000Z\"\n  }\n]\n\nPRIOR NOTE:\nNone\n\nTODAY'S DATE:\n2026-10-20\n</sources>\n\nOUTPUT TO GRADE (note, Hospital):\n<output>\nChief Complaint\n\nSyncope\n\nHistory of Present Illness\n\nPatient is a 71-year-old woman who presented after passing out at home overnight. She reports feeling lightheaded when she stands quickly. On examination, orthostatic vitals are positive with blood pressure dropping from 132 mmHg to 104 mmHg upon standing. Telemetry overnight was without events. Troponin has been negative on two occasions. Hemoglobin A1c is 6.1. Evaluation for pulmonary embolism is underway with a CT angiogram of the chest ordered. Echocardiography is pending.\n\nPast Medical History\n\nNot provided\n\nMedications\n\nApixaban — dose not specified in dictation\n\nAllergies\n\nNot provided\n\nSocial History\n\nNot provided\n\nFamily History\n\nNot provided\n\nReview of Systems\n\nNot documented in today's dictation\n\nPhysical Examination\n\nVital Signs: Orthostatic vitals positive, blood pressure dropped from 132 mmHg to 104 mmHg upon standing.\n\nGeneral: No head injury.\n\nTesting Results\n\nTroponin: negative on two occasions.\n\nHemoglobin A1c: 6.1.\n\nImaging: CT angiogram of the chest ordered. Echocardiography pending.\n\nAssessment\n\nPatient is a 71-year-old woman who presented with syncope at home and is found to have orthostatic hypotension. She has negative cardiac biomarkers and is on apixaban. The clinical picture is most consistent with orthostatic syncope, though pulmonary embolism remains on the differential and is being evaluated with CT angiography. Echocardiography is pending to assess for structural cardiac disease. Management will focus on volume repletion and monitoring.\n\nPlan\n\n1. Administer 1 liter normal saline bolus for volume repletion.\n2. Repeat orthostatic vital signs this afternoon.\n3. Obtain CT angiogram of the chest to rule out pulmonary embolism.\n4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.\n</output>\n\nCHECKLIST:\n<checklist>\nU1: Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.\nU2: No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").\nU3: Every number matches the source exactly.\nU4: No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).\nU5: Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.\nU6: A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.\nU7: Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").\nU8: No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].\nU9: No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.\nN1: Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.\nN2: A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).\nN3: No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.\nN4: A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").\nN5: A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).\nN6: A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording). N6 accepts either wording: 'Not dictated' or 'Not provided'.\n</checklist>\n\nRules:\n\n- A fact not found in SOURCES is invented, even if clinically likely.\n- Grade each item PASS, FAIL, or UNSURE. Use UNSURE when you cannot decide from SOURCES alone.\n- For every FAIL, quote the exact output text that breaks the rule, and the exact source text\n  it contradicts, or write \"no source\" if nothing supports it.\n\n- Do not grade style, tone, or length. Only the checklist items.\n\nReturn JSON only:\n{\"items\":[{\"id\":\"U1\",\"verdict\":\"PASS|FAIL|UNSURE\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"\"}],\n \"scenario_verdict\":\"PASS|FAIL|NEEDS_PERSON\"}\n"
+  },
+  "raw": [
+    {
+      "run": 1,
+      "startedAt": "2026-10-20T10:19:06.649Z",
+      "durationMs": 25368,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":21132,\"stop_reason\":\"tool_use\",\"session_id\":\"fa9aa584-0ce1-4403-8227-2b54e3f4866f\",\"total_cost_usd\":0.0542184,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":442,\"cache_read_input_tokens\":3272,\"output_tokens\":2501,\"output_tokens_details\":{\"thinking_tokens\":856},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":442,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2501,\"cache_read_input_tokens\":3272,\"cache_creation_input_tokens\":442,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":442},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2501,\"cacheReadInputTokens\":3272,\"cacheCreationInputTokens\":442,\"webSearchRequests\":0,\"costUSD\":0.0542184,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":856,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"4. Obtain transthoracic echocardiogram when available.\\\\n5. Continue apixaban.\\\\n6. Continue telemetry monitoring.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The note adds facts that no source supports: the echo becomes a 'transthoracic' study, two plan items ('Continue apixaban', 'Continue telemetry monitoring') were never dictated, and 'assess for structural cardiac disease' is also unsupported.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope\\\",\\\"source_quote\\\":\\\"Orthostatic vitals positive, BP dropped from 132 to 104 standing.\\\",\\\"why\\\":\\\"The dictation and chart give only 'Syncope'. The note adds a cause and a diagnosis label (orthostatic syncope / orthostatic hypotension) that no source states.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"blood pressure dropping from 132 mmHg to 104 mmHg\\\",\\\"source_quote\\\":\\\"BP dropped from 132 to 104 standing\\\",\\\"why\\\":\\\"All numbers (71, 132, 104, 6.1, 1 liter, troponin negative twice) match the sources.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"132 mmHg to 104 mmHg\\\",\\\"source_quote\\\":\\\"BP dropped from 132 to 104\\\",\\\"why\\\":\\\"Blood pressure is always measured in mmHg, so this unit is not a guess on an ambiguous value. No other units were added.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"1. Administer 1 liter normal saline bolus for volume repletion.\\\",\\\"source_quote\\\":\\\"\\\\\\\"changedNote\\\\\\\": \\\\\\\"1 liter bolus given\\\\\\\", \\\\\\\"status\\\\\\\": \\\\\\\"single-dose\\\\\\\"\\\",\\\"why\\\":\\\"The tracker shows the saline bolus was already given. The note lists it as a new order.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no prior note, and no fact from an earlier day is presented as today's.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"CT angiogram of the chest ordered. Echocardiography pending.\\\",\\\"source_quote\\\":\\\"a CT angiogram of the chest is ordered... Echo is pending.\\\",\\\"why\\\":\\\"Planned and pending items stay planned and pending.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The note contains no placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Apixaban — dose not specified in dictation\\\",\\\"source_quote\\\":\\\"She takes apixaban.\\\",\\\"why\\\":\\\"This is narration about the documentation, which the rule explicitly forbids. 'Not documented in today's dictation' is the same kind of narration.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Repeat orthostatic vital signs this afternoon.\\\",\\\"source_quote\\\":\\\"repeat orthostatics this afternoon\\\",\\\"why\\\":\\\"Every dictated statement appears in the note: drug, labs, vitals, CT, echo, telemetry, no head injury, lightheadedness, bolus, and repeat orthostatics.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"pulmonary embolism remains on the differential and is being evaluated with CT angiography\\\",\\\"source_quote\\\":\\\"Rule out PE, a CT angiogram of the chest is ordered.\\\",\\\"why\\\":\\\"The 'rule out PE' hedge is kept.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"General: No head injury.\\\",\\\"source_quote\\\":\\\"No head injury.\\\",\\\"why\\\":\\\"The exam section holds only dictated findings. No normal exam or 'denies' statements were invented.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Repeat orthostatic vital signs this afternoon.\\\",\\\"source_quote\\\":\\\"repeat orthostatics this afternoon\\\",\\\"why\\\":\\\"The repeat orthostatics stay a future check.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"1. Administer 1 liter normal saline bolus for volume repletion.\\\",\\\"source_quote\\\":\\\"\\\\\\\"changedNote\\\\\\\": \\\\\\\"1 liter bolus given\\\\\\\"\\\",\\\"why\\\":\\\"The bolus was already given, but the Plan orders it again instead of recording it as done.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Review of Systems\\\\n\\\\nNot documented in today's dictation\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"Review of Systems uses wording other than the accepted 'Not dictated' or 'Not provided'. The other empty sections use 'Not provided' correctly.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"4. Obtain transthoracic echocardiogram when available.\\n5. Continue apixaban.\\n6. Continue telemetry monitoring.\",\"source_quote\":\"no source\",\"why\":\"The note adds facts that no source supports: the echo becomes a 'transthoracic' study, two plan items ('Continue apixaban', 'Continue telemetry monitoring') were never dictated, and 'assess for structural cardiac disease' is also unsupported.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope\",\"source_quote\":\"Orthostatic vitals positive, BP dropped from 132 to 104 standing.\",\"why\":\"The dictation and chart give only 'Syncope'. The note adds a cause and a diagnosis label (orthostatic syncope / orthostatic hypotension) that no source states.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"blood pressure dropping from 132 mmHg to 104 mmHg\",\"source_quote\":\"BP dropped from 132 to 104 standing\",\"why\":\"All numbers (71, 132, 104, 6.1, 1 liter, troponin negative twice) match the sources.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"132 mmHg to 104 mmHg\",\"source_quote\":\"BP dropped from 132 to 104\",\"why\":\"Blood pressure is always measured in mmHg, so this unit is not a guess on an ambiguous value. No other units were added.\"},{\"id\":\"U5\",\"verdict\":\"FAIL\",\"output_quote\":\"1. Administer 1 liter normal saline bolus for volume repletion.\",\"source_quote\":\"\\\"changedNote\\\": \\\"1 liter bolus given\\\", \\\"status\\\": \\\"single-dose\\\"\",\"why\":\"The tracker shows the saline bolus was already given. The note lists it as a new order.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no prior note, and no fact from an earlier day is presented as today's.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"CT angiogram of the chest ordered. Echocardiography pending.\",\"source_quote\":\"a CT angiogram of the chest is ordered... Echo is pending.\",\"why\":\"Planned and pending items stay planned and pending.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The note contains no placeholders.\"},{\"id\":\"U9\",\"verdict\":\"FAIL\",\"output_quote\":\"Apixaban — dose not specified in dictation\",\"source_quote\":\"She takes apixaban.\",\"why\":\"This is narration about the documentation, which the rule explicitly forbids. 'Not documented in today's dictation' is the same kind of narration.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"Repeat orthostatic vital signs this afternoon.\",\"source_quote\":\"repeat orthostatics this afternoon\",\"why\":\"Every dictated statement appears in the note: drug, labs, vitals, CT, echo, telemetry, no head injury, lightheadedness, bolus, and repeat orthostatics.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"pulmonary embolism remains on the differential and is being evaluated with CT angiography\",\"source_quote\":\"Rule out PE, a CT angiogram of the chest is ordered.\",\"why\":\"The 'rule out PE' hedge is kept.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"General: No head injury.\",\"source_quote\":\"No head injury.\",\"why\":\"The exam section holds only dictated findings. No normal exam or 'denies' statements were invented.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"Repeat orthostatic vital signs this afternoon.\",\"source_quote\":\"repeat orthostatics this afternoon\",\"why\":\"The repeat orthostatics stay a future check.\"},{\"id\":\"N5\",\"verdict\":\"FAIL\",\"output_quote\":\"1. Administer 1 liter normal saline bolus for volume repletion.\",\"source_quote\":\"\\\"changedNote\\\": \\\"1 liter bolus given\\\"\",\"why\":\"The bolus was already given, but the Plan orders it again instead of recording it as done.\"},{\"id\":\"N6\",\"verdict\":\"FAIL\",\"output_quote\":\"Review of Systems\\n\\nNot documented in today's dictation\",\"source_quote\":\"no source\",\"why\":\"Review of Systems uses wording other than the accepted 'Not dictated' or 'Not provided'. The other empty sections use 'Not provided' correctly.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":11489,\"type\":\"result\",\"duration_ms\":23095,\"uuid\":\"087b7d39-fd8a-4618-beab-2dd9b61e1e28\",\"ttft_stream_ms\":3767,\"time_to_request_ms\":1960,\"first_content_frame_ms\":3768,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    },
+    {
+      "run": 2,
+      "startedAt": "2026-10-20T10:19:06.652Z",
+      "durationMs": 22908,
+      "exitCode": 0,
+      "stdout": "{\"duration_api_ms\":19476,\"stop_reason\":\"tool_use\",\"session_id\":\"3d9e33f2-32af-46b0-b64a-9d534d927deb\",\"total_cost_usd\":0.077408,\"usage\":{\"input_tokens\":2,\"cache_creation_input_tokens\":3715,\"cache_read_input_tokens\":0,\"output_tokens\":2384,\"output_tokens_details\":{\"thinking_tokens\":790},\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":3715,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"global\",\"iterations\":[{\"input_tokens\":2,\"output_tokens\":2384,\"cache_read_input_tokens\":0,\"cache_creation_input_tokens\":3715,\"cache_creation\":{\"ephemeral_5m_input_tokens\":0,\"ephemeral_1h_input_tokens\":3715},\"type\":\"message\"}],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{\"claude-opus-5-5\":{\"inputTokens\":2,\"outputTokens\":2384,\"cacheReadInputTokens\":0,\"cacheCreationInputTokens\":3715,\"webSearchRequests\":0,\"costUSD\":0.077408,\"contextWindow\":1000000,\"maxOutputTokens\":128000,\"thinkingTokens\":790,\"canonicalModel\":\"claude-opus-5-5\",\"provider\":\"firstParty\",\"costBasis\":\"list\"}},\"permission_denials\":[],\"terminal_reason\":\"completed\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":false,\"num_turns\":2,\"subtype\":\"success\",\"api_error_status\":null,\"result\":\"{\\\"items\\\":[{\\\"id\\\":\\\"U1\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"4. Obtain transthoracic echocardiogram when available.\\\\n5. Continue apixaban.\\\\n6. Continue telemetry monitoring.\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"The dictation says only 'Echo is pending' and 'Telemetry overnight without events.' Nothing specifies a transthoracic echo, says to continue telemetry, or says to continue apixaban. The phrase 'to assess for structural cardiac disease' also has no source.\\\"},{\\\"id\\\":\\\"U2\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope\\\",\\\"source_quote\\\":\\\"\\\\\\\"diagnosis\\\\\\\": \\\\\\\"Syncope\\\\\\\"; \\\\\\\"Orthostatic vitals positive\\\\\\\"\\\",\\\"why\\\":\\\"The note adds 'orthostatic hypotension' and 'orthostatic syncope' as a cause. The source gives the diagnosis only as Syncope.\\\"},{\\\"id\\\":\\\"U3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"blood pressure dropping from 132 mmHg to 104 mmHg\\\",\\\"source_quote\\\":\\\"BP dropped from 132 to 104 standing\\\",\\\"why\\\":\\\"Every number matches the source: 71, 132, 104, 6.1, and 1 liter.\\\"},{\\\"id\\\":\\\"U4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"132 mmHg to 104 mmHg\\\",\\\"source_quote\\\":\\\"BP dropped from 132 to 104\\\",\\\"why\\\":\\\"mmHg is the standard unit for blood pressure, so this unit is not guessed on an ambiguous value.\\\"},{\\\"id\\\":\\\"U5\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"1. Administer 1 liter normal saline bolus for volume repletion.\\\",\\\"source_quote\\\":\\\"\\\\\\\"changeType\\\\\\\": \\\\\\\"given\\\\\\\", \\\\\\\"changedNote\\\\\\\": \\\\\\\"1 liter bolus given\\\\\\\"\\\",\\\"why\\\":\\\"The tracker shows the saline bolus as already given, but the note orders it again.\\\"},{\\\"id\\\":\\\"U6\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"There is no prior note, so no fact from an earlier day is shown as today's.\\\"},{\\\"id\\\":\\\"U7\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"CT angiogram of the chest ordered. Echocardiography pending.\\\",\\\"source_quote\\\":\\\"a CT angiogram of the chest is ordered... Echo is pending\\\",\\\"why\\\":\\\"Planned tests are still written as planned, not as done.\\\"},{\\\"id\\\":\\\"U8\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"The note has no placeholders.\\\"},{\\\"id\\\":\\\"U9\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Apixaban — dose not specified in dictation\\\",\\\"source_quote\\\":\\\"She takes apixaban.\\\",\\\"why\\\":\\\"This is narration about the documentation. 'Not documented in today's dictation' in Review of Systems is narration too.\\\"},{\\\"id\\\":\\\"N1\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"\\\",\\\"source_quote\\\":\\\"\\\",\\\"why\\\":\\\"Every dictated statement appears in the note: apixaban, both negative troponins, A1c, orthostatic vitals, CT angiogram, lightheadedness, no head injury, telemetry, echo, the bolus, and repeat orthostatics.\\\"},{\\\"id\\\":\\\"N2\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Obtain CT angiogram of the chest to rule out pulmonary embolism.\\\",\\\"source_quote\\\":\\\"Rule out PE\\\",\\\"why\\\":\\\"The 'rule out' hedge is kept.\\\"},{\\\"id\\\":\\\"N3\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"Vital Signs: Orthostatic vitals positive... General: No head injury.\\\",\\\"source_quote\\\":\\\"Orthostatic vitals positive... No head injury.\\\",\\\"why\\\":\\\"The exam section uses only dictated findings. No normal exam or denials are invented.\\\"},{\\\"id\\\":\\\"N4\\\",\\\"verdict\\\":\\\"PASS\\\",\\\"output_quote\\\":\\\"2. Repeat orthostatic vital signs this afternoon.\\\",\\\"source_quote\\\":\\\"repeat orthostatics this afternoon\\\",\\\"why\\\":\\\"The planned bedside check is still written as a reminder.\\\"},{\\\"id\\\":\\\"N5\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"1. Administer 1 liter normal saline bolus for volume repletion.\\\",\\\"source_quote\\\":\\\"\\\\\\\"changedNote\\\\\\\": \\\\\\\"1 liter bolus given\\\\\\\"\\\",\\\"why\\\":\\\"The bolus was already given, but it is listed as a Plan item.\\\"},{\\\"id\\\":\\\"N6\\\",\\\"verdict\\\":\\\"FAIL\\\",\\\"output_quote\\\":\\\"Review of Systems\\\\n\\\\nNot documented in today's dictation\\\",\\\"source_quote\\\":\\\"no source\\\",\\\"why\\\":\\\"Empty sections must say 'Not dictated' or 'Not provided'. This section uses different wording.\\\"}],\\\"scenario_verdict\\\":\\\"FAIL\\\"}\",\"structured_output\":{\"items\":[{\"id\":\"U1\",\"verdict\":\"FAIL\",\"output_quote\":\"4. Obtain transthoracic echocardiogram when available.\\n5. Continue apixaban.\\n6. Continue telemetry monitoring.\",\"source_quote\":\"no source\",\"why\":\"The dictation says only 'Echo is pending' and 'Telemetry overnight without events.' Nothing specifies a transthoracic echo, says to continue telemetry, or says to continue apixaban. The phrase 'to assess for structural cardiac disease' also has no source.\"},{\"id\":\"U2\",\"verdict\":\"FAIL\",\"output_quote\":\"is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope\",\"source_quote\":\"\\\"diagnosis\\\": \\\"Syncope\\\"; \\\"Orthostatic vitals positive\\\"\",\"why\":\"The note adds 'orthostatic hypotension' and 'orthostatic syncope' as a cause. The source gives the diagnosis only as Syncope.\"},{\"id\":\"U3\",\"verdict\":\"PASS\",\"output_quote\":\"blood pressure dropping from 132 mmHg to 104 mmHg\",\"source_quote\":\"BP dropped from 132 to 104 standing\",\"why\":\"Every number matches the source: 71, 132, 104, 6.1, and 1 liter.\"},{\"id\":\"U4\",\"verdict\":\"PASS\",\"output_quote\":\"132 mmHg to 104 mmHg\",\"source_quote\":\"BP dropped from 132 to 104\",\"why\":\"mmHg is the standard unit for blood pressure, so this unit is not guessed on an ambiguous value.\"},{\"id\":\"U5\",\"verdict\":\"FAIL\",\"output_quote\":\"1. Administer 1 liter normal saline bolus for volume repletion.\",\"source_quote\":\"\\\"changeType\\\": \\\"given\\\", \\\"changedNote\\\": \\\"1 liter bolus given\\\"\",\"why\":\"The tracker shows the saline bolus as already given, but the note orders it again.\"},{\"id\":\"U6\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"There is no prior note, so no fact from an earlier day is shown as today's.\"},{\"id\":\"U7\",\"verdict\":\"PASS\",\"output_quote\":\"CT angiogram of the chest ordered. Echocardiography pending.\",\"source_quote\":\"a CT angiogram of the chest is ordered... Echo is pending\",\"why\":\"Planned tests are still written as planned, not as done.\"},{\"id\":\"U8\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"The note has no placeholders.\"},{\"id\":\"U9\",\"verdict\":\"FAIL\",\"output_quote\":\"Apixaban — dose not specified in dictation\",\"source_quote\":\"She takes apixaban.\",\"why\":\"This is narration about the documentation. 'Not documented in today's dictation' in Review of Systems is narration too.\"},{\"id\":\"N1\",\"verdict\":\"PASS\",\"output_quote\":\"\",\"source_quote\":\"\",\"why\":\"Every dictated statement appears in the note: apixaban, both negative troponins, A1c, orthostatic vitals, CT angiogram, lightheadedness, no head injury, telemetry, echo, the bolus, and repeat orthostatics.\"},{\"id\":\"N2\",\"verdict\":\"PASS\",\"output_quote\":\"Obtain CT angiogram of the chest to rule out pulmonary embolism.\",\"source_quote\":\"Rule out PE\",\"why\":\"The 'rule out' hedge is kept.\"},{\"id\":\"N3\",\"verdict\":\"PASS\",\"output_quote\":\"Vital Signs: Orthostatic vitals positive... General: No head injury.\",\"source_quote\":\"Orthostatic vitals positive... No head injury.\",\"why\":\"The exam section uses only dictated findings. No normal exam or denials are invented.\"},{\"id\":\"N4\",\"verdict\":\"PASS\",\"output_quote\":\"2. Repeat orthostatic vital signs this afternoon.\",\"source_quote\":\"repeat orthostatics this afternoon\",\"why\":\"The planned bedside check is still written as a reminder.\"},{\"id\":\"N5\",\"verdict\":\"FAIL\",\"output_quote\":\"1. Administer 1 liter normal saline bolus for volume repletion.\",\"source_quote\":\"\\\"changedNote\\\": \\\"1 liter bolus given\\\"\",\"why\":\"The bolus was already given, but it is listed as a Plan item.\"},{\"id\":\"N6\",\"verdict\":\"FAIL\",\"output_quote\":\"Review of Systems\\n\\nNot documented in today's dictation\",\"source_quote\":\"no source\",\"why\":\"Empty sections must say 'Not dictated' or 'Not provided'. This section uses different wording.\"}],\"scenario_verdict\":\"FAIL\"},\"ttft_ms\":9433,\"type\":\"result\",\"duration_ms\":20626,\"uuid\":\"becc5dca-f37b-4495-a91d-e8c99950d409\",\"ttft_stream_ms\":1909,\"time_to_request_ms\":1147,\"first_content_frame_ms\":1909,\"queued_turn_count\":0,\"result_index\":0}\n",
+      "stderr": ""
+    }
+  ],
+  "answers": [
+    {
+      "run": 1,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 23095,
+        "total_cost_usd": 0.0542184,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 442,
+        "cacheReadInputTokens": 3272,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "run": 2,
+      "valid": true,
+      "via": "structured_output",
+      "envelope": {
+        "subtype": "success",
+        "is_error": false,
+        "num_turns": 2,
+        "duration_ms": 20626,
+        "total_cost_usd": 0.077408,
+        "models": [
+          "claude-opus-5-5"
+        ],
+        "cacheCreationInputTokens": 3715,
+        "cacheReadInputTokens": 0,
+        "permissionDenials": 0
+      },
+      "scenario_verdict": "FAIL",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "scenarioVerdict": {
+    "verdict": "FAIL",
+    "reportAs": "uncalibrated FAIL",
+    "rule": "Any FAIL gives FAIL. Any UNSURE and no FAIL gives NEEDS_PERSON. Otherwise PASS.",
+    "aiCheck": null,
+    "decidingItems": [
+      "U1",
+      "U2",
+      "U3",
+      "U4",
+      "U5",
+      "U6",
+      "U7",
+      "U8",
+      "U9",
+      "N1",
+      "N2",
+      "N3",
+      "N4",
+      "N5",
+      "N6"
+    ],
+    "decidingNote": "no section-6 AI check for this scenario: every item decides",
+    "otherItemsVerdict": null,
+    "allItemsVerdict": "FAIL",
+    "kitVerdict": "FAIL",
+    "kitNote": "the kit as written: every item, kit readings (section 2: a scenario passes only if every item passes)"
+  },
+  "fails": [
+    {
+      "id": "U5",
+      "severity": "blocker",
+      "deciding": true,
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\", \"status\": \"single-dose\"",
+          "why": "The tracker shows the saline bolus was already given. The note lists it as a new order.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changeType\": \"given\", \"changedNote\": \"1 liter bolus given\"",
+          "why": "The tracker shows the saline bolus as already given, but the note orders it again.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: source quote not found in SOURCES",
+        "judge run 2: source quote not found in SOURCES"
+      ],
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ]
+    },
+    {
+      "id": "U1",
+      "severity": "harm",
+      "deciding": true,
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+          "source_quote": "no source",
+          "why": "The note adds facts that no source supports: the echo becomes a 'transthoracic' study, two plan items ('Continue apixaban', 'Continue telemetry monitoring') were never dictated, and 'assess for structural cardiac disease' is also unsupported.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+          "source_quote": "no source",
+          "why": "The dictation says only 'Echo is pending' and 'Telemetry overnight without events.' Nothing specifies a transthoracic echo, says to continue telemetry, or says to continue apixaban. The phrase 'to assess for structural cardiac disease' also has no source.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ]
+    },
+    {
+      "id": "U2",
+      "severity": "harm",
+      "deciding": true,
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope",
+          "source_quote": "Orthostatic vitals positive, BP dropped from 132 to 104 standing.",
+          "why": "The dictation and chart give only 'Syncope'. The note adds a cause and a diagnosis label (orthostatic syncope / orthostatic hypotension) that no source states.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope",
+          "source_quote": "\"diagnosis\": \"Syncope\"; \"Orthostatic vitals positive\"",
+          "why": "The note adds 'orthostatic hypotension' and 'orthostatic syncope' as a cause. The source gives the diagnosis only as Syncope.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 2: source quote not found in SOURCES"
+      ],
+      "openQuestions": []
+    },
+    {
+      "id": "N5",
+      "severity": "harm",
+      "deciding": true,
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\"",
+          "why": "The bolus was already given, but the Plan orders it again instead of recording it as done.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\"",
+          "why": "The bolus was already given, but it is listed as a Plan item.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ]
+    },
+    {
+      "id": "N6",
+      "severity": "defect",
+      "deciding": true,
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Review of Systems\n\nNot documented in today's dictation",
+          "source_quote": "no source",
+          "why": "Review of Systems uses wording other than the accepted 'Not dictated' or 'Not provided'. The other empty sections use 'Not provided' correctly.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Review of Systems\n\nNot documented in today's dictation",
+          "source_quote": "no source",
+          "why": "Empty sections must say 'Not dictated' or 'Not provided'. This section uses different wording.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ]
+    }
+  ],
+  "kitOnlyFails": [
+    {
+      "id": "U9",
+      "severity": "defect",
+      "verdict": "PASS",
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "output_quote": "Apixaban — dose not specified in dictation",
+          "source_quote": "She takes apixaban.",
+          "why": "This is narration about the documentation, which the rule explicitly forbids. 'Not documented in today's dictation' is the same kind of narration.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "output_quote": "Apixaban — dose not specified in dictation",
+          "source_quote": "She takes apixaban.",
+          "why": "This is narration about the documentation. 'Not documented in today's dictation' in Review of Systems is narration too.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteProblems": [],
+      "openQuestions": [
+        "GK3"
+      ]
+    }
+  ],
+  "kitOnlyUnsure": [],
+  "needsPerson": [],
+  "items": [
+    {
+      "id": "U1",
+      "check": "Every clinical fact (diagnosis, finding, value, drug, dose, date, procedure, severity label) can be traced to a dictation, stored panel, or prior note for this patient.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+          "source_quote": "no source",
+          "why": "The note adds facts that no source supports: the echo becomes a 'transthoracic' study, two plan items ('Continue apixaban', 'Continue telemetry monitoring') were never dictated, and 'assess for structural cardiac disease' is also unsupported."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+          "source_quote": "no source",
+          "why": "The dictation says only 'Echo is pending' and 'Telemetry overnight without events.' Nothing specifies a transthoracic echo, says to continue telemetry, or says to continue apixaban. The phrase 'to assess for structural cardiac disease' also has no source."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+          "source_quote": "no source",
+          "why": "The note adds facts that no source supports: the echo becomes a 'transthoracic' study, two plan items ('Continue apixaban', 'Continue telemetry monitoring') were never dictated, and 'assess for structural cardiac disease' is also unsupported.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "4. Obtain transthoracic echocardiogram when available.\n5. Continue apixaban.\n6. Continue telemetry monitoring.",
+          "source_quote": "no source",
+          "why": "The dictation says only 'Echo is pending' and 'Telemetry overnight without events.' Nothing specifies a transthoracic echo, says to continue telemetry, or says to continue apixaban. The phrase 'to assess for structural cardiac disease' also has no source.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK8",
+        "GK9"
+      ],
+      "why": "The note adds facts that no source supports: the echo becomes a 'transthoracic' study, two plan items ('Continue apixaban', 'Continue telemetry monitoring') were never dictated, and 'assess for structural cardiac disease' is also unsupported."
+    },
+    {
+      "id": "U2",
+      "check": "No diagnosis label, subtype, or cause is added that the source does not state (e.g., \"CHF exacerbation\" stays as dictated, never \"HFrEF\"). A label never contradicts its own number (\"Na 146\" is never \"hyponatremia\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope",
+          "source_quote": "Orthostatic vitals positive, BP dropped from 132 to 104 standing.",
+          "why": "The dictation and chart give only 'Syncope'. The note adds a cause and a diagnosis label (orthostatic syncope / orthostatic hypotension) that no source states."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope",
+          "source_quote": "\"diagnosis\": \"Syncope\"; \"Orthostatic vitals positive\"",
+          "why": "The note adds 'orthostatic hypotension' and 'orthostatic syncope' as a cause. The source gives the diagnosis only as Syncope."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope",
+          "source_quote": "Orthostatic vitals positive, BP dropped from 132 to 104 standing.",
+          "why": "The dictation and chart give only 'Syncope'. The note adds a cause and a diagnosis label (orthostatic syncope / orthostatic hypotension) that no source states.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "is found to have orthostatic hypotension... The clinical picture is most consistent with orthostatic syncope",
+          "source_quote": "\"diagnosis\": \"Syncope\"; \"Orthostatic vitals positive\"",
+          "why": "The note adds 'orthostatic hypotension' and 'orthostatic syncope' as a cause. The source gives the diagnosis only as Syncope.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 2: source quote not found in SOURCES"
+      ],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The dictation and chart give only 'Syncope'. The note adds a cause and a diagnosis label (orthostatic syncope / orthostatic hypotension) that no source states."
+    },
+    {
+      "id": "U3",
+      "check": "Every number matches the source exactly.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "blood pressure dropping from 132 mmHg to 104 mmHg",
+          "source_quote": "BP dropped from 132 to 104 standing",
+          "why": "All numbers (71, 132, 104, 6.1, 1 liter, troponin negative twice) match the sources."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "blood pressure dropping from 132 mmHg to 104 mmHg",
+          "source_quote": "BP dropped from 132 to 104 standing",
+          "why": "Every number matches the source: 71, 132, 104, 6.1, and 1 liter."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "All numbers (71, 132, 104, 6.1, 1 liter, troponin negative twice) match the sources."
+    },
+    {
+      "id": "U4",
+      "check": "No unit is guessed on an ambiguous value (drip rate, lab, threshold). Celsius stays Celsius. A bare weight is never turned into pounds. An oral dose may gain \"mg\" (\"furosemide 40\" to \"40 mg\" is fine).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "132 mmHg to 104 mmHg",
+          "source_quote": "BP dropped from 132 to 104",
+          "why": "Blood pressure is always measured in mmHg, so this unit is not a guess on an ambiguous value. No other units were added."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "132 mmHg to 104 mmHg",
+          "source_quote": "BP dropped from 132 to 104",
+          "why": "mmHg is the standard unit for blood pressure, so this unit is not guessed on an ambiguous value."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK11"
+      ],
+      "why": "Blood pressure is always measured in mmHg, so this unit is not a guess on an ambiguous value. No other units were added."
+    },
+    {
+      "id": "U5",
+      "check": "Every medication's status matches the tracker. A held drug reads held. Nothing is restarted, started, or stopped that the tracker does not show.",
+      "severity": "B",
+      "severityName": "blocker",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\", \"status\": \"single-dose\"",
+          "why": "The tracker shows the saline bolus was already given. The note lists it as a new order."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changeType\": \"given\", \"changedNote\": \"1 liter bolus given\"",
+          "why": "The tracker shows the saline bolus as already given, but the note orders it again."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\", \"status\": \"single-dose\"",
+          "why": "The tracker shows the saline bolus was already given. The note lists it as a new order.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changeType\": \"given\", \"changedNote\": \"1 liter bolus given\"",
+          "why": "The tracker shows the saline bolus as already given, but the note orders it again.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "not found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [
+        "judge run 1: source quote not found in SOURCES",
+        "judge run 2: source quote not found in SOURCES"
+      ],
+      "interim": null,
+      "openQuestions": [
+        "GK9",
+        "GK10",
+        "GK13"
+      ],
+      "why": "The tracker shows the saline bolus was already given. The note lists it as a new order."
+    },
+    {
+      "id": "U6",
+      "check": "A fact from an earlier day appears only with its date (\"Cr 1.1 on Oct 1\"), never as today's.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no prior note, and no fact from an earlier day is presented as today's."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "There is no prior note, so no fact from an earlier day is shown as today's."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK12"
+      ],
+      "why": "There is no prior note, and no fact from an earlier day is presented as today's."
+    },
+    {
+      "id": "U7",
+      "check": "Something planned is never written as done (\"ablation scheduled\" never becomes \"s/p ablation\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "CT angiogram of the chest ordered. Echocardiography pending.",
+          "source_quote": "a CT angiogram of the chest is ordered... Echo is pending.",
+          "why": "Planned and pending items stay planned and pending."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "CT angiogram of the chest ordered. Echocardiography pending.",
+          "source_quote": "a CT angiogram of the chest is ordered... Echo is pending",
+          "why": "Planned tests are still written as planned, not as done."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "Planned and pending items stay planned and pending."
+    },
+    {
+      "id": "U8",
+      "check": "No placeholders: {ADDRESS}, {PHONE}, [Today's date], [Physician name].",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": true,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The note contains no placeholders."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "The note has no placeholders."
+        }
+      ],
+      "code": {
+        "id": "U8",
+        "verdict": "PASS",
+        "kitVerdict": "PASS",
+        "output_quote": "",
+        "source_quote": "",
+        "why": "no placeholder token",
+        "details": {
+          "tokens": [],
+          "markers": []
+        }
+      },
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK4"
+        ],
+        "rule": "a guardrail marker ('[address withheld]') passes; the four literal tokens and raw {TOKENS} fail"
+      },
+      "openQuestions": [
+        "GK4"
+      ],
+      "why": "code: no placeholder token"
+    },
+    {
+      "id": "U9",
+      "check": "No narration about documentation (\"dose not specified in dictation\"), and no \"No past medical history documented\" when PMH simply was not dictated.",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "FAIL",
+      "differs": true,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "PASS",
+          "carveOut": "GK3",
+          "output_quote": "Apixaban — dose not specified in dictation",
+          "source_quote": "She takes apixaban.",
+          "why": "This is narration about the documentation, which the rule explicitly forbids. 'Not documented in today's dictation' is the same kind of narration."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "PASS",
+          "carveOut": "GK3",
+          "output_quote": "Apixaban — dose not specified in dictation",
+          "source_quote": "She takes apixaban.",
+          "why": "This is narration about the documentation. 'Not documented in today's dictation' in Review of Systems is narration too."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "Apixaban — dose not specified in dictation",
+          "source_quote": "She takes apixaban.",
+          "why": "This is narration about the documentation, which the rule explicitly forbids. 'Not documented in today's dictation' is the same kind of narration.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "kit"
+          ],
+          "output_quote": "Apixaban — dose not specified in dictation",
+          "source_quote": "She takes apixaban.",
+          "why": "This is narration about the documentation. 'Not documented in today's dictation' in Review of Systems is narration too.",
+          "carveOut": "GK3",
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK3"
+        ],
+        "rule": "a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+      },
+      "openQuestions": [
+        "GK3"
+      ],
+      "why": "judge FAIL explained by the interim reading (GK3): a judge FAIL quoting only the phrases the note prompts require ('dose not specified in dictation', 'not documented in today's dictation', a section label reading 'Not provided' / 'Not dictated') passes; other narration is graded as written"
+    },
+    {
+      "id": "N1",
+      "check": "Every clinically meaningful dictated statement appears somewhere in the note: numbers, named terms (POLST, drug names), instructions.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Repeat orthostatic vital signs this afternoon.",
+          "source_quote": "repeat orthostatics this afternoon",
+          "why": "Every dictated statement appears in the note: drug, labs, vitals, CT, echo, telemetry, no head injury, lightheadedness, bolus, and repeat orthostatics."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "",
+          "source_quote": "",
+          "why": "Every dictated statement appears in the note: apixaban, both negative troponins, A1c, orthostatic vitals, CT angiogram, lightheadedness, no head injury, telemetry, echo, the bolus, and repeat orthostatics."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "Every dictated statement appears in the note: drug, labs, vitals, CT, echo, telemetry, no head injury, lightheadedness, bolus, and repeat orthostatics."
+    },
+    {
+      "id": "N2",
+      "check": "A physician's hedge survives (\"possible early pneumonia\" stays visible even if confirmed later in the same dictation).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "pulmonary embolism remains on the differential and is being evaluated with CT angiography",
+          "source_quote": "Rule out PE, a CT angiogram of the chest is ordered.",
+          "why": "The 'rule out PE' hedge is kept."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Obtain CT angiogram of the chest to rule out pulmonary embolism.",
+          "source_quote": "Rule out PE",
+          "why": "The 'rule out' hedge is kept."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [],
+      "why": "The 'rule out PE' hedge is kept."
+    },
+    {
+      "id": "N3",
+      "check": "No exam was dictated: the exam section says not examined or not documented. No normal exam is invented, and no \"denies...\" statements are invented.",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "General: No head injury.",
+          "source_quote": "No head injury.",
+          "why": "The exam section holds only dictated findings. No normal exam or 'denies' statements were invented."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Vital Signs: Orthostatic vitals positive... General: No head injury.",
+          "source_quote": "Orthostatic vitals positive... No head injury.",
+          "why": "The exam section uses only dictated findings. No normal exam or denials are invented."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK3",
+        "GK14"
+      ],
+      "why": "The exam section holds only dictated findings. No normal exam or 'denies' statements were invented."
+    },
+    {
+      "id": "N4",
+      "check": "A bedside check stays a reminder (\"check for dysuria\" never becomes \"reports dysuria\").",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "PASS",
+      "kitVerdict": "PASS",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "Repeat orthostatic vital signs this afternoon.",
+          "source_quote": "repeat orthostatics this afternoon",
+          "why": "The repeat orthostatics stay a future check."
+        },
+        {
+          "verdict": "PASS",
+          "interimVerdict": "PASS",
+          "carveOut": null,
+          "output_quote": "2. Repeat orthostatic vital signs this afternoon.",
+          "source_quote": "repeat orthostatics this afternoon",
+          "why": "The planned bedside check is still written as a reminder."
+        }
+      ],
+      "code": null,
+      "quotes": [],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK13"
+      ],
+      "why": "The repeat orthostatics stay a future check."
+    },
+    {
+      "id": "N5",
+      "check": "A drug already given is written as done, not re-ordered in the Plan (\"restarted metoprolol this morning\" is not a plan item).",
+      "severity": "H",
+      "severityName": "harm",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\"",
+          "why": "The bolus was already given, but the Plan orders it again instead of recording it as done."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\"",
+          "why": "The bolus was already given, but it is listed as a Plan item."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\"",
+          "why": "The bolus was already given, but the Plan orders it again instead of recording it as done.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "1. Administer 1 liter normal saline bolus for volume repletion.",
+          "source_quote": "\"changedNote\": \"1 liter bolus given\"",
+          "why": "The bolus was already given, but it is listed as a Plan item.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "found"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": null,
+      "openQuestions": [
+        "GK10",
+        "GK13"
+      ],
+      "why": "The bolus was already given, but the Plan orders it again instead of recording it as done."
+    },
+    {
+      "id": "N6",
+      "check": "A section with nothing dictated is empty and labeled as such (see Flag 2 on the exact wording).",
+      "severity": "D",
+      "severityName": "defect",
+      "deciding": true,
+      "byCode": false,
+      "judge": true,
+      "verdict": "FAIL",
+      "kitVerdict": "FAIL",
+      "differs": false,
+      "judgesDisagree": false,
+      "judgeRuns": [
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Review of Systems\n\nNot documented in today's dictation",
+          "source_quote": "no source",
+          "why": "Review of Systems uses wording other than the accepted 'Not dictated' or 'Not provided'. The other empty sections use 'Not provided' correctly."
+        },
+        {
+          "verdict": "FAIL",
+          "interimVerdict": "FAIL",
+          "carveOut": null,
+          "output_quote": "Review of Systems\n\nNot documented in today's dictation",
+          "source_quote": "no source",
+          "why": "Empty sections must say 'Not dictated' or 'Not provided'. This section uses different wording."
+        }
+      ],
+      "code": null,
+      "quotes": [
+        {
+          "from": "judge run 1",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Review of Systems\n\nNot documented in today's dictation",
+          "source_quote": "no source",
+          "why": "Review of Systems uses wording other than the accepted 'Not dictated' or 'Not provided'. The other empty sections use 'Not provided' correctly.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        },
+        {
+          "from": "judge run 2",
+          "readings": [
+            "interim",
+            "kit"
+          ],
+          "output_quote": "Review of Systems\n\nNot documented in today's dictation",
+          "source_quote": "no source",
+          "why": "Empty sections must say 'Not dictated' or 'Not provided'. This section uses different wording.",
+          "carveOut": null,
+          "check": {
+            "output": "found",
+            "source": "no source"
+          }
+        }
+      ],
+      "quoteMissing": false,
+      "quoteProblems": [],
+      "interim": {
+        "gk": [
+          "GK2"
+        ],
+        "rule": "either 'Not dictated' or 'Not provided' passes (the kit's interim, L3); the wording used is recorded"
+      },
+      "openQuestions": [
+        "GK2",
+        "GK13"
+      ],
+      "why": "Review of Systems uses wording other than the accepted 'Not dictated' or 'Not provided'. The other empty sections use 'Not provided' correctly."
+    }
+  ],
+  "n6Wording": {
+    "notDictated": 0,
+    "notProvided": 4
+  },
+  "openQuestions": [
+    "GK10",
+    "GK13",
+    "GK2",
+    "GK3",
+    "GK8",
+    "GK9"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,223 @@
+{
+ "fixture": "HL-H1",
+ "arm": "A",
+ "mode": "hospital",
+ "template": "soap",
+ "dictations": {
+  "preRound": "Day 3 of IV cefazolin for the left lower leg cellulitis. Redness is receding inside the marked border. Afebrile overnight, Tmax 37.4. He is on a statin at home and we are continuing it. BP 124/78, heart rate 82. WBC 9.8, down from 13.1.",
+  "encounter": "Leg is less warm and less tender, redness now about 2 cm inside the line. Walking in the hall. Plan to switch to oral cephalexin tomorrow if the redness keeps improving. Consider a CT of the leg only if it stops improving."
+ },
+ "note": "Subjective\n\nNot provided\n\nObjective\n\nVital Signs: Blood pressure 124/78 mmHg, heart rate 82 bpm, temperature 37.4°C.\n\nPhysical Examination: Leg is less warm and less tender, redness now approximately 2 cm inside the marked line. Patient ambulating in the hall.\n\nTesting Results\n\nWhite blood cell count 9.8 (down from 13.1 on admission).\n\nAssessment\n\nPatient is a 67-year-old male with no past medical history documented in the available records who presented with left lower leg cellulitis. He is now on day 3 of intravenous cefazolin with receding erythema, afebrile, and improving leukocytosis. The clinical picture is consistent with resolving cellulitis with good response to antibiotic therapy. Plan is to transition to oral therapy as the infection continues to improve.\n\nPlan\n\n1. Left lower leg cellulitis — continue intravenous cefazolin; plan to switch to oral cephalexin tomorrow if redness continues to improve; consider computed tomography of the leg only if redness stops improving.\n\n2. Continue home statin (dose not specified in dictation).",
+ "noteSections": [
+  {
+   "body": "Not provided",
+   "heading": "Subjective",
+   "part": "narrative"
+  },
+  {
+   "body": "Vital Signs: Blood pressure 124/78 mmHg, heart rate 82 bpm, temperature 37.4°C.\n\nPhysical Examination: Leg is less warm and less tender, redness now approximately 2 cm inside the marked line. Patient ambulating in the hall.",
+   "heading": "Objective",
+   "part": "narrative"
+  },
+  {
+   "body": "White blood cell count 9.8 (down from 13.1 on admission).",
+   "heading": "Testing Results",
+   "part": "narrative"
+  },
+  {
+   "body": "Patient is a 67-year-old male with no past medical history documented in the available records who presented with left lower leg cellulitis. He is now on day 3 of intravenous cefazolin with receding erythema, afebrile, and improving leukocytosis. The clinical picture is consistent with resolving cellulitis with good response to antibiotic therapy. Plan is to transition to oral therapy as the infection continues to improve.",
+   "heading": "Assessment",
+   "part": "assessmentAndPlan"
+  },
+  {
+   "body": "1. Left lower leg cellulitis — continue intravenous cefazolin; plan to switch to oral cephalexin tomorrow if redness continues to improve; consider computed tomography of the leg only if redness stops improving.\n\n2. Continue home statin (dose not specified in dictation).",
+   "heading": "Plan",
+   "part": "assessmentAndPlan"
+  }
+ ],
+ "diag": {
+  "generate": [
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 11920,
+    "providerMs": 11622,
+    "appMs": 298,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "all": [
+   {
+    "fn": "billing.suggestBilling",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 3352,
+    "providerMs": 3185,
+    "appMs": 167,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "notes.generateNote",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 11920,
+    "providerMs": 11622,
+    "appMs": 298,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ],
+  "preRound": [
+   {
+    "fn": "parsing.parsePreRoundNotes",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 5227,
+    "providerMs": 5224,
+    "appMs": 3,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.classifyAdmissionReason",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 2543,
+    "providerMs": 2538,
+    "appMs": 5,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   },
+   {
+    "fn": "parsing.extractTasks",
+    "model": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "ok": true,
+    "durationMs": 1927,
+    "providerMs": 1921,
+    "appMs": 6,
+    "parseStatus": null,
+    "fellBackFrom": null,
+    "error": null,
+    "over30s": false
+   }
+  ]
+ },
+ "traps": {
+  "HL-H1-a": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "• Home statin continued",
+     "Statin — name and dose not specified in dictation [active] (continuing home medication)."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Statin — name and dose not specified in dictation [active] (continuing home medication)."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Continue home statin (dose not specified in dictation)."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H1-b": {
+   "summary": {
+    "verdict": "asDictated",
+    "quotes": [
+     "bp: 124/78."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "after": {
+    "verdict": "asDictated",
+    "quotes": [
+     "bp: 124/78."
+    ],
+    "why": "the dictated words, no added label"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "Vital Signs: Blood pressure 124/78 mmHg, heart rate 82 bpm, temperature 37.4°C."
+    ],
+    "why": "the dictated words, no added label"
+   }
+  },
+  "HL-H1-c": {
+   "summary": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   },
+   "after": {
+    "verdict": "absent",
+    "quotes": [],
+    "why": "not mentioned"
+   },
+   "note": {
+    "verdict": "asDictated",
+    "quotes": [
+     "consider computed tomography of the leg only if redness stops improving."
+    ],
+    "why": "kept as dictated"
+   }
+  }
+ },
+ "facts": [
+  {
+   "fact": "cefazolin",
+   "present": true
+  },
+  {
+   "fact": "37\\.4",
+   "present": true
+  },
+  {
+   "fact": "9\\.8",
+   "present": true
+  },
+  {
+   "fact": "cephalexin",
+   "present": true
+  },
+  {
+   "fact": "124\\s*/\\s*78|124 over 78",
+   "present": true
+  }
+ ],
+ "ms": 51500,
+ "summary": {
+  "admissionSummary.course": "Oct 20: Left lower leg cellulitis improving on day 3 IV cefazolin; redness receding within marked border, afebrile, WBC declining.. ⏳ Encounter pending.",
+  "admissionSummary.reason": "67-year-old male admitted with left lower leg cellulitis, now day 3 of IV cefazolin with receding erythema, afebrile, WBC improving\n• Left lower leg cellulitis — day 3 IV cefazolin, redness receding within marked border, afebrile overnight (Tmax 37.4°C)\n• WBC 9.8 (down from 13.1 on admission)\n• Home statin continued",
+  "trackerRows": "Cefazolin IV [active] (day 3 of therapy for left lower leg cellulitis).\nStatin — name and dose not specified in dictation [active] (continuing home medication).",
+  "labs": "WBC: 9.8 (down from 13.1).",
+  "vitals": "bp: 124/78.\nhr: 82.\ntemp: 37.4."
+ },
+ "after": {
+  "admissionSummary.course": "Oct 20: Left lower leg cellulitis improving on day 3 IV cefazolin; erythema receding, afebrile, WBC declining from 13.1 to 9.8. Plan transition to oral cephalexin tomorrow if improvement continues",
+  "admissionSummary.reason": "67-year-old male with no documented past medical history admitted with left lower leg cellulitis, now day 3 IV cefazolin with receding erythema, afebrile, and improving leukocytosis.\n• Left lower leg cellulitis — improving on day 3 IV cefazolin with receding erythema; plan transition to oral cephalexin tomorrow if redness continues to improve\n• Leukocytosis — WBC 9.8 (down from 13.1 on admission), improving",
+  "trackerRows": "Cefazolin IV [active] (day 3 of therapy for left lower leg cellulitis).\nStatin — name and dose not specified in dictation [active] (continuing home medication).",
+  "labs": "WBC: 9.8 (down from 13.1).",
+  "vitals": "bp: 124/78.\nhr: 82.\ntemp: 37.4."
+ }
+}
